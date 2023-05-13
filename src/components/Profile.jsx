@@ -1,4 +1,5 @@
 import React from "react";
+import Alert from "react-bootstrap/Alert";
 
 const Profile = () => {
     return (
@@ -12,18 +13,28 @@ const Profile = () => {
                 ava+description
             </div>
             <div>
-                My posts
+                <Alert key={'info'} variant={'info'}>
+                    My posts
+                </Alert>
                 <div>
-                    new post
+                    <Alert key={'dark'} variant={'dark'}>
+                        new post
+                    </Alert>
                 </div>
                 <div>
-                    post1
+                    <Alert key={'light'} variant={'light'}>
+                        post1
+                    </Alert>
                 </div>
                 <div>
-                    post2
+                    <Alert key={'light'} variant={'light'}>
+                        post2
+                    </Alert>
                 </div>
                 <div>
-                    post3
+                    <Alert key={'light'} variant={'light'}>
+                        post3
+                    </Alert>
                 </div>
             </div>
         </div>)

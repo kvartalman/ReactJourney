@@ -1,35 +1,20 @@
-.app-wrapper {
-  display: grid;
-  margin: 0 auto;
-  width: 1200px;
-  grid-template-areas:
-  "h h"
-  "n c";
-
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  /*grid-gap: 10px;*/
-}
-
-.header {
-  grid-area: h;
-  background-color: aquamarine;
-}
-
-.header img {
-  width: 20px;
-}
-
-.nav {
-  grid-area: n;
-  background-color: brown;
-}
-
-.content {
-  grid-area: c;
-  background-color: blue;
-}
-
 .Varian {
   width: 500px;
 }
+
+.logo {
+  width: 50px;
+}
+
+#scroll-button {
+  color: darkorange;
+}
+
+#search-button {
+  color: darkorange;
+  border-color: darkorange;
+  --bs-btn-hover-bg: black;
+  --bs-btn-active-bg: darkorange;
+}
+
+
