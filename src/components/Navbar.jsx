@@ -37,7 +37,6 @@ const Navigation = () => {
                     </Nav>
                     <Nav.Link href="#action7" id={'navbar-link'}>Sign up</Nav.Link>
                     <Button variant="outline-success" id={'login-button'}>Login</Button>
-
                 </Navbar.Collapse>
             </Container>
         </Navbar>
