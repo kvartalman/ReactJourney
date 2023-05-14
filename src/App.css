@@ -2,19 +2,56 @@
   width: 500px;
 }
 
+/*Start of navbar styles*/
 .logo {
-  width: 50px;
+  width: 60px;
 }
 
 #scroll-button {
-  color: darkorange;
+  color: rgb(207, 82, 10);
+  border-color: rgb(207, 82, 10);
+  border-width: 2px;
 }
 
-#search-button {
-  color: darkorange;
-  border-color: darkorange;
-  --bs-btn-hover-bg: black;
-  --bs-btn-active-bg: darkorange;
+/*Login button*/
+#login-button {
+  text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered;
+  color: rgb(207, 82, 10);
+  border-width: 2px;
+  border-color: rgb(207, 82, 10);
+  --bs-btn-hover-bg: lightgrey;
+  --bs-btn-active-bg: rgb(207, 82, 10);
 }
 
+/*Navbar links*/
+#navbar-link, #navbarScrollingDropdown {
+  text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered;
+  letter-spacing: 0.1em;
+  color: rgb(207, 82, 10);
+  font-weight: bold;
+  padding-right: 40px;
+  font-size: large;
+}
 
+/*Settings for Categories menu*/
+.nav-item > .dropdown-menu {
+  text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered;
+  border-color: rgb(207, 82, 10);
+  border-width: 2px;
+  background-color: rgba(84, 80, 79);
+}
+
+#navbar-dropdown {
+  color: rgb(207, 82, 10);
+  font-weight: bold;
+}
+
+.navbar-collapse > .me-auto {
+  margin-left: auto;
+}
+
+#navigation-bar {
+  position: fixed;   /*navbar fixed*/
+  top: 0;
+}
+/*End of navbar styles*/
