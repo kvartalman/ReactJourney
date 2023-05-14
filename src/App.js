@@ -1,10 +1,11 @@
 import './App.css';
 import React from 'react';
-import Header from "./components/Header";
+import Carousel from "./components/Carousel";
 import Navbar from "./components/Navbar";
 import Profile from "./components/Profile";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Container, Row} from "react-bootstrap";
+import Cards from "./components/Cards";
 
 function App() {
     return (
@@ -13,9 +14,14 @@ function App() {
                 <Navbar/>
             </Row>
             <Row>
-                    <Header/>
-                    <Profile/>
-
+                <Carousel/>
+            </Row>
+            <Row id={'cards-row'}>
+                <h1 id={'cards-header'}>Most valuable</h1>
+                <Cards/>
+            </Row>
+            <Row>
+                <Profile/>
             </Row>
         </Container>
     );
