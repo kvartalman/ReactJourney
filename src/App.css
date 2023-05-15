@@ -14,7 +14,13 @@
   color: rgb(207, 82, 10);
   border-color: rgb(207, 82, 10);
   border-width: 2px;
+  transition: background 0.5s ease;
 }
+
+#scroll-button:hover  {
+  background-color: lightgrey;
+}
+
 
 /*Login button*/
 #login-button {
@@ -27,13 +33,13 @@
 }
 
 /*Navbar links*/
-#navbar-link, #navbarScrollingDropdown {
-  text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered;
-  letter-spacing: 0.1em;
-  color: rgb(207, 82, 10);
-  font-weight: bold;
-  padding-right: 40px;
-  font-size: large;
+.navbar-link, #navbarScrollingDropdown {
+  text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered !important;
+  letter-spacing: 0.1em !important;
+  color: rgb(207, 82, 10) !important;
+  font-weight: bold !important;
+  padding-right: 40px !important;
+  font-size: large !important;
 }
 
 /*Settings for Categories menu*/
@@ -46,11 +52,11 @@
 }
 
 /*Elements of dropdown menu*/
-#navbar-dropdown {
-  color: rgb(207, 82, 10);
-  font-weight: inherit;
-  transition: background 0.3s ease;
-  border-radius: 3px;
+.navbar-dropdown {
+  color: rgb(207, 82, 10) !important;
+  font-weight: inherit !important;
+  transition: background 0.3s ease !important;
+  border-radius: 3px !important;
 }
 
 .navbar-collapse > .me-auto {
@@ -112,13 +118,13 @@
   text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered;
 }
 
-#card-button {
-  text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered;
-  color: rgb(207, 82, 10);
-  border-width: 2px;
-  border-color: rgb(207, 82, 10);
-  --bs-btn-hover-bg: lightgrey;
-  --bs-btn-active-bg: rgb(207, 82, 10);
+.card-button {
+  text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered !important;
+  color: rgb(207, 82, 10) !important;
+  border-width: 2px !important;
+  border-color: rgb(207, 82, 10) !important;
+  --bs-btn-hover-bg: lightgrey !important;
+  --bs-btn-active-bg: rgb(207, 82, 10) !important;
 }
 
 .card-img {

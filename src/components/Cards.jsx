@@ -15,7 +15,7 @@ const Cards = () => {
                         </Card.Text>
                     </Card.Body>
                     <Button variant="outline-success" className={'btn' +
-                        ' btn-outline-success'} id={'card-button'}>Order</Button>
+                        ' btn-outline-success card-button'}>Order</Button>
                 </Card>
             </Col>
             <Col>
@@ -28,8 +28,8 @@ const Cards = () => {
                             We suggest you order a CS:GO boost
                         </Card.Text>
                     </Card.Body>
-                    <Button variant="outline-success" className={'btn' +
-                        ' btn-outline-success'} id={'card-button'}>Order</Button>
+                        <Button variant="outline-success" className={'btn' +
+                            ' btn-outline-success card-button'}>Order</Button>
                 </Card>
             </Col>
             <Col>
@@ -43,7 +43,7 @@ const Cards = () => {
                         </Card.Text>
                     </Card.Body>
                     <Button variant="outline-success" className={'btn' +
-                        ' btn-outline-success'} id={'card-button'}>Order</Button>
+                        ' btn-outline-success card-button'}>Order</Button>
                 </Card>
             </Col>
             <Col>
@@ -57,7 +57,7 @@ const Cards = () => {
                         </Card.Text>
                     </Card.Body>
                     <Button variant="outline-success" className={'btn' +
-                        ' btn-outline-success'} id={'card-button'}>Order</Button>
+                        ' btn-outline-success card-button'}>Order</Button>
                 </Card>
             </Col>
             <Col>
@@ -71,7 +71,7 @@ const Cards = () => {
                         </Card.Text>
                     </Card.Body>
                     <Button variant="outline-success" className={'btn' +
-                        ' btn-outline-success'} id={'card-button'}>Order</Button>
+                        ' btn-outline-success card-button'}>Order</Button>
                 </Card>
             </Col>
             <Col>
@@ -84,8 +84,8 @@ const Cards = () => {
                             We suggest you order a PUBG boost
                         </Card.Text>
                     </Card.Body>
-                    <Button variant="outline-success" className={'btn ' +
-                        'btn-outline-success'} id={'card-button'}>Order</Button>
+                    <Button variant="outline-success" className={'btn' +
+                        ' btn-outline-success card-button'}>Order</Button>
                 </Card>
             </Col>
         </Row>
