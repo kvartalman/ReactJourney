@@ -10,7 +10,7 @@ const Carousell = () => {
                     src="https://images.hdqwalls.com/download/heroes-of-the-storm-10k-2i-1920x1080.jpg"
                     alt="First slide"
                 />
-                <Carousel.Caption id={'carousel-text'}>
+                <Carousel.Caption className={'carousel-text'}>
                     <h3>И КАК Я ВСЕГДА ЛЮБЛЮ ГОВОРИТЬ</h3>
 
                 </Carousel.Caption>
@@ -22,7 +22,7 @@ const Carousell = () => {
                     alt="Second slide"
                 />
 
-                <Carousel.Caption id={'carousel-text'}>
+                <Carousel.Caption className={'carousel-text'}>
                     <h3>ИГРАЙ</h3>
 
                 </Carousel.Caption>
@@ -34,7 +34,7 @@ const Carousell = () => {
                     alt="Third slide"
                 />
 
-                <Carousel.Caption id={'carousel-text'}>
+                <Carousel.Caption className={'carousel-text'}>
                     <h3>И НЕ ПРОИГРЫВАЙ</h3>
 
                 </Carousel.Caption>
