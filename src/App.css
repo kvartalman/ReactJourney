@@ -2,6 +2,10 @@
   width: 500px;
 }
 
+#root > .container-fluid {
+  padding: 0;
+}
+
 /*START OF NAVBAR STYLES*/
 
 /*logo on the left side of navbar*/
@@ -67,8 +71,6 @@
   }
 }
 
-
-
   /*Elements of dropdown menu*/
 .navbar-dropdown {
   color: rgb(207, 82, 10) !important;
@@ -90,11 +92,6 @@
 
 /*START OF CAROUSEL STYLES*/
 
-/*Change padding size of carousel, without this there would be borders on the sides*/
-.row > .carousel {
-  padding: 0;
-}
-
 /*Text color*/
 .carousel-text {
   color: whitesmoke !important;
@@ -115,11 +112,14 @@
 /*START OF CARDS STYLES*/
 
 #cards-row {
-  background-color: rgb(33,37,41);
+  background: rgb(255,255,255);
+  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(33,37,41,1) 2%);
 
 }
 
 #cards-header {
+  padding-top: 80px;
+  padding-bottom: 40px;
   color: rgb(207, 82, 10);
   text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered;
   text-align: center;
@@ -127,13 +127,14 @@
 
 .card-position {
   margin: auto;
-  margin-bottom: 20px !important;
+  padding-bottom: 60px;
   width: 14rem;
 }
 
 .card-text {
   color: rgb(207, 82, 10);
   text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered;
+  letter-spacing: 0.1em;
 }
 
 .card-button {
@@ -153,6 +154,39 @@
 
 .card-body {
   text-align: center;
+  font-weight: bold;
 }
 
 /*END OF CARD STYLES*/
+
+
+/*START OF ADVANTAGE-CARDS START*/
+
+.advantage-cards {
+  width: 17rem;
+  border-color: rgba(0, 0, 0, 0) !important;
+  margin: auto;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.card-body > .advantage-card-text {
+  color: rgb(125, 125, 125);
+  -webkit-text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+  -moz-text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
+  font-weight: bold;
+  letter-spacing: 0;
+}
+
+.card-body > .advantage-card-title {
+  font-weight: bold;
+  font-size: x-large;
+  letter-spacing: 0.1em;
+  color: black;
+}
+
+.advantage-img {
+  margin: auto;
+  width: 100px !important;
+}

@@ -1,9 +1,10 @@
 import React from 'react';
 import {Carousel} from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 
 const Carousell = () => {
     return (
-        <Carousel fade className={'carousel'}>
+        <Carousel fade className={'carousel'} indicators={false} interval={5000} pause={false}>
             <Carousel.Item>
                 <img
                     className="d-block w-100"
@@ -40,6 +41,7 @@ const Carousell = () => {
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>
+
     )
 }
 

@@ -3,7 +3,11 @@ import {Button, Card, Col, Row} from "react-bootstrap";
 
 const Cards = () => {
     return (
+        <Row id={'cards-row'}>
+            <h1 id={'cards-header'}>Most valuable</h1>
+
         <Row xs={1} sm={2} md={3} className="g-4">
+
             <Col>
                 <Card bg={'dark'} border={'dark'} className={'card-position'}>
                     <Card.Img variant="top" src={'https://s1.1zoom.ru/big0' +
@@ -11,7 +15,7 @@ const Cards = () => {
                     <Card.Body className={'card-body'}>
                         <Card.Title>Card title</Card.Title>
                         <Card.Text className={'card-text'}>
-                            We suggest you order a Dota 2 boost
+                            We suggest you order a Dota 2 <br></br>boost
                         </Card.Text>
                     </Card.Body>
                     <Button variant="outline-success" className={'btn' +
@@ -25,7 +29,7 @@ const Cards = () => {
                     <Card.Body className={'card-body'}>
                         <Card.Title>Card title</Card.Title>
                         <Card.Text className={'card-text'}>
-                            We suggest you order a CS:GO boost
+                            We suggest you order a CS:GO <br></br>boost
                         </Card.Text>
                     </Card.Body>
                         <Button variant="outline-success" className={'btn' +
@@ -39,7 +43,7 @@ const Cards = () => {
                     <Card.Body className={'card-body'}>
                         <Card.Title>Card title</Card.Title>
                         <Card.Text className={'card-text'}>
-                            We suggest you order a Heroes of the Storm boost
+                            We suggest you order a HotS <br></br>boost
                         </Card.Text>
                     </Card.Body>
                     <Button variant="outline-success" className={'btn' +
@@ -67,7 +71,7 @@ const Cards = () => {
                     <Card.Body className={'card-body'}>
                         <Card.Title>Card title</Card.Title>
                         <Card.Text className={'card-text'}>
-                            We suggest you order a League of Legends boost
+                            We suggest you order a LoL <br></br>boost
                         </Card.Text>
                     </Card.Body>
                     <Button variant="outline-success" className={'btn' +
@@ -81,13 +85,14 @@ const Cards = () => {
                     <Card.Body className={'card-body'}>
                         <Card.Title>Card title</Card.Title>
                         <Card.Text className={'card-text'}>
-                            We suggest you order a PUBG boost
+                            We suggest you order a PUBG <br></br>boost
                         </Card.Text>
                     </Card.Body>
                     <Button variant="outline-success" className={'btn' +
                         ' btn-outline-success card-button'}>Order</Button>
                 </Card>
             </Col>
+        </Row>
         </Row>
     )
 }
