@@ -10,12 +10,11 @@ const Advantages = () => {
                     <Card.Img variant="top" className={'advantage-img'} src={'https://' +
                         'p16-va-tiktok.ibyteimg.com/img/' +
                         'musically-maliva-obj/5a0bf3135d88232251753017dd55093e~c5_720x720.jpeg'}/>
-                    <Card.Body>
+                    <Card.Body className={'advantage-card-body'}>
                         <Card.Title className={'advantage-card-title'}>PROFESSIONAL BOOSTERS</Card.Title>
                         <Card.Text className={'advantage-card-text'}>
-                            This is a longer card with supporting text below as a natural
-                            lead-in to additional content. This content is a little bit
-                            longer.
+                            Our team consists of true professionals in their field.
+                            We are very attentive to the issue of cooperation with boosters.
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -48,8 +47,6 @@ const Advantages = () => {
                     </Card.Body>
                 </Card>
             </Col>
-
-
         </Row>
     );
 }

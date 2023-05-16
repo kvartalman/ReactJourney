@@ -7,7 +7,7 @@ const Carousell = () => {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="https://images.hdqwalls.com/download/heroes-of-the-storm-10k-2i-1920x1080.jpg"
+                    src={"./carousel/carousel1.jpg"}
                     alt="First slide"
                 />
                 <Carousel.Caption className={'carousel-text'}>
@@ -18,7 +18,7 @@ const Carousell = () => {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="https://images.hdqwalls.com/download/hanamura-heroes-of-the-storm-4k-1920x1080.jpg"
+                    src="./carousel/carousel2.jpg"
                     alt="Second slide"
                 />
 
@@ -30,7 +30,7 @@ const Carousell = () => {
             <Carousel.Item>
                 <img
                     className="d-block w-100"
-                    src="https://images.hdqwalls.com/download/orphea-heroes-of-the-storm-8k-9g-1920x1080.jpg"
+                    src="./carousel/carousel3.jpg"
                     alt="Third slide"
                 />
 
