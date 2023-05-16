@@ -1,9 +1,11 @@
 import React from 'react';
 import {Card, Col, Row} from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 
 
 const Advantages = () => {
     return (
+        <Container fluid>
         <Row xs={1} md={3} className="g-4">
             <Col>
                 <Card className={'advantage-cards'}>
@@ -48,6 +50,7 @@ const Advantages = () => {
                 </Card>
             </Col>
         </Row>
+        </Container>
     );
 }
 

@@ -1,10 +1,11 @@
 import React from "react";
 import {Col, Row} from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 
 
 const Footer = () => {
     return (
-        <>
+        <Container fluid>
         <Row className={'footer'} xs={1} md={3}>
             <Col>
                 <div className={'footer-titles'}>
@@ -59,7 +60,7 @@ const Footer = () => {
                 <hr id={'dem-line'}></hr>
                 <p>All rights reserved - 2023 &copy;</p>
             </Row>
-        </>
+        </Container>
     )
 }
 

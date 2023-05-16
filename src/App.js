@@ -4,7 +4,7 @@ import Carousel from "./components/Carousel";
 import Navbar from "./components/Navbar";
 import Steps from "./components/Steps";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Container} from "react-bootstrap";
+import {Container, Row} from "react-bootstrap";
 import Cards from "./components/Cards";
 import Advantages from "./components/Advantages";
 import Footer from "./components/Footer";
@@ -15,13 +15,14 @@ function App() {
             <header>
                 <Navbar/>
                 <Carousel/>
+
             </header>
             <body>
                 <Advantages/>
                 <Cards/>
                 <Steps/>
             </body>
-            <footer>
+            <footer id={'foot'}>
                 <Footer/>
             </footer>
         </Container>
