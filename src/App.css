@@ -123,8 +123,9 @@
 
 /*START OF CARDS STYLES*/
 
-#cards-row {
 
+#cards-row {
+  border-radius: 5% !important;
   /*background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(33,37,41,1) 3%);*/
 }
 
@@ -183,6 +184,11 @@
 
 /*START OF ADVANTAGE-CARDS STYLES*/
 
+#advantage-row {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
 .advantage-cards {
   width: 17rem;
   border-color: rgba(0, 0, 0, 0) !important;
@@ -231,8 +237,8 @@
 
 .steps-block-col {
   text-align: center;
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 130px;
+  padding-bottom: 100px;
   transition: 0.5s all;
 }
 
@@ -249,7 +255,7 @@
 
 #how-do-i-start {
   text-align: center;
-  padding-top: 70px;
+  padding-top: 100px;
 }
 
 .steps-text {
@@ -266,7 +272,9 @@
 
 /*START OF FOOTER STYLES*/
 
-.footer {
+
+.container-fluid > .footer {
+  border-radius: 5% !important;
   background-color: white;
   /*background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(33,37,41,1) 3%);*/
 }

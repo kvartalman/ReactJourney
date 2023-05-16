@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 const Cards = () => {
     return (
         <Container fluid>
-        <Row id={'cards-row'}>
+        <Row id={'cards-row'} className={'border border-4'}>
             <h1 id={'cards-header'}>Most valuable</h1>
 
         <Row xs={1} sm={2} md={3} className="g-4">

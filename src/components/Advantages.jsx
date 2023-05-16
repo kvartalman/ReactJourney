@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 const Advantages = () => {
     return (
         <Container fluid>
-        <Row xs={1} md={3} className="g-4">
+        <Row xs={1} md={3} className="g-4" id={'advantage-row'}>
             <Col>
                 <Card className={'advantage-cards'}>
                     <Card.Img variant="top" className={'advantage-img'} src={'https://' +

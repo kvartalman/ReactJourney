@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 const Footer = () => {
     return (
         <Container fluid>
-        <Row className={'footer'} xs={1} md={3}>
+        <Row className={'footer border border-4'} xs={1} md={3}>
             <Col>
                 <div className={'footer-titles'}>
                     <h1>Pages</h1>

@@ -8,6 +8,7 @@ import {Container, Row} from "react-bootstrap";
 import Cards from "./components/Cards";
 import Advantages from "./components/Advantages";
 import Footer from "./components/Footer";
+import BestOffers from "./components/BestOffers";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
             </header>
             <body>
                 <Advantages/>
+                <BestOffers/>
                 <Cards/>
                 <Steps/>
             </body>
