@@ -5,8 +5,8 @@ import Container from "react-bootstrap/Container";
 const Steps = () => {
     return (
         <Container fluid>
+            <img src={'./backgrounds/howtostart.png'} alt={'BEST OFFERS'} className={'img-tab'}/>
             <Row id={'steps-block-row'}>
-                <h1 id={'how-do-i-start'}>HOW DO I START?</h1>
                 <Col className={'steps-block-col'}>
                     <svg xmlns="http://www.w3.org/2000/svg" width={"100"} height={"100"} fill={"" +
                         "currentColor"} className={"bi bi-1-circle icon-color"}

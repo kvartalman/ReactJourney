@@ -4,11 +4,11 @@ import Carousel from "./components/Carousel";
 import Navbar from "./components/Navbar";
 import Steps from "./components/Steps";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Container, Row} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import Cards from "./components/Cards";
 import Advantages from "./components/Advantages";
 import Footer from "./components/Footer";
-import BestOffers from "./components/BestOffers";
+
 
 function App() {
     return (
@@ -20,8 +20,7 @@ function App() {
             </header>
             <body>
                 <Advantages/>
-                <BestOffers/>
-                <Cards/>
+                <Cards />
                 <Steps/>
             </body>
             <footer id={'foot'}>

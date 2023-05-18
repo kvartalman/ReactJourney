@@ -13,7 +13,7 @@ const Navigation = () => {
                 <Navbar.Brand><img className={'logo'} src={'https://upload.wikimedia.org/wikipedia/ru/0/02/' +
                     'Heroes_of_the_Storm_BlizzHeroes_2017_logo.png?20230127151006'}
                                    alt={'Heroes of the Storm'}/></Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbarScroll" id={'scroll-button'}/>
+                <Navbar.Toggle aria-controls="navbarScroll" id={'scroll-button'} className={''}/>
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
                         className="me-auto my-2 my-lg-0"
