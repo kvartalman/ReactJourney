@@ -7,7 +7,8 @@ import {Button} from "react-bootstrap";
 
 const Navigation = () => {
     return (
-        <Navbar bg="white" expand="lg" id={'navigation-bar'}>
+
+        <Navbar bg="warning" expand="lg" id={'navigation-bar'} className={''}>
             <Container fluid>
                 <Navbar.Brand><img className={'logo'} src={'https://upload.wikimedia.org/wikipedia/ru/0/02/' +
                     'Heroes_of_the_Storm_BlizzHeroes_2017_logo.png?20230127151006'}
@@ -40,6 +41,7 @@ const Navigation = () => {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
+
     );
 }
 

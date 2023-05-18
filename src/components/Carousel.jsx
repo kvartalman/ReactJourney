@@ -11,7 +11,7 @@ const Carousell = () => {
                     alt="First slide"
                 />
                 <Carousel.Caption className={'carousel-text'}>
-                    <h3>И КАК Я ВСЕГДА ЛЮБЛЮ ГОВОРИТЬ</h3>
+                    <h3>ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ</h3>
 
                 </Carousel.Caption>
             </Carousel.Item>
@@ -23,7 +23,7 @@ const Carousell = () => {
                 />
 
                 <Carousel.Caption className={'carousel-text'}>
-                    <h3>ИГРАЙ</h3>
+                    <h3>ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ</h3>
 
                 </Carousel.Caption>
             </Carousel.Item>
@@ -35,7 +35,7 @@ const Carousell = () => {
                 />
 
                 <Carousel.Caption className={'carousel-text'}>
-                    <h3>И НЕ ПРОИГРЫВАЙ</h3>
+                    <h3>ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ</h3>
 
                 </Carousel.Caption>
             </Carousel.Item>

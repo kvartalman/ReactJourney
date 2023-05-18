@@ -56,8 +56,7 @@ const Footer = () => {
                 </div>
             </Col>
         </Row>
-            <Row id={'all-rights'}>
-                <hr id={'dem-line'}></hr>
+            <Row id={'all-rights'} bg={'dark'}>
                 <p>All rights reserved - 2023 &copy;</p>
             </Row>
         </Container>
