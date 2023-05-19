@@ -38,6 +38,19 @@
   background-color: whitesmoke;
 }
 
+.navbar-nav-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.navbar-nav-scroll::-webkit-scrollbar-track {
+  border-radius: 10%;
+  background-color: rgba(255, 255, 255, 0.3)
+}
+
+.navbar-nav-scroll::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 10%;
+}
 
 /*Login button*/
 #login-button {
@@ -198,7 +211,7 @@
 }
 
 #hots-card {
-  background: linear-gradient( rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5) ), url('https://games.mail.ru/pre_0x736_resize/hotbox/content_files/gallery/54/46/5d79d6c8.jpeg?quality=85');
+  background: linear-gradient( rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5) ), url('/public/backgrounds/hots.avif');
   background-size: cover;
   background-position: center;
 }
@@ -450,7 +463,7 @@
   position: absolute;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, transparent, rgb(33,37,41));
+  background: linear-gradient(90deg, transparent, rgb(85, 89, 92));
 }
 
 .order-button:hover > .button-line-top {
@@ -466,7 +479,7 @@
   display: block;
   width: 100%;
   height: 3px;
-  background: linear-gradient(270deg, transparent, rgb(33,37,41));
+  background: linear-gradient(270deg, transparent, rgb(85, 89, 92));
 }
 
 .order-button:hover > .button-line-bottom {
@@ -482,7 +495,7 @@
   display: block;
   width: 3px;
   height: 100%;
-  background: linear-gradient(0deg, transparent, rgb(33,37,41));
+  background: linear-gradient(0deg, transparent, rgb(85, 89, 92));
 }
 
 .order-button:hover > .button-line-left{
@@ -497,7 +510,7 @@
   display: block;
   width: 3px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, rgb(33,37,41));
+  background: linear-gradient(180deg, transparent, rgb(85, 89, 92));
 }
 
 .order-button:hover > .button-line-right {
