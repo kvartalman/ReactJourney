@@ -322,7 +322,7 @@
 /*  color: white;*/
 /*}*/
 
-.steps-block-col {
+.row > .steps-block-col {
   text-align: center;
   padding-top: 130px;
   padding-bottom: 100px;
@@ -336,13 +336,8 @@
 }
 
 #steps-block-row {
+  margin: 20px;
   /*background: linear-gradient(180deg, rgba(33,37,41,1) 0%, rgba(255,255,255,1) 4%);*/
-
-}
-
-#how-do-i-start {
-  text-align: center;
-  padding-top: 100px;
 }
 
 /*Styles for text under icons "(1) (2) (3)"*/
