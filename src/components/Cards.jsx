@@ -14,6 +14,7 @@ const Cards = () => {
         <Container fluid>
             <img src={'./backgrounds/bestoffers.png'} alt={'BEST OFFERS'} className={'img-fluid img-tab'}/>
             <Row id={'cards-row'} className={'border border-4'}>
+                {/*row-cols-* - set the cards width by setting amount of cards in row*/}
                 <Row xs={1} md={2} className="g-3">
                     <Col className={'card-col'}>
                         <Card className={'card-position border'} id={'dota-card'}>
