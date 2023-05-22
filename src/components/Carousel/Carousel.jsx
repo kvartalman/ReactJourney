@@ -1,6 +1,6 @@
 import React from 'react';
 import {Carousel} from "react-bootstrap";
-
+import './Carousel.css'
 const Carousell = () => {
     return (
         <Carousel fade className={'carousel'} indicators={false} interval={5000} pause={false}>

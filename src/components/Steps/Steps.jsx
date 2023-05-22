@@ -1,11 +1,12 @@
 import React from "react";
 import {Col, Row} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
+import './Steps.css'
 
 const Steps = () => {
     return (
         <Container fluid>
-            <img src={'./backgrounds/howtostart.png'} alt={'BEST OFFERS'} className={'img-tab'}/>
+            <img src={'./backgrounds/howtostart.png'} alt={'BEST OFFERS'} className={'img-fluid imgTab'}/>
             <Row id={'steps-block-row'}>
                 <Col className={'steps-block-col'}>
                     <svg xmlns="http://www.w3.org/2000/svg" width={"100"} height={"100"} fill={"" +

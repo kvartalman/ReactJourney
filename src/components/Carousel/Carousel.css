@@ -1,0 +1,14 @@
+/*Text color*/
+.carousel-text {
+    color: whitesmoke !important;
+}
+
+/*Change brightness of images*/
+.d-block {
+    filter: brightness(40%)
+}
+
+/*Turn off 'arrow' control-icons*/
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    display: none !important;
+}
