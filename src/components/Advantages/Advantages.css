@@ -1,6 +1,7 @@
 #advantage-row {
     padding-top: 100px;
     padding-bottom: 100px;
+    justify-content: center;
 }
 
 .advantage-cards {

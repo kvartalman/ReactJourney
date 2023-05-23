@@ -91,8 +91,7 @@
 
 /*Settings for Categories menu*/
 .nav-item > .dropdown-menu {
-    --bs-dropdown-link-hover-bg: rgba(245,245,245, 0.5);
-    --bs-dropdown-link-active-bg: rgba(245,245,245, 1);
+
     /*--bs-dropdown-link-active-bg: rgb(207, 82, 10);*/
     /*text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered;
     border-color: rgb(207, 82, 10);*/
@@ -124,6 +123,11 @@
     transition: background 0.3s ease !important;
     border-radius: 3px !important;
     font-size: 1.5em;
+}
+
+.navbar-dropdown:hover {
+    background-color: rgba(255, 193, 7, 0.7) !important;
+    color: rgb(33, 37, 41) !important;
 }
 
 .navbar-collapse > .me-auto {

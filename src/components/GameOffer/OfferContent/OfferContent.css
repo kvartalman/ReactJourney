@@ -1,0 +1,32 @@
+.offerTextRow {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.offerTitleRow {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.offerCardContent {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.offerCardTitle {
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.offerCard {
+    margin: 10px;
+    height: 200px !important;
+    width: 200px !important;
+}

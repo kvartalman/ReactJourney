@@ -7,7 +7,7 @@ const Advantages = () => {
     return (
         <Container fluid>
             <img src={'./backgrounds/whychooseus.png'} alt={'BEST OFFERS'} className={'img-fluid imgTab'}/>
-            <Row xs={1} md={3} className="g-4" id={'advantage-row'}>
+            <Row xs={1} md={2} lg={3} className="g-4" id={'advantage-row'}>
                 <Col>
                     <Card className={'advantage-cards'}>
                         <Card.Img variant="top" className={'advantage-img'} src={'https://' +

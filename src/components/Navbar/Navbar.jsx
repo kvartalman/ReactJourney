@@ -21,12 +21,12 @@ const Navigation = () => {
                         style={{maxHeight: '100px'}}
                         navbarScroll
                     >
-                        <Nav.Link href="#action1" className={'navbar-link'}>Main</Nav.Link>
+                        <Nav.Link href="/main" className={'navbar-link'}>Main</Nav.Link>
                         <Nav.Link href="#action2" className={'navbar-link'}>Boosters</Nav.Link>
                         <NavDropdown title="Categories" id="navbarScrollingDropdown">
                             <NavDropdown.Item href="#action3" className={'navbar-dropdown'}>Heroes of the
                                 Storm</NavDropdown.Item>
-                            <NavDropdown.Item href="#action4" className={'navbar-dropdown'}>
+                            <NavDropdown.Item href="/dota2" className={'navbar-dropdown'}>
                                 Dota 2
                             </NavDropdown.Item>
                             <NavDropdown.Item href="#action5" className={'navbar-dropdown'}>

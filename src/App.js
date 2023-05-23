@@ -1,32 +1,31 @@
 import './App.css';
 import React from 'react';
-import Carousel from "./components/Carousel/Carousel";
 import Navbar from "./components/Navbar/Navbar";
-import Steps from "./components/Steps/Steps";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Container} from "react-bootstrap";
-import Cards from "./components/Cards/Cards";
-import Advantages from "./components/Advantages/Advantages";
 import Footer from "./components/Footer/Footer";
-
+import {Route, Routes, Link} from "react-router-dom";
+import HomePage from "./components/Main/Homepage";
 
 function App() {
     return (
+
         <Container fluid>
             <header>
                 <Navbar/>
-                <Carousel/>
-
             </header>
             <body>
-                <Advantages/>
-                <Cards />
-                <Steps/>
+            <Routes>
+                <Route path={'/main'} element={<HomePage/>}/>
+                {/*<GameOffer/>*/}
+            </Routes>
+            {/*<Canvas name={'button'} placement={'end'} key={'idx'}/>*/}
             </body>
-            <footer id={'foot'}>
+            <footer>
                 <Footer/>
             </footer>
         </Container>
+
     );
 }
 
