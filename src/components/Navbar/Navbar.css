@@ -73,16 +73,38 @@
 
 /*Navbar links*/
 .navbar-link, #navbarScrollingDropdown {
+    display: flex;
     /*text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered !important;*/
-    letter-spacing: 0.1em !important;
+    letter-spacing: 0.1em;
     /*color: rgb(207, 82, 10) !important;*/
-    font-weight: bold !important;
-    padding-right: 40px !important;
-    font-size: large !important;
-    color: rgb(33, 37, 41) !important;
-    border-radius: 10% !important;
+    font-weight: bold;
+    padding-right: 40px;
+    font-size: large;
+    color: rgb(33, 37, 41);
+    border-radius: 10%;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
 }
 
+@media (max-width: 992px) {
+    .navbar-link, #navbarScrollingDropdown {
+        justify-content: left;
+        padding: 5px;
+        font-size: 2em;
+    }
+
+    #login-button {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+        width: 10em;
+    }
+
+    .dropdown-menu {
+        border-color: rgba(0, 0, 0, 0) !important;
+    }
+}
 
 .navbar-link:hover, #navbarScrollingDropdown:hover {
     transition: 0.2s;
@@ -91,7 +113,7 @@
 
 /*Settings for Categories menu*/
 .nav-item > .dropdown-menu {
-
+    width: 20em;
     /*--bs-dropdown-link-active-bg: rgb(207, 82, 10);*/
     /*text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered;
     border-color: rgb(207, 82, 10);*/
@@ -117,12 +139,15 @@
 
 /*Elements of dropdown menu*/
 .navbar-dropdown {
+    letter-spacing: 0.05em;
+    display: flex;
     color: rgb(33,37,41) !important;
     /*color: rgb(207, 82, 10) !important;*/
     font-weight: bold !important;
     transition: background 0.3s ease !important;
     border-radius: 3px !important;
     font-size: 1.5em;
+    text-decoration: none;
 }
 
 .navbar-dropdown:hover {

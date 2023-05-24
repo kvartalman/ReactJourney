@@ -2,6 +2,7 @@ import React from "react";
 import {Col, Row} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import './Footer.css'
+import {NavLink} from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -12,13 +13,13 @@ const Footer = () => {
                     <h1>Pages</h1>
                 </div>
                 <div className={'footer-pages'}>
-                    <p><a href={'https://vk.com'}>Main page</a></p>
-                    <p><a href={'#'}>Categories</a></p>
-                    <p><a href={'#'}>Boosters</a></p>
-                    <p><a href={'#'}>Help</a></p>
-                    <p><a href={'#'}>Guides</a></p>
-                    <p><a href={'#'}>Contacts</a></p>
-                    <p><a href={'#'}>FAQ</a></p>
+                    <p><NavLink to={'/'}>Main page</NavLink></p>
+                    <p><NavLink to={'#'}>Categories</NavLink></p>
+                    <p><NavLink to={'#'}>Boosters</NavLink></p>
+                    <p><NavLink to={'#'}>Help</NavLink></p>
+                    <p><NavLink to={'#'}>Guides</NavLink></p>
+                    <p><NavLink to={'#'}>Contacts</NavLink></p>
+                    <p><NavLink to={'#'}>FAQ</NavLink></p>
                 </div>
             </Col>
             <Col>
@@ -26,16 +27,16 @@ const Footer = () => {
                     <h1>Services</h1>
                 </div>
                 <div className={'footer-pages'}>
-                    <p><a href={'https://vk.com'}>Game currency</a></p>
-                    <p><a href={'#'}>Boost</a></p>
-                    <p><a href={'#'}>Achievements</a></p>
-                    <p><a href={'#'}>Play with a pro</a></p>
+                    <p><NavLink to={'https://vk.com'}>Game currency</NavLink></p>
+                    <p><NavLink to={'#'}>Boost</NavLink></p>
+                    <p><NavLink to={'#'}>Achievements</NavLink></p>
+                    <p><NavLink to={'#'}>Play with a pro</NavLink></p>
                 </div>
                 <div className={'footer-titles'}>
                     <h1>Vacancies</h1>
                 </div>
                 <div className={'footer-pages'}>
-                    <p><a href={'https://vk.com'}>Become a booster</a></p>
+                    <p><NavLink to={'https://vk.com'}>Become a booster</NavLink></p>
                 </div>
             </Col>
             <Col>

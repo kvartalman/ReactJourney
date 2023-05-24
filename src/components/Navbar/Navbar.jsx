@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import {Button} from "react-bootstrap";
 import './Navbar.css'
+import {NavLink} from "react-router-dom";
 
 const Navigation = () => {
     return (
@@ -21,23 +22,23 @@ const Navigation = () => {
                         style={{maxHeight: '100px'}}
                         navbarScroll
                     >
-                        <Nav.Link href="/main" className={'navbar-link'}>Main</Nav.Link>
-                        <Nav.Link href="#action2" className={'navbar-link'}>Boosters</Nav.Link>
+                        <NavLink to="/" className={'navbar-link'}>Main</NavLink>
+                        <NavLink to="/" className={'navbar-link'}>Boosters</NavLink>
                         <NavDropdown title="Categories" id="navbarScrollingDropdown">
-                            <NavDropdown.Item href="#action3" className={'navbar-dropdown'}>Heroes of the
-                                Storm</NavDropdown.Item>
-                            <NavDropdown.Item href="/dota2" className={'navbar-dropdown'}>
+                            <NavLink to="hots" className={'navbar-dropdown'}>Heroes of the
+                                Storm</NavLink>
+                            <NavLink to="dota2" className={'navbar-dropdown'}>
                                 Dota 2
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action5" className={'navbar-dropdown'}>
+                            </NavLink>
+                            <NavLink to="lol" className={'navbar-dropdown'}>
                                 League of Legends
-                            </NavDropdown.Item>
+                            </NavLink>
                         </NavDropdown>
-                        <Nav.Link href="#action6" className={'navbar-link'}>
+                        <NavLink to="#action6" className={'navbar-link'}>
                             Help
-                        </Nav.Link>
+                        </NavLink>
                     </Nav>
-                    <Nav.Link href="#action7" className={'navbar-link'}>Sign up</Nav.Link>
+                    <NavLink to="#action7" className={'navbar-link'}>Sign up</NavLink>
                     <Button variant="outline-success" id={'login-button'}>Login</Button>
                 </Navbar.Collapse>
             </Container>
