@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Card, Col, Row} from "react-bootstrap";
+import {Row} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import ButtonCS from "./Buttons/ButtonCS";
 import ButtonLoL from "./Buttons/ButtonLoL";
@@ -8,6 +8,7 @@ import ButtonDota from "./Buttons/ButtonDota";
 import ButtonWarface from "./Buttons/ButtonWarface";
 import ButtonPUBG from "./Buttons/ButtonPUBG";
 import './Cards.css';
+import OfferCard from "./OfferCard";
 
 const Cards = () => {
     return (
@@ -16,72 +17,18 @@ const Cards = () => {
             <Row id={'cards-row'} className={'border border-4'}>
                 {/*row-cols-* - set the cards width by setting amount of cards in row*/}
                 <Row xs={1} md={2} className="g-3">
-                    <Col className={'cardCol'}>
-                        <Card className={'cardPosition border'} id={'dotaCard'}>
-                            <Card.Body className={'cardBody'}>
-                                <Card.Title>Dota 2</Card.Title>
-                                <Card.Text className={'cardText'}>
-                                    We suggest you order a Dota 2 boost
-                                </Card.Text>
-                            </Card.Body>
-                            <ButtonDota />
-                        </Card>
-                    </Col>
-                    <Col className={'cardCol'}>
-                        <Card className={'cardPosition border'} id={'csCard'}>
-                            <Card.Body className={'cardBody'}>
-                                <Card.Title>CS:GO</Card.Title>
-                                <Card.Text className={'cardText'}>
-                                    We suggest you order a CS:GO boost
-                                </Card.Text>
-                            </Card.Body>
-                            <ButtonCS />
-                        </Card>
-                    </Col>
-                    <Col className={'cardCol'}>
-                        <Card className={'cardPosition border'} id={'hotsCard'}>
-                            <Card.Body className={'cardBody'}>
-                                <Card.Title>Heroes of the Storm</Card.Title>
-                                <Card.Text className={'cardText'}>
-                                    We suggest you order a HotS boost
-                                </Card.Text>
-                            </Card.Body>
-                            <ButtonHotS />
-                        </Card>
-                    </Col>
-                    <Col className={'cardCol'}>
-                        <Card className={'cardPosition border'} id={'warfaceCard'}>
-                            <Card.Body className={'cardBody'}>
-                                <Card.Title>Warface</Card.Title>
-                                <Card.Text className={'cardText'}>
-                                    We suggest you order a Warface boost
-                                </Card.Text>
-                            </Card.Body>
-                            <ButtonWarface />
-                        </Card>
-                    </Col>
-                    <Col className={'cardCol'}>
-                        <Card className={'cardPosition border'} id={'lolCard'}>
-                            <Card.Body className={'cardBody'}>
-                                <Card.Title>League of Legends</Card.Title>
-                                <Card.Text className={'cardText'}>
-                                    We suggest you order a LoL boost
-                                </Card.Text>
-                            </Card.Body>
-                            <ButtonLoL />
-                        </Card>
-                    </Col>
-                    <Col className={'cardCol'}>
-                        <Card className={'cardPosition border'} id={'pubgCard'}>
-                            <Card.Body className={'cardBody'}>
-                                <Card.Title>PUBG</Card.Title>
-                                <Card.Text className={'cardText'}>
-                                    We suggest you order a PUBG boost
-                                </Card.Text>
-                            </Card.Body>
-                            <ButtonPUBG />
-                        </Card>
-                    </Col>
+                    <OfferCard id={'dotaCard'} title={'Dota 2'} text={'We suggest you' +
+                        ' to order a Dota 2 boost'} button={<ButtonDota />} />
+                    <OfferCard id={'csCard'} title={'CS:GO'} text={'We suggest you' +
+                        ' to order a CS:GO boost'} button={<ButtonCS />} />
+                    <OfferCard id={'hotsCard'} title={'Heroes of the Storm'} text={'We suggest you ' +
+                        'order a HotS boost'} button={<ButtonHotS />} />
+                    <OfferCard id={'warfaceCard'} title={'Warface'} text={'We suggest you' +
+                        ' order a Warface boost'} button={<ButtonWarface />} />
+                    <OfferCard id={'lolCard'} title={'League of Legends'} text={'We suggest you' +
+                        ' order a LoL boost'} button={<ButtonLoL />} />
+                    <OfferCard id={'pubgCard'} title={'PUBG'} text={'We suggest' +
+                        ' you order a PUBG boost'} button={<ButtonPUBG />} />
                 </Row>
             </Row>
         </Container>
