@@ -1,4 +1,6 @@
 #cards-row {
+    margin-top: 0.04em; /* this settings help to control distance
+     between cards block and tab with the name of cards block (which is above the block itself) */
     background-color: rgb(33, 37, 41, 0);
     border-radius: 5% !important;
     /*background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(33,37,41,1) 3%);*/

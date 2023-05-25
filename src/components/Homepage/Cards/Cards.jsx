@@ -14,9 +14,8 @@ const Cards = () => {
     return (
         <Container fluid>
             <img src={'./backgrounds/bestoffers.png'} alt={'BEST OFFERS'} className={'img-fluid imgTab'}/>
-            <Row id={'cards-row'} className={'border border-4'}>
+            <Row xs={1} md={2} id={'cards-row'} className={'border border-4 g-3'}>
                 {/*row-cols-* - set the cards width by setting amount of cards in row*/}
-                <Row xs={1} md={2} className="g-3">
                     <OfferCard id={'dotaCard'} title={'Dota 2'} text={'We suggest you' +
                         ' to order a Dota 2 boost'} button={<ButtonDota />} />
                     <OfferCard id={'csCard'} title={'CS:GO'} text={'We suggest you' +
@@ -29,7 +28,6 @@ const Cards = () => {
                         ' order a LoL boost'} button={<ButtonLoL />} />
                     <OfferCard id={'pubgCard'} title={'PUBG'} text={'We suggest' +
                         ' you order a PUBG boost'} button={<ButtonPUBG />} />
-                </Row>
             </Row>
         </Container>
     )
