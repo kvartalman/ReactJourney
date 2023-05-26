@@ -12,12 +12,14 @@ import LolOffer from "./components/GameOffer/LolOffer";
 import Layout from "./components/Layout";
 
 
-function App() {
+function App(props) {
     return (
         <>
             <Routes>
                 <Route path={'/'} element={<Layout />}>
-                    <Route index element={<HomePage/>}/>
+                    <Route index element={<HomePage
+                        CardsData={props.CardsData}
+                    />}/>
                     <Route path={'dota2'} element={<DotaOffer/>}/>
                     <Route path={'hots'} element={<HotsOffer/>}/>
                     <Route path={'lol'} element={<LolOffer/>}/>

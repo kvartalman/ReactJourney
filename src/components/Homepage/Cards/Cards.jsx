@@ -1,30 +1,20 @@
 import React from 'react';
 import {Row} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
-import ButtonCS from "./Buttons/ButtonCS";
-import ButtonLoL from "./Buttons/ButtonLoL";
-import ButtonHotS from "./Buttons/ButtonHotS";
-import ButtonDota from "./Buttons/ButtonDota";
-import ButtonWarface from "./Buttons/ButtonWarface";
-import ButtonPUBG from "./Buttons/ButtonPUBG";
 import './Cards.css';
 import OfferCard from "./OfferCard";
+import CardsButton from "./Buttons/CardsButton";
+import './Buttons/CardsButton.css'
 
-let cardsDataArray = [
-    {tagId: 'dotaCard', title: 'Dota 2', text: 'We suggest you to order a Dota 2 boost', button: <ButtonDota />},
-    {tagId: 'csCard', title: 'CS:GO', text: 'We suggest you to order a CS:GO boost', button: <ButtonCS />},
-    {tagId: 'hotsCard', title: 'Heroes of the Storm', text: 'We suggest you to order a HotS boost', button: <ButtonHotS />},
-    {tagId: 'warfaceCard', title: 'Warface', text: 'We suggest you to order a Warface boost', button: <ButtonWarface />},
-    {tagId: 'lolCard', title: 'League of Legends', text: 'We suggest you to order a LoL boost', button: <ButtonLoL />},
-    {tagId: 'pubgCard', title: 'PUBG', text: 'We suggest you to order a PUBG boost', button: <ButtonPUBG />},
-]
+const Cards = (props) => {
 
-let cardsArray = cardsDataArray.map(card => (<OfferCard id={card.tagId} title={
-    card.title} text={card.text} button={card.button} />))
+    let cardsArray = props.CardsData.map(card => (<OfferCard id={card.tagId} title={
+        card.title} text={card.text} button={
+        card.button.map(button => (<CardsButton link={button.link} type={button.type} class={button.class}
+        name={button.name} />))
+    }
+    />))
 
-
-
-const Cards = () => {
     return (
         <Container fluid>
             <img src={'./backgrounds/bestoffers.png'} alt={'BEST OFFERS'} className={'img-fluid imgTab'}/>

@@ -1,5 +1,4 @@
 import {Card, Col} from "react-bootstrap";
-import ButtonDota from "./Buttons/ButtonDota";
 import React from "react";
 
 const OfferCard = (props) => {
