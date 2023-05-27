@@ -4,8 +4,11 @@ import './../src/index.css';
 import App from './../src/App';
 import reportWebVitals from './../src/reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
+import GameOfferCard from "./components/GameOffer/OfferContent/GameOfferCard";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+/* HomePageDATA */
 
 /* Start of Carousel Data */
 
@@ -103,18 +106,30 @@ let warfaceButtonData = [
 ]
 
 let cardsData = [
-    {tagId: 'dotaCard', title: 'Dota 2', text: 'We suggest you to order a Dota 2 boost',
-        button: dotaButtonData},
-    {tagId: 'csCard', title: 'CS:GO', text: 'We suggest you to order a CS:GO boost',
-        button: csButtonData},
-    {tagId: 'hotsCard', title: 'Heroes of the Storm', text: 'We suggest you to order a HotS boost',
-        button: hotsButtonData},
-    {tagId: 'warfaceCard', title: 'Warface', text: 'We suggest you to order a Warface boost',
-        button: warfaceButtonData},
-    {tagId: 'lolCard', title: 'League of Legends', text: 'We suggest you to order a LoL boost',
-        button: lolButtonData},
-    {tagId: 'pubgCard', title: 'PUBG', text: 'We suggest you to order a PUBG boost',
-        button: pubgButtonData},
+    {
+        tagId: 'dotaCard', title: 'Dota 2', text: 'We suggest you to order a Dota 2 boost',
+        button: dotaButtonData
+    },
+    {
+        tagId: 'csCard', title: 'CS:GO', text: 'We suggest you to order a CS:GO boost',
+        button: csButtonData
+    },
+    {
+        tagId: 'hotsCard', title: 'Heroes of the Storm', text: 'We suggest you to order a HotS boost',
+        button: hotsButtonData
+    },
+    {
+        tagId: 'warfaceCard', title: 'Warface', text: 'We suggest you to order a Warface boost',
+        button: warfaceButtonData
+    },
+    {
+        tagId: 'lolCard', title: 'League of Legends', text: 'We suggest you to order a LoL boost',
+        button: lolButtonData
+    },
+    {
+        tagId: 'pubgCard', title: 'PUBG', text: 'We suggest you to order a PUBG boost',
+        button: pubgButtonData
+    },
 ]
 
 const cardsImgTab = <img src={'./backgrounds/bestoffers.png'} alt={'BEST OFFERS'} className={'img-fluid imgTab'}/>
@@ -161,10 +176,61 @@ const stepsImgTab = <img src={'./backgrounds/howtostart.png'} alt={'BEST OFFERS'
 
 /* End of Steps Data */
 
+
+/* Start of GameOfferDATA */
+
+let gameOffer = [
+    {
+        mainTitle: 'Dota Offer',
+        text: 'I wrote this text just for test. This text means nothing and i will add this text ' +
+            'to most of text-blocks on website. However, i should pay attention to the size of text. ' +
+            'I think, size of text should not be too high or too little. Better to find something people ' +
+            'call "golden mean". Anyway, we will see, how it goes.',
+        cardsTitle: 'Offers of the week',
+        offerCardsData: [
+            {title: '3000 MMR Boost', text: '35$'},
+            {title: 'Low priority', text: '5$'},
+            {title: 'Bladeform legacy', text: '25$'},
+            {title: '+200 MMR', text: '10$'}
+        ]
+    },
+    {
+        mainTitle: 'League of Legends Offer',
+        text: 'I wrote this text just for test. This text means nothing and i will add this text ' +
+            'to most of text-blocks on website. However, i should pay attention to the size of text. ' +
+            'I think, size of text should not be too high or too little. Better to find something people ' +
+            'call "golden mean". Anyway, we will see, how it goes.',
+        cardsTitle: 'Offers of the week',
+        offerCardsData: [
+            {title: '3000 MMR Boost', text: '35$'},
+            {title: 'Low priority', text: '5$'},
+            {title: 'Bladeform legacy', text: '25$'},
+            {title: '+300 MMR', text: '10$'}
+        ]
+    },
+    {
+        mainTitle: 'Heroes of the Storm Offer',
+        text: 'I wrote this text just for test. This text means nothing and i will add this text ' +
+            'to most of text-blocks on website. However, i should pay attention to the size of text. ' +
+            'I think, size of text should not be too high or too little. Better to find something people ' +
+            'call "golden mean". Anyway, we will see, how it goes.',
+        cardsTitle: 'Offers of the week',
+        offerCardsData: [
+            {title: '3000 MMR Boost', text: '35$'},
+            {title: 'Low priority', text: '5$'},
+            {title: 'Bladeform legacy', text: '25$'},
+            {title: '+400 MMR', text: '10$'}
+        ]
+    }
+]
+
+/* End of GameOfferDATA */
+
 root.render(
     <BrowserRouter>
         <React.StrictMode>
             <App
+                gameOffer={gameOffer}
                 carouselData={carouselData}
                 advData={advData}
                 advImgTab={advImgTab}

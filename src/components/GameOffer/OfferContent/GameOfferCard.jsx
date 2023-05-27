@@ -1,8 +1,7 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const OfferCard = (props) => {
+const GameOfferCard = (props) => {
     return (
         <Card style={{ width: '18rem' }}  className={'offerCard'}>
             <Card.Body>
@@ -15,4 +14,4 @@ const OfferCard = (props) => {
     );
 }
 
-export default OfferCard
+export default GameOfferCard

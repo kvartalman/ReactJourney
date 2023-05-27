@@ -3,10 +3,8 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Route, Routes, Link} from "react-router-dom";
 import HomePage from "./components/Homepage/Homepage";
-import DotaOffer from "./components/GameOffer/DotaOffer";
-import HotsOffer from "./components/GameOffer/HotsOffer";
-import LolOffer from "./components/GameOffer/LolOffer";
 import Layout from "./components/Layout";
+import GameOffer from "./components/GameOffer/GameOffer";
 
 
 function App(props) {
@@ -23,9 +21,15 @@ function App(props) {
                         stepsElemsData={props.stepsElemsData}
                         stepsImgTab={props.stepsImgTab}
                     />}/>
-                    <Route path={'dota2'} element={<DotaOffer/>}/>
-                    <Route path={'hots'} element={<HotsOffer/>}/>
-                    <Route path={'lol'} element={<LolOffer/>}/>
+                    <Route path={'dota2'} element={<GameOffer
+                        num={0} gameOffer={props.gameOffer}
+                    />}/>
+                    <Route path={'lol'} element={<GameOffer
+                        num={1} gameOffer={props.gameOffer}
+                    />}/>
+                    <Route path={'hots'} element={<GameOffer
+                        num={2} gameOffer={props.gameOffer}
+                    />}/>
                 </Route>
             </Routes>
             {/*<Canvas name={'button'} placement={'end'} key={'idx'}/>*/}
