@@ -1,9 +1,6 @@
 import './App.css';
 import React from 'react';
-import Navbar from "./components/Navbar/Navbar";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Container} from "react-bootstrap";
-import Footer from "./components/Footer/Footer";
 import {Route, Routes, Link} from "react-router-dom";
 import HomePage from "./components/Homepage/Homepage";
 import DotaOffer from "./components/GameOffer/DotaOffer";
@@ -18,7 +15,13 @@ function App(props) {
             <Routes>
                 <Route path={'/'} element={<Layout />}>
                     <Route index element={<HomePage
-                        CardsData={props.CardsData}
+                        carouselData={props.carouselData}
+                        advData = {props.advData}
+                        advImgTab={props.advImgTab}
+                        cardsData={props.cardsData}
+                        cardsImgTab={props.cardsImgTab}
+                        stepsElemsData={props.stepsElemsData}
+                        stepsImgTab={props.stepsImgTab}
                     />}/>
                     <Route path={'dota2'} element={<DotaOffer/>}/>
                     <Route path={'hots'} element={<HotsOffer/>}/>

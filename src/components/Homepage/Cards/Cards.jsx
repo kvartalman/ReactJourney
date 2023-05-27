@@ -8,16 +8,16 @@ import './Buttons/CardsButton.css'
 
 const Cards = (props) => {
 
-    let cardsArray = props.CardsData.map(card => (<OfferCard id={card.tagId} title={
-        card.title} text={card.text} button={
+    let cardsArray = props.cardsData.map(card => (<OfferCard id={card.tagId} title={
+        card.title} text={card.text} button={<Container fluid><Row className={'row-cols-auto'}>{
         card.button.map(button => (<CardsButton link={button.link} type={button.type} class={button.class}
-        name={button.name} />))
-    }
+                                                name={button.name} />))
+    }</Row></Container>}
     />))
 
     return (
         <Container fluid>
-            <img src={'./backgrounds/bestoffers.png'} alt={'BEST OFFERS'} className={'img-fluid imgTab'}/>
+            {props.cardsImgTab}
             <Row xs={1} md={2} id={'cards-row'} className={'border border-4 g-3'}>
                 {/*row-cols-* - set the cards width by setting amount of cards in row*/}
                 {cardsArray}

@@ -7,12 +7,21 @@ import Carousel from "./Carousel/Carousel";
 function HomePage(props) {
     return (
         <>
-            <Carousel/>
-            <Advantages/>
-            <Cards
-                CardsData={props.CardsData}
+            <Carousel
+                carouselData={props.carouselData}
             />
-            <Steps/>
+            <Advantages
+                advImgTab={props.advImgTab}
+                advData={props.advData}
+            />
+            <Cards
+                cardsImgTab={props.cardsImgTab}
+                cardsData={props.cardsData}
+            />
+            <Steps
+                stepsImgTab={props.stepsImgTab}
+                stepsElemsData={props.stepsElemsData}
+            />
         </>
 
     );
