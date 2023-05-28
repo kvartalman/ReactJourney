@@ -36,3 +36,14 @@
     height: 200px !important;
     width: 200px !important;
 }
+
+.offerCard:hover {
+    transition: 0.3s;
+    box-shadow: 0 0 10px #ffc107, 0 0 40px #ffc107, 0 0 80px #ffc107;
+}
+
+@media (max-width: 524px) {
+    .offerCard {
+        width: 185px !important;
+    }
+}

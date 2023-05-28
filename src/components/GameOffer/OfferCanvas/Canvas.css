@@ -1,0 +1,13 @@
+.offCanvas {
+    width: 100% !important;
+}
+
+.canvasButton {
+    display: none;
+}
+
+@media (max-width: 991px) {
+    .canvasButton {
+        display: block;
+    }
+}

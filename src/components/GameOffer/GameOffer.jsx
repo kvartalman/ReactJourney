@@ -6,6 +6,7 @@ import './GameOffer.css'
 import './OfferContent/OfferContent.css'
 import OfferPanelButton from "./OfferPanel/OfferPanelButton";
 import BreadCrumb from "./BreadCrumb/BreadCrumb";
+import Canvas from "./OfferCanvas/Canvas";
 const GameOffer = (props) => {
 
     let offerCardsArr = props.gameOffer[props.num].offerCardsData.map(card => (
@@ -18,8 +19,10 @@ const GameOffer = (props) => {
 
     return (
         <Container fluid id={'gameOffer'}>
+
             <Row className={'gameOfferRow'}>
-                <Col md={3}>
+                <Canvas name={'Menu'} />
+                <Col md={3} className={'gameOfferPanelCol'}>
                     <div className={'breadCrumb'}>
                         <BreadCrumb
                             linkNames={props.breadCrumbs[props.num].linkNames}
@@ -30,8 +33,7 @@ const GameOffer = (props) => {
                             {panelButtonsArr}
                     </div>
                 </Col>
-
-                <Col md={9}>
+                <Col md={9} className={'gameOfferContentCol'}>
                     <div className={'offerContent'}>
                     <Container fluid>
                         <Row className={'offerTitleRow'}>

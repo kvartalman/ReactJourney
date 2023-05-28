@@ -1,3 +1,31 @@
+.gameOfferMain {
+    display: flex;
+}
+
+@media (max-width: 991px) {
+    .gameOfferRow {
+        display: block;
+    }
+
+    .gameOfferPanelCol {
+        display: none;
+    }
+
+    .gameOfferContentCol {
+        width: 100%;
+    }
+
+    .offerCardContent {
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .offerTitleRow {
+        text-align: center;
+    }
+}
+
 #gameOffer {
     margin-top: 2em;
     margin-bottom: 2em;
@@ -29,6 +57,5 @@
     background-color: #ffc107;
 }
 
-.breadCrumb {
 
-}
+

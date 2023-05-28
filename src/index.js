@@ -192,6 +192,8 @@ let gameOffer = [
             {title: '3000 MMR Boost', text: '35$'},
             {title: 'Low priority', text: '5$'},
             {title: 'Bladeform legacy', text: '25$'},
+            {title: '+200 MMR', text: '10$'},
+            {title: '+200 MMR', text: '10$'},
             {title: '+200 MMR', text: '10$'}
         ],
         panelButton: [
@@ -259,7 +261,7 @@ let gameOffer = [
 // ['linkName', 'linkaddress'] => linkNames: [['Dota 2', 'dota2'], ['Order', 'order'], ...]
 
 let breadCrumbs = [
-    {linkNames: [['dotka', '/']], activeLinkName: 'Bladeform Legacy'},
+    {linkNames: [], activeLinkName: 'Dota 2'},
     {linkNames: [], activeLinkName: 'League of Legends'},
     {linkNames: [], activeLinkName: 'Heroes of the Storm'}
 ]
