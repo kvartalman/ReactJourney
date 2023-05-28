@@ -179,6 +179,8 @@ const stepsImgTab = <img src={'./backgrounds/howtostart.png'} alt={'BEST OFFERS'
 
 /* Start of GameOfferDATA */
 
+// Pages of Games with their offers
+
 let gameOffer = [
     {
         mainTitle: 'Dota Offer',
@@ -192,6 +194,17 @@ let gameOffer = [
             {title: 'Low priority', text: '5$'},
             {title: 'Bladeform legacy', text: '25$'},
             {title: '+200 MMR', text: '10$'}
+        ],
+        panelButton: [
+            {link: "#", name: "Common skins"},
+            {link: "#", name: "Uncommon skins"},
+            {link: "#", name: "Rare skins"},
+            {link: "#", name: "Immortal skins"},
+            {link: "#", name: "Arcana"},
+            {link: "#", name: "MMR Boost"},
+            {link: "#", name: "Low priority"},
+            {link: "#", name: "Coaching"},
+            {link: "#", name: "Party with a pro"}
         ]
     },
     {
@@ -206,6 +219,15 @@ let gameOffer = [
             {title: 'Low priority', text: '5$'},
             {title: 'Bladeform legacy', text: '25$'},
             {title: '+300 MMR', text: '10$'}
+        ],
+        panelButton: [
+            {link: "#", name: "Leveling"},
+            {link: "#", name: "Ranked"},
+            {link: "#", name: "Game skins"},
+            {link: "#", name: "Low priority"},
+            {link: "#", name: "Coaching"},
+            {link: "#", name: "Party with a pro"},
+            {link: "#", name: "Achievements"},
         ]
     },
     {
@@ -220,9 +242,21 @@ let gameOffer = [
             {title: 'Low priority', text: '5$'},
             {title: 'Bladeform legacy', text: '25$'},
             {title: '+400 MMR', text: '10$'}
+        ],
+        panelButton: [
+            {link: "#", name: "Low priority"},
+            {link: "#", name: "Leveling"},
+            {link: "#", name: "Coaching"},
+            {link: "#", name: "Ranked"},
+            {link: "#", name: "Play with a pro"},
+            {link: "#", name: "Achievements"},
         ]
     }
 ]
+
+// OfferPanelData
+
+
 
 /* End of GameOfferDATA */
 

@@ -5,10 +5,14 @@
 
 /*Change brightness of images*/
 .d-block {
-    filter: brightness(40%)
+    filter: brightness(40%);
 }
 
 /*Turn off 'arrow' control-icons*/
 .carousel-control-prev-icon, .carousel-control-next-icon {
-    display: none !important;
+    display: none;
+}
+
+.carousel-item > h3 {
+    margin: auto;
 }

@@ -1,12 +1,16 @@
 import React from 'react';
+import '../GameOffer.css'
+import {NavLink} from "react-router-dom";
 
 const OfferPanelButton = (props) => {
     return (
-        <form action={props.link} target={'_blank'} className={'offerPanelButton'}>
-            <button className={''}>
+        <div>
+            <NavLink to={props.link}>
+                <span className={'offerButton'}>
                 {props.name}
-            </button>
-        </form>
+                </span>
+            </NavLink>
+        </div>
     )
 }
 

@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Route, Routes, Link} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import HomePage from "./components/Homepage/Homepage";
 import Layout from "./components/Layout";
 import GameOffer from "./components/GameOffer/GameOffer";
