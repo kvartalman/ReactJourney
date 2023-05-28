@@ -4,7 +4,6 @@ import './../src/index.css';
 import App from './../src/App';
 import reportWebVitals from './../src/reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
-import GameOfferCard from "./components/GameOffer/OfferContent/GameOfferCard";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -256,6 +255,14 @@ let gameOffer = [
 
 // OfferPanelData
 
+// for linkNames: each element in list must be a list with 2 elems:
+// ['linkName', 'linkaddress'] => linkNames: [['Dota 2', 'dota2'], ['Order', 'order'], ...]
+
+let breadCrumbs = [
+    {linkNames: [['dotka', '/']], activeLinkName: 'Bladeform Legacy'},
+    {linkNames: [], activeLinkName: 'League of Legends'},
+    {linkNames: [], activeLinkName: 'Heroes of the Storm'}
+]
 
 
 /* End of GameOfferDATA */
@@ -265,6 +272,7 @@ root.render(
         <React.StrictMode>
             <App
                 gameOffer={gameOffer}
+                breadCrumbs={breadCrumbs}
                 carouselData={carouselData}
                 advData={advData}
                 advImgTab={advImgTab}

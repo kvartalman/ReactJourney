@@ -15,4 +15,9 @@
   margin-right: auto;
   width: 40em;
 }
+
+a {
+  text-decoration: none !important;
+}
+
 /*IMAGES-TABS*/

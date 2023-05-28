@@ -1,15 +1,25 @@
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import {NavLink} from "react-router-dom";
-import {BreadcrumbItem} from "react-bootstrap";
+import './BreadCrumb.css'
 
 function BreadCrumb(props) {
+
+    let breadCrumbsArr = props.linkNames.map(link => (
+        <Breadcrumb.Item>
+            <NavLink to={link[1]} className={'breadCrumbLink'}>
+               {link[0]}
+            </NavLink>
+        </Breadcrumb.Item>
+    ))
+
     return (
         <Breadcrumb>
             <Breadcrumb.Item href=''>
-                <NavLink to={'/'}>Main</NavLink>
+                <NavLink to={'/'} className={'breadCrumbLink'}>Main</NavLink>
             </Breadcrumb.Item>
+            {breadCrumbsArr}
             <Breadcrumb.Item active>
-                Dota 2
+                <span className={'breadCrumbActive'}>{props.activeLinkName}</span>
             </Breadcrumb.Item>
         </Breadcrumb>
     );

@@ -4,9 +4,7 @@ import React from "react";
 import GameOfferCard from "./OfferContent/GameOfferCard";
 import './GameOffer.css'
 import './OfferContent/OfferContent.css'
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 import OfferPanelButton from "./OfferPanel/OfferPanelButton";
-import './GameOffer.css'
 import BreadCrumb from "./BreadCrumb/BreadCrumb";
 const GameOffer = (props) => {
 
@@ -23,7 +21,10 @@ const GameOffer = (props) => {
             <Row className={'gameOfferRow'}>
                 <Col md={3}>
                     <div className={'breadCrumb'}>
-                        <BreadCrumb />
+                        <BreadCrumb
+                            linkNames={props.breadCrumbs[props.num].linkNames}
+                            activeLinkName={props.breadCrumbs[props.num].activeLinkName}
+                        />
                     </div>
                     <div className={'panelCol'}>
                             {panelButtonsArr}

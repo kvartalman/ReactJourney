@@ -22,13 +22,19 @@ function App(props) {
                         stepsImgTab={props.stepsImgTab}
                     />}/>
                     <Route path={'dota2'} element={<GameOffer
-                        num={0} gameOffer={props.gameOffer}
+                        num={0}
+                        gameOffer={props.gameOffer}
+                        breadCrumbs={props.breadCrumbs}
                     />}/>
                     <Route path={'lol'} element={<GameOffer
-                        num={1} gameOffer={props.gameOffer}
+                        num={1}
+                        gameOffer={props.gameOffer}
+                        breadCrumbs={props.breadCrumbs}
                     />}/>
                     <Route path={'hots'} element={<GameOffer
-                        num={2} gameOffer={props.gameOffer}
+                        num={2}
+                        gameOffer={props.gameOffer}
+                        breadCrumbs={props.breadCrumbs}
                     />}/>
                 </Route>
             </Routes>
