@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {Button, Offcanvas} from "react-bootstrap";
-import './Canvas.css'
+import '../Canvas.css'
 
-function Canvas({ name, ...props }) {
+function OfferCanvas({ name, ...props }) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -13,17 +13,16 @@ function Canvas({ name, ...props }) {
             <Button variant="primary" onClick={handleShow} className="me-2 canvasButton">
                 {name}
             </Button>
-            <Offcanvas show={show} onHide={handleClose} {...props} className={'offCanvas'}>
-                <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+            <Offcanvas placement={'start'} show={show} onHide={handleClose} {...props} className={'offCanvas'}>
+                <Offcanvas.Header closeButton className={'offerCanvasHeader'}>
+                    <Offcanvas.Title className={'offerCanvasTitle'}>Offers</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    Some text as placeholder. In real life you can have the elements you
-                    have chosen. Like, text, images, lists, etc.
+                    {props.canvasButtonsArr}
                 </Offcanvas.Body>
             </Offcanvas>
         </>
     );
 }
 
-export default Canvas
+export default OfferCanvas

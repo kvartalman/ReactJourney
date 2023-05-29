@@ -25,6 +25,10 @@
     margin-right: 10px;
 }
 
+.offerCardArea {
+    margin: auto !important;
+}
+
 .offerCardTitle {
     text-transform: uppercase;
     padding-top: 30px;
@@ -42,8 +46,14 @@
     box-shadow: 0 0 10px #ffc107, 0 0 40px #ffc107, 0 0 80px #ffc107;
 }
 
-@media (max-width: 524px) {
+@media (max-width: 549px) {
     .offerCard {
         width: 185px !important;
+    }
+}
+
+@media (max-width: 518px) {
+    .offerCard {
+        width: 175px !important;
     }
 }

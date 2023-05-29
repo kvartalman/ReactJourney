@@ -25,20 +25,26 @@ function App(props) {
                         num={0}
                         gameOffer={props.gameOffer}
                         breadCrumbs={props.breadCrumbs}
+                        canvasMenuData={props.canvasMenuData}
+                        canvasCtgData={props.canvasCtgData}
                     />}/>
                     <Route path={'lol'} element={<GameOffer
                         num={1}
                         gameOffer={props.gameOffer}
                         breadCrumbs={props.breadCrumbs}
+                        canvasMenuData={props.canvasMenuData}
+                        canvasCtgData={props.canvasCtgData}
                     />}/>
                     <Route path={'hots'} element={<GameOffer
                         num={2}
                         gameOffer={props.gameOffer}
                         breadCrumbs={props.breadCrumbs}
+                        canvasMenuData={props.canvasMenuData}
+                        canvasCtgData={props.canvasCtgData}
                     />}/>
                 </Route>
             </Routes>
-            {/*<Canvas name={'button'} placement={'end'} key={'idx'}/>*/}
+            {/*<OfferCanvas name={'button'} placement={'end'} key={'idx'}/>*/}
         </>
 
     );

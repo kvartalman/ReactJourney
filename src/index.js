@@ -180,9 +180,40 @@ const stepsImgTab = <img src={'./backgrounds/howtostart.png'} alt={'BEST OFFERS'
 
 // Pages of Games with their offers
 
+let panelButton = [
+    [
+        {link: "#", name: "Common skins"},
+        {link: "#", name: "Uncommon skins"},
+        {link: "#", name: "Rare skins"},
+        {link: "#", name: "Immortal skins"},
+        {link: "#", name: "Arcana"},
+        {link: "#", name: "MMR Boost"},
+        {link: "#", name: "Low priority"},
+        {link: "#", name: "Coaching"},
+        {link: "#", name: "Party with a pro"}
+    ],
+    [
+        {link: "#", name: "Leveling"},
+        {link: "#", name: "Ranked"},
+        {link: "#", name: "Game skins"},
+        {link: "#", name: "Low priority"},
+        {link: "#", name: "Coaching"},
+        {link: "#", name: "Party with a pro"},
+        {link: "#", name: "Achievements"},
+    ],
+    [
+    {link: "#", name: "Low priority"},
+    {link: "#", name: "Leveling"},
+    {link: "#", name: "Coaching"},
+    {link: "#", name: "Ranked"},
+    {link: "#", name: "Play with a pro"},
+    {link: "#", name: "Achievements"},
+    ]
+]
+
 let gameOffer = [
     {
-        mainTitle: 'Dota Offer',
+        mainTitle: 'Dota 2 Offer',
         text: 'I wrote this text just for test. This text means nothing and i will add this text ' +
             'to most of text-blocks on website. However, i should pay attention to the size of text. ' +
             'I think, size of text should not be too high or too little. Better to find something people ' +
@@ -196,17 +227,7 @@ let gameOffer = [
             {title: '+200 MMR', text: '10$'},
             {title: '+200 MMR', text: '10$'}
         ],
-        panelButton: [
-            {link: "#", name: "Common skins"},
-            {link: "#", name: "Uncommon skins"},
-            {link: "#", name: "Rare skins"},
-            {link: "#", name: "Immortal skins"},
-            {link: "#", name: "Arcana"},
-            {link: "#", name: "MMR Boost"},
-            {link: "#", name: "Low priority"},
-            {link: "#", name: "Coaching"},
-            {link: "#", name: "Party with a pro"}
-        ]
+        panelButton: panelButton[0]
     },
     {
         mainTitle: 'League of Legends Offer',
@@ -221,15 +242,7 @@ let gameOffer = [
             {title: 'Bladeform legacy', text: '25$'},
             {title: '+300 MMR', text: '10$'}
         ],
-        panelButton: [
-            {link: "#", name: "Leveling"},
-            {link: "#", name: "Ranked"},
-            {link: "#", name: "Game skins"},
-            {link: "#", name: "Low priority"},
-            {link: "#", name: "Coaching"},
-            {link: "#", name: "Party with a pro"},
-            {link: "#", name: "Achievements"},
-        ]
+        panelButton: panelButton[1]
     },
     {
         mainTitle: 'Heroes of the Storm Offer',
@@ -244,14 +257,7 @@ let gameOffer = [
             {title: 'Bladeform legacy', text: '25$'},
             {title: '+400 MMR', text: '10$'}
         ],
-        panelButton: [
-            {link: "#", name: "Low priority"},
-            {link: "#", name: "Leveling"},
-            {link: "#", name: "Coaching"},
-            {link: "#", name: "Ranked"},
-            {link: "#", name: "Play with a pro"},
-            {link: "#", name: "Achievements"},
-        ]
+        panelButton: panelButton[2]
     }
 ]
 
@@ -266,6 +272,22 @@ let breadCrumbs = [
     {linkNames: [], activeLinkName: 'Heroes of the Storm'}
 ]
 
+// CanvasData
+
+let canvasMenuData =
+    {placement: 'end', buttonName: 'Categories', title: 'Categories', canvasButtons: [
+            {link: "/hots", name: "Heroes of the Storm"},
+            {link: "/dota2", name: "Dota 2"},
+            {link: "/lol", name: "League of Legends"}
+        ]
+    }
+
+let canvasCtgData =
+    [
+    {placement: 'start', buttonName: 'Offer menu', title: 'Offers', canvasButtons: panelButton[0]},
+    {placement: 'start', buttonName: 'Offer menu', title: 'Offers', canvasButtons: panelButton[1]},
+    {placement: 'start', buttonName: 'Offer menu', title: 'Offers', canvasButtons: panelButton[2]}
+    ]
 
 /* End of GameOfferDATA */
 
@@ -275,6 +297,8 @@ root.render(
             <App
                 gameOffer={gameOffer}
                 breadCrumbs={breadCrumbs}
+                canvasMenuData={canvasMenuData}
+                canvasCtgData={canvasCtgData}
                 carouselData={carouselData}
                 advData={advData}
                 advImgTab={advImgTab}
