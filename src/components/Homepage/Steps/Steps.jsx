@@ -14,7 +14,8 @@ const Steps = (props) => {
 
     return (
         <Container fluid>
-            {props.stepsImgTab}
+            <img src={'./backgrounds/howtostart.png'} alt={'BEST OFFERS'} className={'' +
+                'img-fluid imgTab'}/>
             <Row xs={1} md={2} lg={3} id={'steps-block-row'}>
                 {stepsElemsArr}
             </Row>

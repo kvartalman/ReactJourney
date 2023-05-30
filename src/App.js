@@ -11,36 +11,26 @@ function App(props) {
     return (
         <>
             <Routes>
-                <Route path={'/'} element={<Layout />}>
+                <Route path={'/'} element={<Layout
+                    navbarLinks={props.state.navbarLinks}
+                />}>
                     <Route index element={<HomePage
-                        carouselData={props.carouselData}
-                        advData = {props.advData}
-                        advImgTab={props.advImgTab}
-                        cardsData={props.cardsData}
-                        cardsImgTab={props.cardsImgTab}
-                        stepsElemsData={props.stepsElemsData}
-                        stepsImgTab={props.stepsImgTab}
+                        carouselData={props.state.homePage.carouselData}
+                        advData={props.state.homePage.advData}
+                        cardsData={props.state.homePage.cardsData}
+                        stepsElemsData={props.state.homePage.stepsElemsData}
                     />}/>
                     <Route path={'dota2'} element={<GameOffer
-                        num={0}
-                        gameOffer={props.gameOffer}
-                        breadCrumbs={props.breadCrumbs}
-                        canvasMenuData={props.canvasMenuData}
-                        canvasCtgData={props.canvasCtgData}
+                        gameOffer={props.state.gameOfferPages.dota2}
+                        canvasMenuData={props.state.gameOfferPages.canvasMenuData}
                     />}/>
                     <Route path={'lol'} element={<GameOffer
-                        num={1}
-                        gameOffer={props.gameOffer}
-                        breadCrumbs={props.breadCrumbs}
-                        canvasMenuData={props.canvasMenuData}
-                        canvasCtgData={props.canvasCtgData}
+                        gameOffer={props.state.gameOfferPages.lol}
+                        canvasMenuData={props.state.gameOfferPages.canvasMenuData}
                     />}/>
                     <Route path={'hots'} element={<GameOffer
-                        num={2}
-                        gameOffer={props.gameOffer}
-                        breadCrumbs={props.breadCrumbs}
-                        canvasMenuData={props.canvasMenuData}
-                        canvasCtgData={props.canvasCtgData}
+                        gameOffer={props.state.gameOfferPages.hots}
+                        canvasMenuData={props.state.gameOfferPages.canvasMenuData}
                     />}/>
                 </Route>
             </Routes>

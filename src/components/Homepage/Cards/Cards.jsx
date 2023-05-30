@@ -17,7 +17,7 @@ const Cards = (props) => {
 
     return (
         <Container fluid>
-            {props.cardsImgTab}
+            <img src={'./backgrounds/bestoffers.png'} alt={'BEST OFFERS'} className={'img-fluid imgTab'}/>
             <Row xs={1} md={2} id={'cards-row'} className={'border border-4 g-3'}>
                 {/*row-cols-* - set the cards width by setting amount of cards in row*/}
                 {cardsArray}

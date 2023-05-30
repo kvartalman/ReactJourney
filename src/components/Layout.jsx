@@ -3,11 +3,13 @@ import Navbar from "./Navbar/Navbar";
 import React from "react";
 import Footer from "./Footer/Footer";
 
-const Layout = () => {
+const Layout = (props) => {
     return (
         <>
             <header>
-                <Navbar/>
+                <Navbar
+                    navbarLinks={props.navbarLinks}
+                />
             </header>
             <body>
             <Outlet/>

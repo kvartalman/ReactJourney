@@ -12,7 +12,7 @@ const Advantages = (props) => {
 
     return (
         <Container fluid>
-            {props.advImgTab}
+            <img src={'./backgrounds/whychooseus.png'} alt={'BEST OFFERS'} className={'img-fluid imgTab'}/>
             <Row xs={1} md={2} lg={3} className="g-4" id={'advantage-row'}>
                 {advCardsArr}
             </Row>

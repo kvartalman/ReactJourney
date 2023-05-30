@@ -10,11 +10,11 @@ import Canvas from "./Canvases/Canvas";
 
 const GameOffer = (props) => {
 
-    let offerCardsArr = props.gameOffer[props.num].offerCardsData.map(card => (
+    let offerCardsArr = props.gameOffer.offerCardsData.map(card => (
         <GameOfferCard title={card.title} text={card.text}/>
     ))
 
-    let panelButtonsArr = props.gameOffer[props.num].panelButton.map(button => (
+    let panelButtonsArr = props.gameOffer.panelButton.map(button => (
         <OfferPanelButton link={button.link} name={button.name}/>
     ))
 
@@ -24,10 +24,10 @@ const GameOffer = (props) => {
             <Row className={'gameOfferRow'}>
                 <div className={'canvasButtonsBlock'}>
                     <Canvas
-                        buttonName={props.canvasCtgData[props.num].buttonName}
-                        placement={props.canvasCtgData[props.num].placement}
-                        title={props.canvasCtgData[props.num].title}
-                        canvasButtons={props.canvasCtgData[props.num].canvasButtons}
+                        buttonName={props.gameOffer.canvasCtgData.buttonName}
+                        placement={props.gameOffer.canvasCtgData.placement}
+                        title={props.gameOffer.canvasCtgData.title}
+                        canvasButtons={props.gameOffer.panelButton}
                     />
                     <Canvas
                         buttonName={props.canvasMenuData.buttonName}
@@ -39,8 +39,8 @@ const GameOffer = (props) => {
                 <Col md={3} className={'gameOfferPanelCol'}>
                     <div className={'breadCrumb'}>
                         <BreadCrumb
-                            linkNames={props.breadCrumbs[props.num].linkNames}
-                            activeLinkName={props.breadCrumbs[props.num].activeLinkName}
+                            linkNames={props.gameOffer.breadCrumbs.linkNames}
+                            activeLinkName={props.gameOffer.breadCrumbs.activeLinkName}
                         />
                     </div>
                     <div className={'panelCol'}>
@@ -51,15 +51,15 @@ const GameOffer = (props) => {
                     <div className={'offerContent'}>
                         <Container fluid>
                             <Row className={'offerTitleRow'}>
-                                <h1>{props.gameOffer[props.num].mainTitle}</h1>
+                                <h1>{props.gameOffer.mainTitle}</h1>
                             </Row>
                             <Row className={'offerTextRow'}>
-                                <p>{props.gameOffer[props.num].text}
+                                <p>{props.gameOffer.text}
                                 </p>
                             </Row>
                             <Row className={'offerCardContent'}>
                                 <div className={'offerCardTitle'}>
-                                    <h1>{props.gameOffer[props.num].cardsTitle}</h1>
+                                    <h1>{props.gameOffer.cardsTitle}</h1>
                                 </div>
                                 <Row className={'offerCardArea'}>
                                 {offerCardsArr}
