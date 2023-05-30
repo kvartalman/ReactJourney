@@ -12,8 +12,11 @@ const Navigation = (props) => {
 
     const [show, setShow] = useState(false);
 
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     let navbarLinksArr = props.navbarLinks.map(link => (
-        <NavLink onClick={() => {setShow(false)}} to={link.to} className={'navbarLink'} id={props.linkId}>{link.linkName}</NavLink>
+        <NavLink onClick={handleClose} to={link.to} className={'navbarLink'} id={props.linkId}>{link.linkName}</NavLink>
     ))
 
     return (
@@ -25,15 +28,16 @@ const Navigation = (props) => {
                             'Heroes_of_the_Storm_BlizzHeroes_2017_logo.png?20230127151006'}
                              alt={'Heroes of the Storm'}/>
                     </Navbar.Brand>
-                    <Navbar.Toggle onClick={() => {setShow(true)}} aria-controls={`offcanvasNavbar-expand-${'md'}`} id={'navbarToggle'}/>
+                    <Navbar.Toggle onClick={handleShow} aria-controls={`offcanvasNavbar-expand-${'md'}`} id={'navbarToggle'}/>
                     <Navbar.Offcanvas
                         show={show}
+                        onHide={handleClose}
                         id={`offcanvasNavbar-expand-${'md'}`}
                         aria-labelledby={`offcanvasNavbarLabel-expand-${'md'}`}
                         placement="top"
                         className={'navbarOffCanvas'}
                     >
-                        <Offcanvas.Header closeButton onClick={() => {setShow(false)}}>
+                        <Offcanvas.Header closeButton>
                             <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${'md'}`}>
                                 Menu
                             </Offcanvas.Title>
