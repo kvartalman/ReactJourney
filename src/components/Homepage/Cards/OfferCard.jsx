@@ -4,7 +4,8 @@ import React from "react";
 const OfferCard = (props) => {
     return (
         <Col className={'cardCol'}>
-            <Card className={'cardPosition border'} id={props.id}>
+            <Card style={{background: `linear-gradient( rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5) ), 
+            url(${props.bg})`}} className={'cardPosition border'} id={props.id}>
                 <Card.Body className={'cardBody'}>
                     <Card.Title>{props.title}</Card.Title>
                     <Card.Text className={'cardText'}>

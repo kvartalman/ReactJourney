@@ -19,7 +19,7 @@ const Footer = () => {
                     <p><NavLink to={'#'}>Help</NavLink></p>
                     <p><NavLink to={'#'}>Guides</NavLink></p>
                     <p><NavLink to={'#'}>Contacts</NavLink></p>
-                    <p><NavLink to={'#'}>FAQ</NavLink></p>
+                    <p><NavLink to={'adminPanel'}>FAQ</NavLink></p>
                 </div>
             </Col>
             <Col>

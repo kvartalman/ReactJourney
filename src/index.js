@@ -5,6 +5,7 @@ import App from './../src/App';
 import reportWebVitals from './../src/reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import state from './redux/state';
+import {addCard} from "./redux/state";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -13,6 +14,7 @@ root.render(
         <React.StrictMode>
             <App
                 state={state}
+                addCard={addCard}
             />
         </React.StrictMode>
     </BrowserRouter>

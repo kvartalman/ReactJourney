@@ -5,6 +5,7 @@ import {Route, Routes} from "react-router-dom";
 import HomePage from "./components/Homepage/Homepage";
 import Layout from "./components/Layout";
 import GameOffer from "./components/GameOffer/GameOffer";
+import AdminPanel from "./components/Admin/AdminPanel";
 
 
 function App(props) {
@@ -32,6 +33,10 @@ function App(props) {
                         gameOffer={props.state.gameOfferPages.hots}
                         canvasMenuData={props.state.gameOfferPages.canvasMenuData}
                     />}/>
+                    <Route path={'adminPanel'} element={<AdminPanel
+                        cardsData={props.state.homePage.cardsData}
+                        addCard={props.addCard}
+                    />} />
                 </Route>
             </Routes>
             {/*<OfferCanvas name={'button'} placement={'end'} key={'idx'}/>*/}

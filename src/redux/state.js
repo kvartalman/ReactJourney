@@ -2,23 +2,26 @@ import React from "react";
 
 let state = {
     navbarLinks: [
-        {to: '/', linkName: 'Main', linkId: ''},
-        {to: '/', linkName: 'Boosters', linkId: ''},
-        {to: '/', linkName: 'Help', linkId: ''},
+        {id: 0, to: '/', linkName: 'Main', linkId: ''},
+        {id: 1, to: '/', linkName: 'Boosters', linkId: ''},
+        {id: 2, to: '/', linkName: 'Help', linkId: ''},
     ],
     homePage: {
         carouselData: [
             {
+                id: 0,
                 srcImg: "./carousel/carousel1.jpg",
                 altImg: "Offer 1",
                 text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ"
             },
             {
+                id: 1,
                 srcImg: "./carousel/carousel2.jpg",
                 altImg: "Offer 2",
                 text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ"
             },
             {
+                id: 2,
                 srcImg: "./carousel/carousel3.jpg",
                 altImg: "Offer 3",
                 text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ"
@@ -26,6 +29,7 @@ let state = {
         ],
         advData: [
             {
+                id: 0,
                 img: 'https://p16-va-tiktok.ibyteimg.com/' +
                     'img/musically-maliva-obj/5a0bf3135d88232251753017dd55093e~c5_720x720.jpeg',
                 title: 'PROFESSIONAL BOOSTERS',
@@ -33,12 +37,14 @@ let state = {
                     'We are very attentive to the issue of cooperation with boosters.'
             },
             {
+                id: 1,
                 img: 'https://pic.onlinewebfonts.com/svg/img_85420.svg',
                 title: 'POLITE SUPPORT SERVICE',
                 text: 'We deeply respect our customers and therefore provide ' +
                     'polite and positive feedback in the shortest possible time.'
             },
             {
+                id: 2,
                 img: 'https://pic.onlinewebfonts.com/svg/img_440470.svg',
                 title: 'FAVORABLE PRICES',
                 text: "Our goal is to provide the highest quality service " +
@@ -47,15 +53,18 @@ let state = {
         ],
         cardsData: [
             {
+                id: 0,
                 tagId: 'dotaCard', title: 'Dota 2', text: 'We suggest you to order a Dota 2 boost',
                 button: [
                     {link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
                     {link: '#', type: 'button', class: 'order-button', name: 'Skins'},
                     {link: '#', type: 'button', class: 'order-button', name: 'MMR'},
                     {link: '#', type: 'button', class: 'order-button', name: 'LOW PRIORITY'},
-                ]
+                ],
+                bg: './offerbackgrounds/HomepageOfferCards/dota2.jpg'
             },
             {
+                id: 1,
                 tagId: 'csCard', title: 'CS:GO', text: 'We suggest you to order a CS:GO boost',
                 button: [
                     {link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
@@ -63,47 +72,57 @@ let state = {
                     {link: '#', type: 'button', class: 'order-button', name: 'RMM'},
                     {link: '#', type: 'button', class: 'order-button', name: 'FACEIT'},
                     {link: '#', type: 'button', class: 'order-button', name: 'Lessons'}
-                ]
+                ],
+                bg: './offerbackgrounds/HomepageOfferCards/cs.jpg'
             },
             {
+                id: 2,
                 tagId: 'hotsCard', title: 'Heroes of the Storm', text: 'We suggest you to order a HotS boost',
                 button: [
                     {link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
                     {link: '#', type: 'button', class: 'order-button', name: 'MMR'},
                     {link: '#', type: 'button', class: 'order-button', name: 'Leveling'},
                     {link: '#', type: 'button', class: 'order-button', name: 'Lessons'},
-                ]
+                ],
+                bg: './offerbackgrounds/HomepageOfferCards/hots.avif'
             },
             {
+                id: 3,
                 tagId: 'warfaceCard', title: 'Warface', text: 'We suggest you to order a Warface boost',
                 button: [
                     {link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
                     {link: '#', type: 'button', class: 'order-button', name: 'Ranked'},
                     {link: '#', type: 'button', class: 'order-button', name: 'Leveling'},
                     {link: '#', type: 'button', class: 'order-button', name: 'Currency'},
-                ]
+                ],
+                bg: './offerbackgrounds/HomepageOfferCards/warface.jpg'
             },
             {
+                id: 4,
                 tagId: 'lolCard', title: 'League of Legends', text: 'We suggest you to order a LoL boost',
                 button: [
                     {link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
                     {link: '#', type: 'button', class: 'order-button', name: 'Elo'},
                     {link: '#', type: 'button', class: 'order-button', name: 'Leveling'},
                     {link: '#', type: 'button', class: 'order-button', name: 'Coaching'},
-                ]
+                ],
+                bg: './offerbackgrounds/HomepageOfferCards/lol.jpg'
             },
             {
+                id: 5,
                 tagId: 'pubgCard', title: 'PUBG', text: 'We suggest you to order a PUBG boost',
                 button: [
                     {link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
                     {link: '#', type: 'button', class: 'order-button', name: 'Get BP'},
                     {link: '#', type: 'button', class: 'order-button', name: 'Ranked'},
                     {link: '#', type: 'button', class: 'order-button', name: 'Party'},
-                ]
-            },
+                ],
+                bg: './offerbackgrounds/HomepageOfferCards/pubg.png'
+            }
         ],
         stepsElemsData: [
             {
+                id: 0,
                 xmlns: "http://www.w3.org/2000/svg",
                 class: 'bi bi-1-circle icon-color',
                 path: [<path
@@ -112,6 +131,7 @@ let state = {
                 text: "Create an account. It's very easy thanks to a simplified menu and detailed instructions!"
             },
             {
+                id: 1,
                 xmlns: "http://www.w3.org/2000/svg",
                 class: 'bi bi-2-circle icon-color',
                 path: [<path
@@ -122,6 +142,7 @@ let state = {
                 text: 'Choose the offers you like and add them to your cart!'
             },
             {
+                id: 2,
                 xmlns: "http://www.w3.org/2000/svg",
                 class: 'bi bi-3-circle icon-color',
                 path: [
@@ -145,23 +166,23 @@ let state = {
                     'call "golden mean". Anyway, we will see, how it goes.',
                 cardsTitle: 'Offers of the week',
                 offerCardsData: [
-                    {title: '3000 MMR Boost', text: '35$'},
-                    {title: 'Low priority', text: '5$'},
-                    {title: 'Bladeform legacy', text: '25$'},
-                    {title: '+200 MMR', text: '10$'},
-                    {title: '+200 MMR', text: '10$'},
-                    {title: '+200 MMR', text: '10$'}
+                    {id: 0, title: '3000 MMR Boost', text: '35$'},
+                    {id: 1, title: 'Low priority', text: '5$'},
+                    {id: 2, title: 'Bladeform legacy', text: '25$'},
+                    {id: 3, title: '+200 MMR', text: '10$'},
+                    {id: 4, title: '+200 MMR', text: '10$'},
+                    {id: 5, title: '+200 MMR', text: '10$'}
                 ],
                 panelButton: [
-                    {link: "#", name: "Common skins"},
-                    {link: "#", name: "Uncommon skins"},
-                    {link: "#", name: "Rare skins"},
-                    {link: "#", name: "Immortal skins"},
-                    {link: "#", name: "Arcana"},
-                    {link: "#", name: "MMR Boost"},
-                    {link: "#", name: "Low priority"},
-                    {link: "#", name: "Coaching"},
-                    {link: "#", name: "Party with a pro"}
+                    {id: 0, link: "#", name: "Common skins"},
+                    {id: 1, link: "#", name: "Uncommon skins"},
+                    {id: 2, link: "#", name: "Rare skins"},
+                    {id: 3, link: "#", name: "Immortal skins"},
+                    {id: 4, link: "#", name: "Arcana"},
+                    {id: 5, link: "#", name: "MMR Boost"},
+                    {id: 6, link: "#", name: "Low priority"},
+                    {id: 7, link: "#", name: "Coaching"},
+                    {id: 8, link: "#", name: "Party with a pro"}
                 ],
                 breadCrumbs: {linkNames: [], activeLinkName: 'Dota 2'},
                 canvasCtgData:
@@ -178,19 +199,19 @@ let state = {
                     'call "golden mean". Anyway, we will see, how it goes.',
                 cardsTitle: 'Offers of the week',
                 offerCardsData: [
-                    {title: '3000 MMR Boost', text: '35$'},
-                    {title: 'Low priority', text: '5$'},
-                    {title: 'Bladeform legacy', text: '25$'},
-                    {title: '+300 MMR', text: '10$'}
+                    {id: 0, title: '3000 MMR Boost', text: '35$'},
+                    {id: 1, title: 'Low priority', text: '5$'},
+                    {id: 2, title: 'Bladeform legacy', text: '25$'},
+                    {id: 3, title: '+300 MMR', text: '10$'}
                 ],
                 panelButton: [
-                    {link: "#", name: "Leveling"},
-                    {link: "#", name: "Ranked"},
-                    {link: "#", name: "Game skins"},
-                    {link: "#", name: "Low priority"},
-                    {link: "#", name: "Coaching"},
-                    {link: "#", name: "Party with a pro"},
-                    {link: "#", name: "Achievements"},
+                    {id: 0, link: "#", name: "Leveling"},
+                    {id: 1, link: "#", name: "Ranked"},
+                    {id: 2, link: "#", name: "Game skins"},
+                    {id: 3, link: "#", name: "Low priority"},
+                    {id: 4, link: "#", name: "Coaching"},
+                    {id: 5, link: "#", name: "Party with a pro"},
+                    {id: 6, link: "#", name: "Achievements"},
                 ],
                 breadCrumbs: {linkNames: [], activeLinkName: 'League of Legends'},
                 canvasCtgData:
@@ -208,18 +229,18 @@ let state = {
                     'call "golden mean". Anyway, we will see, how it goes.',
                 cardsTitle: 'Offers of the week',
                 offerCardsData: [
-                    {title: '3000 MMR Boost', text: '35$'},
-                    {title: 'Low priority', text: '5$'},
-                    {title: 'Bladeform legacy', text: '25$'},
-                    {title: '+400 MMR', text: '10$'}
+                    {id: 0, title: '3000 MMR Boost', text: '35$'},
+                    {id: 1, title: 'Low priority', text: '5$'},
+                    {id: 2, title: 'Bladeform legacy', text: '25$'},
+                    {id: 3, title: '+400 MMR', text: '10$'}
                 ],
                 panelButton: [
-                    {link: "#", name: "Low priority"},
-                    {link: "#", name: "Leveling"},
-                    {link: "#", name: "Coaching"},
-                    {link: "#", name: "Ranked"},
-                    {link: "#", name: "Play with a pro"},
-                    {link: "#", name: "Achievements"},
+                    {id: 0, link: "#", name: "Low priority"},
+                    {id: 1, link: "#", name: "Leveling"},
+                    {id: 2, link: "#", name: "Coaching"},
+                    {id: 3, link: "#", name: "Ranked"},
+                    {id: 4, link: "#", name: "Play with a pro"},
+                    {id: 5, link: "#", name: "Achievements"},
                 ],
                 breadCrumbs: {linkNames: [], activeLinkName: 'Heroes of the Storm'},
                 canvasCtgData: {
@@ -228,12 +249,24 @@ let state = {
             },
         canvasMenuData: {
             placement: 'end', buttonName: 'Categories', title: 'Categories', canvasButtons: [
-                {link: "/hots", name: "Heroes of the Storm"},
-                {link: "/dota2", name: "Dota 2"},
-                {link: "/lol", name: "League of Legends"}
+                {id: 0, link: "/hots", name: "Heroes of the Storm"},
+                {id: 1, link: "/dota2", name: "Dota 2"},
+                {id: 2, link: "/lol", name: "League of Legends"}
             ]
         }
     }
+}
+
+export let addCard = (id, tagId, title, text) => {
+    let newCard = {
+        id: 0,
+        tagId: 0,
+        title: 123,
+        text: 123,
+        button: [
+        ]
+    };
+    state.homePage.cardsData.push(newCard);
 }
 
 export default state;
