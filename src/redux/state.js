@@ -1,4 +1,5 @@
 import React from "react";
+import reRender from "../render";
 
 let state = {
     navbarLinks: [
@@ -259,14 +260,16 @@ let state = {
 
 export let addCard = (id, tagId, title, text) => {
     let newCard = {
-        id: 0,
-        tagId: 0,
-        title: 123,
-        text: 123,
+        id: id,
+        tagId: tagId,
+        title: title,
+        text: text,
         button: [
-        ]
+        ],
+        bg: './offerbackgrounds/HomepageOfferCards/dota2.jpg'
     };
     state.homePage.cardsData.push(newCard);
+    reRender(state);
 }
 
 export default state;

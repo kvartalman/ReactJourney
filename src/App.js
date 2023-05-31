@@ -35,7 +35,7 @@ function App(props) {
                     />}/>
                     <Route path={'adminPanel'} element={<AdminPanel
                         cardsData={props.state.homePage.cardsData}
-                        addCard={props.addCard}
+                        addCardFunc={props.addCard}
                     />} />
                 </Route>
             </Routes>
