@@ -1,5 +1,6 @@
 import React from "react";
-import reRender from "../render";
+
+let reRender;
 
 let state = {
     adminPanelForms: {
@@ -269,7 +270,7 @@ let state = {
     }
 }
 
-export let addCard = () => {
+export const addCard = () => {
 
     let newCard = {
         id: state.homePage.cardsData.length,
@@ -284,10 +285,10 @@ export let addCard = () => {
     state.adminPanelForms.homePageCards.cardIdForm = '';
     state.adminPanelForms.homePageCards.cardTitleForm = '';
     state.adminPanelForms.homePageCards.cardTextForm = '';
-    reRender(state);
+    reRender();
 }
 
-export let addButton = (cardTitle, link, type, name) => {
+export const addButton = (cardTitle, link, type, name) => {
 
     let findId = (cardTitle) => {
         for (let i = 0; i < state.homePage.cardsData.length; i++) {
@@ -306,10 +307,10 @@ export let addButton = (cardTitle, link, type, name) => {
     };
     state.homePage.cardsData[findId(cardTitle)].button.push(newButton);
     state.adminPanelForms.homePageCards.buttonNameForm = '';
-    reRender(state);
+    reRender();
 }
 
-export let updateAdminPanelForms = (text, formName) => {
+export const updateAdminPanelForms = (text, formName) => {
     if (formName === 'cardId') {
         state.adminPanelForms.homePageCards.cardIdForm = text;
     } else if (formName === 'cardTitle') {
@@ -320,7 +321,11 @@ export let updateAdminPanelForms = (text, formName) => {
         state.adminPanelForms.homePageCards.buttonNameForm = text;
     }
 
-    reRender(state);
+    reRender();
+}
+
+export const subscribe = (observer) => {
+    reRender = observer;
 }
 
 export default state;
