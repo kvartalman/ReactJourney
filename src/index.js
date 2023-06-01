@@ -6,7 +6,7 @@ import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let reRender = (state) => {
+let reRender = () => {
     root.render(
         <BrowserRouter>
             <React.StrictMode>
@@ -22,6 +22,6 @@ let reRender = (state) => {
 }
 
 
-subscribe(reRender);
-reRender(state);
 
+reRender();
+subscribe(reRender);
