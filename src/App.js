@@ -43,7 +43,6 @@ function App(props) {
                     />} />
                 </Route>
             </Routes>
-            {/*<OfferCanvas name={'button'} placement={'end'} key={'idx'}/>*/}
         </>
 
     );

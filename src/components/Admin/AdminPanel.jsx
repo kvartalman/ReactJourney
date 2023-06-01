@@ -30,34 +30,40 @@ const AdminPanel = (props) => {
         let linkName = newLink.current.value;
         let btnType = newButtonType.current.value;
         let newName = newButtonName.current.value;
-        {props.addButtonFunc(crdTitle, linkName, btnType, newName)}
+        props.addButtonFunc(crdTitle, linkName, btnType, newName)
+        // Clean the form field
+        props.adminPanelFormsFunc('', 'buttonName')
     }
 
     let addCard = () => {
         let newId = newCardId.current.value;
         let newTitle = newCardTitle.current.value;
         let newText = newCardText.current.value;
-        {props.addCardFunc(newId, newTitle, newText)}
+        props.addCardFunc(newId, newTitle, newText)
+        // Clean the form's fields
+        props.adminPanelFormsFunc('', 'cardId')
+        props.adminPanelFormsFunc('', 'cardTitle')
+        props.adminPanelFormsFunc('', 'cardText')
     }
 
     let onChangeCardId = () => {
         let text = newCardId.current.value;
-        {props.adminPanelFormsFunc(text, 'cardId')}
+        props.adminPanelFormsFunc(text, 'cardId')
     }
 
     let onChangeCardTitle = () => {
         let text = newCardTitle.current.value;
-        {props.adminPanelFormsFunc(text, 'cardTitle')}
+        props.adminPanelFormsFunc(text, 'cardTitle')
     }
 
     let onChangeCardText = () => {
         let text = newCardText.current.value;
-        {props.adminPanelFormsFunc(text, 'cardText')}
+        props.adminPanelFormsFunc(text, 'cardText')
     }
 
     let onChangeButtonName = () => {
         let text = newButtonName.current.value;
-        {props.adminPanelFormsFunc(text, 'buttonName')}
+        props.adminPanelFormsFunc(text, 'buttonName')
     }
 
     return (
