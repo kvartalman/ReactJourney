@@ -29,21 +29,11 @@ const AdminPanel = (props) => {
         let crdTitle = cardTitle.current.value;
         let linkName = newLink.current.value;
         let btnType = newButtonType.current.value;
-        let newName = newButtonName.current.value;
-        props.addButtonFunc(crdTitle, linkName, btnType, newName)
-        // Clean the form field
-        props.adminPanelFormsFunc('', 'buttonName')
+        props.addButtonFunc(crdTitle, linkName, btnType)
     }
 
     let addCard = () => {
-        let newId = newCardId.current.value;
-        let newTitle = newCardTitle.current.value;
-        let newText = newCardText.current.value;
-        props.addCardFunc(newId, newTitle, newText)
-        // Clean the form's fields
-        props.adminPanelFormsFunc('', 'cardId')
-        props.adminPanelFormsFunc('', 'cardTitle')
-        props.adminPanelFormsFunc('', 'cardText')
+        props.addCardFunc()
     }
 
     let onChangeCardId = () => {

@@ -269,18 +269,21 @@ let state = {
     }
 }
 
-export let addCard = (tagId, title, text) => {
+export let addCard = () => {
 
     let newCard = {
         id: state.homePage.cardsData.length,
-        tagId: tagId,
-        title: title,
-        text: text,
+        tagId: state.adminPanelForms.homePageCards.cardIdForm,
+        title: state.adminPanelForms.homePageCards.cardTitleForm,
+        text: state.adminPanelForms.homePageCards.cardTextForm,
         button: [
         ],
         bg: './offerbackgrounds/HomepageOfferCards/dota2.jpg'
     };
     state.homePage.cardsData.push(newCard);
+    state.adminPanelForms.homePageCards.cardIdForm = '';
+    state.adminPanelForms.homePageCards.cardTitleForm = '';
+    state.adminPanelForms.homePageCards.cardTextForm = '';
     reRender(state);
 }
 
@@ -294,15 +297,15 @@ export let addButton = (cardTitle, link, type, name) => {
         }
     };
 
-
     let newButton = {
         id: state.homePage.cardsData[findId(cardTitle)].button.length,
         link: link,
         type: type,
         class: type === 'mainButton' ? 'card-main-button' : 'order-button',
-        name: name
+        name: state.adminPanelForms.homePageCards.buttonNameForm
     };
     state.homePage.cardsData[findId(cardTitle)].button.push(newButton);
+    state.adminPanelForms.homePageCards.buttonNameForm = '';
     reRender(state);
 }
 
