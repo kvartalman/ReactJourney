@@ -2,6 +2,17 @@ import React from "react";
 import reRender from "../render";
 
 let state = {
+    adminPanelForms: {
+        homePageCards: {
+            cardIdForm: '',
+            cardTitleForm: '',
+            cardTextForm: '',
+            buttonNameForm: ''
+        }
+    },
+    linksList: [
+        '/', '/dota2', '/lol', '/hots', '/adminPanel'
+    ],
     navbarLinks: [
         {id: 0, to: '/', linkName: 'Main', linkId: ''},
         {id: 1, to: '/', linkName: 'Boosters', linkId: ''},
@@ -57,10 +68,10 @@ let state = {
                 id: 0,
                 tagId: 'dotaCard', title: 'Dota 2', text: 'We suggest you to order a Dota 2 boost',
                 button: [
-                    {link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'Skins'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'MMR'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'LOW PRIORITY'},
+                    {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
+                    {id: 1, link: '#', type: 'button', class: 'order-button', name: 'Skins'},
+                    {id: 2, link: '#', type: 'button', class: 'order-button', name: 'MMR'},
+                    {id: 3, link: '#', type: 'button', class: 'order-button', name: 'LOW PRIORITY'},
                 ],
                 bg: './offerbackgrounds/HomepageOfferCards/dota2.jpg'
             },
@@ -68,11 +79,11 @@ let state = {
                 id: 1,
                 tagId: 'csCard', title: 'CS:GO', text: 'We suggest you to order a CS:GO boost',
                 button: [
-                    {link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'Skins'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'RMM'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'FACEIT'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'Lessons'}
+                    {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
+                    {id: 1, link: '#', type: 'button', class: 'order-button', name: 'Skins'},
+                    {id: 2, link: '#', type: 'button', class: 'order-button', name: 'RMM'},
+                    {id: 3, link: '#', type: 'button', class: 'order-button', name: 'FACEIT'},
+                    {id: 4, link: '#', type: 'button', class: 'order-button', name: 'Lessons'}
                 ],
                 bg: './offerbackgrounds/HomepageOfferCards/cs.jpg'
             },
@@ -80,10 +91,10 @@ let state = {
                 id: 2,
                 tagId: 'hotsCard', title: 'Heroes of the Storm', text: 'We suggest you to order a HotS boost',
                 button: [
-                    {link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'MMR'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'Leveling'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'Lessons'},
+                    {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
+                    {id: 1, link: '#', type: 'button', class: 'order-button', name: 'MMR'},
+                    {id: 2, link: '#', type: 'button', class: 'order-button', name: 'Leveling'},
+                    {id: 3, link: '#', type: 'button', class: 'order-button', name: 'Lessons'},
                 ],
                 bg: './offerbackgrounds/HomepageOfferCards/hots.avif'
             },
@@ -91,10 +102,10 @@ let state = {
                 id: 3,
                 tagId: 'warfaceCard', title: 'Warface', text: 'We suggest you to order a Warface boost',
                 button: [
-                    {link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'Ranked'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'Leveling'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'Currency'},
+                    {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
+                    {id: 1, link: '#', type: 'button', class: 'order-button', name: 'Ranked'},
+                    {id: 2, link: '#', type: 'button', class: 'order-button', name: 'Leveling'},
+                    {id: 3, link: '#', type: 'button', class: 'order-button', name: 'Currency'},
                 ],
                 bg: './offerbackgrounds/HomepageOfferCards/warface.jpg'
             },
@@ -102,10 +113,10 @@ let state = {
                 id: 4,
                 tagId: 'lolCard', title: 'League of Legends', text: 'We suggest you to order a LoL boost',
                 button: [
-                    {link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'Elo'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'Leveling'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'Coaching'},
+                    {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
+                    {id: 1, link: '#', type: 'button', class: 'order-button', name: 'Elo'},
+                    {id: 2, link: '#', type: 'button', class: 'order-button', name: 'Leveling'},
+                    {id: 3, link: '#', type: 'button', class: 'order-button', name: 'Coaching'},
                 ],
                 bg: './offerbackgrounds/HomepageOfferCards/lol.jpg'
             },
@@ -113,10 +124,10 @@ let state = {
                 id: 5,
                 tagId: 'pubgCard', title: 'PUBG', text: 'We suggest you to order a PUBG boost',
                 button: [
-                    {link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'Get BP'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'Ranked'},
-                    {link: '#', type: 'button', class: 'order-button', name: 'Party'},
+                    {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
+                    {id: 1, link: '#', type: 'button', class: 'order-button', name: 'Get BP'},
+                    {id: 2, link: '#', type: 'button', class: 'order-button', name: 'Ranked'},
+                    {id: 3, link: '#', type: 'button', class: 'order-button', name: 'Party'},
                 ],
                 bg: './offerbackgrounds/HomepageOfferCards/pubg.png'
             }
@@ -258,9 +269,10 @@ let state = {
     }
 }
 
-export let addCard = (id, tagId, title, text) => {
+export let addCard = (tagId, title, text) => {
+
     let newCard = {
-        id: id,
+        id: state.homePage.cardsData.length,
         tagId: tagId,
         title: title,
         text: text,
@@ -269,6 +281,42 @@ export let addCard = (id, tagId, title, text) => {
         bg: './offerbackgrounds/HomepageOfferCards/dota2.jpg'
     };
     state.homePage.cardsData.push(newCard);
+    reRender(state);
+}
+
+export let addButton = (cardTitle, link, type, name) => {
+
+    let findId = (cardTitle) => {
+        for (let i = 0; i < state.homePage.cardsData.length; i++) {
+            if (state.homePage.cardsData[i].title === cardTitle) {
+                return (i)
+            }
+        }
+    };
+
+
+    let newButton = {
+        id: state.homePage.cardsData[findId(cardTitle)].button.length,
+        link: link,
+        type: type,
+        class: type === 'mainButton' ? 'card-main-button' : 'order-button',
+        name: name
+    };
+    state.homePage.cardsData[findId(cardTitle)].button.push(newButton);
+    reRender(state);
+}
+
+export let updateAdminPanelForms = (text, formName) => {
+    if (formName === 'cardId') {
+        state.adminPanelForms.homePageCards.cardIdForm = text;
+    } else if (formName === 'cardTitle') {
+        state.adminPanelForms.homePageCards.cardTitleForm = text;
+    } else if (formName === 'cardText') {
+        state.adminPanelForms.homePageCards.cardTextForm = text;
+    } else if (formName === 'buttonName') {
+        state.adminPanelForms.homePageCards.buttonNameForm = text;
+    }
+
     reRender(state);
 }
 

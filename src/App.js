@@ -34,8 +34,12 @@ function App(props) {
                         canvasMenuData={props.state.gameOfferPages.canvasMenuData}
                     />}/>
                     <Route path={'adminPanel'} element={<AdminPanel
+                        linksList={props.state.linksList}
                         cardsData={props.state.homePage.cardsData}
                         addCardFunc={props.addCard}
+                        addButtonFunc={props.addButton}
+                        forms={props.state.adminPanelForms}
+                        adminPanelFormsFunc={props.adminPanelFormsFunc}
                     />} />
                 </Route>
             </Routes>
