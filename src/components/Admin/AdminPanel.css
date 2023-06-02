@@ -9,7 +9,7 @@
     justify-content: center;
 }
 
-.cardFormsRow, .buttonFormsRow {
+.formsRow {
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.3);
     margin: 0 1em;

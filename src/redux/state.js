@@ -1,10 +1,9 @@
 import React from "react";
 
-let reRender;
-const adminAddCard = 'ADMIN-ADD-CARD';
-const adminAddButton = 'ADMIN-ADD-BUTTON';
-const adminUpdateForms = 'UPDATE-ADMIN-FORMS';
-
+const homePageAddCard = 'HOMEPAGE-ADD-CARD';
+const homePageAddButton = 'HOMEPAGE-ADD-BUTTON';
+const adminUpdateForms = 'UPDATE-ADMIN-EDITOR-FORMS';
+const offerPageAddCard = 'OFFERPAGE-ADD-CARD'
 
 let store = {
     _state: {
@@ -14,6 +13,10 @@ let store = {
                 cardTitleForm: '',
                 cardTextForm: '',
                 buttonNameForm: ''
+            },
+            offerPageCards: {
+                cardTitleForm: '',
+                cardTextForm: ''
             }
         },
         linksList: [
@@ -175,6 +178,7 @@ let store = {
             ]
         },
         gameOfferPages: {
+            gamesList: ['dota2', 'lol', 'hots'],
             dota2:
                 {
                     mainTitle: 'Dota 2 Offer',
@@ -274,14 +278,15 @@ let store = {
             }
         }
     },
+    _callSubscriber() {},
     getState() {
         return this._state
     },
     subscribe(observer) {
-        reRender = observer;
+        this._callSubscriber = observer;
     },
     dispatch(action) {
-        if (action.type === 'ADMIN-ADD-CARD') {
+        if (action.type === 'HOMEPAGE-ADD-CARD') {
             let newCard = {
                 id: this._state.homePage.cardsData.length,
                 tagId: this._state.adminPanelForms.homePageCards.cardIdForm,
@@ -294,9 +299,9 @@ let store = {
             this._state.adminPanelForms.homePageCards.cardIdForm = '';
             this._state.adminPanelForms.homePageCards.cardTitleForm = '';
             this._state.adminPanelForms.homePageCards.cardTextForm = '';
-            reRender();
+            this._callSubscriber();
         }
-        else if (action.type === 'ADMIN-ADD-BUTTON') {
+        else if (action.type === 'HOMEPAGE-ADD-BUTTON') {
 
             let findId = (cardTitle) => {
                 for (let i = 0; i < this._state.homePage.cardsData.length; i++) {
@@ -315,9 +320,9 @@ let store = {
             };
             this._state.homePage.cardsData[findId(action.cardTitle)].button.push(newButton);
             this._state.adminPanelForms.homePageCards.buttonNameForm = '';
-            reRender();
+            this._callSubscriber();
         }
-        else if (action.type === 'UPDATE-ADMIN-FORMS') {
+        else if (action.type === 'UPDATE-ADMIN-EDITOR-FORMS') {
             if (action.formName === 'cardId') {
                 this._state.adminPanelForms.homePageCards.cardIdForm = action.text;
             } else if (action.formName === 'cardTitle') {
@@ -326,35 +331,48 @@ let store = {
                 this._state.adminPanelForms.homePageCards.cardTextForm = action.text;
             } else if (action.formName === 'buttonName') {
                 this._state.adminPanelForms.homePageCards.buttonNameForm = action.text;
+            } else if (action.formName === 'offerPageCardTitle') {
+                this._state.adminPanelForms.offerPageCards.cardTitleForm = action.text;
+            } else if (action.formName === 'offerPageCardText') {
+                this._state.adminPanelForms.offerPageCards.cardTextForm = action.text;
             }
 
-            reRender();
+            this._callSubscriber();
+        }
+        else if (action.type === 'OFFERPAGE-ADD-CARD') {
+
+            let newOfferPageCard = {
+                id: 0,
+                title: 0,
+                text:0
+            }
         }
     }
 }
 
-export const homePageCardsActionCreator = () => {
-    return {
-        type: adminAddCard,
-    }
-}
-
-export const homePageButtonsActionCreator = (cardTitle, link, btnType) => {
-    return {
-        type: adminAddButton,
+export const homePageCardsActionCreator = () =>
+    ({
+        type: homePageAddCard,
+    })
+export const homePageButtonsActionCreator = (cardTitle, link, btnType) =>
+    ({
+        type: homePageAddButton,
         cardTitle: cardTitle,
         link: link,
         btnType: btnType
-    }
-}
-
-export const homePageOnChangeActionCreator = (text, formName) => {
-    return {
+    })
+export const adminPanelOnChangeActionCreator = (text, formName) =>
+    ({
         type: adminUpdateForms,
         text: text,
         formName: formName
-    }
-}
+    })
+
+export const offerPageCardsActionCreator = (gameOfferSelector) =>
+    ({
+        type: offerPageAddCard,
+        gameOfferSelector: gameOfferSelector
+    })
 
 export default store;
 

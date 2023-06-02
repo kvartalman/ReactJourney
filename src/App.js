@@ -39,6 +39,7 @@ function App(props) {
                             cardsData={props.state.homePage.cardsData}
                             forms={props.state.adminPanelForms}
                             dispatch={props.dispatch}
+                            gameOfferPages={props.state.gameOfferPages}
                         />}/>
                 </Route>
             </Routes>

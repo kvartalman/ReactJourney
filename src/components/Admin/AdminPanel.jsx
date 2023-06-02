@@ -8,18 +8,10 @@ import './AdminPanel.css'
 import {
     homePageButtonsActionCreator,
     homePageCardsActionCreator,
-    homePageOnChangeActionCreator
+    adminPanelOnChangeActionCreator, offerPageCardsActionCreator
 } from "../../redux/state";
 
 const AdminPanel = (props) => {
-
-    const cardsList = props.cardsData.map(card => (
-        <option>{card.title}</option>
-    ))
-
-    const linksList = props.linksList.map(card => (
-        <option>{card}</option>
-    ))
 
     let newCardId = React.createRef();
     let newCardTitle = React.createRef();
@@ -30,42 +22,69 @@ const AdminPanel = (props) => {
     let newButtonName = React.createRef();
     let newLink = React.createRef();
 
-    let addButton = () => {
+    let newOfferPageCardTitle = React.createRef();
+    let newOfferPageCardText = React.createRef();
+    let gameOfferSelector = React.createRef();
+
+    const cardsList = props.cardsData.map(card => (
+        <option>{card.title}</option>
+    ))
+
+    const linksList = props.linksList.map(card => (
+        <option>{card}</option>
+    ))
+
+    const getOfferPages = props.gameOfferPages.gamesList.map(name => (
+        <option>{name}</option>
+    ))
+
+    let addHomePageCardButton = () => {
         props.dispatch(homePageButtonsActionCreator(
             cardTitle.current.value, newLink.current.value, newButtonType.current.value
         ))
     }
-
-    let addCard = () => {
+    let addHomePageCard = () => {
         props.dispatch(homePageCardsActionCreator())
     }
 
+    let addOfferPageCard = () => {
+        props.dispatch(offerPageCardsActionCreator(gameOfferSelector.current.value))
+    }
 
     let onChangeCardId = () => {
         let text = newCardId.current.value;
-        props.dispatch(homePageOnChangeActionCreator(text, 'cardId'))
+        props.dispatch(adminPanelOnChangeActionCreator(text, 'cardId'))
     }
-
     let onChangeCardTitle = () => {
         let text = newCardTitle.current.value;
-        props.dispatch(homePageOnChangeActionCreator(text, 'cardTitle'))
+        props.dispatch(adminPanelOnChangeActionCreator(text, 'cardTitle'))
     }
-
     let onChangeCardText = () => {
         let text = newCardText.current.value;
-        props.dispatch(homePageOnChangeActionCreator(text, 'cardText'))
+        props.dispatch(adminPanelOnChangeActionCreator(text, 'cardText'))
     }
-
     let onChangeButtonName = () => {
         let text = newButtonName.current.value;
-        props.dispatch(homePageOnChangeActionCreator(text, 'buttonName'))
+        props.dispatch(adminPanelOnChangeActionCreator(text, 'buttonName'))
+    }
+
+    let onChangeOfferCardTitle = () => {
+        let text = newOfferPageCardTitle.current.value;
+        props.dispatch(adminPanelOnChangeActionCreator(text, 'offerPageCardTitle'))
+    }
+    let onChangeOfferCardText = () => {
+        let text = newOfferPageCardText.current.value;
+        props.dispatch(adminPanelOnChangeActionCreator(text, 'offerPageCardText'))
     }
 
     return (
         <>
             <Row className={'cardButtonForms'}>
+
+                {/*HOMEPAGE CARDS EDITOR*/}
                 <Form>
-                    <Row className="mb-3 cardFormsRow">
+                    <Row className="mb-3 formsRow">
+                        <h2>HomePage Cards Editor</h2>
                         <Form.Group as={Col} id={'addCardForm'}>
                             <Form.Label>Card ID</Form.Label>
                             <Form.Control
@@ -92,14 +111,17 @@ const AdminPanel = (props) => {
                             />
                         </Form.Group>
                         <div className={'addCardButtons'}>
-                            <Button onClick={addCard} variant="primary">
+                            <Button onClick={addHomePageCard} variant="primary">
                                 Create Card
                             </Button>
                         </div>
                     </Row>
                 </Form>
+
+                {/*HOMEPAGE CARDS BUTTONS EDITOR*/}
                 <Form>
-                    <Row className="mb-3 buttonFormsRow">
+                    <Row className="mb-3 formsRow">
+                        <h2>HomePage Card Buttons Editor</h2>
                         <Form.Group as={Col}>
                             <Form.Label>Choose button type</Form.Label>
                             <Form.Select ref={newButtonType}>
@@ -123,8 +145,41 @@ const AdminPanel = (props) => {
                             />
                         </Form.Group>
                         <div className={'addCardButtons'}>
-                            <Button variant="primary" onClick={addButton}>
+                            <Button variant="primary" onClick={addHomePageCardButton}>
                                 Add Button
+                            </Button>
+                        </div>
+                    </Row>
+                </Form>
+
+                {/*DOTA2 CARDS EDITOR*/}
+                <Form>
+                    <Row className="mb-3 formsRow">
+                        <h2>OfferPage Cards editor</h2>
+                        <Form.Group as={Col}>
+                            <Form.Label>GameOffer Page</Form.Label>
+                            <Form.Select ref={gameOfferSelector}>
+                                {getOfferPages}
+                            </Form.Select>
+                            <Form.Label>Card title</Form.Label>
+                            <Form.Control
+                                onChange={onChangeOfferCardTitle}
+                                ref={newOfferPageCardTitle}
+                                value={props.forms.offerPageCards.cardTitleForm}
+                                placeholder="Enter card title"
+                            />
+                            <Form.Label>Card text</Form.Label>
+                            <Form.Control
+                                onChange={onChangeOfferCardText}
+                                ref={newOfferPageCardText}
+                                value={props.forms.offerPageCards.cardTextForm}
+                                placeholder="Enter Card text"
+                            />
+                        </Form.Group>
+
+                        <div className={'addCardButtons'}>
+                            <Button variant="primary" onClick={addOfferPageCard}>
+                                Create Card
                             </Button>
                         </div>
                     </Row>
