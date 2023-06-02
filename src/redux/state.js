@@ -1,6 +1,10 @@
 import React from "react";
 
 let reRender;
+const adminAddCard = 'ADMIN-ADD-CARD';
+const adminAddButton = 'ADMIN-ADD-BUTTON';
+const adminUpdateForms = 'UPDATE-ADMIN-FORMS';
+
 
 let store = {
     _state: {
@@ -326,6 +330,29 @@ let store = {
 
             reRender();
         }
+    }
+}
+
+export const homePageCardsActionCreator = () => {
+    return {
+        type: adminAddCard,
+    }
+}
+
+export const homePageButtonsActionCreator = (cardTitle, link, btnType) => {
+    return {
+        type: adminAddButton,
+        cardTitle: cardTitle,
+        link: link,
+        btnType: btnType
+    }
+}
+
+export const homePageOnChangeActionCreator = (text, formName) => {
+    return {
+        type: adminUpdateForms,
+        text: text,
+        formName: formName
     }
 }
 

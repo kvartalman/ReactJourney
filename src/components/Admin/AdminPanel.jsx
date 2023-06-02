@@ -5,6 +5,11 @@ import Row from 'react-bootstrap/Row';
 import Cards from "../Homepage/Cards/Cards";
 import React from "react";
 import './AdminPanel.css'
+import {
+    homePageButtonsActionCreator,
+    homePageCardsActionCreator,
+    homePageOnChangeActionCreator
+} from "../../redux/state";
 
 const AdminPanel = (props) => {
 
@@ -26,66 +31,34 @@ const AdminPanel = (props) => {
     let newLink = React.createRef();
 
     let addButton = () => {
-        let crdTitle = cardTitle.current.value;
-        let linkName = newLink.current.value;
-        let btnType = newButtonType.current.value;
-        props.dispatch({
-            type: 'ADMIN-ADD-BUTTON',
-            cardTitle: cardTitle.current.value,
-            link: newLink.current.value,
-            btnType: newButtonType.current.value
-        })
+        props.dispatch(homePageButtonsActionCreator(
+            cardTitle.current.value, newLink.current.value, newButtonType.current.value
+        ))
     }
 
     let addCard = () => {
-        props.dispatch({
-            type: 'ADMIN-ADD-CARD'
-        })
+        props.dispatch(homePageCardsActionCreator())
     }
 
 
     let onChangeCardId = () => {
         let text = newCardId.current.value;
-        props.dispatch(
-            {
-                type: 'UPDATE-ADMIN-FORMS',
-                text: text,
-                formName: 'cardId'
-            }
-        )
+        props.dispatch(homePageOnChangeActionCreator(text, 'cardId'))
     }
 
     let onChangeCardTitle = () => {
         let text = newCardTitle.current.value;
-        props.dispatch(
-            {
-                type: 'UPDATE-ADMIN-FORMS',
-                text: text,
-                formName: 'cardTitle'
-            }
-        )
+        props.dispatch(homePageOnChangeActionCreator(text, 'cardTitle'))
     }
 
     let onChangeCardText = () => {
         let text = newCardText.current.value;
-        props.dispatch(
-            {
-                type: 'UPDATE-ADMIN-FORMS',
-                text: text,
-                formName: 'cardText'
-            }
-        )
+        props.dispatch(homePageOnChangeActionCreator(text, 'cardText'))
     }
 
     let onChangeButtonName = () => {
         let text = newButtonName.current.value;
-        props.dispatch(
-            {
-                type: 'UPDATE-ADMIN-FORMS',
-                text: text,
-                formName: 'buttonName'
-            }
-        )
+        props.dispatch(homePageOnChangeActionCreator(text, 'buttonName'))
     }
 
     return (
