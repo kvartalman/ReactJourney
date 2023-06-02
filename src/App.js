@@ -37,10 +37,8 @@ function App(props) {
                         <AdminPanel
                             linksList={props.state.linksList}
                             cardsData={props.state.homePage.cardsData}
-                            addCardFunc={props.addCard}
-                            addButtonFunc={props.addButton}
                             forms={props.state.adminPanelForms}
-                            adminPanelFormsFunc={props.adminPanelFormsFunc}
+                            dispatch={props.dispatch}
                         />}/>
                 </Route>
             </Routes>

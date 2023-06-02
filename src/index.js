@@ -1,4 +1,4 @@
-import state, {addButton, addCard, subscribe, updateAdminPanelForms} from "./redux/state";
+import store from "./redux/state";
 import ReactDOM from "react-dom/client";
 import {BrowserRouter} from "react-router-dom";
 import React from "react";
@@ -11,10 +11,8 @@ let reRender = () => {
         <BrowserRouter>
             <React.StrictMode>
                 <App
-                    adminPanelFormsFunc={updateAdminPanelForms}
-                    addButton={addButton}
-                    state={state}
-                    addCard={addCard}
+                    state={store.getState()}
+                    dispatch={store.dispatch.bind(store)}
                 />
             </React.StrictMode>
         </BrowserRouter>
@@ -24,4 +22,4 @@ let reRender = () => {
 
 
 reRender();
-subscribe(reRender);
+store.subscribe(reRender);
