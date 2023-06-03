@@ -22,15 +22,15 @@ function App(props) {
                         stepsElemsData={props.state.homePage.stepsElemsData}
                     />}/>
                     <Route path={'dota2'} element={<GameOffer
-                        gameOffer={props.state.gameOfferPages.dota2}
+                        gameOffer={props.state.gameOfferPages.pagesData.dota2}
                         canvasMenuData={props.state.gameOfferPages.canvasMenuData}
                     />}/>
                     <Route path={'lol'} element={<GameOffer
-                        gameOffer={props.state.gameOfferPages.lol}
+                        gameOffer={props.state.gameOfferPages.pagesData.lol}
                         canvasMenuData={props.state.gameOfferPages.canvasMenuData}
                     />}/>
                     <Route path={'hots'} element={<GameOffer
-                        gameOffer={props.state.gameOfferPages.hots}
+                        gameOffer={props.state.gameOfferPages.pagesData.hots}
                         canvasMenuData={props.state.gameOfferPages.canvasMenuData}
                     />}/>
                     <Route path={'adminPanel'} element={
@@ -39,7 +39,7 @@ function App(props) {
                             cardsData={props.state.homePage.cardsData}
                             forms={props.state.adminPanelForms}
                             dispatch={props.dispatch}
-                            gameOfferPages={props.state.gameOfferPages}
+                            gameOfferPages={Object.keys(props.state.gameOfferPages.pagesData)}
                         />}/>
                 </Route>
             </Routes>

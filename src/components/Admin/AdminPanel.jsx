@@ -34,7 +34,7 @@ const AdminPanel = (props) => {
         <option>{card}</option>
     ))
 
-    const getOfferPages = props.gameOfferPages.gamesList.map(name => (
+    const getOfferPages = props.gameOfferPages.map(name => (
         <option>{name}</option>
     ))
 
