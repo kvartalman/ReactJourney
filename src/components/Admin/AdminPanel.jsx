@@ -5,11 +5,9 @@ import Row from 'react-bootstrap/Row';
 import Cards from "../Homepage/Cards/Cards";
 import React from "react";
 import './AdminPanel.css'
-import {
-    homePageButtonsActionCreator,
-    homePageCardsActionCreator,
-    adminPanelOnChangeActionCreator, offerPageCardsActionCreator
-} from "../../redux/state";
+import {adminPanelOnChangeActionCreator} from "../../redux/adminPanelFormsReducer";
+import {offerPageCardsActionCreator} from "../../redux/offerPagesCardsReducer";
+import {homePageButtonsActionCreator, homePageCardsActionCreator} from "../../redux/homePageReducer";
 
 const AdminPanel = (props) => {
 

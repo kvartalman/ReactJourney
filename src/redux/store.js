@@ -1,9 +1,7 @@
 import React from "react";
-
-const homePageAddCard = 'HOMEPAGE-ADD-CARD';
-const homePageAddButton = 'HOMEPAGE-ADD-BUTTON';
-const adminUpdateForms = 'UPDATE-ADMIN-EDITOR-FORMS';
-const offerPageAddCard = 'OFFERPAGE-ADD-CARD'
+import adminPanelFormsReducer from "./adminPanelFormsReducer";
+import homePageReducer from "./homePageReducer";
+import offerPagesCardsReducer from "./offerPagesCardsReducer";
 
 let store = {
     _state: {
@@ -288,98 +286,21 @@ let store = {
         this._callSubscriber = observer;
     },
     dispatch(action) {
-        if (action.type === 'HOMEPAGE-ADD-CARD') {
-            let newCard = {
-                id: this._state.homePage.cardsData.length,
-                tagId: this._state.adminPanelForms.homePageCards.cardIdForm,
-                title: this._state.adminPanelForms.homePageCards.cardTitleForm,
-                text: this._state.adminPanelForms.homePageCards.cardTextForm,
-                button: [],
-                bg: './offerbackgrounds/HomepageOfferCards/dota2.jpg'
-            };
-            this._state.homePage.cardsData.push(newCard);
-            this._state.adminPanelForms.homePageCards.cardIdForm = '';
-            this._state.adminPanelForms.homePageCards.cardTitleForm = '';
-            this._state.adminPanelForms.homePageCards.cardTextForm = '';
-            this._callSubscriber();
-        }
-        else if (action.type === 'HOMEPAGE-ADD-BUTTON') {
 
-            let findId = (cardTitle) => {
-                for (let i = 0; i < this._state.homePage.cardsData.length; i++) {
-                    if (this._state.homePage.cardsData[i].title === cardTitle) {
-                        return (i)
-                    }
-                }
-            };
+        homePageReducer(
+            [this._state.homePage.cardsData, this._state.adminPanelForms.homePageCards],
+            action
+        )
+        offerPagesCardsReducer(
+            [this._state.gameOfferPages.pagesData, this._state.adminPanelForms.offerPageCards],
+            action
+        )
+        adminPanelFormsReducer(this._state.adminPanelForms, action)
 
-            let newButton = {
-                id: this._state.homePage.cardsData[findId(action.cardTitle)].button.length,
-                link: action.link,
-                type: action.btnType,
-                class: action.btnType === 'mainButton' ? 'card-main-button' : 'order-button',
-                name: this._state.adminPanelForms.homePageCards.buttonNameForm
-            };
-            this._state.homePage.cardsData[findId(action.cardTitle)].button.push(newButton);
-            this._state.adminPanelForms.homePageCards.buttonNameForm = '';
-            this._callSubscriber();
-        }
-        else if (action.type === 'UPDATE-ADMIN-EDITOR-FORMS') {
-            if (action.formName === 'cardId') {
-                this._state.adminPanelForms.homePageCards.cardIdForm = action.text;
-            } else if (action.formName === 'cardTitle') {
-                this._state.adminPanelForms.homePageCards.cardTitleForm = action.text;
-            } else if (action.formName === 'cardText') {
-                this._state.adminPanelForms.homePageCards.cardTextForm = action.text;
-            } else if (action.formName === 'buttonName') {
-                this._state.adminPanelForms.homePageCards.buttonNameForm = action.text;
-            } else if (action.formName === 'offerPageCardTitle') {
-                this._state.adminPanelForms.offerPageCards.cardTitleForm = action.text;
-            } else if (action.formName === 'offerPageCardText') {
-                this._state.adminPanelForms.offerPageCards.cardTextForm = action.text;
-            }
+        this._callSubscriber();
 
-            this._callSubscriber();
-        }
-        else if (action.type === 'OFFERPAGE-ADD-CARD') {
-
-            let newOfferPageCard = {
-                id: this._state.gameOfferPages.pagesData[action.gameOfferSelector].offerCardsData.length,
-                title: this._state.adminPanelForms.offerPageCards.cardTitleForm,
-                text: this._state.adminPanelForms.offerPageCards.cardTextForm
-            }
-
-            this._state.gameOfferPages.pagesData[action.gameOfferSelector].offerCardsData.push(newOfferPageCard);
-            this._state.adminPanelForms.offerPageCards.cardTitleForm = '';
-            this._state.adminPanelForms.offerPageCards.cardTextForm = '';
-            this._callSubscriber();
-        }
     }
 }
-
-export const homePageCardsActionCreator = () =>
-    ({
-        type: homePageAddCard,
-    })
-export const homePageButtonsActionCreator = (cardTitle, link, btnType) =>
-    ({
-        type: homePageAddButton,
-        cardTitle: cardTitle,
-        link: link,
-        btnType: btnType
-    })
-export const adminPanelOnChangeActionCreator = (text, formName) =>
-    ({
-        type: adminUpdateForms,
-        text: text,
-        formName: formName
-    })
-
-export const offerPageCardsActionCreator = (gameOfferSelector) =>
-    ({
-        type: offerPageAddCard,
-        gameOfferSelector: gameOfferSelector
-    })
 
 export default store;
 
