@@ -5,9 +5,12 @@ import Row from 'react-bootstrap/Row';
 import Cards from "../Homepage/Cards/Cards";
 import React from "react";
 import './AdminPanel.css'
-import {adminPanelOnChangeActionCreator} from "../../redux/adminPanelFormsReducer";
-import {offerPageCardsActionCreator} from "../../redux/offerPagesCardsReducer";
-import {homePageButtonsActionCreator, homePageCardsActionCreator} from "../../redux/homePageReducer";
+import {offerPageCardsActionCreator, offerPageOnChangeActionCreator} from "../../redux/offerPagesCardsReducer";
+import {
+    homePageButtonsActionCreator,
+    homePageCardsActionCreator,
+    homePageOnChangeActionCreator
+} from "../../redux/homePageReducer";
 
 const AdminPanel = (props) => {
 
@@ -51,28 +54,28 @@ const AdminPanel = (props) => {
 
     let onChangeCardId = () => {
         let text = newCardId.current.value;
-        props.dispatch(adminPanelOnChangeActionCreator(text, 'cardId'))
+        props.dispatch(homePageOnChangeActionCreator(text, 'cardId'))
     }
     let onChangeCardTitle = () => {
         let text = newCardTitle.current.value;
-        props.dispatch(adminPanelOnChangeActionCreator(text, 'cardTitle'))
+        props.dispatch(homePageOnChangeActionCreator(text, 'cardTitle'))
     }
     let onChangeCardText = () => {
         let text = newCardText.current.value;
-        props.dispatch(adminPanelOnChangeActionCreator(text, 'cardText'))
+        props.dispatch(homePageOnChangeActionCreator(text, 'cardText'))
     }
     let onChangeButtonName = () => {
         let text = newButtonName.current.value;
-        props.dispatch(adminPanelOnChangeActionCreator(text, 'buttonName'))
+        props.dispatch(homePageOnChangeActionCreator(text, 'buttonName'))
     }
 
     let onChangeOfferCardTitle = () => {
         let text = newOfferPageCardTitle.current.value;
-        props.dispatch(adminPanelOnChangeActionCreator(text, 'offerPageCardTitle'))
+        props.dispatch(offerPageOnChangeActionCreator(text, 'offerPageCardTitle'))
     }
     let onChangeOfferCardText = () => {
         let text = newOfferPageCardText.current.value;
-        props.dispatch(adminPanelOnChangeActionCreator(text, 'offerPageCardText'))
+        props.dispatch(offerPageOnChangeActionCreator(text, 'offerPageCardText'))
     }
 
     return (
@@ -90,7 +93,7 @@ const AdminPanel = (props) => {
                                 ref={newCardId}
                                 type=""
                                 placeholder="Ented cardID"
-                                value={props.forms.homePageCards.cardIdForm}
+                                value={props.homePageForms.cardIdForm}
                             />
                             <Form.Label>Card title</Form.Label>
                             <Form.Control
@@ -98,12 +101,12 @@ const AdminPanel = (props) => {
                                 ref={newCardTitle}
                                 type=""
                                 placeholder="Enter card title"
-                                value={props.forms.homePageCards.cardTitleForm}
+                                value={props.homePageForms.cardTitleForm}
                             />
                             <Form.Label>Card text</Form.Label>
                             <Form.Control
                                 onChange={onChangeCardText}
-                                value={props.forms.homePageCards.cardTextForm}
+                                value={props.homePageForms.cardTextForm}
                                 ref={newCardText}
                                 placeholder="Enter Card text"
                             />
@@ -139,7 +142,7 @@ const AdminPanel = (props) => {
                                 onChange={onChangeButtonName}
                                 ref={newButtonName}
                                 placeholder={'Enter button name...'}
-                                value={props.forms.homePageCards.buttonNameForm}
+                                value={props.homePageForms.buttonNameForm}
                             />
                         </Form.Group>
                         <div className={'addCardButtons'}>
@@ -150,7 +153,7 @@ const AdminPanel = (props) => {
                     </Row>
                 </Form>
 
-                {/*DOTA2 CARDS EDITOR*/}
+                {/*OFFERPAGE CARDS EDITOR*/}
                 <Form>
                     <Row className="mb-3 formsRow">
                         <h2>OfferPage Cards editor</h2>
@@ -163,14 +166,14 @@ const AdminPanel = (props) => {
                             <Form.Control
                                 onChange={onChangeOfferCardTitle}
                                 ref={newOfferPageCardTitle}
-                                value={props.forms.offerPageCards.cardTitleForm}
+                                value={props.offerPageForms.cardTitleForm}
                                 placeholder="Enter card title"
                             />
                             <Form.Label>Card text</Form.Label>
                             <Form.Control
                                 onChange={onChangeOfferCardText}
                                 ref={newOfferPageCardText}
-                                value={props.forms.offerPageCards.cardTextForm}
+                                value={props.offerPageForms.cardTextForm}
                                 placeholder="Enter Card text"
                             />
                         </Form.Group>

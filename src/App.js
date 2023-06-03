@@ -35,9 +35,10 @@ function App(props) {
                     />}/>
                     <Route path={'adminPanel'} element={
                         <AdminPanel
-                            linksList={props.state.linksList}
+                            linksList={props.state.adminPanel.linksList}
                             cardsData={props.state.homePage.cardsData}
-                            forms={props.state.adminPanelForms}
+                            offerPageForms={props.state.gameOfferPages.offerPageCardsForms}
+                            homePageForms={props.state.homePage.homePageCardsForms}
                             dispatch={props.dispatch}
                             gameOfferPages={Object.keys(props.state.gameOfferPages.pagesData)}
                         />}/>

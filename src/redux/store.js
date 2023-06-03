@@ -5,21 +5,23 @@ import offerPagesCardsReducer from "./offerPagesCardsReducer";
 
 let store = {
     _state: {
-        adminPanelForms: {
-            homePageCards: {
-                cardIdForm: '',
-                cardTitleForm: '',
-                cardTextForm: '',
-                buttonNameForm: ''
+        adminPanel: {
+            adminPanelForms: {
+                homePageCards: {
+                    cardIdForm: '',
+                    cardTitleForm: '',
+                    cardTextForm: '',
+                    buttonNameForm: ''
+                },
+                offerPageCards: {
+                    cardTitleForm: '',
+                    cardTextForm: ''
+                }
             },
-            offerPageCards: {
-                cardTitleForm: '',
-                cardTextForm: ''
-            }
+            linksList: [
+                '/', '/dota2', '/lol', '/hots', '/adminPanel'
+            ]
         },
-        linksList: [
-            '/', '/dota2', '/lol', '/hots', '/adminPanel'
-        ],
         navbarLinks: [
             {id: 0, to: '/', linkName: 'Main', linkId: ''},
             {id: 1, to: '/', linkName: 'Boosters', linkId: ''},
@@ -288,14 +290,14 @@ let store = {
     dispatch(action) {
 
         homePageReducer(
-            [this._state.homePage.cardsData, this._state.adminPanelForms.homePageCards],
+            [this._state.homePage.cardsData, this._state.adminPanel.adminPanelForms.homePageCards],
             action
         )
         offerPagesCardsReducer(
-            [this._state.gameOfferPages.pagesData, this._state.adminPanelForms.offerPageCards],
+            [this._state.gameOfferPages.pagesData, this._state.adminPanel.adminPanelForms.offerPageCards],
             action
         )
-        adminPanelFormsReducer(this._state.adminPanelForms, action)
+        adminPanelFormsReducer(this._state.adminPanel.adminPanelForms, action)
 
         this._callSubscriber();
 
