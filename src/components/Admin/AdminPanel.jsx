@@ -48,7 +48,7 @@ const AdminPanel = (props) => {
     }
 
     let addOfferPageCard = () => {
-        props.dispatch(offerPageCardsActionCreator(gameOfferSelector.current.value))
+            props.dispatch(offerPageCardsActionCreator(gameOfferSelector.current.value))
     }
 
     let onChangeCardId = () => {

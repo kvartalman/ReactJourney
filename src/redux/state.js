@@ -342,10 +342,15 @@ let store = {
         else if (action.type === 'OFFERPAGE-ADD-CARD') {
 
             let newOfferPageCard = {
-                id: 0,
-                title: 0,
-                text:0
+                id: this._state.gameOfferPages[action.gameOfferSelector].offerCardsData.length,
+                title: this._state.adminPanelForms.offerPageCards.cardTitleForm,
+                text: this._state.adminPanelForms.offerPageCards.cardTextForm
             }
+
+            this._state.gameOfferPages[action.gameOfferSelector].offerCardsData.push(newOfferPageCard);
+            this._state.adminPanelForms.offerPageCards.cardTitleForm = '';
+            this._state.adminPanelForms.offerPageCards.cardTextForm = '';
+            this._callSubscriber();
         }
     }
 }
