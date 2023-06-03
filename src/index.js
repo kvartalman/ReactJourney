@@ -6,12 +6,12 @@ import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let reRender = () => {
+let reRender = (state) => {
     root.render(
         <BrowserRouter>
             <React.StrictMode>
                 <App
-                    state={store.getState()}
+                    state={state}
                     dispatch={store.dispatch.bind(store)}
                 />
             </React.StrictMode>
@@ -21,5 +21,8 @@ let reRender = () => {
 
 
 
-reRender();
-store.subscribe(reRender);
+reRender(store.getState());
+store.subscribe(() => {
+    let state = store.getState();
+    reRender(state)
+});
