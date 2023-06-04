@@ -5,14 +5,21 @@ import Row from 'react-bootstrap/Row';
 import Cards from "../Homepage/Cards/Cards";
 import React from "react";
 import './AdminPanel.css'
-import {offerPageCardsActionCreator, offerPageOnChangeActionCreator} from "../../redux/offerPagesCardsReducer";
-import {
-    homePageButtonsActionCreator,
-    homePageCardsActionCreator,
-    homePageOnChangeActionCreator
-} from "../../redux/homePageReducer";
+
 
 const AdminPanel = (props) => {
+
+    const cardsList = props.cardsData.map(card => (
+        <option>{card.title}</option>
+    ))
+
+    const linksList = props.linksList.map(card => (
+        <option>{card}</option>
+    ))
+
+    const getOfferPages = props.gameOfferPages.map(name => (
+        <option>{name}</option>
+    ))
 
     let newCardId = React.createRef();
     let newCardTitle = React.createRef();
@@ -27,56 +34,33 @@ const AdminPanel = (props) => {
     let newOfferPageCardText = React.createRef();
     let gameOfferSelector = React.createRef();
 
-    const cardsList = props.cardsData.map(card => (
-        <option>{card.title}</option>
-    ))
-
-    const linksList = props.linksList.map(card => (
-        <option>{card}</option>
-    ))
-
-    const getOfferPages = props.gameOfferPages.map(name => (
-        <option>{name}</option>
-    ))
-
-    let addHomePageCardButton = () => {
-        props.dispatch(homePageButtonsActionCreator(
-            cardTitle.current.value, newLink.current.value, newButtonType.current.value
-        ))
+    const onChangeCardId = () => {
+        props.onChangeCardId(newCardId.current.value)
     }
-    let addHomePageCard = () => {
-        props.dispatch(homePageCardsActionCreator())
+    const onChangeCardTitle = () => {
+        props.onChangeCardTitle(newCardTitle.current.value)
     }
-
-    let addOfferPageCard = () => {
-            props.dispatch(offerPageCardsActionCreator(gameOfferSelector.current.value))
+    const onChangeCardText = () => {
+        props.onChangeCardText(newCardText.current.value)
     }
-
-    let onChangeCardId = () => {
-        let text = newCardId.current.value;
-        props.dispatch(homePageOnChangeActionCreator(text, 'cardId'))
+    const addHomePageCard = () => {
+        props.addHomePageCard();
     }
-    let onChangeCardTitle = () => {
-        let text = newCardTitle.current.value;
-        props.dispatch(homePageOnChangeActionCreator(text, 'cardTitle'))
+    const onChangeButtonName = () => {
+        props.onChangeButtonName(newButtonName.current.value)
     }
-    let onChangeCardText = () => {
-        let text = newCardText.current.value;
-        props.dispatch(homePageOnChangeActionCreator(text, 'cardText'))
+    const addHomePageCardButton = () => {
+        props.addHomePageCardButton(cardTitle.current.value, newLink.current.value, newButtonType.current.value)}
+    const onChangeOfferCardTitle = () => {
+        props.onChangeOfferCardTitle(newOfferPageCardTitle.current.value)
     }
-    let onChangeButtonName = () => {
-        let text = newButtonName.current.value;
-        props.dispatch(homePageOnChangeActionCreator(text, 'buttonName'))
+    const onChangeOfferCardText = () => {
+        props.onChangeOfferCardText(newOfferPageCardText.current.value)
+    }
+    const addOfferPageCard = () => {
+        props.addOfferPageCard(gameOfferSelector.current.value)
     }
 
-    let onChangeOfferCardTitle = () => {
-        let text = newOfferPageCardTitle.current.value;
-        props.dispatch(offerPageOnChangeActionCreator(text, 'offerPageCardTitle'))
-    }
-    let onChangeOfferCardText = () => {
-        let text = newOfferPageCardText.current.value;
-        props.dispatch(offerPageOnChangeActionCreator(text, 'offerPageCardText'))
-    }
 
     return (
         <>

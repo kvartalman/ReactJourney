@@ -5,7 +5,7 @@ import {Route, Routes} from "react-router-dom";
 import HomePage from "./components/Homepage/Homepage";
 import Layout from "./components/Layout";
 import GameOffer from "./components/GameOffer/GameOffer";
-import AdminPanel from "./components/Admin/AdminPanel";
+import AdminPanelContainer from "./components/Admin/AdminPanelContainer";
 
 
 function App(props) {
@@ -34,13 +34,8 @@ function App(props) {
                         canvasMenuData={props.state.gameOfferPages.canvasMenuData}
                     />}/>
                     <Route path={'adminPanel'} element={
-                        <AdminPanel
-                            linksList={props.state.adminPanel.linksList}
-                            cardsData={props.state.homePage.cardsData}
-                            offerPageForms={props.state.gameOfferPages.offerPageCardsForms}
-                            homePageForms={props.state.homePage.homePageCardsForms}
-                            dispatch={props.dispatch}
-                            gameOfferPages={Object.keys(props.state.gameOfferPages.pagesData)}
+                        <AdminPanelContainer
+                            store={props.store}
                         />}/>
                 </Route>
             </Routes>

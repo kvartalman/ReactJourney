@@ -5,9 +5,9 @@ import adminPanelFormsReducer from "./adminPanelFormsReducer";
 import navbarReducer from "./navbarReducer";
 
 let reducersBatch = combineReducers({
-    homePage: homePageReducer,          // homePageReducer: homePageReducer
-    gameOfferPages: offerPagesCardsReducer,   // offerPagesCardsReducer: offerPagesCardsReducer
-    adminPanel: adminPanelFormsReducer,  // adminPanelFormsReducer: adminPanelFormsReducer
+    homePage: homePageReducer,
+    gameOfferPages: offerPagesCardsReducer,
+    adminPanel: adminPanelFormsReducer,
     navbarLinks: navbarReducer
 });
 
