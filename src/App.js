@@ -13,7 +13,7 @@ function App(props) {
         <>
             <Routes>
                 <Route path={'/'} element={<Layout
-                    navbarLinks={props.state.navbarLinks}
+                    store={props.store}
                 />}>
                     <Route index element={<HomePage
                         carouselData={props.state.homePage.carouselData}

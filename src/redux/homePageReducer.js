@@ -160,7 +160,7 @@ let initialState = {
         }
     ]
 }
-const homePageCardsReducer = (state = initialState, action) => {
+const homePageReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
@@ -239,4 +239,4 @@ export const homePageOnChangeActionCreator = (text, formName) =>
         formName: formName
     })
 
-export default homePageCardsReducer
+export default homePageReducer

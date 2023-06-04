@@ -3,12 +3,14 @@ import homePageReducer from "./homePageReducer";
 import offerPagesCardsReducer from "./offerPagesCardsReducer";
 import adminPanelFormsReducer from "./adminPanelFormsReducer";
 import navbarReducer from "./navbarReducer";
+import footerReducer from "./footerReducer";
 
 let reducersBatch = combineReducers({
     homePage: homePageReducer,
     gameOfferPages: offerPagesCardsReducer,
     adminPanel: adminPanelFormsReducer,
-    navbarLinks: navbarReducer
+    navbar: navbarReducer,
+    footer: footerReducer
 });
 
 let store = createStore(reducersBatch);

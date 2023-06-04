@@ -11,12 +11,20 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 const Navigation = (props) => {
 
     const [show, setShow] = useState(false);
-
+    const [showCtg, setShowCtg] = useState(false);
+    const closeCtgCanvas = () => setShowCtg(false);
+    const showCtgCanvas = () => setShowCtg(true);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     let navbarLinksArr = props.navbarLinks.map(link => (
         <NavLink onClick={handleClose} to={link.to} className={'navbarLink'} id={props.linkId}>{link.linkName}</NavLink>
+    ))
+
+    let dropDownLinks = props.dropdownLinks.map(link => (
+        <NavLink onClick={() => {setShow(false)}} to={link[0]} className={'dropdown-item'}>
+            {link[1]}
+        </NavLink>
     ))
 
     return (
@@ -50,15 +58,7 @@ const Navigation = (props) => {
                                     id={`offcanvasNavbarDropdown-expand-${'md'}`}
                                     className={'navbarLink navbarCtg'}
                                 >
-                                    <NavLink onClick={() => {setShow(false)}} to='dota2' className={'dropdown-item'}>
-                                        Dota 2
-                                    </NavLink>
-                                    <NavLink onClick={() => {setShow(false)}} to='lol' className={'dropdown-item'}>
-                                        League of Legends
-                                    </NavLink>
-                                    <NavLink onClick={() => {setShow(false)}} to='hots' className={'dropdown-item'}>
-                                        Heroes of the Storm
-                                    </NavLink>
+                                    {dropDownLinks}
                                 </NavDropdown>
                             </Nav>
                         </Offcanvas.Body>

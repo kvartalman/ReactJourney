@@ -4,7 +4,24 @@ import Container from "react-bootstrap/Container";
 import './Footer.css'
 import {NavLink} from "react-router-dom";
 
-const Footer = () => {
+const Footer = (props) => {
+
+    const paymentIcons = props.paymentIcons.map(link => (
+        <img src={link[0]} alt={link[1]}/>
+    ))
+
+    const vacanciesLinks = props.vacanciesLinks.map(link => (
+        <p><NavLink to={link[0]}>{link[1]}</NavLink></p>
+    ))
+
+    const servicesLinks = props.servicesLinks.map(link => (
+        <p><NavLink to={link[0]}>{link[1]}</NavLink></p>
+    ))
+
+    const pagesLinks = props.pagesLinks.map(link => (
+        <p><NavLink to={link[0]}>{link[1]}</NavLink></p>
+    ))
+
     return (
         <Container fluid>
         <Row className={'footer border border-4'} xs={1} md={3}>
@@ -13,13 +30,7 @@ const Footer = () => {
                     <h1>Pages</h1>
                 </div>
                 <div className={'footer-pages'}>
-                    <p><NavLink to={'/'}>Main page</NavLink></p>
-                    <p><NavLink to={'#'}>Categories</NavLink></p>
-                    <p><NavLink to={'#'}>Boosters</NavLink></p>
-                    <p><NavLink to={'#'}>Help</NavLink></p>
-                    <p><NavLink to={'#'}>Guides</NavLink></p>
-                    <p><NavLink to={'#'}>Contacts</NavLink></p>
-                    <p><NavLink to={'adminPanel'}>FAQ</NavLink></p>
+                    {pagesLinks}
                 </div>
             </Col>
             <Col>
@@ -27,16 +38,13 @@ const Footer = () => {
                     <h1>Services</h1>
                 </div>
                 <div className={'footer-pages'}>
-                    <p><NavLink to={'https://vk.com'}>Game currency</NavLink></p>
-                    <p><NavLink to={'#'}>Boost</NavLink></p>
-                    <p><NavLink to={'#'}>Achievements</NavLink></p>
-                    <p><NavLink to={'#'}>Play with a pro</NavLink></p>
+                    {servicesLinks}
                 </div>
                 <div className={'footer-titles'}>
                     <h1>Vacancies</h1>
                 </div>
                 <div className={'footer-pages'}>
-                    <p><NavLink to={'https://vk.com'}>Become a booster</NavLink></p>
+                    {vacanciesLinks}
                 </div>
             </Col>
             <Col>
@@ -50,10 +58,7 @@ const Footer = () => {
                     </p>
                 </div>
                 <div className={'payment-icons'}>
-                    <img src={'./payment-icons/mastercard.png'} alt={'mastercard'}/>
-                    <img src={'./payment-icons/visa.png'} alt={'visa'}/>
-                    <img src={'./payment-icons/qiwi.png'} alt={'qiwi'}/>
-                    <img src={'./payment-icons/paypal.png'} alt={'paypal'}/>
+                    {paymentIcons}
                 </div>
             </Col>
         </Row>
