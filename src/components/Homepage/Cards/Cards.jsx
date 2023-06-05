@@ -7,9 +7,9 @@ import CardsButton from "./Buttons/CardsButton";
 import './Buttons/CardsButton.css';
 const Cards = (props) => {
 
-    let cardsArray = props.cardsData.map(card => (<OfferCard bg={card.bg} id={card.tagId} title={
+    let cardsArray = props.cardsData.map(card => (<OfferCard key={card.id} bg={card.bg} id={card.tagId} title={
         card.title} text={card.text} button={<Container fluid><Row className={'row-cols-auto'}>{
-        card.button.map(button => (<CardsButton link={button.link} type={button.type} class={button.class}
+        card.button.map(button => (<CardsButton key={button.id} link={button.link} type={button.type} class={button.class}
                                                 name={button.name} />))
     }</Row></Container>}
     />))

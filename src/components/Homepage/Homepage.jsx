@@ -1,22 +1,22 @@
 import React from 'react';
-import Advantages from "./Advantages/Advantages";
-import Cards from "./Cards/Cards";
-import Steps from "./Steps/Steps";
-import Carousel from "./Carousel/Carousel";
+import CarouselContainer from "./Carousel/Carousel";
+import AdvantagesContainer from "./Advantages/AdvantagesContainer";
+import CardsContainer from "./Cards/CardsContainer";
+import StepsContainer from "./Steps/StepsContainer";
 
-function HomePage(props) {
+const HomePage = (props) => {
     return (
         <>
-            <Carousel
+            <CarouselContainer
                 carouselData={props.carouselData}
             />
-            <Advantages
+            <AdvantagesContainer
                 advData={props.advData}
             />
-            <Cards
+            <CardsContainer
                 cardsData={props.cardsData}
             />
-            <Steps
+            <StepsContainer
                 stepsElemsData={props.stepsElemsData}
             />
         </>

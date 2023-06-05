@@ -1,16 +1,17 @@
-import React from "react";
+
 
 let initialState = {
     navbarLinks: [
         {id: 0, to: '/', linkName: 'Main', linkId: ''},
         {id: 1, to: '/', linkName: 'Boosters', linkId: ''},
         {id: 2, to: '/', linkName: 'Help', linkId: ''},
+        {id: 3, to: 'categories', linkName: 'Categories', linkId: ''}
     ],
-    dropdownLinks: [
-        ['dota2', 'Dota 2'],
-        ['lol', 'League of Legends'],
-        ['hots', 'Heroes of the Storm']
-    ]
+    // dropdownLinks: [
+    //     {id: 0, to: 'dota2', linkName: 'Dota 2'},
+    //     {id: 1, to: 'lol', linkName: 'League of Legends'},
+    //     {id: 2, to: 'hots', linkName: 'Heroes of the Storm'},
+    // ]
 }
 
 const navbarReducer = (state = initialState, action) => {

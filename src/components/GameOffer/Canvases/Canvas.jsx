@@ -12,7 +12,7 @@ function Canvas(props) {
     const handleShow = () => setShow(true);
 
     let canvasButtonsArr = props.canvasButtons.map(button => (
-        <OfferPanelButton clickFunc={handleClose} link={button.link} name={button.name} />
+        <OfferPanelButton clickFunc={handleClose} key={button.id} link={button.link} name={button.name} />
     ))
 
     return (

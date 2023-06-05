@@ -2,10 +2,11 @@ import './App.css';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Route, Routes} from "react-router-dom";
-import HomePage from "./components/Homepage/Homepage";
 import Layout from "./components/Layout";
-import GameOffer from "./components/GameOffer/GameOffer";
 import AdminPanelContainer from "./components/Admin/AdminPanelContainer";
+import CategoriesContainer from "./components/Categories/CategoriesContainer";
+import HomepageContainer from "./components/Homepage/HomepageContainer";
+import GameOfferContainer from "./components/GameOffer/GameOfferContainer";
 
 
 function App(props) {
@@ -15,23 +16,23 @@ function App(props) {
                 <Route path={'/'} element={<Layout
                     store={props.store}
                 />}>
-                    <Route index element={<HomePage
-                        carouselData={props.state.homePage.carouselData}
-                        advData={props.state.homePage.advData}
-                        cardsData={props.state.homePage.cardsData}
-                        stepsElemsData={props.state.homePage.stepsElemsData}
+                    <Route index element={<HomepageContainer
+                        store={props.store}
                     />}/>
-                    <Route path={'dota2'} element={<GameOffer
-                        gameOffer={props.state.gameOfferPages.pagesData.dota2}
-                        canvasMenuData={props.state.gameOfferPages.canvasMenuData}
+                    <Route path={'categories'} element={<CategoriesContainer
+                        store={props.store}
                     />}/>
-                    <Route path={'lol'} element={<GameOffer
-                        gameOffer={props.state.gameOfferPages.pagesData.lol}
-                        canvasMenuData={props.state.gameOfferPages.canvasMenuData}
+                    <Route path={'dota2'} element={<GameOfferContainer
+                        store={props.store}
+                        page={'dota2'}
                     />}/>
-                    <Route path={'hots'} element={<GameOffer
-                        gameOffer={props.state.gameOfferPages.pagesData.hots}
-                        canvasMenuData={props.state.gameOfferPages.canvasMenuData}
+                    <Route path={'lol'} element={<GameOfferContainer
+                        store={props.store}
+                        page={'lol'}
+                    />}/>
+                    <Route path={'hots'} element={<GameOfferContainer
+                        store={props.store}
+                        page={'hots'}
                     />}/>
                     <Route path={'adminPanel'} element={
                         <AdminPanelContainer

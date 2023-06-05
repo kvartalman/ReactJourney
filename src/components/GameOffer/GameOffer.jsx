@@ -11,11 +11,11 @@ import Canvas from "./Canvases/Canvas";
 const GameOffer = (props) => {
 
     let offerCardsArr = props.gameOffer.offerCardsData.map(card => (
-        <GameOfferCard title={card.title} text={card.text}/>
+        <GameOfferCard title={card.title} key={card.id} text={card.text}/>
     ))
 
     let panelButtonsArr = props.gameOffer.panelButton.map(button => (
-        <OfferPanelButton link={button.link} name={button.name}/>
+        <OfferPanelButton link={button.link} key={button.id} name={button.name}/>
     ))
 
     return (

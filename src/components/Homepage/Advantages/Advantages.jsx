@@ -7,7 +7,7 @@ import AdvantageCard from "./AdvantageCard";
 const Advantages = (props) => {
 
     let advCardsArr = props.advData.map(card => (
-        <AdvantageCard img={card.img} title={card.title} text={card.text}/>
+        <AdvantageCard img={card.img} key={card.id} title={card.title} text={card.text}/>
     ))
 
     return (

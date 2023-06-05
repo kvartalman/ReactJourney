@@ -1,7 +1,6 @@
 import React from 'react';
 import '../GameOffer.css'
 import {NavLink} from "react-router-dom";
-import $ from 'jquery';
 const OfferPanelButton = (props) => {
 
     return (

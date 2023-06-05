@@ -1,70 +1,54 @@
-import React from "react";
-import './AdminPanel.css'
-import {offerPageCardsActionCreator, offerPageOnChangeActionCreator} from "../../redux/offerPagesCardsReducer";
+import {offerPageCardsActionCreator, offerPageOnChangeActionCreator} from "../../redux/offerPagesReducer";
 import {
     homePageButtonsActionCreator,
     homePageCardsActionCreator,
     homePageOnChangeActionCreator
 } from "../../redux/homePageReducer";
 import AdminPanel from "./AdminPanel";
+import {connect} from "react-redux";
 
-const AdminPanelContainer = (props) => {
+let mapStateToProps = (state) => {
+    return {
+        cardsData: state.homePage.cardsData,
+        gameOfferPages: Object.keys(state.gameOfferPages.pagesData),
+        linksList: state.adminPanel.linksList,
+        homePageForms: state.homePage.homePageCardsForms,
+        offerPageForms: state.gameOfferPages.offerPageCardsForms
+    }
+}
 
-    let state = props.store.getState();
-
-    let addHomePageCardButton = (cardTitle, newLink, newButtonType) => {
-        props.store.dispatch(homePageButtonsActionCreator(
+let mapDispatchToProps = (dispatch) => {
+    return {
+        addHomePageCardButton: (cardTitle, newLink, newButtonType) => {
+            dispatch(homePageButtonsActionCreator(
             cardTitle, newLink, newButtonType
         ))
+        },
+        addHomePageCard: () => {dispatch(homePageCardsActionCreator())},
+        addOfferPageCard: (gameOfferSelector) => {
+            dispatch(offerPageCardsActionCreator(gameOfferSelector))
+        },
+        onChangeCardId: (text) => {
+            dispatch(homePageOnChangeActionCreator(text, 'cardId'))
+        },
+        onChangeCardTitle: (text) => {
+            dispatch(homePageOnChangeActionCreator(text, 'cardTitle'))
+        },
+        onChangeCardText: (text) => {
+            dispatch(homePageOnChangeActionCreator(text, 'cardText'))
+        },
+        onChangeButtonName: (text) => {
+            dispatch(homePageOnChangeActionCreator(text, 'buttonName'))
+        },
+        onChangeOfferCardTitle: (text) => {
+            dispatch(offerPageOnChangeActionCreator(text, 'offerPageCardTitle'))
+        },
+        onChangeOfferCardText: (text) => {
+            dispatch(offerPageOnChangeActionCreator(text, 'offerPageCardText'))
+        }
     }
-    let addHomePageCard = () => {
-        props.store.dispatch(homePageCardsActionCreator())
-    }
-
-    let addOfferPageCard = (gameOfferSelector) => {
-            props.store.dispatch(offerPageCardsActionCreator(gameOfferSelector))
-    }
-
-    let onChangeCardId = (text) => {
-        props.store.dispatch(homePageOnChangeActionCreator(text, 'cardId'))
-    }
-    let onChangeCardTitle = (text) => {
-        props.store.dispatch(homePageOnChangeActionCreator(text, 'cardTitle'))
-    }
-    let onChangeCardText = (text) => {
-        props.store.dispatch(homePageOnChangeActionCreator(text, 'cardText'))
-    }
-    let onChangeButtonName = (text) => {
-        props.store.dispatch(homePageOnChangeActionCreator(text, 'buttonName'))
-    }
-
-    let onChangeOfferCardTitle = (text) => {
-        props.store.dispatch(offerPageOnChangeActionCreator(text, 'offerPageCardTitle'))
-    }
-    let onChangeOfferCardText = (text) => {
-        props.store.dispatch(offerPageOnChangeActionCreator(text, 'offerPageCardText'))
-    }
-
-    return (
-        <AdminPanel
-            cardsData={state.homePage.cardsData}
-            gameOfferPages={Object.keys(state.gameOfferPages.pagesData)}
-            linksList={state.adminPanel.linksList}
-
-            homePageForms={state.homePage.homePageCardsForms}
-            offerPageForms={state.gameOfferPages.offerPageCardsForms}
-
-            addHomePageCardButton={addHomePageCardButton}
-            addHomePageCard={addHomePageCard}
-            addOfferPageCard={addOfferPageCard}
-            onChangeCardId={onChangeCardId}
-            onChangeCardTitle={onChangeCardTitle}
-            onChangeCardText={onChangeCardText}
-            onChangeButtonName={onChangeButtonName}
-            onChangeOfferCardTitle={onChangeOfferCardTitle}
-            onChangeOfferCardText={onChangeOfferCardText}
-        />
-    );
 }
+
+const AdminPanelContainer = connect(mapStateToProps, mapDispatchToProps)(AdminPanel);
 
 export default AdminPanelContainer

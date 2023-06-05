@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import {Button} from "react-bootstrap";
 import './Navbar.css'
 import {NavLink} from "react-router-dom";
@@ -11,9 +10,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 const Navigation = (props) => {
 
     const [show, setShow] = useState(false);
-    const [showCtg, setShowCtg] = useState(false);
-    const closeCtgCanvas = () => setShowCtg(false);
-    const showCtgCanvas = () => setShowCtg(true);
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -21,11 +18,11 @@ const Navigation = (props) => {
         <NavLink onClick={handleClose} to={link.to} className={'navbarLink'} id={props.linkId}>{link.linkName}</NavLink>
     ))
 
-    let dropDownLinks = props.dropdownLinks.map(link => (
-        <NavLink onClick={() => {setShow(false)}} to={link[0]} className={'dropdown-item'}>
-            {link[1]}
-        </NavLink>
-    ))
+    // let dropDownLinks = props.dropdownLinks.map(link => (
+    //     <NavLink key={link.id} onClick={() => {setShow(false)}} to={link.to} className={'dropdown-item'}>
+    //         {link.linkName}
+    //     </NavLink>
+    // ))
 
     return (
         <>
@@ -53,13 +50,13 @@ const Navigation = (props) => {
                         <Offcanvas.Body>
                             <Nav className="justify-content-end flex-grow-1 pe-3">
                                 {navbarLinksArr}
-                                <NavDropdown
-                                    title="Categories"
-                                    id={`offcanvasNavbarDropdown-expand-${'md'}`}
-                                    className={'navbarLink navbarCtg'}
-                                >
-                                    {dropDownLinks}
-                                </NavDropdown>
+                                {/*<NavDropdown*/}
+                                {/*    title="Categories"*/}
+                                {/*    id={`offcanvasNavbarDropdown-expand-${'md'}`}*/}
+                                {/*    className={'navbarLink navbarCtg'}*/}
+                                {/*>*/}
+                                {/*    {dropDownLinks}*/}
+                                {/*</NavDropdown>*/}
                             </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
@@ -68,6 +65,7 @@ const Navigation = (props) => {
                     <Button id={'loginButton'}>Log in</Button>
                 </Container>
             </Navbar>
+
         </>
 
     );

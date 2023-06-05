@@ -1,7 +1,7 @@
 import React from "react";
 import adminPanelFormsReducer from "./adminPanelFormsReducer";
 import homePageReducer from "./homePageReducer";
-import offerPagesCardsReducer from "./offerPagesCardsReducer";
+import offerPagesReducer from "./offerPagesReducer";
 
 let store = {
     _state: {
@@ -293,7 +293,7 @@ let store = {
             [this._state.homePage.cardsData, this._state.adminPanel.adminPanelForms.homePageCards],
             action
         )
-        offerPagesCardsReducer(
+        offerPagesReducer(
             [this._state.gameOfferPages.pagesData, this._state.adminPanel.adminPanelForms.offerPageCards],
             action
         )

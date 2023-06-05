@@ -162,62 +162,86 @@ let initialState = {
 }
 const homePageReducer = (state = initialState, action) => {
 
+    let stateCopy;
+
     switch (action.type) {
 
-        case homePageUpdateForms:
+        case homePageUpdateForms: {
+
+            stateCopy = {
+                ...state,
+                homePageCardsForms: {...state.homePageCardsForms}
+            };
+
             if (action.formName === 'cardId') {
-                state.homePageCardsForms.cardIdForm = action.text;
+                stateCopy.homePageCardsForms.cardIdForm = action.text;
             } else if (action.formName === 'cardTitle') {
-                state.homePageCardsForms.cardTitleForm = action.text;
+                stateCopy.homePageCardsForms.cardTitleForm = action.text;
             } else if (action.formName === 'cardText') {
-                state.homePageCardsForms.cardTextForm = action.text;
+                stateCopy.homePageCardsForms.cardTextForm = action.text;
             } else if (action.formName === 'buttonName') {
-                state.homePageCardsForms.buttonNameForm = action.text;
+                stateCopy.homePageCardsForms.buttonNameForm = action.text;
             }
             break
+        }
 
-        case homePageAddCard:
+        case homePageAddCard: {
+
+            stateCopy = {
+                ...state,
+                homePageCardsForms: {...state.homePageCardsForms},
+                cardsData: [...state.cardsData]
+            };
+
             let newCard = {
-                id: state.cardsData.length,
-                tagId: state.homePageCardsForms.cardIdForm,
-                title: state.homePageCardsForms.cardTitleForm,
-                text: state.homePageCardsForms.cardTextForm,
+                id: stateCopy.cardsData.length,
+                tagId: stateCopy.homePageCardsForms.cardIdForm,
+                title: stateCopy.homePageCardsForms.cardTitleForm,
+                text: stateCopy.homePageCardsForms.cardTextForm,
                 button: [],
                 bg: './offerbackgrounds/HomepageOfferCards/dota2.jpg'
             };
-            state.cardsData.push(newCard);
-            state.homePageCardsForms.cardIdForm = '';
-            state.homePageCardsForms.cardTitleForm = '';
-            state.homePageCardsForms.cardTextForm = '';
+            stateCopy.cardsData.push(newCard);
+            stateCopy.homePageCardsForms.cardIdForm = '';
+            stateCopy.homePageCardsForms.cardTitleForm = '';
+            stateCopy.homePageCardsForms.cardTextForm = '';
             break
+        }
 
         case
-        homePageAddButton:
+        homePageAddButton: {
+
+            stateCopy = {
+                ...state,
+                homePageCardsForms: {...state.homePageCardsForms},
+                cardsData: [...state.cardsData]
+            };
+
             let findId = (cardTitle) => {
-                for (let i = 0; i < state.cardsData.length; i++) {
-                    if (state.cardsData[i].title === cardTitle) {
+                for (let i = 0; i < stateCopy.cardsData.length; i++) {
+                    if (stateCopy.cardsData[i].title === cardTitle) {
                         return (i)
                     }
                 }
             };
 
             let newButton = {
-                id: state.cardsData[findId(action.cardTitle)].button.length,
+                id: stateCopy.cardsData[findId(action.cardTitle)].button.length,
                 link: action.link,
                 type: action.btnType,
                 class: action.btnType === 'mainButton' ? 'card-main-button' : 'order-button',
-                name: state.homePageCardsForms.buttonNameForm
+                name: stateCopy.homePageCardsForms.buttonNameForm
             };
-            state.cardsData[findId(action.cardTitle)].button.push(newButton);
-            state.homePageCardsForms.buttonNameForm = '';
+            stateCopy.cardsData[findId(action.cardTitle)].button.push(newButton);
+            stateCopy.homePageCardsForms.buttonNameForm = '';
             break
-
+        }
 
         default:
             return state;
     }
 
-    return state;
+    return stateCopy;
 }
 
 export const homePageCardsActionCreator = () =>

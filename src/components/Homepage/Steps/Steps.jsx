@@ -9,7 +9,7 @@ import StepElem from "./StepElem";
 const Steps = (props) => {
 
     let stepsElemsArr = props.stepsElemsData.map(elem => (
-        <StepElem xmlns={elem.xmlns} class={elem.class} path={elem.path} text={elem.text} />
+        <StepElem key={elem.id} xmlns={elem.xmlns} class={elem.class} path={elem.path} text={elem.text} />
     ))
 
     return (

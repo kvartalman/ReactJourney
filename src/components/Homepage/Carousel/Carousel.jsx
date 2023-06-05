@@ -3,11 +3,11 @@ import {Carousel} from "react-bootstrap";
 import './Carousel.css'
 import CarouselItems from "./CarouselItems";
 
-const Carousell = (props) => {
+const CarouselComponent = (props) => {
 
     let carouselItemArr = props.carouselData.map(item => (
         <Carousel.Item>
-            <CarouselItems srcImg={item.srcImg} altImg={item.altImg}
+            <CarouselItems key={item.id} srcImg={item.srcImg} altImg={item.altImg}
                            text={<Carousel.Caption className={'carousel-text'}>{item.text}</Carousel.Caption>} />
         </Carousel.Item>
     ))
@@ -22,4 +22,4 @@ const Carousell = (props) => {
 
 
 
-export default Carousell;
+export default CarouselComponent;
