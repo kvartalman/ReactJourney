@@ -114,33 +114,40 @@ const offerPagesReducer = (state = initialState, action) => {
 
         case offerPageUpdateForms:
 
+            let text = action.text;
+
             stateCopy = {
                 ...state,
                 offerPageCardsForms: {...state.offerPageCardsForms}
             };
 
             if (action.formName === 'offerPageCardTitle') {
-                stateCopy.offerPageCardsForms.cardTitleForm = action.text;
+                stateCopy.offerPageCardsForms.cardTitleForm = text;
             } else if (action.formName === 'offerPageCardText') {
-                stateCopy.offerPageCardsForms.cardTextForm = action.text;
+                stateCopy.offerPageCardsForms.cardTextForm = text;
             }
             break
 
         case offerPageAddCard:
 
+            let game = action.gameOfferSelector;
+
             stateCopy = {
                 ...state,
                 offerPageCardsForms: {...state.offerPageCardsForms},
-                pagesData: {...state.pagesData}
+                pagesData: {...state.pagesData
+                },
             };
 
-            let newOfferPageCard = {
-                id: stateCopy.pagesData[action.gameOfferSelector].offerCardsData.length,
-                title: stateCopy.offerPageCardsForms.cardTitleForm,
-                text: stateCopy.offerPageCardsForms.cardTextForm
-            }
+            stateCopy.pagesData[game].offerCardsData = [
+                ...state.pagesData[game].offerCardsData,
+                {
+                    id: stateCopy.pagesData[game].offerCardsData.length,
+                    title: stateCopy.offerPageCardsForms.cardTitleForm,
+                    text: stateCopy.offerPageCardsForms.cardTextForm
+                }
+            ]
 
-            stateCopy.pagesData[action.gameOfferSelector].offerCardsData.push(newOfferPageCard);
             stateCopy.offerPageCardsForms.cardTitleForm = '';
             stateCopy.offerPageCardsForms.cardTextForm = '';
             break

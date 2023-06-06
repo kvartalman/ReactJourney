@@ -55,8 +55,8 @@ let initialState = {
                 "at the lowest possible price. We don't overcharge."
         }
     ],
-    cardsData: [
-        {
+    cardsData: {
+        dotaCard: {
             id: 0,
             tagId: 'dotaCard', title: 'Dota 2', text: 'We suggest you to order a Dota 2 boost',
             button: [
@@ -67,7 +67,7 @@ let initialState = {
             ],
             bg: './offerbackgrounds/HomepageOfferCards/dota2.jpg'
         },
-        {
+        csCard: {
             id: 1,
             tagId: 'csCard', title: 'CS:GO', text: 'We suggest you to order a CS:GO boost',
             button: [
@@ -79,7 +79,7 @@ let initialState = {
             ],
             bg: './offerbackgrounds/HomepageOfferCards/cs.jpg'
         },
-        {
+        hotsCard: {
             id: 2,
             tagId: 'hotsCard', title: 'Heroes of the Storm', text: 'We suggest you to order a HotS boost',
             button: [
@@ -90,7 +90,7 @@ let initialState = {
             ],
             bg: './offerbackgrounds/HomepageOfferCards/hots.avif'
         },
-        {
+        warfaceCard: {
             id: 3,
             tagId: 'warfaceCard', title: 'Warface', text: 'We suggest you to order a Warface boost',
             button: [
@@ -101,7 +101,7 @@ let initialState = {
             ],
             bg: './offerbackgrounds/HomepageOfferCards/warface.jpg'
         },
-        {
+        lolCard: {
             id: 4,
             tagId: 'lolCard', title: 'League of Legends', text: 'We suggest you to order a LoL boost',
             button: [
@@ -112,7 +112,7 @@ let initialState = {
             ],
             bg: './offerbackgrounds/HomepageOfferCards/lol.jpg'
         },
-        {
+        pubgCard: {
             id: 5,
             tagId: 'pubgCard', title: 'PUBG', text: 'We suggest you to order a PUBG boost',
             button: [
@@ -123,7 +123,7 @@ let initialState = {
             ],
             bg: './offerbackgrounds/HomepageOfferCards/pubg.png'
         }
-    ],
+        },
     stepsElemsData: [
         {
             id: 0,
@@ -190,18 +190,20 @@ const homePageReducer = (state = initialState, action) => {
             stateCopy = {
                 ...state,
                 homePageCardsForms: {...state.homePageCardsForms},
-                cardsData: [...state.cardsData]
+                cardsData: {
+                    ...state.cardsData,
+                },
             };
 
-            let newCard = {
-                id: stateCopy.cardsData.length,
-                tagId: stateCopy.homePageCardsForms.cardIdForm,
-                title: stateCopy.homePageCardsForms.cardTitleForm,
-                text: stateCopy.homePageCardsForms.cardTextForm,
+            stateCopy.cardsData[state.homePageCardsForms.cardIdForm] = {
+                id: state.cardsData.length,
+                tagId: state.homePageCardsForms.cardIdForm,
+                title: state.homePageCardsForms.cardTitleForm,
+                text: state.homePageCardsForms.cardTextForm,
                 button: [],
                 bg: './offerbackgrounds/HomepageOfferCards/dota2.jpg'
-            };
-            stateCopy.cardsData.push(newCard);
+            }
+
             stateCopy.homePageCardsForms.cardIdForm = '';
             stateCopy.homePageCardsForms.cardTitleForm = '';
             stateCopy.homePageCardsForms.cardTextForm = '';
@@ -214,25 +216,20 @@ const homePageReducer = (state = initialState, action) => {
             stateCopy = {
                 ...state,
                 homePageCardsForms: {...state.homePageCardsForms},
-                cardsData: [...state.cardsData]
+                cardsData: {...state.cardsData}
             };
 
-            let findId = (cardTitle) => {
-                for (let i = 0; i < stateCopy.cardsData.length; i++) {
-                    if (stateCopy.cardsData[i].title === cardTitle) {
-                        return (i)
-                    }
+            stateCopy.cardsData[action.cardKey].button = [
+                ...state.cardsData[action.cardKey].button,
+                {
+                    id: stateCopy.cardsData[action.cardKey].button.length,
+                    link: action.link,
+                    type: action.btnType,
+                    class: action.btnType === 'mainButton' ? 'card-main-button' : 'order-button',
+                    name: stateCopy.homePageCardsForms.buttonNameForm
                 }
-            };
+            ]
 
-            let newButton = {
-                id: stateCopy.cardsData[findId(action.cardTitle)].button.length,
-                link: action.link,
-                type: action.btnType,
-                class: action.btnType === 'mainButton' ? 'card-main-button' : 'order-button',
-                name: stateCopy.homePageCardsForms.buttonNameForm
-            };
-            stateCopy.cardsData[findId(action.cardTitle)].button.push(newButton);
             stateCopy.homePageCardsForms.buttonNameForm = '';
             break
         }
@@ -248,10 +245,10 @@ export const homePageCardsActionCreator = () =>
     ({
         type: homePageAddCard,
     })
-export const homePageButtonsActionCreator = (cardTitle, link, btnType) =>
+export const homePageButtonsActionCreator = (cardKey, link, btnType) =>
     ({
         type: homePageAddButton,
-        cardTitle: cardTitle,
+        cardKey: cardKey,
         link: link,
         btnType: btnType
     })

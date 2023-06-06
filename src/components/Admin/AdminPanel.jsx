@@ -9,8 +9,8 @@ import './AdminPanel.css'
 
 const AdminPanel = (props) => {
 
-    const cardsList = props.cardsData.map(card => (
-        <option>{card.title}</option>
+    const cardsList = Object.keys(props.cardsData).map(card => (
+        <option>{card}</option>
     ))
 
     const linksList = props.linksList.map(card => (
@@ -26,7 +26,7 @@ const AdminPanel = (props) => {
     let newCardText = React.createRef();
 
     let newButtonType = React.createRef();
-    let cardTitle = React.createRef();
+    let cardKey = React.createRef();
     let newButtonName = React.createRef();
     let newLink = React.createRef();
 
@@ -50,7 +50,7 @@ const AdminPanel = (props) => {
         props.onChangeButtonName(newButtonName.current.value)
     }
     const addHomePageCardButton = () => {
-        props.addHomePageCardButton(cardTitle.current.value, newLink.current.value, newButtonType.current.value)}
+        props.addHomePageCardButton(cardKey.current.value, newLink.current.value, newButtonType.current.value)}
     const onChangeOfferCardTitle = () => {
         props.onChangeOfferCardTitle(newOfferPageCardTitle.current.value)
     }
@@ -114,7 +114,7 @@ const AdminPanel = (props) => {
                                 <option>button</option>
                             </Form.Select>
                             <Form.Label>Card</Form.Label>
-                            <Form.Select ref={cardTitle}>
+                            <Form.Select ref={cardKey}>
                                 {cardsList}
                             </Form.Select>
                             <Form.Label>Links list</Form.Label>
@@ -170,8 +170,7 @@ const AdminPanel = (props) => {
                     </Row>
                 </Form>
             </Row>
-            <Cards cardsImgTab={props.cardsImgTab}
-                   cardsData={props.cardsData}/>
+            <Cards cardsData={props.cardsData}/>
         </>
     );
 }

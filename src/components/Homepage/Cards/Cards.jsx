@@ -5,14 +5,32 @@ import './Cards.css';
 import OfferCard from "./OfferCard";
 import CardsButton from "./Buttons/CardsButton";
 import './Buttons/CardsButton.css';
+
 const Cards = (props) => {
 
-    let cardsArray = props.cardsData.map(card => (<OfferCard key={card.id} bg={card.bg} id={card.tagId} title={
-        card.title} text={card.text} button={<Container fluid><Row className={'row-cols-auto'}>{
-        card.button.map(button => (<CardsButton key={button.id} link={button.link} type={button.type} class={button.class}
-                                                name={button.name} />))
-    }</Row></Container>}
-    />))
+    let cardsArray = Object.keys(props.cardsData).map(card =>
+        (
+            <OfferCard
+                key={card.id}
+                bg={props.cardsData[card].bg}
+                id={props.cardsData[card].tagId}
+                title={props.cardsData[card].title}
+                text={props.cardsData[card].text}
+                button={
+                    <Container fluid><Row className={'row-cols-auto'}>
+                        {
+                            props.cardsData[card].button.map(button => (
+                                <CardsButton
+                                    key={button.id}
+                                    link={button.link}
+                                    type={button.type}
+                                    class={button.class}
+                                    name={button.name}
+                                />))
+                        }
+                    </Row></Container>}
+            />
+        ))
 
     return (
         <Container fluid>
