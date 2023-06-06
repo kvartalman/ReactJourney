@@ -1,14 +1,18 @@
 import Categories from "./Categories";
+import {connect} from "react-redux";
 
-const CategoriesContainer = (props) => {
 
-    const state = props.store.getState();
-
-    return (
-        <Categories
-        categoriesLinks={state.categories.categoriesLinks}
-        />
-    )
+const mapStateToProps = (state) => {
+    return {
+        categoriesLinks: state.categories.categoriesLinks
+    }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+const CategoriesContainer = connect(mapStateToProps, mapDispatchToProps)(Categories);
+
 
 export default CategoriesContainer

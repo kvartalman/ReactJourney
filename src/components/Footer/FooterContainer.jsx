@@ -1,17 +1,20 @@
 import React from "react";
 import Footer from "./Footer";
+import {connect} from "react-redux";
 
-
-const FooterContainer = (props) => {
-
-    return (
-        <Footer
-            pagesLinks={props.footer.pagesLinks}
-            servicesLinks={props.footer.servicesLinks}
-            vacanciesLinks={props.footer.vacanciesLinks}
-            paymentIcons={props.footer.paymentIcons}
-        />
-    )
+const mapStateToProps = (state) => {
+    return {
+        pagesLinks: state.footer.pagesLinks,
+        servicesLinks: state.footer.servicesLinks,
+        vacanciesLinks: state.footer.vacanciesLinks,
+        paymentIcons: state.footer.paymentIcons
+    }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+const FooterContainer = connect(mapStateToProps, mapDispatchToProps)(Footer);
 
 export default FooterContainer

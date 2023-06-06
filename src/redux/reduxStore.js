@@ -17,6 +17,4 @@ let reducersBatch = combineReducers({
 
 let store = createStore(reducersBatch);
 
-window.store = store;
-
 export default store

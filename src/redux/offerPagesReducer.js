@@ -135,8 +135,8 @@ const offerPagesReducer = (state = initialState, action) => {
             stateCopy = {
                 ...state,
                 offerPageCardsForms: {...state.offerPageCardsForms},
-                pagesData: {...state.pagesData
-                },
+                pagesData: {...state.pagesData,
+                }
             };
 
             stateCopy.pagesData[game].offerCardsData = [

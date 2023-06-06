@@ -9,34 +9,27 @@ import HomepageContainer from "./components/Homepage/HomepageContainer";
 import GameOfferContainer from "./components/GameOffer/GameOfferContainer";
 
 
-function App(props) {
+function App() {
     return (
         <>
             <Routes>
                 <Route path={'/'} element={<Layout
-                    store={props.store}
                 />}>
                     <Route index element={<HomepageContainer
-                        store={props.store}
                     />}/>
                     <Route path={'categories'} element={<CategoriesContainer
-                        store={props.store}
                     />}/>
                     <Route path={'dota2'} element={<GameOfferContainer
-                        store={props.store}
                         page={'dota2'}
                     />}/>
                     <Route path={'lol'} element={<GameOfferContainer
-                        store={props.store}
                         page={'lol'}
                     />}/>
                     <Route path={'hots'} element={<GameOfferContainer
-                        store={props.store}
                         page={'hots'}
                     />}/>
-                    <Route path={'adminPanel'} element={
+                    <Route path={'admin-panel'} element={
                         <AdminPanelContainer
-                            store={props.store}
                         />}/>
                 </Route>
             </Routes>

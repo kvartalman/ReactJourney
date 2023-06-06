@@ -3,15 +3,12 @@ import React from "react";
 import FooterContainer from "./Footer/FooterContainer";
 import NavbarContainer from "./Navbar/NavbarContainer";
 
-const Layout = (props) => {
-
-    let state = props.store.getState();
+const Layout = () => {
 
     return (
         <>
             <header>
                 <NavbarContainer
-                    navbar={state.navbar}
                 />
             </header>
             <body>
@@ -19,7 +16,6 @@ const Layout = (props) => {
             </body>
             <footer>
                 <FooterContainer
-                    footer={state.footer}
                 />
             </footer>
         </>

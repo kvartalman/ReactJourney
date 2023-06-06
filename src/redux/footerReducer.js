@@ -7,7 +7,7 @@ let initialState = {
         ['#', 'Help'],
         ['#', 'Guides'],
         ['#', 'Contacts'],
-        ['adminPanel', 'FAQ']
+        ['#', 'FAQ']
     ],
     servicesLinks: [
         ['#', 'Game currency'],

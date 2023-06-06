@@ -33,7 +33,7 @@
 }
 
 .navbarLink, #offcanvasNavbarDropdown-expand-md {
-    margin: 5px 10px;
+    margin: 5px 1.5em;
     letter-spacing: 0.1em;
     font-weight: bold;
     color: rgb(33, 37, 41);
