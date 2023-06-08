@@ -217,9 +217,8 @@ const homePageReducer = (state = initialState, action) => {
                 cardsData:  {...state.cardsData}
             };
 
-            stateCopy.cardsData[action.cardKey].button = [...state.cardsData[action.cardKey].button]
-
-            stateCopy.cardsData[action.cardKey].button.push(
+            stateCopy.cardsData[action.cardKey].button = [
+                ...state.cardsData[action.cardKey].button,
                 {
                     id: stateCopy.cardsData[action.cardKey].button.length,
                     link: action.link,
@@ -227,7 +226,7 @@ const homePageReducer = (state = initialState, action) => {
                     class: action.btnType === 'mainButton' ? 'card-main-button' : 'order-button',
                     name: stateCopy.homePageCardsForms.buttonNameForm
                 }
-            )
+            ]
 
             stateCopy.homePageCardsForms.buttonNameForm = '';
             break

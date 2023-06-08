@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Offcanvas} from "react-bootstrap";
 import './Canvas.css'
 import OfferPanelButton from "../OfferPanel/OfferPanelButton";
@@ -14,6 +14,17 @@ function Canvas(props) {
     let canvasButtonsArr = props.canvasButtons.map(button => (
         <OfferPanelButton clickFunc={handleClose} key={button.id} link={button.link} name={button.name} />
     ))
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 991) {
+                handleClose();
+            }
+        };
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    });
+
 
     return (
         <>

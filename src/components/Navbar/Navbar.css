@@ -32,7 +32,7 @@
     align-items: center;
 }
 
-.navbarLink, #offcanvasNavbarDropdown-expand-md {
+.navbarLink {
     margin: 5px 1.5em;
     letter-spacing: 0.1em;
     font-weight: bold;
@@ -42,7 +42,7 @@
 }
 
 
-.navbarLink:hover, #offcanvasNavbarDropdown-expand-md:hover {
+.navbarLink:hover {
     transition: 0.1s;
     color: white;
 }
@@ -89,7 +89,7 @@
     display: block !important;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     #loginButton, #signLink {
         display: none;
     }

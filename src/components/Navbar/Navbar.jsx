@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -18,11 +18,15 @@ const Navigation = (props) => {
         <NavLink onClick={handleClose} to={link.to} className={'navbarLink'} id={props.linkId}>{link.linkName}</NavLink>
     ))
 
-    // let dropDownLinks = props.dropdownLinks.map(link => (
-    //     <NavLink key={link.id} onClick={() => {setShow(false)}} to={link.to} className={'dropdown-item'}>
-    //         {link.linkName}
-    //     </NavLink>
-    // ))
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 768) {
+                handleClose();
+            }
+        };
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    });
 
     return (
         <>
@@ -50,13 +54,6 @@ const Navigation = (props) => {
                         <Offcanvas.Body>
                             <Nav className="justify-content-end flex-grow-1 pe-3">
                                 {navbarLinksArr}
-                                {/*<NavDropdown*/}
-                                {/*    title="Categories"*/}
-                                {/*    id={`offcanvasNavbarDropdown-expand-${'md'}`}*/}
-                                {/*    className={'navbarLink navbarCtg'}*/}
-                                {/*>*/}
-                                {/*    {dropDownLinks}*/}
-                                {/*</NavDropdown>*/}
                             </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
