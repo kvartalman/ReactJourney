@@ -2,7 +2,8 @@ import React from "react";
 
 const homePageAddCard = 'HOMEPAGE-ADD-CARD';
 const homePageAddButton = 'HOMEPAGE-ADD-BUTTON';
-const homePageUpdateForms = 'HOMEPAGE-ON-CHANGE'
+const homePageUpdateForms = 'HOMEPAGE-ON-CHANGE';
+const homePageCardsData = 'HOMEPAGE-CARD-DATA';
 
 let initialState = {
     homePageCardsForms: {
@@ -55,75 +56,7 @@ let initialState = {
                 "at the lowest possible price. We don't overcharge."
         }
     ],
-    cardsData: {
-        dotaCard: {
-            id: 0,
-            tagId: 'dotaCard', title: 'Dota 2', text: 'We suggest you to order a Dota 2 boost',
-            button: [
-                {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
-                {id: 1, link: '#', type: 'button', class: 'order-button', name: 'Skins'},
-                {id: 2, link: '#', type: 'button', class: 'order-button', name: 'MMR'},
-                {id: 3, link: '#', type: 'button', class: 'order-button', name: 'LOW PRIORITY'},
-            ],
-            bg: './offerbackgrounds/HomepageOfferCards/dota2.jpg'
-        },
-        csCard: {
-            id: 1,
-            tagId: 'csCard', title: 'CS:GO', text: 'We suggest you to order a CS:GO boost',
-            button: [
-                {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
-                {id: 1, link: '#', type: 'button', class: 'order-button', name: 'Skins'},
-                {id: 2, link: '#', type: 'button', class: 'order-button', name: 'RMM'},
-                {id: 3, link: '#', type: 'button', class: 'order-button', name: 'FACEIT'},
-                {id: 4, link: '#', type: 'button', class: 'order-button', name: 'Lessons'}
-            ],
-            bg: './offerbackgrounds/HomepageOfferCards/cs.jpg'
-        },
-        hotsCard: {
-            id: 2,
-            tagId: 'hotsCard', title: 'Heroes of the Storm', text: 'We suggest you to order a HotS boost',
-            button: [
-                {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
-                {id: 1, link: '#', type: 'button', class: 'order-button', name: 'MMR'},
-                {id: 2, link: '#', type: 'button', class: 'order-button', name: 'Leveling'},
-                {id: 3, link: '#', type: 'button', class: 'order-button', name: 'Lessons'},
-            ],
-            bg: './offerbackgrounds/HomepageOfferCards/hots.avif'
-        },
-        warfaceCard: {
-            id: 3,
-            tagId: 'warfaceCard', title: 'Warface', text: 'We suggest you to order a Warface boost',
-            button: [
-                {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
-                {id: 1, link: '#', type: 'button', class: 'order-button', name: 'Ranked'},
-                {id: 2, link: '#', type: 'button', class: 'order-button', name: 'Leveling'},
-                {id: 3, link: '#', type: 'button', class: 'order-button', name: 'Currency'},
-            ],
-            bg: './offerbackgrounds/HomepageOfferCards/warface.jpg'
-        },
-        lolCard: {
-            id: 4,
-            tagId: 'lolCard', title: 'League of Legends', text: 'We suggest you to order a LoL boost',
-            button: [
-                {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
-                {id: 1, link: '#', type: 'button', class: 'order-button', name: 'Elo'},
-                {id: 2, link: '#', type: 'button', class: 'order-button', name: 'Leveling'},
-                {id: 3, link: '#', type: 'button', class: 'order-button', name: 'Coaching'},
-            ],
-            bg: './offerbackgrounds/HomepageOfferCards/lol.jpg'
-        },
-        pubgCard: {
-            id: 5,
-            tagId: 'pubgCard', title: 'PUBG', text: 'We suggest you to order a PUBG boost',
-            button: [
-                {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
-                {id: 1, link: '#', type: 'button', class: 'order-button', name: 'Get BP'},
-                {id: 2, link: '#', type: 'button', class: 'order-button', name: 'Ranked'},
-                {id: 3, link: '#', type: 'button', class: 'order-button', name: 'Party'},
-            ],
-            bg: './offerbackgrounds/HomepageOfferCards/pubg.png'
-        }
-        },
+    cardsData: {},
     stepsElemsData: [
         {
             id: 0,
@@ -160,11 +93,85 @@ let initialState = {
         }
     ]
 }
+// {
+//     dotaCard: {
+//         id: 0,
+//             tagId: 'dotaCard', title: 'Dota 2', text: 'We suggest you to order a Dota 2 boost',
+//             button: [
+//             {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
+//             {id: 1, link: '#', type: 'button', class: 'order-button', name: 'Skins'},
+//             {id: 2, link: '#', type: 'button', class: 'order-button', name: 'MMR'},
+//             {id: 3, link: '#', type: 'button', class: 'order-button', name: 'LOW PRIORITY'},
+//         ],
+//             bg: './offerbackgrounds/HomepageOfferCards/dota2.jpg'
+//     },
+//     csCard: {
+//         id: 1,
+//             tagId: 'csCard', title: 'CS:GO', text: 'We suggest you to order a CS:GO boost',
+//             button: [
+//             {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
+//             {id: 1, link: '#', type: 'button', class: 'order-button', name: 'Skins'},
+//             {id: 2, link: '#', type: 'button', class: 'order-button', name: 'RMM'},
+//             {id: 3, link: '#', type: 'button', class: 'order-button', name: 'FACEIT'},
+//             {id: 4, link: '#', type: 'button', class: 'order-button', name: 'Lessons'}
+//         ],
+//             bg: './offerbackgrounds/HomepageOfferCards/cs.jpg'
+//     },
+//     hotsCard: {
+//         id: 2,
+//             tagId: 'hotsCard', title: 'Heroes of the Storm', text: 'We suggest you to order a HotS boost',
+//             button: [
+//             {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
+//             {id: 1, link: '#', type: 'button', class: 'order-button', name: 'MMR'},
+//             {id: 2, link: '#', type: 'button', class: 'order-button', name: 'Leveling'},
+//             {id: 3, link: '#', type: 'button', class: 'order-button', name: 'Lessons'},
+//         ],
+//             bg: './offerbackgrounds/HomepageOfferCards/hots.avif'
+//     },
+//     warfaceCard: {
+//         id: 3,
+//             tagId: 'warfaceCard', title: 'Warface', text: 'We suggest you to order a Warface boost',
+//             button: [
+//             {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
+//             {id: 1, link: '#', type: 'button', class: 'order-button', name: 'Ranked'},
+//             {id: 2, link: '#', type: 'button', class: 'order-button', name: 'Leveling'},
+//             {id: 3, link: '#', type: 'button', class: 'order-button', name: 'Currency'},
+//         ],
+//             bg: './offerbackgrounds/HomepageOfferCards/warface.jpg'
+//     },
+//     lolCard: {
+//         id: 4,
+//             tagId: 'lolCard', title: 'League of Legends', text: 'We suggest you to order a LoL boost',
+//             button: [
+//             {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
+//             {id: 1, link: '#', type: 'button', class: 'order-button', name: 'Elo'},
+//             {id: 2, link: '#', type: 'button', class: 'order-button', name: 'Leveling'},
+//             {id: 3, link: '#', type: 'button', class: 'order-button', name: 'Coaching'},
+//         ],
+//             bg: './offerbackgrounds/HomepageOfferCards/lol.jpg'
+//     },
+//     pubgCard: {
+//         id: 5,
+//             tagId: 'pubgCard', title: 'PUBG', text: 'We suggest you to order a PUBG boost',
+//             button: [
+//             {id: 0, link: '#', type: 'mainButton', class: 'card-main-button', name: 'All services'},
+//             {id: 1, link: '#', type: 'button', class: 'order-button', name: 'Get BP'},
+//             {id: 2, link: '#', type: 'button', class: 'order-button', name: 'Ranked'},
+//             {id: 3, link: '#', type: 'button', class: 'order-button', name: 'Party'},
+//         ],
+//             bg: './offerbackgrounds/HomepageOfferCards/pubg.png'
+//     }
+// }
 const homePageReducer = (state = initialState, action) => {
 
     let stateCopy;
 
     switch (action.type) {
+
+        case homePageCardsData: {
+            stateCopy = {...state, cardsData: action.data}
+            break
+        }
 
         case homePageUpdateForms: {
 
@@ -256,6 +263,12 @@ export const homePageOnChangeActionCreator = (text, formName) =>
         type: homePageUpdateForms,
         text: text,
         formName: formName
+    })
+
+export const addCardsData = (data) =>
+    ({
+        type: homePageCardsData,
+        data: data
     })
 
 export default homePageReducer

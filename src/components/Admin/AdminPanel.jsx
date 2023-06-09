@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Cards from "../Homepage/Cards/Cards";
 import React from "react";
 import './AdminPanel.css'
+import CardsContainer from "../Homepage/Cards/CardsContainer";
 
 
 const AdminPanel = (props) => {
@@ -170,7 +171,7 @@ const AdminPanel = (props) => {
                     </Row>
                 </Form>
             </Row>
-            <Cards cardsData={props.cardsData}/>
+            <CardsContainer />
         </>
     );
 }

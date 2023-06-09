@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {Button} from "react-bootstrap";
+import {Button, Row} from "react-bootstrap";
 import './Navbar.css'
 import {NavLink} from "react-router-dom";
 import Offcanvas from 'react-bootstrap/Offcanvas';
@@ -32,6 +32,7 @@ const Navigation = (props) => {
         <>
             <Navbar key={'sm'} bg="light" expand={'md'} className="mb-3">
                 <Container fluid id={'navbarContainer'}>
+
                     <Navbar.Brand>
                         <img className={'logo'} src={'https://upload.wikimedia.org/wikipedia/ru/0/02/' +
                             'Heroes_of_the_Storm_BlizzHeroes_2017_logo.png?20230127151006'}
@@ -51,6 +52,7 @@ const Navigation = (props) => {
                                 Menu
                             </Offcanvas.Title>
                         </Offcanvas.Header>
+
                         <Offcanvas.Body>
                             <Nav className="justify-content-end flex-grow-1 pe-3">
                                 {navbarLinksArr}

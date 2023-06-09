@@ -1,3 +1,4 @@
+
 .navbarOffCanvas {
     height: 100% !important;
     border: 0 !important;
@@ -59,11 +60,9 @@
 }
 
 
-#signLink {
-    margin-right: 10px;
-}
 
 #loginButton {
+
     width: 5em;
     color: rgb(33, 37, 41);
     font-weight: bold;
@@ -89,11 +88,17 @@
     display: block !important;
 }
 
+@media (max-width: 1060px) {
+    .navbarLink {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
 @media (max-width: 768px) {
     #loginButton, #signLink {
-        display: none;
+        display: none !important;
     }
-
 }
 
 .dropdown-menu {

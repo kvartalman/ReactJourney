@@ -1,5 +1,6 @@
 import Cards from "./Cards";
 import {connect} from "react-redux";
+import {addCardsData} from "../../../redux/homePageReducer";
 
 const mapStateToProps = (state) => {
     return {
@@ -8,7 +9,11 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        addCardData: (data) => {
+            dispatch(addCardsData(data))
+        }
+    }
 }
 
 const CardsContainer = connect(mapStateToProps, mapDispatchToProps)(Cards);
