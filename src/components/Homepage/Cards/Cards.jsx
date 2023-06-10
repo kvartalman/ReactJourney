@@ -9,12 +9,17 @@ import axios from "axios";
 
 const Cards = (props) => {
 
-    // USING 'if' operator only for a time! Need to rework this in future
-    if (Object.keys(props.cardsData).length === 0) {
-        axios.get('https://mocki.io/v1/8cb0f160-92f7-4cf8-a6c1-f63690df514e').then(response => {
-            props.addCardData(response.data)
-        })
+    let getCards = () => {
+        // USING 'if' operator only for a time! Need to rework this in future
+        if (Object.keys(props.cardsData).length === 0) {
+            axios.get('https://mocki.io/v1/8cb0f160-92f7-4cf8-a6c1-f63690df514e').then(response => {
+                props.addCardData(response.data)
+            })
+        }
     }
+
+    getCards();
+
 
     let cardsArray = Object.keys(props.cardsData).map(card =>
         (

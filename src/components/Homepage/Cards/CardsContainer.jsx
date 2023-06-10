@@ -1,6 +1,7 @@
 import Cards from "./Cards";
 import {connect} from "react-redux";
 import {addCardsData} from "../../../redux/homePageReducer";
+import CardsC from "./CardsClassComponent";
 
 const mapStateToProps = (state) => {
     return {
@@ -16,6 +17,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const CardsContainer = connect(mapStateToProps, mapDispatchToProps)(Cards);
+const CardsContainer = connect(mapStateToProps, mapDispatchToProps)(CardsC);
 
 export default CardsContainer
