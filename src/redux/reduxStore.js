@@ -5,6 +5,7 @@ import adminPanelFormsReducer from "./adminPanelFormsReducer";
 import navbarReducer from "./navbarReducer";
 import footerReducer from "./footerReducer";
 import categoriesReducer from "./categoriesReducer";
+import notFoundReducer from "./notFoundReducer";
 
 let reducersBatch = combineReducers({
     homePage: homePageReducer,
@@ -12,7 +13,8 @@ let reducersBatch = combineReducers({
     adminPanel: adminPanelFormsReducer,
     navbar: navbarReducer,
     footer: footerReducer,
-    categories: categoriesReducer
+    categories: categoriesReducer,
+    notFound: notFoundReducer
 });
 
 let store = createStore(reducersBatch);

@@ -7,6 +7,7 @@ import AdminPanelContainer from "./components/Admin/AdminPanelContainer";
 import CategoriesContainer from "./components/Categories/CategoriesContainer";
 import HomepageContainer from "./components/Homepage/HomepageContainer";
 import GameOfferContainer from "./components/GameOffer/GameOfferContainer";
+import NotFoundContainer from "./components/NotFound/NotFoundContainer";
 
 
 function App() {
@@ -31,7 +32,9 @@ function App() {
                     <Route path={'admin-panel'} element={
                         <AdminPanelContainer
                         />}/>
+
                 </Route>
+                <Route path={'*'} element={<NotFoundContainer />}/>
             </Routes>
         </>
 

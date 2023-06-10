@@ -17,7 +17,7 @@ function Canvas(props) {
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth >= 991) {
+            if (window.innerWidth >= 767) {
                 handleClose();
             }
         };

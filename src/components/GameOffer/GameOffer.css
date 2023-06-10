@@ -2,7 +2,21 @@
     display: flex;
 }
 
-@media (max-width: 991px) {
+
+
+@media (max-width: 860px) {
+    .panelCol {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 800px) {
+    .panelCol {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 767px) {
     .gameOfferRow {
         display: block;
     }

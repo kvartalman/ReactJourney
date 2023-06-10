@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {Button, Row} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import './Navbar.css'
 import {NavLink} from "react-router-dom";
 import Offcanvas from 'react-bootstrap/Offcanvas';
@@ -20,7 +20,7 @@ const Navigation = (props) => {
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth >= 768) {
+            if (window.innerWidth >= 767) {
                 handleClose();
             }
         };
@@ -54,7 +54,7 @@ const Navigation = (props) => {
                         </Offcanvas.Header>
 
                         <Offcanvas.Body>
-                            <Nav className="justify-content-end flex-grow-1 pe-3">
+                            <Nav className="flex-grow-1 pe-3">
                                 {navbarLinksArr}
                             </Nav>
                         </Offcanvas.Body>

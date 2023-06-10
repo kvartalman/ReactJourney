@@ -1,0 +1,33 @@
+#notFoundLinksBlock {
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.notFoundLinksSpans {
+    margin-right: 2em;
+    border: 3px solid rgb(33, 37, 41);
+    background-color: #ffc107;
+    border-radius: 10px;
+}
+
+.notFoundLinks {
+    font-size: 2em;
+    color: rgb(33, 37, 41);
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+}
+
+.notFoundLinks:hover {
+    color: rgb(33, 37, 41);
+    text-shadow: 1px 1px 1px rgb(33, 37, 41);
+}
+
+.notFoundLinksSpans:hover {
+    transition: 0.2s;
+    transform: scale(1.10);
+    box-shadow: 0 0 2px #ffc107;
+}
+
