@@ -2,7 +2,7 @@
 .navbarOffCanvas {
     height: 100% !important;
     border: 0 !important;
-    padding: 0.8em;
+    padding: 0.8em 0;
 }
 
 .navbar {
@@ -114,6 +114,7 @@
 
     .offcanvas-body {
         width: 100%;
+        padding: 5px 0;
     }
     #offcanvasNavbarLabel-expand-md {
         font-size: 2em;

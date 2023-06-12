@@ -1,6 +1,14 @@
 import React from "react";
 import {connect} from "react-redux";
-import CarouselComponent from "./Carousel";
+import Carousel from "./Carousel";
+
+class CarouselClass extends React.Component {
+    render() {
+        return (
+            <Carousel carouselData={this.props.carouselData} />
+        )
+    }
+}
 
 const mapStateToProps = (state) => {
     return {
@@ -12,6 +20,6 @@ const mapDispatchToProps = (dispatch) => {
     return {}
 }
 
-const CarouselContainer = connect(mapStateToProps, mapDispatchToProps)(CarouselComponent);
+const CarouselContainer = connect(mapStateToProps, mapDispatchToProps)(CarouselClass);
 
 export default CarouselContainer

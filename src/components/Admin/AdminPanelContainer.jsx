@@ -6,6 +6,31 @@ import {
 } from "../../redux/homePageReducer";
 import AdminPanel from "./AdminPanel";
 import {connect} from "react-redux";
+import React from 'react';
+
+class adminPanelClass extends React.Component {
+    render() {
+        return (
+            <AdminPanel
+                cardsData={this.props.cardsData}
+                gameOfferPages={this.props.gameOfferPages}
+                linksList={this.props.linksList}
+                homePageForms={this.props.homePageForms}
+                offerPageForms={this.props.offerPageForms}
+
+                addHomePageCardButton={this.props.addHomePageCardButton}
+                addHomePageCard={this.props.addHomePageCard}
+                addOfferPageCard={this.props.addOfferPageCard}
+                onChangeCardId={this.props.onChangeCardId}
+                onChangeCardTitle={this.props.onChangeCardTitle}
+                onChangeCardText={this.props.onChangeCardText}
+                onChangeButtonName={this.props.onChangeButtonName}
+                onChangeOfferCardTitle={this.props.onChangeOfferCardTitle}
+                onChangeOfferCardText={this.props.onChangeOfferCardText}
+            />
+        )
+    }
+}
 
 let mapStateToProps = (state) => {
     return {
@@ -21,10 +46,12 @@ let mapDispatchToProps = (dispatch) => {
     return {
         addHomePageCardButton: (cardTitle, newLink, newButtonType) => {
             dispatch(homePageButtonsActionCreator(
-            cardTitle, newLink, newButtonType
-        ))
+                cardTitle, newLink, newButtonType
+            ))
         },
-        addHomePageCard: () => {dispatch(homePageCardsActionCreator())},
+        addHomePageCard: () => {
+            dispatch(homePageCardsActionCreator())
+        },
         addOfferPageCard: (gameOfferSelector) => {
             dispatch(offerPageCardsActionCreator(gameOfferSelector))
         },
@@ -49,6 +76,6 @@ let mapDispatchToProps = (dispatch) => {
     }
 }
 
-const AdminPanelContainer = connect(mapStateToProps, mapDispatchToProps)(AdminPanel);
+const AdminPanelContainer = connect(mapStateToProps, mapDispatchToProps)(adminPanelClass);
 
 export default AdminPanelContainer
