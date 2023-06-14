@@ -17,17 +17,9 @@ class adminPanelClass extends React.Component {
                 linksList={this.props.linksList}
                 homePageForms={this.props.homePageForms}
                 offerPageForms={this.props.offerPageForms}
-
-                homePageOnChangeAC={this.props.homePageOnChangeAC}
                 addHomePageCardButton={this.props.homePageButtonsAC}
                 addHomePageCard={this.props.homePageCardsAC}
                 addOfferPageCard={this.props.offerPageCardsAC}
-                onChangeCardId={this.props.homePageOnChangeAC}
-                onChangeCardTitle={this.props.homePageOnChangeAC}
-                onChangeCardText={this.props.homePageOnChangeAC}
-                onChangeButtonName={this.props.homePageOnChangeAC}
-                onChangeOfferCardTitle={this.props.offerPageOnChangeAC}
-                onChangeOfferCardText={this.props.offerPageOnChangeAC}
             />
         )
     }
@@ -49,8 +41,6 @@ const AdminPanelContainer = connect(mapStateToProps,
         homePageButtonsAC,
         homePageCardsAC,
         offerPageCardsAC,
-        homePageOnChangeAC,
-        offerPageOnChangeAC
     }
 )(adminPanelClass);
 

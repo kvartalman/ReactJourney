@@ -2,7 +2,6 @@ import React from "react";
 
 const homePageAddCard = 'HOMEPAGE-ADD-CARD';
 const homePageAddButton = 'HOMEPAGE-ADD-BUTTON';
-const homePageUpdateForms = 'HOMEPAGE-ON-CHANGE';
 const homePageCardsData = 'HOMEPAGE-CARD-DATA';
 const homePageToggleFetching = 'HOMEPAGE-TOGGLE-FETCHING';
 
@@ -177,45 +176,20 @@ const homePageReducer = (state = initialState, action) => {
             break
         }
 
-        case homePageUpdateForms: {
-
-            stateCopy = {
-                ...state,
-                homePageCardsForms: {...state.homePageCardsForms}
-            };
-
-            if (action.formName === 'cardId') {
-                stateCopy.homePageCardsForms.cardIdForm = action.text;
-            } else if (action.formName === 'cardTitle') {
-                stateCopy.homePageCardsForms.cardTitleForm = action.text;
-            } else if (action.formName === 'cardText') {
-                stateCopy.homePageCardsForms.cardTextForm = action.text;
-            } else if (action.formName === 'buttonName') {
-                stateCopy.homePageCardsForms.buttonNameForm = action.text;
-            }
-            break
-        }
-
         case homePageAddCard: {
-
             stateCopy = {
                 ...state,
                 homePageCardsForms: {...state.homePageCardsForms},
                 cardsData: {...state.cardsData}
             }
-
-            stateCopy.cardsData[state.homePageCardsForms.cardIdForm] = {
+            stateCopy.cardsData[action.tagId] = {
                 id: state.cardsData.length,
-                tagId: state.homePageCardsForms.cardIdForm,
-                title: state.homePageCardsForms.cardTitleForm,
-                text: state.homePageCardsForms.cardTextForm,
+                tagId: action.tagId,
+                title: action.title,
+                text: action.text,
                 button: [],
                 bg: './offerbackgrounds/HomepageOfferCards/dota2.jpg'
             }
-
-            stateCopy.homePageCardsForms.cardIdForm = '';
-            stateCopy.homePageCardsForms.cardTitleForm = '';
-            stateCopy.homePageCardsForms.cardTextForm = '';
             break
         }
 
@@ -235,11 +209,9 @@ const homePageReducer = (state = initialState, action) => {
                     link: action.link,
                     type: action.btnType,
                     class: action.btnType === 'mainButton' ? 'card-main-button' : 'order-button',
-                    name: stateCopy.homePageCardsForms.buttonNameForm
+                    name: action.btnName
                 }
             ]
-
-            stateCopy.homePageCardsForms.buttonNameForm = '';
             break
         }
 
@@ -250,23 +222,21 @@ const homePageReducer = (state = initialState, action) => {
     return stateCopy;
 }
 
-export const homePageCardsAC = () =>
-    ({
+export const homePageCardsAC = (tagId, title, text) =>
+    (
+        {
         type: homePageAddCard,
+        tagId: tagId,
+        title: title,
+        text: text
     })
-export const homePageButtonsAC = (cardKey, link, btnType) =>
+export const homePageButtonsAC = (cardKey, link, btnType, btnName) =>
     ({
         type: homePageAddButton,
         cardKey: cardKey,
         link: link,
-        btnType: btnType
-    })
-
-export const homePageOnChangeAC = (text, formName) =>
-    ({
-        type: homePageUpdateForms,
-        text: text,
-        formName: formName
+        btnType: btnType,
+        btnName: btnName
     })
 
 export const addCardsData = (data) =>

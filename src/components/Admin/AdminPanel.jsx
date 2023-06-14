@@ -2,8 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import Cards from "../Homepage/Cards/Cards";
-import React from "react";
+import React, {useRef, useState} from "react";
 import './AdminPanel.css'
 import CardsContainer from "../Homepage/Cards/CardsContainer";
 
@@ -22,46 +21,45 @@ const AdminPanel = (props) => {
         <option>{name}</option>
     ))
 
-    let newCardId = React.createRef();
-    let newCardTitle = React.createRef();
-    let newCardText = React.createRef();
+    let newButtonType = useRef(null);
+    let cardKey = useRef(null);
+    let newLink = useRef(null);
+    let gameOfferSelector = useRef(null);
 
-    let newButtonType = React.createRef();
-    let cardKey = React.createRef();
-    let newButtonName = React.createRef();
-    let newLink = React.createRef();
+    const [tagId, setTagId] = useState('');
+    const [title, setTitle] = useState('');
+    const [cardText, setCardText] = useState('');
+    const [btnName, setBtnName] = useState('');
+    const [offerCardTitle, setOfferCardTitle] = useState('');
+    const [offerCardText, setOfferCardText] = useState('');
+    const tagInput = (e) => {setTagId(e.target.value)};
+    const titleInput = (e) => {setTitle(e.target.value)};
+    const cardTextInput = (e) => {setCardText(e.target.value)};
+    const btnNameInput = (e) => {setBtnName(e.target.value)};
+    const offerCardTitleInput = (e) => {setOfferCardTitle(e.target.value)};
+    const offerCardTextInput = (e) => {setOfferCardText(e.target.value)};
 
-    let newOfferPageCardTitle = React.createRef();
-    let newOfferPageCardText = React.createRef();
-    let gameOfferSelector = React.createRef();
-
-    const onChangeCardId = () => {
-        props.homePageOnChangeAC(newCardId.current.value, 'cardId')
-    }
-    const onChangeCardTitle = () => {
-        props.onChangeCardTitle(newCardTitle.current.value, 'cardTitle')
-    }
-    const onChangeCardText = () => {
-        props.onChangeCardText(newCardText.current.value, 'cardText')
-    }
     const addHomePageCard = () => {
-        props.addHomePageCard();
-    }
-    const onChangeButtonName = () => {
-        props.onChangeButtonName(newButtonName.current.value, 'buttonName')
+        props.addHomePageCard(tagId, title, cardText);
+        setTagId('');
+        setTitle('');
+        setCardText('');
     }
     const addHomePageCardButton = () => {
-        props.addHomePageCardButton(cardKey.current.value, newLink.current.value, newButtonType.current.value)}
-    const onChangeOfferCardTitle = () => {
-        props.onChangeOfferCardTitle(newOfferPageCardTitle.current.value, 'offerPageCardTitle')
-    }
-    const onChangeOfferCardText = () => {
-        props.onChangeOfferCardText(newOfferPageCardText.current.value, 'offerPageCardText')
-    }
-    const addOfferPageCard = () => {
-        props.addOfferPageCard(gameOfferSelector.current.value)
+        props.addHomePageCardButton(
+            cardKey.current.value,
+            newLink.current.value,
+            newButtonType.current.value,
+            btnName
+        )
+        setBtnName('');
     }
 
+    const addOfferPageCard = () => {
+        props.addOfferPageCard(gameOfferSelector.current.value, offerCardTitle, offerCardText);
+        setOfferCardTitle('');
+        setOfferCardText('');
+    }
 
     return (
         <>
@@ -74,25 +72,22 @@ const AdminPanel = (props) => {
                         <Form.Group as={Col} id={'addCardForm'}>
                             <Form.Label>Card ID</Form.Label>
                             <Form.Control
-                                onChange={onChangeCardId}
-                                ref={newCardId}
+                                onChange={tagInput}
                                 type=""
                                 placeholder="Ented cardID"
-                                value={props.homePageForms.cardIdForm}
+                                value={tagId}
                             />
                             <Form.Label>Card title</Form.Label>
                             <Form.Control
-                                onChange={onChangeCardTitle}
-                                ref={newCardTitle}
+                                onChange={titleInput}
                                 type=""
                                 placeholder="Enter card title"
-                                value={props.homePageForms.cardTitleForm}
+                                value={title}
                             />
                             <Form.Label>Card text</Form.Label>
                             <Form.Control
-                                onChange={onChangeCardText}
-                                value={props.homePageForms.cardTextForm}
-                                ref={newCardText}
+                                onChange={cardTextInput}
+                                value={cardText}
                                 placeholder="Enter Card text"
                             />
                         </Form.Group>
@@ -124,10 +119,9 @@ const AdminPanel = (props) => {
                             </Form.Select>
                             <Form.Label>Button Name</Form.Label>
                             <Form.Control
-                                onChange={onChangeButtonName}
-                                ref={newButtonName}
+                                onChange={btnNameInput}
                                 placeholder={'Enter button name...'}
-                                value={props.homePageForms.buttonNameForm}
+                                value={btnName}
                             />
                         </Form.Group>
                         <div className={'addCardButtons'}>
@@ -149,16 +143,14 @@ const AdminPanel = (props) => {
                             </Form.Select>
                             <Form.Label>Card title</Form.Label>
                             <Form.Control
-                                onChange={onChangeOfferCardTitle}
-                                ref={newOfferPageCardTitle}
-                                value={props.offerPageForms.cardTitleForm}
+                                onChange={offerCardTitleInput}
+                                value={offerCardTitle}
                                 placeholder="Enter card title"
                             />
                             <Form.Label>Card text</Form.Label>
                             <Form.Control
-                                onChange={onChangeOfferCardText}
-                                ref={newOfferPageCardText}
-                                value={props.offerPageForms.cardTextForm}
+                                onChange={offerCardTextInput}
+                                value={offerCardText}
                                 placeholder="Enter Card text"
                             />
                         </Form.Group>

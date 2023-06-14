@@ -1,5 +1,4 @@
 const offerPageAddCard = 'OFFERPAGE-ADD-CARD';
-const offerPageUpdateForms = 'OFFERPAGE-ON-CHANGE'
 
 let initialState = {
     offerPageCardsForms: {
@@ -112,22 +111,6 @@ const offerPagesReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case offerPageUpdateForms:
-
-            let text = action.text;
-
-            stateCopy = {
-                ...state,
-                offerPageCardsForms: {...state.offerPageCardsForms}
-            };
-
-            if (action.formName === 'offerPageCardTitle') {
-                stateCopy.offerPageCardsForms.cardTitleForm = text;
-            } else if (action.formName === 'offerPageCardText') {
-                stateCopy.offerPageCardsForms.cardTextForm = text;
-            }
-            break
-
         case offerPageAddCard:
 
             let game = action.gameOfferSelector;
@@ -135,7 +118,8 @@ const offerPagesReducer = (state = initialState, action) => {
             stateCopy = {
                 ...state,
                 offerPageCardsForms: {...state.offerPageCardsForms},
-                pagesData: {...state.pagesData,
+                pagesData: {
+                    ...state.pagesData,
                 }
             };
 
@@ -143,13 +127,10 @@ const offerPagesReducer = (state = initialState, action) => {
                 ...state.pagesData[game].offerCardsData,
                 {
                     id: stateCopy.pagesData[game].offerCardsData.length,
-                    title: stateCopy.offerPageCardsForms.cardTitleForm,
-                    text: stateCopy.offerPageCardsForms.cardTextForm
+                    title: action.title,
+                    text: action.text
                 }
             ]
-
-            stateCopy.offerPageCardsForms.cardTitleForm = '';
-            stateCopy.offerPageCardsForms.cardTextForm = '';
             break
 
         default:
@@ -160,17 +141,12 @@ const offerPagesReducer = (state = initialState, action) => {
     return stateCopy;
 }
 
-export const offerPageCardsAC = (gameOfferSelector) =>
+export const offerPageCardsAC = (gameOfferSelector, title, text) =>
     ({
         type: offerPageAddCard,
-        gameOfferSelector: gameOfferSelector
-    })
-
-export const offerPageOnChangeAC = (text, formName) =>
-    ({
-        type: offerPageUpdateForms,
-        text: text,
-        formName: formName
+        gameOfferSelector: gameOfferSelector,
+        title: title,
+        text: text
     })
 
 export default offerPagesReducer
