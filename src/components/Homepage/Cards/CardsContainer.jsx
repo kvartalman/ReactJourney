@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {addCardsData} from "../../../redux/homePageReducer";
+import {addCardsData, setIsFetchingAC} from "../../../redux/homePageReducer";
 import React from "react";
 import axios from "axios";
 import OfferCard from "./OfferCard";
@@ -11,8 +11,10 @@ import Cards from "./Cards";
 class CardsClassContainer extends React.Component {
 
     componentDidMount() {
+        this.props.setIsFetchingAC(true);
         axios.get('https://mocki.io/v1/8cb0f160-92f7-4cf8-a6c1-f63690df514e').then(response => {
-            this.props.addCardData(response.data)
+            this.props.setIsFetchingAC(false);
+            this.props.addCardsData(response.data);
         });
     }
 
@@ -42,27 +44,22 @@ class CardsClassContainer extends React.Component {
             )))
     }
 
-    render () {
-        return (
+    render() {
+        return <>
+            {this.props.isFetching ? <img src={'./preloader.gif'} alt={'loading...'}/> : null}
             <Cards getCardsArray={this.getCardsArray()}/>
-        )
+        </>
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        cardsData: state.homePage.cardsData
+        cardsData: state.homePage.cardsData,
+        isFetching: state.homePage.isFetching
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addCardData: (data) => {
-            dispatch(addCardsData(data))
-        }
-    }
-}
-
-const CardsContainer = connect(mapStateToProps, mapDispatchToProps)(CardsClassContainer);
+const CardsContainer = connect(mapStateToProps,
+    {addCardsData, setIsFetchingAC})(CardsClassContainer);
 
 export default CardsContainer

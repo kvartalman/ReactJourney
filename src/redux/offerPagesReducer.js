@@ -160,13 +160,13 @@ const offerPagesReducer = (state = initialState, action) => {
     return stateCopy;
 }
 
-export const offerPageCardsActionCreator = (gameOfferSelector) =>
+export const offerPageCardsAC = (gameOfferSelector) =>
     ({
         type: offerPageAddCard,
         gameOfferSelector: gameOfferSelector
     })
 
-export const offerPageOnChangeActionCreator = (text, formName) =>
+export const offerPageOnChangeAC = (text, formName) =>
     ({
         type: offerPageUpdateForms,
         text: text,

@@ -4,6 +4,7 @@ const homePageAddCard = 'HOMEPAGE-ADD-CARD';
 const homePageAddButton = 'HOMEPAGE-ADD-BUTTON';
 const homePageUpdateForms = 'HOMEPAGE-ON-CHANGE';
 const homePageCardsData = 'HOMEPAGE-CARD-DATA';
+const homePageToggleFetching = 'HOMEPAGE-TOGGLE-FETCHING';
 
 let initialState = {
     homePageCardsForms: {
@@ -88,7 +89,8 @@ let initialState = {
                 "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Z"],
             text: "Pay for your purchases and wait a bit, our manager will contact you soon!"
         }
-    ]
+    ],
+    isFetching: false
 }
 // {
 //     dotaCard: {
@@ -165,6 +167,11 @@ const homePageReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
+        case homePageToggleFetching: {
+            stateCopy = {...state, isFetching: action.isFetching}
+            break
+        }
+
         case homePageCardsData: {
             stateCopy = {...state, cardsData: action.data}
             break
@@ -195,7 +202,7 @@ const homePageReducer = (state = initialState, action) => {
                 ...state,
                 homePageCardsForms: {...state.homePageCardsForms},
                 cardsData: {...state.cardsData}
-                }
+            }
 
             stateCopy.cardsData[state.homePageCardsForms.cardIdForm] = {
                 id: state.cardsData.length,
@@ -218,7 +225,7 @@ const homePageReducer = (state = initialState, action) => {
             stateCopy = {
                 ...state,
                 homePageCardsForms: {...state.homePageCardsForms},
-                cardsData:  {...state.cardsData}
+                cardsData: {...state.cardsData}
             };
 
             stateCopy.cardsData[action.cardKey].button = [
@@ -243,11 +250,11 @@ const homePageReducer = (state = initialState, action) => {
     return stateCopy;
 }
 
-export const homePageCardsActionCreator = () =>
+export const homePageCardsAC = () =>
     ({
         type: homePageAddCard,
     })
-export const homePageButtonsActionCreator = (cardKey, link, btnType) =>
+export const homePageButtonsAC = (cardKey, link, btnType) =>
     ({
         type: homePageAddButton,
         cardKey: cardKey,
@@ -255,7 +262,7 @@ export const homePageButtonsActionCreator = (cardKey, link, btnType) =>
         btnType: btnType
     })
 
-export const homePageOnChangeActionCreator = (text, formName) =>
+export const homePageOnChangeAC = (text, formName) =>
     ({
         type: homePageUpdateForms,
         text: text,
@@ -266,6 +273,12 @@ export const addCardsData = (data) =>
     ({
         type: homePageCardsData,
         data: data
+    })
+
+export const setIsFetchingAC = (isFetching) =>
+    ({
+        type: homePageToggleFetching,
+        isFetching: isFetching
     })
 
 export default homePageReducer

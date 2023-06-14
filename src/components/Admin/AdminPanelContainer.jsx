@@ -1,8 +1,8 @@
-import {offerPageCardsActionCreator, offerPageOnChangeActionCreator} from "../../redux/offerPagesReducer";
+import {offerPageCardsAC, offerPageOnChangeAC} from "../../redux/offerPagesReducer";
 import {
-    homePageButtonsActionCreator,
-    homePageCardsActionCreator,
-    homePageOnChangeActionCreator
+    homePageButtonsAC,
+    homePageCardsAC,
+    homePageOnChangeAC
 } from "../../redux/homePageReducer";
 import AdminPanel from "./AdminPanel";
 import {connect} from "react-redux";
@@ -18,15 +18,16 @@ class adminPanelClass extends React.Component {
                 homePageForms={this.props.homePageForms}
                 offerPageForms={this.props.offerPageForms}
 
-                addHomePageCardButton={this.props.addHomePageCardButton}
-                addHomePageCard={this.props.addHomePageCard}
-                addOfferPageCard={this.props.addOfferPageCard}
-                onChangeCardId={this.props.onChangeCardId}
-                onChangeCardTitle={this.props.onChangeCardTitle}
-                onChangeCardText={this.props.onChangeCardText}
-                onChangeButtonName={this.props.onChangeButtonName}
-                onChangeOfferCardTitle={this.props.onChangeOfferCardTitle}
-                onChangeOfferCardText={this.props.onChangeOfferCardText}
+                homePageOnChangeAC={this.props.homePageOnChangeAC}
+                addHomePageCardButton={this.props.homePageButtonsAC}
+                addHomePageCard={this.props.homePageCardsAC}
+                addOfferPageCard={this.props.offerPageCardsAC}
+                onChangeCardId={this.props.homePageOnChangeAC}
+                onChangeCardTitle={this.props.homePageOnChangeAC}
+                onChangeCardText={this.props.homePageOnChangeAC}
+                onChangeButtonName={this.props.homePageOnChangeAC}
+                onChangeOfferCardTitle={this.props.offerPageOnChangeAC}
+                onChangeOfferCardText={this.props.offerPageOnChangeAC}
             />
         )
     }
@@ -42,40 +43,15 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        addHomePageCardButton: (cardTitle, newLink, newButtonType) => {
-            dispatch(homePageButtonsActionCreator(
-                cardTitle, newLink, newButtonType
-            ))
-        },
-        addHomePageCard: () => {
-            dispatch(homePageCardsActionCreator())
-        },
-        addOfferPageCard: (gameOfferSelector) => {
-            dispatch(offerPageCardsActionCreator(gameOfferSelector))
-        },
-        onChangeCardId: (text) => {
-            dispatch(homePageOnChangeActionCreator(text, 'cardId'))
-        },
-        onChangeCardTitle: (text) => {
-            dispatch(homePageOnChangeActionCreator(text, 'cardTitle'))
-        },
-        onChangeCardText: (text) => {
-            dispatch(homePageOnChangeActionCreator(text, 'cardText'))
-        },
-        onChangeButtonName: (text) => {
-            dispatch(homePageOnChangeActionCreator(text, 'buttonName'))
-        },
-        onChangeOfferCardTitle: (text) => {
-            dispatch(offerPageOnChangeActionCreator(text, 'offerPageCardTitle'))
-        },
-        onChangeOfferCardText: (text) => {
-            dispatch(offerPageOnChangeActionCreator(text, 'offerPageCardText'))
-        }
-    }
-}
 
-const AdminPanelContainer = connect(mapStateToProps, mapDispatchToProps)(adminPanelClass);
+const AdminPanelContainer = connect(mapStateToProps,
+    {
+        homePageButtonsAC,
+        homePageCardsAC,
+        offerPageCardsAC,
+        homePageOnChangeAC,
+        offerPageOnChangeAC
+    }
+)(adminPanelClass);
 
 export default AdminPanelContainer

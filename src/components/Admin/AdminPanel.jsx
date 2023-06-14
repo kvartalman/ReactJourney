@@ -36,27 +36,27 @@ const AdminPanel = (props) => {
     let gameOfferSelector = React.createRef();
 
     const onChangeCardId = () => {
-        props.onChangeCardId(newCardId.current.value)
+        props.homePageOnChangeAC(newCardId.current.value, 'cardId')
     }
     const onChangeCardTitle = () => {
-        props.onChangeCardTitle(newCardTitle.current.value)
+        props.onChangeCardTitle(newCardTitle.current.value, 'cardTitle')
     }
     const onChangeCardText = () => {
-        props.onChangeCardText(newCardText.current.value)
+        props.onChangeCardText(newCardText.current.value, 'cardText')
     }
     const addHomePageCard = () => {
         props.addHomePageCard();
     }
     const onChangeButtonName = () => {
-        props.onChangeButtonName(newButtonName.current.value)
+        props.onChangeButtonName(newButtonName.current.value, 'buttonName')
     }
     const addHomePageCardButton = () => {
         props.addHomePageCardButton(cardKey.current.value, newLink.current.value, newButtonType.current.value)}
     const onChangeOfferCardTitle = () => {
-        props.onChangeOfferCardTitle(newOfferPageCardTitle.current.value)
+        props.onChangeOfferCardTitle(newOfferPageCardTitle.current.value, 'offerPageCardTitle')
     }
     const onChangeOfferCardText = () => {
-        props.onChangeOfferCardText(newOfferPageCardText.current.value)
+        props.onChangeOfferCardText(newOfferPageCardText.current.value, 'offerPageCardText')
     }
     const addOfferPageCard = () => {
         props.addOfferPageCard(gameOfferSelector.current.value)
