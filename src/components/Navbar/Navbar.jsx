@@ -6,15 +6,18 @@ import {Button} from "react-bootstrap";
 import './Navbar.css'
 import {NavLink} from "react-router-dom";
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import {useSelector} from "react-redux";
 
 const Navigation = (props) => {
+
+    const navbarLinks = useSelector(state => state.navbar.navbarLinks)
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    let navbarLinksArr = props.navbarLinks.map(link => (
+    let navbarLinksArr = navbarLinks.map(link => (
         <NavLink onClick={handleClose} to={link.to} className={'navbarLink'} id={props.linkId}>{link.linkName}</NavLink>
     ))
 

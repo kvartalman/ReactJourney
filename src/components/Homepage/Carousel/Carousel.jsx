@@ -2,10 +2,13 @@ import React from 'react';
 import {Carousel} from "react-bootstrap";
 import './Carousel.css'
 import CarouselItems from "./CarouselItems";
+import {useSelector} from "react-redux";
 
-const CarouselComponent = (props) => {
+const CarouselComponent = () => {
 
-    let carouselItemArr = props.carouselData.map(item => (
+    const carouselData = useSelector(state => state.homePage.carouselData)
+
+    let carouselItemArr = carouselData.map(item => (
         <Carousel.Item>
             <CarouselItems key={item.id} srcImg={item.srcImg} altImg={item.altImg}
                            text={<Carousel.Caption className={'carousel-text'}>{item.text}</Carousel.Caption>}/>

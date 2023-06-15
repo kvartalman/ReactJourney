@@ -3,11 +3,11 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Route, Routes} from "react-router-dom";
 import Layout from "./components/Layout";
-import AdminPanelContainer from "./components/Admin/AdminPanelContainer";
-import CategoriesContainer from "./components/Categories/CategoriesContainer";
-import HomepageContainer from "./components/Homepage/HomepageContainer";
-import GameOfferContainer from "./components/GameOffer/GameOfferContainer";
-import NotFoundContainer from "./components/NotFound/NotFoundContainer";
+import AdminPanel from "./components/Admin/AdminPanel";
+import Homepage from "./components/Homepage/Homepage";
+import Categories from "./components/Categories/Categories";
+import GameOffer from "./components/GameOffer/GameOffer";
+import NotFound from "./components/NotFound/NotFound";
 
 
 function App() {
@@ -16,25 +16,22 @@ function App() {
             <Routes>
                 <Route path={'/'} element={<Layout
                 />}>
-                    <Route index element={<HomepageContainer
-                    />}/>
-                    <Route path={'categories'} element={<CategoriesContainer
-                    />}/>
-                    <Route path={'dota2'} element={<GameOfferContainer
+                    <Route index element={<Homepage />}/>
+                    <Route path={'categories'} element={<Categories />}/>
+                    <Route path={'dota2'} element={<GameOffer
                         page={'dota2'}
                     />}/>
-                    <Route path={'lol'} element={<GameOfferContainer
+                    <Route path={'lol'} element={<GameOffer
                         page={'lol'}
                     />}/>
-                    <Route path={'hots'} element={<GameOfferContainer
+                    <Route path={'hots'} element={<GameOffer
                         page={'hots'}
                     />}/>
                     <Route path={'admin-panel'} element={
-                        <AdminPanelContainer
-                        />}/>
+                        <AdminPanel />}/>
 
                 </Route>
-                <Route path={'*'} element={<NotFoundContainer />}/>
+                <Route path={'*'} element={<NotFound />}/>
             </Routes>
         </>
 

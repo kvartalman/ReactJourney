@@ -7,14 +7,18 @@ import './OfferContent/OfferContent.css'
 import OfferPanelButton from "./OfferPanel/OfferPanelButton";
 import BreadCrumb from "./BreadCrumb/BreadCrumb";
 import Canvas from "./Canvases/Canvas";
+import {useSelector} from "react-redux";
 
 const GameOffer = (props) => {
 
-    let offerCardsArr = props.gameOffer.offerCardsData.map(card => (
+    const gameOffer = useSelector(state => state.gameOfferPages.pagesData[props.page])
+        const canvasMenuData = useSelector(state => state.gameOfferPages.canvasMenuData)
+
+    let offerCardsArr = gameOffer.offerCardsData.map(card => (
         <GameOfferCard title={card.title} key={card.id} text={card.text}/>
     ))
 
-    let panelButtonsArr = props.gameOffer.panelButton.map(button => (
+    let panelButtonsArr = gameOffer.panelButton.map(button => (
         <OfferPanelButton link={button.link} key={button.id} name={button.name}/>
     ))
 
@@ -24,23 +28,23 @@ const GameOffer = (props) => {
             <Row className={'gameOfferRow'}>
                 <div className={'canvasButtonsBlock'}>
                     <Canvas
-                        buttonName={props.gameOffer.canvasCtgData.buttonName}
-                        placement={props.gameOffer.canvasCtgData.placement}
-                        title={props.gameOffer.canvasCtgData.title}
-                        canvasButtons={props.gameOffer.panelButton}
+                        buttonName={gameOffer.canvasCtgData.buttonName}
+                        placement={gameOffer.canvasCtgData.placement}
+                        title={gameOffer.canvasCtgData.title}
+                        canvasButtons={gameOffer.panelButton}
                     />
                     <Canvas
-                        buttonName={props.canvasMenuData.buttonName}
-                        placement={props.canvasMenuData.placement}
-                        title={props.canvasMenuData.title}
-                        canvasButtons={props.canvasMenuData.canvasButtons}
+                        buttonName={canvasMenuData.buttonName}
+                        placement={canvasMenuData.placement}
+                        title={canvasMenuData.title}
+                        canvasButtons={canvasMenuData.canvasButtons}
                     />
                 </div>
                 <Col md={3} className={'gameOfferPanelCol'}>
                     <div className={'breadCrumb'}>
                         <BreadCrumb
-                            linkNames={props.gameOffer.breadCrumbs.linkNames}
-                            activeLinkName={props.gameOffer.breadCrumbs.activeLinkName}
+                            linkNames={gameOffer.breadCrumbs.linkNames}
+                            activeLinkName={gameOffer.breadCrumbs.activeLinkName}
                         />
                     </div>
                     <div className={'panelCol'}>
@@ -51,15 +55,15 @@ const GameOffer = (props) => {
                     <div className={'offerContent'}>
                         <Container fluid>
                             <Row className={'offerTitleRow'}>
-                                <h1>{props.gameOffer.mainTitle}</h1>
+                                <h1>{gameOffer.mainTitle}</h1>
                             </Row>
                             <Row className={'offerTextRow'}>
-                                <p>{props.gameOffer.text}
+                                <p>{gameOffer.text}
                                 </p>
                             </Row>
                             <Row className={'offerCardContent'}>
                                 <div className={'offerCardTitle'}>
-                                    <h1>{props.gameOffer.cardsTitle}</h1>
+                                    <h1>{gameOffer.cardsTitle}</h1>
                                 </div>
                                 <Row className={'offerCardArea'}>
                                 {offerCardsArr}

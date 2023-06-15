@@ -4,27 +4,18 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import React, {useRef, useState} from "react";
 import './AdminPanel.css'
-import CardsContainer from "../Homepage/Cards/CardsContainer";
+import {useDispatch, useSelector} from "react-redux";
+import {homePageButtonsAC, homePageCardsAC} from "../../redux/homePageReducer";
+import {offerPageCardsAC} from "../../redux/offerPagesReducer";
+import Cards from "../Homepage/Cards/Cards";
 
 
-const AdminPanel = (props) => {
+const AdminPanel = () => {
 
-    const cardsList = Object.keys(props.cardsData).map(card => (
-        <option>{card}</option>
-    ))
-
-    const linksList = props.linksList.map(card => (
-        <option>{card}</option>
-    ))
-
-    const getOfferPages = props.gameOfferPages.map(name => (
-        <option>{name}</option>
-    ))
-
-    let newButtonType = useRef(null);
-    let cardKey = useRef(null);
-    let newLink = useRef(null);
-    let gameOfferSelector = useRef(null);
+    const cardsData = useSelector(state => state.homePage.cardsData)
+    const gameOfferPages = useSelector(state => Object.keys(state.gameOfferPages.pagesData))
+    const linksList = useSelector(state => state.adminPanel.linksList)
+    const dispatch = useDispatch();
 
     const [tagId, setTagId] = useState('');
     const [title, setTitle] = useState('');
@@ -32,6 +23,12 @@ const AdminPanel = (props) => {
     const [btnName, setBtnName] = useState('');
     const [offerCardTitle, setOfferCardTitle] = useState('');
     const [offerCardText, setOfferCardText] = useState('');
+
+    let newButtonType = useRef(null);
+    let cardKey = useRef(null);
+    let newLink = useRef(null);
+    let gameOfferSelector = useRef(null);
+
     const tagInput = (e) => {setTagId(e.target.value)};
     const titleInput = (e) => {setTitle(e.target.value)};
     const cardTextInput = (e) => {setCardText(e.target.value)};
@@ -40,26 +37,38 @@ const AdminPanel = (props) => {
     const offerCardTextInput = (e) => {setOfferCardText(e.target.value)};
 
     const addHomePageCard = () => {
-        props.addHomePageCard(tagId, title, cardText);
+        dispatch(homePageCardsAC(tagId, title, cardText));
         setTagId('');
         setTitle('');
         setCardText('');
     }
     const addHomePageCardButton = () => {
-        props.addHomePageCardButton(
+        dispatch(homePageButtonsAC(
             cardKey.current.value,
             newLink.current.value,
             newButtonType.current.value,
             btnName
-        )
+        ))
         setBtnName('');
     }
 
     const addOfferPageCard = () => {
-        props.addOfferPageCard(gameOfferSelector.current.value, offerCardTitle, offerCardText);
+        dispatch(offerPageCardsAC(gameOfferSelector.current.value, offerCardTitle, offerCardText));
         setOfferCardTitle('');
         setOfferCardText('');
     }
+
+    const cardsList = Object.keys(cardsData).map(card => (
+        <option>{card}</option>
+    ))
+
+    const links = linksList.map(card => (
+        <option>{card}</option>
+    ))
+
+    const getOfferPages = gameOfferPages.map(name => (
+        <option>{name}</option>
+    ))
 
     return (
         <>
@@ -115,7 +124,7 @@ const AdminPanel = (props) => {
                             </Form.Select>
                             <Form.Label>Links list</Form.Label>
                             <Form.Select ref={newLink}>
-                                {linksList}
+                                {links}
                             </Form.Select>
                             <Form.Label>Button Name</Form.Label>
                             <Form.Control
@@ -163,7 +172,7 @@ const AdminPanel = (props) => {
                     </Row>
                 </Form>
             </Row>
-            <CardsContainer />
+            <Cards />
         </>
     );
 }

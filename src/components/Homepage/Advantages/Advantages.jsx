@@ -3,10 +3,13 @@ import {Row} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import './Advantages.css';
 import AdvantageCard from "./AdvantageCard";
+import {useSelector} from "react-redux";
 
 const Advantages = (props) => {
 
-    let advCardsArr = props.advData.map(card => (
+    const advData = useSelector(state => state.homePage.advData)
+
+    let advCardsArr = advData.map(card => (
         <AdvantageCard img={card.img} key={card.id} title={card.title} text={card.text}/>
     ))
 

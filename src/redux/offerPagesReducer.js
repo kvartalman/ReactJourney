@@ -1,10 +1,6 @@
 const offerPageAddCard = 'OFFERPAGE-ADD-CARD';
 
 let initialState = {
-    offerPageCardsForms: {
-        cardTitleForm: '',
-        cardTextForm: ''
-    },
     pagesData: {
         dota2:
             {

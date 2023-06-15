@@ -3,12 +3,15 @@ import {Row} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import './Steps.css'
 import StepElem from "./StepElem";
+import {useSelector} from "react-redux";
 
 
 
-const Steps = (props) => {
+const Steps = () => {
 
-    let stepsElemsArr = props.stepsElemsData.map(elem => (
+    const stepsElemsData = useSelector(state => state.homePage.stepsElemsData)
+
+    let stepsElemsArr = stepsElemsData.map(elem => (
 
         <StepElem key={elem.id} xmlns={elem.xmlns} class={elem.class} path={
             elem.path.map(el => (

@@ -3,10 +3,13 @@ import './Categories.css'
 import {Row} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
 import React from "react";
+import {useSelector} from "react-redux";
 
 const Categories = (props) => {
 
-    const categoriesLinks = props.categoriesLinks.map(link => (
+    const ctgLinks = useSelector(state => state.categories.categoriesLinks)
+
+    const categoriesLinks = ctgLinks.map(link => (
         <span style={{
             background: `linear-gradient( rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5) ), 
             url(${link.bg})`

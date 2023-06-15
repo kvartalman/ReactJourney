@@ -1,17 +1,8 @@
-import React from "react";
-
 const homePageAddCard = 'HOMEPAGE-ADD-CARD';
 const homePageAddButton = 'HOMEPAGE-ADD-BUTTON';
 const homePageCardsData = 'HOMEPAGE-CARD-DATA';
-const homePageToggleFetching = 'HOMEPAGE-TOGGLE-FETCHING';
 
 let initialState = {
-    homePageCardsForms: {
-        cardIdForm: '',
-        cardTitleForm: '',
-        cardTextForm: '',
-        buttonNameForm: ''
-    },
     carouselData: [
         {
             id: 0,
@@ -88,8 +79,7 @@ let initialState = {
                 "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Z"],
             text: "Pay for your purchases and wait a bit, our manager will contact you soon!"
         }
-    ],
-    isFetching: false
+    ]
 }
 // {
 //     dotaCard: {
@@ -166,11 +156,6 @@ const homePageReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case homePageToggleFetching: {
-            stateCopy = {...state, isFetching: action.isFetching}
-            break
-        }
-
         case homePageCardsData: {
             stateCopy = {...state, cardsData: action.data}
             break
@@ -243,12 +228,6 @@ export const addCardsData = (data) =>
     ({
         type: homePageCardsData,
         data: data
-    })
-
-export const setIsFetchingAC = (isFetching) =>
-    ({
-        type: homePageToggleFetching,
-        isFetching: isFetching
     })
 
 export default homePageReducer

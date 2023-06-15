@@ -1,17 +1,17 @@
 import React from 'react';
-import AdvantagesContainer from "./Advantages/AdvantagesContainer";
-import CardsContainer from "./Cards/CardsContainer";
-import StepsContainer from "./Steps/StepsContainer";
-import CarouselContainer from "./Carousel/CarouselContainer";
 import './Homepage.css';
+import Cards from "./Cards/Cards";
+import Carousel from "./Carousel/Carousel";
+import Advantages from "./Advantages/Advantages";
+import Steps from "./Steps/Steps";
 
 const HomePage = () => {
     return (
         <>
-            <CarouselContainer/>
-            <AdvantagesContainer/>
-            <CardsContainer/>
-            <StepsContainer/>
+            <Carousel />
+            <Advantages />
+            <Cards />
+            <Steps />
         </>
 
     );
