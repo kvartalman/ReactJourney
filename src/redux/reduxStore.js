@@ -1,14 +1,14 @@
 import {combineReducers, legacy_createStore as createStore} from "redux";
-import homePageReducer from "./homePageReducer";
 import offerPagesReducer from "./offerPagesReducer";
 import adminPanelFormsReducer from "./adminPanelFormsReducer";
 import navbarReducer from "./navbarReducer";
 import footerReducer from "./footerReducer";
 import categoriesReducer from "./categoriesReducer";
 import notFoundReducer from "./notFoundReducer";
+import homePageSlice from "../store/slices/homePageSlice";
 
 let reducersBatch = combineReducers({
-    homePage: homePageReducer,
+    homePage: homePageSlice,
     gameOfferPages: offerPagesReducer,
     adminPanel: adminPanelFormsReducer,
     navbar: navbarReducer,

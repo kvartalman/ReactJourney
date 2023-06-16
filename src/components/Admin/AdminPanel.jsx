@@ -5,10 +5,9 @@ import Row from 'react-bootstrap/Row';
 import React, {useRef, useState} from "react";
 import './AdminPanel.css'
 import {useDispatch, useSelector} from "react-redux";
-import {homePageButtonsAC, homePageCardsAC} from "../../redux/homePageReducer";
 import {offerPageCardsAC} from "../../redux/offerPagesReducer";
 import Cards from "../Homepage/Cards/Cards";
-
+import {addCard, addButton} from '../../store/slices/homePageSlice'
 
 const AdminPanel = () => {
 
@@ -37,18 +36,18 @@ const AdminPanel = () => {
     const offerCardTextInput = (e) => {setOfferCardText(e.target.value)};
 
     const addHomePageCard = () => {
-        dispatch(homePageCardsAC(tagId, title, cardText));
+        dispatch(addCard({tagId, title, text: cardText}));
         setTagId('');
         setTitle('');
         setCardText('');
     }
     const addHomePageCardButton = () => {
-        dispatch(homePageButtonsAC(
-            cardKey.current.value,
-            newLink.current.value,
-            newButtonType.current.value,
+        dispatch(addButton({
+            cardKey: cardKey.current.value,
+            link: newLink.current.value,
+            btnType: newButtonType.current.value,
             btnName
-        ))
+        }))
         setBtnName('');
     }
 
