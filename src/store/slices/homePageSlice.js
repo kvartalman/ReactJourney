@@ -152,7 +152,6 @@ const homePageSlice = createSlice({
     },
     reducers: {
         addCard: (state, action) => {
-            debugger;
             state.cardsData[action.payload.tagId] = {
                 id: Object.keys(state.cardsData).length,
                 tagId: action.payload.tagId,
@@ -180,6 +179,8 @@ const homePageSlice = createSlice({
     }
 })
 
-export const {addCard, addButton, addCardsData} = homePageSlice.actions;
+export const {
+    addCard, addButton, addCardsData
+} = homePageSlice.actions;
 
 export default homePageSlice.reducer

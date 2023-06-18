@@ -11,8 +11,7 @@ const Categories = (props) => {
 
     const categoriesLinks = ctgLinks.map(link => (
         <span style={{
-            background: `linear-gradient( rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5) ), 
-            url(${link.bg})`
+            background: `url(${link.bg})`
         }} className={'ctgGame'}>
                 <NavLink className={'ctgLink'} to={link.to}>
                     {link.name}

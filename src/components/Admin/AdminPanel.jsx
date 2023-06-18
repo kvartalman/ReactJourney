@@ -5,9 +5,9 @@ import Row from 'react-bootstrap/Row';
 import React, {useRef, useState} from "react";
 import './AdminPanel.css'
 import {useDispatch, useSelector} from "react-redux";
-import {offerPageCardsAC} from "../../redux/offerPagesReducer";
 import Cards from "../Homepage/Cards/Cards";
 import {addCard, addButton} from '../../store/slices/homePageSlice'
+import {offerPageAddCard} from "../../store/slices/offerPageSlice";
 
 const AdminPanel = () => {
 
@@ -52,7 +52,11 @@ const AdminPanel = () => {
     }
 
     const addOfferPageCard = () => {
-        dispatch(offerPageCardsAC(gameOfferSelector.current.value, offerCardTitle, offerCardText));
+        dispatch(offerPageAddCard({
+            gameOfferSelector: gameOfferSelector.current.value,
+            title: offerCardTitle,
+            text: offerCardText
+        }));
         setOfferCardTitle('');
         setOfferCardText('');
     }

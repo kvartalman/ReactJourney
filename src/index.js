@@ -1,4 +1,4 @@
-import store from "./redux/reduxStore";
+import store from "./store/reduxStore";
 import ReactDOM from "react-dom/client";
 import {BrowserRouter} from "react-router-dom";
 import React from "react";
