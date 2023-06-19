@@ -65,9 +65,9 @@ const GameOffer = (props) => {
                                 <div className={'offerCardTitle'}>
                                     <h1>{gameOffer.cardsTitle}</h1>
                                 </div>
-                                <Row className={'offerCardArea'}>
+                                <div className={'offerCardArea'}>
                                 {offerCardsArr}
-                                </Row>
+                                </div>
                             </Row>
                         </Container>
                     </div>

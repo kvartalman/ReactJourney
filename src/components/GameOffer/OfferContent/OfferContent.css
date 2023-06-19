@@ -26,19 +26,37 @@
 }
 
 .offerCardArea {
-    margin: auto !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    pointer-events: auto;
+    align-items: center;
+}
+
+.offerCardContainer {
+    margin: 10px;
+}
+
+.offerLink {
+    margin: 0;
+    pointer-events: auto;
+    color: black;
+}
+
+.offerLink:hover, offerLink:visited {
+    color: black;
+}
+
+.offerCard {
+    display: flex;
+    height: 200px !important;
+    width: 200px !important;
 }
 
 .offerCardTitle {
     text-transform: uppercase;
     padding-top: 30px;
     padding-bottom: 20px;
-}
-
-.offerCard {
-    margin: 10px;
-    height: 200px !important;
-    width: 200px !important;
 }
 
 .offerCard:hover {

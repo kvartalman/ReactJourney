@@ -2,8 +2,6 @@
     display: flex;
 }
 
-
-
 @media (max-width: 860px) {
     .panelCol {
         font-size: 0.9em;
