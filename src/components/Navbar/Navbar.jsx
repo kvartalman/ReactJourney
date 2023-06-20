@@ -7,24 +7,31 @@ import './Navbar.css'
 import {NavLink} from "react-router-dom";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import {useSelector} from "react-redux";
+import LoginModal from "../Authorization/LoginModal";
+import Modal from "react-bootstrap/Modal";
 
 const Navigation = (props) => {
 
     const navbarLinks = useSelector(state => state.navbar.navbarLinks)
 
     const [show, setShow] = useState(false);
+    const [modal, setModal] = useState(false);
+
+    const showModal = () => setModal(true);
+    const closeModal = () => setModal(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     let navbarLinksArr = navbarLinks.map(link => (
-        <NavLink onClick={handleClose} to={link.to} className={'navbarLink'} id={props.linkId}>{link.linkName}</NavLink>
+        <NavLink onClick={() => {handleClose(); closeModal()}} to={link.to} className={'navbarLink'} id={props.linkId}>{link.linkName}</NavLink>
     ))
 
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth >= 767) {
                 handleClose();
+                closeModal();
             }
         };
         window.addEventListener("resize", handleResize);
@@ -64,10 +71,10 @@ const Navigation = (props) => {
                     </Navbar.Offcanvas>
                     <NavLink to={"#action2"} className={'navbarLink'} id={'signLink'}>Sign
                         in</NavLink>
-                    <Button id={'loginButton'}>Log in</Button>
+                    <Button id={'loginButton'} onClick={showModal}>Log in</Button>
                 </Container>
             </Navbar>
-
+            <LoginModal modal={modal} closeModal={closeModal} />
         </>
 
     );
