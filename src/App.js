@@ -8,6 +8,7 @@ import Homepage from "./components/Homepage/Homepage";
 import Categories from "./components/Categories/Categories";
 import GameOffer from "./components/GameOffer/GameOffer";
 import NotFound from "./components/NotFound/NotFound";
+import SignPage from "./components/Authorization/SignPage";
 
 
 function App() {
@@ -29,8 +30,8 @@ function App() {
                     />}/>
                     <Route path={'admin-panel'} element={
                         <AdminPanel />}/>
-
                 </Route>
+                <Route path={'sign'} element={<SignPage />} />
                 <Route path={'*'} element={<NotFound />}/>
             </Routes>
         </>

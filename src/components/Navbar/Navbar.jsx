@@ -69,7 +69,7 @@ const Navigation = (props) => {
                             </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
-                    <NavLink to={"#action2"} className={'navbarLink'} id={'signLink'}>Sign
+                    <NavLink to={"sign"} className={'navbarLink'} id={'signLink'}>Sign
                         in</NavLink>
                     <Button id={'loginButton'} onClick={showModal}>Log in</Button>
                 </Container>

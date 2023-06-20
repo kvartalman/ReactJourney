@@ -1,0 +1,27 @@
+#signPageContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.signFormLabel {
+    margin: 10px;
+    font-weight: bold;
+}
+
+.signFormInput {
+    margin: 10px;
+}
+
+#signInButton {
+    margin: auto;
+    width: 10vh;
+}
+
+#signPageFormGroup {
+    margin: 20px;
+}
+
+#signPageHeader, #signFormHeader {
+    text-align: center;
+    font-weight: bold;
+}

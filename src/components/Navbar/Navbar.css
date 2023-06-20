@@ -83,10 +83,6 @@
     color: #ffc107;
 }
 
-.nav-item:hover .dropdown-menu {
-    transition: 1s !important;
-    display: block !important;
-}
 
 @media (max-width: 1145px) {
     .navbarLink {
