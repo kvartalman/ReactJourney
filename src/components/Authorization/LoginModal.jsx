@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from "react-bootstrap/Form";
 import './loginModal.css'
 import {NavLink} from "react-router-dom";
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth';
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
 import {app} from "./firebase";
 
 const auth = getAuth(app);
@@ -18,10 +18,10 @@ const LoginModal = (props) => {
     const [pswText, setPswText] = useState('');
 
     const emailInput = (e) => {
-        setEmailText(e.target.value)
+            setEmailText(e.target.value)
     };
     const pswInput = (e) => {
-        setPswText(e.target.value)
+            setPswText(e.target.value)
     }
 
     const handleLogin = async (e) => {
@@ -47,14 +47,12 @@ const LoginModal = (props) => {
                                 <Form.Control
                                     onChange={emailInput}
                                     value={emailText}
-                                    ref={emailForm}
                                     className={'loginModalForm'}
                                     placeholder="Your e-mail..."
                                 />
                                 <Form.Control
                                     onChange={pswInput}
                                     value={pswText}
-                                    ref={pswForm}
                                     className={'loginModalForm'}
                                     placeholder="Your password..."
                                 />

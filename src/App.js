@@ -8,7 +8,7 @@ import Homepage from "./components/Homepage/Homepage";
 import Categories from "./components/Categories/Categories";
 import GameOffer from "./components/GameOffer/GameOffer";
 import NotFound from "./components/NotFound/NotFound";
-import SignPage from "./components/Authorization/SignPage";
+import SignPage from "./components/Authorization/SignPage/SignPage";
 
 
 function App() {

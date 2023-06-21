@@ -28,11 +28,21 @@ const AdminPanel = () => {
     let newLink = useRef(null);
     let gameOfferSelector = useRef(null);
 
-    const tagInput = (e) => {setTagId(e.target.value)};
-    const titleInput = (e) => {setTitle(e.target.value)};
-    const cardTextInput = (e) => {setCardText(e.target.value)};
-    const btnNameInput = (e) => {setBtnName(e.target.value)};
-    const offerCardTitleInput = (e) => {setOfferCardTitle(e.target.value)};
+    const tagInput = (e) => {
+        setTagId(e.target.value)
+    };
+    const titleInput = (e) => {
+        setTitle(e.target.value)
+    };
+    const cardTextInput = (e) => {
+        setCardText(e.target.value)
+    };
+    const btnNameInput = (e) => {
+        setBtnName(e.target.value)
+    };
+    const offerCardTitleInput = (e) => {
+        setOfferCardTitle(e.target.value)
+    };
     const offerCardTextInput = (e) => {setOfferCardText(e.target.value)};
 
     const addHomePageCard = () => {
