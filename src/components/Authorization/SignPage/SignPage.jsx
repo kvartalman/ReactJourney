@@ -2,12 +2,11 @@ import React, {useState} from 'react';
 import './signPage.css'
 import {Button} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import {createUserWithEmailAndPassword, getAuth, updateProfile} from "firebase/auth";
-import {app} from "../firebase";
+import {createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
+import {auth} from "../firebase";
 import SignSuccessModal from "./SignSuccessModal";
 
 const SignPage = () => {
-    const auth = getAuth(app);
 
     const [userText, setUserText] = useState('');
     const [emailText, setEmailText] = useState('');
@@ -24,6 +23,12 @@ const SignPage = () => {
             setPswText(e.target.value)
     }
 
+    const clearForms = () => {
+        setUserText('');
+        setEmailText('');
+        setPswText('');
+    }
+
     // Using Firebase SDK to create new user
     const handleSign = async (e) => {
         e.preventDefault();
@@ -33,6 +38,7 @@ const SignPage = () => {
             await updateProfile(user, {displayName: userText} );
             setShowModal(true);
             setError(null);
+            clearForms();
         } catch (error) {
             if (error.code) {
                 switch(error.code) {
@@ -47,6 +53,9 @@ const SignPage = () => {
                     case 'auth/missing-password': {
                         setError('Поля не должны быть пустыми!');
                         break;
+                    }
+                    case 'auth/email-already-in-use': {
+                        setError('Эта почта уже занята');
                     }
                     default:
                         break;

@@ -4,18 +4,16 @@ import Modal from 'react-bootstrap/Modal';
 import Form from "react-bootstrap/Form";
 import './loginModal.css'
 import {NavLink} from "react-router-dom";
-import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
-import {app} from "./firebase";
+import {signInWithEmailAndPassword} from 'firebase/auth';
+import {auth} from "./firebase";
 
-const auth = getAuth(app);
+
 
 const LoginModal = (props) => {
 
-    const emailForm = useRef(null);
-    const pswForm = useRef(null);
-
     const [emailText, setEmailText] = useState('');
     const [pswText, setPswText] = useState('');
+    const [error, setError] = useState(null);
 
     const emailInput = (e) => {
             setEmailText(e.target.value)
@@ -24,13 +22,35 @@ const LoginModal = (props) => {
             setPswText(e.target.value)
     }
 
+    const clearForms = () => {
+        setPswText('');
+        setEmailText('');
+    }
+
     const handleLogin = async (e) => {
-        props.closeModal()
         e.preventDefault();
         try {
             const userCredential = await signInWithEmailAndPassword(auth, emailText, pswText);
+            clearForms();
+            setError(null);
+            props.closeModal();
         } catch (error) {
-            console.log(error);
+            if (error.code) {
+                switch(error.code) {
+                    case 'auth/user-not-found': {
+                        setError('User not found. Make sure you enter the correct email');
+                        break;
+                    }
+                    case 'auth/wrong-password': {
+                        setError('Password is incorrect');
+                        break;
+                    }
+                    default:
+                        break;
+                }
+            } else {
+                setError(error.message);
+            }
         }
     }
 
@@ -60,6 +80,9 @@ const LoginModal = (props) => {
                             </Form.Group>
                         </Form>
                     </div>
+                    {error ? <p id={'errorMessage'}>
+                        {error}
+                    </p> : null}
                 </Modal.Body>
                 <Modal.Footer>
                     <div className={'loginButtonsContainer'}>

@@ -9,6 +9,7 @@ import Categories from "./components/Categories/Categories";
 import GameOffer from "./components/GameOffer/GameOffer";
 import NotFound from "./components/NotFound/NotFound";
 import SignPage from "./components/Authorization/SignPage/SignPage";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
                         <AdminPanel />}/>
                 </Route>
                 <Route path={'sign'} element={<SignPage />} />
+                <Route path={'profile'} element={<UserProfile />} />
                 <Route path={'*'} element={<NotFound />}/>
             </Routes>
         </>

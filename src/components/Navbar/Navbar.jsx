@@ -8,7 +8,8 @@ import {NavLink} from "react-router-dom";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import {useSelector} from "react-redux";
 import LoginModal from "../Authorization/LoginModal";
-import Modal from "react-bootstrap/Modal";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {app} from "../Authorization/firebase";
 
 const Navigation = (props) => {
 
@@ -16,6 +17,7 @@ const Navigation = (props) => {
 
     const [show, setShow] = useState(false);
     const [modal, setModal] = useState(false);
+    const [user, setUser] = useState(null);
 
     const showModal = () => setModal(true);
     const closeModal = () => setModal(false);
@@ -37,6 +39,22 @@ const Navigation = (props) => {
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     });
+
+    useEffect( () => {
+        const auth = getAuth(app);
+
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser(user);
+            } else {
+                setUser(null);
+            }
+        });
+
+        return () => {
+            unsubscribe();
+        };
+    }, []);
 
     return (
         <>
@@ -69,9 +87,15 @@ const Navigation = (props) => {
                             </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
-                    <NavLink to={"sign"} className={'navbarLink'} id={'signLink'}>Sign
-                        in</NavLink>
-                    <Button id={'loginButton'} onClick={showModal}>Log in</Button>
+                    {user ?
+                        <NavLink to={"profile"} className={'navbarLink'}>Profile</NavLink>
+                        :
+                        <>
+                            <NavLink to={"sign"} className={'navbarLink'} id={'signLink'}>Sign
+                                in</NavLink>
+                            <Button id={'loginButton'} onClick={showModal}>Log in</Button>
+                        </>
+                    }
                 </Container>
             </Navbar>
             <LoginModal modal={modal} closeModal={closeModal} />
