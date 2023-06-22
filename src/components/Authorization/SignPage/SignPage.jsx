@@ -13,6 +13,7 @@ const SignPage = () => {
     const [pswText, setPswText] = useState('');
     const [error, setError] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const [showPsw, setShowPsw] = useState(false);
     const userInput = (e) => {
             setUserText(e.target.value)
     }
@@ -90,10 +91,14 @@ const SignPage = () => {
                     <Form.Label className={'signFormLabel'}>Password</Form.Label>
                     <Form.Control
                         value={pswText}
-                        type={'password'}
+                        type={showPsw ? 'text' : 'password'}
                         onChange={pswInput}
                         className={'signFormInput'}
                         placeholder="Enter password..."
+                    />
+                    <Form.Check
+                        type="checkbox"
+                        onChange={() => setShowPsw(!showPsw)}
                     />
                     {error ? <p id={'errorMessage'}>
                         {error}

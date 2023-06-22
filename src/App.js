@@ -1,41 +1,43 @@
 import './App.css';
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Route, Routes} from "react-router-dom";
-import Layout from "./components/Layout";
-import AdminPanel from "./components/Admin/AdminPanel";
-import Homepage from "./components/Homepage/Homepage";
-import Categories from "./components/Categories/Categories";
-import GameOffer from "./components/GameOffer/GameOffer";
-import NotFound from "./components/NotFound/NotFound";
-import SignPage from "./components/Authorization/SignPage/SignPage";
-import UserProfile from "./components/UserProfile/UserProfile";
-
+import Preloader from "./components/Preloader/Preloader";
+const Layout = lazy(() => import("./components/Layout"));
+const AdminPanel = lazy(() => import("./components/Admin/AdminPanel"));
+const Homepage = lazy(() => import("./components/Homepage/Homepage"));
+const Categories = lazy(() => import("./components/Categories/Categories"));
+const GameOffer = lazy(() => import("./components/GameOffer/GameOffer"));
+const NotFound = lazy(() => import("./components/NotFound/NotFound"));
+const SignPage = lazy(() => import("./components/Authorization/SignPage/SignPage"));
+const UserProfile = lazy(() => import("./components/UserProfile/UserProfile"));
 
 function App() {
     return (
         <>
-            <Routes>
-                <Route path={'/'} element={<Layout
-                />}>
-                    <Route index element={<Homepage />}/>
-                    <Route path={'categories'} element={<Categories />}/>
-                    <Route path={'dota2'} element={<GameOffer
-                        page={'dota2'}
-                    />}/>
-                    <Route path={'lol'} element={<GameOffer
-                        page={'lol'}
-                    />}/>
-                    <Route path={'hots'} element={<GameOffer
-                        page={'hots'}
-                    />}/>
-                    <Route path={'admin-panel'} element={
-                        <AdminPanel />}/>
-                </Route>
-                <Route path={'sign'} element={<SignPage />} />
-                <Route path={'profile'} element={<UserProfile />} />
-                <Route path={'*'} element={<NotFound />}/>
-            </Routes>
+            <Suspense fallback={<Preloader />}>
+                <Routes>
+                    <Route exact path={'/'} element={<Layout
+                    />}>
+                        <Route index element={<Homepage/>}/>
+                        <Route path={'categories'} element={<Categories/>}/>
+                        <Route path={'dota2'} element={<GameOffer
+                            page={'dota2'}
+                        />}/>
+                        <Route path={'lol'} element={<GameOffer
+                            page={'lol'}
+                        />}/>
+                        <Route path={'hots'} element={<GameOffer
+                            page={'hots'}
+                        />}/>
+                        <Route path={'admin-panel'} element={
+                            <AdminPanel/>}/>
+                    </Route>
+                    <Route path={'sign'} element={<SignPage/>}/>
+                    <Route path={'profile'} element={<UserProfile/>}/>
+                    <Route path={'*'} element={<NotFound/>}/>
+                </Routes>
+            </Suspense>
         </>
 
     );
