@@ -10,6 +10,7 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.5",
+    "change-case": "^4.1.2",
     "firebase": "^9.22.2",
     "firebaseui": "^6.0.2",
     "jquery": "^3.7.0",

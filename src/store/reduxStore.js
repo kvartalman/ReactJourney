@@ -6,6 +6,7 @@ import adminPanelSlice from "./slices/adminPanelSlice";
 import footerSlice from "./slices/footerSlice";
 import navbarSlice from "./slices/navbarSlice";
 import notFoundSlice from "./slices/notFoundSlice";
+import productPageSlice from "./slices/productPageSlice";
 
 let reducersBatch = combineReducers({
     homePage: homePageSlice,
@@ -14,7 +15,8 @@ let reducersBatch = combineReducers({
     navbar: navbarSlice,
     footer: footerSlice,
     categories: categoriesSlice,
-    notFound: notFoundSlice
+    notFound: notFoundSlice,
+    productPage: productPageSlice
 });
 
 let store = createStore(reducersBatch);

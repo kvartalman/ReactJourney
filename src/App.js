@@ -3,6 +3,9 @@ import React, {lazy, Suspense} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Route, Routes} from "react-router-dom";
 import Preloader from "./components/Preloader/Preloader";
+
+const ProductPage = lazy(() => import("./components/ProductPage/ProductPage"));
+const Cart = lazy(() => import("./components/Cart/Cart"));
 const Layout = lazy(() => import("./components/Layout"));
 const AdminPanel = lazy(() => import("./components/Admin/AdminPanel"));
 const Homepage = lazy(() => import("./components/Homepage/Homepage"));
@@ -15,26 +18,19 @@ const UserProfile = lazy(() => import("./components/UserProfile/UserProfile"));
 function App() {
     return (
         <>
-            <Suspense fallback={<Preloader />}>
+            <Suspense fallback={<Preloader/>}>
                 <Routes>
                     <Route exact path={'/'} element={<Layout
                     />}>
                         <Route index element={<Homepage/>}/>
-                        <Route path={'categories'} element={<Categories/>}/>
-                        <Route path={'dota2'} element={<GameOffer
-                            page={'dota2'}
-                        />}/>
-                        <Route path={'lol'} element={<GameOffer
-                            page={'lol'}
-                        />}/>
-                        <Route path={'hots'} element={<GameOffer
-                            page={'hots'}
-                        />}/>
-                        <Route path={'admin-panel'} element={
-                            <AdminPanel/>}/>
+                        <Route path={'categories'} element={<Categories/>} />
+                        <Route path={'categories/:name'} element={<GameOffer/>} />
+                        <Route path={'/categories/:name/:product'} element={<ProductPage/>}/>
+                        <Route path={'admin-panel'} element={<AdminPanel/>}/>
+                        <Route path={'cart'} element={<Cart/>}/>
+                        <Route path={'profile'} element={<UserProfile/>}/>
                     </Route>
                     <Route path={'sign'} element={<SignPage/>}/>
-                    <Route path={'profile'} element={<UserProfile/>}/>
                     <Route path={'*'} element={<NotFound/>}/>
                 </Routes>
             </Suspense>

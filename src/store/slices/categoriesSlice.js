@@ -7,19 +7,19 @@ const categoriesSlice = createSlice({
             {
                 name: 'Heroes of the Storm',
                 bg: './backgrounds/ctgBackgrounds/hots.jpeg',
-                to: '/hots',
+                to: '/categories/hots',
                 video: './backgrounds/ctgBackgrounds/videos/hots.mp4'
             },
             {
                 name: 'League of Legends',
                 bg: './backgrounds/ctgBackgrounds/lol.jpg',
-                to: '/lol',
+                to: '/categories/lol',
                 video: './backgrounds/ctgBackgrounds/videos/lol.mp4'
             },
             {
                 name: 'Dota 2',
                 bg: './backgrounds/ctgBackgrounds/dota2.jpeg',
-                to: '/dota2',
+                to: '/categories/dota2',
                 video: './backgrounds/ctgBackgrounds/videos/dota2.mp4'
             },
             {

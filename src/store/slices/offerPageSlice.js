@@ -22,15 +22,15 @@ const offerPageSlice = createSlice({
                         {id: 5, title: '+200 MMR', text: '10$'}
                     ],
                     panelButton: [
-                        {id: 0, link: "#", name: "Common skins"},
-                        {id: 1, link: "#", name: "Uncommon skins"},
-                        {id: 2, link: "#", name: "Rare skins"},
-                        {id: 3, link: "#", name: "Immortal skins"},
-                        {id: 4, link: "#", name: "Arcana"},
-                        {id: 5, link: "#", name: "MMR Boost"},
-                        {id: 6, link: "#", name: "Low priority"},
-                        {id: 7, link: "#", name: "Coaching"},
-                        {id: 8, link: "#", name: "Party with a pro"}
+                        {id: 0, link: "/categories/dota2/common-skins", name: "Common skins"},
+                        {id: 1, link: "/categories/dota2/uncommon-skins", name: "Uncommon skins"},
+                        {id: 2, link: "/categories/dota2/rare-skins", name: "Rare skins"},
+                        {id: 3, link: "/categories/dota2/immortal-skins", name: "Immortal skins"},
+                        {id: 4, link: "/categories/dota2/arcana", name: "Arcana"},
+                        {id: 5, link: "/categories/dota2/mmr-boost", name: "MMR Boost"},
+                        {id: 6, link: "/categories/dota2/low-priority", name: "Low priority"},
+                        {id: 7, link: "/categories/dota2/coaching", name: "Coaching"},
+                        {id: 8, link: "/categories/dota2/party-with-a-pro", name: "Party with a pro"}
                     ],
                     breadCrumbs: {linkNames: [], activeLinkName: 'Dota 2'},
                     canvasCtgData:
@@ -53,13 +53,13 @@ const offerPageSlice = createSlice({
                         {id: 3, title: '+300 MMR', text: '10$'}
                     ],
                     panelButton: [
-                        {id: 0, link: "#", name: "Leveling"},
-                        {id: 1, link: "#", name: "Ranked"},
-                        {id: 2, link: "#", name: "Game skins"},
-                        {id: 3, link: "#", name: "Low priority"},
-                        {id: 4, link: "#", name: "Coaching"},
-                        {id: 5, link: "#", name: "Party with a pro"},
-                        {id: 6, link: "#", name: "Achievements"},
+                        {id: 0, link: "/categories/lol/leveling", name: "Leveling"},
+                        {id: 1, link: "/categories/lol/ranked", name: "Ranked"},
+                        {id: 2, link: "/categories/lol/game-skins", name: "Game skins"},
+                        {id: 3, link: "/categories/lol/low-priority", name: "Low priority"},
+                        {id: 4, link: "/categories/lol/coaching", name: "Coaching"},
+                        {id: 5, link: "/categories/lol/party-with-a-pro", name: "Party with a pro"},
+                        {id: 6, link: "/categories/lol/achievements", name: "Achievements"},
                     ],
                     breadCrumbs: {linkNames: [], activeLinkName: 'League of Legends'},
                     canvasCtgData:
@@ -83,12 +83,12 @@ const offerPageSlice = createSlice({
                         {id: 3, title: '+400 MMR', text: '10$'}
                     ],
                     panelButton: [
-                        {id: 0, link: "#", name: "Low priority"},
-                        {id: 1, link: "#", name: "Leveling"},
-                        {id: 2, link: "#", name: "Coaching"},
-                        {id: 3, link: "#", name: "Ranked"},
-                        {id: 4, link: "#", name: "Play with a pro"},
-                        {id: 5, link: "#", name: "Achievements"},
+                        {id: 0, link: "/categories/hots/low-priority", name: "Low priority"},
+                        {id: 1, link: "/categories/hots/leveling", name: "Leveling"},
+                        {id: 2, link: "/categories/hots/coaching", name: "Coaching"},
+                        {id: 3, link: "/categories/hots/ranked", name: "Ranked"},
+                        {id: 4, link: "/categories/hots/play-with-a-pro", name: "Play with a pro"},
+                        {id: 5, link: "/categories/hots/achievements", name: "Achievements"},
                     ],
                     breadCrumbs: {linkNames: [], activeLinkName: 'Heroes of the Storm'},
                     canvasCtgData: {
@@ -98,9 +98,9 @@ const offerPageSlice = createSlice({
         },
         canvasMenuData: {
             placement: 'end', buttonName: 'Categories', title: 'Categories', canvasButtons: [
-                {id: 0, link: "/hots", name: "Heroes of the Storm"},
-                {id: 1, link: "/dota2", name: "Dota 2"},
-                {id: 2, link: "/lol", name: "League of Legends"}
+                {id: 0, link: "/categories/hots", name: "Heroes of the Storm"},
+                {id: 1, link: "/categories/dota2", name: "Dota 2"},
+                {id: 2, link: "/categories/lol", name: "League of Legends"}
             ]
         }
     },

@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import {signOut} from 'firebase/auth';
 import {auth} from "../Authorization/firebase";
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const UserProfile = () => {
 

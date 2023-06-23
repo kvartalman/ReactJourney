@@ -1,0 +1,13 @@
+#productPageMainContainer {
+    margin: 2em 0;
+}
+
+.productPageRow {
+    margin: 2em 0;
+}
+
+#productPageContentCol {
+    display: flex;
+    justify-content: center;
+}
+

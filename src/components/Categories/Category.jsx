@@ -14,27 +14,37 @@ const Category = ({bg, name, to, video}) => {
     const handleMouseEnter = useCallback(() => {
         setShow(true);
         if (videoRef.current.readyState >= 2) {
+            if (!videoRef.current.paused) {
+                videoRef.current.pause();
+            } // if video wasn't paused, then pause and only after it play
             videoRef.current.currentTime = 0;
             videoRef.current.play();
             setVideoPlaying(true);
         } else {
-            videoRef.current.addEventListener('canplaythrough', function canPlayThrough() {
+            videoRef.current.addEventListener('loadeddata', function canPlayThrough() {
                 setVideoLoaded(true);
+                if (!videoRef.current.paused) {
+                    videoRef.current.pause();
+                }
                 videoRef.current.currentTime = 0;
                 videoRef.current.play();
                 setVideoPlaying(true);
-                videoRef.current.removeEventListener('canplaythrough', canPlayThrough)
+                videoRef.current.removeEventListener('loadeddata', canPlayThrough)
             })
         }
     }, []);
 
     const handleMouseLeave = useCallback(() => {
-        if (show && videoPlaying && videoLoaded) {
-            videoRef.current.pause();
-            setVideoPlaying(false);
-            setVideoLoaded(false);
+        if (videoRef.current) {
+            if (show && videoPlaying && videoLoaded) {
+                if (!videoRef.current.paused) {
+                    videoRef.current.pause();
+                }
+                setVideoPlaying(false);
+                setVideoLoaded(false);
+            }
+            setShow(false);
         }
-        setShow(false);
     }, [show, videoPlaying, videoLoaded]);
 
     return (
@@ -54,4 +64,4 @@ const Category = ({bg, name, to, video}) => {
     )
 }
 
-export default Category
+export default React.memo(Category)

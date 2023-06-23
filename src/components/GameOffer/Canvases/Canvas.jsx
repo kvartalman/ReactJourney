@@ -12,7 +12,7 @@ function Canvas(props) {
     const handleShow = () => setShow(true);
 
     let canvasButtonsArr = props.canvasButtons.map(button => (
-        <OfferPanelButton clickFunc={handleClose} key={button.id} link={button.link} name={button.name} />
+        <OfferPanelButton clickFunc={handleClose} key={button.id} link={button.link} name={button.name}/>
     ))
 
     useEffect(() => {
@@ -23,15 +23,20 @@ function Canvas(props) {
         };
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
-    });
+    }, []);
 
     return (
         <>
             <Button variant="primary" onClick={handleShow} className="me-2 canvasButton">
                 {props.buttonName}
             </Button>
-            <Offcanvas placement={props.placement} show={show} onHide={handleClose} {...props} className={
-                'offCanvas'} id={'gameOfferCanvas'}>
+            <Offcanvas
+                placement={props.placement}
+                show={show}
+                onHide={handleClose}
+                className={'offCanvas'}
+                id={'gameOfferCanvas'}
+            >
                 <Offcanvas.Header closeButton className={'offerCanvasHeader'}>
                     <Offcanvas.Title className={'offerCanvasTitle'}>{props.title}</Offcanvas.Title>
                 </Offcanvas.Header>

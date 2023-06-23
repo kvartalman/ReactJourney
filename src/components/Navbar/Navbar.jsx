@@ -8,7 +8,7 @@ import {NavLink} from "react-router-dom";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import {useSelector} from "react-redux";
 import LoginModal from "../Authorization/LoginModal";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {getAuth, onAuthStateChanged} from "firebase/auth";
 import {app} from "../Authorization/firebase";
 
 const Navigation = (props) => {
@@ -26,7 +26,10 @@ const Navigation = (props) => {
     const handleShow = () => setShow(true);
 
     let navbarLinksArr = navbarLinks.map(link => (
-        <NavLink onClick={() => {handleClose(); closeModal()}} to={link.to} className={'navbarLink'} id={props.linkId}>{link.linkName}</NavLink>
+        <NavLink onClick={() => {
+            handleClose();
+            closeModal()
+        }} to={link.to} className={'navbarLink'} id={props.linkId}>{link.linkName}</NavLink>
     ))
 
     useEffect(() => {
@@ -40,7 +43,7 @@ const Navigation = (props) => {
         return () => window.removeEventListener("resize", handleResize);
     });
 
-    useEffect( () => {
+    useEffect(() => {
         const auth = getAuth(app);
 
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -66,7 +69,8 @@ const Navigation = (props) => {
                             'Heroes_of_the_Storm_BlizzHeroes_2017_logo.png?20230127151006'}
                              alt={'Heroes of the Storm'}/>
                     </Navbar.Brand>
-                    <Navbar.Toggle onClick={handleShow} aria-controls={`offcanvasNavbar-expand-${'md'}`} id={'navbarToggle'}/>
+                    <Navbar.Toggle onClick={handleShow} aria-controls={`offcanvasNavbar-expand-${'md'}`}
+                                   id={'navbarToggle'}/>
                     <Navbar.Offcanvas
                         show={show}
                         onHide={handleClose}
@@ -88,7 +92,10 @@ const Navigation = (props) => {
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
                     {user ?
-                        <NavLink to={"profile"} className={'navbarLink'}>Profile</NavLink>
+                        <>
+                            <NavLink to={'cart'} className={'navbarLink'}>Cart</NavLink>
+                            <NavLink to={"profile"} className={'navbarLink'}>Profile</NavLink>
+                        </>
                         :
                         <>
                             <NavLink to={"sign"} className={'navbarLink'} id={'signLink'}>Sign
@@ -98,7 +105,7 @@ const Navigation = (props) => {
                     }
                 </Container>
             </Navbar>
-            <LoginModal modal={modal} closeModal={closeModal} />
+            <LoginModal modal={modal} closeModal={closeModal}/>
         </>
 
     );

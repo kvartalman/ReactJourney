@@ -8,11 +8,13 @@ import OfferPanelButton from "./OfferPanel/OfferPanelButton";
 import BreadCrumb from "./BreadCrumb/BreadCrumb";
 import Canvas from "./Canvases/Canvas";
 import {useSelector} from "react-redux";
+import {useParams} from "react-router-dom";
 
 const GameOffer = (props) => {
 
-    const gameOffer = useSelector(state => state.gameOfferPages.pagesData[props.page])
-        const canvasMenuData = useSelector(state => state.gameOfferPages.canvasMenuData)
+    const page = useParams();
+    const gameOffer = useSelector(state => state.gameOfferPages.pagesData[page.name])
+    const canvasMenuData = useSelector(state => state.gameOfferPages.canvasMenuData)
 
     let offerCardsArr = gameOffer.offerCardsData.map(card => (
         <GameOfferCard title={card.title} key={card.id} text={card.text}/>

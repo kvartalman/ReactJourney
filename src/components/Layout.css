@@ -1,0 +1,11 @@
+#layoutContainer {
+    display: flex;
+    max-width: 2000px;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+#layoutFooter {
+    width: 100%;
+    margin-top: auto;
+}
