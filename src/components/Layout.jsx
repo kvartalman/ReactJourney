@@ -8,17 +8,17 @@ import Container from "react-bootstrap/Container";
 const Layout = () => {
 
     return (
-        <Container fluid id={'layoutContainer'}>
-            <header>
-                <Navbar />
-            </header>
-            <body>
-            <Outlet/>
-            </body>
-            <footer id={'layoutFooter'}>
-                <Footer />
-            </footer>
-        </Container>
+            <Container fluid id={'layoutContainer'}>
+                <header>
+                    <Navbar/>
+                </header>
+                <body>
+                <Outlet/>
+                </body>
+                <footer id={'layoutFooter'}>
+                    <Footer/>
+                </footer>
+            </Container>
     )
 }
 

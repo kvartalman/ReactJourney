@@ -75,19 +75,19 @@ const homePageSlice = createSlice({
         carouselData: [
             {
                 id: 0,
-                srcImg: "./carousel/carousel1.jpg",
+                srcImg: "/carousel/carousel1.jpg",
                 altImg: "Offer 1",
                 text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ"
             },
             {
                 id: 1,
-                srcImg: "./carousel/carousel2.jpg",
+                srcImg: "/carousel/carousel2.jpg",
                 altImg: "Offer 2",
                 text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ"
             },
             {
                 id: 2,
-                srcImg: "./carousel/carousel3.jpg",
+                srcImg: "/carousel/carousel3.jpg",
                 altImg: "Offer 3",
                 text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ"
             }

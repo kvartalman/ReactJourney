@@ -1,0 +1,34 @@
+.productCheckboxLabel {
+    cursor: pointer;
+    display: flex;
+    margin-top: 0.5em;
+}
+
+.productCheckboxName {
+    font-weight: bold;
+}
+
+
+.productCheckboxLabel input {
+    border-radius: 0 !important;
+    border: 2px solid #ffc107;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.productCheckboxLabel input:checked {
+
+    border-color: #ffc107;
+    background: #ffc107 url('/public/checkmark.png') no-repeat center;
+    background-size: contain;
+}
+
+
+.productCheckboxLabel input:focus {
+    border-color: #ffc107;
+    box-shadow: none;
+}
+
+.productCheckboxText {
+    display: flex;
+}

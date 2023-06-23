@@ -23,10 +23,10 @@ const footerSlice = createSlice(
                 ['#', 'Become a booster']
             ],
             paymentIcons: [
-                ['./payment-icons/mastercard.png', 'mastercard'],
-                ['./payment-icons/visa.png', 'visa'],
-                ['./payment-icons/qiwi.png', 'qiwi'],
-                ['./payment-icons/paypal.png', 'paypal']
+                ['/payment-icons/mastercard.png', 'mastercard'],
+                ['/payment-icons/visa.png', 'visa'],
+                ['/payment-icons/qiwi.png', 'qiwi'],
+                ['/payment-icons/paypal.png', 'paypal']
             ]
         },
         reducers: {}

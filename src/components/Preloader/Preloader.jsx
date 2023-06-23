@@ -3,7 +3,7 @@ import './Preloader.css'
 const Preloader = () => {
     return (
         <div id={'preloader'}>
-            <img src={'./preloader.gif'} alt={'Loading...'} />
+            <img src={'/preloader.gif'} alt={'Loading...'} />
         </div>
     )
 }
