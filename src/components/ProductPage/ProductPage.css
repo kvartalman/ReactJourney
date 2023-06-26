@@ -24,7 +24,7 @@
 
 .checkboxesContainer {
     display: flex;
-    justify-content: left;
+    justify-content: center;
     flex-direction: column;
     margin: 1em 1em;
 }
@@ -56,3 +56,19 @@
     color: black;
 }
 
+.totalPrice {
+    font-weight: bold;
+    font-size: 2em;
+    color: rgb(33, 37, 41);
+}
+
+.totalPrice p {
+    text-align: center;
+    margin: 1rem 1rem;
+}
+
+.totalPrice p:hover {
+    transition: 0.3s;
+    position: relative;
+    transform: scale(1.2);
+}

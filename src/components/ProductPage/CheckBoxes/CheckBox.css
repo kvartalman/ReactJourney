@@ -2,22 +2,21 @@
     cursor: pointer;
     display: flex;
     margin-top: 0.5em;
+
 }
 
-.productCheckboxName {
+.productCheckboxName, .productCheckboxPrice {
     font-weight: bold;
 }
-
 
 .productCheckboxLabel input {
     border-radius: 0 !important;
     border: 2px solid #ffc107;
-    width: 1.5em;
-    height: 1.5em;
+    width: 1.6em;
+    height: 1.6em;
 }
 
 .productCheckboxLabel input:checked {
-
     border-color: #ffc107;
     background: #ffc107 url('/public/checkmark.png') no-repeat center;
     background-size: contain;
@@ -30,5 +29,8 @@
 }
 
 .productCheckboxText {
+    margin: 0 0.7em;
+    width: 100%;
     display: flex;
+    justify-content: space-between;
 }
