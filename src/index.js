@@ -4,19 +4,22 @@ import {BrowserRouter} from "react-router-dom";
 import React from "react";
 import App from "./App";
 import {Provider} from "react-redux";
+import {CartProvider} from "react-use-cart";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-    root.render(
-        <BrowserRouter>
-            <React.StrictMode>
+root.render(
+    <BrowserRouter>
+        <React.StrictMode>
+            <CartProvider>
                 <Provider store={store}>
-                <App
-                />
+                    <App
+                    />
                 </Provider>
-            </React.StrictMode>
-        </BrowserRouter>
-    );
+            </CartProvider>
+        </React.StrictMode>
+    </BrowserRouter>
+);
 
 
 

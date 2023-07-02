@@ -13,7 +13,7 @@ import AddCartModal from "../Cart/AddCartModal/AddCartModal";
 
 const ProductPage = () => {
 
-    const {addItem} = useCart();
+    const { addItem } = useCart();
     const page = useParams();
     const gameOffer = useSelector(state => state.gameOfferPages.pagesData[page.name]);
     const productPage = useSelector(state => state.productPage)
@@ -35,19 +35,15 @@ const ProductPage = () => {
         const product = productPage.productData[page.name][productCamelCase];
 
         const productToAdd = {
-            id: product.id,
+            id: 1234567898,
             title: product.header,
-            price: product.price,
+            price: price,
             quantity: 1,
             img: product.img
         };
-        try {
+        debugger;
             addItem(productToAdd);
             setShowModal(true);
-
-        } catch (error) {
-            console.log(error.name)
-        }
     }
 
     return (

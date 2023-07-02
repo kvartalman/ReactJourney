@@ -2,6 +2,10 @@
   padding: 0;
 }
 
+a:hover button:hover {
+  cursor: pointer !important;
+}
+
 /*IMAGES-TABS*/
 @media (max-width: 768px) {
   .container-fluid > .imgTab {

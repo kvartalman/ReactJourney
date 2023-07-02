@@ -18,6 +18,14 @@ const Cart = () => {
         <div style={{background: `url('./backgrounds/checkoutPage.jpg')`}} id={'cartMainContainer'}>
             <div id={'checkoutForm'}>
                 <p>Total value: {cartTotal}</p>
+                {items.map(item => (
+                    <div>
+                        <div>{item.title}</div>
+                        <div>{item.price}</div>
+                        <div>{item.quantity}</div>
+                        <div><img src={item.img} alt={'doomslayer'} /></div>
+                    </div>
+                ))}
             </div>
         </div>
     )

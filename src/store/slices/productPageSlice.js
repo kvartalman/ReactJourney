@@ -26,7 +26,9 @@ const productPageSlice = createSlice({
                             {price: 300, name: 'checkbox3', label: 'Option 3'},
                             {price: 400, name: 'checkbox4', label: 'Option 4'},
                             {price: 500, name: 'checkbox5', label: 'Option 5'}
-                        ]
+                        ],
+                        price: 100,
+                        img: './product-photos/doomslayer.jpg'
                     },
                     uncommonSkins: {
                         id: 1,
@@ -43,7 +45,8 @@ const productPageSlice = createSlice({
                             {price: 300, name: 'checkbox3', label: 'Option 3'},
                             {price: 400, name: 'checkbox4', label: 'Option 4'},
                             {price: 500, name: 'checkbox5', label: 'Option 5'}
-                        ]
+                        ],
+                        price: 100
                     },
                     rareSkins: {
                         id: 2,
@@ -60,7 +63,8 @@ const productPageSlice = createSlice({
                             {price: 300, name: 'checkbox3', label: 'Option 3'},
                             {price: 400, name: 'checkbox4', label: 'Option 4'},
                             {price: 500, name: 'checkbox5', label: 'Option 5'}
-                        ]
+                        ],
+                        price: 100
                     },
                     immortalSkins: {
                         id: 3,
@@ -77,7 +81,8 @@ const productPageSlice = createSlice({
                             {price: 300, name: 'checkbox3', label: 'Option 3'},
                             {price: 400, name: 'checkbox4', label: 'Option 4'},
                             {price: 500, name: 'checkbox5', label: 'Option 5'}
-                        ]
+                        ],
+                        price: 100
                     },
                     arcana: {
                         id: 4,
@@ -94,7 +99,8 @@ const productPageSlice = createSlice({
                             {price: 300, name: 'checkbox3', label: 'Option 3'},
                             {price: 400, name: 'checkbox4', label: 'Option 4'},
                             {price: 500, name: 'checkbox5', label: 'Option 5'}
-                        ]
+                        ],
+                        price: 100
                     },
                     mmrBoost: {
                         id: 5,
@@ -111,7 +117,8 @@ const productPageSlice = createSlice({
                             {price: 300, name: 'checkbox3', label: 'Option 3'},
                             {price: 400, name: 'checkbox4', label: 'Option 4'},
                             {price: 500, name: 'checkbox5', label: 'Option 5'}
-                        ]
+                        ],
+                        price: 100
                     },
                     lowPriority: {
                         id: 6,
@@ -128,7 +135,8 @@ const productPageSlice = createSlice({
                             {price: 300, name: 'checkbox3', label: 'Option 3'},
                             {price: 400, name: 'checkbox4', label: 'Option 4'},
                             {price: 500, name: 'checkbox5', label: 'Option 5'}
-                        ]
+                        ],
+                        price: 100
                     },
                     coaching: {
                         id: 7,
@@ -145,7 +153,8 @@ const productPageSlice = createSlice({
                             {price: 300, name: 'checkbox3', label: 'Option 3'},
                             {price: 400, name: 'checkbox4', label: 'Option 4'},
                             {price: 500, name: 'checkbox5', label: 'Option 5'}
-                        ]
+                        ],
+                        price: 100
                     },
                     partyWithAPro: {
                         id: 8,

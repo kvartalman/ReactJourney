@@ -9,7 +9,7 @@ const AddCartModal = (props) => {
                     centered
                     size="sm"
                     show={props.show}
-                    onHide={props.setShowModal(false)}
+                    onHide={() => props.setShowModal(false)}
                     aria-labelledby="example-modal-sizes-title-sm"
                 >
                     <Modal.Header closeButton>
