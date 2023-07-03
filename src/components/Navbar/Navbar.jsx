@@ -10,6 +10,7 @@ import {useSelector} from "react-redux";
 import LoginModal from "../Authorization/LoginModal";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 import {app} from "../Authorization/firebase";
+import CartGoodsModal from "../Cart/CartGoodsModal/CartGoodsModal";
 
 const Navigation = (props) => {
 
@@ -18,6 +19,7 @@ const Navigation = (props) => {
     const [show, setShow] = useState(false);
     const [modal, setModal] = useState(false);
     const [user, setUser] = useState(null);
+    const [goodsModal, setGoodsModal] = useState(false);
 
     const showModal = () => setModal(true);
     const closeModal = () => setModal(false);
@@ -93,7 +95,13 @@ const Navigation = (props) => {
                     </Navbar.Offcanvas>
                     {user ?
                         <>
-                            <NavLink to={'cart'} className={'navbarLink'}>Cart</NavLink>
+                            <Button
+                                onClick={() => setGoodsModal(true)}
+                                className={'navbarLink'}
+                                id={'cartButton'}
+                            >
+                                Cart
+                            </Button>
                             <NavLink to={"profile"} className={'navbarLink'}>Profile</NavLink>
                         </>
                         :
@@ -105,6 +113,7 @@ const Navigation = (props) => {
                     }
                 </Container>
             </Navbar>
+            <CartGoodsModal show={goodsModal} onHide={() => setGoodsModal(false)} />
             <LoginModal modal={modal} closeModal={closeModal}/>
         </>
 

@@ -10,6 +10,7 @@ import CheckBoxes from "./CheckBoxes/CheckBoxes";
 import Button from "react-bootstrap/Button";
 import {useCart} from "react-use-cart";
 import AddCartModal from "../Cart/AddCartModal/AddCartModal";
+import { v4 as uuidv4 } from 'uuid';
 
 const ProductPage = () => {
 
@@ -35,13 +36,12 @@ const ProductPage = () => {
         const product = productPage.productData[page.name][productCamelCase];
 
         const productToAdd = {
-            id: 1234567898,
+            id: uuidv4(),
             title: product.header,
             price: price,
             quantity: 1,
             img: product.img
         };
-        debugger;
             addItem(productToAdd);
             setShowModal(true);
     }
