@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Slider from "rc-slider";
 import './ContentSlider.css'
 import ContentSliderCheckboxes from "./ContentSliderCheckboxes";
-import Button from "react-bootstrap/Button";
+import AddCartModal from "../../Cart/AddCartModal/AddCartModal";
 
 const ContentSlider = (props) => {
 
@@ -10,23 +10,28 @@ const ContentSlider = (props) => {
 
     const handleSliderChange = (value) => {
         setSliderPrice(value);
+
     }
 
     return (
         <div className={'productContentSliderContainer'}>
+            <div>{sliderPrice}</div>
             <div className={'contentSliderContainer'}>
                 <Slider
                     value={sliderPrice}
                     min={0}
                     max={1000}
                     onChange={handleSliderChange}
+                    step={1}
                     marks={
                         {
                             100: 100,
                             200: 200,
                             300: 300,
                             400: 400,
-                            500: 500
+                            500: 'Diamond',
+                            600: 'ML',
+                            700: 'GML'
                         }
                     }
                     trackStyle={{backgroundColor: '#ffc107', transition: '0.1s'}}
@@ -34,7 +39,8 @@ const ContentSlider = (props) => {
                         backgroundColor: '#ffc107',
                         transition: '0.1s',
                         borderColor: '#ffc107',
-                        opacity: 1
+                        opacity: 1,
+                        boxShadow: '0 0 0 8px rgba(255, 193, 7, 0.5)'
                     }}
                     railStyle={{backgroundColor: 'rgba(33, 37, 41, 0.3)'}}
                     dotStyle={{
@@ -57,12 +63,22 @@ const ContentSlider = (props) => {
             <div className={'customizeDividerLine'}></div>
             <div className={'contentSliderFooter'}>
                 <div className={'contentSliderTotalPrice'}>
-                    Total: {props.totalPrice}&#8364;
+                    Total: {props.totalPrice + sliderPrice}&#8364;
                 </div>
                 <div className={'contentSliderButtonsContainer'}>
-                    <button className={'contentSliderButton contentSliderButtonBuy'}>Buy Now</button>
-                    <button className={'contentSliderButton contentSliderButtonHelp'}>I have question</button>
+                    <button
+                        className={'contentSliderButton contentSliderButtonBuy'}
+                        onClick={() => props.addToCartHandler(sliderPrice)}
+                    >
+                        Buy Now
+                    </button>
+                    <button
+                        className={'contentSliderButton contentSliderButtonHelp'}
+                    >
+                        I have question
+                    </button>
                 </div>
+                <AddCartModal show={props.showModal} setShowModal={props.setShowModal}/>
             </div>
         </div>
     );
