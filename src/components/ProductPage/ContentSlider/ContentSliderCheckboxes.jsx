@@ -8,6 +8,8 @@ const ContentSliderCheckboxes = (props) => {
         state => state.productPage.productData[props.game][props.product].checkboxes
     )
 
+    // Here we get an array of checkboxes in 'false' state. It means they are not checked
+
     const [checkboxesState, setCheckboxesState] = useState(new Array(productPage.length).fill(false));
 
     // Function that change total price when checkbox checked/not checked
@@ -22,28 +24,25 @@ const ContentSliderCheckboxes = (props) => {
 
     const checkBoxes = productPage.map((checkbox, index) => {
         return (
-            <label key={index}>
+            <label key={index} className={'contentSliderCheckboxContainer'}>
                 <Form.Check
                     type="checkbox"
-                    onChange={() => {handleCheckboxChange(index)}}
+                    onChange={() => {
+                        handleCheckboxChange(index)
+                    }}
 
                 />
-                <div>
-                    <div>
-                        <p>{checkbox.label}</p>
-                    </div>
-                    <div>
-                        <p>{checkbox.price}&#8364;</p>
-                    </div>
+                <div className={'contentSliderCheckboxesInfo'}>
+                    <p>{checkbox.label} - {checkbox.price}&#8364;</p>
                 </div>
             </label>
         )
     })
 
     return (
-        <div>
-            {checkBoxes}
-        </div>
+            <div className={'contentSliderCheckboxesContainer'}>
+                {checkBoxes}
+            </div>
     );
 }
 

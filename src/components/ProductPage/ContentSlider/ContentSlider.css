@@ -5,6 +5,111 @@
     border-radius: 5%;
 }
 
+.contentSliderContainer {
+    display: flex;
+}
+
 .productContentCheckboxesContainer {
     margin-top: 3em;
 }
+
+.contentSliderCheckboxesContainer {
+    margin: 4em 5em 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contentSliderCheckboxesContainer input {
+    border-radius: 0 !important;
+    border: 2px solid #ffc107;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.contentSliderCheckboxesContainer input:checked {
+    border-color: #ffc107;
+    background: #ffc107 url('/public/checkmark.png') no-repeat center;
+    background-size: contain;
+}
+
+
+.contentSliderCheckboxesContainer input:focus {
+    border-color: #ffc107;
+    box-shadow: none;
+}
+
+.contentSliderCheckboxesInfo {
+    display: flex;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 1em;
+}
+
+.contentSliderCheckboxContainer {
+    display: flex;
+}
+
+.contentSliderFooter {
+    margin: 2em 1em 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contentSliderTotalPrice {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.contentSliderButtonsContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contentSliderButton {
+    position: relative;
+    overflow: hidden;
+    margin: 0.1em;
+    color: rgb(33, 37, 41);
+    border: 1px solid rgba(222, 226, 230);
+    border-radius: 0;
+    font-weight: bold;
+    font-size: 2em;
+    background: none;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.contentSliderButton::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: #ffc107;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.contentSliderButton:hover {
+    color: white;
+}
+
+.contentSliderButtonBuy::before {
+    bottom: 0;
+    border-radius: 50% 50% 0 0;
+}
+
+.contentSliderButtonHelp::before {
+    top: 0;
+    border-radius: 0 0 50% 50%;
+}
+
+.contentSliderButtonBuy:hover::before {
+    height: 180%;
+}
+
+.contentSliderButtonHelp:hover::before {
+    height: 180%;
+}
+
+
