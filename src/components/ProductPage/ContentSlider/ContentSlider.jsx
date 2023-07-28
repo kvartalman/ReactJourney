@@ -6,19 +6,30 @@ import AddCartModal from "../../Cart/AddCartModal/AddCartModal";
 
 const ContentSlider = (props) => {
 
-    const [sliderPrice, setSliderPrice] = useState(0);
+    const [sliderValue, setSliderValue] = useState(0);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     const handleSliderChange = (value) => {
-        setSliderPrice(value);
+        setSliderValue(value);
+        if (value < 10) {
+            setTotalPrice(value / 5);
+        } else if (value >= 10 && value < 20) {
+            setTotalPrice((value / 5) + 0.2)
+        } else {
+            debugger;
+            setTotalPrice((value / 5) + 0.6)
+        }
 
-    }
+        }
+
 
     return (
         <div className={'productContentSliderContainer'}>
-            <div>{sliderPrice}</div>
+            <div>{sliderValue}</div>
+            <div>{totalPrice}</div>
             <div className={'contentSliderContainer'}>
                 <Slider
-                    value={sliderPrice}
+                    value={sliderValue}
                     min={0}
                     max={1000}
                     onChange={handleSliderChange}
@@ -63,12 +74,12 @@ const ContentSlider = (props) => {
             <div className={'customizeDividerLine'}></div>
             <div className={'contentSliderFooter'}>
                 <div className={'contentSliderTotalPrice'}>
-                    Total: {props.totalPrice + sliderPrice}&#8364;
+                    Total: {props.totalPrice + totalPrice}&#8364;
                 </div>
                 <div className={'contentSliderButtonsContainer'}>
                     <button
                         className={'contentSliderButton contentSliderButtonBuy'}
-                        onClick={() => props.addToCartHandler(sliderPrice)}
+                        onClick={() => props.addToCartHandler(sliderValue)}
                     >
                         Buy Now
                     </button>
