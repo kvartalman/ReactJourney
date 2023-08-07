@@ -1,0 +1,135 @@
+
+.navbarOffCanvas {
+    height: 50% !important;
+    border: 0 !important;
+    padding: 0.8em 0;
+}
+
+.navbar {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#navbarToggle {
+    box-shadow: 0 0 5px #ffc107;
+    border: 0;
+    margin: 5px 0;
+    --bs-navbar-toggler-focus-width: 0;
+}
+
+#navbarToggle:hover {
+    transition: 0.2s;
+
+}
+
+.offcanvas-body > .justify-content-end {
+    justify-content: center;
+    align-items: center;
+    padding: 0 !important;
+}
+
+#offcanvasNavbar-expand-md {
+    justify-content: center;
+    align-items: center;
+}
+
+.navbarLink {
+    margin: 5px 1.5em;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    color: rgb(33, 37, 41);
+    font-size: 20px;
+    padding: 0;
+}
+
+#cartButton {
+    background-color: #ffc107;
+    border: none;
+}
+
+.navbarLink:hover {
+    transition: 0.1s;
+    color: white;
+}
+
+#navbarContainer {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: #ffc107;
+}
+
+/*logo on the left side of navbar*/
+.logo {
+    width: 60px;
+}
+
+
+
+#loginButton {
+
+    width: 5em;
+    color: rgb(33, 37, 41);
+    font-weight: bold;
+    font-size: 1.1em;
+    background-color: #ffc107;
+    border: 3px solid rgb(33, 37, 41);
+}
+
+#loginButton:hover {
+    transition: 0.2s;
+    color: white;
+    border-color: white;
+}
+
+#loginButton:active {
+    transition: 0.2s;
+    background-color: white;
+    color: #ffc107;
+}
+
+
+@media (max-width: 1145px) {
+    .navbarLink {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 1060px) {
+    .navbarLink {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    #loginButton, #signLink {
+        display: none !important;
+    }
+
+    .offcanvas-header {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .offcanvas-body {
+        width: 100%;
+        padding: 5px 0;
+    }
+    #offcanvasNavbarLabel-expand-md {
+        font-size: 2em;
+    }
+
+    .navbar-nav {
+        width: 100%;
+    }
+
+    .navbarLink {
+        font-size: 2em;
+    }
+
+    .navbarLink:hover {
+        background-color: #ffc107;
+        color: black;
+    }
+}

@@ -1,0 +1,70 @@
+.container-fluid > .footer {
+    border-radius: 5% !important;
+    /*background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(33,37,41,1) 3%);*/
+}
+
+.payment-icons {
+    padding-top: 40px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+}
+
+.payment-icons > img {
+    width: 50px;
+}
+
+/*Center text on small screens*/
+@media (max-width: 576px) {
+    .footer {
+        text-align: center;
+    }
+}
+
+.footer-titles {
+    padding-top: 30px;
+    padding-left: 20px;
+    color: rgb(33,37,41);
+    /*color: rgb(207, 82, 10);
+    text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered;*/
+}
+
+.footer-pages {
+    color: rgb(33,37,41);
+    font-weight: bold;
+    padding-top: 20px;
+    padding-left: 20px;
+    /*color: rgb(207, 82, 10);
+    text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered;*/
+}
+
+.footer-pages > p > a {
+    color: rgb(33,37,41);
+    /*color: rgb(207, 82, 10);
+    text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered;*/
+}
+
+.footer-pages > p > a:visited {
+    color: rgb(33,37,41);
+    /*color: rgb(207, 82, 10);
+    text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered;*/
+}
+
+.footer-pages > p > a:hover {
+    border-radius: 10%;
+    background-color: #ffc107;
+    box-shadow: 0 0 10px #ffc107;
+}
+
+#all-rights {
+    margin-top: 40px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgb(255,193,7);
+    /*background-color: rgba(33,37,41);*/
+    text-align: center;
+    padding-top: 20px;
+    font-weight: bold;
+    color: rgb(33,37,41);
+    /*color: rgb(207, 82, 10);
+    text-shadow: 1px 1px 2px rgb(199, 49, 12), 0 0 1em rgb(148, 39, 13), 0 0 0.2em orangered;*/
+}

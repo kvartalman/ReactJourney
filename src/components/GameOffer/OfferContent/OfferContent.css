@@ -1,0 +1,77 @@
+.offerContent {
+    margin-top: 20px;
+}
+
+.offerTextRow {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.offerTitleRow {
+    text-transform: uppercase;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.offerCardContent {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.offerCardArea {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    pointer-events: auto;
+    align-items: center;
+}
+
+.offerCardContainer {
+    margin: 10px;
+}
+
+.offerLink {
+    margin: 0;
+    pointer-events: auto;
+    color: black;
+}
+
+.offerLink:hover, offerLink:visited {
+    color: black;
+}
+
+.offerCard {
+    display: flex;
+    height: 200px !important;
+    width: 200px !important;
+}
+
+.offerCardTitle {
+    text-transform: uppercase;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.offerCard:hover {
+    transition: 0.3s;
+    box-shadow: 0 0 10px #ffc107, 0 0 40px #ffc107, 0 0 80px #ffc107;
+}
+
+@media (max-width: 549px) {
+    .offerCard {
+        width: 185px !important;
+    }
+}
+
+@media (max-width: 518px) {
+    .offerCard {
+        width: 175px !important;
+    }
+}

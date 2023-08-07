@@ -1,0 +1,16 @@
+.loginButtonsContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.loginFormsContainer {
+    width: 100%;
+    display: block;
+}
+
+.loginModalForm {
+    margin: 1em 0;
+}

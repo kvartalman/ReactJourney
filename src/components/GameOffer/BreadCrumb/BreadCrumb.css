@@ -1,0 +1,16 @@
+.breadCrumbActive {
+    color: rgba(33, 37, 41, 0.5);
+    font-weight: bold;
+}
+
+.breadCrumbLink {
+    color: rgb(33, 37, 41);
+    font-weight: bold;
+    border-radius: 10%;
+}
+
+.breadCrumbLink:hover, .breadCrumbLink:active, .breadCrumbLink:visited {
+    color: rgb(33, 37, 41);
+    background-color: #ffc107;
+    box-shadow: 0 0 10px #ffc107;
+}

@@ -1,0 +1,84 @@
+.cartGoodsModalBody {
+    display: flex;
+    flex-direction: column;
+}
+
+.cartGoodsItem {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cartGoodsItemInfo, .cartGoodsItemPriceContainer {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 10px;
+}
+
+.cartGoodsItemPriceContainer button {
+    align-self: center;
+    margin: 0;
+    height: auto;
+    background: none;
+    border: none;
+}
+
+.cartGoodsItemPriceContainer button:hover {
+    background: none;
+}
+
+.cartGoodsItemPrice {
+    margin-right: 10px;
+}
+
+.cartGoodsTrashBin {
+    width: 2em;
+}
+
+.cartGoodsItemImgContainer {
+    margin-right: 1em;
+}
+
+.cartGoodsItemImg {
+    width: 150px;
+}
+
+.cartGoodsItemName {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+}
+
+.cartGoodsItemQuantity {
+    margin-top: 5px;
+    font-weight: normal;
+    font-size: 0.8em;
+}
+
+.cartGoodsFooterButtons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cartGoodsButton {
+    font-weight: bold;
+    font-size: 1.2em;
+    background: none;
+    border: 3px solid rgb(33, 37, 41);
+    color: rgb(33, 37, 41);
+}
+
+.cartGoodsButton:hover {
+    background-color: #ffc107;
+    border-color: #ffc107
+}
+
+.cartGoodsButton:active {
+    background-color: white !important;
+    color: #ffc107 !important;
+    border-color: #ffc107 !important;
+}

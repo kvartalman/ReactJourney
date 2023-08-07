@@ -1,0 +1,28 @@
+.row > .steps-block-col {
+    text-align: center;
+    padding-top: 130px;
+    padding-bottom: 100px;
+    transition: 0.5s all;
+}
+
+.steps-block-col:hover {
+    position: relative;
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+#steps-block-row {
+    margin: 20px;
+    /*background: linear-gradient(180deg, rgba(33,37,41,1) 0%, rgba(255,255,255,1) 4%);*/
+}
+
+/*Styles for text under icons "(1) (2) (3)"*/
+.steps-text {
+    padding: 60px 100px;
+    color: rgb(125, 125, 125);
+    -webkit-text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+    -moz-text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
+    font-weight: bold;
+    font-size: 1.1em;
+}
