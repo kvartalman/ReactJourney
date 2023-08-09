@@ -13,11 +13,11 @@ const Categories = () => {
         <Category bg={link.bg} name={link.name} to={link.to} video={link.video}/>
     ))
 
-    const categoriesLinksFirstSlice = ctgLinks.slice(0, 5).map(link => (
+    const categoriesLinksFirstSlice = ctgLinks.slice(0, 6).map(link => (
         <Category bg={link.bg} name={link.name} to={link.to} video={link.video}/>
     ))
 
-    const categoriesLinksSecondSlice = ctgLinks.slice(5).map(link => (
+    const categoriesLinksSecondSlice = ctgLinks.slice(6).map(link => (
         <Category bg={link.bg} name={link.name} to={link.to} video={link.video}/>
     ))
 

@@ -15,12 +15,11 @@ import CartGoodsModal from "../Cart/CartGoodsModal/CartGoodsModal";
 const Navigation = (props) => {
 
     const navbarLinks = useSelector(state => state.navbar.navbarLinks)
-
     const [show, setShow] = useState(false);
     const [modal, setModal] = useState(false);
     const [user, setUser] = useState(null);
     const [goodsModal, setGoodsModal] = useState(false);
-
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth >= 767);
     const showModal = () => setModal(true);
     const closeModal = () => setModal(false);
 
@@ -39,6 +38,13 @@ const Navigation = (props) => {
             if (window.innerWidth >= 767) {
                 handleClose();
                 closeModal();
+            }
+            if (window.innerWidth >= 768) {
+                if (!windowWidth) {
+                    setWindowWidth(true);
+                }
+            } else {
+                setWindowWidth(false);
             }
         };
         window.addEventListener("resize", handleResize);
@@ -71,8 +77,23 @@ const Navigation = (props) => {
                             'Heroes_of_the_Storm_BlizzHeroes_2017_logo.png?20230127151006'}
                              alt={'Heroes of the Storm'}/>
                     </Navbar.Brand>
+                    <div className={'navbarIconsContainer'}>
+                    {windowWidth ? null :
+                        <div>
+                            <Button
+                                onClick={() => setGoodsModal(true)}
+                                id={'cartButton'}
+                            >
+                                <img className={'navbarIcons'} src={'/icons/cartIcon.png'} alt={'Cart'}/>
+                            </Button>
+                            <NavLink to={"profile"}>
+                                <img className={'navbarIcons'} src={'/icons/profileIcon.png'} alt={'Profile'}/>
+                            </NavLink>
+                        </div>
+                    }
                     <Navbar.Toggle onClick={handleShow} aria-controls={`offcanvasNavbar-expand-${'md'}`}
                                    id={'navbarToggle'}/>
+                    </div>
                     <Navbar.Offcanvas
                         show={show}
                         onHide={handleClose}
@@ -95,14 +116,23 @@ const Navigation = (props) => {
                     </Navbar.Offcanvas>
                     {user ?
                         <>
-                            <Button
-                                onClick={() => setGoodsModal(true)}
-                                className={'navbarLink'}
-                                id={'cartButton'}
-                            >
-                                Cart
-                            </Button>
-                            <NavLink to={"profile"} className={'navbarLink'}>Profile</NavLink>
+                            {windowWidth ?
+                                <>
+                                    <Button
+                                        onClick={() => setGoodsModal(true)}
+                                        className={'navbarLink'}
+                                        id={'cartButton'}
+                                    >
+                                        Cart
+
+                                    </Button>
+                                    <NavLink to={"profile"} className={'navbarLink'}>
+                                        Profile
+                                    </NavLink>
+                                </>
+                                :
+                                null
+                            }
                         </>
                         :
                         <>
@@ -111,9 +141,10 @@ const Navigation = (props) => {
                             <Button id={'loginButton'} onClick={showModal}>Log in</Button>
                         </>
                     }
+
                 </Container>
             </Navbar>
-            <CartGoodsModal show={goodsModal} onHide={() => setGoodsModal(false)} />
+            <CartGoodsModal show={goodsModal} onHide={() => setGoodsModal(false)}/>
             <LoginModal modal={modal} closeModal={closeModal}/>
         </>
 
