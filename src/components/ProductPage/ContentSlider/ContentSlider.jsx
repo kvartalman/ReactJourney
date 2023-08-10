@@ -6,43 +6,39 @@ import AddCartModal from "../../Cart/AddCartModal/AddCartModal";
 
 const ContentSlider = (props) => {
 
-    const [sliderValue, setSliderValue] = useState(0);
-    const [totalPrice, setTotalPrice] = useState(0);
-
+    const [finalPrice, setFinalPrice] = useState(0);
+    const [prevValue, setPrevValue] = useState(0);
     const handleSliderChange = (value) => {
-        setSliderValue(value);
-        if (value < 10) {
-            setTotalPrice(value / 5);
-        } else if (value >= 10 && value < 20) {
-            setTotalPrice((value / 5) + 0.2)
-        } else {
-            debugger;
-            setTotalPrice((value / 5) + 0.6)
-        }
 
+        console.log(prevValue, value)
+        if (value <= 10) {
+        setFinalPrice((value * 2) / 10);}
+        else if (value > 10) {
+            setFinalPrice(2 + ((value - 10) * 4) / 10);
+        }
         }
 
 
     return (
         <div className={'productContentSliderContainer'}>
-            <div>{sliderValue}</div>
-            <div>{totalPrice}</div>
             <div className={'contentSliderContainer'}>
                 <Slider
-                    value={sliderValue}
                     min={0}
-                    max={1000}
+                    max={100}
                     onChange={handleSliderChange}
                     step={1}
                     marks={
                         {
-                            100: 100,
-                            200: 200,
-                            300: 300,
-                            400: 400,
-                            500: 'Diamond',
-                            600: 'ML',
-                            700: 'GML'
+                            10: 10,
+                            20: 20,
+                            30: 30,
+                            40: 40,
+                            50: 50,
+                            60: 60,
+                            70: 70,
+                            80: 80,
+                            90: 90,
+                            100: 100
                         }
                     }
                     trackStyle={{backgroundColor: '#ffc107', transition: '0.1s'}}
@@ -74,12 +70,12 @@ const ContentSlider = (props) => {
             <div className={'customizeDividerLine'}></div>
             <div className={'contentSliderFooter'}>
                 <div className={'contentSliderTotalPrice'}>
-                    Total: {props.totalPrice + totalPrice}&#8364;
+                    Total: {props.totalPrice + finalPrice}&#8364;
                 </div>
                 <div className={'contentSliderButtonsContainer'}>
                     <button
                         className={'contentSliderButton contentSliderButtonBuy'}
-                        onClick={() => props.addToCartHandler(sliderValue)}
+                        onClick={() => props.addToCartHandler(finalPrice)}
                     >
                         Buy Now
                     </button>

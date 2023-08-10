@@ -64,6 +64,12 @@
     box-shadow: 0 0 10px #ffc107, 0 0 40px #ffc107, 0 0 80px #ffc107;
 }
 
+@media (max-width: 768px) {
+    .offerCardArea {
+        justify-content: center;
+    }
+}
+
 @media (max-width: 549px) {
     .offerCard {
         width: 185px !important;
