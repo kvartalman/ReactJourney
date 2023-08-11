@@ -1,6 +1,9 @@
 import {useSelector} from "react-redux";
 import React, {useState} from "react";
 import Form from "react-bootstrap/Form";
+import {OverlayTrigger, Row, Tooltip} from "react-bootstrap";
+import './ContentSlider.css';
+import Container from "react-bootstrap/Container";
 
 const ContentSliderCheckboxes = (props) => {
 
@@ -24,25 +27,46 @@ const ContentSliderCheckboxes = (props) => {
 
     const checkBoxes = productPage.map((checkbox, index) => {
         return (
-            <label key={index} className={'contentSliderCheckboxContainer'}>
-                <Form.Check
-                    type="checkbox"
-                    onChange={() => {
-                        handleCheckboxChange(index)
-                    }}
+            <label key={index} className={'labelSliderCheckboxesContainer'}>
+                <div className={'checkboxTooltipContainer'}>
+                    <Form.Check
+                        type="checkbox"
+                        onChange={() => {
+                            handleCheckboxChange(index)
+                        }}
 
-                />
-                <div className={'contentSliderCheckboxesInfo'}>
-                    <p>{checkbox.label} - {checkbox.price}&#8364;</p>
+                    />
+                    <div className={'tooltipContainer'}>
+                        {checkbox.tooltip ?
+                            <OverlayTrigger
+                                key={'top'}
+                                placement={'top'}
+                                overlay={
+                                    <Tooltip id={`tooltip-${'top'}`}>
+                                        {checkbox.tooltipText}
+                                    </Tooltip>
+                                }
+                            >
+                                <span className={'tooltipButton'}>?</span>
+                            </OverlayTrigger>
+                            :
+                            null
+                        }
+                    </div>
                 </div>
+                <div className={'contentSliderCheckboxesInfo'}>
+                    <p>{checkbox.label} - {checkbox.price}&#8364;
+                    </p>
+                </div>
+
             </label>
         )
     })
 
     return (
-            <div className={'contentSliderCheckboxesContainer'}>
-                {checkBoxes}
-            </div>
+        <div className={'contentSliderCheckboxesContainer'}>
+                    {checkBoxes}
+        </div>
     );
 }
 

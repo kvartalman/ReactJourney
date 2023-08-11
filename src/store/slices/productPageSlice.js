@@ -41,7 +41,7 @@ const productPageSlice = createSlice({
                             'Better to find something people call "golden mean". ' +
                             'Anyway, we will see, how it goes.',
                         checkboxes: [
-                            {price: 100, name: 'checkbox1', label: 'Option 1'},
+                            {price: 100, name: 'checkbox1', label: 'Option 1', tooltip: true, tooltipText: 'Cheliq'},
                             {price: 200, name: 'checkbox2', label: 'Option 2'},
                             {price: 300, name: 'checkbox3', label: 'Option 3'},
                             {price: 400, name: 'checkbox4', label: 'Option 4'},

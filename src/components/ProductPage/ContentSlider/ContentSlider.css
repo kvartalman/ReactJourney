@@ -5,15 +5,38 @@
     border-radius: 5%;
 }
 
+.checkboxTooltipContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.tooltipContainer {
+    margin: 1em 0;
+}
+
+#cont {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
 .productContentCheckboxesContainer {
     margin-top: 3em;
 }
 
-.contentSliderCheckboxesContainer {
-    margin: 4em 5em 1em;
+.labelSliderCheckboxesContainer {
+    margin: 1em;
     display: flex;
-    justify-content: space-between;
+    cursor: pointer !important;
 }
+
+.contentSliderCheckboxesContainer {
+    display: flex;
+    flex-direction: row;
+}
+
 
 .contentSliderCheckboxesContainer input {
     border-radius: 0 !important;
@@ -39,6 +62,7 @@
     font-weight: bold;
     font-size: 1.2em;
     margin-left: 1em;
+    cursor: pointer;
 }
 
 .contentSliderCheckboxContainer {
@@ -192,6 +216,7 @@
     -webkit-box-shadow: 0 0 0 0.3em rgba(255,193,7,1) !important;
     -moz-box-shadow: 0 0 0 0.3em rgba(255,193,7,1) !important;
     box-shadow: 0 0 0 0.3em rgba(255,193,7,1) !important;
+    cursor: grab !important;
 }
 
 .multi-range-slider .thumb:active::before {
@@ -202,4 +227,31 @@
     height: 1.2em !important;
 }
 
+.tooltipButton {
+    border: 2px solid rgba(255, 193, 7, 0.5);
+    background: rgba(255, 193, 7, 0.5);
+    border-radius: 50%;
+    font-size: 15px;
+    font-weight: bold;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.round-button::before {
+    content: "?";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.tooltipButton:hover {
+    transition: 0.2s;
+    background: rgba(255, 193, 7, 1);
+    border-color: rgba(255, 193, 7, 1)
+}
 
