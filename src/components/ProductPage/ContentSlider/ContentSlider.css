@@ -1,8 +1,13 @@
-.productContentSliderContainer {
+#productContentSliderContainer {
     margin-top: 2em;
     padding: 2em;
     border: 4px solid rgba(222, 226, 230);
     border-radius: 5%;
+}
+
+#productContentSliderRow {
+    margin: auto;
+    justify-content: center;
 }
 
 .checkboxTooltipContainer {
@@ -32,27 +37,70 @@
     cursor: pointer !important;
 }
 
-.contentSliderCheckboxesContainer {
+#contentSliderCheckboxesContainer {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#contentSliderButtonsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#contentSliderFooter {
+    margin: 2em 1em 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#contentSliderTotalPrice {
+    font-weight: bold;
+    font-size: 2em;
 }
 
 
-.contentSliderCheckboxesContainer input {
+@media (max-width: 768px) {
+    #contentSliderCheckboxesRow {
+        justify-content: center;
+    }
+
+    #contentSliderFooter {
+        flex-direction: column;
+    }
+
+    #contentSliderTotalPrice {
+        display: flex;
+        justify-content: center;
+    }
+
+    #contentSliderButtonsContainer {
+        display: flex;
+        margin: 2em 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+}
+
+#contentSliderCheckboxesContainer input {
     border-radius: 0 !important;
     border: 2px solid #ffc107;
     width: 1.5em;
     height: 1.5em;
 }
 
-.contentSliderCheckboxesContainer input:checked {
+#contentSliderCheckboxesContainer input:checked {
     border-color: #ffc107;
     background: #ffc107 url('/public/checkmark.png') no-repeat center;
     background-size: contain;
 }
 
 
-.contentSliderCheckboxesContainer input:focus {
+#contentSliderCheckboxesContainer input:focus {
     border-color: #ffc107;
     box-shadow: none;
 }
@@ -69,21 +117,7 @@
     display: flex;
 }
 
-.contentSliderFooter {
-    margin: 2em 1em 0;
-    display: flex;
-    justify-content: space-between;
-}
 
-.contentSliderTotalPrice {
-    font-weight: bold;
-    font-size: 2em;
-}
-
-.contentSliderButtonsContainer {
-    display: flex;
-    justify-content: space-between;
-}
 
 .contentSliderButton {
     position: relative;

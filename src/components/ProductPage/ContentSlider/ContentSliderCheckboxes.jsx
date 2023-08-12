@@ -64,9 +64,11 @@ const ContentSliderCheckboxes = (props) => {
     })
 
     return (
-        <div className={'contentSliderCheckboxesContainer'}>
-                    {checkBoxes}
-        </div>
+        <Container fluid id={'contentSliderCheckboxesContainer'}>
+            <Row xs={2} md={3} lg={5} id={'contentSliderCheckboxesRow'}>
+                {checkBoxes}
+            </Row>
+        </Container>
     );
 }
 
