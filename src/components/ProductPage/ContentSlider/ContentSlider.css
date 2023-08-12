@@ -27,8 +27,8 @@
 
 
 
-.productContentCheckboxesContainer {
-    margin-top: 3em;
+#productContentCheckboxesContainer {
+    justify-content: center;
 }
 
 .labelSliderCheckboxesContainer {
@@ -62,11 +62,11 @@
     font-size: 2em;
 }
 
+#contentSliderCheckboxesRow {
+    justify-content: space-between;
+}
 
 @media (max-width: 768px) {
-    #contentSliderCheckboxesRow {
-        justify-content: center;
-    }
 
     #contentSliderFooter {
         flex-direction: column;
@@ -83,7 +83,11 @@
         width: 100%;
         max-width: 100%;
     }
-    
+
+    .labelSliderCheckboxesContainer {
+        width: 5em;
+        margin: 1em;
+    }
 }
 
 #contentSliderCheckboxesContainer input {

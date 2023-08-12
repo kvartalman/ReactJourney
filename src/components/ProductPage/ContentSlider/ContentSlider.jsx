@@ -64,13 +64,13 @@ const ContentSlider = (props) => {
                         }}
                     />
                 </div>
-                <div className={'productContentCheckboxesContainer'}>
+                <Row id={'productContentCheckboxesContainer'}>
                     <ContentSliderCheckboxes
                         game={props.page}
                         product={props.product}
                         setPrice={props.setPrice}
                     />
-                </div>
+                </Row>
                 <div className={'customizeDividerLine'}></div>
                 <Container fluid id={'contentSliderFooter'}>
                     <Row id={'contentSliderTotalPrice'}>
