@@ -194,11 +194,18 @@ const ContentSliderSettings = () => {
                         </div>
                     </div>
                     <MultiRangeSlider
-                        min={0}
-                        max={100}
-                        step={1}
-                        minValue={minValue}
-                        maxValue={maxValue}
+                        min={enterMinValue ? enterMinValue : 0}
+                        max={enterMaxValue ? enterMaxValue : 100}
+                        step={enterStep ? enterStep : 1}
+                        minValue={
+                        enterLeftThumbValue && enterLeftThumbValue < maxValue ?
+                            enterLeftThumbValue : 0
+                    }
+                        maxValue={
+                        enterRightThumbValue && enterRightThumbValue > minValue
+                            ?
+                            enterRightThumbValue : 100
+                    }
                         ruler={false}
                         onInput={(e) => {
                             handleChange(e)
