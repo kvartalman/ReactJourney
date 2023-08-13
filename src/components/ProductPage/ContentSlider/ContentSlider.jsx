@@ -4,20 +4,22 @@ import ContentSliderCheckboxes from "./ContentSliderCheckboxes";
 import AddCartModal from "../../Cart/AddCartModal/AddCartModal";
 import MultiRangeSlider from 'multi-range-slider-react';
 import Container from "react-bootstrap/Container";
-import {Col, Row} from "react-bootstrap";
+import {Row} from "react-bootstrap";
+import {useSelector} from "react-redux";
 
 const ContentSlider = (props) => {
+
+    const sliderRangesValues = useSelector(
+        state => state.productPage.productData[props.page][props.product].sliderRangesValues
+    )
+
+    const sliderSettings = useSelector(
+        state => state.productPage.productData[props.page][props.product].sliderSettings
+    )
 
     const [finalPrice, setFinalPrice] = useState(0);
     const [minValue, setMinValue] = useState(25);
     const [maxValue, setMaxValue] = useState(75);
-    const rangeAdditions = [
-        {range: [0, 10], addition: 0.2},
-        {range: [10, 20], addition: 0.4},
-        {range: [20, 30], addition: 0.6},
-        {range: [30, 40], addition: 0.8},
-        {range: [40, 100], addition: 1}
-    ]
 
     const handleChange = (e) => {
 
@@ -25,15 +27,17 @@ const ContentSlider = (props) => {
         setMaxValue(e.maxValue)
 
         let calculatedPrice = 0;
-
+        // In this cycle, we're finding all values of our ranges and concatenate them. To realise, what the range
+        // and what the value of range we need, we use array of objects [{range: [0, 100], value: 0.2}, ...]
+        // If we find range, then we can take value of this range (each step +=value)
         for (let level = minValue; level < maxValue; level++) {
-            const matchingRange = rangeAdditions.find(
+            const matchingRange = sliderRangesValues.find(
                 rangeEntry =>
                     level >= rangeEntry.range[0] && level < rangeEntry.range[1]
             );
 
             if (matchingRange) {
-                calculatedPrice += matchingRange.addition;
+                calculatedPrice += matchingRange.value;
             }
         }
 
@@ -53,11 +57,11 @@ const ContentSlider = (props) => {
                 </div>
                 <div id={'multiRangeSliderContainer'}>
                     <MultiRangeSlider
-                        min={0}
-                        max={100}
-                        step={1}
-                        minValue={minValue}
-                        maxValue={maxValue}
+                        min={sliderSettings.min}
+                        max={sliderSettings.max}
+                        step={sliderSettings.step}
+                        minValue={sliderSettings.minValue}
+                        maxValue={sliderSettings.maxValue}
                         ruler={false}
                         onInput={(e) => {
                             handleChange(e)

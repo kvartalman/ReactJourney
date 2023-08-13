@@ -1,20 +1,25 @@
-import React, {useState} from "react";
-import Row from "react-bootstrap/Row";
-import Form from "react-bootstrap/Form";
+import React, {useEffect, useState} from "react";
 import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import Table from "react-bootstrap/Table";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    addContentSliderRange,
+    deleteContentSliderRange,
+    fillContentSliderEditorRanges
+} from "../../../../../store/slices/adminPanelSlice";
 import Container from "react-bootstrap/Container";
 import MultiRangeSlider from "multi-range-slider-react";
-import '../../../ProductPage/ContentSlider/ContentSlider.css';
-import './ContentSliderSettings.css'
-import {useDispatch, useSelector} from "react-redux";
-import {addContentSliderRange, deleteContentSliderRange} from "../../../../store/slices/adminPanelSlice";
-import Table from 'react-bootstrap/Table';
 
-const ContentSliderSettings = () => {
+const ContentSliderEditor = () => {
 
+    const gameSelector = useSelector(state => state.productPage.productData)
     const sliderRangesData = useSelector(state => state.adminPanel.contentSliderEditorRanges)
     const dispatch = useDispatch();
+
+    const [selectedGame, setSelectedGame] = useState(Object.keys(gameSelector)[0]);
 
     const [enterMinValue, setEnterMinValue] = useState('');
     const [enterMaxValue, setEnterMaxValue] = useState('');
@@ -25,16 +30,23 @@ const ContentSliderSettings = () => {
     const [enterEndOfRange, setEnterEndOfRange] = useState('');
     const [enterValuePerStep, setEnterValuePerStep] = useState('');
 
-    const [finalPrice, setFinalPrice] = useState(0);
-    const [minValue, setMinValue] = useState(25);
-    const [maxValue, setMaxValue] = useState(75);
-    const rangeAdditions = [
-        {range: [0, 10], addition: 0.2},
-        {range: [10, 20], addition: 0.4},
-        {range: [20, 30], addition: 0.6},
-        {range: [30, 40], addition: 0.8},
-        {range: [40, 100], addition: 1}
-    ]
+    const [editorFinalPrice, setEditorFinalPrice] = useState(0);
+    const [editorMinValue, setEditorMinValue] = useState(25);
+    const [editorMaxValue, setEditorMaxValue] = useState(75);
+
+    const [product, setProduct] = useState(Object.keys(gameSelector[selectedGame]).filter
+    (key => gameSelector[selectedGame][key].viewSettings === false)[0]);
+    const [currentFinalPrice, setCurrentFinalPrice] = useState(0);
+    const [currentMinValue, setCurrentMinValue] = useState(gameSelector[selectedGame][product].sliderSettings.minValue);
+    const [currentMaxValue, setCurrentMaxValue] = useState(gameSelector[selectedGame][product].sliderSettings.maxValue);
+
+    const handleProductSelect = (e) => {
+        setProduct(e.target.value)
+    }
+
+    const handleGameSelect = (e) => {
+        setSelectedGame(e.target.value)
+    }
 
     const enterMinValueInput = (e) => {
         setEnterMinValue(e.target.value)
@@ -61,43 +73,72 @@ const ContentSliderSettings = () => {
         setEnterValuePerStep(e.target.value)
     }
 
+    // Adding new range with value per step to slider
     const addRangeHandler = () => {
         dispatch(addContentSliderRange({
                 enterStartOfRange: Number(enterStartOfRange),
                 enterEndOfRange: Number(enterEndOfRange),
-                enterValuePerStep: Number(enterValuePerStep)
+                enterValuePerStep: Number(enterValuePerStep),
+                type: 'editor'
             })
         )
         setEnterStartOfRange('');
         setEnterEndOfRange('');
         setEnterValuePerStep('');
-        debugger;
     }
 
     const deleteRangeHandler = index => {
-        dispatch(deleteContentSliderRange(index))
+        dispatch(deleteContentSliderRange({
+            index,
+            type: 'editor'
+        }))
     }
 
-    const handleChange = (e) => {
-
-        setMinValue(e.minValue)
-        setMaxValue(e.maxValue)
+    const handleChange = (e, isCurrent) => {
 
         let calculatedPrice = 0;
+        const minVar = isCurrent ? currentMinValue : editorMinValue;
+        const maxVar = isCurrent ? currentMaxValue : editorMaxValue;
 
-        for (let level = minValue; level < maxValue; level++) {
-            const matchingRange = sliderRangesData.find(
+        if (isCurrent) {
+            setCurrentMinValue(e.minValue);
+            setCurrentMaxValue(e.maxValue);
+
+        } else {
+            setEditorMinValue(e.minValue);
+            setEditorMaxValue(e.maxValue);
+        }
+
+        for (let level = minVar; level < maxVar; level++) {
+            const matchingRange = (isCurrent ? gameSelector[selectedGame][product].sliderRangesValues : sliderRangesData).find(
                 rangeEntry =>
                     level >= rangeEntry.range[0] && level < rangeEntry.range[1]
             );
             if (matchingRange) {
-                calculatedPrice += matchingRange.addition;
+                calculatedPrice += matchingRange.value;
             }
         }
+        isCurrent ?
+            setCurrentFinalPrice(calculatedPrice)
+            :
+            setEditorFinalPrice(calculatedPrice)
+    }
 
-        setFinalPrice(calculatedPrice);
-    };
 
+    const gamesList = Object.keys(gameSelector).map(game => (
+        <option>{game}</option>
+    ))
+
+    const productsList = Object.keys(gameSelector[selectedGame]).map(product => (
+        !gameSelector[selectedGame][product].viewSettings ?
+            <option>{product}</option>
+            :
+            null
+    ))
+
+    useEffect(() => {
+        dispatch(fillContentSliderEditorRanges(gameSelector[selectedGame][product].sliderRangesValues))
+    }, [dispatch, gameSelector, product, selectedGame])
 
     return (
         <Container fluid>
@@ -107,6 +148,14 @@ const ContentSliderSettings = () => {
                         <Row className="mb-3 formsRow">
                             <h2>ProductPage ContentSlider Editor</h2>
                             <Form.Group as={Col}>
+                                <Form.Label>Choose game</Form.Label>
+                                <Form.Select onChange={handleGameSelect}>
+                                    {gamesList}
+                                </Form.Select>
+                                <Form.Label>Choose product which contains "Content Slider"</Form.Label>
+                                <Form.Select onChange={handleProductSelect}>
+                                    {selectedGame ? productsList : null}
+                                </Form.Select>
                                 <Form.Label>Choose min and max values of slider</Form.Label>
                                 <Form.Control
                                     value={enterMinValue}
@@ -168,55 +217,58 @@ const ContentSliderSettings = () => {
                                         <tr key={index}>
                                             <td>{range.range[0]}</td>
                                             <td>{range.range[1]}</td>
-                                            <td>{range.addition}</td>
-                                            <td><button onClick={() => deleteRangeHandler(index)}>Delete!</button></td>
+                                            <td>{range.value}</td>
+                                            <td>
+                                                <button onClick={() => deleteRangeHandler(index)}>Delete!</button>
+                                            </td>
                                         </tr>
                                     ))}
                                     </tbody>
                                 </Table>
                             </Form.Group>
-
                             <div className={'addCardButtons'}>
                                 <Button variant="primary">
-                                    Create slider
+                                    Accept Changes
                                 </Button>
                             </div>
                         </Row>
                     </Form>
                 </Col>
                 <Col>
-                    <div className={'sliderValuesContainer'}>
-                        <div className={'sliderMinValueContainer'}>
-                            {minValue}
-                        </div>
-                        <div className={'sliderMaxValueContainer'}>
-                            {maxValue}
-                        </div>
+                    <div>
+                        <h2>Current Slider</h2>
+                        <MultiRangeSlider
+                            min={gameSelector[selectedGame][product].sliderSettings.min}
+                            max={gameSelector[selectedGame][product].sliderSettings.max}
+                            step={gameSelector[selectedGame][product].sliderSettings.step}
+                            minValue={gameSelector[selectedGame][product].sliderSettings.minValue}
+                            maxValue={gameSelector[selectedGame][product].sliderSettings.maxValue}
+                            ruler={false}
+                            onInput={(e) => {
+                                handleChange(e, true)
+                            }}
+                        />
+                        {currentFinalPrice}
                     </div>
-                    <MultiRangeSlider
-                        min={enterMinValue ? enterMinValue : 0}
-                        max={enterMaxValue ? enterMaxValue : 100}
-                        step={enterStep ? enterStep : 1}
-                        minValue={
-                        enterLeftThumbValue && enterLeftThumbValue < maxValue ?
-                            enterLeftThumbValue : 0
-                    }
-                        maxValue={
-                        enterRightThumbValue && enterRightThumbValue > minValue
-                            ?
-                            enterRightThumbValue : 100
-                    }
-                        ruler={false}
-                        onInput={(e) => {
-                            handleChange(e)
-                        }}
-                    />
-                    {finalPrice}
+                    <div>
+                        <h2>New Slider</h2>
+                        <MultiRangeSlider
+                            min={gameSelector[selectedGame][product].sliderSettings.min}
+                            max={gameSelector[selectedGame][product].sliderSettings.max}
+                            step={gameSelector[selectedGame][product].sliderSettings.step}
+                            minValue={gameSelector[selectedGame][product].sliderSettings.minValue}
+                            maxValue={gameSelector[selectedGame][product].sliderSettings.maxValue}
+                            ruler={false}
+                            onInput={(e) => {
+                                handleChange(e, false)
+                            }}
+                        />
+                        {editorFinalPrice}
+                    </div>
                 </Col>
             </Row>
         </Container>
     );
 }
 
-export default ContentSliderSettings
-
+export default ContentSliderEditor;

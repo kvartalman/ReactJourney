@@ -47,6 +47,21 @@ const productPageSlice = createSlice({
                             {price: 400, name: 'checkbox4', label: 'Option 4'},
                             {price: 500, name: 'checkbox5', label: 'Option 5'}
                         ],
+                        sliderRangesValues: [
+                            {range: [0, 10], value: 2},
+                            {range: [10, 20], value: 4},
+                            {range: [20, 30], value: 6},
+                            {range: [30, 40], value: 8},
+                            {range: [40, 50], value: 10},
+                            {range: [50, 100], value: 12}
+                        ],
+                        sliderSettings: {
+                            min: 0,
+                            max: 100,
+                            minValue: 25,
+                            maxValue: 75,
+                            step: 1
+                        },
                         price: 100,
                         img: '/product-photos/doomslayer.jpg',
                         viewSettings: false
@@ -67,8 +82,23 @@ const productPageSlice = createSlice({
                             {price: 400, name: 'checkbox4', label: 'Option 4'},
                             {price: 500, name: 'checkbox5', label: 'Option 5'}
                         ],
+                        sliderRangesValues: [
+                            {range: [0, 10], value: 4},
+                            {range: [10, 20], value: 6},
+                            {range: [20, 30], value: 8},
+                            {range: [30, 40], value: 10},
+                            {range: [40, 50], value: 12},
+                            {range: [50, 100], value: 14}
+                        ],
+                        sliderSettings: {
+                            min: 20,
+                            max: 200,
+                            minValue: 50,
+                            maxValue: 150,
+                            step: 1
+                        },
                         price: 100,
-                        viewSettings: true
+                        viewSettings: false
                     },
                     immortalSkins: {
                         id: 3,

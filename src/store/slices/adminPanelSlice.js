@@ -7,6 +7,7 @@ const adminPanelSlice = createSlice(
             linksList: [
                 '/', '/dota2', '/lol', '/hots', '/adminPanel'
             ],
+            contentSliderSettingsRanges: [],
             contentSliderEditorRanges: []
         },
         reducers: {
@@ -15,20 +16,33 @@ const adminPanelSlice = createSlice(
                     range: [action.payload.enterStartOfRange, action.payload.enterEndOfRange],
                     addition: action.payload.enterValuePerStep
                 };
-                state.contentSliderEditorRanges.push(newRange);
+                action.payload.type === 'settings' ?
+                    state.contentSliderSettingsRanges.push(newRange)
+                    :
+                    state.contentSliderEditorRanges.push(newRange)
             },
             deleteContentSliderRange: (state, action) => {
-                const indexToRemove = action.payload;
+                const indexToRemove = action.payload.index;
                 // I tried to use filter instead of splice to prevent auto-F5 when i delete any elem of array except last
                 // but it doesn't work
-                state.contentSliderEditorRanges = state.contentSliderEditorRanges.filter(
-                    (_, index) => index !== indexToRemove
-                );
+                action.payload.type === 'settings' ?
+                    state.contentSliderSettingsRanges = state.contentSliderSettingsRanges.filter(
+                        (_, index) => index !== indexToRemove)
+                    :
+                    state.contentSliderEditorRanges = state.contentSliderEditorRanges.filter(
+                        (_, index) => index !== indexToRemove)
+            },
+            fillContentSliderEditorRanges: (state, action) => {
+                state.contentSliderEditorRanges = action.payload;
             }
         }
     }
 )
 
 
-export const {addContentSliderRange, deleteContentSliderRange} = adminPanelSlice.actions;
+export const {
+    addContentSliderRange,
+    deleteContentSliderRange,
+    fillContentSliderEditorRanges
+} = adminPanelSlice.actions;
 export default adminPanelSlice.reducer
