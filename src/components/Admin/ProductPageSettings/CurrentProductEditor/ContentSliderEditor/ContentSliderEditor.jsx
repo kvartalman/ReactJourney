@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import {useDispatch, useSelector} from "react-redux";
+import '../../../../ProductPage/ContentSlider/ContentSlider.css';
 import {
     addContentSliderRange,
     deleteContentSliderRange,
@@ -32,10 +33,15 @@ const ContentSliderEditor = () => {
     const [enterValuePerStep, setEnterValuePerStep] = useState('');
 
     const [editorFinalPrice, setEditorFinalPrice] = useState(0);
-
     // We choose first product which have Content Slider
     const [product, setProduct] = useState(Object.keys(gameSelector[selectedGame]).filter
     (key => gameSelector[selectedGame][key].viewSettings === false)[0]);
+
+    // We use 2 sliders, so we need to have 4 states (min and max per each slider)
+    const [currentMinValue, setCurrentMinValue] = useState(gameSelector[selectedGame][product].sliderSettings.minValue);
+    const [currentMaxValue, setCurrentMaxValue] = useState(gameSelector[selectedGame][product].sliderSettings.maxValue);
+    const [editorMinValue, setEditorMinValue] = useState(gameSelector[selectedGame][product].sliderSettings.minValue);
+    const [editorMaxValue, setEditorMaxValue] = useState(gameSelector[selectedGame][product].sliderSettings.maxValue);
 
     // We use arrow function here because we need to calculate currentFinalPrice on first render to provide better UI/UX
     const [currentFinalPrice, setCurrentFinalPrice] = useState(
@@ -57,7 +63,7 @@ const ContentSliderEditor = () => {
 
     const handleProductSelect = (e) => {
         setProduct(e.target.value);
-        
+
     }
 
     const handleGameSelect = (e) => {
@@ -110,9 +116,20 @@ const ContentSliderEditor = () => {
         }))
     }
 
+    // We check if we work with CurrentSlider or EditorSlider by using boolean isCurrent
     const handleChange = (e, isCurrent) => {
         let calculatedPrice = 0;
 
+        if (isCurrent) {
+            setCurrentMinValue(e.minValue)
+            setCurrentMaxValue(e.maxValue)
+        } else {
+            setEditorMinValue(e.minValue)
+            setEditorMaxValue(e.maxValue)
+        }
+
+        // We filter all elements (objects) of array sliderRangesValues that satisfy the condition and concatenate them
+        // by using 'value' key as value per each correct element of 'range' array in each correct object
         for (let level = e.minValue; level < e.maxValue; level++) {
             const matchingRange = (isCurrent ? gameSelector[selectedGame][product].sliderRangesValues : sliderRangesData).filter(
                 rangeEntry =>
@@ -127,7 +144,6 @@ const ContentSliderEditor = () => {
             setCurrentFinalPrice(calculatedPrice)
             :
             setEditorFinalPrice(calculatedPrice)
-        debugger;
     }
 
 
@@ -142,11 +158,10 @@ const ContentSliderEditor = () => {
             null
     ))
 
+    // currentFinalPrice will re-render when user change name of product in list
     useEffect(() => {
         dispatch(fillContentSliderEditorRanges(gameSelector[selectedGame][product].sliderRangesValues))
-    }, [dispatch, gameSelector, product, selectedGame])
-    
-    useEffect(() => {
+
         handleChange(
             {
                 minValue: gameSelector[selectedGame][product].sliderSettings.minValue,
@@ -154,8 +169,8 @@ const ContentSliderEditor = () => {
             },
             true
         )
-    }, [product])
-    
+    }, [dispatch, gameSelector, product, selectedGame])
+
     return (
         <Container fluid>
             <Row id={'contentSliderSettingsRow'}>
@@ -253,6 +268,14 @@ const ContentSliderEditor = () => {
                 <Col>
                     <div>
                         <h2>Current Slider</h2>
+                        <div className={'sliderValuesContainer'}>
+                            <div className={'sliderMinValueContainer'}>
+                                {currentMinValue}
+                            </div>
+                            <div className={'sliderMaxValueContainer'}>
+                                {currentMaxValue}
+                            </div>
+                        </div>
                         <MultiRangeSlider
                             min={gameSelector[selectedGame][product].sliderSettings.min}
                             max={gameSelector[selectedGame][product].sliderSettings.max}
@@ -268,12 +291,32 @@ const ContentSliderEditor = () => {
                     </div>
                     <div>
                         <h2>New Slider</h2>
+                        <div className={'sliderValuesContainer'}>
+                            <div className={'sliderMinValueContainer'}>
+                                {editorMinValue}
+                            </div>
+                            <div className={'sliderMaxValueContainer'}>
+                                {editorMaxValue}
+                            </div>
+                        </div>
                         <MultiRangeSlider
-                            min={gameSelector[selectedGame][product].sliderSettings.min}
-                            max={gameSelector[selectedGame][product].sliderSettings.max}
-                            step={gameSelector[selectedGame][product].sliderSettings.step}
-                            minValue={gameSelector[selectedGame][product].sliderSettings.minValue}
-                            maxValue={gameSelector[selectedGame][product].sliderSettings.maxValue}
+                            min={enterMinValue ? enterMinValue : gameSelector[selectedGame][product].sliderSettings.min}
+                            max={enterMaxValue ? enterMaxValue : gameSelector[selectedGame][product].sliderSettings.max}
+                            step={enterStep ? enterStep : gameSelector[selectedGame][product].sliderSettings.step}
+                            minValue={
+                                enterLeftThumbValue &&
+                                enterLeftThumbValue < editorMaxValue
+                                    ?
+                                    enterLeftThumbValue :
+                                    editorMinValue
+                            }
+                            maxValue={
+                                enterRightThumbValue &&
+                                enterRightThumbValue > editorMinValue
+                                    ?
+                                    enterRightThumbValue :
+                                    editorMaxValue
+                            }
                             ruler={false}
                             onInput={(e) => {
                                 handleChange(e, false)
