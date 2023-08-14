@@ -10,11 +10,11 @@ import {useSelector} from "react-redux";
 const ContentSlider = (props) => {
 
     const sliderRangesValues = useSelector(
-        state => state.productPage.productData[props.page][props.product].sliderRangesValues
+        state => state.productPage.productData[props.page].products[props.product].sliderRangesValues
     )
 
     const sliderSettings = useSelector(
-        state => state.productPage.productData[props.page][props.product].sliderSettings
+        state => state.productPage.productData[props.page].products[props.product].sliderSettings
     )
 
     const [finalPrice, setFinalPrice] = useState(0);

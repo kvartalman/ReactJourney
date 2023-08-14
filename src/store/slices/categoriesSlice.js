@@ -39,7 +39,7 @@ const categoriesSlice = createSlice({
                 bg: './backgrounds/ctgBackgrounds/pubg.jpeg',
                 to: '/',
                 video: './backgrounds/ctgBackgrounds/videos/pubg.mp4'
-            },
+            }
         ]
     },
     reducers: {}

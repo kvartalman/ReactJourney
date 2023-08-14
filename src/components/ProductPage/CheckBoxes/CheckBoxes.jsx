@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 const CheckBoxes = (props) => {
 
     const productPage = useSelector(
-        state => state.productPage.productData[props.game][props.product].checkboxes
+        state => state.productPage.productData[props.game].products[props.product].checkboxes
     )
 
     // Here we get an array of checkboxes in 'false' state. It means they are not checked

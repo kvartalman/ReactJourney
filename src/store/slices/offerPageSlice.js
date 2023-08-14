@@ -30,7 +30,8 @@ const offerPageSlice = createSlice({
                         {id: 5, link: "/categories/dota2/mmr-boost", name: "MMR Boost"},
                         {id: 6, link: "/categories/dota2/low-priority", name: "Low priority"},
                         {id: 7, link: "/categories/dota2/coaching", name: "Coaching"},
-                        {id: 8, link: "/categories/dota2/party-with-a-pro", name: "Party with a pro"}
+                        {id: 8, link: "/categories/dota2/party-with-a-pro", name: "Party with a pro"},
+                        {id: 9, link: "/categories/dota2/rampage-collection", name: "Rampage collection"}
                     ],
                     breadCrumbs: {linkNames: [], activeLinkName: 'Dota 2'},
                     canvasCtgData:

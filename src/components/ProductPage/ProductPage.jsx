@@ -14,6 +14,7 @@ import {v4 as uuidv4} from 'uuid';
 import Slider from "rc-slider";
 import 'rc-slider/assets/index.css';
 import ContentSlider from "./ContentSlider/ContentSlider";
+import SubCategory from "./SubCategory/SubCategory";
 
 const ProductPage = () => {
 
@@ -27,10 +28,10 @@ const ProductPage = () => {
     // This function turns low-priority' to 'lowPriority' (for correct adding as property inside state)
     const productCamelCase = require('change-case').camelCase(page.product)
 
-    const viewSettings = productPage.productData[page.name][productCamelCase].viewSettings
+    const viewSettings = productPage.productData[page.name].products[productCamelCase].viewSettings
 
     const [showModal, setShowModal] = useState(false);
-    const [price, setPrice] = useState(productPage.productData[page.name][productCamelCase].price);
+    const [price, setPrice] = useState(productPage.productData[page.name].products[productCamelCase].price);
     const [sliderPrice, setSliderPrice] = useState(0);
 
     const panelButtonsArr = gameOffer.panelButton.map(button => (
@@ -43,7 +44,7 @@ const ProductPage = () => {
 
     const addToCartHandler = (sliderPrice) => {
 
-        const product = productPage.productData[page.name][productCamelCase];
+        const product = productPage.productData[page.name].products[productCamelCase];
 
         const productToAdd = {
             id: uuidv4(),
@@ -59,7 +60,7 @@ const ProductPage = () => {
     // Refresh total price when re-render
 
     useEffect(() => {
-        setPrice(productPage.productData[page.name][productCamelCase].price);
+        setPrice(productPage.productData[page.name].products[productCamelCase].price);
         setSliderPrice(0);
     }, [page, productCamelCase, productPage.productData])
 
@@ -78,11 +79,17 @@ const ProductPage = () => {
                     </div>
                 </Col>
                 <Col md={9} id={'productPageContentCol'}>
+                    {productPage.productData[page.name].products[productCamelCase].hasOwnProperty('cards') ?
+                        <SubCategory
+                            game={page.name}
+                            product={productCamelCase}
+                        />
+                        :
                     <Container fluid id={'pdPageContentContainer'}>
                         <Row>
                             <Col md={viewSettings ? 9 : 12}>
                                 <div className={'pdPageContentTitle'}>
-                                    <h1>{productPage.productData[page.name][productCamelCase].header}</h1>
+                                    <h1>{productPage.productData[page.name].products[productCamelCase].header}</h1>
                                 </div>
                                 <div className={'customizeDividerLine'}></div>
                                 {viewSettings ? null :
@@ -97,7 +104,7 @@ const ProductPage = () => {
                                     />
                                 }
                                 <div className={'pdPageContentText'}>
-                                    <p>{productPage.productData[page.name][productCamelCase].text}</p>
+                                    <p>{productPage.productData[page.name].products[productCamelCase].text}</p>
                                 </div>
                             </Col>
                             {viewSettings ?
@@ -125,8 +132,12 @@ const ProductPage = () => {
                                         <div className={'totalPrice'}><p>{price + sliderPrice}&#8364;</p></div>
                                         <div className={'customizeDividerLine'}></div>
                                         <div className={'customizeButtonsContainer'}>
-                                            <Button onClick={() => addToCartHandler(sliderPrice)} className={'customizeButtons'}>Buy
-                                                now</Button>
+                                            <Button
+                                                onClick={() => addToCartHandler(sliderPrice)}
+                                                className={'customizeButtons'}
+                                            >
+                                                Buy now
+                                            </Button>
                                             <Button className={'customizeButtons'}>Contact manager</Button>
                                             <AddCartModal show={showModal} setShowModal={setShowModal}/>
                                         </div>
@@ -134,6 +145,7 @@ const ProductPage = () => {
                                 </Col> : null}
                         </Row>
                     </Container>
+                    }
                 </Col>
             </Row>
         </Container>
