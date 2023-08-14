@@ -16,6 +16,8 @@ const adminPanelSlice = createSlice(
                     range: [action.payload.enterStartOfRange, action.payload.enterEndOfRange],
                     addition: action.payload.enterValuePerStep
                 };
+                // If we create new Content Slider, we use 'settings' type.
+                // If we want to edit current Content Slider, we use 'editor' type.
                 action.payload.type === 'settings' ?
                     state.contentSliderSettingsRanges.push(newRange)
                     :

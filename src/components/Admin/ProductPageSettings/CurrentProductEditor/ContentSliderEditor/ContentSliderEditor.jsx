@@ -15,6 +15,7 @@ import MultiRangeSlider from "multi-range-slider-react";
 
 const ContentSliderEditor = () => {
 
+
     const gameSelector = useSelector(state => state.productPage.productData)
     const sliderRangesData = useSelector(state => state.adminPanel.contentSliderEditorRanges)
     const dispatch = useDispatch();
@@ -31,17 +32,32 @@ const ContentSliderEditor = () => {
     const [enterValuePerStep, setEnterValuePerStep] = useState('');
 
     const [editorFinalPrice, setEditorFinalPrice] = useState(0);
-    const [editorMinValue, setEditorMinValue] = useState(25);
-    const [editorMaxValue, setEditorMaxValue] = useState(75);
 
+    // We choose first product which have Content Slider
     const [product, setProduct] = useState(Object.keys(gameSelector[selectedGame]).filter
     (key => gameSelector[selectedGame][key].viewSettings === false)[0]);
-    const [currentFinalPrice, setCurrentFinalPrice] = useState(0);
-    const [currentMinValue, setCurrentMinValue] = useState(gameSelector[selectedGame][product].sliderSettings.minValue);
-    const [currentMaxValue, setCurrentMaxValue] = useState(gameSelector[selectedGame][product].sliderSettings.maxValue);
+
+    // We use arrow function here because we need to calculate currentFinalPrice on first render to provide better UI/UX
+    const [currentFinalPrice, setCurrentFinalPrice] = useState(
+        gameSelector[selectedGame][product].sliderRangesValues.map(elem => {
+            let calculatedPrice = 0;
+            for (let level = elem.range[0]; level < elem.range[1]; level++) {
+                const matchingRange = elem.range.find(
+                    rangeEntry =>
+                        level >= gameSelector[selectedGame][product].sliderSettings.minValue &&
+                        level < gameSelector[selectedGame][product].sliderSettings.maxValue
+                );
+                if (matchingRange) {
+                    calculatedPrice += elem.value;
+                }
+            }
+            return calculatedPrice
+        }).reduce((sum, elem) => sum + elem, 0)
+    );
 
     const handleProductSelect = (e) => {
-        setProduct(e.target.value)
+        setProduct(e.target.value);
+        
     }
 
     const handleGameSelect = (e) => {
@@ -95,33 +111,23 @@ const ContentSliderEditor = () => {
     }
 
     const handleChange = (e, isCurrent) => {
-
         let calculatedPrice = 0;
-        const minVar = isCurrent ? currentMinValue : editorMinValue;
-        const maxVar = isCurrent ? currentMaxValue : editorMaxValue;
 
-        if (isCurrent) {
-            setCurrentMinValue(e.minValue);
-            setCurrentMaxValue(e.maxValue);
-
-        } else {
-            setEditorMinValue(e.minValue);
-            setEditorMaxValue(e.maxValue);
-        }
-
-        for (let level = minVar; level < maxVar; level++) {
-            const matchingRange = (isCurrent ? gameSelector[selectedGame][product].sliderRangesValues : sliderRangesData).find(
+        for (let level = e.minValue; level < e.maxValue; level++) {
+            const matchingRange = (isCurrent ? gameSelector[selectedGame][product].sliderRangesValues : sliderRangesData).filter(
                 rangeEntry =>
                     level >= rangeEntry.range[0] && level < rangeEntry.range[1]
             );
-            if (matchingRange) {
-                calculatedPrice += matchingRange.value;
+            if (matchingRange.length > 0) {
+                calculatedPrice += matchingRange.reduce((sum, rangeEntry) => sum + rangeEntry.value, 0);
             }
         }
+
         isCurrent ?
             setCurrentFinalPrice(calculatedPrice)
             :
             setEditorFinalPrice(calculatedPrice)
+        debugger;
     }
 
 
@@ -139,7 +145,17 @@ const ContentSliderEditor = () => {
     useEffect(() => {
         dispatch(fillContentSliderEditorRanges(gameSelector[selectedGame][product].sliderRangesValues))
     }, [dispatch, gameSelector, product, selectedGame])
-
+    
+    useEffect(() => {
+        handleChange(
+            {
+                minValue: gameSelector[selectedGame][product].sliderSettings.minValue,
+                maxValue: gameSelector[selectedGame][product].sliderSettings.maxValue
+            },
+            true
+        )
+    }, [product])
+    
     return (
         <Container fluid>
             <Row id={'contentSliderSettingsRow'}>

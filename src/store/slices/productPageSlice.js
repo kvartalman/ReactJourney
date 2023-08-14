@@ -91,7 +91,7 @@ const productPageSlice = createSlice({
                             {range: [50, 100], value: 14}
                         ],
                         sliderSettings: {
-                            min: 20,
+                            min: 0,
                             max: 200,
                             minValue: 50,
                             maxValue: 150,
