@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import {signOut} from 'firebase/auth';
 import {auth} from "../Authorization/firebase";
+import './UserProfile.css'
 import {NavLink} from "react-router-dom";
 
 const UserProfile = () => {
@@ -27,7 +28,8 @@ const UserProfile = () => {
 
     return (
         <>
-            {user ? <Container fluid>
+            {user ?
+                <Container fluid>
                     {user.email ? <p>Hello there, {auth.currentUser.email}!</p> : null}
                     {user.uid}
                     <NavLink to={'/'}>

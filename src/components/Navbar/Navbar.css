@@ -11,9 +11,8 @@
 }
 
 #navbarToggle {
-    box-shadow: 0 0 5px #ffc107;
     border: 0;
-    margin: 5px 0;
+    margin-left: 5px;
     --bs-navbar-toggler-focus-width: 0;
 }
 
@@ -31,6 +30,7 @@
 #offcanvasNavbar-expand-md {
     justify-content: center;
     align-items: center;
+    transition: 0s;
 }
 
 .navbarLink {
@@ -43,19 +43,18 @@
 }
 
 #cartButton {
-    background-color: #ffc107;
+    background-color: rgba(0, 0, 0, 0);
     border: none;
 }
 
 .navbarLink:hover {
     transition: 0.1s;
-    color: white;
+    color: #ffc107;
+    text-shadow: 2px 1px 10px #FFC107;
 }
 
 #navbarContainer {
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    background-color: #ffc107;
+
 }
 
 /*logo on the left side of navbar*/
@@ -103,6 +102,8 @@
 }
 
 @media (max-width: 767px) {
+
+
     #loginButton, #signLink {
         display: none !important;
     }
@@ -129,7 +130,22 @@
     }
 
     .navbarLink:hover {
-        background-color: #ffc107;
         color: black;
+        text-shadow: none;
+        background-color: #ffc107;
     }
+
+    .navbarOffCanvas {
+        justify-content: flex-end !important;
+    }
+}
+
+.navbarIcons {
+    width: 25px;
+    margin: 0 5px;
+}
+
+.navbarIconsContainer {
+    display: flex;
+    margin: 0;
 }

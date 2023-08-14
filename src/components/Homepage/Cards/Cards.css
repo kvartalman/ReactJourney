@@ -13,11 +13,7 @@
 
 .g-3 > .col > .cardPosition {
     color: white;
-    border-top: 10px outset rgba(92,94,105,0.40) !important;
     margin: auto;
-    border-radius: 10% !important;
-    padding: 10px 10px 10px;
-    border-color: rgb(255,193,7) !important;
     background-size: cover !important;
     background-position: center !important;
 }
@@ -47,4 +43,11 @@
 
     box-shadow: 0 0 30px #ffc107;
     transform: scale(1.01);
+}
+
+#homePageCardsPreloader {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

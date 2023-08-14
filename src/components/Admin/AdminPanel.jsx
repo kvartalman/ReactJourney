@@ -8,6 +8,8 @@ import {useDispatch, useSelector} from "react-redux";
 import Cards from "../Homepage/Cards/Cards";
 import {addCard, addButton} from '../../store/slices/homePageSlice'
 import {offerPageAddCard} from "../../store/slices/offerPageSlice";
+import ContentSliderSettings from "./ProductPageSettings/NewProductSettings/ContentSliderSettings/ContentSliderSettings";
+import ContentSliderEditor from "./ProductPageSettings/CurrentProductEditor/ContentSliderEditor/ContentSliderEditor";
 
 const AdminPanel = () => {
 
@@ -184,6 +186,9 @@ const AdminPanel = () => {
                         </div>
                     </Row>
                 </Form>
+
+                <ContentSliderSettings />
+                <ContentSliderEditor />
             </Row>
             <Cards />
         </>

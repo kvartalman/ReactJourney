@@ -40,7 +40,7 @@ const CartGoodsModal = (props) => {
                             <div className={'cartGoodsItemPriceContainer'}>
                                 <div className={'cartGoodsItemPrice'}>{item.price}&#8364;</div>
                                 <Button onClick={() => removeItem(item.id)} className={'cardGoodsTrashButton'}>
-                                    <img src={'./trash.png'} alt={'trash bin'} className={'cartGoodsTrashBin'}/>
+                                    <img src={'/trash.png'} alt={'trash bin'} className={'cartGoodsTrashBin'}/>
                                 </Button>
                             </div>
                         </div>

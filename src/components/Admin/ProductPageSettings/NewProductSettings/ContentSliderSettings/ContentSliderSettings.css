@@ -1,0 +1,8 @@
+#contentSliderSettingsRow {
+    flex-direction: row;
+}
+
+#contentSliderSettingsTable td {
+    text-align: center;
+    font-weight: bold;
+}

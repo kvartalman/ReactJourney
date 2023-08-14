@@ -1,0 +1,295 @@
+#productContentSliderContainer {
+    margin-top: 2em;
+    padding: 2em;
+    border: 4px solid rgba(222, 226, 230);
+    border-radius: 5%;
+}
+
+#productContentSliderRow {
+    margin: auto;
+    justify-content: center;
+}
+
+.checkboxTooltipContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.tooltipContainer {
+    margin: 1em 0;
+}
+
+#cont {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+#productContentCheckboxesContainer {
+    justify-content: center;
+}
+
+.labelSliderCheckboxesContainer {
+    margin: 1em;
+    display: flex;
+    cursor: pointer !important;
+}
+
+#contentSliderCheckboxesContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#contentSliderButtonsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#contentSliderFooter {
+    margin: 2em 1em 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#contentSliderTotalPrice {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+#contentSliderCheckboxesRow {
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+
+    #contentSliderFooter {
+        flex-direction: column;
+    }
+
+    #contentSliderTotalPrice {
+        display: flex;
+        justify-content: center;
+    }
+
+    #contentSliderButtonsContainer {
+        display: flex;
+        margin: 2em 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .labelSliderCheckboxesContainer {
+        width: 5em;
+        margin: 1em;
+    }
+}
+
+#contentSliderCheckboxesContainer input {
+    border-radius: 0 !important;
+    border: 2px solid #ffc107;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+#contentSliderCheckboxesContainer input:checked {
+    border-color: #ffc107;
+    background: #ffc107 url('/public/checkmark.png') no-repeat center;
+    background-size: contain;
+}
+
+
+#contentSliderCheckboxesContainer input:focus {
+    border-color: #ffc107;
+    box-shadow: none;
+}
+
+.contentSliderCheckboxesInfo {
+    display: flex;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 1em;
+    cursor: pointer;
+}
+
+.contentSliderCheckboxContainer {
+    display: flex;
+}
+
+
+
+.contentSliderButton {
+    position: relative;
+    overflow: hidden;
+    margin: 0.1em;
+    color: rgb(33, 37, 41);
+    border: 1px solid rgba(222, 226, 230);
+    border-radius: 0;
+    font-weight: bold;
+    font-size: 2em;
+    background: none;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.contentSliderButton::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: #ffc107;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.contentSliderButton:hover {
+    color: white;
+}
+
+.contentSliderButtonBuy::before {
+    bottom: 0;
+    border-radius: 50% 50% 0 0;
+}
+
+.contentSliderButtonHelp::before {
+    top: 0;
+    border-radius: 0 0 50% 50%;
+}
+
+.contentSliderButtonBuy:hover::before {
+    height: 180%;
+}
+
+.contentSliderButtonHelp:hover::before {
+    height: 180%;
+}
+
+.sliderValuesContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.sliderMinValueContainer, .sliderMaxValueContainer {
+    margin: 1em 0.5em;
+    padding: 1em;
+    font-weight: bold;
+    font-size: 2.5em;
+    border: 3px solid #ffc107;
+    border-radius: 5%;
+    background: rgba(255, 193, 7, 0.5);
+    cursor: pointer;
+}
+
+.sliderMinValueContainer:hover, .sliderMaxValueContainer:hover {
+    transition: 0.4s;
+    background-color: #ffc107;
+    padding: 0.9em;
+}
+
+#multiRangeSliderContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 2em 1em;
+}
+
+.multi-range-slider {
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.multi-range-slider .thumb {
+    background-color: #ffc107 !important;
+    border: none !important;
+}
+
+.multi-range-slider .thumb .min-caption, .multi-range-slider .thumb .max-caption {
+    background: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    color: black !important;
+    font-weight: bold;
+    font-size: 2em !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.label {
+    font-weight: bold !important;
+    font-size: 1em !important;
+}
+
+.bar-inner {
+    background-color: #ffc107 !important;
+    border: none !important;
+    height: 3px !important;
+    -webkit-box-shadow: 0px 0px 2px 1px rgba(255,193,7,1) !important;
+    -moz-box-shadow: 0px 0px 2px 1px rgba(255,193,7,1) !important;
+    box-shadow: 0px 0px 2px 1px rgba(255,193,7,1) !important;
+
+}
+
+.bar-left, .bar-right {
+    background-color: rgba(255, 193, 7, 0.5) !important;
+    box-shadow: none !important;
+    height: 3px !important;
+    padding: 0 !important;
+}
+
+.multi-range-slider .thumb::before {
+    background-color: rgba(255, 255, 255) !important;
+    border: 0.3em solid rgba(255, 193, 7, 0.5) !important;
+    width: 1em !important;
+    height: 1em !important;
+    margin: -8px -12px !important;
+    -webkit-box-shadow: 0 0 0 0.3em rgba(255,193,7,1) !important;
+    -moz-box-shadow: 0 0 0 0.3em rgba(255,193,7,1) !important;
+    box-shadow: 0 0 0 0.3em rgba(255,193,7,1) !important;
+    cursor: grab !important;
+}
+
+.multi-range-slider .thumb:active::before {
+    transition: 0.2s !important;
+    background-color: #ffc107 !important;
+    border: 6px solid #ffc107 !important;
+    width: 1.2em !important;
+    height: 1.2em !important;
+}
+
+.tooltipButton {
+    border: 2px solid rgba(255, 193, 7, 0.5);
+    background: rgba(255, 193, 7, 0.5);
+    border-radius: 50%;
+    font-size: 15px;
+    font-weight: bold;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.round-button::before {
+    content: "?";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.tooltipButton:hover {
+    transition: 0.2s;
+    background: rgba(255, 193, 7, 1);
+    border-color: rgba(255, 193, 7, 1)
+}
+

@@ -9,7 +9,6 @@ const Cart = lazy(() => import("./components/Cart/Cart"));
 const Layout = lazy(() => import("./components/Layout"));
 const AdminPanel = lazy(() => import("./components/Admin/AdminPanel"));
 const Homepage = lazy(() => import("./components/Homepage/Homepage"));
-const Categories = lazy(() => import("./components/Categories/Categories"));
 const GameOffer = lazy(() => import("./components/GameOffer/GameOffer"));
 const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 const SignPage = lazy(() => import("./components/Authorization/SignPage/SignPage"));
@@ -23,7 +22,6 @@ function App() {
                     <Route exact path={'/'} element={<Layout
                     />}>
                         <Route index element={<Homepage/>}/>
-                        <Route path={'categories'} element={<Categories/>} />
                         <Route path={'categories/:name'} element={<GameOffer/>} />
                         <Route path={'/categories/:name/:product'} element={<ProductPage/>}/>
                         <Route path={'admin-panel'} element={<AdminPanel/>}/>

@@ -1,27 +1,28 @@
 {
-  "name": "pathofsamurai",
+  "name": "boostshop",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
+    "@restart/hooks": "^0.4.9",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
-    "bootstrap": "^5.2.3",
-    "bootstrap-icons": "^1.10.5",
+    "bootstrap": "^5.3.0",
     "change-case": "^4.1.2",
-    "firebase": "^9.22.2",
-    "firebaseui": "^6.0.2",
-    "jquery": "^3.7.0",
+    "firebase": "^9.23.0",
+    "multi-range-slider-react": "^2.0.3",
+    "rc-slider": "^10.2.1",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.7.4",
+    "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
-    "react-firebase-hooks": "^5.1.1",
-    "react-redux": "^8.0.7",
-    "react-router-dom": "^6.11.2",
+    "react-input-slider": "^6.0.1",
+    "react-redux": "^8.1.1",
+    "react-router-dom": "^6.14.1",
+    "react-scripts": "5.0.1",
+    "react-use": "^17.4.0",
     "react-use-cart": "^1.13.0",
-    "reactfire": "^4.2.2",
     "redux": "^4.2.1",
     "uuid": "^9.0.0",
     "web-vitals": "^2.1.4"
@@ -49,9 +50,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "ajv": "^7.2.4",
-    "react-scripts": "^5.0.1"
   }
 }

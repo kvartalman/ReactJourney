@@ -82,3 +82,7 @@
     color: #ffc107 !important;
     border-color: #ffc107 !important;
 }
+
+.cardGoodsTrashButton:active {
+    background: none !important;
+}

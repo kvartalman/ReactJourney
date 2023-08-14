@@ -18,11 +18,16 @@
     letter-spacing: 0.1em;
 }
 
+.pdPageContentTitle {
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
 .pdPageContentText {
     margin-top: 2em;
 }
 
-.checkboxesContainer {
+.checkboxesContainer, .sliderContainer {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -72,3 +77,18 @@
     position: relative;
     transform: scale(1.2);
 }
+
+.rc-slider-mark-text {
+    color: rgb(33, 37, 41) !important;
+    font-weight: bold;
+    font-size: 1.5em;
+    top: 15px;
+}
+
+.rc-slider-mark-text:active {
+    color: rgb(33, 37, 41);
+    font-weight: bold;
+    font-size: 1.5em;
+    top: 15px;
+}
+
