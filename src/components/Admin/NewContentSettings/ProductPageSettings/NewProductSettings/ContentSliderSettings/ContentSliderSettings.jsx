@@ -5,10 +5,10 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import MultiRangeSlider from "multi-range-slider-react";
-import '../../../../ProductPage/ContentSlider/ContentSlider.css';
+import '../../../../../ProductPage/ContentSlider/ContentSlider.css';
 import './ContentSliderSettings.css'
 import {useDispatch, useSelector} from "react-redux";
-import {addContentSliderRange, deleteContentSliderRange} from "../../../../../store/slices/adminPanelSlice";
+import {addContentSliderRange, deleteContentSliderRange} from "../../../../../../store/slices/adminPanelSlice";
 import Table from 'react-bootstrap/Table';
 
 const ContentSliderSettings = () => {

@@ -5,12 +5,12 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import {useDispatch, useSelector} from "react-redux";
-import '../../../../ProductPage/ContentSlider/ContentSlider.css';
+import '../../../../../ProductPage/ContentSlider/ContentSlider.css';
 import {
     addContentSliderRange,
     deleteContentSliderRange,
     fillContentSliderEditorRanges
-} from "../../../../../store/slices/adminPanelSlice";
+} from "../../../../../../store/slices/adminPanelSlice";
 import Container from "react-bootstrap/Container";
 import MultiRangeSlider from "multi-range-slider-react";
 import './ContentSliderEditor.css'

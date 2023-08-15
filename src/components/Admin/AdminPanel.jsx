@@ -1,197 +1,145 @@
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import React, {useRef, useState} from "react";
-import './AdminPanel.css'
-import {useDispatch, useSelector} from "react-redux";
+import React, {useEffect, useState} from "react";
+import './AdminPanel.css';
 import Cards from "../Homepage/Cards/Cards";
-import {addCard, addButton} from '../../store/slices/homePageSlice'
-import {offerPageAddCard} from "../../store/slices/offerPageSlice";
-import ContentSliderSettings from "./ProductPageSettings/NewProductSettings/ContentSliderSettings/ContentSliderSettings";
-import ContentSliderEditor from "./ProductPageSettings/CurrentProductEditor/ContentSliderEditor/ContentSliderEditor";
+import ContentSliderSettings
+    from "./NewContentSettings/ProductPageSettings/NewProductSettings/ContentSliderSettings/ContentSliderSettings";
+import ContentSliderEditor
+    from "./NewContentSettings/ProductPageSettings/CurrentProductEditor/ContentSliderEditor/ContentSliderEditor";
+import HomePageCardsSettings from "./NewContentSettings/HomePageCardsSettings/HomePageCardsSettings";
+import HomePageCardsButtonsSettings
+    from "./NewContentSettings/HomePageCardsSettings/HomePageCardsButtonsSettings/HomePageCardsButtonsSettings";
+import OfferPageCardsSettings from "./NewContentSettings/OfferPageCardsSettings/OfferPageCardsSettings";
+import Container from "react-bootstrap/Container";
+import {Accordion, Col} from "react-bootstrap";
+import {NavLink} from "react-router-dom";
+import Dashboard from "./Dashboard/Dashboard";
+import ProductsEditor from "./CurrentContentEditor/ProductsEditor/ProductsEditor";
 
 const AdminPanel = () => {
 
-    const cardsData = useSelector(state => state.homePage.cardsData)
-    const gameOfferPages = useSelector(state => Object.keys(state.gameOfferPages.pagesData))
-    const linksList = useSelector(state => state.adminPanel.linksList)
-    const dispatch = useDispatch();
+    const [contentCol, setContentCol] = useState(0);
 
-    const [tagId, setTagId] = useState('');
-    const [title, setTitle] = useState('');
-    const [cardText, setCardText] = useState('');
-    const [btnName, setBtnName] = useState('');
-    const [offerCardTitle, setOfferCardTitle] = useState('');
-    const [offerCardText, setOfferCardText] = useState('');
-
-    let newButtonType = useRef(null);
-    let cardKey = useRef(null);
-    let newLink = useRef(null);
-    let gameOfferSelector = useRef(null);
-
-    const tagInput = (e) => {
-        setTagId(e.target.value)
-    };
-    const titleInput = (e) => {
-        setTitle(e.target.value)
-    };
-    const cardTextInput = (e) => {
-        setCardText(e.target.value)
-    };
-    const btnNameInput = (e) => {
-        setBtnName(e.target.value)
-    };
-    const offerCardTitleInput = (e) => {
-        setOfferCardTitle(e.target.value)
-    };
-    const offerCardTextInput = (e) => {setOfferCardText(e.target.value)};
-
-    const addHomePageCard = () => {
-        dispatch(addCard({tagId, title, text: cardText}));
-        setTagId('');
-        setTitle('');
-        setCardText('');
-    }
-    const addHomePageCardButton = () => {
-        dispatch(addButton({
-            cardKey: cardKey.current.value,
-            link: newLink.current.value,
-            btnType: newButtonType.current.value,
-            btnName
-        }))
-        setBtnName('');
+    const handleContentCol = (type) => {
+        setContentCol(type)
+        console.log(type, contentCol)
     }
 
-    const addOfferPageCard = () => {
-        dispatch(offerPageAddCard({
-            gameOfferSelector: gameOfferSelector.current.value,
-            title: offerCardTitle,
-            text: offerCardText
-        }));
-        setOfferCardTitle('');
-        setOfferCardText('');
-    }
-
-    const cardsList = Object.keys(cardsData).map(card => (
-        <option>{card}</option>
-    ))
-
-    const links = linksList.map(card => (
-        <option>{card}</option>
-    ))
-
-    const getOfferPages = gameOfferPages.map(name => (
-        <option>{name}</option>
-    ))
 
     return (
-        <>
-            <Row className={'cardButtonForms'}>
+        <Container fluid id={'adminPanelMainContainer'}>
 
-                {/*HOMEPAGE CARDS EDITOR*/}
-                <Form>
-                    <Row className="mb-3 formsRow">
-                        <h2>HomePage Cards Editor</h2>
-                        <Form.Group as={Col} id={'addCardForm'}>
-                            <Form.Label>Card ID</Form.Label>
-                            <Form.Control
-                                onChange={tagInput}
-                                type=""
-                                placeholder="Ented cardID"
-                                value={tagId}
-                            />
-                            <Form.Label>Card title</Form.Label>
-                            <Form.Control
-                                onChange={titleInput}
-                                type=""
-                                placeholder="Enter card title"
-                                value={title}
-                            />
-                            <Form.Label>Card text</Form.Label>
-                            <Form.Control
-                                onChange={cardTextInput}
-                                value={cardText}
-                                placeholder="Enter Card text"
-                            />
-                        </Form.Group>
-                        <div className={'addCardButtons'}>
-                            <Button onClick={addHomePageCard} variant="primary">
-                                Create Card
-                            </Button>
-                        </div>
-                    </Row>
-                </Form>
-
-                {/*HOMEPAGE CARDS BUTTONS EDITOR*/}
-                <Form>
-                    <Row className="mb-3 formsRow">
-                        <h2>HomePage Card Buttons Editor</h2>
-                        <Form.Group as={Col}>
-                            <Form.Label>Choose button type</Form.Label>
-                            <Form.Select ref={newButtonType}>
-                                <option>mainButton</option>
-                                <option>button</option>
-                            </Form.Select>
-                            <Form.Label>Card</Form.Label>
-                            <Form.Select ref={cardKey}>
-                                {cardsList}
-                            </Form.Select>
-                            <Form.Label>Links list</Form.Label>
-                            <Form.Select ref={newLink}>
-                                {links}
-                            </Form.Select>
-                            <Form.Label>Button Name</Form.Label>
-                            <Form.Control
-                                onChange={btnNameInput}
-                                placeholder={'Enter button name...'}
-                                value={btnName}
-                            />
-                        </Form.Group>
-                        <div className={'addCardButtons'}>
-                            <Button variant="primary" onClick={addHomePageCardButton}>
-                                Add Button
-                            </Button>
-                        </div>
-                    </Row>
-                </Form>
-
-                {/*OFFERPAGE CARDS EDITOR*/}
-                <Form>
-                    <Row className="mb-3 formsRow">
-                        <h2>OfferPage Cards editor</h2>
-                        <Form.Group as={Col}>
-                            <Form.Label>GameOffer Page</Form.Label>
-                            <Form.Select ref={gameOfferSelector}>
-                                {getOfferPages}
-                            </Form.Select>
-                            <Form.Label>Card title</Form.Label>
-                            <Form.Control
-                                onChange={offerCardTitleInput}
-                                value={offerCardTitle}
-                                placeholder="Enter card title"
-                            />
-                            <Form.Label>Card text</Form.Label>
-                            <Form.Control
-                                onChange={offerCardTextInput}
-                                value={offerCardText}
-                                placeholder="Enter Card text"
-                            />
-                        </Form.Group>
-
-                        <div className={'addCardButtons'}>
-                            <Button variant="primary" onClick={addOfferPageCard}>
-                                Create Card
-                            </Button>
-                        </div>
-                    </Row>
-                </Form>
-
-                <ContentSliderSettings />
-                <ContentSliderEditor />
+            <Row id={'adminPanelMainRow'}>
+                <Col md={2} id={'adminPanelMenuCol'}>
+                    <Container fluid id={'adminPanelMenuContainer'}>
+                        <Row className={'adminPanelMenuLinks'}>
+                            <ul>
+                                <li>
+                                    <Accordion>
+                                        <Accordion.Item eventKey="0">
+                                            <Accordion.Header>
+                                                <div className={'accordionHeaderContainer'}>
+                                                    Create new
+                                                    <div className={'accordionArrowContainer'}></div>
+                                                </div>
+                                            </Accordion.Header>
+                                            <Accordion.Body>
+                                                { /* I use stopPropagation here because handler bubbling to li element
+                                                 and starts handleContentCol there. stopPropagation prevent this
+                                                 problem from occuring */}
+                                                <p>Game</p>
+                                                <p>Subcategory</p>
+                                                <p>Product</p>
+                                                <p
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleContentCol(3)
+                                                    }}
+                                                >Homepage card
+                                                </p>
+                                                <p
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleContentCol(4)
+                                                    }}
+                                                >
+                                                    Offerpage card
+                                                </p>
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+                                    </Accordion>
+                                </li>
+                                <li>
+                                    <Accordion>
+                                        <Accordion.Item eventKey="0">
+                                            <Accordion.Header>
+                                                <div className={'accordionHeaderContainer'}>
+                                                    Editor
+                                                    <div className={'accordionArrowContainer'}></div>
+                                                </div>
+                                            </Accordion.Header>
+                                            <Accordion.Body>
+                                                { /* I use stopPropagation here because handler bubbling to li element
+                                                 and starts handleContentCol there. stopPropagation prevent this
+                                                 problem from occuring */}
+                                                <p>Game pages</p>
+                                                <p>Subcategories</p>
+                                                <p onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleContentCol(7)
+                                                }
+                                                }>
+                                                    Products
+                                                </p>
+                                                <p
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleContentCol(8)
+                                                    }}>
+                                                    Homepage card
+                                                </p>
+                                                <p
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleContentCol(9)
+                                                    }}
+                                                >
+                                                    Offerpage card
+                                                </p>
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+                                    </Accordion>
+                                </li>
+                                <li>Add new game</li>
+                                <li onClick={() => handleContentCol(0)}>Dashboard</li>
+                                <li></li>
+                                <li></li>
+                                <li><NavLink to={'/'} id={'backToShopLink'}>Back to shop</NavLink></li>
+                            </ul>
+                        </Row>
+                    </Container>
+                </Col>
+                <Col md={10} id={'adminPanelSetEditCol'}>
+                    <Container fluid>
+                        <Row>
+                            {[
+                                <Dashboard/>, 1, 2, <HomePageCardsSettings/>, <OfferPageCardsSettings/>,
+                                5, 6, <ProductsEditor/>, 8, 9
+                            ].map(
+                                (elem, index) => (
+                                    contentCol === index ?
+                                        elem
+                                        :
+                                        null
+                                ))
+                                // <ContentSliderSettings/>
+                                // <ContentSliderEditor/>
+                            }
+                        </Row>
+                    </Container>
+                </Col>
             </Row>
-            <Cards />
-        </>
+        </Container>
     );
 }
 

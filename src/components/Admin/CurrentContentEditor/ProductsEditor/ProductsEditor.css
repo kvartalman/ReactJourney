@@ -1,0 +1,17 @@
+#adminPanelSetEditCol > .container-fluid > .row > .nav-tabs {
+    background-color: rgba(33, 37, 41, 1);
+    border-color: rgba(33, 37, 41, 1);
+}
+
+#adminPanelSetEditCol > .container-fluid > .row > .nav-tabs > li > button {
+    background-color: rgba(33, 37, 41, 1);
+    color: #ffc107;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+}
+
+#adminPanelSetEditCol > .container-fluid > .row > .nav-tabs > li > button:focus {
+    background-color: rgba(255, 193, 7, 0.3);
+    text-shadow: #ffc107 1px 0 10px;
+}

@@ -24,10 +24,10 @@ function App() {
                         <Route index element={<Homepage/>}/>
                         <Route path={'categories/:name'} element={<GameOffer/>} />
                         <Route path={'/categories/:name/:product'} element={<ProductPage/>}/>
-                        <Route path={'admin-panel'} element={<AdminPanel/>}/>
                         <Route path={'cart'} element={<Cart/>}/>
                         <Route path={'profile'} element={<UserProfile/>}/>
                     </Route>
+                    <Route path={'admin-panel'} element={<AdminPanel/>}/>
                     <Route path={'sign'} element={<SignPage/>}/>
                     <Route path={'*'} element={<NotFound/>}/>
                 </Routes>
