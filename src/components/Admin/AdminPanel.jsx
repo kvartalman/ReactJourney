@@ -5,7 +5,7 @@ import Cards from "../Homepage/Cards/Cards";
 import ContentSliderSettings
     from "./NewContentSettings/ProductPageSettings/NewProductSettings/ContentSliderSettings/ContentSliderSettings";
 import ContentSliderEditor
-    from "./NewContentSettings/ProductPageSettings/CurrentProductEditor/ContentSliderEditor/ContentSliderEditor";
+    from "./CurrentContentEditor/ProductsEditor/ProductSliderEdit/ContentSliderEditor/ContentSliderEditor";
 import HomePageCardsSettings from "./NewContentSettings/HomePageCardsSettings/HomePageCardsSettings";
 import HomePageCardsButtonsSettings
     from "./NewContentSettings/HomePageCardsSettings/HomePageCardsButtonsSettings/HomePageCardsButtonsSettings";

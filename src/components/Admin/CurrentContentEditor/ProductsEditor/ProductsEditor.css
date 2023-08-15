@@ -11,7 +11,7 @@
     border-radius: 0;
 }
 
-#adminPanelSetEditCol > .container-fluid > .row > .nav-tabs > li > button:focus {
+#adminPanelSetEditCol > .container-fluid > .row > .nav-tabs > li > .active {
     background-color: rgba(255, 193, 7, 0.3);
     text-shadow: #ffc107 1px 0 10px;
 }
