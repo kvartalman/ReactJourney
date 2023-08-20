@@ -1,32 +1,16 @@
-import React, {useState} from "react";
+import React from "react";
 import './ProductTextEdit.css'
 import Button from "react-bootstrap/Button";
-import {useSelector} from "react-redux";
+import Container from "react-bootstrap/Container";
 
-const ProductTextEdit = () => {
-
-    const gameSelector = useSelector(state => state.productPage.productData)
-    const [activeGameButton, setActiveGameButton] = useState(0);
-
-    const handleGameSelect = (game, index) => {
-
-        setActiveGameButton(index);
-    }
-
-    const gamesButtons = Object.keys(gameSelector).map((game, index) => (
-        <Button
-            key={index}
-            onClick={() => handleGameSelect(game, index)}
-            className={activeGameButton === index ? 'activeButton' : 'defaultButton'}
-        >
-            {gameSelector[game].fullName}
-        </Button>
-    ))
+const ProductTextEdit = (props) => {
 
     return (
-        <>
-            {gamesButtons}
-        </>
+        <Container fluid>
+            <div>
+                <Button onClick={() => props.setKey('checkboxes')}>Next</Button>
+            </div>
+        </Container>
     );
 }
 

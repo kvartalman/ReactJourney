@@ -221,48 +221,48 @@ const ContentSliderEditor = () => {
                                 <Form.Label>Choose min and max values of slider</Form.Label>
                                 <Form.Control
                                     value={enterMinValue}
-                                    onChange={enterMinValueInput}
+                                    onChange={() => enterMinValueInput}
                                     placeholder="Enter min value"
                                 />
                                 <Form.Control
                                     value={enterMaxValue}
-                                    onChange={enterMaxValueInput}
+                                    onChange={() => enterMaxValueInput}
                                     placeholder="Enter max value"
                                 />
                                 <Form.Label>Choose start position of slider</Form.Label>
                                 <Form.Control
                                     value={enterLeftThumbValue}
-                                    onChange={enterLeftThumbValueInput}
+                                    onChange={() => enterLeftThumbValueInput}
                                     placeholder="Enter left thumb value"
                                 />
                                 <Form.Control
                                     value={enterRightThumbValue}
-                                    onChange={enterRightThumbValueInput}
+                                    onChange={() => enterRightThumbValueInput}
                                     placeholder="Enter right thumb value"
                                 />
                                 <Form.Label>Choose step (default is 1)</Form.Label>
                                 <Form.Control
                                     value={enterStep}
-                                    onChange={enterStepInput}
+                                    onChange={() => enterStepInput}
                                     placeholder="Enter step"
                                 />
                                 <Form.Label>Choose value per step and range</Form.Label>
                                 <Form.Control
                                     value={enterStartOfRange}
-                                    onChange={enterStartOfRangeInput}
+                                    onChange={() => enterStartOfRangeInput}
                                     placeholder="Enter start of range"
                                 />
                                 <Form.Control
                                     value={enterEndOfRange}
-                                    onChange={enterEndOfRangeInput}
+                                    onChange={() => enterEndOfRangeInput}
                                     placeholder="Enter end of range"
                                 />
                                 <Form.Control
                                     value={enterValuePerStep}
-                                    onChange={enterValuePerStepInput}
+                                    onChange={() => enterValuePerStepInput}
                                     placeholder="Enter value per step"
                                 />
-                                <Button onClick={addRangeHandler} variant="primary">
+                                <Button onClick={() => addRangeHandler} variant="primary">
                                     Add range
                                 </Button>
                                 <Table striped bordered hover id={'contentSliderSettingsTable'}>
