@@ -17,7 +17,9 @@ const ChooseGame = (props) => {
     const handleGameSelect = (game, index) => {
 
         setActiveGameButton(index);
+        setActiveProductButton(0);
         props.setGame(game);
+        props.setProduct(Object.keys(props.gameSelector[game].products)[0])
     }
 
     const gamesButtons = Object.keys(props.gameSelector).map((game, index) => (

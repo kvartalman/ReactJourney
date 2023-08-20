@@ -22,7 +22,6 @@ const AdminPanel = () => {
 
     const handleContentCol = (type) => {
         setContentCol(type)
-        console.log(type, contentCol)
     }
 
 

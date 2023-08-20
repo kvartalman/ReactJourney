@@ -217,6 +217,7 @@ const productPageSlice = createSlice({
                         },
                         rampageCollection: {
                             header: "Rampage collection",
+                            subCategory: true,
                             cards: {
                                 rampageOne: {
                                     link: "/categories/dota2/rampage-one",
