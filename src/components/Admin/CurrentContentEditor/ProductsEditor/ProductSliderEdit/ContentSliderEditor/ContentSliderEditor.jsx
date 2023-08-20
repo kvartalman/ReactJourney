@@ -159,7 +159,6 @@ const ContentSliderEditor = (props) => {
             <Row id={'contentSliderSettingsRow'}>
                 <Col>
                     <Form>
-                        <Row className="mb-3 formsRow">
                             <h2>ProductPage ContentSlider Editor</h2>
                             <Form.Group as={Col}>
                                 <Form.Label>Choose min and max values of slider</Form.Label>
@@ -237,7 +236,6 @@ const ContentSliderEditor = (props) => {
                                     Accept Changes
                                 </Button>
                             </div>
-                        </Row>
                     </Form>
                 </Col>
                 <Col>
@@ -285,27 +283,16 @@ const ContentSliderEditor = (props) => {
                                 :
                                 gameSelector[props.game].products[props.product].sliderSettings.step}
                             minValue={
-                                enterLeftThumbValue && enterLeftThumbValue < editorMaxValue
+                            enterLeftThumbValue && enterLeftThumbValue < editorMaxValue
                                     ?
                                     enterLeftThumbValue :
-                                    enterMinValue && enterMinValue < gameSelector[props.game].products
-                                        [props.product].sliderSettings.min
-                                        ?
-                                        enterMinValue
-                                        :
-                                        gameSelector[props.game].products[props.product].sliderSettings.min
+                                    enterMinValue || gameSelector[props.game].products[props.product].sliderSettings.min
                             }
                             maxValue={
-                                enterRightThumbValue && enterRightThumbValue > editorMinValue
+                            enterRightThumbValue && enterRightThumbValue > editorMinValue
                                     ?
                                     enterRightThumbValue :
-                                    enterMaxValue &&
-                                    enterMaxValue > gameSelector[props.game].products[props.product].sliderSettings.max
-                                        ?
-                                        enterMaxValue
-                                        :
-                                        gameSelector[props.game].products[props.product].sliderSettings.max
-
+                                    enterMaxValue || gameSelector[props.game].products[props.product].sliderSettings.max
                             }
                             ruler={false}
                             onInput={(e) => {
