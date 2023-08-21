@@ -1,10 +1,178 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import {OverlayTrigger, Tooltip} from "react-bootstrap";
+import './ProductCheckboxesEdit.css';
+import '../../../../ProductPage/ContentSlider/ContentSlider.css';
+import '../../../../ProductPage/CheckBoxes/CheckBox.css';
+import {useDispatch, useSelector} from "react-redux";
+import {
+    deleteCheckboxContent,
+    editCheckboxesContent,
+    fillCheckboxesEditor
+} from "../../../../../store/slices/adminPanelSlice";
 
 const ProductCheckboxesEdit = (props) => {
+
+    const gameSelector = props.gameSelector[props.game].products[props.product];
+    const checkboxesSliceSelector = useSelector(state => state.adminPanel.checkboxesEditor);
+    const dispatch = useDispatch();
+    
+    const checkboxSelector = useRef(null);
+    const [checkboxEdit, setCheckboxEdit] = useState('');
+    const [checkboxLabel, setCheckboxLabel] = useState('');
+    const [checkboxValue, setCheckboxValue] = useState('');
+
+    const checkboxLabelInput = (e) => {
+        setCheckboxLabel(e.target.value);
+        dispatch(editCheckboxesContent(
+            {
+                label: e.target.value,
+                name: checkboxSelector.current.value
+            }
+        ))
+    }
+
+    const checkboxValueInput = (e) => {
+        setCheckboxValue(e.target.value);
+        dispatch(editCheckboxesContent(
+            {
+                value: e.target.value,
+                name: checkboxSelector.current.value
+            }
+        ))
+    }
+    const handleCheckboxSelect = (e) => {
+        setCheckboxEdit(e.target.value);
+        setCheckboxValue('');
+        setCheckboxLabel('');
+    }
+
+    const checkboxesList = gameSelector.checkboxes.map(checkbox => (
+        <option>{checkbox.name}</option>
+    ))
+
+    const checkboxesCurrent =
+        gameSelector.checkboxes.map((checkbox, index) => {
+            return (
+                <label key={index} className={'labelSliderCheckboxesContainer'}>
+                    <div className={'checkboxTooltipContainer'}>
+                        <Form.Check
+                            type="checkbox"
+                        />
+                        <div className={'tooltipContainer'}>
+                            {checkbox.tooltip ?
+                                <OverlayTrigger
+                                    key={'top'}
+                                    placement={'top'}
+                                    overlay={
+                                        <Tooltip id={`tooltip-${'top'}`}>
+                                            {checkbox.tooltipText}
+                                        </Tooltip>
+                                    }
+                                >
+                                    <span className={'tooltipButton'}>?</span>
+                                </OverlayTrigger>
+                                :
+                                null
+                            }
+                        </div>
+                    </div>
+                    <div className={'contentSliderCheckboxesInfo'}>
+                        <p>{checkbox.label} - {checkbox.price}&#8364;
+                        </p>
+                    </div>
+
+                </label>
+            )
+        })
+
+    const checkboxesEdit =
+        checkboxesSliceSelector.map((checkbox, index) => {
+            return (
+                <label key={index} className={'labelSliderCheckboxesContainer'}>
+                    <div className={'checkboxTooltipContainer'}>
+                        <Form.Check
+                            type="checkbox"
+                        />
+                        <div className={'tooltipContainer'}>
+                            {checkbox.tooltip ?
+                                <OverlayTrigger
+                                    key={'top'}
+                                    placement={'top'}
+                                    overlay={
+                                        <Tooltip id={`tooltip-${'top'}`}>
+                                            {checkbox.tooltipText}
+                                        </Tooltip>
+                                    }
+                                >
+                                    <span className={'tooltipButton'}>?</span>
+                                </OverlayTrigger>
+                                :
+                                null
+                            }
+                        </div>
+                    </div>
+                    <div className={'contentSliderCheckboxesInfo'}>
+                        <p>
+                            {checkbox.label} - {checkbox.price}&#8364;
+                        </p>
+                    </div>
+
+                </label>
+            )
+        })
+
+    const deleteCheckbox = () => {
+        dispatch(deleteCheckboxContent(
+            {
+                name: checkboxSelector.current.value
+            }
+        ))
+    }
+    
+    useEffect(() => {
+        dispatch(fillCheckboxesEditor(gameSelector.checkboxes))
+    }, [dispatch, gameSelector])
+    
     return (
         <Container fluid>
+            <div id={'productEditCurrentCheckboxesContainer'}>
+                <h2>Current checkboxes</h2>
+                <div id={'contentSliderCheckboxesContainer'}>
+                    {checkboxesCurrent}
+                </div>
+            </div>
+            <div id={'productEditNewCheckboxesContainer'}>
+                <Form>
+                    <Form.Group>
+                        <Form.Label>Choose checkbox</Form.Label>
+                        <Form.Select
+                            ref={checkboxSelector}
+                            onChange={handleCheckboxSelect}
+                        >
+                            {checkboxesList}
+                        </Form.Select>
+                        <Form.Label>Enter checkbox label</Form.Label>
+                        <Form.Control
+                            onChange={checkboxLabelInput}
+                            value={checkboxLabel}
+                            placeholder={'Enter label...'}
+                        />
+                        <Form.Label>Enter checkbox value</Form.Label>
+                        <Form.Control
+                            onChange={checkboxValueInput}
+                            value={checkboxValue}
+                            placeholder={'Enter value...'}
+                        />
+                    </Form.Group>
+                </Form>
+                <Button onClick={() => deleteCheckbox()}>Delete checkbox</Button>
+            </div>
+            <div id={'contentSliderCheckboxesContainer'}>
+                {checkboxesEdit}
+            </div>
             <div>
                 <Button className={'nextPageButton'} onClick={() => props.setKey('slider')}>Next</Button>
             </div>

@@ -1,0 +1,40 @@
+#textAndFormsEditContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+#textAndFormsEditContainer h2 {
+    text-align: center;
+}
+
+#newTextAndTitleContainer {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 1em;
+}
+
+#newTextFormsAndPreviewContainer {
+    margin-top: 2em;
+    display: flex;
+}
+
+#newTextAndTitleFormsContainer {
+    margin: 1em 0 0 0;
+    width: 40%;
+}
+
+.productEditTitleAndTextHeaders {
+    font-size: 3em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+#productEditTextAndTitleNextButtonContainer {
+    margin-top: 1em;
+}
+
+#productTextEditError {
+    font-weight: bold;
+    color: red;
+}

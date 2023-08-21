@@ -16,6 +16,8 @@ const ProductsEditor = () => {
     const [game, setGame] = useState(Object.keys(gameSelector)[0]);
     const [product, setProduct] = useState(Object.keys(gameSelector[game].products)[0])
     const [price, setPrice] = useState(gameSelector[game].products[product].price);
+    const [text, setText] = useState('');
+    const [title, setTitle] = useState('');
 
     return (
         <Tabs
@@ -34,7 +36,14 @@ const ProductsEditor = () => {
                 />
             </Tab>
             <Tab eventKey="title" title="Title and text">
-                <ProductTextEdit setKey={setKey}/>
+                <ProductTextEdit
+                    gameSelector={gameSelector}
+                    setKey={setKey}
+                    setText={setText}
+                    setTitle={setTitle}
+                    game={game}
+                    product={product}
+                />
             </Tab>
             <Tab eventKey="price" title="Price">
                 <PriceEdit
@@ -47,7 +56,12 @@ const ProductsEditor = () => {
                 />
             </Tab>
             <Tab eventKey="checkboxes" title="Checkboxes">
-                <ProductCheckboxesEdit setKey={setKey}/>
+                <ProductCheckboxesEdit
+                    setKey={setKey}
+                    gameSelector={gameSelector}
+                    game={game}
+                    product={product}
+                />
             </Tab>
             <Tab eventKey="slider" title="Slider">
                 <ProductSliderEdit

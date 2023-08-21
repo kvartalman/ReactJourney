@@ -16,22 +16,34 @@ import 'rc-slider/assets/index.css';
 import ContentSlider from "./ContentSlider/ContentSlider";
 import SubCategory from "./SubCategory/SubCategory";
 
-const ProductPage = () => {
+const ProductPage = (props) => {
+
+    // We use props here because we also render ProductPage as preview in admin panel. We get props only if we render
+    // inside admin panel. It means, if we don't have props, then we're inside our website, and we use useParams.
+    // Inside props, we have gameSelector, game and product.
 
     const {addItem} = useCart();
     const page = useParams();
-    const gameOffer = useSelector(state => state.gameOfferPages.pagesData[page.name]);
+    const gameOffer = useSelector(state => state.gameOfferPages.pagesData[props.game ? props.game : page.name]);
     const productPage = useSelector(state => state.productPage)
 
     // This function turns 'low-priority' to 'Low priority' (for beautiful breadcrumbs view)
-    const productTitleCase = require('change-case').sentenceCase(page.product);
+    const productTitleCase = require('change-case').sentenceCase(props.product || page.product);
     // This function turns low-priority' to 'lowPriority' (for correct adding as property inside state)
-    const productCamelCase = require('change-case').camelCase(page.product)
+    const productCamelCase = require('change-case').camelCase(props.product || page.product);
 
-    const viewSettings = productPage.productData[page.name].products[productCamelCase].viewSettings
+    const viewSettings = props.gameSelector ?
+        props.gameSelector[props.game].products[props.product].viewSettings
+        :
+        productPage.productData[page.name].products[productCamelCase].viewSettings
 
     const [showModal, setShowModal] = useState(false);
-    const [price, setPrice] = useState(productPage.productData[page.name].products[productCamelCase].price);
+    const [price, setPrice] = useState(
+        props.gameSelector ?
+            props.gameSelector[props.game].products[productCamelCase].price
+            :
+            productPage.productData[page.name].products[productCamelCase].price);
+
     const [sliderPrice, setSliderPrice] = useState(0);
 
     const panelButtonsArr = gameOffer.panelButton.map(button => (
@@ -44,7 +56,11 @@ const ProductPage = () => {
 
     const addToCartHandler = (sliderPrice) => {
 
-        const product = productPage.productData[page.name].products[productCamelCase];
+        const product =
+            props.gameSelector ?
+                props.gameSelector[props.game].products[productCamelCase]
+                :
+                productPage.productData[page.name].products[productCamelCase];
 
         const productToAdd = {
             id: uuidv4(),
@@ -60,9 +76,14 @@ const ProductPage = () => {
     // Refresh total price when re-render
 
     useEffect(() => {
-        setPrice(productPage.productData[page.name].products[productCamelCase].price);
+        setPrice(
+            props.gameSelector ?
+                props.gameSelector[props.game].products[productCamelCase].price
+                :
+                productPage.productData[page.name].products[productCamelCase].price
+        );
         setSliderPrice(0);
-    }, [page, productCamelCase, productPage.productData])
+    }, [page, productCamelCase, productPage.productData, props.game, props.gameSelector])
 
     return (
         <Container fluid id={'productPageMainContainer'}>
@@ -70,7 +91,9 @@ const ProductPage = () => {
                 <Col md={3} id={'productPagePanelCol'}>
                     <div className={'breadCrumb'}>
                         <BreadCrumb
-                            linkNames={[productPage.breadCrumbsData[page.name]]}
+                            linkNames={[
+                                productPage.breadCrumbsData[props.game || page.name]
+                            ]}
                             activeLinkName={productTitleCase}
                         />
                     </div>
@@ -79,72 +102,74 @@ const ProductPage = () => {
                     </div>
                 </Col>
                 <Col md={9} id={'productPageContentCol'}>
-                    {productPage.productData[page.name].products[productCamelCase].hasOwnProperty('cards') ?
+                    {productPage.productData[props.game || page.name].products
+                        [productCamelCase].hasOwnProperty('cards') ?
                         <SubCategory
-                            game={page.name}
+                            game={props.game || page.name}
                             product={productCamelCase}
                         />
                         :
-                    <Container fluid id={'pdPageContentContainer'}>
-                        <Row>
-                            <Col md={viewSettings ? 9 : 12}>
-                                <div className={'pdPageContentTitle'}>
-                                    <h1>{productPage.productData[page.name].products[productCamelCase].header}</h1>
-                                </div>
-                                <div className={'customizeDividerLine'}></div>
-                                {viewSettings ? null :
-                                    <ContentSlider
-                                        page={page.name}
-                                        product={productCamelCase}
-                                        setPrice={setPrice}
-                                        totalPrice={price}
-                                        addToCartHandler={addToCartHandler}
-                                        showModal={showModal}
-                                        setShowModal={setShowModal}
-                                    />
-                                }
-                                <div className={'pdPageContentText'}>
-                                    <p>{productPage.productData[page.name].products[productCamelCase].text}</p>
-                                </div>
-                            </Col>
-                            {viewSettings ?
-                                <Col md={3}>
-                                    <div><h2>Customize your purchase</h2></div>
-                                    <div id={'productOptionsContainer'}>
-                                        <div className={'checkboxesContainer'}>
-                                            <CheckBoxes
-                                                game={page.name}
-                                                product={productCamelCase}
-                                                setPrice={setPrice}
-                                                totalPrice={price}
-                                            />
-                                        </div>
-                                        <div className={'customizeDividerLine'}></div>
-                                        <div className={'sliderContainer'}>
-                                            <Slider
-                                                value={sliderPrice}
-                                                min={0}
-                                                max={1000}
-                                                onChange={handleSliderChange}
-                                            />
-                                        </div>
-                                        <div className={'customizeDividerLine'}></div>
-                                        <div className={'totalPrice'}><p>{price + sliderPrice}&#8364;</p></div>
-                                        <div className={'customizeDividerLine'}></div>
-                                        <div className={'customizeButtonsContainer'}>
-                                            <Button
-                                                onClick={() => addToCartHandler(sliderPrice)}
-                                                className={'customizeButtons'}
-                                            >
-                                                Buy now
-                                            </Button>
-                                            <Button className={'customizeButtons'}>Contact manager</Button>
-                                            <AddCartModal show={showModal} setShowModal={setShowModal}/>
-                                        </div>
+                        <Container fluid id={'pdPageContentContainer'}>
+                            <Row>
+                                <Col md={viewSettings ? 9 : 12}>
+                                    <div className={'pdPageContentTitle'}>
+                                        <h1>{productPage.productData[props.game || page.name].products[productCamelCase].header}</h1>
                                     </div>
-                                </Col> : null}
-                        </Row>
-                    </Container>
+                                    <div className={'customizeDividerLine'}></div>
+                                    {viewSettings ? null :
+                                        <ContentSlider
+                                            page={page.name}
+                                            product={productCamelCase}
+                                            setPrice={setPrice}
+                                            totalPrice={price}
+                                            addToCartHandler={addToCartHandler}
+                                            showModal={showModal}
+                                            setShowModal={setShowModal}
+                                        />
+                                    }
+                                    <div className={'pdPageContentText'}>
+                                        <p>{productPage.productData[props.game || page.name].products
+                                            [productCamelCase].text}</p>
+                                    </div>
+                                </Col>
+                                {viewSettings ?
+                                    <Col md={3}>
+                                        <div><h2>Customize your purchase</h2></div>
+                                        <div id={'productOptionsContainer'}>
+                                            <div className={'checkboxesContainer'}>
+                                                <CheckBoxes
+                                                    game={props.game || page.name}
+                                                    product={productCamelCase}
+                                                    setPrice={setPrice}
+                                                    totalPrice={price}
+                                                />
+                                            </div>
+                                            <div className={'customizeDividerLine'}></div>
+                                            <div className={'sliderContainer'}>
+                                                <Slider
+                                                    value={sliderPrice}
+                                                    min={0}
+                                                    max={1000}
+                                                    onChange={handleSliderChange}
+                                                />
+                                            </div>
+                                            <div className={'customizeDividerLine'}></div>
+                                            <div className={'totalPrice'}><p>{price + sliderPrice}&#8364;</p></div>
+                                            <div className={'customizeDividerLine'}></div>
+                                            <div className={'customizeButtonsContainer'}>
+                                                <Button
+                                                    onClick={() => addToCartHandler(sliderPrice)}
+                                                    className={'customizeButtons'}
+                                                >
+                                                    Buy now
+                                                </Button>
+                                                <Button className={'customizeButtons'}>Contact manager</Button>
+                                                <AddCartModal show={showModal} setShowModal={setShowModal}/>
+                                            </div>
+                                        </div>
+                                    </Col> : null}
+                            </Row>
+                        </Container>
                     }
                 </Col>
             </Row>

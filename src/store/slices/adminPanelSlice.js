@@ -8,7 +8,8 @@ const adminPanelSlice = createSlice(
                 '/', '/dota2', '/lol', '/hots', '/adminPanel'
             ],
             contentSliderSettingsRanges: [],
-            contentSliderEditorRanges: []
+            contentSliderEditorRanges: [],
+            checkboxesEditor: []
         },
         reducers: {
             addContentSliderRange: (state, action) => {
@@ -36,6 +37,28 @@ const adminPanelSlice = createSlice(
             },
             fillContentSliderEditorRanges: (state, action) => {
                 state.contentSliderEditorRanges = action.payload;
+            },
+            fillCheckboxesEditor: (state, action) => {
+                state.checkboxesEditor = action.payload;
+            },
+            editCheckboxesContent: (state, action) => {
+                for (let i = 0; i < state.checkboxesEditor.length; i++) {
+                    if (state.checkboxesEditor[i].name === action.payload.name) {
+                        if (action.payload.value) {
+                            state.checkboxesEditor[i].price = action.payload.value
+                        }
+                        if (action.payload.label) {
+                            state.checkboxesEditor[i].label = action.payload.label
+                        }
+                    }
+                }
+            },
+            deleteCheckboxContent: (state, action) => {
+                for (let i = 0; i < state.checkboxesEditor.length; i++) {
+                    if (state.checkboxesEditor[i].name === action.payload.name) {
+                        state.checkboxesEditor.splice(i, 1);
+                    }
+                }
             }
         }
     }
@@ -45,6 +68,9 @@ const adminPanelSlice = createSlice(
 export const {
     addContentSliderRange,
     deleteContentSliderRange,
-    fillContentSliderEditorRanges
+    fillContentSliderEditorRanges,
+    fillCheckboxesEditor,
+    editCheckboxesContent,
+    deleteCheckboxContent
 } = adminPanelSlice.actions;
 export default adminPanelSlice.reducer
