@@ -1,14 +1,7 @@
 import Row from 'react-bootstrap/Row';
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import './AdminPanel.css';
-import Cards from "../Homepage/Cards/Cards";
-import ContentSliderSettings
-    from "./NewContentSettings/ProductPageSettings/NewProductSettings/ContentSliderSettings/ContentSliderSettings";
-import ContentSliderEditor
-    from "./CurrentContentEditor/ProductsEditor/ProductSliderEdit/ContentSliderEditor/ContentSliderEditor";
 import HomePageCardsSettings from "./NewContentSettings/HomePageCardsSettings/HomePageCardsSettings";
-import HomePageCardsButtonsSettings
-    from "./NewContentSettings/HomePageCardsSettings/HomePageCardsButtonsSettings/HomePageCardsButtonsSettings";
 import OfferPageCardsSettings from "./NewContentSettings/OfferPageCardsSettings/OfferPageCardsSettings";
 import Container from "react-bootstrap/Container";
 import {Accordion, Col} from "react-bootstrap";

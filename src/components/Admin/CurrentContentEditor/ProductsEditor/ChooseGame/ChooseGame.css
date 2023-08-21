@@ -1,0 +1,49 @@
+.gamesButtonsContainer, .productsButtonsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 1em 0;
+}
+
+.defaultButton {
+    font-weight: bold;
+    margin: 0.3em;
+    background-color: rgb(33, 37, 41);
+    border: 2px solid rgb(33, 37, 41);
+    color: #ffc107;
+}
+
+.defaultButton:hover {
+    background-color: rgb(33, 37, 41);
+    border-color: rgba(33, 37, 41);
+    color: #ffc107;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(33,37, 41, 1);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(33,37, 41, 1);
+    box-shadow: 0px 0px 5px 1px rgba(33,37, 41, 1);
+}
+
+.activeButton {
+    background-color: #ffc107;
+    border: 2px solid #ffc107;
+    font-weight: bold;
+    margin: 0.3em;
+    color: rgb(33, 37, 41);
+}
+
+.activeButton:hover {
+    border-color: #ffc107;
+    background-color: #ffc107;
+    color: rgb(33, 37, 41);
+}
+
+.defaultButton:active {
+    background-color: #ffc107 !important;
+    color: rgb(33, 37, 41) !important;
+    border-color: #ffc107 !important;
+}
+
+.activeButton:active {
+    background-color: #ffc107 !important;
+    color: rgb(33, 37, 41) !important;
+    border-color: #ffc107 !important;
+}

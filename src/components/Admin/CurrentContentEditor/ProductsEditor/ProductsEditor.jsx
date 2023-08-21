@@ -6,6 +6,7 @@ import ChooseGame from "./ChooseGame/ChooseGame";
 import ProductCheckboxesEdit from "./ProductCheckboxesEdit/ProductCheckboxesEdit";
 import {useSelector} from "react-redux";
 import ProductSliderEdit from "./ProductSliderEdit/ProductSliderEdit";
+import PriceEdit from "./PriceEdit/PriceEdit";
 
 const ProductsEditor = () => {
 
@@ -14,6 +15,7 @@ const ProductsEditor = () => {
     const [key, setKey] = useState('game');
     const [game, setGame] = useState(Object.keys(gameSelector)[0]);
     const [product, setProduct] = useState(Object.keys(gameSelector[game].products)[0])
+    const [price, setPrice] = useState(gameSelector[game].products[product].price);
 
     return (
         <Tabs
@@ -33,6 +35,16 @@ const ProductsEditor = () => {
             </Tab>
             <Tab eventKey="title" title="Title and text">
                 <ProductTextEdit setKey={setKey}/>
+            </Tab>
+            <Tab eventKey="price" title="Price">
+                <PriceEdit
+                    price={price}
+                    setPrice={setPrice}
+                    gameSelector={gameSelector}
+                    game={game}
+                    product={product}
+                    setKey={setKey}
+                />
             </Tab>
             <Tab eventKey="checkboxes" title="Checkboxes">
                 <ProductCheckboxesEdit setKey={setKey}/>

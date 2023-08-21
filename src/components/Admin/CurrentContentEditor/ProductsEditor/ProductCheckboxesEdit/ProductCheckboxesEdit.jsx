@@ -6,7 +6,7 @@ const ProductCheckboxesEdit = (props) => {
     return (
         <Container fluid>
             <div>
-                <Button onClick={() => props.setKey('slider')}>Next</Button>
+                <Button className={'nextPageButton'} onClick={() => props.setKey('slider')}>Next</Button>
             </div>
         </Container>
     );

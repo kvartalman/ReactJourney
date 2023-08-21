@@ -1,0 +1,30 @@
+#priceEditPricesAndFormContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+#priceEditCurrentPriceContainer, #priceEditNewPriceContainer {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+#priceEditPricesContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2em;
+    margin-top: 2em;
+}
+
+#priceEditFormContainer {
+    margin-left: 1em;
+    margin-top: 2em;
+}
+
+#editPriceNextButtonContainer {
+    margin-left: 1em;
+}
+
+#editPriceFormError {
+    font-weight: bold;
+    color: red;
+}

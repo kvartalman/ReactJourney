@@ -8,7 +8,7 @@ const ProductTextEdit = (props) => {
     return (
         <Container fluid>
             <div>
-                <Button onClick={() => props.setKey('checkboxes')}>Next</Button>
+                <Button className={'nextPageButton'} onClick={() => props.setKey('price')}>Next</Button>
             </div>
         </Container>
     );

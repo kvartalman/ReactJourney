@@ -3,6 +3,7 @@
     max-width: 2000px;
     min-height: 100vh;
     flex-direction: column;
+
 }
 
 .cardButtonForms {
@@ -32,7 +33,6 @@
 
 #adminPanelSetEditCol {
     padding: 0;
-    border-left: 2px solid #ffc107;
     margin: 0;
 }
 

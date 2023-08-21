@@ -1,6 +1,7 @@
 #adminPanelSetEditCol > .container-fluid > .row > .nav-tabs {
     background-color: rgba(33, 37, 41, 1);
     border-color: rgba(33, 37, 41, 1);
+    margin-bottom: 0 !important;
 }
 
 #adminPanelSetEditCol > .container-fluid > .row > .nav-tabs > li > button {
@@ -15,3 +16,34 @@
     background-color: rgba(255, 193, 7, 0.3);
     text-shadow: #ffc107 1px 0 10px;
 }
+
+#adminPanelSetEditCol > .container-fluid > .row > .tab-content {
+    padding: 0;
+}
+
+.nextPageButton {
+    font-weight: bold;
+    color: #ffc107;
+    background-color: rgba(33, 37, 41, 1);
+    border: 2px solid rgba(33, 37, 41, 1);
+}
+
+.nextPageButton:hover {
+    transition: 0.3s;
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: rgba(33, 37, 41, 1);
+    -webkit-box-shadow: 0 0 20px 5px rgba(255,193,7,1);
+    -moz-box-shadow: 0 0 20px 5px rgba(255,193,7,1);
+    box-shadow: 0 0 20px 5px rgba(255,193,7,1);
+}
+
+.nextPageButton:active {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+}
+
+/*#chooseButtonsMainContainer {*/
+/*    border-top: 2px solid #ffc107;*/
+/*}*/
+

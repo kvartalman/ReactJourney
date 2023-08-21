@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import './ChooseGame.css';
 
 const ChooseGame = (props) => {
 
@@ -43,16 +44,16 @@ const ChooseGame = (props) => {
     ))
 
     return (
-        <Container fluid>
-            <div>
-                {gamesButtons}
-            </div>
-            <div>
-                {productsButtons}
-            </div>
-            <div>
-                <Button onClick={() => props.setKey('title')}>Next</Button>
-            </div>
+        <Container fluid id={'chooseButtonsMainContainer'}>
+                <div className={'gamesButtonsContainer'}>
+                    {gamesButtons}
+                </div>
+                <div className={'productsButtonsContainer'}>
+                    {productsButtons}
+                </div>
+                <div>
+                    <Button className={'nextPageButton'} onClick={() => props.setKey('title')}>Next</Button>
+                </div>
         </Container>
     );
 }
