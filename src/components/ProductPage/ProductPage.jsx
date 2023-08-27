@@ -39,10 +39,14 @@ const ProductPage = (props) => {
 
     const [showModal, setShowModal] = useState(false);
     const [price, setPrice] = useState(
-        props.gameSelector ?
-            props.gameSelector[props.game].products[productCamelCase].price
+        props.price != null ?
+            props.price
             :
-            productPage.productData[page.name].products[productCamelCase].price);
+            (props.gameSelector ?
+                props.gameSelector[props.game].products[props.product].price
+                :
+                productPage.productData[page.name].products[productCamelCase].price)
+    );
 
     const [sliderPrice, setSliderPrice] = useState(0);
 
@@ -57,10 +61,7 @@ const ProductPage = (props) => {
     const addToCartHandler = (sliderPrice) => {
 
         const product =
-            props.gameSelector ?
-                props.gameSelector[props.game].products[productCamelCase]
-                :
-                productPage.productData[page.name].products[productCamelCase];
+            productPage.productData[page.name].products[productCamelCase];
 
         const productToAdd = {
             id: uuidv4(),
@@ -77,13 +78,16 @@ const ProductPage = (props) => {
 
     useEffect(() => {
         setPrice(
-            props.gameSelector ?
-                props.gameSelector[props.game].products[productCamelCase].price
+            props.price != null ?
+                props.price
                 :
-                productPage.productData[page.name].products[productCamelCase].price
-        );
+                (props.gameSelector ?
+                        props.gameSelector[props.game].products[props.product].price
+                        :
+                        productPage.productData[page.name].products[productCamelCase].price
+                ));
         setSliderPrice(0);
-    }, [page, productCamelCase, productPage.productData, props.game, props.gameSelector])
+    }, [props.price, page, productCamelCase, productPage.productData, props.game, props.gameSelector])
 
     return (
         <Container fluid id={'productPageMainContainer'}>
@@ -118,7 +122,12 @@ const ProductPage = (props) => {
                                     <div className={'customizeDividerLine'}></div>
                                     {viewSettings ? null :
                                         <ContentSlider
-                                            page={page.name}
+                                            contentSliderMinValue={props.contentSliderMinValue}
+                                            contentSliderMaxValue={props.contentSliderMaxValue}
+                                            contentSliderLeftThumb={props.contentSliderLeftThumb}
+                                            contentSliderRightThumb={props.contentSliderRightThumb}
+                                            contentSliderStep={props.contentSliderStep}
+                                            page={props.game ? props.game : page.name}
                                             product={productCamelCase}
                                             setPrice={setPrice}
                                             totalPrice={price}

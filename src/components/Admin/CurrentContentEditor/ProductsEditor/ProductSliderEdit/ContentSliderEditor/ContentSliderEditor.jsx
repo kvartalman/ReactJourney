@@ -65,28 +65,33 @@ const ContentSliderEditor = (props) => {
     );
 
     const enterMinValueInput = (e) => {
-        setEnterMinValue(e.target.value)
+        setEnterMinValue(e.target.value);
+        props.setContentSliderMinValue(e.target.value);
     }
     const enterMaxValueInput = (e) => {
-        setEnterMaxValue(e.target.value)
+        setEnterMaxValue(e.target.value);
+        props.setContentSliderMaxValue(e.target.value);
     }
     const enterLeftThumbValueInput = (e) => {
-        setEnterLeftThumbValue(e.target.value)
+        setEnterLeftThumbValue(e.target.value);
+        props.setContentSliderLeftThumb(e.target.value);
     }
     const enterRightThumbValueInput = (e) => {
-        setEnterRightThumbValue(e.target.value)
+        setEnterRightThumbValue(e.target.value);
+        props.setContentSliderRightThumb(e.target.value);
     }
     const enterStepInput = (e) => {
-        setEnterStep(e.target.value)
+        setEnterStep(e.target.value);
+        props.setContentSliderStep(e.target.value);
     }
     const enterStartOfRangeInput = (e) => {
-        setEnterStartOfRange(e.target.value)
+        setEnterStartOfRange(e.target.value);
     }
     const enterEndOfRangeInput = (e) => {
-        setEnterEndOfRange(e.target.value)
+        setEnterEndOfRange(e.target.value);
     }
     const enterValuePerStepInput = (e) => {
-        setEnterValuePerStep(e.target.value)
+        setEnterValuePerStep(e.target.value);
     }
 
     // Adding new range with value per step to slider
@@ -231,11 +236,6 @@ const ContentSliderEditor = (props) => {
                                     </tbody>
                                 </Table>
                             </Form.Group>
-                            <div className={'addCardButtons'}>
-                                <Button variant="primary">
-                                    Accept Changes
-                                </Button>
-                            </div>
                     </Form>
                 </Col>
                 <Col>

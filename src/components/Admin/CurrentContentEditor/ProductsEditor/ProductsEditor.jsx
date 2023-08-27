@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './ProductsEditor.css';
 import {Tab, Tabs} from "react-bootstrap";
 import ProductTextEdit from "./ProductTextEdit/ProductTextEdit";
@@ -7,6 +7,7 @@ import ProductCheckboxesEdit from "./ProductCheckboxesEdit/ProductCheckboxesEdit
 import {useSelector} from "react-redux";
 import ProductSliderEdit from "./ProductSliderEdit/ProductSliderEdit";
 import PriceEdit from "./PriceEdit/PriceEdit";
+import ProductsEditorPreview from "./ProductsEditorPreview/ProductsEditorPreview";
 
 const ProductsEditor = () => {
 
@@ -18,6 +19,11 @@ const ProductsEditor = () => {
     const [price, setPrice] = useState(gameSelector[game].products[product].price);
     const [text, setText] = useState('');
     const [title, setTitle] = useState('');
+    const [contentSliderMinValue, setContentSliderMinValue] = useState(0);
+    const [contentSliderMaxValue, setContentSliderMaxValue] = useState(0);
+    const [contentSliderLeftThumb, setContentSliderLeftThumb] = useState(0);
+    const [contentSliderRightThumb, setContentSliderRightThumb] = useState(0);
+    const [contentSliderStep, setContentSliderStep] = useState(1);
 
     return (
         <Tabs
@@ -69,6 +75,26 @@ const ProductsEditor = () => {
                     game={game}
                     product={product}
                     gameSelector={gameSelector}
+                    setContentSliderMinValue={setContentSliderMinValue}
+                    setContentSliderMaxValue={setContentSliderMaxValue}
+                    setContentSliderLeftThumb={setContentSliderLeftThumb}
+                    setContentSliderRightThumb={setContentSliderRightThumb}
+                    setContentSliderStep={setContentSliderStep}
+                />
+            </Tab>
+            <Tab eventKey='preview' title='Preview'>
+                <ProductsEditorPreview
+                    text={text}
+                    title={title}
+                    game={game}
+                    product={product}
+                    price={price}
+                    gameSelector={gameSelector}
+                    contentSliderMinValue={contentSliderMinValue}
+                    contentSliderMaxValue={contentSliderMaxValue}
+                    contentSliderLeftThumb={contentSliderLeftThumb}
+                    contentSliderRightThumb={contentSliderRightThumb}
+                    contentSliderStep={contentSliderStep}
                 />
             </Tab>
         </Tabs>
