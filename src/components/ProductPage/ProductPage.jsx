@@ -117,7 +117,11 @@ const ProductPage = (props) => {
                             <Row>
                                 <Col md={viewSettings ? 9 : 12}>
                                     <div className={'pdPageContentTitle'}>
-                                        <h1>{productPage.productData[props.game || page.name].products[productCamelCase].header}</h1>
+                                        <h1>
+                                            {
+                                                productPage.productData[props.game || page.name].products[productCamelCase].header
+                                            }
+                                        </h1>
                                     </div>
                                     <div className={'customizeDividerLine'}></div>
                                     {viewSettings ? null :
@@ -157,19 +161,29 @@ const ProductPage = (props) => {
                                             <div className={'sliderContainer'}>
                                                 <Slider
                                                     value={sliderPrice}
-                                                    min={productPage.productData[page.name || props.game].products[productCamelCase].slider.min}
-                                                    max={productPage.productData[page.name || props.game].products[productCamelCase].slider.max}
+                                                    min={
+                                                    props.sliderMin ||
+                                                        productPage.productData
+                                                            [page.name || props.game].products[productCamelCase].slider.min
+                                                    }
+                                                    max={
+                                                    props.sliderMax ||
+                                                        productPage.productData
+                                                            [page.name || props.game].products[productCamelCase].slider.max
+                                                    }
                                                     onChange={handleSliderChange}
                                                 />
                                             </div>
                                             <div className={'customizeDividerLine'}></div>
                                             <div className={'totalPrice'}><p>
                                                 {
-                                                    price +
+                                                    (props.price || price) +
                                                     Number(
                                                         (
                                                             sliderPrice *
-                                                            productPage.productData[page.name || props.game].products[productCamelCase].slider.multiplier
+                                                            (props.sliderMultiplier || productPage.productData
+                                                                [page.name || props.game].products
+                                                                [productCamelCase].slider.multiplier)
                                                         ).toFixed(1))
                                                 }&#8364;
                                             </p></div>

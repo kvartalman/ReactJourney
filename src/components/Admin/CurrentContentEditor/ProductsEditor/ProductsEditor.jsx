@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import './ProductsEditor.css';
 import {Tab, Tabs} from "react-bootstrap";
 import ProductTextEdit from "./ProductTextEdit/ProductTextEdit";
@@ -24,6 +24,9 @@ const ProductsEditor = () => {
     const [contentSliderLeftThumb, setContentSliderLeftThumb] = useState(0);
     const [contentSliderRightThumb, setContentSliderRightThumb] = useState(0);
     const [contentSliderStep, setContentSliderStep] = useState(1);
+    const [sliderMin, setSliderMin] = useState(0);
+    const [sliderMax, setSliderMax] = useState(0);
+    const [sliderMultiplier, setSliderMultiplier] = useState(0);
 
     return (
         <Tabs
@@ -71,6 +74,7 @@ const ProductsEditor = () => {
             </Tab>
             <Tab eventKey="slider" title="Slider">
                 <ProductSliderEdit
+                    price={price}
                     setKey={setKey}
                     game={game}
                     product={product}
@@ -80,6 +84,9 @@ const ProductsEditor = () => {
                     setContentSliderLeftThumb={setContentSliderLeftThumb}
                     setContentSliderRightThumb={setContentSliderRightThumb}
                     setContentSliderStep={setContentSliderStep}
+                    setSliderMin={setSliderMin}
+                    setSliderMax={setSliderMax}
+                    setSliderMultiplier={setSliderMultiplier}
                 />
             </Tab>
             <Tab eventKey='preview' title='Preview'>
@@ -95,6 +102,9 @@ const ProductsEditor = () => {
                     contentSliderLeftThumb={contentSliderLeftThumb}
                     contentSliderRightThumb={contentSliderRightThumb}
                     contentSliderStep={contentSliderStep}
+                    sliderMin={sliderMin}
+                    sliderMax={sliderMax}
+                    sliderMultiplier={sliderMultiplier}
                 />
             </Tab>
         </Tabs>

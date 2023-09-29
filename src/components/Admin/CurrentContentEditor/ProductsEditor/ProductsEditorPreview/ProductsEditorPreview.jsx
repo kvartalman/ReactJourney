@@ -4,12 +4,10 @@ import ProductPage from "../../../../ProductPage/ProductPage";
 
 const ProductsEditorPreview = (props) => {
 
-    const productSelector = props.gameSelector[props.game].products[props.product]
-
     return (
         <>
-            {
-                productSelector.viewSettings ? 'yes' :
+
+
                     <ProductPage
                         gameSelector={props.gameSelector}
                         game={props.game}
@@ -22,8 +20,11 @@ const ProductsEditorPreview = (props) => {
                         contentSliderLeftThumb={props.contentSliderLeftThumb}
                         contentSliderRightThumb={props.contentSliderRightThumb}
                         contentSliderStep={props.contentSliderStep}
+                        sliderMin={Number(props.sliderMin)}
+                        sliderMax={Number(props.sliderMax)}
+                        sliderMultiplier={props.sliderMultiplier}
                     />
-            }
+
         </>
     );
 }
