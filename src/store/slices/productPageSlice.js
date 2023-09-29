@@ -30,6 +30,11 @@ const productPageSlice = createSlice({
                             ],
                             price: 100,
                             img: '/product-photos/doomslayer.jpg',
+                            slider: {
+                                min: 0,
+                                max: 1000,
+                                multiplier: 0.6
+                            },
                             viewSettings: true
                         },
                         uncommonSkins: {
@@ -118,6 +123,11 @@ const productPageSlice = createSlice({
                                 {price: 500, name: 'checkbox5', label: 'Option 5'}
                             ],
                             price: 100,
+                            slider: {
+                                min: 0,
+                                max: 1000,
+                                multiplier: 1
+                            },
                             viewSettings: true
                         },
                         arcana: {
@@ -137,6 +147,11 @@ const productPageSlice = createSlice({
                                 {price: 500, name: 'checkbox5', label: 'Option 5'}
                             ],
                             price: 100,
+                            slider: {
+                                min: 0,
+                                max: 1000,
+                                multiplier: 2
+                            },
                             viewSettings: true
                         },
                         mmrBoost: {
@@ -156,6 +171,11 @@ const productPageSlice = createSlice({
                                 {price: 500, name: 'checkbox5', label: 'Option 5'}
                             ],
                             price: 100,
+                            slider: {
+                                min: 0,
+                                max: 1000,
+                                multiplier: 0.7
+                            },
                             viewSettings: true
                         },
                         lowPriority: {
@@ -175,6 +195,11 @@ const productPageSlice = createSlice({
                                 {price: 500, name: 'checkbox5', label: 'Option 5'}
                             ],
                             price: 100,
+                            slider: {
+                                min: 0,
+                                max: 1000,
+                                multiplier: 0.5
+                            },
                             viewSettings: true
                         },
                         coaching: {
@@ -194,6 +219,11 @@ const productPageSlice = createSlice({
                                 {price: 500, name: 'checkbox5', label: 'Option 5'}
                             ],
                             price: 100,
+                            slider: {
+                                min: 0,
+                                max: 1000,
+                                multiplier: 0.4
+                            },
                             viewSettings: true
                         },
                         partyWithAPro: {
@@ -213,6 +243,11 @@ const productPageSlice = createSlice({
                                 {price: 500, name: 'checkbox5', label: 'Option 5'}
                             ],
                             price: 100,
+                            slider: {
+                                min: 0,
+                                max: 500,
+                                multiplier: 3
+                            },
                             viewSettings: true
                         },
                         rampageCollection: {
@@ -326,6 +361,11 @@ const productPageSlice = createSlice({
                                 {price: 500, name: 'checkbox5', label: 'Option 5'}
                             ],
                             price: 100,
+                            slider: {
+                                min: 0,
+                                max: 10000,
+                                multiplier: 0.2
+                            },
                             viewSettings: true
                         },
                         ranked: {
@@ -345,6 +385,11 @@ const productPageSlice = createSlice({
                                 {price: 500, name: 'checkbox5', label: 'Option 5'}
                             ],
                             price: 100,
+                            slider: {
+                                min: 0,
+                                max: 1000,
+                                multiplier: 0.4
+                            },
                             viewSettings: true
                         },
                         playWithAPro: {
@@ -364,6 +409,11 @@ const productPageSlice = createSlice({
                                 {price: 500, name: 'checkbox5', label: 'Option 5'}
                             ],
                             price: 100,
+                            slider: {
+                                min: 0,
+                                max: 1000,
+                                multiplier: 12
+                            },
                             viewSettings: true
                         },
                         achievements: {
@@ -383,6 +433,11 @@ const productPageSlice = createSlice({
                                 {price: 500, name: 'checkbox5', label: 'Option 5'}
                             ],
                             price: 100,
+                            slider: {
+                                min: 0,
+                                max: 2000,
+                                multiplier: 3.3
+                            },
                             viewSettings: true
                         }
                     },
@@ -509,6 +564,11 @@ const productPageSlice = createSlice({
                                 {price: 500, name: 'checkbox5', label: 'Option 5'}
                             ],
                             price: 100,
+                            slider: {
+                                min: 0,
+                                max: 1000,
+                                multiplier: 2.5
+                            },
                             viewSettings: true
                         },
                         coaching: {
@@ -528,6 +588,11 @@ const productPageSlice = createSlice({
                                 {price: 500, name: 'checkbox5', label: 'Option 5'}
                             ],
                             price: 100,
+                            slider: {
+                                min: 0,
+                                max: 300,
+                                multiplier: 0.9
+                            },
                             viewSettings: true
                         },
                         partyWithAPro: {
@@ -547,6 +612,11 @@ const productPageSlice = createSlice({
                                 {price: 500, name: 'checkbox5', label: 'Option 5'}
                             ],
                             price: 100,
+                            slider: {
+                                min: 0,
+                                max: 451,
+                                multiplier: 1
+                            },
                             viewSettings: true
                         },
                         achievements: {
@@ -566,6 +636,11 @@ const productPageSlice = createSlice({
                                 {price: 500, name: 'checkbox5', label: 'Option 5'}
                             ],
                             price: 100,
+                            slider: {
+                                min: 0,
+                                max: 355,
+                                multiplier: 0.5
+                            },
                             viewSettings: true
                         }
                     },

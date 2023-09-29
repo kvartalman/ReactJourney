@@ -4,8 +4,9 @@ import {Card} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
 
 const SubCategory = (props) => {
+
     const cardsSelector = useSelector(state => state.productPage.productData[props.game].products[props.product])
-debugger;
+
     const cardsList = Object.keys(cardsSelector.cards).map(card => {
         return (
             <Card style={{width: '18rem'}}>

@@ -164,78 +164,78 @@ const ContentSliderEditor = (props) => {
             <Row id={'contentSliderSettingsRow'}>
                 <Col>
                     <Form>
-                            <h2>ProductPage ContentSlider Editor</h2>
-                            <Form.Group as={Col}>
-                                <Form.Label>Choose min and max values of slider</Form.Label>
-                                <Form.Control
-                                    value={enterMinValue}
-                                    onChange={enterMinValueInput}
-                                    placeholder="Enter min value"
-                                />
-                                <Form.Control
-                                    value={enterMaxValue}
-                                    onChange={enterMaxValueInput}
-                                    placeholder="Enter max value"
-                                />
-                                <Form.Label>Choose start position of slider</Form.Label>
-                                <Form.Control
-                                    value={enterLeftThumbValue}
-                                    onChange={enterLeftThumbValueInput}
-                                    placeholder="Enter left thumb value"
-                                />
-                                <Form.Control
-                                    value={enterRightThumbValue}
-                                    onChange={enterRightThumbValueInput}
-                                    placeholder="Enter right thumb value"
-                                />
-                                <Form.Label>Choose step (default is 1)</Form.Label>
-                                <Form.Control
-                                    value={enterStep}
-                                    onChange={enterStepInput}
-                                    placeholder="Enter step"
-                                />
-                                <Form.Label>Choose value per step and range</Form.Label>
-                                <Form.Control
-                                    value={enterStartOfRange}
-                                    onChange={enterStartOfRangeInput}
-                                    placeholder="Enter start of range"
-                                />
-                                <Form.Control
-                                    value={enterEndOfRange}
-                                    onChange={enterEndOfRangeInput}
-                                    placeholder="Enter end of range"
-                                />
-                                <Form.Control
-                                    value={enterValuePerStep}
-                                    onChange={enterValuePerStepInput}
-                                    placeholder="Enter value per step"
-                                />
-                                <Button onClick={addRangeHandler} variant="primary">
-                                    Add range
-                                </Button>
-                                <Table striped bordered hover id={'contentSliderSettingsTable'}>
-                                    <thead>
-                                    <tr>
-                                        <th>Min Value</th>
-                                        <th>Max Value</th>
-                                        <th>Increase per Step</th>
-                                        <th>Delete Button</th>
+                        <h2>ProductPage ContentSlider Editor</h2>
+                        <Form.Group as={Col}>
+                            <Form.Label>Choose min and max values of slider</Form.Label>
+                            <Form.Control
+                                value={enterMinValue}
+                                onChange={enterMinValueInput}
+                                placeholder="Enter min value"
+                            />
+                            <Form.Control
+                                value={enterMaxValue}
+                                onChange={enterMaxValueInput}
+                                placeholder="Enter max value"
+                            />
+                            <Form.Label>Choose start position of slider</Form.Label>
+                            <Form.Control
+                                value={enterLeftThumbValue}
+                                onChange={enterLeftThumbValueInput}
+                                placeholder="Enter left thumb value"
+                            />
+                            <Form.Control
+                                value={enterRightThumbValue}
+                                onChange={enterRightThumbValueInput}
+                                placeholder="Enter right thumb value"
+                            />
+                            <Form.Label>Choose step (default is 1)</Form.Label>
+                            <Form.Control
+                                value={enterStep}
+                                onChange={enterStepInput}
+                                placeholder="Enter step"
+                            />
+                            <Form.Label>Choose value per step and range</Form.Label>
+                            <Form.Control
+                                value={enterStartOfRange}
+                                onChange={enterStartOfRangeInput}
+                                placeholder="Enter start of range"
+                            />
+                            <Form.Control
+                                value={enterEndOfRange}
+                                onChange={enterEndOfRangeInput}
+                                placeholder="Enter end of range"
+                            />
+                            <Form.Control
+                                value={enterValuePerStep}
+                                onChange={enterValuePerStepInput}
+                                placeholder="Enter value per step"
+                            />
+                            <Button onClick={addRangeHandler} variant="primary">
+                                Add range
+                            </Button>
+                            <Table striped bordered hover id={'contentSliderSettingsTable'}>
+                                <thead>
+                                <tr>
+                                    <th>Min Value</th>
+                                    <th>Max Value</th>
+                                    <th>Increase per Step</th>
+                                    <th>Delete Button</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {sliderRangesData.map((range, index) => (
+                                    <tr key={index}>
+                                        <td>{range.range[0]}</td>
+                                        <td>{range.range[1]}</td>
+                                        <td>{range.value}</td>
+                                        <td>
+                                            <button onClick={() => deleteRangeHandler(index)}>Delete!</button>
+                                        </td>
                                     </tr>
-                                    </thead>
-                                    <tbody>
-                                    {sliderRangesData.map((range, index) => (
-                                        <tr key={index}>
-                                            <td>{range.range[0]}</td>
-                                            <td>{range.range[1]}</td>
-                                            <td>{range.value}</td>
-                                            <td>
-                                                <button onClick={() => deleteRangeHandler(index)}>Delete!</button>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                    </tbody>
-                                </Table>
-                            </Form.Group>
+                                ))}
+                                </tbody>
+                            </Table>
+                        </Form.Group>
                     </Form>
                 </Col>
                 <Col>
@@ -283,13 +283,17 @@ const ContentSliderEditor = (props) => {
                                 :
                                 gameSelector[props.game].products[props.product].sliderSettings.step}
                             minValue={
-                            enterLeftThumbValue && enterLeftThumbValue < editorMaxValue
+                                enterLeftThumbValue && (
+                                    enterRightThumbValue ?
+                                        enterRightThumbValue > enterLeftThumbValue
+                                        : enterLeftThumbValue < editorMaxValue
+                                )
                                     ?
                                     enterLeftThumbValue :
                                     enterMinValue || gameSelector[props.game].products[props.product].sliderSettings.min
                             }
                             maxValue={
-                            enterRightThumbValue && enterRightThumbValue > editorMinValue
+                                enterRightThumbValue && (enterRightThumbValue > editorMinValue && enterRightThumbValue > enterLeftThumbValue)
                                     ?
                                     enterRightThumbValue :
                                     enterMaxValue || gameSelector[props.game].products[props.product].sliderSettings.max

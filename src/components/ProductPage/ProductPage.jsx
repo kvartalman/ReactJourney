@@ -107,7 +107,7 @@ const ProductPage = (props) => {
                 </Col>
                 <Col md={9} id={'productPageContentCol'}>
                     {productPage.productData[props.game || page.name].products
-                        [productCamelCase].hasOwnProperty('cards') ?
+                        [productCamelCase].hasOwnProperty('subCategory') ?
                         <SubCategory
                             game={props.game || page.name}
                             product={productCamelCase}
@@ -157,13 +157,22 @@ const ProductPage = (props) => {
                                             <div className={'sliderContainer'}>
                                                 <Slider
                                                     value={sliderPrice}
-                                                    min={0}
-                                                    max={1000}
+                                                    min={productPage.productData[page.name || props.game].products[productCamelCase].slider.min}
+                                                    max={productPage.productData[page.name || props.game].products[productCamelCase].slider.max}
                                                     onChange={handleSliderChange}
                                                 />
                                             </div>
                                             <div className={'customizeDividerLine'}></div>
-                                            <div className={'totalPrice'}><p>{price + sliderPrice}&#8364;</p></div>
+                                            <div className={'totalPrice'}><p>
+                                                {
+                                                    price +
+                                                    Number(
+                                                        (
+                                                            sliderPrice *
+                                                            productPage.productData[page.name || props.game].products[productCamelCase].slider.multiplier
+                                                        ).toFixed(1))
+                                                }&#8364;
+                                            </p></div>
                                             <div className={'customizeDividerLine'}></div>
                                             <div className={'customizeButtonsContainer'}>
                                                 <Button
