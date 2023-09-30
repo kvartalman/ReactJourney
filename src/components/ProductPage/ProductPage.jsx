@@ -119,7 +119,9 @@ const ProductPage = (props) => {
                                     <div className={'pdPageContentTitle'}>
                                         <h1>
                                             {
-                                                productPage.productData[props.game || page.name].products[productCamelCase].header
+                                                props.title ||
+                                                productPage.productData
+                                                    [props.game || page.name].products[productCamelCase].header
                                             }
                                         </h1>
                                     </div>
@@ -141,7 +143,7 @@ const ProductPage = (props) => {
                                         />
                                     }
                                     <div className={'pdPageContentText'}>
-                                        <p>{productPage.productData[props.game || page.name].products
+                                        <p>{props.text || productPage.productData[props.game || page.name].products
                                             [productCamelCase].text}</p>
                                     </div>
                                 </Col>
@@ -151,6 +153,7 @@ const ProductPage = (props) => {
                                         <div id={'productOptionsContainer'}>
                                             <div className={'checkboxesContainer'}>
                                                 <CheckBoxes
+                                                    checkboxesSelector={props.checkboxesSelector}
                                                     game={props.game || page.name}
                                                     product={productCamelCase}
                                                     setPrice={setPrice}
@@ -162,12 +165,12 @@ const ProductPage = (props) => {
                                                 <Slider
                                                     value={sliderPrice}
                                                     min={
-                                                    props.sliderMin ||
+                                                        props.sliderMin ||
                                                         productPage.productData
                                                             [page.name || props.game].products[productCamelCase].slider.min
                                                     }
                                                     max={
-                                                    props.sliderMax ||
+                                                        props.sliderMax ||
                                                         productPage.productData
                                                             [page.name || props.game].products[productCamelCase].slider.max
                                                     }
