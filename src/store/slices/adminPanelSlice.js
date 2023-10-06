@@ -59,6 +59,23 @@ const adminPanelSlice = createSlice(
                         state.checkboxesEditor.splice(i, 1);
                     }
                 }
+            },
+            editTooltip: (state, action) => {
+                if (action.payload.actionType === 'add') {
+                    for (let i = 0; i < state.checkboxesEditor.length; i++) {
+                        if (state.checkboxesEditor[i].name === action.payload.name) {
+                            state.checkboxesEditor[i].tooltip = true
+                            state.checkboxesEditor[i].tooltipText = action.payload.tooltipText
+                        }
+                    }
+                } else if (action.payload.actionType === 'delete') {
+                    for (let i = 0; i < state.checkboxesEditor.length; i++) {
+                        if (state.checkboxesEditor[i].name === action.payload.name) {
+                            delete state.checkboxesEditor[i].tooltip
+                            delete state.checkboxesEditor[i].tooltipText
+                        }
+                    }
+                }
             }
         }
     }
@@ -71,6 +88,7 @@ export const {
     fillContentSliderEditorRanges,
     fillCheckboxesEditor,
     editCheckboxesContent,
-    deleteCheckboxContent
+    deleteCheckboxContent,
+    editTooltip
 } = adminPanelSlice.actions;
 export default adminPanelSlice.reducer

@@ -6,6 +6,8 @@ import MultiRangeSlider from 'multi-range-slider-react';
 import Container from "react-bootstrap/Container";
 import {Row} from "react-bootstrap";
 import {useSelector} from "react-redux";
+import ContentSliderCheckboxesPreview
+    from "../../Admin/CurrentContentEditor/ProductsEditor/ProductsEditorPreview/ContentSliderCheckboxesPreview";
 
 const ContentSlider = (props) => {
 
@@ -77,11 +79,18 @@ const ContentSlider = (props) => {
                     />
                 </div>
                 <Row id={'productContentCheckboxesContainer'}>
+                    {props.preview ? <ContentSliderCheckboxesPreview
+                            game={props.page}
+                            product={props.product}
+                            setPrice={props.setPrice}
+                        />
+                        :
                     <ContentSliderCheckboxes
                         game={props.page}
                         product={props.product}
                         setPrice={props.setPrice}
                     />
+                    }
                 </Row>
                 <div className={'customizeDividerLine'}></div>
                 <Container fluid id={'contentSliderFooter'}>

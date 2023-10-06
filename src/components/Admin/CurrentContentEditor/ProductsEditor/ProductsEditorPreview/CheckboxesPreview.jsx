@@ -13,7 +13,7 @@ const CheckboxesPreview = (props) => {
     const [checkboxesState, setCheckboxesState] = useState(new Array(checkboxesEditor.length).fill(false));
 
     // Function that change total price when checkbox checked/not checked
-debugger;
+
     const handleCheckboxChange = (index) => {
         const checkboxStateCopy = [...checkboxesState];
         checkboxStateCopy[index] = !checkboxStateCopy[index];

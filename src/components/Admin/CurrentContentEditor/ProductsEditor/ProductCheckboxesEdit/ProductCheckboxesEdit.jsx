@@ -9,7 +9,7 @@ import '../../../../ProductPage/CheckBoxes/CheckBox.css';
 import {useDispatch, useSelector} from "react-redux";
 import {
     deleteCheckboxContent,
-    editCheckboxesContent,
+    editCheckboxesContent, editTooltip,
     fillCheckboxesEditor
 } from "../../../../../store/slices/adminPanelSlice";
 
@@ -18,11 +18,12 @@ const ProductCheckboxesEdit = (props) => {
     const gameSelector = props.gameSelector[props.game].products[props.product];
     const checkboxesSliceSelector = useSelector(state => state.adminPanel.checkboxesEditor);
     const dispatch = useDispatch();
-    
+
     const checkboxSelector = useRef(null);
     const [checkboxEdit, setCheckboxEdit] = useState('');
     const [checkboxLabel, setCheckboxLabel] = useState('');
     const [checkboxValue, setCheckboxValue] = useState('');
+    const [tooltipText, setTooltipText] = useState('');
 
     const checkboxLabelInput = (e) => {
         setCheckboxLabel(e.target.value);
@@ -47,6 +48,10 @@ const ProductCheckboxesEdit = (props) => {
         setCheckboxEdit(e.target.value);
         setCheckboxValue('');
         setCheckboxLabel('');
+    }
+
+    const tooltipTextInput = (e) => {
+        setTooltipText(e.target.value)
     }
 
     const checkboxesList = gameSelector.checkboxes.map(checkbox => (
@@ -131,11 +136,30 @@ const ProductCheckboxesEdit = (props) => {
             }
         ))
     }
-    
+
+    const addTooltip = () => {
+        dispatch(editTooltip(
+            {
+                name: checkboxSelector.current.value,
+                actionType: 'add',
+                tooltipText: tooltipText
+            }
+        ))
+    }
+
+    const deleteTooltip = () => {
+        dispatch(editTooltip(
+            {
+                name: checkboxSelector.current.value,
+                actionType: 'delete'
+            }
+        ))
+    }
+
     useEffect(() => {
         dispatch(fillCheckboxesEditor(gameSelector.checkboxes))
     }, [dispatch, gameSelector])
-    
+
     return (
         <Container fluid>
             <div id={'productEditCurrentCheckboxesContainer'}>
@@ -169,6 +193,18 @@ const ProductCheckboxesEdit = (props) => {
                     </Form.Group>
                 </Form>
                 <Button onClick={() => deleteCheckbox()}>Delete checkbox</Button>
+            </div>
+            <div id={'tooltipEditContainer'}>
+                <Form>
+                    <Form.Group>
+                        <Form.Label>Input tooltip text</Form.Label>
+                        <Form.Control
+                            onChange={tooltipTextInput}
+                            value={tooltipText}
+                            placeholde={'Enter text...'}
+                        />
+                    </Form.Group>
+                </Form>
             </div>
             <div id={'contentSliderCheckboxesContainer'}>
                 {checkboxesEdit}

@@ -129,6 +129,7 @@ const ProductPage = (props) => {
                                     <div className={'customizeDividerLine'}></div>
                                     {viewSettings ? null :
                                         <ContentSlider
+                                            preview={!!props.price}
                                             contentSliderMinValue={props.contentSliderMinValue}
                                             contentSliderMaxValue={props.contentSliderMaxValue}
                                             contentSliderLeftThumb={props.contentSliderLeftThumb}
