@@ -15,6 +15,7 @@ import Slider from "rc-slider";
 import 'rc-slider/assets/index.css';
 import ContentSlider from "./ContentSlider/ContentSlider";
 import SubCategory from "./SubCategory/SubCategory";
+import CheckboxesPreview from "../Admin/CurrentContentEditor/ProductsEditor/ProductsEditorPreview/CheckboxesPreview";
 
 const ProductPage = (props) => {
 
@@ -152,13 +153,18 @@ const ProductPage = (props) => {
                                         <div><h2>Customize your purchase</h2></div>
                                         <div id={'productOptionsContainer'}>
                                             <div className={'checkboxesContainer'}>
+                                                {props.game ?
+                                                    <CheckboxesPreview
+                                                        game={props.game}
+                                                        product={productCamelCase}
+                                                        setPrice={setPrice}
+                                                    /> :
                                                 <CheckBoxes
-                                                    checkboxesSelector={props.checkboxesSelector}
                                                     game={props.game || page.name}
                                                     product={productCamelCase}
                                                     setPrice={setPrice}
                                                     totalPrice={price}
-                                                />
+                                                />}
                                             </div>
                                             <div className={'customizeDividerLine'}></div>
                                             <div className={'sliderContainer'}>
@@ -180,7 +186,7 @@ const ProductPage = (props) => {
                                             <div className={'customizeDividerLine'}></div>
                                             <div className={'totalPrice'}><p>
                                                 {
-                                                    (props.price || price) +
+                                                    price +
                                                     Number(
                                                         (
                                                             sliderPrice *
