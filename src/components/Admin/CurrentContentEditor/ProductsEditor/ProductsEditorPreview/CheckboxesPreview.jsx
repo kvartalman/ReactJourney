@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {useSelector} from "react-redux";
 import Form from "react-bootstrap/Form";
+import {OverlayTrigger, Tooltip} from "react-bootstrap";
 
 const CheckboxesPreview = (props) => {
 
@@ -24,21 +25,41 @@ const CheckboxesPreview = (props) => {
 
     const checkBoxes = checkboxesEditor.map((checkbox, index) => {
         return (
-            <label className={'productCheckboxLabel'} key={index}>
-                <Form.Check
-                    type="checkbox"
-                    onChange={() => {handleCheckboxChange(index)}}
-
-                />
-                <div className={'productCheckboxText'}>
-                    <div className={'productCheckboxName'}>
-                        <p>{checkbox.label}</p>
-                    </div>
-                    <div className={'productCheckboxPrice'}>
-                        <p>{checkbox.price}&#8364;</p>
-                    </div>
+            <>
+                <div className={'productCheckboxesContainer'}>
+                    {checkbox.tooltip ?
+                        <OverlayTrigger
+                            key={'top'}
+                            placement={'top'}
+                            overlay={
+                                <Tooltip id={`tooltip-${'top'}`}>
+                                    {checkbox.tooltipText}
+                                </Tooltip>
+                            }
+                        >
+                            <span className={'tooltipButton'}>?</span>
+                        </OverlayTrigger>
+                        :
+                        null
+                    }
                 </div>
-            </label>
+                <label className={'productCheckboxLabel'} key={index}>
+                    <Form.Check
+                        type="checkbox"
+                        onChange={() => {
+                            handleCheckboxChange(index)
+                        }}
+                    />
+                    <div className={'productCheckboxText'}>
+                        <div className={'productCheckboxName'}>
+                            <p>{checkbox.label}</p>
+                        </div>
+                        <div className={'productCheckboxPrice'}>
+                            <p>{checkbox.price}&#8364;</p>
+                        </div>
+                    </div>
+                </label>
+            </>
         )
     })
 

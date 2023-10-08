@@ -2,6 +2,7 @@ import {useSelector} from "react-redux";
 import React, {useState} from "react";
 import './CheckBox.css'
 import Form from "react-bootstrap/Form";
+import {OverlayTrigger, Tooltip} from "react-bootstrap";
 
 const CheckBoxes = (props) => {
 
@@ -31,6 +32,23 @@ const CheckBoxes = (props) => {
                     onChange={() => {handleCheckboxChange(index)}}
 
                 />
+                <div className={'productCheckboxesContainer'}>
+                    {checkbox.tooltip ?
+                        <OverlayTrigger
+                            key={'top'}
+                            placement={'top'}
+                            overlay={
+                                <Tooltip id={`tooltip-${'top'}`}>
+                                    {checkbox.tooltipText}
+                                </Tooltip>
+                            }
+                        >
+                            <span className={'tooltipButton'}>?</span>
+                        </OverlayTrigger>
+                        :
+                        null
+                    }
+                </div>
                 <div className={'productCheckboxText'}>
                     <div className={'productCheckboxName'}>
                         <p>{checkbox.label}</p>

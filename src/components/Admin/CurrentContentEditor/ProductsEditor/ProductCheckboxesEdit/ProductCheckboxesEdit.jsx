@@ -65,6 +65,13 @@ const ProductCheckboxesEdit = (props) => {
 
     const tooltipTextInput = (e) => {
         setTooltipText(e.target.value)
+        dispatch(editTooltip(
+            {
+                tooltipText: e.target.value,
+                actionType: 'edit',
+                name: checkboxSelector.current.value
+            }
+        ))
     }
 
     const checkboxesList = gameSelector.checkboxes.map(checkbox => (

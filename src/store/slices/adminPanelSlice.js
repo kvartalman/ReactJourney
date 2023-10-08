@@ -75,6 +75,12 @@ const adminPanelSlice = createSlice(
                             delete state.checkboxesEditor[i].tooltipText
                         }
                     }
+                } else if (action.payload.actionType === 'edit') {
+                    for (let i = 0; i < state.checkboxesEditor.length; i++) {
+                        if (state.checkboxesEditor[i].name === action.payload.name) {
+                            state.checkboxesEditor[i].tooltipText = action.payload.tooltipText
+                        }
+                    }
                 }
             }
         }
