@@ -25,6 +25,19 @@ const ProductCheckboxesEdit = (props) => {
     const [checkboxValue, setCheckboxValue] = useState('');
     const [tooltipText, setTooltipText] = useState('');
 
+    // We use selectedCheckbox function inside jsx to find if checkbox with name === current value of checkboxSelector
+    // has own property 'tooltip'. If checkbox object has this property - then we render 'delete' button. Else - 'add'.
+
+    const selectedCheckbox = (selectedName) => {
+        for (let i = 0; i < checkboxesSliceSelector.length; i++) {
+            if (checkboxesSliceSelector[i].name === selectedName.current.value && checkboxesSliceSelector[i].hasOwnProperty('tooltip')) {
+                return <Button onClick={() => deleteTooltip()}>Delete tooltip</Button>
+            } else if (checkboxesSliceSelector[i].name === selectedName.current.value && !checkboxesSliceSelector[i].hasOwnProperty('tooltip')) {
+                return <Button onClick={() => addTooltip()}>Add tooltip</Button>
+            }
+        }
+    }
+
     const checkboxLabelInput = (e) => {
         setCheckboxLabel(e.target.value);
         dispatch(editCheckboxesContent(
@@ -201,10 +214,13 @@ const ProductCheckboxesEdit = (props) => {
                         <Form.Control
                             onChange={tooltipTextInput}
                             value={tooltipText}
-                            placeholde={'Enter text...'}
+                            placeholder={'Enter text...'}
                         />
                     </Form.Group>
                 </Form>
+                {
+                    selectedCheckbox(checkboxSelector)
+                }
             </div>
             <div id={'contentSliderCheckboxesContainer'}>
                 {checkboxesEdit}
