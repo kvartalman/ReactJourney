@@ -29,11 +29,13 @@ const ProductCheckboxesEdit = (props) => {
     // has own property 'tooltip'. If checkbox object has this property - then we render 'delete' button. Else - 'add'.
 
     const selectedCheckbox = (selectedName) => {
-        for (let i = 0; i < checkboxesSliceSelector.length; i++) {
-            if (checkboxesSliceSelector[i].name === selectedName.current.value && checkboxesSliceSelector[i].hasOwnProperty('tooltip')) {
-                return <Button onClick={() => deleteTooltip()}>Delete tooltip</Button>
-            } else if (checkboxesSliceSelector[i].name === selectedName.current.value && !checkboxesSliceSelector[i].hasOwnProperty('tooltip')) {
-                return <Button onClick={() => addTooltip()}>Add tooltip</Button>
+        if (selectedName && selectedName.current && selectedName.current.value) {
+            for (let i = 0; i < checkboxesSliceSelector.length; i++) {
+                if (checkboxesSliceSelector[i].name === selectedName.current.value && checkboxesSliceSelector[i].hasOwnProperty('tooltip')) {
+                    return <Button onClick={() => deleteTooltip()}>Delete tooltip</Button>
+                } else if (checkboxesSliceSelector[i].name === selectedName.current.value && !checkboxesSliceSelector[i].hasOwnProperty('tooltip')) {
+                    return <Button onClick={() => addTooltip()}>Add tooltip</Button>
+                }
             }
         }
     }

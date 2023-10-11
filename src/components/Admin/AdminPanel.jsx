@@ -8,6 +8,7 @@ import {Accordion, Col} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
 import Dashboard from "./Dashboard/Dashboard";
 import ProductsEditor from "./CurrentContentEditor/ProductsEditor/ProductsEditor";
+import GamePagesEditor from "./CurrentContentEditor/GamePagesEditor/GamePagesEditor";
 
 const AdminPanel = () => {
 
@@ -74,7 +75,10 @@ const AdminPanel = () => {
                                                 { /* I use stopPropagation here because handler bubbling to li element
                                                  and starts handleContentCol there. stopPropagation prevent this
                                                  problem from occuring */}
-                                                <p>Game pages</p>
+                                                <p onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleContentCol(5)
+                                                }}>Game pages</p>
                                                 <p>Subcategories</p>
                                                 <p onClick={(e) => {
                                                     e.stopPropagation();
@@ -116,7 +120,7 @@ const AdminPanel = () => {
                         <Row>
                             {[
                                 <Dashboard/>, 1, 2, <HomePageCardsSettings/>, <OfferPageCardsSettings/>,
-                                5, 6, <ProductsEditor/>, 8, 9
+                                <GamePagesEditor />, 6, <ProductsEditor/>, 8, 9
                             ].map(
                                 (elem, index) => (
                                     contentCol === index ?
