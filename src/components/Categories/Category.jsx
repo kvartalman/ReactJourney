@@ -55,7 +55,6 @@ const Category = ({bg, name, to, video}) => {
             onMouseLeave={handleMouseLeave}
         >
                 <NavLink className={'ctgLink'} to={to}>
-
                     <video ref={videoRef} className={'ctgVideo'} loop autoPlay muted>
                         <source src={video} type='video/mp4'/>
                     </video>
