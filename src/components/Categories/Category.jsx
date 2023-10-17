@@ -8,7 +8,6 @@ const Category = ({bg, name, to, video}) => {
     const [videoLoaded, setVideoLoaded] = useState(false);
     const [videoPlaying, setVideoPlaying] = useState(false);
 
-
     // 2 functions that responsible for turning the videos on and off inside NavLinks
     // Better not to touch because was problems with async pause() and play() before, now all works fine
     const handleMouseEnter = useCallback(() => {
@@ -55,7 +54,7 @@ const Category = ({bg, name, to, video}) => {
             onMouseLeave={handleMouseLeave}
         >
                 <NavLink className={'ctgLink'} to={to}>
-                    <video ref={videoRef} className={'ctgVideo'} loop autoPlay muted>
+                    <video ref={videoRef} className={'ctgVideo'} loop muted>
                         <source src={video} type='video/mp4'/>
                     </video>
                 </NavLink>

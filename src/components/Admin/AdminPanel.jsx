@@ -9,6 +9,7 @@ import {NavLink} from "react-router-dom";
 import Dashboard from "./Dashboard/Dashboard";
 import ProductsEditor from "./CurrentContentEditor/ProductsEditor/ProductsEditor";
 import GamePagesEditor from "./CurrentContentEditor/GamePagesEditor/GamePagesEditor";
+import Categories from "../Categories/Categories";
 
 const AdminPanel = () => {
 
@@ -21,6 +22,7 @@ const AdminPanel = () => {
 
     return (
         <Container fluid id={'adminPanelMainContainer'}>
+
 
             <Row id={'adminPanelMainRow'}>
                 <Col md={2} id={'adminPanelMenuCol'}>
@@ -119,7 +121,7 @@ const AdminPanel = () => {
                     <Container fluid>
                         <Row>
                             {[
-                                <Dashboard/>, 1, 2, <HomePageCardsSettings/>, <OfferPageCardsSettings/>,
+                                <Dashboard />, 1, 2, <HomePageCardsSettings/>, <OfferPageCardsSettings/>,
                                 <GamePagesEditor />, 6, <ProductsEditor/>, 8, 9
                             ].map(
                                 (elem, index) => (

@@ -6,6 +6,7 @@ import Advantages from "./Advantages/Advantages";
 import Steps from "./Steps/Steps";
 import Categories from "../Categories/Categories";
 import Container from "react-bootstrap/Container";
+import Category from "../Categories/Category";
 
 const HomePage = () => {
     return (

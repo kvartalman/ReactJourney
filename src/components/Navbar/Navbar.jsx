@@ -87,7 +87,7 @@ const Navigation = (props) => {
                                 <img className={'navbarIcons'} src={'/icons/cartIcon.png'} alt={'Cart'}/>
                             </Button>
                             <NavLink to={"profile"}>
-                                <img className={'navbarIcons'} src={'./icons/profileIcon.png'} alt={'Profile'}/>
+                                <img className={'navbarIcons'} src={'/icons/profileIcon.png'} alt={'Profile'}/>
                             </NavLink>
                         </div>
                     }

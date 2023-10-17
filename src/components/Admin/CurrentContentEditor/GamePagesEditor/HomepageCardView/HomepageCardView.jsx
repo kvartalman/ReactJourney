@@ -1,6 +1,8 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 import Category from "../../../../Categories/Category";
+import '../../../../Categories/Categories.css'
 
 const HomepageCardView = () => {
 
@@ -9,20 +11,16 @@ const HomepageCardView = () => {
     const [imgPreview, setImgPreview] = useState(null);
     const [videoPreview, setVideoPreview] = useState(null);
     const videoRef = useRef(null);
-
+    const imgRef = useRef(null);
 
     const handleImgFileChange = (event) => {
         const selectedFile = event.target.files[0];
         setImg(selectedFile);
 
         if (selectedFile) {
-            const reader = new FileReader();
+            const imgBlobURL = URL.createObjectURL(selectedFile);
+            setImgPreview(imgBlobURL);
 
-            reader.onload = (e) => {
-                setImgPreview(e.target.result);
-            };
-
-            reader.readAsDataURL(selectedFile);
         } else {
             setImgPreview(null);
         }
@@ -61,8 +59,8 @@ const HomepageCardView = () => {
     }
 
     return (
-        <div>
-            <input type={'file'} accept={'image/*,video/*'} onChange={handleImgFileChange}/>
+        <Container fluid>
+            <input type={'file'} accept={'image/*,video/*'} ref={imgRef} onChange={handleImgFileChange}/>
             {imgPreview ? (
                 <div>
                     <img src={imgPreview} alt={'Превью'} width='100'/>
@@ -77,14 +75,15 @@ const HomepageCardView = () => {
                 </div>
             ) : null}
             <Button onClick={handleUpload}>Load</Button>
-            <div>
-                {imgPreview && videoPreview ?
-                    <Category bg={imgPreview} name={''} to={''} video={videoPreview}/>
-                    :
-                    null
-                }
-            </div>
-        </div>
+            <Container fluid id={'ctgContainer'}>
+            {imgPreview && videoPreview ?
+            <Category key={videoPreview} bg={imgPreview} name={''} to={''} video={videoPreview}/>
+                :
+                null
+            }
+            </Container>
+
+        </Container>
     );
 }
 
