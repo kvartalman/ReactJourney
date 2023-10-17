@@ -37,7 +37,8 @@ const offerPageSlice = createSlice({
                     canvasCtgData:
                         {
                             placement: 'start', buttonName: 'Offer menu', title: 'Offers'
-                        }
+                        },
+                    fullName: 'Dota 2'
                 },
             lol:
                 {
@@ -66,7 +67,8 @@ const offerPageSlice = createSlice({
                     canvasCtgData:
                         {
                             placement: 'start', buttonName: 'Offer menu', title: 'Offers'
-                        }
+                        },
+                    fullName: 'League of Legends'
 
                 },
             hots:
@@ -94,7 +96,8 @@ const offerPageSlice = createSlice({
                     breadCrumbs: {linkNames: [], activeLinkName: 'Heroes of the Storm'},
                     canvasCtgData: {
                         placement: 'start', buttonName: 'Offer menu', title: 'Offers'
-                    }
+                    },
+                    fullName: 'Heroes of the Storm'
                 }
         },
         canvasMenuData: {
@@ -103,7 +106,7 @@ const offerPageSlice = createSlice({
                 {id: 1, link: "/categories/dota2", name: "Dota 2"},
                 {id: 2, link: "/categories/lol", name: "League of Legends"}
             ]
-        }
+        },
     },
     reducers: {
 

@@ -1,8 +1,10 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Category from "../../../../Categories/Category";
 import '../../../../Categories/Categories.css'
+import {Col, Row} from "react-bootstrap";
+import './HomepageCardView.css'
 
 const HomepageCardView = () => {
 
@@ -60,29 +62,34 @@ const HomepageCardView = () => {
 
     return (
         <Container fluid>
-            <input type={'file'} accept={'image/*,video/*'} ref={imgRef} onChange={handleImgFileChange}/>
-            {imgPreview ? (
-                <div>
-                    <img src={imgPreview} alt={'Превью'} width='100'/>
-                </div>
-            ) : null}
-            <input type={'file'} accept={'image/*,video/*'} onChange={handleVideoFileChange}/>
-            {videoPreview ? (
-                <div>
-                    <video ref={videoRef} width={'320'} height={'240'} controls={false} autoPlay loop muted>
-                        <source src={videoPreview} type={'video/mp4'}/>
-                    </video>
-                </div>
-            ) : null}
-            <Button onClick={handleUpload}>Load</Button>
-            <Container fluid id={'ctgContainer'}>
-            {imgPreview && videoPreview ?
-            <Category key={videoPreview} bg={imgPreview} name={''} to={''} video={videoPreview}/>
-                :
-                null
-            }
-            </Container>
-
+            <Row>
+                <Col>
+                    <input type={'file'} accept={'image/*,video/*'} ref={imgRef} onChange={handleImgFileChange}/>
+                    {imgPreview ? (
+                        <div>
+                            <img src={imgPreview} alt={'Превью'} width='100'/>
+                        </div>
+                    ) : null}
+                    <input type={'file'} accept={'image/*,video/*'} onChange={handleVideoFileChange}/>
+                    {videoPreview ? (
+                        <div>
+                            <video ref={videoRef} width={'320'} height={'240'} controls={false} autoPlay loop muted>
+                                <source src={videoPreview} type={'video/mp4'}/>
+                            </video>
+                        </div>
+                    ) : null}
+                    <Button onClick={handleUpload}>Load</Button>
+                </Col>
+                <Col>
+                    <Container fluid id={'ctgPreviewContainer'}>
+                        {imgPreview && videoPreview ?
+                            <Category key={videoPreview} bg={imgPreview} name={''} to={''} video={videoPreview}/>
+                            :
+                            null
+                        }
+                    </Container>
+                </Col>
+            </Row>
         </Container>
     );
 }

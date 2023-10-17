@@ -1,0 +1,8 @@
+#ctgPreviewContainer {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0;
+    padding: 0 10em;
+    margin: 1em 0;
+}

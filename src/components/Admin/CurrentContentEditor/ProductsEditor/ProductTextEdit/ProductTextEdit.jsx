@@ -3,7 +3,9 @@ import './ProductTextEdit.css'
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
-import '../../../../ProductPage/ProductPage.css'
+import '../../../../ProductPage/ProductPage.css';
+import {Col, Row} from "react-bootstrap";
+
 const ProductTextEdit = (props) => {
 
     const [enterHeader, setEnterHeader] = useState('');
@@ -38,8 +40,8 @@ const ProductTextEdit = (props) => {
                     <div className={'customizeDividerLine'}></div>
                     <p>{props.gameSelector[props.game].products[props.product].text}</p>
                 </div>
-                <div id={'newTextFormsAndPreviewContainer'}>
-                    <div id={'newTextAndTitleFormsContainer'}>
+                <Row id={'newTextFormsAndPreviewContainer'}>
+                    <Col id={'newTextAndTitleFormsContainer'}>
                         <h2 className={'productEditTitleAndTextHeaders'}>Input forms</h2>
                         <Form>
                             <Form.Group>
@@ -59,16 +61,16 @@ const ProductTextEdit = (props) => {
                                 />
                             </Form.Group>
                         </Form>
-                    </div>
-                    <div id={'newTextAndTitleContainer'}>
+                    </Col>
+                    <Col md={6} id={'newTextAndTitleContainer'}>
                         <h2 className={'productEditTitleAndTextHeaders'}>New header and text</h2>
                         <div id={'newTextAndTitlePreviewContainer'}>
-                        <h2>{enterHeader ? enterHeader : 'Enter header'}</h2>
+                        <h2 style={{ overflowWrap: 'break-word' }}>{enterHeader ? enterHeader : 'Enter header'}</h2>
                         <div className={'customizeDividerLine'}></div>
-                        <p>{enterText ? enterText : 'Enter text...'}</p>
+                        <p style={{ overflowWrap: 'break-word' }}>{enterText ? enterText : 'Enter text...'}</p>
                         </div>
-                    </div>
-                </div>
+                    </Col>
+                </Row>
             </div>
             <div id={'productEditTextAndTitleNextButtonContainer'}>
                 {showError ? <p id={'productTextEditError'}>{showError}</p> : null}

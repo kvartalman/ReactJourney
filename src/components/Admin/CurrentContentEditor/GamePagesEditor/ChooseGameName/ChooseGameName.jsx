@@ -1,13 +1,23 @@
-import React from "react";
-import {useSelector} from "react-redux";
+import React, {useState} from "react";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 
 const ChooseGameName = (props) => {
 
-    const gamePagesSelector = useSelector(state => state.gameOfferPages.pagesData)
+    const [activeGameButton, setActiveGameButton] = useState(0);
 
-    const gamePagesNames = Object.keys(gamePagesSelector).map(game => (
-        <Button className={'nextPageButton'}>{game}</Button>
+    const handleGameSelect = (game, index) => {
+        setActiveGameButton(index);
+        props.setGame(game);
+    }
+
+    const gamePagesNames = Object.keys(props.gamePagesSelector).map((game, index) => (
+        <Button
+            className={activeGameButton === index ? 'activeButton' : 'defaultButton'}
+            onClick={() => handleGameSelect(game, index)}
+        >
+            {props.gamePagesSelector[game].fullName}
+        </Button>
     ))
 
     const nextPage = (key) => {
@@ -15,10 +25,14 @@ const ChooseGameName = (props) => {
     }
 
     return (
-        <>
-            {gamePagesNames}
-            <Button className={'nextPageButton'} onClick={() => nextPage('text')}>Next</Button>
-        </>
+        <Container fluid>
+            <div>
+                {gamePagesNames}
+            </div>
+            <div>
+                <Button className={'nextPageButton'} onClick={() => nextPage('text')}>Next</Button>
+            </div>
+        </Container>
     );
 }
 
