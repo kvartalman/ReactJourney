@@ -3,8 +3,9 @@ import Container from "react-bootstrap/Container";
 import {Col, Row} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import '../../../../GameOffer/OfferContent/OfferContent.css';
-import './ChooseGamePageTextAndTitle.css';
-const ChooseGamePageTextAndTitle = (props) => {
+import './GamePageTextAndTitleEdit.css';
+import Button from "react-bootstrap/Button";
+const GamePageTextAndTitleEdit = (props) => {
 
     const [enterMainTitle, setEnterMainTitle] = useState('');
     const [enterText, setEnterText] = useState('');
@@ -23,6 +24,10 @@ const ChooseGamePageTextAndTitle = (props) => {
     const enterCardsTitleInput = (e) => {
         setEnterCardsTitle(e.target.value);
         props.setCardsTitle(e.target.value);
+    };
+
+    const nextPage = (key) => {
+        props.setKey(key);
     };
 
     return (
@@ -68,8 +73,11 @@ const ChooseGamePageTextAndTitle = (props) => {
                     <h2 style={{ overflowWrap: 'break-word' }}>{enterCardsTitle ? enterCardsTitle : 'Enter new cards title'}</h2>
                 </Col>
             </Row>
+            <div>
+                <Button className={'nextPageButton'} onClick={() => nextPage('cards')}>Next</Button>
+            </div>
         </Container>
     );
 }
 
-export default ChooseGamePageTextAndTitle;
+export default GamePageTextAndTitleEdit;

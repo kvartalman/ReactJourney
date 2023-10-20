@@ -3,7 +3,8 @@ import {Tab, Tabs} from "react-bootstrap";
 import ChooseGameName from "./ChooseGameName/ChooseGameName";
 import HomepageCardView from "./HomepageCardView/HomepageCardView";
 import {useSelector} from "react-redux";
-import ChooseGamePageTextAndTitle from "./ChooseGamePageTextAndTitle/ChooseGamePageTextAndTitle";
+import GamePageTextAndTitleEdit from "./GamePageTextAndTitleEdit/GamePageTextAndTitleEdit";
+import GamePageCardsEdit from "./GamePageCardsEdit/GamePageCardsEdit";
 
 const GamePagesEditor = () => {
 
@@ -31,7 +32,7 @@ const GamePagesEditor = () => {
                 />
             </Tab>
             <Tab eventKey={'text'} title={'Text and titles'}>
-                <ChooseGamePageTextAndTitle
+                <GamePageTextAndTitleEdit
                     game={game}
                     setKey={setKey}
                     gamePagesSelector={gamePagesSelector}
@@ -41,7 +42,11 @@ const GamePagesEditor = () => {
                 />
             </Tab>
             <Tab eventKey={'cards'} title={'Cards'}>
-
+                <GamePageCardsEdit
+                    game={game}
+                    setKey={setKey}
+                    gamePagesSelector={gamePagesSelector}
+                />
             </Tab>
             <Tab eventKey={'homepage'} title={'Homepage card view'}>
                 <HomepageCardView/>
