@@ -1,16 +1,26 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import GameOfferCard from "../../../../GameOffer/OfferContent/GameOfferCard";
 import {Col, Row} from "react-bootstrap";
+import {useDispatch, useSelector} from "react-redux";
+import {fillGamePageCardsEditor, handleGamePageCardsChanges} from "../../../../../store/slices/adminPanelSlice";
+import Button from "react-bootstrap/Button";
 
 const GamePageCardsEdit = (props) => {
+
+    const adminPanelGamePagesSelector = useSelector(state => state.adminPanel.gamePageCardsEditor)
 
     const [enterCardName, setEnterCardName] = useState('');
     const [enterCardPrice, setEnterCardPrice] = useState('');
     const cardSelect = useRef(null);
     const [currentCardTitle, setCurrentCardTitle] = useState(null);
     const [currentCardPrice, setCurrentCardPrice] = useState(null);
+    const dispatch = useDispatch();
+    const [firstRender, setFirstRender] = useState(true);
+
+    // We use useCallback here because this function makes the dependencies in useEffect Hook.
+    // To make this component work more effectively, handleCardSelect has useCallback wrap.
 
     const handleCardSelect = () => {
         for (let i = 0; i < props.gamePagesSelector[props.game].offerCardsData.length; i++) {
@@ -23,19 +33,37 @@ const GamePageCardsEdit = (props) => {
 
     const enterCardNameInput = (e) => {
         setEnterCardName(e.target.value);
+        dispatch(handleGamePageCardsChanges(
+            {
+                name: cardSelect.current.value,
+                actionType: 'editName',
+                text: e.target.value
+            }
+        ))
     };
 
     const enterCardPriceInput = (e) => {
         setEnterCardPrice(e.target.value);
+        dispatch(handleGamePageCardsChanges(
+            {
+                name: cardSelect.current.value,
+                actionType: 'editPrice',
+                text: e.target.value
+            }
+        ))
     };
 
-    const cardsList = props.gamePagesSelector[props.game].offerCardsData.map((card, index) => (
+    const cardsList = adminPanelGamePagesSelector.map((card, index) => (
         <option key={card.id}>{card.title}</option>
     ))
 
     useEffect(() => {
-        handleCardSelect()
-    }, [handleCardSelect])
+        if (firstRender) {
+            handleCardSelect();
+            setFirstRender(false);
+        }
+        dispatch(fillGamePageCardsEditor(props.gamePagesSelector[props.game].offerCardsData));
+    }, [dispatch, handleCardSelect, props.game, props.gamePagesSelector])
 
     return (
         <Container fluid>

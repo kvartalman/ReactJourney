@@ -9,7 +9,8 @@ const adminPanelSlice = createSlice(
             ],
             contentSliderSettingsRanges: [],
             contentSliderEditorRanges: [],
-            checkboxesEditor: []
+            checkboxesEditor: [],
+            gamePageCardsEditor: []
         },
         reducers: {
             addContentSliderRange: (state, action) => {
@@ -82,6 +83,20 @@ const adminPanelSlice = createSlice(
                         }
                     }
                 }
+            },
+            fillGamePageCardsEditor: (state, action) => {
+                state.gamePageCardsEditor = action.payload;
+            },
+            handleGamePageCardsChanges: (state, action) => {
+                    for (let i = 0; i < state.gamePageCardsEditor.length; i++) {
+                        if (state.gamePageCardsEditor[i].title === action.payload.name) {
+                            if (action.payload.actionType === 'editName') {
+                                state.gamePageCardsEditor[i].title = action.payload.text
+                            } else if (action.payload.actionType === 'editPrice') {
+                                state.gamePageCardsEditor[i].text = action.payload.text
+                            }
+                        }
+                    }
             }
         }
     }
@@ -95,6 +110,9 @@ export const {
     fillCheckboxesEditor,
     editCheckboxesContent,
     deleteCheckboxContent,
-    editTooltip
+    editTooltip,
+    fillGamePageCardsEditor,
+    handleGamePageCardsChanges
 } = adminPanelSlice.actions;
+
 export default adminPanelSlice.reducer
