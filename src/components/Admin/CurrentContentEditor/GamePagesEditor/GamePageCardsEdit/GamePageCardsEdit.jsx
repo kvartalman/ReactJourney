@@ -22,14 +22,14 @@ const GamePageCardsEdit = (props) => {
     // We use useCallback here because this function makes the dependencies in useEffect Hook.
     // To make this component work more effectively, handleCardSelect has useCallback wrap.
 
-    const handleCardSelect = () => {
+    const handleCardSelect = useCallback(() => {
         for (let i = 0; i < props.gamePagesSelector[props.game].offerCardsData.length; i++) {
             if (props.gamePagesSelector[props.game].offerCardsData[i].title === cardSelect.current.value) {
                 setCurrentCardTitle(props.gamePagesSelector[props.game].offerCardsData[i].title)
                 setCurrentCardPrice(props.gamePagesSelector[props.game].offerCardsData[i].text)
             }
         }
-    }
+    })
 
     const enterCardNameInput = (e) => {
         setEnterCardName(e.target.value);
@@ -57,12 +57,15 @@ const GamePageCardsEdit = (props) => {
         <option key={card.id}>{card.title}</option>
     ))
 
+    // We need to use fillGamePageCardsEditor only on first render because, without this, on each change, this reducer
+    // will work again and again and we will not see any changes in cards list.
+
     useEffect(() => {
+        handleCardSelect();
         if (firstRender) {
-            handleCardSelect();
+            dispatch(fillGamePageCardsEditor(props.gamePagesSelector[props.game].offerCardsData));
             setFirstRender(false);
         }
-        dispatch(fillGamePageCardsEditor(props.gamePagesSelector[props.game].offerCardsData));
     }, [dispatch, handleCardSelect, props.game, props.gamePagesSelector])
 
     return (
