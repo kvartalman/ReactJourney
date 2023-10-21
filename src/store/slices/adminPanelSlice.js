@@ -88,15 +88,12 @@ const adminPanelSlice = createSlice(
                 state.gamePageCardsEditor = action.payload;
             },
             handleGamePageCardsChanges: (state, action) => {
-                    for (let i = 0; i < state.gamePageCardsEditor.length; i++) {
-                        if (state.gamePageCardsEditor[i].title === action.payload.name) {
-                            if (action.payload.actionType === 'editName') {
-                                state.gamePageCardsEditor[i].title = action.payload.text
-                            } else if (action.payload.actionType === 'editPrice') {
-                                state.gamePageCardsEditor[i].text = action.payload.text
-                            }
-                        }
+                for (let i = 0; i < state.gamePageCardsEditor.length; i++) {
+                    if (state.gamePageCardsEditor[i].title === action.payload.name) {
+                        state.gamePageCardsEditor[i].title = action.payload.title
+                        state.gamePageCardsEditor[i].text = action.payload.text
                     }
+                }
             }
         }
     }

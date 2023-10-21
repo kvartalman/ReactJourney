@@ -10,15 +10,15 @@ import Button from "react-bootstrap/Button";
 const GamePageCardsEdit = (props) => {
 
     const adminPanelGamePagesSelector = useSelector(state => state.adminPanel.gamePageCardsEditor)
+    const dispatch = useDispatch();
 
     const [enterCardName, setEnterCardName] = useState('');
     const [enterCardPrice, setEnterCardPrice] = useState('');
-    const cardSelect = useRef(null);
     const [currentCardTitle, setCurrentCardTitle] = useState(null);
     const [currentCardPrice, setCurrentCardPrice] = useState(null);
-    const dispatch = useDispatch();
     const [firstRender, setFirstRender] = useState(true);
 
+    const cardSelect = useRef(null);
     // We use useCallback here because this function makes the dependencies in useEffect Hook.
     // To make this component work more effectively, handleCardSelect has useCallback wrap.
 
@@ -33,25 +33,21 @@ const GamePageCardsEdit = (props) => {
 
     const enterCardNameInput = (e) => {
         setEnterCardName(e.target.value);
-        dispatch(handleGamePageCardsChanges(
-            {
-                name: cardSelect.current.value,
-                actionType: 'editName',
-                text: e.target.value
-            }
-        ))
     };
 
     const enterCardPriceInput = (e) => {
         setEnterCardPrice(e.target.value);
+    };
+
+    const handleAcceptChanges = () => {
         dispatch(handleGamePageCardsChanges(
             {
                 name: cardSelect.current.value,
-                actionType: 'editPrice',
-                text: e.target.value
+                title: enterCardName,
+                text: enterCardPrice
             }
         ))
-    };
+    }
 
     const cardsList = adminPanelGamePagesSelector.map((card, index) => (
         <option key={card.id}>{card.title}</option>
@@ -66,7 +62,7 @@ const GamePageCardsEdit = (props) => {
             dispatch(fillGamePageCardsEditor(props.gamePagesSelector[props.game].offerCardsData));
             setFirstRender(false);
         }
-    }, [dispatch, handleCardSelect, props.game, props.gamePagesSelector])
+    }, [dispatch, firstRender, handleCardSelect, props.game, props.gamePagesSelector])
 
     return (
         <Container fluid>
@@ -109,8 +105,20 @@ const GamePageCardsEdit = (props) => {
                         title={enterCardName}
                         text={enterCardPrice}
                     />
+                    <Button
+                        onClick={() => handleAcceptChanges()}
+                        className={'nextPageButton'}
+                    >
+                        Accept changes
+                    </Button>
                 </Col>
             </Row>
+            <Button
+                onClick={() => props.setKey('homepage')}
+                className={'nextPageButton'}
+            >
+                Next
+            </Button>
         </Container>
     );
 }
