@@ -5,8 +5,11 @@ import Category from "../../../../Categories/Category";
 import '../../../../Categories/Categories.css'
 import {Col, Row} from "react-bootstrap";
 import './HomepageCardView.css'
+import {useSelector} from "react-redux";
 
-const HomepageCardView = () => {
+const HomepageCardView = (props) => {
+
+    const categoriesSelector = useSelector(state => state.categories.categoriesLinks);
 
     const [img, setImg] = useState(null);
     const [video, setVideo] = useState(null);
@@ -59,7 +62,6 @@ const HomepageCardView = () => {
             console.log('Your file', img)
         }
     }
-
     return (
         <Container fluid>
             <Row>
@@ -82,6 +84,26 @@ const HomepageCardView = () => {
                 </Col>
                 <Col>
                     <Container fluid id={'ctgPreviewContainer'}>
+                    <h2>Current category card</h2>
+                    {
+                        categoriesSelector.map((categoryElem, i) => {
+
+                            if (props.gamePagesSelector[props.game].fullName === categoryElem.name) {
+                                return (<Category
+                                    bg={categoriesSelector[i].bg}
+                                    name={categoriesSelector[i].name}
+                                    to={categoriesSelector[i].to}
+                                    video={categoriesSelector[i].video}
+                                    key={i}
+                                />
+                            );
+                            }
+                            return null;
+                        })
+                    }
+                </Container>
+                    <Container fluid id={'ctgPreviewContainer'}>
+                        <h2>New category card</h2>
                         {imgPreview && videoPreview ?
                             <Category key={videoPreview} bg={imgPreview} name={''} to={''} video={videoPreview}/>
                             :
@@ -91,7 +113,8 @@ const HomepageCardView = () => {
                 </Col>
             </Row>
         </Container>
-    );
+    )
+        ;
 }
 
 export default HomepageCardView;

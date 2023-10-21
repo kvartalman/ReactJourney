@@ -49,7 +49,11 @@ const GamePagesEditor = () => {
                 />
             </Tab>
             <Tab eventKey={'homepage'} title={'Homepage card view'}>
-                <HomepageCardView/>
+                <HomepageCardView
+                    game={game}
+                    setKey={setKey}
+                    gamePagesSelector={gamePagesSelector}
+                />
             </Tab>
         </Tabs>
     );
