@@ -64,6 +64,10 @@ const GamePageCardsEdit = (props) => {
         }
     }, [dispatch, firstRender, handleCardSelect, props.game, props.gamePagesSelector])
 
+    useEffect(() => {
+
+    }, [])
+
     return (
         <Container fluid>
             <Form>

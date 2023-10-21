@@ -44,6 +44,7 @@ const GamePagesEditor = () => {
             </Tab>
             <Tab eventKey={'cards'} title={'Cards'}>
                 <GamePageCardsEdit
+                    key={game}
                     game={game}
                     setKey={setKey}
                     gamePagesSelector={gamePagesSelector}
