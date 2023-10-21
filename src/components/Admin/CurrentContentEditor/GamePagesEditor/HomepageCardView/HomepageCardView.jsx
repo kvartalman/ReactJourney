@@ -112,6 +112,12 @@ const HomepageCardView = (props) => {
                     </Container>
                 </Col>
             </Row>
+            <Button
+                onClick={() => props.setKey('preview')}
+                className={'nextPageButton'}
+            >
+                Next
+            </Button>
         </Container>
     )
         ;

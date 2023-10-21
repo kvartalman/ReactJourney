@@ -114,7 +114,7 @@ const GamePageCardsEdit = (props) => {
                 </Col>
             </Row>
             <Button
-                onClick={() => props.setKey('homepage')}
+                onClick={() => props.setKey('category')}
                 className={'nextPageButton'}
             >
                 Next

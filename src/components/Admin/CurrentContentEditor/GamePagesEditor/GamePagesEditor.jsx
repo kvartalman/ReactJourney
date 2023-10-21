@@ -5,6 +5,7 @@ import HomepageCardView from "./HomepageCardView/HomepageCardView";
 import {useSelector} from "react-redux";
 import GamePageTextAndTitleEdit from "./GamePageTextAndTitleEdit/GamePageTextAndTitleEdit";
 import GamePageCardsEdit from "./GamePageCardsEdit/GamePageCardsEdit";
+import GamePagePreview from "./GamePagePreview/GamePagePreview";
 
 const GamePagesEditor = () => {
 
@@ -48,10 +49,19 @@ const GamePagesEditor = () => {
                     gamePagesSelector={gamePagesSelector}
                 />
             </Tab>
-            <Tab eventKey={'homepage'} title={'Homepage card view'}>
+            <Tab eventKey={'category'} title={'Category card view'}>
                 <HomepageCardView
                     game={game}
                     setKey={setKey}
+                    gamePagesSelector={gamePagesSelector}
+                />
+            </Tab>
+            <Tab eventKey={'preview'} title={'Preview'}>
+                <GamePagePreview
+                    game={game}
+                    mainTitle={mainTitle}
+                    cardsTitle={cardsTitle}
+                    text={text}
                     gamePagesSelector={gamePagesSelector}
                 />
             </Tab>
