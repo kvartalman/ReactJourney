@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Tab, Tabs} from "react-bootstrap";
 import {useSelector} from "react-redux";
 import ChooseGameSubCategoryEditor from "./ChooseGameSubCategoryEditor/ChooseGameSubCategoryEditor";
+import SubCategoriesCardsEditor from "./SubCategoriesCardsEditor/SubCategoriesCardsEditor";
 
 const SubCategoriesEditor = (props) => {
 
@@ -41,7 +42,13 @@ const SubCategoriesEditor = (props) => {
                     subCategorySelector={subCategorySelector}
                 />
             </Tab>
-            <Tab eventKey={'cards'} title={'Cards'}></Tab>
+            <Tab eventKey={'cards'} title={'Cards'}>
+                <SubCategoriesCardsEditor
+                    setKey={setKey}
+                    game={game}
+                    subCategorySelector={subCategorySelector}
+                />
+            </Tab>
         </Tabs>
     );
 };

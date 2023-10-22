@@ -54,7 +54,6 @@ const ChooseGame = (props) => {
     // game pages
 
     const productsButtons = productsCopy.map((product, index) => (
-        !props.gameSelector[props.game].products[product].cards ?
             <Button
                 key={index}
                 onClick={() => handleProductSelect(product, index)}
@@ -62,8 +61,6 @@ const ChooseGame = (props) => {
             >
                 {props.gameSelector[props.game].products[product].header}
             </Button>
-            :
-            null
     ))
 
     return (

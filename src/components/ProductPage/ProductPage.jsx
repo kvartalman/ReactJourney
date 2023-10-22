@@ -100,9 +100,17 @@ const ProductPage = (props) => {
                 props.price
                 :
                 (props.gameSelector ?
+                    (props.gameSelector[props.game].products.hasOwnProperty(props.product) ?
                         props.gameSelector[props.game].products[props.product].price
+                            :
+                            null
+                    )
                         :
+                    (productPage.productData[page.name].products.hasOwnProperty(productCamelCase) ?
                         productPage.productData[page.name].products[productCamelCase].price
+                            :
+                            null
+                    )
                 ));
         setSliderPrice(0);
     }, [props.price, page, productCamelCase, productPage.productData, props.game, props.gameSelector])
@@ -124,8 +132,7 @@ const ProductPage = (props) => {
                     </div>
                 </Col>
                 <Col md={9} id={'productPageContentCol'}>
-                    {productPage.productData[props.game || page.name].products
-                        [productCamelCase].hasOwnProperty('subCategory') ?
+                    {productPage.productData[props.game || page.name].subCategories.hasOwnProperty(productCamelCase) ?
                         <SubCategory
                             game={props.game || page.name}
                             product={productCamelCase}

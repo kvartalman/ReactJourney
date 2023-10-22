@@ -463,46 +463,25 @@ const productPageSlice = createSlice({
                             },
                             viewSettings: true
                         },
-                        hotsSubCategory: {
-                            header: "Heroes of the Storm subcategory",
-                            subCategory: true,
-                            cards: {
-                                rampageOne: {
-                                    link: "/categories/dota2/rampage-one",
-                                    title: "Rampage one",
-                                    text: "Let's make a rampage number one!"
-                                },
-                                rampageTwo: {
-                                    link: "/categories/dota2/rampage-two",
-                                    title: "Rampage two",
-                                    text: "Let's make a rampage number two!"
-                                },
-                                uncommonSkins: {
-                                    link: "/categories/dota2/uncommon-skins",
-                                    title: "Uncommon skins",
-                                    text: "Let's see what the uncommon skins you have!"
-                                }
-                            }
-                        }
                     },
                     subCategories: {
                         hotsSubCategory: {
                             header: "Heroes of the Storm subcategory",
                             subCategory: true,
                             cards: {
-                                rampageOne: {
+                                hotsSub1: {
                                     link: "/categories/dota2/rampage-one",
-                                    title: "Rampage one",
+                                    title: "Hots sub 1",
                                     text: "Let's make a rampage number one!"
                                 },
-                                rampageTwo: {
+                                hotsSub2: {
                                     link: "/categories/dota2/rampage-two",
-                                    title: "Rampage two",
+                                    title: "Hots sub 2",
                                     text: "Let's make a rampage number two!"
                                 },
-                                uncommonSkins: {
+                                hotsSub3: {
                                     link: "/categories/dota2/uncommon-skins",
-                                    title: "Uncommon skins",
+                                    title: "Hots sub 3",
                                     text: "Let's see what the uncommon skins you have!"
                                 }
                             }

@@ -93,6 +93,7 @@ const offerPageSlice = createSlice({
                         {id: 3, link: "/categories/hots/ranked", name: "Ranked"},
                         {id: 4, link: "/categories/hots/play-with-a-pro", name: "Play with a pro"},
                         {id: 5, link: "/categories/hots/achievements", name: "Achievements"},
+                        {id: 6, link: "/categories/hots/hots-sub-category", name: "Hots subcategory"}
                     ],
                     breadCrumbs: {linkNames: [], activeLinkName: 'Heroes of the Storm'},
                     canvasCtgData: {

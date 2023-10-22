@@ -5,12 +5,13 @@ import Button from "react-bootstrap/Button";
 const ChooseGameSubCategoryEditor = (props) => {
 
     const [activeGameButton, setActiveGameButton] = useState(0);
-    const [activeSubCategoryButton, setActiveSubCategoryButton] = useState(Object.keys(props.subCategorySelector[props.game].products).length - 1);
+    const [activeSubCategoryButton, setActiveSubCategoryButton] = useState(0);
 
     const handleGameSelect = (game, index) => {
         setActiveGameButton(index);
-        setActiveSubCategoryButton(Object.keys(props.subCategorySelector[game].products).length - 1);
+        setActiveSubCategoryButton(0);
         props.setGame(game);
+        props.setSubCategory(Object.keys(props.subCategorySelector[game].subCategories)[0])
     }
 
     const handleSubCategorySelect = (subCtg, index) => {
@@ -31,16 +32,13 @@ const ChooseGameSubCategoryEditor = (props) => {
         </Button>
     ))
 
-    const subCategoriesNames = Object.keys(props.subCategorySelector[props.game].products).map((subCategory, index) => (
-        props.subCategorySelector[props.game].products[subCategory].subCategory ?
+    const subCategoriesNames = Object.keys(props.subCategorySelector[props.game].subCategories).map((subCategory, index) => (
             <Button
             className={activeSubCategoryButton === index ? 'activeButton': 'defaultButton'}
             onClick={() => handleSubCategorySelect(subCategory, index)}
             >
-                {props.subCategorySelector[props.game].products[subCategory].header}
+                {props.subCategorySelector[props.game].subCategories[subCategory].header}
             </Button>
-            :
-            null
     ))
 
     return (
