@@ -23,7 +23,6 @@ const SubCategoriesEditor = (props) => {
                 }
             }
         }
-
     }, [game, subCategory, subCategorySelector])
 
     return (
@@ -36,8 +35,10 @@ const SubCategoriesEditor = (props) => {
             <Tab eventKey={'game'} title={'Choose game'}>
                 <ChooseGameSubCategoryEditor
                     setKey={setKey}
+                    game={game}
                     setGame={setGame}
                     setSubCategory={setSubCategory}
+                    subCategorySelector={subCategorySelector}
                 />
             </Tab>
             <Tab eventKey={'cards'} title={'Cards'}></Tab>
