@@ -34,9 +34,17 @@ const ProductPage = (props) => {
     const productCamelCase = require('change-case').camelCase(props.product || page.product);
 
     const viewSettings = props.gameSelector ?
-        props.gameSelector[props.game].products[props.product].viewSettings
+        (props.gameSelector[props.game].products.hasOwnProperty(props.product) ?
+                props.gameSelector[props.game].products[props.product].viewSettings
+                :
+                false
+        )
         :
-        productPage.productData[page.name].products[productCamelCase].viewSettings
+        (productPage.productData[page.name].products.hasOwnProperty(productCamelCase) ?
+                productPage.productData[page.name].products[productCamelCase].viewSettings
+                :
+                false
+        )
 
     const [showModal, setShowModal] = useState(false);
     const [price, setPrice] = useState(
@@ -44,9 +52,18 @@ const ProductPage = (props) => {
             props.price
             :
             (props.gameSelector ?
-                props.gameSelector[props.game].products[props.product].price
-                :
-                productPage.productData[page.name].products[productCamelCase].price)
+                    (props.gameSelector[props.game].products.hasOwnProperty(props.product) ?
+                            props.gameSelector[props.game].products[props.product].price
+                            :
+                            null
+                    )
+                    :
+                    (productPage.productData[page.name].products.hasOwnProperty(productCamelCase) ?
+                        productPage.productData[page.name].products[productCamelCase].price
+                            :
+                            null
+                    )
+            )
     );
 
     const [sliderPrice, setSliderPrice] = useState(0);
@@ -160,12 +177,12 @@ const ProductPage = (props) => {
                                                         product={productCamelCase}
                                                         setPrice={setPrice}
                                                     /> :
-                                                <CheckBoxes
-                                                    game={props.game || page.name}
-                                                    product={productCamelCase}
-                                                    setPrice={setPrice}
-                                                    totalPrice={price}
-                                                />}
+                                                    <CheckBoxes
+                                                        game={props.game || page.name}
+                                                        product={productCamelCase}
+                                                        setPrice={setPrice}
+                                                        totalPrice={price}
+                                                    />}
                                             </div>
                                             <div className={'customizeDividerLine'}></div>
                                             <div className={'sliderContainer'}>

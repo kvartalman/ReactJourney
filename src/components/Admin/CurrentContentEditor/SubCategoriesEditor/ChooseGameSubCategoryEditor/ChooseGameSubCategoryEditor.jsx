@@ -5,10 +5,11 @@ import Button from "react-bootstrap/Button";
 const ChooseGameSubCategoryEditor = (props) => {
 
     const [activeGameButton, setActiveGameButton] = useState(0);
-    const [activeSubCategoryButton, setActiveSubCategoryButton] = useState(0);
+    const [activeSubCategoryButton, setActiveSubCategoryButton] = useState(Object.keys(props.subCategorySelector[props.game].products).length - 1);
 
     const handleGameSelect = (game, index) => {
         setActiveGameButton(index);
+        setActiveSubCategoryButton(Object.keys(props.subCategorySelector[game].products).length - 1);
         props.setGame(game);
     }
 

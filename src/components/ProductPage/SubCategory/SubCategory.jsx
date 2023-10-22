@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 
 const SubCategory = (props) => {
 
-    const cardsSelector = useSelector(state => state.productPage.productData[props.game].products[props.product])
+    const cardsSelector = useSelector(state => state.productPage.productData[props.game].subCategories[props.product])
 
     const cardsList = Object.keys(cardsSelector.cards).map(card => {
         return (

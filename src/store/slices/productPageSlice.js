@@ -250,6 +250,8 @@ const productPageSlice = createSlice({
                             },
                             viewSettings: true
                         },
+                    },
+                    subCategories: {
                         rampageCollection: {
                             header: "Rampage collection",
                             subCategory: true,
@@ -267,6 +269,27 @@ const productPageSlice = createSlice({
                                 uncommonSkins: {
                                     link: "/categories/dota2/uncommon-skins",
                                     title: "Uncommon skins",
+                                    text: "Let's see what the uncommon skins you have!"
+                                }
+                            }
+                        },
+                        accountBoost: {
+                            header: "Account boost",
+                            subCategory: true,
+                            cards: {
+                                rampageOne: {
+                                    link: "/categories/dota2/rampage-one",
+                                    title: "Boost one",
+                                    text: "Let's make a rampage number one!"
+                                },
+                                rampageTwo: {
+                                    link: "/categories/dota2/rampage-two",
+                                    title: "Boost two",
+                                    text: "Let's make a rampage number two!"
+                                },
+                                uncommonSkins: {
+                                    link: "/categories/dota2/uncommon-skins",
+                                    title: "Boost three",
                                     text: "Let's see what the uncommon skins you have!"
                                 }
                             }
@@ -439,6 +462,50 @@ const productPageSlice = createSlice({
                                 multiplier: 3.3
                             },
                             viewSettings: true
+                        },
+                        hotsSubCategory: {
+                            header: "Heroes of the Storm subcategory",
+                            subCategory: true,
+                            cards: {
+                                rampageOne: {
+                                    link: "/categories/dota2/rampage-one",
+                                    title: "Rampage one",
+                                    text: "Let's make a rampage number one!"
+                                },
+                                rampageTwo: {
+                                    link: "/categories/dota2/rampage-two",
+                                    title: "Rampage two",
+                                    text: "Let's make a rampage number two!"
+                                },
+                                uncommonSkins: {
+                                    link: "/categories/dota2/uncommon-skins",
+                                    title: "Uncommon skins",
+                                    text: "Let's see what the uncommon skins you have!"
+                                }
+                            }
+                        }
+                    },
+                    subCategories: {
+                        hotsSubCategory: {
+                            header: "Heroes of the Storm subcategory",
+                            subCategory: true,
+                            cards: {
+                                rampageOne: {
+                                    link: "/categories/dota2/rampage-one",
+                                    title: "Rampage one",
+                                    text: "Let's make a rampage number one!"
+                                },
+                                rampageTwo: {
+                                    link: "/categories/dota2/rampage-two",
+                                    title: "Rampage two",
+                                    text: "Let's make a rampage number two!"
+                                },
+                                uncommonSkins: {
+                                    link: "/categories/dota2/uncommon-skins",
+                                    title: "Uncommon skins",
+                                    text: "Let's see what the uncommon skins you have!"
+                                }
+                            }
                         }
                     },
                     fullName: 'Heroes of the Storm'
@@ -644,6 +711,7 @@ const productPageSlice = createSlice({
                             viewSettings: true
                         }
                     },
+                    subCategories: {},
                     fullName: 'League of Legends'
                 }
             }
