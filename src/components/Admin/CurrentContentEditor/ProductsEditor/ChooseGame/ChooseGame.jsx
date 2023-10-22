@@ -11,6 +11,7 @@ const ChooseGame = (props) => {
     const [sort, setSort] = useState(false);
     const [productsCopy, setProductsCopy] = useState([...Object.keys(props.gameSelector[props.game].products)]);
     const [showSortButtons, setShowSortButtons] = useState(false);
+
     const alphabetSort = () => {
         setSort(!sort)
         if (sort) {
@@ -34,6 +35,9 @@ const ChooseGame = (props) => {
         setActiveProductButton(0);
         props.setGame(game);
         props.setProduct(Object.keys(props.gameSelector[game].products)[0])
+        // We create new productsCopy with products of game we chose last time. Without this, we will get an error
+        // because we change game, but we still use old copy of products
+        setProductsCopy([...Object.keys(props.gameSelector[game].products)])
     }
 
     const gamesButtons = Object.keys(props.gameSelector).map((game, index) => (

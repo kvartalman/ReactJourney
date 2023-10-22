@@ -12,9 +12,9 @@ const ChooseGameSubCategoryEditor = (props) => {
         props.setGame(game);
     }
 
-    const handleSubCategorySelect = (subctg, index) => {
+    const handleSubCategorySelect = (subCtg, index) => {
         setActiveSubCategoryButton(index);
-        props.setSubCategory(subctg);
+        props.setSubCategory(subCtg);
     }
 
     const nextPageHandler = () => {
