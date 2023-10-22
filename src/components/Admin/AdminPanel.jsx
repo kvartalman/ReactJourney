@@ -10,6 +10,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import ProductsEditor from "./CurrentContentEditor/ProductsEditor/ProductsEditor";
 import GamePagesEditor from "./CurrentContentEditor/GamePagesEditor/GamePagesEditor";
 import Categories from "../Categories/Categories";
+import SubCategoriesEditor from "./CurrentContentEditor/SubCategoriesEditor/SubCategoriesEditor";
 
 const AdminPanel = () => {
 
@@ -81,7 +82,10 @@ const AdminPanel = () => {
                                                     e.stopPropagation();
                                                     handleContentCol(5)
                                                 }}>Game pages</p>
-                                                <p>Subcategories</p>
+                                                <p onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleContentCol(6)
+                                                }}>Subcategories</p>
                                                 <p onClick={(e) => {
                                                     e.stopPropagation();
                                                     handleContentCol(7)
@@ -89,26 +93,10 @@ const AdminPanel = () => {
                                                 }>
                                                     Products
                                                 </p>
-                                                <p
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        handleContentCol(8)
-                                                    }}>
-                                                    Homepage card
-                                                </p>
-                                                <p
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        handleContentCol(9)
-                                                    }}
-                                                >
-                                                    Offerpage card
-                                                </p>
                                             </Accordion.Body>
                                         </Accordion.Item>
                                     </Accordion>
                                 </li>
-                                <li>Add new game</li>
                                 <li onClick={() => handleContentCol(0)}>Dashboard</li>
                                 <li></li>
                                 <li></li>
@@ -122,7 +110,7 @@ const AdminPanel = () => {
                         <Row>
                             {[
                                 <Dashboard />, 1, 2, <HomePageCardsSettings/>, <OfferPageCardsSettings/>,
-                                <GamePagesEditor />, 6, <ProductsEditor/>, 8, 9
+                                <GamePagesEditor />, <SubCategoriesEditor />, <ProductsEditor/>
                             ].map(
                                 (elem, index) => (
                                     contentCol === index ?

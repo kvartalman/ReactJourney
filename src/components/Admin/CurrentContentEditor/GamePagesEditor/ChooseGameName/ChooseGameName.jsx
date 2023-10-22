@@ -20,7 +20,7 @@ const ChooseGameName = (props) => {
         </Button>
     ))
 
-    const nextPage = (key) => {
+    const nextPageHandler = (key) => {
         props.setKey(key)
     }
 
@@ -30,7 +30,7 @@ const ChooseGameName = (props) => {
                 {gamePagesNames}
             </div>
             <div>
-                <Button className={'nextPageButton'} onClick={() => nextPage('text')}>Next</Button>
+                <Button className={'nextPageButton'} onClick={() => nextPageHandler('text')}>Next</Button>
             </div>
         </Container>
     );
