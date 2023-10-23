@@ -1,0 +1,28 @@
+.subCategoryCard {
+    background-size: cover !important;
+    background-position: center !important;
+    margin: 0.4em;
+    width: 15rem;
+}
+
+.subCategoryCard:hover {
+    transform: scale(1.01);
+}
+
+.subCategoryCardBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#subCategoryMainRow {
+    justify-content: left;
+    align-items: center;
+}
+
+@media (max-width: 868px) {
+    #subCategoryMainRow {
+        justify-content: center;
+    }
+}

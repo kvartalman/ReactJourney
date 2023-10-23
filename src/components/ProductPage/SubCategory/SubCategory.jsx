@@ -1,7 +1,9 @@
 import React from "react";
 import {useSelector} from "react-redux";
-import {Card} from "react-bootstrap";
+import {Card, Row} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import './SubCategory.css';
 
 const SubCategory = (props) => {
 
@@ -9,23 +11,29 @@ const SubCategory = (props) => {
 
     const cardsList = Object.keys(cardsSelector.cards).map(card => {
         return (
-            <Card style={{width: '18rem'}}>
-            <Card.Img variant="top" src="holder.js/100px180"/>
-            <Card.Body>
-                <Card.Title>{cardsSelector.cards[card].title}</Card.Title>
-                <Card.Text>
-                    {cardsSelector.cards[card].text}
-                </Card.Text>
-                <NavLink to={cardsSelector.cards[card].link}>Go somewhere</NavLink>
-            </Card.Body>
-        </Card>
+            <Card
+                className={'subCategoryCard'}
+                style={{background: `linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5) ), 
+            url(${cardsSelector.cards[card].src})`}}
+            >
+                <NavLink to={cardsSelector.cards[card].link}>
+                <Card.Body className={'subCategoryCardBody'}>
+                    <Card.Title>{cardsSelector.cards[card].title}</Card.Title>
+                    <Card.Text>
+                        {cardsSelector.cards[card].text}
+                    </Card.Text>
+                </Card.Body>
+                </NavLink>
+            </Card>
         )
     })
 
     return (
-        <>
-        {cardsList}
-        </>
+        <Container fluid>
+            <Row id={'subCategoryMainRow'}>
+                {cardsList}
+            </Row>
+        </Container>
     )
 }
 

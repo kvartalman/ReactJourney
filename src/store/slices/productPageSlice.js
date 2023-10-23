@@ -259,17 +259,20 @@ const productPageSlice = createSlice({
                                 rampageOne: {
                                     link: "/categories/dota2/rampage-one",
                                     title: "Rampage one",
-                                    text: "Let's make a rampage number one!"
+                                    text: "Let's make a rampage number one!",
+                                    src: "/subcategories-photos/awp.jpg"
                                 },
                                 rampageTwo: {
                                     link: "/categories/dota2/rampage-two",
                                     title: "Rampage two",
-                                    text: "Let's make a rampage number two!"
+                                    text: "Let's make a rampage number two!",
+                                    src: "/subcategories-photos/awp.jpg"
                                 },
                                 uncommonSkins: {
                                     link: "/categories/dota2/uncommon-skins",
                                     title: "Uncommon skins",
-                                    text: "Let's see what the uncommon skins you have!"
+                                    text: "Let's see what the uncommon skins you have!",
+                                    src: "/subcategories-photos/awp.jpg"
                                 }
                             }
                         },
@@ -280,17 +283,20 @@ const productPageSlice = createSlice({
                                 rampageOne: {
                                     link: "/categories/dota2/rampage-one",
                                     title: "Boost one",
-                                    text: "Let's make a rampage number one!"
+                                    text: "Let's make a rampage number one!",
+                                    src: "/subcategories-photos/awp.jpg"
                                 },
                                 rampageTwo: {
                                     link: "/categories/dota2/rampage-two",
                                     title: "Boost two",
-                                    text: "Let's make a rampage number two!"
+                                    text: "Let's make a rampage number two!",
+                                    src: "/subcategories-photos/awp.jpg"
                                 },
                                 uncommonSkins: {
                                     link: "/categories/dota2/uncommon-skins",
                                     title: "Boost three",
-                                    text: "Let's see what the uncommon skins you have!"
+                                    text: "Let's see what the uncommon skins you have!",
+                                    src: "/subcategories-photos/awp.jpg"
                                 }
                             }
                         }
@@ -472,17 +478,20 @@ const productPageSlice = createSlice({
                                 hotsSub1: {
                                     link: "/categories/dota2/rampage-one",
                                     title: "Hots sub 1",
-                                    text: "Let's make a rampage number one!"
+                                    text: "Let's make a rampage number one!",
+                                    src: "/subcategories-photos/hots.jpg"
                                 },
                                 hotsSub2: {
                                     link: "/categories/dota2/rampage-two",
                                     title: "Hots sub 2",
-                                    text: "Let's make a rampage number two!"
+                                    text: "Let's make a rampage number two!",
+                                    src: "/subcategories-photos/hots.jpg"
                                 },
                                 hotsSub3: {
                                     link: "/categories/dota2/uncommon-skins",
                                     title: "Hots sub 3",
-                                    text: "Let's see what the uncommon skins you have!"
+                                    text: "Let's see what the uncommon skins you have!",
+                                    src: "/subcategories-photos/hots.jpg"
                                 }
                             }
                         }
