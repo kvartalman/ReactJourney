@@ -11,7 +11,7 @@ const adminPanelSlice = createSlice(
             contentSliderEditorRanges: [],
             checkboxesEditor: [],
             gamePageCardsEditor: [],
-            subCategoriesEditor: []
+            subCategoriesCardsEditor: []
         },
         reducers: {
             addContentSliderRange: (state, action) => {
@@ -97,14 +97,14 @@ const adminPanelSlice = createSlice(
                 }
             },
             fillSubCategoriesEditor: (state, action) => {
-                state.subCategoriesEditor = action.payload
+                state.subCategoriesCardsEditor = action.payload
             },
             handleSubCategoriesChanges: (state, action) => {
-                for (let i = 0; i < state.subCategoriesEditor.length; i++) {
-                    if (state.subCategoriesEditor[i].title === action.payload.card) {
-                        state.subCategoriesEditor[i].title = action.payload.title;
-                        state.subCategoriesEditor[i].text = action.payload.text;
-                        state.subCategoriesEditor[i].src = action.payload.src;
+                for (let i = 0; i < state.subCategoriesCardsEditor.length; i++) {
+                    if (state.subCategoriesCardsEditor[i].title === action.payload.card) {
+                        state.subCategoriesCardsEditor[i].title = action.payload.title;
+                        state.subCategoriesCardsEditor[i].text = action.payload.text;
+                        state.subCategoriesCardsEditor[i].src = action.payload.src;
                     }
                 }
             }

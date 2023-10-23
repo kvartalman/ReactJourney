@@ -13,7 +13,7 @@ const SubCategoriesCardsEditor = (props) => {
     
     const cardsSelector = useSelector(state => state.productPage.productData
         [props.game].subCategories[props.subCategory].cards)
-    const adminPanelSubCategoriesSelector = useSelector(state => state.adminPanel.subCategoriesEditor)
+    const adminPanelSubCategoriesSelector = useSelector(state => state.adminPanel.subCategoriesCardsEditor)
 
     const [enterCardName, setEnterCardName] = useState('');
     const [enterCardPrice, setEnterCardPrice] = useState('');
@@ -77,13 +77,15 @@ const SubCategoriesCardsEditor = (props) => {
 
     useEffect(() => {
         handleCardSelect()
-        
+    }, [handleCardSelect])
+
+    useEffect(() => {
         if (firstRender) {
             dispatch(fillSubCategoriesEditor(cardsSelector))
             setFirstRender(false);
         }
-    }, [cardsSelector, dispatch, firstRender, handleCardSelect])
-
+    }, [cardsSelector, dispatch, firstRender])
+    
     return (
         <Container fluid>
             <Form>
@@ -160,6 +162,12 @@ const SubCategoriesCardsEditor = (props) => {
                         </Button>
                     </Col>
                 </Row>
+                <Button
+                    onClick={() => props.setKey('preview')}
+                    className={'nextPageButton'}
+                >
+                    Next
+                </Button>
             </Container>
         </Container>
     );

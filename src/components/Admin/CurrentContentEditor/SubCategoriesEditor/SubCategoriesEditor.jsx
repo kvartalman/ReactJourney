@@ -3,6 +3,7 @@ import {Tab, Tabs} from "react-bootstrap";
 import {useSelector} from "react-redux";
 import ChooseGameSubCategoryEditor from "./ChooseGameSubCategoryEditor/ChooseGameSubCategoryEditor";
 import SubCategoriesCardsEditor from "./SubCategoriesCardsEditor/SubCategoriesCardsEditor";
+import SubCategoriesEditorPreview from "./SubCategoriesEditorPreview/SubCategoriesEditorPreview";
 
 const SubCategoriesEditor = (props) => {
 
@@ -35,6 +36,12 @@ const SubCategoriesEditor = (props) => {
                     game={game}
                     subCategory={subCategory}
                     subCategorySelector={subCategorySelector}
+                />
+            </Tab>
+            <Tab eventKey={'preview'} title={'Preview'}>
+                <SubCategoriesEditorPreview
+                    game={game}
+                    subCategory={subCategory}
                 />
             </Tab>
         </Tabs>
