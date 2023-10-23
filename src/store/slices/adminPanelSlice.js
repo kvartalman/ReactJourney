@@ -10,7 +10,8 @@ const adminPanelSlice = createSlice(
             contentSliderSettingsRanges: [],
             contentSliderEditorRanges: [],
             checkboxesEditor: [],
-            gamePageCardsEditor: []
+            gamePageCardsEditor: [],
+            subCategoriesEditor: []
         },
         reducers: {
             addContentSliderRange: (state, action) => {
@@ -27,7 +28,7 @@ const adminPanelSlice = createSlice(
             },
             deleteContentSliderRange: (state, action) => {
                 const indexToRemove = action.payload.index;
-                // I tried to use filter instead of splice to prevent auto-F5 when i delete any elem of array except last
+                // I tried to use filter instead of splice to prevent auto-F5 when i delete any elem of array except last,
                 // but it doesn't work
                 action.payload.type === 'settings' ?
                     state.contentSliderSettingsRanges = state.contentSliderSettingsRanges.filter(
@@ -94,6 +95,18 @@ const adminPanelSlice = createSlice(
                         state.gamePageCardsEditor[i].text = action.payload.text
                     }
                 }
+            },
+            fillSubCategoriesEditor: (state, action) => {
+                state.subCategoriesEditor = action.payload
+            },
+            handleSubCategoriesChanges: (state, action) => {
+                for (let i = 0; i < state.subCategoriesEditor.length; i++) {
+                    if (state.subCategoriesEditor[i].title === action.payload.card) {
+                        state.subCategoriesEditor[i].title = action.payload.title;
+                        state.subCategoriesEditor[i].text = action.payload.text;
+                        state.subCategoriesEditor[i].src = action.payload.src;
+                    }
+                }
             }
         }
     }
@@ -109,7 +122,9 @@ export const {
     deleteCheckboxContent,
     editTooltip,
     fillGamePageCardsEditor,
-    handleGamePageCardsChanges
+    handleGamePageCardsChanges,
+    fillSubCategoriesEditor,
+    handleSubCategoriesChanges
 } = adminPanelSlice.actions;
 
 export default adminPanelSlice.reducer

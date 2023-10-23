@@ -3,12 +3,17 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import {Card, Col, Row} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {fillSubCategoriesEditor, handleSubCategoriesChanges} from "../../../../../store/slices/adminPanelSlice";
+import Button from "react-bootstrap/Button";
 
 const SubCategoriesCardsEditor = (props) => {
 
+    const dispatch = useDispatch();
+    
     const cardsSelector = useSelector(state => state.productPage.productData
         [props.game].subCategories[props.subCategory].cards)
+    const adminPanelSubCategoriesSelector = useSelector(state => state.adminPanel.subCategoriesEditor)
 
     const [enterCardName, setEnterCardName] = useState('');
     const [enterCardPrice, setEnterCardPrice] = useState('');
@@ -17,6 +22,7 @@ const SubCategoriesCardsEditor = (props) => {
     const [currentCardImgSrc, setCurrentCardImgSrc] = useState('');
     const [currentCardLink, setCurrentCardLink] = useState('');
     const [imgPreview, setImgPreview] = useState(null);
+    const [firstRender, setFirstRender] = useState(true);
 
     const cardSelect = useRef(null);
 
@@ -24,12 +30,12 @@ const SubCategoriesCardsEditor = (props) => {
     // database and render this card (as preview of card which we will edit)
 
     const handleCardSelect = useCallback(() => {
-        for (let i = 0; i < Object.keys(cardsSelector).length; i++) {
-            if (cardsSelector[Object.keys(cardsSelector)[i]].title === cardSelect.current.value) {
-                setCurrentCardName(cardsSelector[Object.keys(cardsSelector)[i]].title);
-                setCurrentCardPrice(cardsSelector[Object.keys(cardsSelector)[i]].text);
-                setCurrentCardImgSrc(cardsSelector[Object.keys(cardsSelector)[i]].src);
-                setCurrentCardLink(cardsSelector[Object.keys(cardsSelector)[i]].link)
+        for (let i = 0; i < cardsSelector.length; i++) {
+            if (cardsSelector[i].title === cardSelect.current.value) {
+                setCurrentCardName(cardsSelector[i].title);
+                setCurrentCardPrice(cardsSelector[i].text);
+                setCurrentCardImgSrc(cardsSelector[i].src);
+                setCurrentCardLink(cardsSelector[i].link)
             }
         }
     });
@@ -54,19 +60,29 @@ const SubCategoriesCardsEditor = (props) => {
         }
     };
 
-    const cardsList = Object.keys(
-        cardsSelector).map(
-        (subcategory) => (
-            <option>
-                {cardsSelector[subcategory].title}
-            </option>
+    const handleAcceptChanges = () => {
+        dispatch(handleSubCategoriesChanges(
+            {
+                card: cardSelect.current.value,
+                title: enterCardName,
+                text: enterCardPrice,
+                src: imgPreview
+            }
+        ))
+    };
+
+    const cardsList = adminPanelSubCategoriesSelector.map((card) => (
+            <option key={card.id}>{card.title}</option>
         ));
 
     useEffect(() => {
         handleCardSelect()
-    }, [handleCardSelect])
-
-    // console.log(currentCardName, currentCardPrice, currentCardLink, currentCardImgSrc)
+        
+        if (firstRender) {
+            dispatch(fillSubCategoriesEditor(cardsSelector))
+            setFirstRender(false);
+        }
+    }, [cardsSelector, dispatch, firstRender, handleCardSelect])
 
     return (
         <Container fluid>
@@ -136,6 +152,12 @@ const SubCategoriesCardsEditor = (props) => {
                             </NavLink>
                         </Card>
                         {imgPreview ? null : <h3>Load a picture!</h3>}
+                        <Button
+                            onClick={() => handleAcceptChanges()}
+                            className={'nextPageButton'}
+                        >
+                            Accept changes
+                        </Button>
                     </Col>
                 </Row>
             </Container>

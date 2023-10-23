@@ -7,20 +7,20 @@ import './SubCategory.css';
 
 const SubCategory = (props) => {
 
-    const cardsSelector = useSelector(state => state.productPage.productData[props.game].subCategories[props.product])
+    const cardsSelector = useSelector(state => state.productPage.productData[props.game].subCategories[props.product].cards)
 
-    const cardsList = Object.keys(cardsSelector.cards).map(card => {
+    const cardsList = cardsSelector.map(card => {
         return (
             <Card
                 className={'subCategoryCard'}
                 style={{background: `linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5) ), 
-            url(${cardsSelector.cards[card].src})`}}
+            url(${card.src})`}}
             >
-                <NavLink to={cardsSelector.cards[card].link}>
+                <NavLink to={card.link}>
                 <Card.Body className={'subCategoryCardBody'}>
-                    <Card.Title>{cardsSelector.cards[card].title}</Card.Title>
+                    <Card.Title>{card.title}</Card.Title>
                     <Card.Text>
-                        {cardsSelector.cards[card].text}
+                        {card.text}
                     </Card.Text>
                 </Card.Body>
                 </NavLink>
