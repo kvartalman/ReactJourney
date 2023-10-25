@@ -17,8 +17,8 @@ const offerPageSlice = createSlice({
                         {id: 0, title: '3000 MMR Boost', text: '35$'},
                         {id: 1, title: 'Low priority', text: '5$'},
                         {id: 2, title: 'Bladeform legacy', text: '25$'},
-                        {id: 3, title: '+200 MMR', text: '10$'},
-                        {id: 4, title: '+200 MMR', text: '10$'},
+                        {id: 3, title: '+100 MMR', text: '10$'},
+                        {id: 4, title: '+150 MMR', text: '10$'},
                         {id: 5, title: '+200 MMR', text: '10$'}
                     ],
                     panelButton: [

@@ -4,12 +4,19 @@ import Container from "react-bootstrap/Container";
 import GameOfferCard from "../../../../GameOffer/OfferContent/GameOfferCard";
 import {Col, Row} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
-import {fillGamePageCardsEditor, handleGamePageCardsChanges} from "../../../../../store/slices/adminPanelSlice";
+import {
+    cancelGamePageCardDeletion,
+    deleteGamePageCards,
+    fillGamePageCardsEditor,
+    handleGamePageCardsChanges
+} from "../../../../../store/slices/adminPanelSlice";
 import Button from "react-bootstrap/Button";
+import './GamePageCardsEdit.css';
 
 const GamePageCardsEdit = (props) => {
 
     const adminPanelGamePagesSelector = useSelector(state => state.adminPanel.gamePageCardsEditor)
+    const deletedGamePageCardsSelector = useSelector(state => state.adminPanel.deletedGamePageCards)
     const dispatch = useDispatch();
 
     const [enterCardName, setEnterCardName] = useState('');
@@ -37,6 +44,16 @@ const GamePageCardsEdit = (props) => {
 
     const enterCardPriceInput = (e) => {
         setEnterCardPrice(e.target.value);
+    };
+
+    const handleCardDeletion = () => {
+        dispatch(deleteGamePageCards({
+            name: cardSelect.current.value
+        }))
+    };
+
+    const cancelCardDeletion = () => {
+        dispatch(cancelGamePageCardDeletion())
     };
 
     const handleAcceptChanges = () => {
@@ -91,6 +108,28 @@ const GamePageCardsEdit = (props) => {
                     />
                 </Form.Group>
             </Form>
+            <div id={'gamePageCardsEditorDeleteCancelButtons'}>
+                { adminPanelGamePagesSelector.length > 0 ?
+                <Button
+                    className={'nextPageButton'}
+                    onClick={() => handleCardDeletion()}
+                >
+                    Delete card
+                </Button>
+                    :
+                    null
+                }
+                {deletedGamePageCardsSelector.length > 0 ?
+                <Button
+                    className={'nextPageButton'}
+                    onClick={() => cancelCardDeletion()}
+                >
+                    Cancel
+                </Button>
+                    :
+                    null
+                }
+            </div>
             <Row>
                 <Col>
                     <h2>Current card view</h2>

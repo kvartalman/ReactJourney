@@ -11,6 +11,7 @@ const adminPanelSlice = createSlice(
             contentSliderEditorRanges: [],
             checkboxesEditor: [],
             gamePageCardsEditor: [],
+            deletedGamePageCards: [],
             subCategoriesCardsEditor: [],
             deletedSubCategoriesCards: []
         },
@@ -97,6 +98,19 @@ const adminPanelSlice = createSlice(
                     }
                 }
             },
+            deleteGamePageCards: (state, action) => {
+                for (let i = 0; i < state.gamePageCardsEditor.length; i++) {
+                    if (state.gamePageCardsEditor[i].title === action.payload.name) {
+                        const deletedCard = state.gamePageCardsEditor[i];
+                        state.gamePageCardsEditor.splice(i, 1);
+                        state.deletedGamePageCards.push({card: deletedCard, index: i});
+                    }
+                }
+            },
+            cancelGamePageCardDeletion: (state, action) => {
+                const returnedCard = state.deletedGamePageCards.pop()
+                state.gamePageCardsEditor.splice(returnedCard.index, 0, returnedCard.card);
+            },
             fillSubCategoriesEditor: (state, action) => {
 
                 // We clear state.deletedSubCategoriesCards because, when first render starts, we fill subCategoriesCardsEditor
@@ -147,6 +161,8 @@ export const {
     editTooltip,
     fillGamePageCardsEditor,
     handleGamePageCardsChanges,
+    deleteGamePageCards,
+    cancelGamePageCardDeletion,
     fillSubCategoriesEditor,
     handleSubCategoriesChanges,
     deleteSubCategoriesCard,
