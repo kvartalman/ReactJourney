@@ -10,7 +10,7 @@ import {
     addContentSliderRange,
     deleteContentSliderRange,
     fillContentSliderEditorRanges
-} from "../../../../../../store/slices/adminPanelSlice";
+} from "../../../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
 import Container from "react-bootstrap/Container";
 import MultiRangeSlider from "multi-range-slider-react";
 import './ContentSliderEditor.css'

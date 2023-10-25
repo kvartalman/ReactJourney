@@ -8,7 +8,7 @@ import MultiRangeSlider from "multi-range-slider-react";
 import '../../../../../ProductPage/ContentSlider/ContentSlider.css';
 import './ContentSliderSettings.css'
 import {useDispatch, useSelector} from "react-redux";
-import {addContentSliderRange, deleteContentSliderRange} from "../../../../../../store/slices/adminPanelSlice";
+import {addContentSliderRange, deleteContentSliderRange} from "../../../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
 import Table from 'react-bootstrap/Table';
 
 const ContentSliderSettings = () => {

@@ -9,7 +9,7 @@ import {
     deleteSubCategoriesCard,
     fillSubCategoriesEditor,
     handleSubCategoriesChanges
-} from "../../../../../store/slices/adminPanelSlice";
+} from "../../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
 import Button from "react-bootstrap/Button";
 import './SubCategoriesCardsEditor.css';
 

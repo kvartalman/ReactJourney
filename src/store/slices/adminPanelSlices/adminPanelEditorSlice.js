@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 
-const adminPanelSlice = createSlice(
+const adminPanelEditorSlice = createSlice(
     {
         name: 'adminPanel',
         initialState: {
@@ -167,6 +167,6 @@ export const {
     handleSubCategoriesChanges,
     deleteSubCategoriesCard,
     cancelSubCategoriesCardDeletion
-} = adminPanelSlice.actions;
+} = adminPanelEditorSlice.actions;
 
-export default adminPanelSlice.reducer
+export default adminPanelEditorSlice.reducer

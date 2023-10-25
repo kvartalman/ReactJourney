@@ -11,7 +11,7 @@ import {
     deleteCheckboxContent,
     editCheckboxesContent, editTooltip,
     fillCheckboxesEditor
-} from "../../../../../store/slices/adminPanelSlice";
+} from "../../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
 
 const ProductCheckboxesEdit = (props) => {
 

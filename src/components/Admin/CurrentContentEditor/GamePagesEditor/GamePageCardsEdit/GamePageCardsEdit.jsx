@@ -9,7 +9,7 @@ import {
     deleteGamePageCards,
     fillGamePageCardsEditor,
     handleGamePageCardsChanges
-} from "../../../../../store/slices/adminPanelSlice";
+} from "../../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
 import Button from "react-bootstrap/Button";
 import './GamePageCardsEdit.css';
 

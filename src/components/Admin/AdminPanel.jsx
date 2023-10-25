@@ -11,6 +11,7 @@ import ProductsEditor from "./CurrentContentEditor/ProductsEditor/ProductsEditor
 import GamePagesEditor from "./CurrentContentEditor/GamePagesEditor/GamePagesEditor";
 import Categories from "../Categories/Categories";
 import SubCategoriesEditor from "./CurrentContentEditor/SubCategoriesEditor/SubCategoriesEditor";
+import HomePageCardsEditor from "./CurrentContentEditor/HomePageCardsEditor/HomePageCardsEditor";
 
 const AdminPanel = () => {
 
@@ -93,6 +94,12 @@ const AdminPanel = () => {
                                                 }>
                                                     Products
                                                 </p>
+                                                <p onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleContentCol(8);
+                                                }}>
+                                                    Homepage Cards
+                                                </p>
                                             </Accordion.Body>
                                         </Accordion.Item>
                                     </Accordion>
@@ -110,7 +117,7 @@ const AdminPanel = () => {
                         <Row>
                             {[
                                 <Dashboard />, 1, 2, <HomePageCardsSettings/>, <OfferPageCardsSettings/>,
-                                <GamePagesEditor />, <SubCategoriesEditor />, <ProductsEditor/>
+                                <GamePagesEditor />, <SubCategoriesEditor />, <ProductsEditor/>, <HomePageCardsEditor />
                             ].map(
                                 (elem, index) => (
                                     contentCol === index ?

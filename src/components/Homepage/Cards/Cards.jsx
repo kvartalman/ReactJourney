@@ -15,7 +15,7 @@ const Cards = (props) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('https://mocki.io/v1/8cb0f160-92f7-4cf8-a6c1-f63690df514e').then(response => {
+        axios.get('https://mocki.io/v1/8ea44757-6a9f-4c51-84b9-36a7f17a8aaa').then(response => {
             dispatch(addCardsData(response.data));
             setLoading(false);
 
@@ -25,18 +25,18 @@ const Cards = (props) => {
 
     const getCardsArray = () => {
         if (cardsData) {
-            return ((Object.keys(cardsData)).map(card =>
+            return cardsData.map(card =>
                 (
                     <OfferCard
                         key={card.id}
-                        bg={cardsData[card].bg}
-                        id={cardsData[card].tagId}
-                        title={cardsData[card].title}
-                        text={cardsData[card].text}
+                        bg={card.bg}
+                        id={card.tagId}
+                        title={card.title}
+                        text={card.text}
                         button={
                             <Container fluid><Row className={'row-cols-auto'}>
                                 {
-                                    cardsData[card].button.map(button => (
+                                    card.button.map(button => (
                                         <CardsButton
                                             key={button.id}
                                             link={button.link}
@@ -47,7 +47,7 @@ const Cards = (props) => {
                                 }
                             </Row></Container>}
                     />
-                )))
+                ))
         }
     }
 
