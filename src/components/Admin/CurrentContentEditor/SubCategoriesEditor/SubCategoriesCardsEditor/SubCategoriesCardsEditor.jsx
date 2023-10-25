@@ -4,16 +4,23 @@ import Form from "react-bootstrap/Form";
 import {Card, Col, Row} from "react-bootstrap";
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {fillSubCategoriesEditor, handleSubCategoriesChanges} from "../../../../../store/slices/adminPanelSlice";
+import {
+    cancelSubCategoriesCardDeletion,
+    deleteSubCategoriesCard,
+    fillSubCategoriesEditor,
+    handleSubCategoriesChanges
+} from "../../../../../store/slices/adminPanelSlice";
 import Button from "react-bootstrap/Button";
+import './SubCategoriesCardsEditor.css';
 
 const SubCategoriesCardsEditor = (props) => {
 
     const dispatch = useDispatch();
-    
+
     const cardsSelector = useSelector(state => state.productPage.productData
-        [props.game].subCategories[props.subCategory].cards)
-    const adminPanelSubCategoriesSelector = useSelector(state => state.adminPanel.subCategoriesCardsEditor)
+        [props.game].subCategories[props.subCategory].cards);
+    const adminPanelSubCategoriesSelector = useSelector(state => state.adminPanel.subCategoriesCardsEditor);
+    const deletedSubCategoriesCardsSelector = useSelector(state => state.adminPanel.deletedSubCategoriesCards);
 
     const [enterCardName, setEnterCardName] = useState('');
     const [enterCardPrice, setEnterCardPrice] = useState('');
@@ -22,7 +29,6 @@ const SubCategoriesCardsEditor = (props) => {
     const [currentCardImgSrc, setCurrentCardImgSrc] = useState('');
     const [currentCardLink, setCurrentCardLink] = useState('');
     const [imgPreview, setImgPreview] = useState(null);
-    const [firstRender, setFirstRender] = useState(true);
 
     const cardSelect = useRef(null);
 
@@ -60,6 +66,12 @@ const SubCategoriesCardsEditor = (props) => {
         }
     };
 
+    const handleSubCategoriesCardDelete = () => {
+        dispatch(deleteSubCategoriesCard({
+            name: cardSelect.current.value
+        }))
+    };
+
     const handleAcceptChanges = () => {
         dispatch(handleSubCategoriesChanges(
             {
@@ -71,21 +83,23 @@ const SubCategoriesCardsEditor = (props) => {
         ))
     };
 
+    const cancelCardDeletion = () => {
+        dispatch(cancelSubCategoriesCardDeletion())
+    }
+
     const cardsList = adminPanelSubCategoriesSelector.map((card) => (
-            <option key={card.id}>{card.title}</option>
-        ));
+        <option key={card.id}>{card.title}</option>
+    ));
 
     useEffect(() => {
         handleCardSelect()
     }, [handleCardSelect])
 
     useEffect(() => {
-        if (firstRender) {
-            dispatch(fillSubCategoriesEditor(cardsSelector))
-            setFirstRender(false);
-        }
-    }, [cardsSelector, dispatch, firstRender])
-    
+        dispatch(fillSubCategoriesEditor(cardsSelector))
+
+    }, [cardsSelector, dispatch])
+
     return (
         <Container fluid>
             <Form>
@@ -114,6 +128,27 @@ const SubCategoriesCardsEditor = (props) => {
                 </Form.Group>
             </Form>
             <input type={'file'} accept={'image/*,video/*'} onChange={handleImgFileChange}/>
+            <div id={'subCategoriesCardsEditorDeleteCancelButtons'}>
+                {adminPanelSubCategoriesSelector.length > 0 ?
+                    <Button
+                        className={'nextPageButton'}
+                        onClick={() => handleSubCategoriesCardDelete()}
+                    >Delete card</Button>
+                    :
+                    null
+                }
+                {
+                    deletedSubCategoriesCardsSelector.length > 0 ?
+                        <Button
+                            className={'nextPageButton'}
+                            onClick={() => cancelCardDeletion()}
+                        >
+                            Cancel
+                        </Button>
+                        :
+                        null
+                }
+            </div>
             <Container fluid>
                 <Row>
                     <Col>

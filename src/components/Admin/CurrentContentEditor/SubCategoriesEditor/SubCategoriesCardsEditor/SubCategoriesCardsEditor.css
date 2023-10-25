@@ -1,0 +1,9 @@
+#subCategoriesCardsEditorDeleteCancelButtons {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+}
+
+#subCategoriesCardsEditorDeleteCancelButtons button {
+    margin: 0.2em;
+}

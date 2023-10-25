@@ -11,7 +11,8 @@ const adminPanelSlice = createSlice(
             contentSliderEditorRanges: [],
             checkboxesEditor: [],
             gamePageCardsEditor: [],
-            subCategoriesCardsEditor: []
+            subCategoriesCardsEditor: [],
+            deletedSubCategoriesCards: []
         },
         reducers: {
             addContentSliderRange: (state, action) => {
@@ -97,7 +98,12 @@ const adminPanelSlice = createSlice(
                 }
             },
             fillSubCategoriesEditor: (state, action) => {
-                state.subCategoriesCardsEditor = action.payload
+
+                // We clear state.deletedSubCategoriesCards because, when first render starts, we fill subCategoriesCardsEditor
+                // and it means we don't have any deleted cards.
+
+                state.subCategoriesCardsEditor = action.payload;
+                state.deletedSubCategoriesCards = [];
             },
             handleSubCategoriesChanges: (state, action) => {
                 for (let i = 0; i < state.subCategoriesCardsEditor.length; i++) {
@@ -107,6 +113,24 @@ const adminPanelSlice = createSlice(
                         state.subCategoriesCardsEditor[i].src = action.payload.src;
                     }
                 }
+            },
+            deleteSubCategoriesCard: (state, action) => {
+                for (let i = 0; i < state.subCategoriesCardsEditor.length; i++) {
+                    if (state.subCategoriesCardsEditor[i].title === action.payload.name) {
+                        const deletedCard = state.subCategoriesCardsEditor[i];
+                        state.subCategoriesCardsEditor.splice(i, 1);
+                        state.deletedSubCategoriesCards.push({card: deletedCard, index: i});
+                    }
+                }
+            },
+            cancelSubCategoriesCardDeletion: (state, action) => {
+
+                // We take last element from array by using .pop() and put it inside 'subCategoriesCardsEditor' array.
+                // We also use index at which this element was located in 'subCategoriesCardsEditor' array.
+                // We do it, when we removed one or more cards from 'subCategoriesCardsEditor' array and want to cancel
+                // our decision. 'deletedSubCategoriesCards' array consists information about deleted cards.
+                const returnedCard = state.deletedSubCategoriesCards.pop()
+                state.subCategoriesCardsEditor.splice(returnedCard.index, 0, returnedCard.card);
             }
         }
     }
@@ -124,7 +148,9 @@ export const {
     fillGamePageCardsEditor,
     handleGamePageCardsChanges,
     fillSubCategoriesEditor,
-    handleSubCategoriesChanges
+    handleSubCategoriesChanges,
+    deleteSubCategoriesCard,
+    cancelSubCategoriesCardDeletion
 } = adminPanelSlice.actions;
 
 export default adminPanelSlice.reducer
