@@ -21,9 +21,9 @@ const ChooseHomePageCard = (props) => {
     }
 
     const cardsList = () => {
-        if (currentCardsSelector) {
+        if (props.cardsSelector) {
             return (
-                currentCardsSelector.map((card, index) => (
+                props.cardsSelector.map((card, index) => (
                     <Button
                         className={activeCard === index ? 'activeButton' : 'defaultButton'}
                         onClick={() => handleCardSelect(card, index)}
@@ -39,17 +39,17 @@ const ChooseHomePageCard = (props) => {
         <Container fluid>
             <div>{cardsList()}</div>
             <Row xs={1} md={3} id={'cards-row'} className={'homePageCardEditorPreviewRow'}>
-                {props.card ?
+                {currentCardsSelector.length > 0 ?
                     <OfferCard
-                        key={props.card.id}
-                        bg={props.card.bg}
-                        id={props.card.tagId}
-                        title={props.card.title}
-                        text={props.card.text}
+                        key={currentCardsSelector[activeCard].id}
+                        bg={currentCardsSelector[activeCard].bg}
+                        id={currentCardsSelector[activeCard].tagId}
+                        title={currentCardsSelector[activeCard].title}
+                        text={currentCardsSelector[activeCard].text}
                         button={
                             <Container fluid><Row className={'row-cols-auto'}>
                                 {
-                                    props.card.button.map(button => (
+                                    currentCardsSelector[activeCard].button.map(button => (
                                         <CardsButton
                                             key={button.id}
                                             link={button.link}

@@ -6,9 +6,9 @@ import HomePageCardContentEdit from "./HomePageCardContentEdit/HomePageCardConte
 import {fillHomePageOfferCards} from "../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
 import Container from "react-bootstrap/Container";
 import {Col, Row} from "react-bootstrap";
-import OfferCard from "../../../Homepage/Cards/OfferCard";
-import CardsButton from "../../../Homepage/Cards/Buttons/CardsButton";
 import {addCardsData} from "../../../../store/slices/homePageSlice";
+import HomePageCardsEditorCardPreview from "./HomePageCardsEditorCardPreview/HomePageCardsEditorCardPreview";
+import './HomePageCardsEditor.css';
 
 const HomePageCardsEditor = () => {
 
@@ -46,33 +46,10 @@ const HomePageCardsEditor = () => {
                         card={card}
                     />
                 </Col>
-                <Col md={6}>
-                    <Row xs={1} md={3} id={'cards-row'} className={'homePageCardEditorPreviewRow'}>
-                        {card ?
-                            <OfferCard
-                                key={card.id}
-                                bg={card.bg}
-                                id={card.tagId}
-                                title={card.title}
-                                text={card.text}
-                                button={
-                                    <Container fluid><Row className={'row-cols-auto'}>
-                                        {
-                                            card.button.map(button => (
-                                                <CardsButton
-                                                    key={button.id}
-                                                    link={button.link}
-                                                    type={button.type}
-                                                    class={button.class}
-                                                    name={button.name}
-                                                />))
-                                        }
-                                    </Row></Container>}
-                            />
-                            :
-                            null
-                        }
-                    </Row>
+                <Col md={6} id={'homePageCardsEditorCardPreviewCol'}>
+                    <HomePageCardsEditorCardPreview
+                        card={card}
+                    />
                 </Col>
             </Row>
         </Container>
