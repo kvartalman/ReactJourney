@@ -13,7 +13,8 @@ const adminPanelEditorSlice = createSlice(
             gamePageCardsEditor: [],
             deletedGamePageCards: [],
             subCategoriesCardsEditor: [],
-            deletedSubCategoriesCards: []
+            deletedSubCategoriesCards: [],
+            homePageOfferCards: []
         },
         reducers: {
             addContentSliderRange: (state, action) => {
@@ -145,6 +146,17 @@ const adminPanelEditorSlice = createSlice(
                 // our decision. 'deletedSubCategoriesCards' array consists information about deleted cards.
                 const returnedCard = state.deletedSubCategoriesCards.pop()
                 state.subCategoriesCardsEditor.splice(returnedCard.index, 0, returnedCard.card);
+            },
+            fillHomePageOfferCards: (state, action) => {
+                state.homePageOfferCards = action.payload
+            },
+            handleHomePageOfferCardsChanges: (state, action) => {
+                for (let i = 0; i < state.homePageOfferCards.length; i++) {
+                    if (state.homePageOfferCards[i].tagId === action.payload.card.tagId) {
+                        state.homePageOfferCards[i].title = action.payload.title;
+                        state.homePageOfferCards[i].text = action.payload.text;
+                    }
+                }
             }
         }
     }
@@ -166,7 +178,9 @@ export const {
     fillSubCategoriesEditor,
     handleSubCategoriesChanges,
     deleteSubCategoriesCard,
-    cancelSubCategoriesCardDeletion
+    cancelSubCategoriesCardDeletion,
+    fillHomePageOfferCards,
+    handleHomePageOfferCardsChanges
 } = adminPanelEditorSlice.actions;
 
 export default adminPanelEditorSlice.reducer

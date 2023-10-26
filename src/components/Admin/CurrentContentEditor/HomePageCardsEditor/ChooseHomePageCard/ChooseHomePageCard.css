@@ -1,0 +1,9 @@
+.homePageCardEditorPreviewRow > .cardCol > .cardPosition {
+    background-size: cover !important;
+    background-position: center !important;
+
+}
+
+.homePageCardEditorPreviewRow > .cardCol {
+    width: 80%;
+}

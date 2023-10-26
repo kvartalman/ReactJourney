@@ -15,7 +15,7 @@ const Cards = (props) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get('https://mocki.io/v1/8ea44757-6a9f-4c51-84b9-36a7f17a8aaa').then(response => {
+        axios.get('https://mocki.io/v1/bbcef0d5-c8a0-44a0-bedf-6e3ca13ff643').then(response => {
             dispatch(addCardsData(response.data));
             setLoading(false);
 
