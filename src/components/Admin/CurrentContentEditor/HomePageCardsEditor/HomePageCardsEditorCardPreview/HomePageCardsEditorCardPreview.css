@@ -15,13 +15,5 @@
 
 .homePageCardEditorPreviewRow {
     justify-content: center;
-    position: sticky;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: opacity 0.5s;
-    opacity: 1;
 }
 
-.hidden {
-    opacity: 0;
-}

@@ -4,14 +4,18 @@ import Button from "react-bootstrap/Button";
 import CardsButton from "../../../../Homepage/Cards/Buttons/CardsButton";
 import './HomePageCardButtonsEditor.css';
 import Form from "react-bootstrap/Form";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {
+    cancelHomePageOfferCardButtonDeletion,
+    deleteHomePageOfferCardButton,
     handleHomePageOfferCardsButtonChanges
 } from "../../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
 
 const HomePageCardButtonsEditor = (props) => {
 
     const dispatch = useDispatch();
+
+    const deletedButtonsSelector = useSelector(state => state.adminPanel.deletedHomePageOfferCardsButtons);
 
     const [activeButton, setActiveButton] = useState(0);
     const [enterButtonName, setEnterButtonName] = useState('');
@@ -34,6 +38,18 @@ const HomePageCardButtonsEditor = (props) => {
             }
         ))
     }
+    const deleteButtonHandler = () => {
+        dispatch(deleteHomePageOfferCardButton(
+            {
+                card: props.card,
+                button: props.button
+            }
+        ))
+    }
+
+    const cancelButtonDeletionHandler = () => {
+        dispatch(cancelHomePageOfferCardButtonDeletion());
+    }
 
     const buttonsList = () => {
         if (props.card) {
@@ -50,7 +66,9 @@ const HomePageCardButtonsEditor = (props) => {
 
     return (
         <Container fluid>
-            {buttonsList()}
+            <div>
+                {buttonsList()}
+            </div>
             <div id={'homePageCardsEditorCardButtonPreviewContainer'}>
                 {props.button ?
                     <CardsButton
@@ -64,11 +82,33 @@ const HomePageCardButtonsEditor = (props) => {
                     null
                 }
             </div>
+            {props.cardsSelector.length > 0 ?
+            <Button
+                className={'nextPageButton'}
+                onClick={() => deleteButtonHandler()}
+            >
+                Delete button
+            </Button>
+                :
+                null
+            }
+            {deletedButtonsSelector.length > 0 ?
+                <Button
+                    className={'nextPageButton'}
+                    onClick={() => cancelButtonDeletionHandler()}
+                >
+                    Cancel
+                </Button>
+                :
+                null
+            }
             <Form>
                 <Form.Group>
+                    <Form.Label><h4>Edit button name</h4></Form.Label>
                     <Form.Control
                         value={enterButtonName}
                         onChange={enterButtonNameInput}
+                        placeholder={'Enter button name...'}
                     />
                 </Form.Group>
             </Form>

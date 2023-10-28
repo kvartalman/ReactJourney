@@ -41,12 +41,14 @@ const HomePageCardContentEdit = (props) => {
                     <Form.Control
                         value={enterTitle}
                         onChange={enterTitleInput}
+                        placeholder={'Enter title...'}
                     />
 
                     <Form.Label>Edit text</Form.Label>
                     <Form.Control
                         value={enterText}
                         onChange={enterTextInput}
+                        placeholder={'Enter text...'}
                     />
                 </Form.Group>
             </Form>

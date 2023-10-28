@@ -3,7 +3,11 @@ import ChooseHomePageCard from "./ChooseHomePageCard/ChooseHomePageCard";
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import HomePageCardContentEdit from "./HomePageCardContentEdit/HomePageCardContentEdit";
-import {fillHomePageOfferCards} from "../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
+import {
+    cancelHomePageOfferCardDeletion,
+    deleteHomePageOfferCard,
+    fillHomePageOfferCards
+} from "../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
 import Container from "react-bootstrap/Container";
 import {Col, Row} from "react-bootstrap";
 import {addCardsData} from "../../../../store/slices/homePageSlice";
@@ -15,17 +19,32 @@ import CardsButton from "../../../Homepage/Cards/Buttons/CardsButton";
 import HomePageCardEditorCurrentCardPreview
     from "./HomePageCardEditorCurrentCardPreview/HomePageCardEditorCurrentCardPreview";
 import Cards from "../../../Homepage/Cards/Cards";
+import HomePageCardsEditorFinalPreview from "./HomePageCardsEditorFinalPreview/HomePageCardsEditorFinalPreview";
+import Button from "react-bootstrap/Button";
 
 const HomePageCardsEditor = () => {
 
     const dispatch = useDispatch();
 
-    const cardsSelector = useSelector(state => state.adminPanel.homePageOfferCards)
+    const cardsSelector = useSelector(state => state.adminPanel.homePageOfferCards);
+    const deletedCardsSelector = useSelector(state => state.adminPanel.deletedHomePageOfferCards);
 
 
     const [card, setCard] = useState(null);
     const [button, setButton] = useState(null);
     const [activeCardIndex, setActiveCardIndex] = useState(0);
+
+    const deleteCardHandler = () => {
+        dispatch(deleteHomePageOfferCard(
+            {
+            card: card
+        }
+        ))
+    }
+
+    const cancelDeletionHandler = () => {
+        dispatch(cancelHomePageOfferCardDeletion())
+    }
 
     useEffect(() => {
         axios.get('https://mocki.io/v1/bbcef0d5-c8a0-44a0-bedf-6e3ca13ff643').then(response => {
@@ -57,6 +76,26 @@ const HomePageCardsEditor = () => {
                     <HomePageCardEditorCurrentCardPreview
                         activeCardIndex={activeCardIndex}
                     />
+                    {cardsSelector.length > 0 ?
+                    <Button
+                        className={'nextPageButton'}
+                        onClick={() => deleteCardHandler()}
+                    >Delete card
+                    </Button>
+                        :
+                        null
+                    }
+                    {deletedCardsSelector.length > 0 ?
+                        <Button
+                            className={'nextPageButton'}
+                            onClick={() => cancelDeletionHandler()}
+                        >
+                            Cancel
+                        </Button>
+                        :
+                        null
+                    }
+                    <h2>Edit card</h2>
                     <HomePageCardContentEdit
                         cardsSelector={cardsSelector}
                         card={card}
@@ -75,8 +114,8 @@ const HomePageCardsEditor = () => {
                 </Col>
             </Row>
             <Row className={'homePageCardsEditorCardsFinalPreviewRow'}>
-                <h2>Final preview</h2>
-                <Cards />
+                <h1>Final preview</h1>
+                <HomePageCardsEditorFinalPreview />
             </Row>
         </Container>
     );

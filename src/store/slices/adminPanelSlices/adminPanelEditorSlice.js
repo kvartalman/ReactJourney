@@ -14,7 +14,9 @@ const adminPanelEditorSlice = createSlice(
             deletedGamePageCards: [],
             subCategoriesCardsEditor: [],
             deletedSubCategoriesCards: [],
-            homePageOfferCards: []
+            homePageOfferCards: [],
+            deletedHomePageOfferCards: [],
+            deletedHomePageOfferCardsButtons: []
         },
         reducers: {
             addContentSliderRange: (state, action) => {
@@ -168,6 +170,46 @@ const adminPanelEditorSlice = createSlice(
                         }
                     }
                 }
+            },
+            deleteHomePageOfferCard: (state, action) => {
+                for (let i = 0; i < state.homePageOfferCards.length; i++) {
+                    if (state.homePageOfferCards[i].title === action.payload.card.title) {
+                        const deletedCard = state.homePageOfferCards[i];
+                        state.homePageOfferCards.splice(i, 1);
+                        state.deletedHomePageOfferCards.push({card: deletedCard, index: i});
+                    }
+                }
+            },
+            cancelHomePageOfferCardDeletion: (state, action) => {
+                const returnedCard = state.deletedHomePageOfferCards.pop()
+                state.homePageOfferCards.splice(returnedCard.index, 0, returnedCard.card);
+            },
+            deleteHomePageOfferCardButton: (state, action) => {
+                for (let i = 0; i < state.homePageOfferCards.length; i++) {
+                    if (state.homePageOfferCards[i].title === action.payload.card.title) {
+                        for (let j = 0; j < state.homePageOfferCards[i].button.length; j++) {
+                            if (state.homePageOfferCards[i].button[j].name === action.payload.button.name) {
+                                const deletedButton = state.homePageOfferCards[i].button[j];
+                                state.homePageOfferCards[i].button.splice(j, 1);
+                                state.deletedHomePageOfferCardsButtons.push(
+                                    {
+                                        button: deletedButton,
+                                        index: j,
+                                        cardName: state.homePageOfferCards[i].title
+                                    }
+                                )
+                            }
+                        }
+                    }
+                }
+            },
+            cancelHomePageOfferCardButtonDeletion: (state, action) => {
+                const returnedButton = state.deletedHomePageOfferCardsButtons.pop()
+                for (let i = 0; i < state.homePageOfferCards.length; i++) {
+                    if (state.homePageOfferCards[i].title === returnedButton.cardName) {
+                        state.homePageOfferCards[i].button.splice(returnedButton.index, 0, returnedButton.button);
+                    }
+                }
             }
         }
     }
@@ -192,7 +234,11 @@ export const {
     cancelSubCategoriesCardDeletion,
     fillHomePageOfferCards,
     handleHomePageOfferCardsChanges,
-    handleHomePageOfferCardsButtonChanges
+    handleHomePageOfferCardsButtonChanges,
+    deleteHomePageOfferCard,
+    cancelHomePageOfferCardDeletion,
+    deleteHomePageOfferCardButton,
+    cancelHomePageOfferCardButtonDeletion
 } = adminPanelEditorSlice.actions;
 
 export default adminPanelEditorSlice.reducer
