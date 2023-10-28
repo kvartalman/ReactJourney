@@ -11,13 +11,9 @@ import {useSelector} from "react-redux";
 
 const ChooseHomePageCard = (props) => {
 
-    const currentCardsSelector = useSelector(state => state.homePage.cardsData);
-
-    const [activeCard, setActiveCard] = useState(0);
-
     const handleCardSelect = (card, index) => {
         props.setCard(card);
-        setActiveCard(index);
+        props.setActiveCardIndex(index);
     }
 
     const cardsList = () => {
@@ -25,7 +21,7 @@ const ChooseHomePageCard = (props) => {
             return (
                 props.cardsSelector.map((card, index) => (
                     <Button
-                        className={activeCard === index ? 'activeButton' : 'defaultButton'}
+                        className={props.activeCardIndex === index ? 'activeButton' : 'defaultButton'}
                         onClick={() => handleCardSelect(card, index)}
                     >
                         {card.title}
@@ -38,32 +34,7 @@ const ChooseHomePageCard = (props) => {
     return (
         <Container fluid>
             <div>{cardsList()}</div>
-            <Row xs={1} md={3} id={'cards-row'} className={'homePageCardEditorPreviewRow'}>
-                {currentCardsSelector.length > 0 ?
-                    <OfferCard
-                        key={currentCardsSelector[activeCard].id}
-                        bg={currentCardsSelector[activeCard].bg}
-                        id={currentCardsSelector[activeCard].tagId}
-                        title={currentCardsSelector[activeCard].title}
-                        text={currentCardsSelector[activeCard].text}
-                        button={
-                            <Container fluid><Row className={'row-cols-auto'}>
-                                {
-                                    currentCardsSelector[activeCard].button.map(button => (
-                                        <CardsButton
-                                            key={button.id}
-                                            link={button.link}
-                                            type={button.type}
-                                            class={button.class}
-                                            name={button.name}
-                                        />))
-                                }
-                            </Row></Container>}
-                    />
-                    :
-                    null
-                }
-            </Row>
+
         </Container>
     );
 };

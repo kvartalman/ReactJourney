@@ -3,22 +3,26 @@ import OfferCard from "../../../../Homepage/Cards/OfferCard";
 import Container from "react-bootstrap/Container";
 import {Row} from "react-bootstrap";
 import CardsButton from "../../../../Homepage/Cards/Buttons/CardsButton";
+import {useSelector} from "react-redux";
 
-const HomePageCardsEditorCardPreview = (props) => {
+const HomePageCardEditorCurrentCardPreview = (props) => {
+
+    const currentCardsSelector = useSelector(state => state.homePage.cardsData);
+
     return (
         <Row xs={1} md={3} id={'cards-row'} className={'homePageCardEditorPreviewRow'}>
-            <h2>Preview with changes</h2>
-            {props.card ?
+            <h2>Current view of card</h2>
+            {currentCardsSelector.length > 0 ?
                 <OfferCard
-                    key={props.card.id}
-                    bg={props.card.bg}
-                    id={props.card.tagId}
-                    title={props.card.title}
-                    text={props.card.text}
+                    key={currentCardsSelector[props.activeCardIndex].id}
+                    bg={currentCardsSelector[props.activeCardIndex].bg}
+                    id={currentCardsSelector[props.activeCardIndex].tagId}
+                    title={currentCardsSelector[props.activeCardIndex].title}
+                    text={currentCardsSelector[props.activeCardIndex].text}
                     button={
                         <Container fluid><Row className={'row-cols-auto'}>
                             {
-                                props.card.button.map(button => (
+                                currentCardsSelector[props.activeCardIndex].button.map(button => (
                                     <CardsButton
                                         key={button.id}
                                         link={button.link}
@@ -36,4 +40,4 @@ const HomePageCardsEditorCardPreview = (props) => {
     );
 };
 
-export default HomePageCardsEditorCardPreview;
+export default HomePageCardEditorCurrentCardPreview;

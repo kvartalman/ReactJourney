@@ -10,6 +10,10 @@ import {addCardsData} from "../../../../store/slices/homePageSlice";
 import HomePageCardsEditorCardPreview from "./HomePageCardsEditorCardPreview/HomePageCardsEditorCardPreview";
 import './HomePageCardsEditor.css';
 import HomePageCardButtonsEditor from "./HomePageCardButtonsEditor/HomePageCardButtonsEditor";
+import OfferCard from "../../../Homepage/Cards/OfferCard";
+import CardsButton from "../../../Homepage/Cards/Buttons/CardsButton";
+import HomePageCardEditorCurrentCardPreview
+    from "./HomePageCardEditorCurrentCardPreview/HomePageCardEditorCurrentCardPreview";
 
 const HomePageCardsEditor = () => {
 
@@ -17,8 +21,10 @@ const HomePageCardsEditor = () => {
 
     const cardsSelector = useSelector(state => state.adminPanel.homePageOfferCards)
 
+
     const [card, setCard] = useState(null);
     const [button, setButton] = useState(null);
+    const [activeCardIndex, setActiveCardIndex] = useState(0);
 
     useEffect(() => {
         axios.get('https://mocki.io/v1/bbcef0d5-c8a0-44a0-bedf-6e3ca13ff643').then(response => {
@@ -38,11 +44,16 @@ const HomePageCardsEditor = () => {
     return (
         <Container fluid>
             <Row>
+                <ChooseHomePageCard
+                    activeCardIndex={activeCardIndex}
+                    setActiveCardIndex={setActiveCardIndex}
+                    setCard={setCard}
+                    cardsSelector={cardsSelector}
+                    card={card}
+                />
                 <Col md={6}>
-                    <ChooseHomePageCard
-                        setCard={setCard}
-                        cardsSelector={cardsSelector}
-                        card={card}
+                    <HomePageCardEditorCurrentCardPreview
+                        activeCardIndex={activeCardIndex}
                     />
                     <HomePageCardContentEdit
                         cardsSelector={cardsSelector}

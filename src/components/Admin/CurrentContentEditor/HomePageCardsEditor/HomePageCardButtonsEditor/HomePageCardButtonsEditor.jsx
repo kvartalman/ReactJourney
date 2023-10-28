@@ -11,18 +11,23 @@ const HomePageCardButtonsEditor = (props) => {
         setActiveButton(index);
     }
 
-    const buttonsList = props.card.button.map((button, index) => (
-        <Button
-            className={activeButton === index ? "activeButton" : "defaultButton"}
-            onClick={() => handleButtonSelect(button ,index)}
-        >
-            {button.name}
-        </Button>
-    ))
+    const buttonsList = () => {
+        if (props.card) {
+            return (props.card.button.map((button, index) => (
+                <Button
+                    className={activeButton === index ? "activeButton" : "defaultButton"}
+                    onClick={() => handleButtonSelect(button, index)}
+                >
+                    {button.name}
+                </Button>
+            )))
+        }
+    }
+
 
     return (
         <Container fluid>
-            {buttonsList}
+            {buttonsList()}
         </Container>
     );
 };

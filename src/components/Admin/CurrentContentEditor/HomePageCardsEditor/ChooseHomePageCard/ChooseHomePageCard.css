@@ -7,3 +7,13 @@
 .homePageCardEditorPreviewRow > .cardCol {
     width: 80%;
 }
+
+.homePageCardEditorPreviewRow h2 {
+    width: 100%;
+    text-align: center;
+}
+
+.homePageCardEditorPreviewRow {
+    justify-content: center;
+    align-items: center;
+}
