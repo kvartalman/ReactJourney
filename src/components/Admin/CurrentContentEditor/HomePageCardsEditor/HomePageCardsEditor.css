@@ -3,3 +3,12 @@
     justify-content: center;
     align-items: center;
 }
+
+.homePageCardsEditorCardsFinalPreviewRow {
+    justify-content: center;
+    align-items: center;
+}
+
+.homePageCardsEditorCardsFinalPreviewRow h2 {
+    text-align: center;
+}

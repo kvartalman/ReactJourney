@@ -14,6 +14,7 @@ import OfferCard from "../../../Homepage/Cards/OfferCard";
 import CardsButton from "../../../Homepage/Cards/Buttons/CardsButton";
 import HomePageCardEditorCurrentCardPreview
     from "./HomePageCardEditorCurrentCardPreview/HomePageCardEditorCurrentCardPreview";
+import Cards from "../../../Homepage/Cards/Cards";
 
 const HomePageCardsEditor = () => {
 
@@ -50,6 +51,7 @@ const HomePageCardsEditor = () => {
                     setCard={setCard}
                     cardsSelector={cardsSelector}
                     card={card}
+                    setButton={setButton}
                 />
                 <Col md={6}>
                     <HomePageCardEditorCurrentCardPreview
@@ -71,6 +73,10 @@ const HomePageCardsEditor = () => {
                         card={card}
                     />
                 </Col>
+            </Row>
+            <Row className={'homePageCardsEditorCardsFinalPreviewRow'}>
+                <h2>Final preview</h2>
+                <Cards />
             </Row>
         </Container>
     );

@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
+import CardsButton from "../../../../Homepage/Cards/Buttons/CardsButton";
+import './HomePageCardButtonsEditor.css';
 
 const HomePageCardButtonsEditor = (props) => {
 
@@ -24,10 +26,22 @@ const HomePageCardButtonsEditor = (props) => {
         }
     }
 
-
     return (
         <Container fluid>
             {buttonsList()}
+            <div id={'homePageCardsEditorCardButtonPreviewContainer'}>
+            {props.button ?
+                <CardsButton
+                    key={props.button.id}
+                    link={props.button.link}
+                    type={props.button.type}
+                    class={props.button.class}
+                    name={props.button.name}
+                />
+                :
+                null
+            }
+            </div>
         </Container>
     );
 };

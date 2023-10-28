@@ -4,13 +4,14 @@ import Container from "react-bootstrap/Container";
 import {Row} from "react-bootstrap";
 import CardsButton from "../../../../Homepage/Cards/Buttons/CardsButton";
 import {useSelector} from "react-redux";
+import './HomePageCardEditorCurrentCardPreview.css';
 
 const HomePageCardEditorCurrentCardPreview = (props) => {
 
     const currentCardsSelector = useSelector(state => state.homePage.cardsData);
 
     return (
-        <Row xs={1} md={3} id={'cards-row'} className={'homePageCardEditorPreviewRow'}>
+        <Row xs={1} md={3} id={'cards-row'} className={'homePageCardEditorCurrentCardPreviewRow'}>
             <h2>Current view of card</h2>
             {currentCardsSelector.length > 0 ?
                 <OfferCard

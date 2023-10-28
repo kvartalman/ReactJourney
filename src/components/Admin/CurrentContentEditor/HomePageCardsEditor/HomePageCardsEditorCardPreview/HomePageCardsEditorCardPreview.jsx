@@ -3,11 +3,13 @@ import OfferCard from "../../../../Homepage/Cards/OfferCard";
 import Container from "react-bootstrap/Container";
 import {Row} from "react-bootstrap";
 import CardsButton from "../../../../Homepage/Cards/Buttons/CardsButton";
+import './HomePageCardsEditorCardPreview.css';
 
 const HomePageCardsEditorCardPreview = (props) => {
+
     return (
         <Row xs={1} md={3} id={'cards-row'} className={'homePageCardEditorPreviewRow'}>
-            <h2>Preview with changes</h2>
+            <h2>Card preview with changes</h2>
             {props.card ?
                 <OfferCard
                     key={props.card.id}
@@ -15,6 +17,7 @@ const HomePageCardsEditorCardPreview = (props) => {
                     id={props.card.tagId}
                     title={props.card.title}
                     text={props.card.text}
+                    className={'homePageCardEditorPreviewCard'}
                     button={
                         <Container fluid><Row className={'row-cols-auto'}>
                             {

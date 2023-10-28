@@ -1,0 +1,27 @@
+.homePageCardEditorPreviewRow > .cardCol > .cardPosition {
+    background-size: cover !important;
+    background-position: center !important;
+
+}
+
+.homePageCardEditorPreviewRow > .cardCol {
+    width: 80%;
+}
+
+.homePageCardEditorPreviewRow h2 {
+    width: 100%;
+    text-align: center;
+}
+
+.homePageCardEditorPreviewRow {
+    justify-content: center;
+    position: sticky;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.5s;
+    opacity: 1;
+}
+
+.hidden {
+    opacity: 0;
+}

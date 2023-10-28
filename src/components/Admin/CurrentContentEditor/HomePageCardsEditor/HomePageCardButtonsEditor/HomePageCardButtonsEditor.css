@@ -1,0 +1,11 @@
+#homePageCardsEditorCardButtonPreviewContainer {
+    display: inline-block;
+}
+
+#homePageCardsEditorCardButtonPreviewContainer > .buttonForm > .card-main-button {
+    background-color: rgba(255, 193, 7, 0.8);
+}
+
+#homePageCardsEditorCardButtonPreviewContainer > .buttonForm > .order-button {
+    background-color: rgba(33, 37, 41, 0.8);
+}

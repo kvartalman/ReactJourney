@@ -55,7 +55,7 @@ const Cards = (props) => {
     return (
 
         <Container fluid>
-            <img src={'./backgrounds/bestoffers.png'} alt={'BEST OFFERS'} className={'img-fluid imgTab'}/>
+            <img src={'/backgrounds/bestoffers.png'} alt={'BEST OFFERS'} className={'img-fluid imgTab'}/>
             <Row xs={1} md={3} id={'cards-row'} className={'border border-4 g-3'}>
                 {/*row-cols-* - set the cards width by setting amount of cards in row*/}
                 {loading ? <div id={'homePageCardsPreloader'}>

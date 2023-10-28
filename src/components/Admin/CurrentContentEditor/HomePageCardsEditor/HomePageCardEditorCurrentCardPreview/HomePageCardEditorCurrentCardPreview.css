@@ -1,0 +1,19 @@
+.homePageCardEditorCurrentCardPreviewRow > .cardCol > .cardPosition {
+    background-size: cover !important;
+    background-position: center !important;
+
+}
+
+.homePageCardEditorCurrentCardPreviewRow > .cardCol {
+    width: 80%;
+}
+
+.homePageCardEditorCurrentCardPreviewRow h2 {
+    width: 100%;
+    text-align: center;
+}
+
+.homePageCardEditorCurrentCardPreviewRow {
+    justify-content: center;
+    align-items: center;
+}
