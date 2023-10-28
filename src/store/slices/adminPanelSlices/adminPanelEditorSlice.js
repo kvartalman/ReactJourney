@@ -157,6 +157,17 @@ const adminPanelEditorSlice = createSlice(
                         state.homePageOfferCards[i].text = action.payload.text;
                     }
                 }
+            },
+            handleHomePageOfferCardsButtonChanges: (state, action) => {
+                for (let i = 0; i < state.homePageOfferCards.length; i++) {
+                    if (state.homePageOfferCards[i].title === action.payload.card.title) {
+                        for (let j = 0; j < state.homePageOfferCards[i].button.length; j++) {
+                            if (state.homePageOfferCards[i].button[j].name === action.payload.button.name) {
+                                state.homePageOfferCards[i].button[j].name = action.payload.text
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -180,7 +191,8 @@ export const {
     deleteSubCategoriesCard,
     cancelSubCategoriesCardDeletion,
     fillHomePageOfferCards,
-    handleHomePageOfferCardsChanges
+    handleHomePageOfferCardsChanges,
+    handleHomePageOfferCardsButtonChanges
 } = adminPanelEditorSlice.actions;
 
 export default adminPanelEditorSlice.reducer
