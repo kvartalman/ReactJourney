@@ -14,11 +14,8 @@ import {addCardsData} from "../../../../store/slices/homePageSlice";
 import HomePageCardsEditorCardPreview from "./HomePageCardsEditorCardPreview/HomePageCardsEditorCardPreview";
 import './HomePageCardsEditor.css';
 import HomePageCardButtonsEditor from "./HomePageCardButtonsEditor/HomePageCardButtonsEditor";
-import OfferCard from "../../../Homepage/Cards/OfferCard";
-import CardsButton from "../../../Homepage/Cards/Buttons/CardsButton";
 import HomePageCardEditorCurrentCardPreview
     from "./HomePageCardEditorCurrentCardPreview/HomePageCardEditorCurrentCardPreview";
-import Cards from "../../../Homepage/Cards/Cards";
 import HomePageCardsEditorFinalPreview from "./HomePageCardsEditorFinalPreview/HomePageCardsEditorFinalPreview";
 import Button from "react-bootstrap/Button";
 
@@ -33,12 +30,15 @@ const HomePageCardsEditor = () => {
     const [card, setCard] = useState(null);
     const [button, setButton] = useState(null);
     const [activeCardIndex, setActiveCardIndex] = useState(0);
+    const [activeButtonIndex, setActiveButtonIndex] = useState(0);
+
 
     const deleteCardHandler = () => {
         dispatch(deleteHomePageOfferCard(
             {
-            card: card
-        }
+                card: card,
+                activeCardIndex: activeCardIndex
+            }
         ))
     }
 
@@ -52,36 +52,34 @@ const HomePageCardsEditor = () => {
             dispatch(addCardsData(response.data));
             if (response.data) {
                 setCard(response.data[0]);
-                setButton(response.data[0].button[0])
+                setButton(response.data[0].button[0]);
             }
         });
     }, [])
 
     useEffect(() => {
-        setCard(cardsSelector[0])
-    }, [cardsSelector])
+
+    },)
 
     return (
         <Container fluid>
             <Row>
-                <ChooseHomePageCard
-                    activeCardIndex={activeCardIndex}
-                    setActiveCardIndex={setActiveCardIndex}
-                    setCard={setCard}
-                    cardsSelector={cardsSelector}
-                    card={card}
-                    setButton={setButton}
-                />
                 <Col md={6}>
-                    <HomePageCardEditorCurrentCardPreview
+                    <ChooseHomePageCard
                         activeCardIndex={activeCardIndex}
+                        setActiveCardIndex={setActiveCardIndex}
+                        setCard={setCard}
+                        cardsSelector={cardsSelector}
+                        card={card}
+                        setButton={setButton}
+                        setActiveButtonIndex={setActiveButtonIndex}
                     />
                     {cardsSelector.length > 0 ?
-                    <Button
-                        className={'nextPageButton'}
-                        onClick={() => deleteCardHandler()}
-                    >Delete card
-                    </Button>
+                        <Button
+                            className={'nextPageButton'}
+                            onClick={() => deleteCardHandler()}
+                        >Delete card
+                        </Button>
                         :
                         null
                     }
@@ -99,23 +97,39 @@ const HomePageCardsEditor = () => {
                     <HomePageCardContentEdit
                         cardsSelector={cardsSelector}
                         card={card}
+                        setCard={setCard}
+                        activeCardIndex={activeCardIndex}
+                        activeButtonIndex={activeButtonIndex}
+                        setButton={setButton}
                     />
                     <HomePageCardButtonsEditor
                         cardsSelector={cardsSelector}
                         card={card}
                         button={button}
                         setButton={setButton}
+                        activeCardIndex={activeCardIndex}
+                        activeButtonIndex={activeButtonIndex}
+                        setActiveButtonIndex={setActiveButtonIndex}
                     />
                 </Col>
                 <Col md={6} id={'homePageCardsEditorCardPreviewCol'}>
-                    <HomePageCardsEditorCardPreview
-                        card={card}
-                    />
+                    <div>
+                        <HomePageCardEditorCurrentCardPreview
+                            cardsSelector={cardsSelector}
+                            activeCardIndex={activeCardIndex}
+                            card={card}
+                        />
+                        <HomePageCardsEditorCardPreview
+                            card={card}
+                            activeCardIndex={activeCardIndex}
+                            cardsSelector={cardsSelector}
+                        />
+                    </div>
                 </Col>
             </Row>
             <Row className={'homePageCardsEditorCardsFinalPreviewRow'}>
                 <h1>Final preview</h1>
-                <HomePageCardsEditorFinalPreview />
+                <HomePageCardsEditorFinalPreview/>
             </Row>
         </Container>
     );

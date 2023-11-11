@@ -1,11 +1,8 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {handleHomePageOfferCardsChanges} from "../../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
-import OfferCard from "../../../../Homepage/Cards/OfferCard";
-import {Row} from "react-bootstrap";
-import CardsButton from "../../../../Homepage/Cards/Buttons/CardsButton";
 import Button from "react-bootstrap/Button";
 
 const HomePageCardContentEdit = (props) => {
@@ -32,6 +29,13 @@ const HomePageCardContentEdit = (props) => {
             }
         ))
     }
+
+    useEffect(
+        () => {
+           props.setCard(props.cardsSelector[props.activeCardIndex]);
+           props.setButton(props.cardsSelector[props.activeCardIndex].button[props.activeButtonIndex])
+        }, [props.cardsSelector]
+    )
 
     return (
         <Container fluid>

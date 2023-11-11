@@ -11,10 +11,11 @@ const ChooseHomePageCard = (props) => {
         props.setCard(card);
         props.setActiveCardIndex(index);
         props.setButton(card.button[0]);
+        props.setActiveButtonIndex(0);
     }
 
     const cardsList = () => {
-        if (props.cardsSelector) {
+        if (props.cardsSelector.length > 0) {
             return (
                 props.cardsSelector.map((card, index) => (
                     <Button

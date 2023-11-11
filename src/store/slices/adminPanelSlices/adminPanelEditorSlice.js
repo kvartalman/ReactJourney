@@ -92,6 +92,7 @@ const adminPanelEditorSlice = createSlice(
             },
             fillGamePageCardsEditor: (state, action) => {
                 state.gamePageCardsEditor = action.payload;
+                state.deletedGamePageCards.length = 0;
             },
             handleGamePageCardsChanges: (state, action) => {
                 for (let i = 0; i < state.gamePageCardsEditor.length; i++) {
@@ -150,7 +151,8 @@ const adminPanelEditorSlice = createSlice(
                 state.subCategoriesCardsEditor.splice(returnedCard.index, 0, returnedCard.card);
             },
             fillHomePageOfferCards: (state, action) => {
-                state.homePageOfferCards = action.payload
+                state.homePageOfferCards = action.payload;
+                state.deletedHomePageOfferCards = [];
             },
             handleHomePageOfferCardsChanges: (state, action) => {
                 for (let i = 0; i < state.homePageOfferCards.length; i++) {
@@ -172,34 +174,31 @@ const adminPanelEditorSlice = createSlice(
                 }
             },
             deleteHomePageOfferCard: (state, action) => {
-                for (let i = 0; i < state.homePageOfferCards.length; i++) {
-                    if (state.homePageOfferCards[i].title === action.payload.card.title) {
-                        const deletedCard = state.homePageOfferCards[i];
-                        state.homePageOfferCards.splice(i, 1);
-                        state.deletedHomePageOfferCards.push({card: deletedCard, index: i});
-                    }
-                }
+
+                const deletedCard = state.homePageOfferCards[action.payload.activeCardIndex];
+                state.homePageOfferCards.splice(action.payload.activeCardIndex, 1);
+                state.deletedHomePageOfferCards.push({card: deletedCard, index: action.payload.activeCardIndex});
+
             },
             cancelHomePageOfferCardDeletion: (state, action) => {
                 const returnedCard = state.deletedHomePageOfferCards.pop()
                 state.homePageOfferCards.splice(returnedCard.index, 0, returnedCard.card);
             },
             deleteHomePageOfferCardButton: (state, action) => {
-                for (let i = 0; i < state.homePageOfferCards.length; i++) {
-                    if (state.homePageOfferCards[i].title === action.payload.card.title) {
-                        for (let j = 0; j < state.homePageOfferCards[i].button.length; j++) {
-                            if (state.homePageOfferCards[i].button[j].name === action.payload.button.name) {
-                                const deletedButton = state.homePageOfferCards[i].button[j];
-                                state.homePageOfferCards[i].button.splice(j, 1);
-                                state.deletedHomePageOfferCardsButtons.push(
-                                    {
-                                        button: deletedButton,
-                                        index: j,
-                                        cardName: state.homePageOfferCards[i].title
-                                    }
-                                )
+
+                const wantedCard = state.homePageOfferCards[action.payload.activeCardIndex]
+
+                for (let i = 0; i < wantedCard.button.length; i++) {
+                    if (wantedCard.button[i].name === action.payload.button.name) {
+                        const deletedButton = wantedCard.button[i];
+                        state.homePageOfferCards[action.payload.activeCardIndex].button.splice(i, 1);
+                        state.deletedHomePageOfferCardsButtons.push(
+                            {
+                                button: deletedButton,
+                                index: i,
+                                cardName: wantedCard.title
                             }
-                        }
+                        )
                     }
                 }
             },

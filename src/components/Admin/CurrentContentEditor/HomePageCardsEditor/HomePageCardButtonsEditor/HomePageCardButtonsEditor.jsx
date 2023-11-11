@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import CardsButton from "../../../../Homepage/Cards/Buttons/CardsButton";
@@ -13,6 +13,10 @@ import {
 
 const HomePageCardButtonsEditor = (props) => {
 
+    // We can do renders in this component only if we already have filled array inside adminPanelSlice
+    // We make get request from mocki.io to fill array inside slice. After it, we can this array here.
+    // That's why we have here conditions like "if (props.card)..." or "if (props.cardsSelector.length > 0)..."
+
     const dispatch = useDispatch();
 
     const deletedButtonsSelector = useSelector(state => state.adminPanel.deletedHomePageOfferCardsButtons);
@@ -22,7 +26,7 @@ const HomePageCardButtonsEditor = (props) => {
 
     const handleButtonSelect = (button, index) => {
         props.setButton(button);
-        setActiveButton(index);
+        props.setActiveButtonIndex(index);
     }
 
     const enterButtonNameInput = (e) => {
@@ -34,7 +38,8 @@ const HomePageCardButtonsEditor = (props) => {
             {
                 card: props.card,
                 button: props.button,
-                text: enterButtonName
+                text: enterButtonName,
+                activeCardIndex: props.activeCardIndex
             }
         ))
     }
@@ -55,7 +60,7 @@ const HomePageCardButtonsEditor = (props) => {
         if (props.card) {
             return (props.card.button.map((button, index) => (
                 <Button
-                    className={activeButton === index ? "activeButton" : "defaultButton"}
+                    className={props.activeButtonIndex === index ? "activeButton" : "defaultButton"}
                     onClick={() => handleButtonSelect(button, index)}
                 >
                     {button.name}
@@ -63,6 +68,13 @@ const HomePageCardButtonsEditor = (props) => {
             )))
         }
     }
+
+    useEffect(
+        () => {
+            props.setButton(props.cardsSelector[props.activeCardIndex].button[props.activeButtonIndex])
+        }
+        , [props.cardsSelector]
+    )
 
     return (
         <Container fluid>
@@ -83,12 +95,12 @@ const HomePageCardButtonsEditor = (props) => {
                 }
             </div>
             {props.cardsSelector.length > 0 ?
-            <Button
-                className={'nextPageButton'}
-                onClick={() => deleteButtonHandler()}
-            >
-                Delete button
-            </Button>
+                <Button
+                    className={'nextPageButton'}
+                    onClick={() => deleteButtonHandler()}
+                >
+                    Delete button
+                </Button>
                 :
                 null
             }
