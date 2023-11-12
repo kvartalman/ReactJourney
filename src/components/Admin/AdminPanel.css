@@ -3,7 +3,6 @@
     max-width: 2000px;
     min-height: 100vh;
     flex-direction: column;
-
 }
 
 .cardButtonForms {
@@ -38,7 +37,7 @@
 }
 
 #adminPanelMenuCol {
-    background-color: #0e232f;
+    background: linear-gradient(90deg, rgba(14,35,47,1) 98%, rgba(101,138,154,1) 100%);
     padding: 0;
     margin: 0;
 }
