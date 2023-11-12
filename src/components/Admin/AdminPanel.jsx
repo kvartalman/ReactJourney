@@ -9,7 +9,6 @@ import {NavLink} from "react-router-dom";
 import Dashboard from "./Dashboard/Dashboard";
 import ProductsEditor from "./CurrentContentEditor/ProductsEditor/ProductsEditor";
 import GamePagesEditor from "./CurrentContentEditor/GamePagesEditor/GamePagesEditor";
-import Categories from "../Categories/Categories";
 import SubCategoriesEditor from "./CurrentContentEditor/SubCategoriesEditor/SubCategoriesEditor";
 import HomePageCardsEditor from "./CurrentContentEditor/HomePageCardsEditor/HomePageCardsEditor";
 

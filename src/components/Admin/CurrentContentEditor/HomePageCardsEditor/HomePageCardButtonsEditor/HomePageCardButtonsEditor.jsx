@@ -71,7 +71,10 @@ const HomePageCardButtonsEditor = (props) => {
 
     useEffect(
         () => {
-            props.setButton(props.cardsSelector[props.activeCardIndex].button[props.activeButtonIndex])
+            if (props.cardsSelector.length > 0) {
+                props.setCard(props.cardsSelector[props.activeCardIndex]);
+                props.setButton(props.cardsSelector[props.activeCardIndex].button[props.activeButtonIndex])
+            }
         }
         , [props.cardsSelector]
     )

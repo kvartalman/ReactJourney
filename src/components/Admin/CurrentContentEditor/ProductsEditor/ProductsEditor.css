@@ -1,20 +1,20 @@
 #adminPanelSetEditCol > .container-fluid > .row > .nav-tabs {
-    background-color: rgba(33, 37, 41, 1);
-    border-color: rgba(33, 37, 41, 1);
+    background-color: #0e232f;
+    border-color: #0e232f;
     margin-bottom: 0 !important;
 }
 
 #adminPanelSetEditCol > .container-fluid > .row > .nav-tabs > li > button {
-    background-color: rgba(33, 37, 41, 1);
-    color: #ffc107;
+    background-color: #0e232f;
+    color:#c3dae8;
     font-weight: bold;
     border: none;
     border-radius: 0;
 }
 
 #adminPanelSetEditCol > .container-fluid > .row > .nav-tabs > li > .active {
-    background-color: rgba(255, 193, 7, 0.3);
-    text-shadow: #ffc107 1px 0 10px;
+    background-color: #37647a;
+    text-shadow: #0e232f 1px 0 10px;
 }
 
 #adminPanelSetEditCol > .container-fluid > .row > .tab-content {
@@ -23,19 +23,19 @@
 
 .nextPageButton {
     font-weight: bold;
-    color: #ffc107;
-    background-color: rgba(33, 37, 41, 1);
+    color: #c3dae8;
+    background-color: #0e232f;
     border: 2px solid rgba(33, 37, 41, 1);
 }
 
 .nextPageButton:hover {
     transition: 0.3s;
-    background-color: #ffc107;
-    border-color: #ffc107;
-    color: rgba(33, 37, 41, 1);
-    -webkit-box-shadow: 0 0 20px 5px rgba(255,193,7,1);
-    -moz-box-shadow: 0 0 20px 5px rgba(255,193,7,1);
-    box-shadow: 0 0 20px 5px rgba(255,193,7,1);
+    background-color: #c3dae8;
+    border-color: #c3dae8;
+    color: #0e232f;
+    -webkit-box-shadow: 0 0 20px 5px #0e232f;
+    -moz-box-shadow: 0 0 20px 5px #0e232f;
+    box-shadow: 0 0 20px 5px #0e232f;
 }
 
 .nextPageButton:active {

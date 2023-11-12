@@ -1,21 +1,22 @@
 import React, {useRef, useState} from "react";
 import '../../AdminPanel.css';
-import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {offerPageAddCard} from "../../../../store/slices/offerPageSlice";
+import Container from "react-bootstrap/Container";
+import GameOfferCard from "../../../GameOffer/OfferContent/GameOfferCard";
+import './OfferPageCardsSettings.css';
 
 const OfferPageCardsSettings = () => {
 
-    const gameOfferPages = useSelector(state => Object.keys(state.gameOfferPages.pagesData))
+    const gamesSelector = useSelector(state => state.gameOfferPages.pagesData)
     const dispatch = useDispatch();
 
     const [offerCardTitle, setOfferCardTitle] = useState('');
     const [offerCardText, setOfferCardText] = useState('');
-
-    let gameOfferSelector = useRef(null);
+    const [activeGameButton, setActiveGameButton] = useState(0);
+    const [activeGame, setActiveGame] = useState(Object.keys(gamesSelector)[0]);
 
     const offerCardTitleInput = (e) => {
         setOfferCardTitle(e.target.value)
@@ -24,9 +25,14 @@ const OfferPageCardsSettings = () => {
         setOfferCardText(e.target.value)
     };
 
+    const handleGameSelect = (game, index) => {
+        setActiveGameButton(index);
+        setActiveGame(game);
+    };
+
     const addOfferPageCard = () => {
         dispatch(offerPageAddCard({
-            gameOfferSelector: gameOfferSelector.current.value,
+            game: activeGame,
             title: offerCardTitle,
             text: offerCardText
         }));
@@ -34,40 +40,60 @@ const OfferPageCardsSettings = () => {
         setOfferCardText('');
     }
 
-    const getOfferPages = gameOfferPages.map(name => (
-        <option>{name}</option>
+    const handleChangesAccept = () => {
+    }
+
+    const offerPagesList = Object.keys(gamesSelector).map((game, index) => (
+        <Button
+            onClick={() => handleGameSelect(game, index)}
+            className={activeGameButton === index ? 'activeButton' : 'defaultButton'}
+        >{gamesSelector[game].fullName}</Button>
+    ))
+
+    let offerCardsArr = gamesSelector[activeGame].offerCardsData.map(card => (
+        <GameOfferCard title={card.title} key={card.id} text={card.text}/>
     ))
 
     return (
-        <Form>
-            <Row className="mb-3 formsRow">
-                <h2>OfferPage Cards editor</h2>
-                <Form.Group as={Col}>
-                    <Form.Label>GameOffer Page</Form.Label>
-                    <Form.Select ref={gameOfferSelector}>
-                        {getOfferPages}
-                    </Form.Select>
-                    <Form.Label>Card title</Form.Label>
+        <Container fluid>
+            {offerPagesList}
+            <Form>
+                <Form.Group>
+                    <Form.Label>
+                        New card title
+                    </Form.Label>
                     <Form.Control
-                        onChange={offerCardTitleInput}
                         value={offerCardTitle}
-                        placeholder="Enter card title"
-                    />
-                    <Form.Label>Card text</Form.Label>
-                    <Form.Control
-                        onChange={offerCardTextInput}
-                        value={offerCardText}
-                        placeholder="Enter Card text"
-                    />
-                </Form.Group>
+                        onChange={offerCardTitleInput}
+                        placeholder={'Enter card title...'}
+                    >
 
-                <div className={'addCardButtons'}>
-                    <Button variant="primary" onClick={addOfferPageCard}>
-                        Create Card
-                    </Button>
-                </div>
-            </Row>
-        </Form>
+                    </Form.Control>
+                    <Form.Label>
+                        New card text
+                    </Form.Label>
+                    <Form.Control
+                        value={offerCardText}
+                        onChange={offerCardTextInput}
+                        placeholder={'Enter card text...'}
+                    >
+
+                    </Form.Control>
+                </Form.Group>
+            </Form>
+            <Button
+                onClick={() => addOfferPageCard()}
+                className={'nextPageButton'}
+            >Add card</Button>
+            <h1>Cards preview</h1>
+            <div className={'opcSettingsCardsArrayContainer'}>
+                {offerCardsArr}
+            </div>
+            <Button
+                onClick={() => handleChangesAccept()}
+                className={'nextPageButton'}
+            >Accept changes</Button>
+        </Container>
     );
 }
 

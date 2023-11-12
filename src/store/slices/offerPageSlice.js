@@ -113,10 +113,10 @@ const offerPageSlice = createSlice({
     reducers: {
 
         offerPageAddCard: (state, action) => {
-            state.pagesData[action.payload.gameOfferSelector].offerCardsData = [
-                ...state.pagesData[action.payload.gameOfferSelector].offerCardsData,
+            state.pagesData[action.payload.game].offerCardsData = [
+                ...state.pagesData[action.payload.game].offerCardsData,
                 {
-                    id: state.pagesData[action.payload.gameOfferSelector].offerCardsData.length,
+                    id: state.pagesData[action.payload.game].offerCardsData.length,
                     title: action.payload.title,
                     text: action.payload.text
                 }

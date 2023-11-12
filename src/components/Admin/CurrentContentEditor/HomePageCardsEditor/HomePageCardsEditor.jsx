@@ -106,6 +106,7 @@ const HomePageCardsEditor = () => {
                         cardsSelector={cardsSelector}
                         card={card}
                         button={button}
+                        setCard={setCard}
                         setButton={setButton}
                         activeCardIndex={activeCardIndex}
                         activeButtonIndex={activeButtonIndex}

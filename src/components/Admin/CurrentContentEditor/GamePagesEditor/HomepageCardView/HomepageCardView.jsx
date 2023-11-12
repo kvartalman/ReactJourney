@@ -1,8 +1,8 @@
 import React, {useRef, useState} from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Category from "../../../../Categories/Category";
-import '../../../../Categories/Categories.css'
+import Category from "../../../../Homepage/Categories/Category";
+import '../../../../Homepage/Categories/Categories.css'
 import {Col, Row} from "react-bootstrap";
 import './HomepageCardView.css'
 import {useSelector} from "react-redux";
