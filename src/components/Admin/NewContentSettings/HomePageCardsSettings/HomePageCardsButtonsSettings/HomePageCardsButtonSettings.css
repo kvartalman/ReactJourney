@@ -36,3 +36,14 @@
 #homePageCardsButtonsSettingsMainButtonContainer button {
     margin-top: 1em;
 }
+
+#homePageCardsButtonsSettingsCardButtonsPreview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#homePageCardsButtonsSettingsCardButtonsPreview h3 {
+    font-weight: bold;
+}

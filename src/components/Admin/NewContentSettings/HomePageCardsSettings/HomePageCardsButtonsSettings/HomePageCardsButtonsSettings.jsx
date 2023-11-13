@@ -1,15 +1,17 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import '../../../AdminPanel.css';
 import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import {addButton} from "../../../../../store/slices/homePageSlice";
 import {useDispatch, useSelector} from "react-redux";
 import Container from "react-bootstrap/Container";
 import './HomePageCardsButtonSettings.css';
 import {Row} from "react-bootstrap";
 import CardsButton from "../../../../Homepage/Cards/Buttons/CardsButton";
 import OfferCard from "../../../../Homepage/Cards/OfferCard";
+import {
+    addHomePageOfferCardsButton,
+    cancelHomePageOfferCardsButtonAdding
+} from "../../../../../store/slices/adminPanelSlices/adminPanelNewContentSlice";
 
 const HomePageCardsButtonsSettings = (props) => {
 
@@ -25,7 +27,7 @@ const HomePageCardsButtonsSettings = (props) => {
     const [activeGameButton, setActiveGameButton] = useState(0);
     const [activeSubCategory, setActiveSubCategory] = useState(Object.keys(subCategoriesSelector)[0]);
     const [activeSubCategoryIndex, setActiveSubCategoryIndex] = useState(0);
-    const [activeCardChosen, setActiveCardChosen] = useState(props.cardsData[0]);
+    const [activeCardChosen, setActiveCardChosen] = useState('');
     const [activeCardChosenIndex, setActiveCardChosenIndex] = useState(0);
 
     const handleCardChoice = (card, index) => {
@@ -53,19 +55,27 @@ const HomePageCardsButtonsSettings = (props) => {
 
     const addHomePageCardButton = (type) => {
 
-        let subCategoryLink = '';
-
         for (let i = 0; i < subCategoriesLinksSelector.length; i++) {
-            if (subCategoriesLinksSelector[i])
-        }
 
-        dispatch(addButton({
-            cardKey: cardKey.current.value,
-            link: `/categories/${activeGame}/${activeSubCategory}'`,
-            btnType: newButtonType.current.value,
-            btnName
+            const btnLink = require('change-case').camelCase(subCategoriesLinksSelector[i].link.split('/').pop())
+
+            if (btnLink === activeSubCategory) {
+                dispatch(addHomePageOfferCardsButton({
+                    activeCard: activeCardChosen.tagId,
+                    link: btnLink,
+                    type: type,
+                    class: type === 'mainButton' ? 'card-main-button' : 'order-button',
+                    name: type === 'mainButton' ? mainBtnName : btnName
+                }))
+            }
+        }
+        type === 'mainButton' ? setMainBtnName('') : setBtnName('');
+    }
+
+    const cancelButtonAdding = () => {
+        dispatch(cancelHomePageOfferCardsButtonAdding({
+            activeCard: activeCardChosen.tagId
         }))
-        setBtnName('');
     }
 
     const subCategoriesButtons = Object.keys(subCategoriesSelector).map((subCategory, index) => (
@@ -95,6 +105,10 @@ const HomePageCardsButtonsSettings = (props) => {
         </Button>
     ))
 
+    useEffect(() => {
+        setActiveCardChosen(props.cardsData[activeCardChosenIndex])
+    }, [props.cardsData])
+
     return (
         <Container fluid>
             <h2>HomePage Card Buttons Editor</h2>
@@ -115,7 +129,9 @@ const HomePageCardsButtonsSettings = (props) => {
                         </div>
                     </div>
                 </div>
-                <div>
+                <div id={'homePageCardsButtonsSettingsCardButtonsPreview'}>
+                    <h3>Card preview</h3>
+                    {activeCardChosen ?
                     <OfferCard
                         key={activeCardChosen.id}
                         bg={activeCardChosen.bg}
@@ -136,6 +152,9 @@ const HomePageCardsButtonsSettings = (props) => {
                                 }
                             </Row></Container>}
                     />
+                        :
+                        null
+                    }
                 </div>
             </div>
             <div className={'homePageCardsButtonsSettingsDividerLine'}></div>
@@ -154,6 +173,13 @@ const HomePageCardsButtonsSettings = (props) => {
                         >
                             Create main button
                         </Button>
+                        <Button
+                            variant="primary"
+                            onClick={() => cancelButtonAdding()}
+                            className={'nextPageButton'}
+                        >
+                            Cancel
+                        </Button>
                     </div>
                     <div className={'homePageCardsButtonsSettingsDividerLine'}></div>
                     <div id={'homePageCardsButtonsSettingsDefaultButtonContainer'}>
@@ -169,10 +195,17 @@ const HomePageCardsButtonsSettings = (props) => {
                         <div className={'addCardButtons'}>
                             <Button
                                 variant="primary"
-                                onClick={() => addHomePageCardButton('defaultButton')}
+                                onClick={() => addHomePageCardButton('button')}
                                 className={'nextPageButton'}
                             >
                                 Add Button
+                            </Button>
+                            <Button
+                                variant="primary"
+                                onClick={() => cancelButtonAdding()}
+                                className={'nextPageButton'}
+                            >
+                                Cancel
                             </Button>
                         </div>
                     </div>
