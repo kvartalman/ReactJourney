@@ -12,9 +12,11 @@ const Layout = () => {
                 <header>
                     <Navbar/>
                 </header>
-                <body>
+                <main>
+                    <div id={'layoutMainContentContainer'}>
                 <Outlet/>
-                </body>
+                    </div>
+                </main>
                 <footer id={'layoutFooter'}>
                     <Footer/>
                 </footer>

@@ -1,5 +1,13 @@
-#root > .container-fluid {
+#root {
+}
+
+#root > #layoutContainer {
   padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+#root > #layoutContainer > body {
 }
 
 a:hover button:hover {

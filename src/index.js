@@ -5,6 +5,7 @@ import React from "react";
 import App from "./App";
 import {Provider} from "react-redux";
 import {CartProvider} from "react-use-cart";
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

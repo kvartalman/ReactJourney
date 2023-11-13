@@ -1,11 +1,30 @@
 #layoutContainer {
     display: flex;
-    max-width: 2000px;
     min-height: 100vh;
+    justify-content: center;
     flex-direction: column;
 }
 
 #layoutFooter {
     width: 100%;
     margin-top: auto;
+    background: rgb(101,138,154);
+    background: linear-gradient(0deg, rgba(101,138,154,1) 87%, rgba(14,35,47,1) 100%);
 }
+
+main {
+    display: flex;
+    justify-content: center;
+    background: rgb(14,35,47);
+    background: linear-gradient(0deg, rgba(14,35,47,1) 0%, rgba(101,138,154,1) 100%);
+}
+
+#layoutMainContentContainer {
+    max-width: 2000px;
+}
+
+footer > .container-fluid {
+    max-width: 2000px;
+
+}
+

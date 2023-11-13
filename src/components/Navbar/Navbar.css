@@ -54,7 +54,8 @@
 }
 
 #navbarContainer {
-
+    background: rgb(14,35,47);
+    background: linear-gradient(180deg, rgba(14,35,47,1) 21%, rgba(101,138,154,1) 100%);
 }
 
 /*logo on the left side of navbar*/
