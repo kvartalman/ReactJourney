@@ -1,0 +1,38 @@
+#homePageCardsButtonsSettingsChooseMenuContainer {
+    margin: 1em 0 1em 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.homePageCardsButtonsSettingsChooseMenuSubContainer {
+    margin: 1em 0 1em 0;
+}
+
+.homePageCardsButtonsSettingsChooseMenuSubContainer h3 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.homePageCardsButtonsSettingsChooseMenuSubContainer p {
+    font-weight: bold;
+}
+
+#homePageCardsButtonsSettingsCreateContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+#homePageCardsButtonsSettingsCreateContainer div {
+
+}
+
+.homePageCardsButtonsSettingsDividerLine {
+    margin: 4em 0 4em 0;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, #0e232f 13%, #0e232f 87%, rgba(255,255,255,0) 100%);
+}
+
+#homePageCardsButtonsSettingsMainButtonContainer button {
+    margin-top: 1em;
+}

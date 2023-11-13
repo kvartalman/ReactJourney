@@ -6,7 +6,6 @@ import {useSelector} from "react-redux";
 import GamePageTextAndTitleEdit from "./GamePageTextAndTitleEdit/GamePageTextAndTitleEdit";
 import GamePageCardsEdit from "./GamePageCardsEdit/GamePageCardsEdit";
 import GamePagePreview from "./GamePagePreview/GamePagePreview";
-import Container from "react-bootstrap/Container";
 
 const GamePagesEditor = () => {
 

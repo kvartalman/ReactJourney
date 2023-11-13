@@ -1,8 +1,17 @@
 #adminPanelMainContainer {
     display: flex;
-    max-width: 2000px;
     min-height: 100vh;
-    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background-color: #658a9a;
+}
+
+#adminPanelMainRow {
+    width: 100%;
+    max-width: 2000px;
+    margin: 0;
+    min-height: 100vh;
 }
 
 .cardButtonForms {
@@ -12,8 +21,7 @@
 
 .addCardButtons {
     display: flex;
-    margin-top: 10px;
-    justify-content: center;
+    margin-top: 1em;
 }
 
 .formsRow {
@@ -23,17 +31,11 @@
     width: 100%;
 }
 
-#adminPanelMainRow {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    min-height: 100vh;
-}
 
 #adminPanelSetEditCol {
     padding: 0;
     margin: 0;
-    background-color: #658a9a;
+
 }
 
 #adminPanelMenuCol {

@@ -8,6 +8,9 @@ const adminPanelNewContentSlice = createSlice({
     reducers: {
         addHomePageOfferCardsData: (state, action) => {
             state.homePageOfferCards = action.payload;
+        },
+        addHomePageOfferCardsButton: (state, action) => {
+
         }
     }
 
