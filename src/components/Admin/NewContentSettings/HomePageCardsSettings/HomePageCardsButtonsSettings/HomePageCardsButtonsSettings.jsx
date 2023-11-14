@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import '../../../AdminPanel.css';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -23,12 +23,17 @@ const HomePageCardsButtonsSettings = (props) => {
 
     const subCategoriesSelector = useSelector(state => state.productPage.productData[activeGame].subCategories);
     const subCategoriesLinksSelector = useSelector(state => state.gameOfferPages.pagesData[activeGame].panelButton);
+    const addedMainButtonsSelector = useSelector(state => state.adminPanelNewContent.homePageOfferCardsAddedMainButtons);
+    const addedOrderButtonsSelector = useSelector(state => state.adminPanelNewContent.homePageOfferCardsAddedOrderButtons);
 
     const [activeGameButton, setActiveGameButton] = useState(0);
     const [activeSubCategory, setActiveSubCategory] = useState(Object.keys(subCategoriesSelector)[0]);
     const [activeSubCategoryIndex, setActiveSubCategoryIndex] = useState(0);
     const [activeCardChosen, setActiveCardChosen] = useState('');
     const [activeCardChosenIndex, setActiveCardChosenIndex] = useState(0);
+
+    const selectedMainButton = useRef(null);
+    const selectedOrderButton = useRef(null);
 
     const handleCardChoice = (card, index) => {
         setActiveCardChosen(card);
@@ -72,9 +77,11 @@ const HomePageCardsButtonsSettings = (props) => {
         type === 'mainButton' ? setMainBtnName('') : setBtnName('');
     }
 
-    const cancelButtonAdding = () => {
+    const cancelButtonAdding = (buttonName, buttonType) => {
         dispatch(cancelHomePageOfferCardsButtonAdding({
-            activeCard: activeCardChosen.tagId
+            activeCard: activeCardChosen.tagId,
+            name: buttonName,
+            type: buttonType
         }))
     }
 
@@ -105,6 +112,14 @@ const HomePageCardsButtonsSettings = (props) => {
         </Button>
     ))
 
+    const addedMainButtonsList = addedMainButtonsSelector.map(button => (
+        <option>{button.name}</option>
+    ))
+
+    const addedRegularButtonsList = addedOrderButtonsSelector.map(button => (
+        <option>{button.name}</option>
+    ))
+
     useEffect(() => {
         setActiveCardChosen(props.cardsData[activeCardChosenIndex])
     }, [props.cardsData])
@@ -132,26 +147,26 @@ const HomePageCardsButtonsSettings = (props) => {
                 <div id={'homePageCardsButtonsSettingsCardButtonsPreview'}>
                     <h3>Card preview</h3>
                     {activeCardChosen ?
-                    <OfferCard
-                        key={activeCardChosen.id}
-                        bg={activeCardChosen.bg}
-                        id={activeCardChosen.tagId}
-                        title={activeCardChosen.title}
-                        text={activeCardChosen.text}
-                        button={
-                            <Container fluid><Row className={'row-cols-auto'}>
-                                {
-                                    activeCardChosen.button.map(button => (
-                                        <CardsButton
-                                            key={button.id}
-                                            link={button.link}
-                                            type={button.type}
-                                            class={button.class}
-                                            name={button.name}
-                                        />))
-                                }
-                            </Row></Container>}
-                    />
+                        <OfferCard
+                            key={activeCardChosen.id}
+                            bg={activeCardChosen.bg}
+                            id={activeCardChosen.tagId}
+                            title={activeCardChosen.title}
+                            text={activeCardChosen.text}
+                            button={
+                                <Container fluid><Row className={'row-cols-auto'}>
+                                    {
+                                        activeCardChosen.button.map(button => (
+                                            <CardsButton
+                                                key={button.id}
+                                                link={button.link}
+                                                type={button.type}
+                                                class={button.class}
+                                                name={button.name}
+                                            />))
+                                    }
+                                </Row></Container>}
+                        />
                         :
                         null
                     }
@@ -173,9 +188,15 @@ const HomePageCardsButtonsSettings = (props) => {
                         >
                             Create main button
                         </Button>
+                        <Form.Label>Added main buttons list</Form.Label>
+                        <Form.Select
+                            ref={selectedMainButton}
+                        >
+                            {addedMainButtonsList}
+                        </Form.Select>
                         <Button
                             variant="primary"
-                            onClick={() => cancelButtonAdding()}
+                            onClick={() => cancelButtonAdding(selectedMainButton.current.value, 'mainButton')}
                             className={'nextPageButton'}
                         >
                             Cancel
@@ -192,7 +213,7 @@ const HomePageCardsButtonsSettings = (props) => {
                             placeholder={'Enter button name...'}
                             value={btnName}
                         />
-                        <div className={'addCardButtons'}>
+                        <div id={'homePageCardsButtonsSettingsAddingRegButtonsContainer'}>
                             <Button
                                 variant="primary"
                                 onClick={() => addHomePageCardButton('button')}
@@ -200,13 +221,23 @@ const HomePageCardsButtonsSettings = (props) => {
                             >
                                 Add Button
                             </Button>
-                            <Button
-                                variant="primary"
-                                onClick={() => cancelButtonAdding()}
-                                className={'nextPageButton'}
-                            >
-                                Cancel
-                            </Button>
+                            <div>
+                                <Form.Label>Added regular buttons list </Form.Label>
+                                <Form.Select
+                                    ref={selectedOrderButton}
+                                >
+                                    {addedRegularButtonsList}
+                                </Form.Select>
+                            </div>
+                            <div>
+                                <Button
+                                    variant="primary"
+                                    onClick={() => cancelButtonAdding(selectedOrderButton.current.value, 'button')}
+                                    className={'nextPageButton'}
+                                >
+                                    Cancel
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </div>

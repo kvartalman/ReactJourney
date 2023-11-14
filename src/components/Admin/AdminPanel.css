@@ -19,11 +19,6 @@
     margin: 1em;
 }
 
-.addCardButtons {
-    display: flex;
-    margin-top: 1em;
-}
-
 .formsRow {
     max-width: 100%;
     border-radius: 10px;

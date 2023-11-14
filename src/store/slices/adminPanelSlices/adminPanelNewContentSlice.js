@@ -4,7 +4,8 @@ const adminPanelNewContentSlice = createSlice({
     name: 'adminPanelNewContent',
     initialState: {
         homePageOfferCards: [],
-        addedCardsCounter: 0
+        homePageOfferCardsAddedMainButtons: [],
+        homePageOfferCardsAddedOrderButtons: [],
     },
     reducers: {
         addHomePageOfferCardsData: (state, action) => {
@@ -15,25 +16,48 @@ const adminPanelNewContentSlice = createSlice({
 
                 if (state.homePageOfferCards[i].tagId === action.payload.activeCard) {
 
-                    state.homePageOfferCards[i].button[state.homePageOfferCards[i].button.length] = {
+                    const newButton = {
                         id: state.homePageOfferCards[i].button.length,
                         link: action.payload.link,
                         type: action.payload.type,
                         class: action.payload.class,
                         name: action.payload.name
                     }
-                    state.addedCardsCounter += 1;
+
+                    state.homePageOfferCards[i].button[state.homePageOfferCards[i].button.length] = newButton;
+
+                    if (action.payload.type === 'mainButton') {
+                        state.homePageOfferCardsAddedMainButtons[state.homePageOfferCardsAddedMainButtons.length] =
+                            newButton
+                    } else if (action.payload.type === 'button') {
+                        state.homePageOfferCardsAddedOrderButtons[state.homePageOfferCardsAddedOrderButtons.length] =
+                            newButton
+                    }
                 }
             }
         },
         cancelHomePageOfferCardsButtonAdding: (state, action) => {
-            for (let i = 0; i < state.homePageOfferCards.length; i++) {
+                for (let i = 0; i < state.homePageOfferCards.length; i++) {
+                    if (state.homePageOfferCards[i].tagId === action.payload.activeCard) {
+                        for (let j = 0; j < state.homePageOfferCards[i].button.length; j++) {
+                            if (action.payload.type === state.homePageOfferCards[i].button[j].type &&
+                               action.payload.name ===  state.homePageOfferCards[i].button[j].name
+                            ) {
+                                state.homePageOfferCards[i].button.splice(j, 1);
 
-                if (state.homePageOfferCards[i].tagId === action.payload.activeCard && state.addedCardsCounter !== 0) {
-                        state.homePageOfferCards[i].button.pop()
-                        state.addedCardsCounter -= 1
+                            }
+                        }
+                    }
                 }
-            }
+                if (action.payload.type === 'mainButton') {
+                    state.homePageOfferCardsAddedMainButtons = state.homePageOfferCardsAddedMainButtons.filter(
+                        button => button.name !== action.payload.name)
+                } else if (action.payload.type === 'button') {
+                    state.homePageOfferCardsAddedOrderButtons = state.homePageOfferCardsAddedOrderButtons.filter(
+                        button => button.name !== action.payload.name)
+                    
+                }
+
         }
     }
 
