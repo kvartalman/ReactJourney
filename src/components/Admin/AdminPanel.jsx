@@ -36,7 +36,6 @@ const AdminPanel = () => {
                                             <Accordion.Header>
                                                 <div className={'accordionHeaderContainer'}>
                                                     Create new
-                                                    <div className={'accordionArrowContainer'}></div>
                                                 </div>
                                             </Accordion.Header>
                                             <Accordion.Body>
@@ -71,7 +70,6 @@ const AdminPanel = () => {
                                             <Accordion.Header>
                                                 <div className={'accordionHeaderContainer'}>
                                                     Editor
-                                                    <div className={'accordionArrowContainer'}></div>
                                                 </div>
                                             </Accordion.Header>
                                             <Accordion.Body>

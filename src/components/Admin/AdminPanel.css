@@ -125,14 +125,7 @@
     color: rgba(155, 194, 216, 1);
 }
 
-.accordionArrowContainer {
-    width: 0;
-    height: 0;
-    margin: 15px 10px 0 15px;
-    border-style: solid;
-    border-width: 15px 7.5px 0 7.5px;
-    border-color: rgba(155, 194, 216, 1) transparent transparent transparent;
-}
+
 
 .accordionHeaderContainer {
     width: 100%;
@@ -145,13 +138,5 @@
         font-size: 25px;
     }
 
-    .accordionArrowContainer {
-        border-width: 10px 5px 0 5px;
-    }
 }
 
-@media (max-width: 900px) {
-    .adminPanelMenuLinks > ul > li, .accordionHeaderContainer {
-        font-size: 20px;
-    }
-}

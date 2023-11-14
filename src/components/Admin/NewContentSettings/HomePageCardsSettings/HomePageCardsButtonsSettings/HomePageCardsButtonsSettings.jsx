@@ -25,6 +25,7 @@ const HomePageCardsButtonsSettings = (props) => {
     const subCategoriesLinksSelector = useSelector(state => state.gameOfferPages.pagesData[activeGame].panelButton);
     const addedMainButtonsSelector = useSelector(state => state.adminPanelNewContent.homePageOfferCardsAddedMainButtons);
     const addedOrderButtonsSelector = useSelector(state => state.adminPanelNewContent.homePageOfferCardsAddedOrderButtons);
+    const productPagesSelector = useSelector(state => state.productPage.productData);
 
     const [activeGameButton, setActiveGameButton] = useState(0);
     const [activeSubCategory, setActiveSubCategory] = useState(Object.keys(subCategoriesSelector)[0]);
@@ -43,6 +44,7 @@ const HomePageCardsButtonsSettings = (props) => {
     const handleGameSelect = (game, index) => {
         setActiveGame(game);
         setActiveGameButton(index);
+        setActiveSubCategory(Object.keys(productPagesSelector[game].subCategories)[0]);
     }
 
     const handleSubCategorySelect = (subCategory, index) => {
@@ -63,10 +65,12 @@ const HomePageCardsButtonsSettings = (props) => {
         for (let i = 0; i < subCategoriesLinksSelector.length; i++) {
 
             const btnLink = require('change-case').camelCase(subCategoriesLinksSelector[i].link.split('/').pop())
-
+            debugger;
             if (btnLink === activeSubCategory) {
+
                 dispatch(addHomePageOfferCardsButton({
                     activeCard: activeCardChosen.tagId,
+                    game: activeGame,
                     link: btnLink,
                     type: type,
                     class: type === 'mainButton' ? 'card-main-button' : 'order-button',
@@ -145,31 +149,33 @@ const HomePageCardsButtonsSettings = (props) => {
                     </div>
                 </div>
                 <div id={'homePageCardsButtonsSettingsCardButtonsPreview'}>
-                    <h3>Card preview</h3>
-                    {activeCardChosen ?
-                        <OfferCard
-                            key={activeCardChosen.id}
-                            bg={activeCardChosen.bg}
-                            id={activeCardChosen.tagId}
-                            title={activeCardChosen.title}
-                            text={activeCardChosen.text}
-                            button={
-                                <Container fluid><Row className={'row-cols-auto'}>
-                                    {
-                                        activeCardChosen.button.map(button => (
-                                            <CardsButton
-                                                key={button.id}
-                                                link={button.link}
-                                                type={button.type}
-                                                class={button.class}
-                                                name={button.name}
-                                            />))
-                                    }
-                                </Row></Container>}
-                        />
-                        :
-                        null
-                    }
+                    <div>
+                        <h3>Card preview</h3>
+                        {activeCardChosen ?
+                            <OfferCard
+                                key={activeCardChosen.id}
+                                bg={activeCardChosen.bg}
+                                id={activeCardChosen.tagId}
+                                title={activeCardChosen.title}
+                                text={activeCardChosen.text}
+                                button={
+                                    <Container fluid><Row className={'row-cols-auto'}>
+                                        {
+                                            activeCardChosen.button.map(button => (
+                                                <CardsButton
+                                                    key={button.id}
+                                                    link={button.link}
+                                                    type={button.type}
+                                                    class={button.class}
+                                                    name={button.name}
+                                                />))
+                                        }
+                                    </Row></Container>}
+                            />
+                            :
+                            null
+                        }
+                    </div>
                 </div>
             </div>
             <div className={'homePageCardsButtonsSettingsDividerLine'}></div>
@@ -188,12 +194,14 @@ const HomePageCardsButtonsSettings = (props) => {
                         >
                             Create main button
                         </Button>
-                        <Form.Label>Added main buttons list</Form.Label>
-                        <Form.Select
-                            ref={selectedMainButton}
-                        >
-                            {addedMainButtonsList}
-                        </Form.Select>
+                        <div>
+                            <Form.Label>Added main buttons list</Form.Label>
+                            <Form.Select
+                                ref={selectedMainButton}
+                            >
+                                {addedMainButtonsList}
+                            </Form.Select>
+                        </div>
                         <Button
                             variant="primary"
                             onClick={() => cancelButtonAdding(selectedMainButton.current.value, 'mainButton')}
@@ -204,6 +212,7 @@ const HomePageCardsButtonsSettings = (props) => {
                     </div>
                     <div className={'homePageCardsButtonsSettingsDividerLine'}></div>
                     <div id={'homePageCardsButtonsSettingsDefaultButtonContainer'}>
+                        <Form.Label>Choose subcategory link</Form.Label>
                         <div>
                             {subCategoriesButtons}
                         </div>
@@ -219,7 +228,7 @@ const HomePageCardsButtonsSettings = (props) => {
                                 onClick={() => addHomePageCardButton('button')}
                                 className={'nextPageButton'}
                             >
-                                Add Button
+                                Create regular button
                             </Button>
                             <div>
                                 <Form.Label>Added regular buttons list </Form.Label>
