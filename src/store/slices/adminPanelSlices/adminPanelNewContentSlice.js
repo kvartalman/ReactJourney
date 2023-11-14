@@ -4,12 +4,27 @@ const adminPanelNewContentSlice = createSlice({
     name: 'adminPanelNewContent',
     initialState: {
         homePageOfferCards: [],
+        homePageAddedOfferCards: [],
         homePageOfferCardsAddedMainButtons: [],
         homePageOfferCardsAddedOrderButtons: [],
     },
     reducers: {
         addHomePageOfferCardsData: (state, action) => {
             state.homePageOfferCards = action.payload;
+        },
+        addNewHomePageOfferCard: (state, action) => {
+
+            const newCard = {
+                id: state.homePageOfferCards.length,
+                tagId: action.payload.tagId,
+                title: action.payload.title,
+                text: action.payload.text,
+                bg: action.payload.bg,
+                button: []
+            };
+
+            state.homePageOfferCards[state.homePageOfferCards.length] = newCard;
+            state.homePageAddedOfferCards[state.homePageAddedOfferCards.length] = newCard;
         },
         addHomePageOfferCardsButton: (state, action) => {
             for (let i = 0; i < state.homePageOfferCards.length; i++) {
@@ -63,6 +78,14 @@ const adminPanelNewContentSlice = createSlice({
 
             }
 
+        },
+        cancelHomePageOfferCardAdding: (state, action) => {
+            for (let i = 0; i < state.homePageOfferCards.length; i++) {
+                if (state.homePageOfferCards[i].title === action.payload) {
+                    state.homePageOfferCards.splice(i, 1);
+                    state.homePageAddedOfferCards = state.homePageAddedOfferCards.filter(card => card.title !== action.payload);
+                }
+            }
         }
     }
 
@@ -70,7 +93,9 @@ const adminPanelNewContentSlice = createSlice({
 
 export const {
     addHomePageOfferCardsData,
+    addNewHomePageOfferCard,
     addHomePageOfferCardsButton,
-    cancelHomePageOfferCardsButtonAdding
+    cancelHomePageOfferCardsButtonAdding,
+    cancelHomePageOfferCardAdding
 } = adminPanelNewContentSlice.actions;
 export default adminPanelNewContentSlice.reducer;

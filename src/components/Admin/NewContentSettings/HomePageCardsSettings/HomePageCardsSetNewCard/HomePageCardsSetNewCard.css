@@ -1,0 +1,13 @@
+#homePageCardsSetNewCardPreviewContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+#homePageCardsSetNewCardCreatedPreview, #homePageCardsSetNewCardBackgroundPreview {
+    margin: 2em;
+}
+
+#homePageCardsSetNewCardCreatedPreview .cardPosition {
+    background-size: cover !important;
+    background-position: center !important;
+}
