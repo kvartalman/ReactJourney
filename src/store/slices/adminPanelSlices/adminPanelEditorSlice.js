@@ -59,11 +59,39 @@ const adminPanelEditorSlice = createSlice(
             fillAdvantagesEditorData: (state, action) => {
                 state.advantagesEditorData = action.payload;
             },
-            handleAdvantagesEditorDataChanges: (state, action) => {},
+            handleAdvantagesEditorDataChanges: (state, action) => {
+
+                const actionType = {
+                    add: () => {
+                        state.advantagesEditorData[state.advantagesEditorData.length] = {
+                            id: state.advantagesEditorData.length,
+                            img: action.payload.imgSrc,
+                            title: action.payload.title,
+                            text: action.payload.text
+                        }
+                    },
+                    replace: () => {
+                        if (state.advantagesEditorData.length > 0) {
+                            state.advantagesEditorData[action.payload.index] = {
+                                id: state.advantagesEditorData[action.payload.index].id,
+                                img: action.payload.imgSrc,
+                                title: action.payload.title,
+                                text: action.payload.text
+                            }
+                        }
+                    },
+                    delete: () => {
+                        state.advantagesEditorData = state.advantagesEditorData.filter((adv, index) => index !== action.payload.index)
+                    }
+                };
+
+                actionType[action.payload.actionType]();
+            },
             fillStepsEditorData: (state, action) => {
                 state.stepsEditorData = action.payload;
             },
-            handleStepsEditorDataChanges: (state, action) => {},
+            handleStepsEditorDataChanges: (state, action) => {
+            },
             addContentSliderRange: (state, action) => {
                 const newRange = {
                     range: [action.payload.enterStartOfRange, action.payload.enterEndOfRange],

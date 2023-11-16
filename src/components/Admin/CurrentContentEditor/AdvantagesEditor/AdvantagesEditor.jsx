@@ -8,6 +8,7 @@ import {
 import Button from "react-bootstrap/Button";
 import AdvantageCard from "../../../Homepage/Advantages/AdvantageCard";
 import './AdvantagesEditor.css';
+import Form from "react-bootstrap/Form";
 
 const AdvantagesEditor = () => {
 
@@ -20,8 +21,18 @@ const AdvantagesEditor = () => {
     const [advIndex, setAdvIndex] = useState(0);
     const [img, setImg] = useState(null);
     const [imgPreview, setImgPreview] = useState(null);
+    const [advTitle, setAdvTitle] = useState('');
+    const [advText, setAdvText] = useState('');
 
     const imgRef = useRef(null);
+
+    const advTitleInput = (e) => {
+        setAdvTitle(e.target.value);
+    };
+
+    const advTextInput = (e) => {
+        setAdvText(e.target.value);
+    };
 
     const handleImgFileChange = (event) => {
         const imgFile = event.target.files[0];
@@ -42,7 +53,19 @@ const AdvantagesEditor = () => {
     }
 
     const handleAdvantagesEditorData = (actionType) => {
-        dispatch(handleAdvantagesEditorDataChanges())
+        dispatch(handleAdvantagesEditorDataChanges(
+            {
+                index: advIndex,
+                actionType,
+                text: advText,
+                title: advTitle,
+                imgSrc: imgPreview
+            }
+        ))
+    }
+
+    const handleAdvantagesEditorDataFilling = () => {
+        dispatch(fillAdvantagesEditorData(advantagesDataSelector));
     }
 
     const advantagesButtons = () => {
@@ -60,17 +83,37 @@ const AdvantagesEditor = () => {
         }
     }
 
+    const advantagesPreview = () => {
+        if (advantagesEditorDataSelector.length > 0) {
+            return (
+                advantagesEditorDataSelector.map(adv => (
+                    <AdvantageCard img={adv.img} key={adv.id} title={adv.title} text={adv.text}/>
+                ))
+            )
+        }
+    }
+
     useEffect(
         () => {
-            dispatch(fillAdvantagesEditorData(advantagesDataSelector));
+            handleAdvantagesEditorDataFilling();
         }, [])
 
     useEffect(
         () => {
             if (advantagesEditorDataSelector.length > 0) {
-                setAdv(advantagesEditorDataSelector[0])
+                if (advIndex < advantagesEditorDataSelector.length) {
+                    setAdv(advantagesEditorDataSelector[advIndex]);
+                } else if (advIndex >= advantagesEditorDataSelector.length) {
+                    setAdv(advantagesEditorDataSelector[advantagesEditorDataSelector.length - 1]);
+                    setAdvIndex(advantagesEditorDataSelector.length - 1);
+                }
+            } else if (advantagesEditorDataSelector.length === 0) {
+                setAdv(null);
             }
+
         }, [advantagesEditorDataSelector])
+
+
 
     return (
         <Container fluid>
@@ -88,7 +131,7 @@ const AdvantagesEditor = () => {
                     </div>
                 </div>
             </div>
-            <div>
+            <div id={'advantagesEditorCurrentUploadPreviewContainer'}>
                 <div>
                     <h3>Current advantage element</h3>
                     <div id={'advantagesEditorCurrentAdvantagePreviewContainer'}>
@@ -108,11 +151,49 @@ const AdvantagesEditor = () => {
                     </div>
                 </div>
                 <div>
-                    
+                    <h3>New advantage element preview</h3>
+                    <div id={'advantagesEditorNewAdvPreviewContainer'}>
+                        {imgPreview ?
+                            <AdvantageCard img={imgPreview} key={''} title={advTitle} text={advText}/>
+                            :
+                            null
+                        }
+                    </div>
+                    <div>
+                        <Form>
+                            <Form.Label>Advantage element title</Form.Label>
+                            <Form.Control
+                                placeholder={'Enter title...'}
+                                value={advTitle}
+                                onChange={advTitleInput}
+                            />
+                            <Form.Label>Advantage element text</Form.Label>
+                            <Form.Control
+                                placeholder={'Enter text...'}
+                                value={advText}
+                                onChange={advTextInput}
+                            />
+                        </Form>
+                    </div>
+                    <div>
+                        <Button
+                            className={'nextPageButton'}
+                            onClick={() => handleAdvantagesEditorData('add')}
+                        >
+                            Add as new
+                        </Button>
+                        <Button
+                            className={'nextPageButton'}
+                            onClick={() => handleAdvantagesEditorData('replace')
+                        }
+                        >
+                            Replace with current
+                        </Button>
+                    </div>
                 </div>
             </div>
-            <div>
-
+            <div id={'advantagesEditorFinalPreviewContainer'}>
+                {advantagesPreview()}
             </div>
         </Container>
     );
