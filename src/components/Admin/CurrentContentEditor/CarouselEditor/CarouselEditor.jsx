@@ -26,7 +26,7 @@ const CarouselEditor = () => {
     const carouselSelector = useSelector(state => state.homePage.carouselData);
     const carouselEditorData = useSelector(state => state.adminPanel.carouselEditorData);
 
-    const [picture, setPicture] = useState(carouselSelector[0]);
+    const [picture, setPicture] = useState(null);
     const [pictureIndex, setPictureIndex] = useState(0);
     const [img, setImg] = useState(null);
     const [imgPreview, setImgPreview] = useState(null);
@@ -68,6 +68,7 @@ const CarouselEditor = () => {
                     index: pictureIndex
                 }
             ))
+
         } else if (actionType === 'add' || actionType === 'replace') {
             dispatch(changeCarouselEditorData(
                 {
@@ -117,9 +118,23 @@ const CarouselEditor = () => {
     )
 
     useEffect(() => {
-            setPicture(carouselEditorData[0]);
-            setPictureIndex(0);
-    }, [carouselEditorData]);
+
+        // Выполняем условие только когда массив заполнен. Нужно, чтобы, при удалении элемента, корректно отображалось
+        // превью-пикча и корректно выделялась активная кнопка выбора элемента карусели. В зависимости от удаления
+        // последнего элемента или любого другого в массиве, выполняются разные условия. Все работает, лучше не трогать.
+
+        if (carouselEditorData.length > 0) {
+            if (pictureIndex < carouselEditorData.length) {
+                setPicture(carouselEditorData[pictureIndex])
+            } else if (pictureIndex >= carouselEditorData.length) {
+                setPicture(carouselEditorData[carouselEditorData.length - 1]);
+                setPictureIndex(carouselEditorData.length - 1);
+            }
+        } else if (carouselEditorData.length === 0) {
+            setPicture(null);
+        }
+
+    }, [carouselEditorData])
 
     return (
         <Container fluid>

@@ -8,6 +8,8 @@ const adminPanelEditorSlice = createSlice(
                 '/', '/dota2', '/lol', '/hots', '/adminPanel'
             ],
             carouselEditorData: [],
+            advantagesEditorData: [],
+            stepsEditorData: [],
             contentSliderSettingsRanges: [],
             contentSliderEditorRanges: [],
             checkboxesEditor: [],
@@ -36,12 +38,14 @@ const adminPanelEditorSlice = createSlice(
                         }
                     },
                     replace: (data) => {
-                        state.carouselEditorData[data.index] = {
-                            id: data.index,
-                            srcImg: data.src,
-                            altImg: data.name,
-                            text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ",
-                            name: data.name
+                        if (state.carouselEditorData.length > data.index) {
+                            state.carouselEditorData[data.index] = {
+                                id: data.index,
+                                srcImg: data.src,
+                                altImg: data.name,
+                                text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ",
+                                name: data.name
+                            }
                         }
                     },
                     delete: (data) => {
@@ -52,6 +56,14 @@ const adminPanelEditorSlice = createSlice(
                 actionType[action.payload.actionType](action.payload);
 
             },
+            fillAdvantagesEditorData: (state, action) => {
+                state.advantagesEditorData = action.payload;
+            },
+            handleAdvantagesEditorDataChanges: (state, action) => {},
+            fillStepsEditorData: (state, action) => {
+                state.stepsEditorData = action.payload;
+            },
+            handleStepsEditorDataChanges: (state, action) => {},
             addContentSliderRange: (state, action) => {
                 const newRange = {
                     range: [action.payload.enterStartOfRange, action.payload.enterEndOfRange],
@@ -250,6 +262,10 @@ const adminPanelEditorSlice = createSlice(
 
 export const {
     fillCarouselEditorData,
+    fillAdvantagesEditorData,
+    handleAdvantagesEditorDataChanges,
+    fillStepsEditorData,
+    handleStepsEditorDataChanges,
     changeCarouselEditorData,
     addContentSliderRange,
     deleteContentSliderRange,
