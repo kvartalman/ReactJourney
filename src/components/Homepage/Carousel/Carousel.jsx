@@ -8,7 +8,7 @@ const CarouselComponent = () => {
 
     const carouselData = useSelector(state => state.homePage.carouselData)
 
-    let carouselItemArr = carouselData.map(item => (
+    const carouselItemArr = carouselData.map(item => (
         <Carousel.Item>
             <CarouselItems key={item.id} srcImg={item.srcImg} altImg={item.altImg}
                            text={<Carousel.Caption className={'carousel-text'}>{item.text}</Carousel.Caption>}/>

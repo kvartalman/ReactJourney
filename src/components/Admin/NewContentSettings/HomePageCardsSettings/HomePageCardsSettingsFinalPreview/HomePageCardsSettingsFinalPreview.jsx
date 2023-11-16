@@ -82,6 +82,13 @@ const HomePageCardsSettingsFinalPreview = (props) => {
                     }
                 </Row>
             </div>
+            <div>
+                <Button
+                    className={'nextPageButton'}
+                >
+                    Accept
+                </Button>
+            </div>
         </Container>
     )
 }

@@ -8,19 +8,22 @@ const homePageSlice = createSlice({
                 id: 0,
                 srcImg: "/carousel/carousel1.jpg",
                 altImg: "Offer 1",
-                text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ"
+                text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ",
+                name: 'Carousel picture 1'
             },
             {
                 id: 1,
                 srcImg: "/carousel/carousel2.jpg",
                 altImg: "Offer 2",
-                text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ"
+                text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ",
+                name: 'Carousel picture 2'
             },
             {
                 id: 2,
                 srcImg: "/carousel/carousel3.jpg",
                 altImg: "Offer 3",
-                text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ"
+                text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ",
+                name: 'Carousel picture 3'
             }
         ],
         advData: [

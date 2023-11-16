@@ -1,0 +1,35 @@
+#carouselEditorChooseUploadContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+#carouselEditorPicturesPreviewContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+#carouselEditorPicturesPreviewContainer h3 {
+    text-align: center;
+}
+
+#carouselEditorAddReplaceButtonsContainer {
+    margin: 1em 0 1em 0;
+}
+
+#carouselEditorAddReplaceButtonsContainer p {
+    margin: 1em 0 1em 0;
+    font-weight: bold;
+
+}
+
+#carouselEditorFinalPreviewContainer > .carousel > .carousel-control-prev > .carousel-control-prev-icon {
+    display: none;
+}
+
+#carouselEditorFinalPreviewContainer > .carousel > .carousel-control-next > .carousel-control-next-icon {
+    display: none;
+}
+
+#carouselEditorFinalPreviewContainer > .carousel > .carousel-inner > .carousel-item > .d-block {
+    filter: brightness(40%);
+}

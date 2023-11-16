@@ -11,6 +11,9 @@ import ProductsEditor from "./CurrentContentEditor/ProductsEditor/ProductsEditor
 import GamePagesEditor from "./CurrentContentEditor/GamePagesEditor/GamePagesEditor";
 import SubCategoriesEditor from "./CurrentContentEditor/SubCategoriesEditor/SubCategoriesEditor";
 import HomePageCardsEditor from "./CurrentContentEditor/HomePageCardsEditor/HomePageCardsEditor";
+import AdvantagesEditor from "./CurrentContentEditor/AdvantagesEditor/AdvantagesEditor";
+import StepsEditor from "./CurrentContentEditor/StepsEditor/StepsEditor";
+import CarouselEditor from "./CurrentContentEditor/CarouselEditor/CarouselEditor";
 
 const AdminPanel = () => {
 
@@ -73,9 +76,8 @@ const AdminPanel = () => {
                                                 </div>
                                             </Accordion.Header>
                                             <Accordion.Body>
-                                                { /* I use stopPropagation here because handler bubbling to li element
-                                                 and starts handleContentCol there. stopPropagation prevent this
-                                                 problem from occuring */}
+                                                { /* I use stopPropagation here because handler bubbling to li element.
+                                                stopPropagation prevent this problem from occuring */}
                                                 <p onClick={(e) => {
                                                     e.stopPropagation();
                                                     handleContentCol(5)
@@ -97,6 +99,24 @@ const AdminPanel = () => {
                                                 }}>
                                                     Homepage Cards
                                                 </p>
+                                                <p onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleContentCol(9)
+                                                }}>
+                                                    Carousel
+                                                </p>
+                                                <p onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleContentCol(10)
+                                                }}>
+                                                    Advantages
+                                                </p>
+                                                <p onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    handleContentCol(11)
+                                                }}>
+                                                    Steps
+                                                </p>
                                             </Accordion.Body>
                                         </Accordion.Item>
                                     </Accordion>
@@ -114,7 +134,8 @@ const AdminPanel = () => {
                         <Row>
                             {[
                                 <Dashboard />, 1, 2, <HomePageCardsSettings/>, <OfferPageCardsSettings/>,
-                                <GamePagesEditor />, <SubCategoriesEditor />, <ProductsEditor/>, <HomePageCardsEditor />
+                                <GamePagesEditor />, <SubCategoriesEditor />, <ProductsEditor/>, <HomePageCardsEditor />,
+                                <CarouselEditor />, <AdvantagesEditor />, <StepsEditor />
                             ].map(
                                 (elem, index) => (
                                     contentCol === index ?
