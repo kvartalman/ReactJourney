@@ -114,10 +114,9 @@ const AdvantagesEditor = () => {
         }, [advantagesEditorDataSelector])
 
 
-
     return (
         <Container fluid>
-            <div>
+            <div id={'advantagesEditorChooseUploadContainer'}>
                 <div>
                     <h3>Choose element of "Advantages" block</h3>
                     <div>
@@ -141,7 +140,7 @@ const AdvantagesEditor = () => {
                             null
                         }
                     </div>
-                    <div>
+                    <div id={'advantagesEditorDeleteButtonContainer'}>
                         <Button
                             className={'nextPageButton'}
                             onClick={() => handleAdvantagesEditorData('delete')}
@@ -175,25 +174,40 @@ const AdvantagesEditor = () => {
                             />
                         </Form>
                     </div>
-                    <div>
-                        <Button
-                            className={'nextPageButton'}
-                            onClick={() => handleAdvantagesEditorData('add')}
-                        >
-                            Add as new
-                        </Button>
-                        <Button
-                            className={'nextPageButton'}
-                            onClick={() => handleAdvantagesEditorData('replace')
-                        }
-                        >
-                            Replace with current
-                        </Button>
+                    <div id={'advantagesEditorAddReplaceButtonsContainer'}>
+                        <div>
+                            <Button
+                                className={'nextPageButton'}
+                                onClick={() => handleAdvantagesEditorData('add')}
+                            >
+                                Add as new
+                            </Button>
+                        </div>
+                        <p>OR</p>
+                        <div>
+                            <Button
+                                className={'nextPageButton'}
+                                onClick={() => handleAdvantagesEditorData('replace')
+                                }
+                            >
+                                Replace with current
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div id={'advantagesEditorFinalPreviewContainer'}>
-                {advantagesPreview()}
+            <div id={'advantagesEditorFinalContainer'}>
+                <h3>Final preview</h3>
+                <div id={'advantagesEditorFinalPreviewContainer'}>
+                    {advantagesPreview()}
+                </div>
+            </div>
+            <div id={'advantagesEditorAcceptButtonContainer'}>
+                <Button
+                    className={'nextPageButton'}
+                >
+                    Accept changes
+                </Button>
             </div>
         </Container>
     );

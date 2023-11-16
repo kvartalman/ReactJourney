@@ -1,14 +1,46 @@
+#advantagesEditorChooseUploadContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 1em;
+}
+
 #advantagesEditorCurrentAdvantagePreviewContainer {
     max-width: 300px;
+    text-align: center;
+    margin: auto;
 }
 
 #advantagesEditorCurrentUploadPreviewContainer {
     display: flex;
     justify-content: space-between;
+    margin: 1em;
+}
+
+#advantagesEditorDeleteButtonContainer, #advantagesEditorAddReplaceButtonsContainer {
+    margin: 1em 0 1em 0;
+    text-align: center;
+}
+
+#advantagesEditorAddReplaceButtonsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+#advantagesEditorAddReplaceButtonsContainer p {
+    margin: 1em 0 1em 0;
+    font-weight: bold;
 }
 
 #advantagesEditorNewAdvPreviewContainer {
+    margin: auto;
     max-width: 300px;
+    text-align: center;
+}
+
+#advantagesEditorFinalContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 #advantagesEditorFinalPreviewContainer {
@@ -16,6 +48,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
 }
+
 
 #advantagesEditorFinalPreviewContainer .advantage-cards {
     width: 17rem;
@@ -31,4 +64,15 @@
     position: relative;
     opacity: 1;
     transform: scale(1.1);
+}
+
+#advantagesEditorAcceptButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin: 2em;
+}
+
+#advantagesEditorAcceptButtonContainer button {
+    width: 250px;
+    letter-spacing: 3px;
 }
