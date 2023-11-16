@@ -152,6 +152,7 @@ const CarouselEditor = () => {
                     </div>
                 </div>
             </div>
+
             <div id={'carouselEditorPicturesPreviewContainer'}>
                 <div id={''}>
                     <h3>Current image</h3>

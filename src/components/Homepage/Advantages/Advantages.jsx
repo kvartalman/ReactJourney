@@ -9,7 +9,7 @@ const Advantages = (props) => {
 
     const advData = useSelector(state => state.homePage.advData)
 
-    let advCardsArr = advData.map(card => (
+    const advCardsArr = advData.map(card => (
         <AdvantageCard img={card.img} key={card.id} title={card.title} text={card.text}/>
     ))
 
