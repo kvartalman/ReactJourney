@@ -98,7 +98,6 @@ const ContentSliderSettings = () => {
 
     return (
         <Container fluid>
-            <h1>WHERE ARE YOU</h1>
             <Row id={'contentSliderSettingsRow'}>
                 <Col>
                     <Form>

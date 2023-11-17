@@ -4,7 +4,8 @@ import {Tab, Tabs} from "react-bootstrap";
 import '../../AdminPanel.css';
 import NewProductTitleAndText from "./NewProductTitleAndText/NewProductTitleAndText";
 import ContentSliderSettings
-    from "../ProductPageSettings/NewProductSettings/ContentSliderSettings/ContentSliderSettings";
+    from "./NewProductSlider/NewProductContentSlider/ContentSliderSettings";
+import NewProductSlider from "./NewProductSlider/NewProductSlider";
 
 const NewProductSettings = () => {
 
@@ -36,13 +37,13 @@ const NewProductSettings = () => {
                 eventKey={'price'}
                 title={'Base price'}
             >
-                <ContentSliderSettings />
+
             </Tab>
             <Tab
                 eventKey={'slider'}
                 title={'Slider settings'}
             >
-
+                <NewProductSlider />
             </Tab>
             <Tab
                 eventKey={'checkboxes'}
