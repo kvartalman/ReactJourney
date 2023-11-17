@@ -27,3 +27,22 @@
     font-weight: bold;
     font-size: 1.1em;
 }
+
+#stepsMainContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.stepContainer {
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-radius: 10%;
+    margin: 1em 5em 1em 5em;
+}
+
+.stepContainer p {
+    text-align: center;
+    color: #ffc107;
+    font-weight: bold;
+}

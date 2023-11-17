@@ -1,0 +1,43 @@
+#newProductMainContainer {
+    display: flex;
+
+}
+
+.newProductDividerLine {
+    margin: 4em 0 4em 0;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, #0e232f 13%, #0e232f 87%, rgba(255,255,255,0) 100%);
+}
+
+#newProductTextTitlePreviewContainer, #newProductFormsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 3em;
+}
+
+#newProductFormsContainer form {
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+#newProductFormsContainer label {
+    margin: 1em 0 1em 0;
+}
+
+#newProductTextTitlePreviewContainer p {
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    overflow-wrap: break-word !important;
+}
+
+#newProductTextTitlePreviewContainer h2 {
+     font-weight: bold;
+     letter-spacing: 0.1em;
+     overflow-wrap: break-word !important;
+ }
+
+#newProductFormsHeaderContainer, #newProductPreviewHeaderContainer {
+    margin-bottom: 2em;
+}

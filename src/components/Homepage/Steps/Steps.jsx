@@ -6,7 +6,6 @@ import StepElem from "./StepElem";
 import {useSelector} from "react-redux";
 
 
-
 const Steps = () => {
 
     const stepsElemsData = useSelector(state => state.homePage.stepsElemsData)
@@ -15,9 +14,9 @@ const Steps = () => {
 
         <StepElem key={elem.id} xmlns={elem.xmlns} class={elem.class} path={
             elem.path.map(el => (
-                <path d={el} />
+                <path d={el}/>
             ))
-        } text={elem.text} />
+        } text={elem.text}/>
     ))
 
     return (

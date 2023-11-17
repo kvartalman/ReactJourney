@@ -14,6 +14,7 @@ import HomePageCardsEditor from "./CurrentContentEditor/HomePageCardsEditor/Home
 import AdvantagesEditor from "./CurrentContentEditor/AdvantagesEditor/AdvantagesEditor";
 import StepsEditor from "./CurrentContentEditor/StepsEditor/StepsEditor";
 import CarouselEditor from "./CurrentContentEditor/CarouselEditor/CarouselEditor";
+import NewProductSettings from "./NewContentSettings/NewProductSettings/NewProductSettings";
 
 const AdminPanel = () => {
 
@@ -47,18 +48,23 @@ const AdminPanel = () => {
                                                  problem from occuring */}
                                                 <p>Game</p>
                                                 <p>Subcategory</p>
-                                                <p>Product</p>
                                                 <p
                                                     onClick={(e) => {
                                                         e.stopPropagation();
                                                         handleContentCol(3)
+                                                    }}
+                                                >Product</p>
+                                                <p
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleContentCol(4)
                                                     }}
                                                 >Homepage card
                                                 </p>
                                                 <p
                                                     onClick={(e) => {
                                                         e.stopPropagation();
-                                                        handleContentCol(4)
+                                                        handleContentCol(5)
                                                     }}
                                                 >
                                                     Offerpage card
@@ -80,40 +86,40 @@ const AdminPanel = () => {
                                                 stopPropagation prevent this problem from occuring */}
                                                 <p onClick={(e) => {
                                                     e.stopPropagation();
-                                                    handleContentCol(5)
+                                                    handleContentCol(6)
                                                 }}>Game pages</p>
                                                 <p onClick={(e) => {
                                                     e.stopPropagation();
-                                                    handleContentCol(6)
+                                                    handleContentCol(7)
                                                 }}>Subcategories</p>
                                                 <p onClick={(e) => {
                                                     e.stopPropagation();
-                                                    handleContentCol(7)
+                                                    handleContentCol(8)
                                                 }
                                                 }>
                                                     Products
                                                 </p>
                                                 <p onClick={(e) => {
                                                     e.stopPropagation();
-                                                    handleContentCol(8);
+                                                    handleContentCol(9);
                                                 }}>
                                                     Homepage Cards
                                                 </p>
                                                 <p onClick={(e) => {
                                                     e.stopPropagation();
-                                                    handleContentCol(9)
+                                                    handleContentCol(10)
                                                 }}>
                                                     Carousel
                                                 </p>
                                                 <p onClick={(e) => {
                                                     e.stopPropagation();
-                                                    handleContentCol(10)
+                                                    handleContentCol(11)
                                                 }}>
                                                     Advantages
                                                 </p>
                                                 <p onClick={(e) => {
                                                     e.stopPropagation();
-                                                    handleContentCol(11)
+                                                    handleContentCol(12)
                                                 }}>
                                                     Steps
                                                 </p>
@@ -133,7 +139,7 @@ const AdminPanel = () => {
                     <Container fluid>
                         <Row>
                             {[
-                                <Dashboard />, 1, 2, <HomePageCardsSettings/>, <OfferPageCardsSettings/>,
+                                <Dashboard />, 1, 2, <NewProductSettings />, <HomePageCardsSettings/>, <OfferPageCardsSettings/>,
                                 <GamePagesEditor />, <SubCategoriesEditor />, <ProductsEditor/>, <HomePageCardsEditor />,
                                 <CarouselEditor />, <AdvantagesEditor />, <StepsEditor />
                             ].map(

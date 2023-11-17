@@ -65,9 +65,9 @@ const ProductTextEdit = (props) => {
                     <Col md={6} id={'newTextAndTitleContainer'}>
                         <h2 className={'productEditTitleAndTextHeaders'}>New header and text</h2>
                         <div id={'newTextAndTitlePreviewContainer'}>
-                        <h2 style={{ overflowWrap: 'break-word' }}>{enterHeader ? enterHeader : 'Enter header'}</h2>
-                        <div className={'customizeDividerLine'}></div>
-                        <p style={{ overflowWrap: 'break-word' }}>{enterText ? enterText : 'Enter text...'}</p>
+                            <h2 style={{overflowWrap: 'break-word'}}>{enterHeader ? enterHeader : 'Enter header'}</h2>
+                            <div className={'customizeDividerLine'}></div>
+                            <p style={{overflowWrap: 'break-word'}}>{enterText ? enterText : 'Enter text...'}</p>
                         </div>
                     </Col>
                 </Row>
