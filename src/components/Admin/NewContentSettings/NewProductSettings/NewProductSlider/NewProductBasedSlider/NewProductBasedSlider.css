@@ -1,0 +1,15 @@
+#basedSliderSettingsMainContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+#basedSliderSettingsFormsContainer, #basedSliderSettingsPreviewContainer {
+    width: 50%;
+    margin: 1em;
+}
+
+#basedSliderSettingsPreviewPriceContainer {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 1em 0 1em 0;
+}

@@ -30,6 +30,8 @@ const NewProductTitleAndText = (props) => {
                         />
                         <Form.Label>Set new text</Form.Label>
                         <Form.Control
+                            as='textarea'
+                            rows={10}
                             placeholder={'Enter text...'}
                             value={props.text}
                             onChange={textInput}

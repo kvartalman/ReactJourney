@@ -1,0 +1,15 @@
+#newProductPriceMainContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#newProductPriceHeadersContainer {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+
+}
+
+#newProductPriceMainContainer div {
+    margin: auto;
+}

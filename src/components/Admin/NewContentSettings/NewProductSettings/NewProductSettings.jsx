@@ -6,12 +6,14 @@ import NewProductTitleAndText from "./NewProductTitleAndText/NewProductTitleAndT
 import ContentSliderSettings
     from "./NewProductSlider/NewProductContentSlider/ContentSliderSettings";
 import NewProductSlider from "./NewProductSlider/NewProductSlider";
+import NewProductPrice from "./NewProductPrice/NewProductPrice";
 
 const NewProductSettings = () => {
 
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const [key, setKey] = useState('text');
+    const [price, setPrice] = useState(0);
 
     return (
 
@@ -37,13 +39,19 @@ const NewProductSettings = () => {
                 eventKey={'price'}
                 title={'Base price'}
             >
-
+                <NewProductPrice
+                    setKey={setKey}
+                    setPrice={setPrice}
+                    price={price}
+                />
             </Tab>
             <Tab
                 eventKey={'slider'}
                 title={'Slider settings'}
             >
-                <NewProductSlider />
+                <NewProductSlider
+                    price={price}
+                />
             </Tab>
             <Tab
                 eventKey={'checkboxes'}
