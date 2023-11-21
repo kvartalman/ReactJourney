@@ -43,7 +43,9 @@ const NewProductSlider = (props) => {
                         />
                         :
                         buttonIndex === 1 ?
-                            <ContentSliderSettings/>
+                            <ContentSliderSettings
+                                price={props.price}
+                            />
                             :
                             buttonIndex === 2 ?
                                 null
@@ -52,6 +54,12 @@ const NewProductSlider = (props) => {
                     }
                 </div>
             </div>
+            <Button
+                className={'nextPageButton'}
+                onClick={() => props.setKey('checkboxes')}
+            >
+                Next
+            </Button>
         </Container>
     );
 };

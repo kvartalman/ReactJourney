@@ -8,12 +8,16 @@ import MultiRangeSlider from "multi-range-slider-react";
 import '../../../../../ProductPage/ContentSlider/ContentSlider.css';
 import './ContentSliderSettings.css'
 import {useDispatch, useSelector} from "react-redux";
-import {addContentSliderRange, deleteContentSliderRange} from "../../../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
 import Table from 'react-bootstrap/Table';
+import {
+    addContentSliderRange,
+    deleteContentSliderRange
+} from "../../../../../../store/slices/adminPanelSlices/adminPanelNewProductSlice";
+import {OverlayTrigger, Tooltip} from "react-bootstrap";
 
-const ContentSliderSettings = () => {
+const ContentSliderSettings = (props) => {
 
-    const sliderRangesData = useSelector(state => state.adminPanel.contentSliderSettingsRanges)
+    const sliderRangesData = useSelector(state => state.adminPanelNewProduct.contentSliderSettingsRanges)
     const dispatch = useDispatch();
 
     const [enterMinValue, setEnterMinValue] = useState('');
@@ -92,7 +96,7 @@ const ContentSliderSettings = () => {
             }
         }
 
-        setFinalPrice(calculatedPrice);
+        setFinalPrice(Number(props.price) + Number(calculatedPrice));
     };
 
 
@@ -101,7 +105,7 @@ const ContentSliderSettings = () => {
             <Row id={'contentSliderSettingsRow'}>
                 <Col>
                     <Form>
-                        <Row className="mb-3 formsRow">
+                        <Row className="mb-3">
                             <h2>ProductPage ContentSlider Editor</h2>
                             <Form.Group as={Col}>
                                 <Form.Label>Choose min and max values of slider</Form.Label>
@@ -126,7 +130,29 @@ const ContentSliderSettings = () => {
                                     onChange={enterRightThumbValueInput}
                                     placeholder="Enter right thumb value"
                                 />
-                                <Form.Label>Choose step (default is 1)</Form.Label>
+                                <Form.Label>
+                                    <div className={'contentSliderSettingsLabelTooltipContainer'}>
+                                        <p>Choose step (default is 1)</p>
+                                    <OverlayTrigger
+                                        key={'top'}
+                                        placement={'left'}
+                                        overlay={
+                                            <Tooltip
+                                                id={`tooltip-${'top'}`}
+                                            >
+                                                Если клиент нажмёт на полоску слайдера, а не воспользуется правым или
+                                                левым ползунком, произойдет смещение левого или правого ползунка (в
+                                                зависимости от того, в какой половине полоски слайдера был сделан клик) в
+                                                сторону, куда был сделан клик. Данная настройка отвечает за шаг, на который
+                                                сместится ползунок слайдера при таком клике. Если это не имеет значения,
+                                                лучше оставить значение 1.
+                                            </Tooltip>
+                                        }
+                                    >
+                                        <span className={'tooltipButton'}>?</span>
+                                    </OverlayTrigger>
+                                    </div>
+                                </Form.Label>
                                 <Form.Control
                                     value={enterStep}
                                     onChange={enterStepInput}
@@ -148,7 +174,11 @@ const ContentSliderSettings = () => {
                                     onChange={enterValuePerStepInput}
                                     placeholder="Enter value per step"
                                 />
-                                <Button onClick={addRangeHandler} variant="primary">
+                                <Button
+                                    onClick={addRangeHandler}
+                                    variant="primary"
+                                    className={'nextPageButton'}
+                                >
                                     Add range
                                 </Button>
                                 <Table striped bordered hover id={'contentSliderSettingsTable'}>
@@ -176,7 +206,10 @@ const ContentSliderSettings = () => {
                             </Form.Group>
 
                             <div className={'addCardButtons'}>
-                                <Button variant="primary">
+                                <Button
+                                    variant="primary"
+                                    className={'nextPageButton'}
+                                >
                                     Create slider
                                 </Button>
                             </div>

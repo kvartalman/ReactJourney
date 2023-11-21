@@ -6,3 +6,18 @@
     text-align: center;
     font-weight: bold;
 }
+
+.contentSliderSettingsLabelTooltipContainer {
+    display: flex;
+}
+
+.contentSliderSettingsLabelTooltipContainer .tooltipButton {
+    background: white;
+    border-color: #0e232f;
+}
+
+.contentSliderSettingsLabelTooltipContainer span, p {
+    margin: 0.5em 0 0 0.5em;
+    font-weight: bold;
+}
+

@@ -50,6 +50,7 @@ const NewProductSettings = () => {
                 title={'Slider settings'}
             >
                 <NewProductSlider
+                    setKey={setKey}
                     price={price}
                 />
             </Tab>

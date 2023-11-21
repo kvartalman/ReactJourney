@@ -3,6 +3,16 @@ import React, {lazy, Suspense} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Route, Routes} from "react-router-dom";
 import Preloader from "./components/Preloader/Preloader";
+import AdminPanelHomePageEditor
+    from "./components/Admin/AdminPanelContent/AdminPanelEditor/AdminPanelHomePageEditor/AdminPanelHomePageEditor";
+import AdminPanelGamesEditor
+    from "./components/Admin/AdminPanelContent/AdminPanelEditor/AdminPanelGamesEditor/AdminPanelGamesEditor";
+import AdminPanelSubCategoriesEditor
+    from "./components/Admin/AdminPanelContent/AdminPanelEditor/AdminPanelSubCategoriesEditor/AdminPanelSubCategoriesEditor";
+import AdminPanelProductsEditor
+    from "./components/Admin/AdminPanelContent/AdminPanelEditor/AdminPanelProductsEditor/AdminPanelProductsEditor";
+import AdminPanelPricesEditor
+    from "./components/Admin/AdminPanelContent/AdminPanelEditor/AdminPanelPricesEditor/AdminPanelPricesEditor";
 
 const ProductPage = lazy(() => import("./components/ProductPage/ProductPage"));
 const Cart = lazy(() => import("./components/Cart/Cart"));
@@ -27,7 +37,8 @@ function App() {
                         <Route path={'cart'} element={<Cart/>}/>
                         <Route path={'profile'} element={<UserProfile/>}/>
                     </Route>
-                    <Route path={'admin-panel'} element={<AdminPanel/>}/>
+                    <Route exact path={'admin-panel'} element={<AdminPanel/>}>
+                    </Route>
                     <Route path={'sign'} element={<SignPage/>}/>
                     <Route path={'*'} element={<NotFound/>}/>
                 </Routes>

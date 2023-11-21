@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#adminPanelNavBarMainContainer {
+    display: flex;
+    background-color: rgba(14,35,47,1);
+}
+
+#adminPanelNavBarBackToShopContainer button {
+    border: none;
+    background: none;
+    font: 900 1em "Roboto", sans-serif;
+    color: #c3dae8;
+}
+
+#adminPanelNavBarBackToShop {
+    color: #c3dae8;
+    font: 900 1em "Roboto", sans-serif;
+    opacity: 50%;
+    transition: 0.3s;
+}
+
+#adminPanelNavBarBackToShop:hover {
+    opacity: 100%;
+}
