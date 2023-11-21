@@ -6,14 +6,29 @@
 
 #adminPanelNavBarMainContainer {
     display: flex;
+    justify-content: space-between;
     background-color: rgba(14,35,47,1);
 }
 
-#adminPanelNavBarBackToShopContainer button {
+#adminPanelNavBarFirstContainer {
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+#adminPanelNavBarMainContainer button {
     border: none;
     background: none;
     font: 900 1em "Roboto", sans-serif;
     color: #c3dae8;
+}
+
+#adminPanelNavBarBackToShopContainer, #adminPanelNavBarMenuButtonContainer {
+    margin-left: 1em;
+}
+
+#adminPanelNavBarSecondContainer {
+    margin-right: 1em;
 }
 
 #adminPanelNavBarBackToShop {

@@ -8,10 +8,22 @@ import AdminPanelToDoList from "./AdminPanelToDoList/AdminPanelToDoList";
 const AdminPanelContent = (props) => {
 
     const content = {
-        editor: <AdminPanelEditor />,
-        dashboard: <AdminPanelDashboard />,
-        messages: <AdminPanelMessages />,
-        todo: <AdminPanelToDoList />
+        editor: <AdminPanelEditor
+            setBackIndex={props.setBackIndex}
+            backIndex={props.backIndex}
+        />,
+        dashboard: <AdminPanelDashboard
+            setBackIndex={props.setBackIndex}
+            backIndex={props.backIndex}
+        />,
+        messages: <AdminPanelMessages
+            setBackIndex={props.setBackIndex}
+            backIndex={props.backIndex}
+        />,
+        todo: <AdminPanelToDoList
+            setBackIndex={props.setBackIndex}
+            backIndex={props.backIndex}
+        />
     }
 
     return (

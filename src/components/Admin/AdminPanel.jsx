@@ -1,5 +1,5 @@
 import Row from 'react-bootstrap/Row';
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './AdminPanel.css';
 import HomePageCardsSettings from "./NewContentSettings/HomePageCardsSettings/HomePageCardsSettings";
 import OfferPageCardsSettings from "./NewContentSettings/OfferPageCardsSettings/OfferPageCardsSettings";
@@ -21,31 +21,39 @@ import AdminPanelContent from "./AdminPanelContent/AdminPanelContent";
 
 const AdminPanel = () => {
 
-    const [contentCol, setContentCol] = useState(0);
     const [contentName, setContentName] = useState(0);
     const [menuIndex, setMenuIndex] = useState(0);
+    const [backIndex, setBackIndex] = useState(0);
 
-    const handleContentCol = (type) => {
-        setContentCol(type)
-    }
-
-
-
+    useEffect(() => {
+        console.log(backIndex, menuIndex, 'main')
+    }, [backIndex, menuIndex]);
 
     return (
         <div id={'adminPanelMainContainer'}>
             <AdminPanelNavBar
                 setMenuIndex={setMenuIndex}
+                setBackIndex={setBackIndex}
+                menuIndex={menuIndex}
+                backIndex={backIndex}
             />
-            {menuIndex === 0 ?
+            {menuIndex === 0 && backIndex === 0 ?
                 <AdminPanelMainMenu
+                    backIndex={backIndex}
+                    menuIndex={menuIndex}
                     setMenuIndex={setMenuIndex}
                     setContentName={setContentName}
+                    setBackIndex={setBackIndex}
                 />
                 :
+                menuIndex === 1 && backIndex === 1 ?
                 <AdminPanelContent
                     contentName={contentName}
+                    backIndex={backIndex}
+                    setBackIndex={setBackIndex}
                 />
+                    :
+                    null
             }
         </div>
         // <Container fluid id={'adminPanelMainContainer'}>
