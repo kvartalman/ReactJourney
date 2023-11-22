@@ -9,39 +9,3 @@
     color: #fff;
 }
 
-#adminPanelEditorSectionsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 4em 2em 2em 2em;
-    gap: 5em;
-}
-
-.adminPanelEditorSectionContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    font: 900 60px "Roboto", sans-serif;
-    color: white;
-    height: 30vh;
-    width: 45%;
-    transition: 0.5s;
-    background-image: linear-gradient(43deg, #0e232f 0%, #658a9a 46%, #c3dae8 100%);
-    -webkit-box-shadow: 7px 10px 25px 18px rgba(14, 35, 47, 0.6);
-    -moz-box-shadow: 7px 10px 25px 18px rgba(14, 35, 47, 0.6);
-    box-shadow: 7px 10px 25px 18px rgba(14, 35, 47, 0.6);
-}
-
-.adminPanelEditorSectionContainer button {
-    height: 100%;
-    width: 100%;
-    border: none;
-    background: none;
-    font: 900 60px "Roboto", sans-serif;
-    color: #fff;
-}
-
-.adminPanelEditorSectionContainer:hover {
-    transform: translateY(-20px);
-}

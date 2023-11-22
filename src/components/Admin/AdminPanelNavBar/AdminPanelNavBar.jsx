@@ -14,7 +14,9 @@ const AdminPanelNavBar = (props) => {
             if (props.backIndex === 1 && props.menuIndex === 1) {
                 props.setMenuIndex(0);
                 props.setBackIndex(0);
-            } else props.setBackIndex(prev => prev - 1)
+            } else {
+                props.setBackIndex(prev => prev - 1)
+            }
         }
     }
 

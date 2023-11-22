@@ -46,14 +46,11 @@ const AdminPanel = () => {
                     setBackIndex={setBackIndex}
                 />
                 :
-                menuIndex === 1 && backIndex === 1 ?
                 <AdminPanelContent
                     contentName={contentName}
                     backIndex={backIndex}
                     setBackIndex={setBackIndex}
                 />
-                    :
-                    null
             }
         </div>
         // <Container fluid id={'adminPanelMainContainer'}>

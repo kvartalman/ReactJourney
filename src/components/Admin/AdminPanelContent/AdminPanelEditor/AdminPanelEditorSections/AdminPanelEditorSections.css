@@ -1,27 +1,12 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-#adminPanelMainMenuContainer {
-    margin-top: 2em;
-}
-
-#adminPanelMainMenuContainer h1 {
-    font: 900 40px "Roboto", sans-serif;
-    color: #fff;
-}
-
-#adminPanelMainMenuDirectoriesContainer {
+#adminPanelEditorSectionsContainer {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
     margin: 4em 2em 2em 2em;
     gap: 5em;
 }
 
-#adminPanelMainMenuDirectoriesContainer div {
+.adminPanelEditorSectionContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,29 +23,15 @@
     box-shadow: 7px 10px 25px 18px rgba(14, 35, 47, 0.6);
 }
 
-#adminPanelMainMenuDirectoriesContainer button {
-    width: 100%;
+.adminPanelEditorSectionContainer button {
     height: 100%;
+    width: 100%;
     border: none;
     background: none;
-    color: white;
     font: 900 60px "Roboto", sans-serif;
+    color: #fff;
 }
 
-/*#0e232f*/
-/*#658a9a*/
-/*#c3dae8*/
-/*#37647a*/
-
-#adminPanelMainMenuDirectoriesContainer div:hover {
+.adminPanelEditorSectionContainer:hover {
     transform: translateY(-20px);
 }
-
-#adminPanelMainMenuEditorContainer {
-
-}
-
-/*#adminPanelMainMenuEditorContainer*/
-/*#adminPanelMainMenuDashboardContainer*/
-/*#adminPanelMainMenuMessagesContainer*/
-/*#adminPanelMainMenuToDoContainer*/

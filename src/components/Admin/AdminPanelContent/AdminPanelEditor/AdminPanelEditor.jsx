@@ -5,6 +5,7 @@ import AdminPanelHomePageEditor from "./AdminPanelHomePageEditor/AdminPanelHomeP
 import AdminPanelGamesEditor from "./AdminPanelGamesEditor/AdminPanelGamesEditor";
 import AdminPanelSubCategoriesEditor from "./AdminPanelSubCategoriesEditor/AdminPanelSubCategoriesEditor";
 import AdminPanelProductsEditor from "./AdminPanelProductsEditor/AdminPanelProductsEditor";
+import AdminPanelEditorSections from "./AdminPanelEditorSections/AdminPanelEditorSections";
 
 const AdminPanelEditor = (props) => {
 
@@ -16,8 +17,23 @@ const AdminPanelEditor = (props) => {
     }
 
     const editorSectionsList = [
-        <AdminPanelHomePageEditor />, <AdminPanelGamesEditor />, <AdminPanelSubCategoriesEditor />,
-        <AdminPanelProductsEditor />, <AdminPanelPricesEditor />
+        <AdminPanelHomePageEditor
+            setBackIndex={props.setBackIndex}
+            backIndex={props.backIndex}
+        />, <AdminPanelGamesEditor
+            setBackIndex={props.setBackIndex}
+            backIndex={props.backIndex}
+        />, <AdminPanelSubCategoriesEditor
+            setBackIndex={props.setBackIndex}
+            backIndex={props.backIndex}
+        />,
+        <AdminPanelProductsEditor
+            setBackIndex={props.setBackIndex}
+            backIndex={props.backIndex}
+        />, <AdminPanelPricesEditor
+            setBackIndex={props.setBackIndex}
+            backIndex={props.backIndex}
+        />
     ].map((elem, index) => (
         contentIndexSection === index ?
             elem
@@ -25,67 +41,16 @@ const AdminPanelEditor = (props) => {
             null
     ))
 
-    // [
-    //                         <AdminPanelDashboard/>, 1, 2, <NewProductSettings/>, <HomePageCardsSettings/>,
-    //                         <OfferPageCardsSettings/>,
-    //                         <GamePagesEditor/>, <SubCategoriesEditor/>, <ProductsEditor/>, <HomePageCardsEditor/>,
-    //                         <CarouselEditor/>, <AdvantagesEditor/>, <StepsEditor/>
-    //                     ].map(
-    //                         (elem, index) => (
-    //                             contentCol === index ?
-    //                                 elem
-    //                                 :
-    //                                 null
+
 
     return (
         <div id={'adminPanelEditorMainContainer'}>
-            {
-                contentIndexSection === 0 && props.backIndex === 1 ?
-                    <>
-                        <h1>What do you like to edit?</h1>
-                        <div id={'adminPanelEditorSectionsContainer'}>
-                            <div
-                                className={'adminPanelEditorSectionContainer'}
-                            >
-                                <button onClick={() => handleEditorSection(1)}>
-                                    Homepage
-                                </button>
-                            </div>
-                            <div
-                                className={'adminPanelEditorSectionContainer'}
-                            >
-                                <button onClick={() => handleEditorSection(2)}>
-                                    Games
-                                </button>
-                            </div>
-                            <div
-                                className={'adminPanelEditorSectionContainer'}
-                            >
-                                <button onClick={() => handleEditorSection(3)}>
-                                    Subcategories
-                                </button>
-                            </div>
-                            <div
-                                className={'adminPanelEditorSectionContainer'}
-                            >
-                                <button onClick={() => handleEditorSection(4)}>
-                                    Products
-                                </button>
-                            </div>
-                            <div
-                                className={'adminPanelEditorSectionContainer'}
-                            >
-                                <button onClick={() => handleEditorSection(5)}>
-                                    Prices
-                                </button>
-                            </div>
-                        </div>
-                    </>
-                    :
-                    props.backIndex === 2 ?
-                    editorSectionsList
-                        :
-                        null
+            {props.backIndex === 1 ?
+                <AdminPanelEditorSections
+                    handleEditorSection={handleEditorSection}
+                />
+                :
+                editorSectionsList
             }
         </div>
     );
