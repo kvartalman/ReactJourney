@@ -7,6 +7,7 @@ import StepsEditor from "../../../../CurrentContentEditor/StepsEditor/StepsEdito
 import AdminPanelHomePageEditorNewSections
     from "./AdminPanelHomePageEditorNewSections/AdminPanelHomePageEditorNewSections";
 import HomePageCardsSettings from "../../../../NewContentSettings/HomePageCardsSettings/HomePageCardsSettings";
+import CarouselNew from "../../../../NewContentSettings/CarouselNew/CarouselNew";
 
 const AdminPanelHomePageEditorNew = (props) => {
 
@@ -19,6 +20,7 @@ const AdminPanelHomePageEditorNew = (props) => {
 
     const editorComponent = {
         cards: <HomePageCardsSettings/>,
+        carousel: <CarouselNew />
     }
 
     // [

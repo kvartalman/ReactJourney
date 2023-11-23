@@ -1,0 +1,61 @@
+#carouselNewMainContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#carouselNewSettingsContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+#carouselNewFormsAndUploadContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+#carouselNewUploadContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+#carouselNewUploadContainer input {
+}
+
+#carouselNewFinalPreviewContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+#carouselNewFinalPreviewContainer > div > .carousel > .carousel-inner > .carousel-item > .d-block {
+    filter: brightness(40%);
+}
+
+#carouselNewButtonsContainer {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+#carouselNewCarouselPreviewContainer {
+    margin: auto;
+    width: 50%;
+}
+
+#carouselNewButtonsContainer button {
+    height: 130px;
+    margin-top: 1em;
+    font: 900 25px "Roboto", sans-serif;
+    border-radius: 10%;
+    border: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(45deg, rgba(14,35,47,1) 0%, rgba(195,218,232,1) 100%);
+    color: #fff;
+    transition: 0.3s;
+}
+
+#carouselNewButtonsContainer button:hover {
+    transform: scale(1.03);
+}

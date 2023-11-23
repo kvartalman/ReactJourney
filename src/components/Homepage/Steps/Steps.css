@@ -1,3 +1,4 @@
+
 .row > .steps-block-col {
     text-align: center;
     padding-top: 130px;
@@ -33,16 +34,35 @@
     justify-content: center;
 }
 
-.stepContainer {
-    border-top: 2px solid black;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-    border-radius: 10%;
-    margin: 1em 5em 1em 5em;
+#stepsContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
 }
 
-.stepContainer p {
+.stepContainer {
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
-    color: #ffc107;
-    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    transition: 0.3s;
+}
+
+.stepHeader {
+    margin: auto;
+    font-weight: 900;
+    font-size: 100px;
+}
+
+.stepText {
+    height: 50%;
+    margin: auto;
+    padding: 0 2em;
+
+}
+
+.stepContainer:hover {
+    transform: scale(1.1);
 }

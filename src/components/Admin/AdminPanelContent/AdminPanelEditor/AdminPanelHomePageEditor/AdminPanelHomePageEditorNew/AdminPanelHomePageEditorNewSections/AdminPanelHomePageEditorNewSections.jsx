@@ -9,6 +9,13 @@ const AdminPanelHomePageEditorNewSections = (props) => {
             <div id={'adminPanelHomePageEditorNewSectionsContainer'}>
                 <div className={'adminPanelHomePageEditorNewSection'}>
                     <button
+                        onClick={() => props.handleSectionChoice('carousel')}
+                    >
+                        Carousel
+                    </button>
+                </div>
+                <div className={'adminPanelHomePageEditorNewSection'}>
+                    <button
                         onClick={() => props.handleSectionChoice('cards')}
                     >
                         Best offers cards
