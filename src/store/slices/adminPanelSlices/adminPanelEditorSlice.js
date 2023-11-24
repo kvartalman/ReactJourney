@@ -8,6 +8,7 @@ const adminPanelEditorSlice = createSlice(
                 '/', '/dota2', '/lol', '/hots', '/adminPanel'
             ],
             carouselEditorData: [],
+            carouselNewAddedData: [],
             advantagesEditorData: [],
             stepsEditorData: [],
             contentSliderSettingsRanges: [],
@@ -36,6 +37,13 @@ const adminPanelEditorSlice = createSlice(
                             text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ",
                             name: data.name
                         }
+                        state.carouselNewAddedData[state.carouselNewAddedData.length] = {
+                            id: state.carouselEditorData.length,
+                            srcImg: data.src,
+                            altImg: data.name,
+                            text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ",
+                            name: data.name
+                        }
                     },
                     replace: (data) => {
                         if (state.carouselEditorData.length > data.index) {
@@ -49,10 +57,20 @@ const adminPanelEditorSlice = createSlice(
                         }
                     },
                     delete: (data) => {
-                        state.carouselEditorData = state.carouselEditorData.filter((card, index) => index !== data.index)
-                    }
-                }
+                        state.carouselEditorData = state.carouselEditorData.filter((image, index) => index !== data.index)
+                    },
+                    deleteNew: (data) => {
 
+                        for (let i = 0; i < state.carouselNewAddedData.length; i++) {
+                            if (data.name === state.carouselNewAddedData[i].name) {
+                                state.carouselEditorData = state.carouselEditorData.filter(image => image.name !== state.carouselNewAddedData[i].name)
+                            }
+                        }
+
+                        state.carouselNewAddedData = state.carouselNewAddedData.filter((image, index) => index !== data.index)
+                    }
+
+                }
                 actionType[action.payload.actionType](action.payload);
 
             },

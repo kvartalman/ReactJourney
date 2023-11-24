@@ -10,6 +10,11 @@
     justify-content: space-around;
 }
 
+#carouselNewFormsAndUploadMainContainer {
+    display: flex;
+    gap: 1em;
+}
+
 #carouselNewFormsAndUploadContainer {
     display: flex;
     flex-direction: column;
@@ -21,6 +26,14 @@
 }
 
 #carouselNewUploadContainer input {
+}
+
+#carouselNewPicturesListMainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
 }
 
 #carouselNewFinalPreviewContainer {
