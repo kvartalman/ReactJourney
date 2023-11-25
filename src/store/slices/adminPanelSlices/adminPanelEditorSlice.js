@@ -88,6 +88,13 @@ const adminPanelEditorSlice = createSlice(
                             title: action.payload.title,
                             text: action.payload.text
                         }
+
+                        state.advantagesNewAddedData[state.advantagesNewAddedData.length] = {
+                            id: state.advantagesEditorData.length,
+                            img: action.payload.imgSrc,
+                            title: action.payload.title,
+                            text: action.payload.text
+                        }
                     },
                     replace: () => {
                         if (state.advantagesEditorData.length > 0) {
