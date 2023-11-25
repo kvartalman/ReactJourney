@@ -1,0 +1,95 @@
+import React, {useEffect, useState} from "react";
+import './AdvantagesNew.css';
+import {useDispatch, useSelector} from "react-redux";
+import Form from "react-bootstrap/Form";
+import {fillAdvantagesEditorData} from "../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
+
+const AdvantagesNew = () => {
+
+    const dispatch = useDispatch();
+
+    const advantagesDataSelector = useSelector(state => state.homePage.advData);
+    const advantagesEditorDataSelector = useSelector(state => state.adminPanel.advantagesEditorData);
+    const advantagesNewAddedDataSelector = useSelector(state => state.adminPanel.advantagesNewAddedData);
+
+    const [text, setText] = useState('');
+    const [title, setTitle] = useState('');
+    const [img, setImg] = useState(null);
+    const [imgPreview, setImgPreview] = useState(null);
+
+    const textInput = (e) => {
+        setText(e.target.value);
+    }
+
+    const titleInput = (e) => {
+        setTitle(e.target.value);
+    }
+
+    const handleImgFileChange = (event) => {
+        const imgFile = event.target.files[0];
+        setImg(imgFile);
+
+        if (imgFile) {
+            const imgBlobURL = URL.createObjectURL(imgFile);
+            setImgPreview(imgBlobURL);
+
+        } else {
+            setImgPreview(null);
+        }
+    }
+
+    const handleAdvantagesEditorDataFilling = () => {
+        dispatch(fillAdvantagesEditorData(advantagesDataSelector));
+    }
+
+    useEffect(() => {
+        handleAdvantagesEditorDataFilling();
+    }, []);
+
+    return (
+        <div id={'advantagesNewMainContainer'}>
+            <div id={'advantagesNewSettingsContainer'}>
+                <div>
+                    <div id={'advantagesNewFormsContainer'}>
+                        <Form>
+                            <Form.Label>Title</Form.Label>
+                            <Form.Control
+                                value={title}
+                                onChange={titleInput}
+                                placeholder={'Enter title...'}
+                            />
+                            <Form.Label>Text</Form.Label>
+                            <Form.Control
+                                value={text}
+                                onChange={textInput}
+                                placeholder={'Enter text...'}
+                            />
+                        </Form>
+                    </div>
+                    <div id={'advantagesNewImageContainer'}>
+                        <div>
+                            <input type={'file'} accept={'image/*,video/*'} onChange={handleImgFileChange}/>
+                        </div>
+                        <div>
+                            {imgPreview ?
+                                <img src={imgPreview} alt={'Advantage image preview'} width={150}/>
+                                :
+                                null
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div id={'advantagesNewAddedImagesContainer'}>
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+            <div id={'advantagesNewFinalPreviewContainer'}>
+
+            </div>
+        </div>
+    );
+};
+
+export default AdvantagesNew;

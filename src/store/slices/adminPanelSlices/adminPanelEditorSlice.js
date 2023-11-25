@@ -10,6 +10,7 @@ const adminPanelEditorSlice = createSlice(
             carouselEditorData: [],
             carouselNewAddedData: [],
             advantagesEditorData: [],
+            advantagesNewAddedData: [],
             stepsEditorData: [],
             contentSliderSettingsRanges: [],
             contentSliderEditorRanges: [],

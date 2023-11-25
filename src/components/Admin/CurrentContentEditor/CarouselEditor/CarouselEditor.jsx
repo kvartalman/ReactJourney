@@ -69,7 +69,7 @@ const CarouselEditor = () => {
                 }
             ))
 
-        } else if (actionType === 'add' || actionType === 'replace') {
+        } else if (actionType === 'replace') {
             dispatch(changeCarouselEditorData(
                 {
                     actionType: actionType,
@@ -193,15 +193,6 @@ const CarouselEditor = () => {
                     </div>
                     {imgPreview ?
                         <div id={'carouselEditorAddReplaceButtonsContainer'}>
-                            <div>
-                                <Button
-                                    className={'nextPageButton'}
-                                    onClick={() => handleCarouselEditorDataChanges('add')}
-                                >
-                                    Add as new image
-                                </Button>
-                            </div>
-                            <p>OR</p>
                             <div>
                                 <Button
                                     className={'nextPageButton'}

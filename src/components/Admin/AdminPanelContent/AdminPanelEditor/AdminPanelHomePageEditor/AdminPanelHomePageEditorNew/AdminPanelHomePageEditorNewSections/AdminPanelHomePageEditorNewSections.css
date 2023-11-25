@@ -1,3 +1,7 @@
+#adminPanelHomePageNewWord {
+    color: rgba(46,49,92,1);
+}
+
 #adminPanelHomePageEditorNewSectionsContainer {
     display: flex;
     flex-wrap: wrap;
@@ -17,10 +21,10 @@
     height: 30vh;
     width: 45%;
     transition: 0.5s;
-    background-image: linear-gradient(43deg, #0e232f 0%, #658a9a 46%, #c3dae8 100%);
-    -webkit-box-shadow: 7px 10px 25px 18px rgba(14, 35, 47, 0.6);
-    -moz-box-shadow: 7px 10px 25px 18px rgba(14, 35, 47, 0.6);
-    box-shadow: 7px 10px 25px 18px rgba(14, 35, 47, 0.6);
+    background: linear-gradient(45deg, rgba(107,114,214,1) 0%, rgba(46,49,92,1) 100%);
+    -webkit-box-shadow: 7px 10px 25px 18px rgba(107,114,214, 0.6);
+    -moz-box-shadow: 7px 10px 25px 18px rgba(107,114,214, 0.6);
+    box-shadow: 7px 10px 25px 18px rgba(107,114,214, 0.6);
 }
 
 .adminPanelHomePageEditorNewSection:hover {
