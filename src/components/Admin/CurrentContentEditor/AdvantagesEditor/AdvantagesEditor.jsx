@@ -87,7 +87,9 @@ const AdvantagesEditor = () => {
         if (advantagesEditorDataSelector.length > 0) {
             return (
                 advantagesEditorDataSelector.map(adv => (
+
                     <AdvantageCard img={adv.img} key={adv.id} title={adv.title} text={adv.text}/>
+
                 ))
             )
         }

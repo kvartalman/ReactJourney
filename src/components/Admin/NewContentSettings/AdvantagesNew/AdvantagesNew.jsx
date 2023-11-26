@@ -83,7 +83,6 @@ const AdvantagesNew = () => {
     return (
         <div id={'advantagesNewMainContainer'}>
             <div id={'advantagesNewSettingsContainer'}>
-                <div>
                     <div id={'advantagesNewFormsContainer'}>
                         <Form>
                             <Form.Label>Title</Form.Label>
@@ -112,7 +111,6 @@ const AdvantagesNew = () => {
                             }
                         </div>
                     </div>
-                </div>
                 <div id={'advantagesNewAddedImagesContainer'}>
                     <div>
                         {advantagesNewList()}
@@ -128,6 +126,9 @@ const AdvantagesNew = () => {
             </div>
             <div id={'advantagesNewFinalPreviewContainer'}>
                 {advantagesPreview()}
+                <div>
+                    
+                </div>
             </div>
         </div>
     );

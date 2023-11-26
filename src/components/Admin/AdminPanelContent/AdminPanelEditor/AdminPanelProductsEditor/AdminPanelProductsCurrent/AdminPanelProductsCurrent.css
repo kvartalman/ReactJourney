@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#adminPanelProductsCurrentMainContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+}
+
+#adminPanelProductsCurrentChooseGameButton {
+    background-color: #0e232f;
+    font-weight: 900;
+    font-family: Roboto, sans-serif;
+}
+
+#adminPanelProductsCurrentTabContainer {
+    background: #0e232f;
+}
+
+#adminPanelProductsCurrentTabSettingsContainer .dropdown-item {
+    font-weight: 900;
+    background-color: #c3dae8;
+    transition: 0.3s;
+}
+
+#adminPanelProductsCurrentTabSettingsContainer .dropdown-menu {
+    background-color: #c3dae8;
+}
+
+#adminPanelProductsCurrentTabSettingsContainer .dropdown-item:active {
+    color: #37647a;
+}

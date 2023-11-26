@@ -32,7 +32,6 @@ const ProductPage = (props) => {
     const productTitleCase = require('change-case').sentenceCase(props.product || page.product);
     // This function turns low-priority' to 'lowPriority' (for correct adding as property inside state)
     const productCamelCase = require('change-case').camelCase(props.product || page.product);
-
     const viewSettings = props.gameSelector ?
         (props.gameSelector[props.game].products.hasOwnProperty(props.product) ?
                 props.gameSelector[props.game].products[props.product].viewSettings
@@ -114,7 +113,7 @@ const ProductPage = (props) => {
                 ));
         setSliderPrice(0);
     }, [props.price, page, productCamelCase, productPage.productData, props.game, props.gameSelector])
-
+    
     return (
         <Container fluid id={'productPageMainContainer'}>
             <Row className={'productPageRow'}>
