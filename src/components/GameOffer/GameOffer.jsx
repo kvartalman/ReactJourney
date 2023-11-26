@@ -45,8 +45,7 @@ const GameOffer = (props) => {
                 <Col md={3} className={'gameOfferPanelCol'}>
                     <div className={'breadCrumb'}>
                         <BreadCrumb
-                            linkNames={gameOffer.breadCrumbs.linkNames}
-                            activeLinkName={gameOffer.breadCrumbs.activeLinkName}
+                            game={page.name}
                         />
                     </div>
                     <div className={'panelCol'}>

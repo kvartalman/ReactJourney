@@ -59,18 +59,18 @@ const ContentSlider = (props) => {
                 </div>
                 <div id={'multiRangeSliderContainer'}>
                     <MultiRangeSlider
-                        min={props.contentSliderMinValue ? props.contentSliderMinValue : sliderSettings.min}
-                        max={props.contentSliderMaxValue ? props.contentSliderMaxValue : sliderSettings.max}
-                        step={props.contentSliderStep ? props.contentSliderStep : sliderSettings.step}
+                        min={props.contentSliderMinValue ? props.contentSliderMinValue : props.productData.sliderSettings.min}
+                        max={props.contentSliderMaxValue ? props.contentSliderMaxValue : props.productData.sliderSettings.max}
+                        step={props.contentSliderStep ? props.contentSliderStep : props.productData.sliderSettings.step}
                         minValue={
-                        props.contentSliderLeftThumb && props.contentSliderLeftThumb < sliderSettings.minValue ?
+                        props.contentSliderLeftThumb && props.contentSliderLeftThumb < props.productData.sliderSettings.minValue ?
                             props.contentSliderLeftThumb :
                             sliderSettings.minValue
                     }
                         maxValue={
-                        props.contentSliderRightThumb && props.contentSliderRightThumb > sliderSettings.minValue ?
+                        props.contentSliderRightThumb && props.contentSliderRightThumb > props.productData.sliderSettings.minValue ?
                             props.contentSliderRightThumb :
-                            sliderSettings.maxValue
+                            props.productData.sliderSettings.maxValue
                     }
                         ruler={false}
                         onInput={(e) => {

@@ -1,30 +1,50 @@
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import {NavLink} from "react-router-dom";
-import './BreadCrumb.css'
+import './BreadCrumb.css';
 
 function BreadCrumb(props) {
-
-    let breadCrumbsArr = props.linkNames.map(link => (
-        <Breadcrumb.Item>
-            <NavLink to={link[1]} className={'breadCrumbLink'}>
-               {link[0]}
-            </NavLink>
-        </Breadcrumb.Item>
-    ))
-
+debugger;
     return (
         <Breadcrumb>
             <Breadcrumb.Item href=''>
                 <NavLink to={'/'} className={'breadCrumbLink'}>Main</NavLink>
             </Breadcrumb.Item>
-            {breadCrumbsArr}
-            <Breadcrumb.Item active>
-                <span className={'breadCrumbActive'}>{
-                    props.linkNames.length === 3 ?
-                        props.linkNames[2]
+            {
+                props.product ?
+                    <>
+                        <Breadcrumb.Item>
+                            <NavLink to={`/categories/${props.game}`} className={'breadCrumbLink'}>
+                                {require('change-case').sentenceCase(props.game)}
+                            </NavLink>
+                        </Breadcrumb.Item>
+                        <Breadcrumb.Item>
+                            <NavLink to={`/categories/${props.game}/${props.sub}`} className={'breadCrumbLink'}>
+                                {require('change-case').sentenceCase(props.sub)}
+                            </NavLink>
+                        </Breadcrumb.Item>
+                    </>
+                    :
+                    props.sub ?
+                        <Breadcrumb.Item>
+                            <NavLink to={`/categories/${props.game}`} className={'breadCrumbLink'}>
+                                {require('change-case').sentenceCase(props.game)}
+                            </NavLink>
+                        </Breadcrumb.Item>
                         :
-                        props.linkNames[1]
-                }</span>
+                        null
+            }
+            <Breadcrumb.Item active>
+                <span className={'breadCrumbActive'}>
+                    {
+                        props.product ?
+                            require('change-case').sentenceCase(props.product)
+                            :
+                            props.sub ?
+                                require('change-case').sentenceCase(props.sub)
+                                :
+                                require('change-case').sentenceCase(props.game)
+                    }
+                </span>
             </Breadcrumb.Item>
         </Breadcrumb>
     );

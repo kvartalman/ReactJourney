@@ -57,7 +57,7 @@ const gameProductsSlice = createSlice({
                                 max: 1000,
                                 multiplier: 0.6
                             },
-                            sliderType: 'complex'
+                            sliderType: 'classic'
                         }
                     ],
                 },
@@ -143,7 +143,7 @@ const gameProductsSlice = createSlice({
                             },
                             price: 100,
                             img: '/product-photos/doomslayer.jpg',
-                            sliderType: 'classic'
+                            sliderType: 'complex'
                         }
                     ],
                 },
@@ -173,7 +173,7 @@ const gameProductsSlice = createSlice({
                                 multiplier: 1
                             },
                             img: '/product-photos/doomslayer.jpg',
-                            sliderType: 'complex'
+                            sliderType: 'classic'
                         }
                     ],
                 },
@@ -203,7 +203,7 @@ const gameProductsSlice = createSlice({
                                 multiplier: 2
                             },
                             img: '/product-photos/doomslayer.jpg',
-                            sliderType: "complex",
+                            sliderType: "classic",
                         }
                     ]
                 },

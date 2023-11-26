@@ -50,7 +50,7 @@ const ProductPage = (props) => {
                     )
                     :
                     (productPage.productData[page.name].products.hasOwnProperty(productCamelCase) ?
-                        productPage.productData[page.name].products[productCamelCase].price
+                            productPage.productData[page.name].products[productCamelCase].price
                             :
                             null
                     )
@@ -108,17 +108,17 @@ const ProductPage = (props) => {
                 props.price
                 :
                 (props.gameSelector ?
-                    (props.gameSelector[props.game].products.hasOwnProperty(props.product) ?
-                        props.gameSelector[props.game].products[props.product].price
-                            :
-                            null
-                    )
+                        (props.gameSelector[props.game].products.hasOwnProperty(props.product) ?
+                                props.gameSelector[props.game].products[props.product].price
+                                :
+                                null
+                        )
                         :
-                    (productPage.productData[page.name].products.hasOwnProperty(productCamelCase) ?
-                        productPage.productData[page.name].products[productCamelCase].price
-                            :
-                            null
-                    )
+                        (productPage.productData[page.name].products.hasOwnProperty(productCamelCase) ?
+                                productPage.productData[page.name].products[productCamelCase].price
+                                :
+                                null
+                        )
                 ));
         setSliderPrice(0);
     }, [props.price, page, productCamelCase, productPage.productData, props.game, props.gameSelector])
@@ -129,11 +129,9 @@ const ProductPage = (props) => {
                 <Col md={3} id={'productPagePanelCol'}>
                     <div className={'breadCrumb'}>
                         <BreadCrumb
-                            linkNames={[
-                                page.name,
-                                page.sub,
-                                page.product
-                            ]}
+                            game={page.name}
+                            sub={page.sub}
+                            product={page.product}
                         />
                     </div>
                     <div className={'panelCol'}>
@@ -141,111 +139,109 @@ const ProductPage = (props) => {
                     </div>
                 </Col>
                 <Col md={9} id={'productPageContentCol'}>
-                    {productPage.productData[props.game || page.name].subCategories.hasOwnProperty(productCamelCase) ?
-                        <SubCategory
-                            game={props.game || page.name}
-                            product={productCamelCase}
-                        />
-                        :
-                        <Container fluid id={'pdPageContentContainer'}>
-                            <Row>
-                                <Col md={viewSettings ? 9 : 12}>
-                                    <div className={'pdPageContentTitle'}>
-                                        <h1>
+                    <Container fluid id={'pdPageContentContainer'}>
+                        <Row>
+                            <Col md={productData.sliderType === 'classic' ? 9 : 12}>
+                                <div className={'pdPageContentTitle'}>
+                                    <h1>
+                                        {
+                                            productData.header
+                                        }
+                                    </h1>
+                                </div>
+                                <div className={'customizeDividerLine'}></div>
+                                {productData.sliderType === 'complex' ?
+                                    <ContentSlider
+
+                                        preview={!!props.price}
+                                        contentSliderMinValue={props.contentSliderMinValue}
+                                        contentSliderMaxValue={props.contentSliderMaxValue}
+                                        contentSliderLeftThumb={props.contentSliderLeftThumb}
+                                        contentSliderRightThumb={props.contentSliderRightThumb}
+                                        contentSliderStep={props.contentSliderStep}
+
+                                        productData={productData}
+                                        setPrice={setPrice}
+                                        totalPrice={price}
+                                        addToCartHandler={addToCartHandler}
+                                        showModal={showModal}
+                                        setShowModal={setShowModal}
+
+                                    />
+                                    :
+                                    null
+                                }
+                                <div className={'pdPageContentText'}>
+                                    <p>{props.text || productPage.productData[props.game || page.name].products
+                                        [productCamelCase].text}</p>
+                                </div>
+                            </Col>
+                            {productData.sliderType === 'classic' ?
+                                <Col md={3}>
+                                    <div><h2>Customize your purchase</h2></div>
+                                    <div id={'productOptionsContainer'}>
+                                        <div className={'checkboxesContainer'}>
+                                            {props.game ?
+                                                <CheckboxesPreview
+                                                    game={props.game}
+                                                    product={productCamelCase}
+                                                    setPrice={setPrice}
+                                                /> :
+                                                <CheckBoxes
+                                                    game={props.game || page.name}
+                                                    product={productCamelCase}
+                                                    setPrice={setPrice}
+                                                    totalPrice={price}
+                                                />}
+                                        </div>
+                                        <div className={'customizeDividerLine'}></div>
+                                        <div className={'sliderContainer'}>
+                                            <Slider
+                                                value={sliderPrice}
+                                                min={
+                                                    props.sliderMin ||
+                                                    productPage.productData
+                                                        [page.name || props.game].products[productCamelCase].slider.min
+                                                }
+                                                max={
+                                                    props.sliderMax ||
+                                                    productPage.productData
+                                                        [page.name || props.game].products[productCamelCase].slider.max
+                                                }
+                                                onChange={handleSliderChange}
+                                            />
+                                        </div>
+                                        <div className={'customizeDividerLine'}></div>
+                                        <div className={'totalPrice'}><p>
                                             {
-                                                props.title ||
-                                                productPage.productData
-                                                    [props.game || page.name].products[productCamelCase].header
-                                            }
-                                        </h1>
-                                    </div>
-                                    <div className={'customizeDividerLine'}></div>
-                                    {viewSettings ? null :
-                                        <ContentSlider
-                                            preview={!!props.price}
-                                            contentSliderMinValue={props.contentSliderMinValue}
-                                            contentSliderMaxValue={props.contentSliderMaxValue}
-                                            contentSliderLeftThumb={props.contentSliderLeftThumb}
-                                            contentSliderRightThumb={props.contentSliderRightThumb}
-                                            contentSliderStep={props.contentSliderStep}
-                                            page={props.game ? props.game : page.name}
-                                            product={productCamelCase}
-                                            setPrice={setPrice}
-                                            totalPrice={price}
-                                            addToCartHandler={addToCartHandler}
-                                            showModal={showModal}
-                                            setShowModal={setShowModal}
-                                        />
-                                    }
-                                    <div className={'pdPageContentText'}>
-                                        <p>{props.text || productPage.productData[props.game || page.name].products
-                                            [productCamelCase].text}</p>
+                                                price +
+                                                Number(
+                                                    (
+                                                        sliderPrice *
+                                                        (props.sliderMultiplier || productPage.productData
+                                                            [page.name || props.game].products
+                                                            [productCamelCase].slider.multiplier)
+                                                    ).toFixed(1))
+                                            }&#8364;
+                                        </p></div>
+                                        <div className={'customizeDividerLine'}></div>
+                                        <div className={'customizeButtonsContainer'}>
+                                            <Button
+                                                onClick={() => addToCartHandler(sliderPrice)}
+                                                className={'customizeButtons'}
+                                            >
+                                                Buy now
+                                            </Button>
+                                            <Button className={'customizeButtons'}>Contact manager</Button>
+                                            <AddCartModal show={showModal} setShowModal={setShowModal}/>
+                                        </div>
                                     </div>
                                 </Col>
-                                {viewSettings ?
-                                    <Col md={3}>
-                                        <div><h2>Customize your purchase</h2></div>
-                                        <div id={'productOptionsContainer'}>
-                                            <div className={'checkboxesContainer'}>
-                                                {props.game ?
-                                                    <CheckboxesPreview
-                                                        game={props.game}
-                                                        product={productCamelCase}
-                                                        setPrice={setPrice}
-                                                    /> :
-                                                    <CheckBoxes
-                                                        game={props.game || page.name}
-                                                        product={productCamelCase}
-                                                        setPrice={setPrice}
-                                                        totalPrice={price}
-                                                    />}
-                                            </div>
-                                            <div className={'customizeDividerLine'}></div>
-                                            <div className={'sliderContainer'}>
-                                                <Slider
-                                                    value={sliderPrice}
-                                                    min={
-                                                        props.sliderMin ||
-                                                        productPage.productData
-                                                            [page.name || props.game].products[productCamelCase].slider.min
-                                                    }
-                                                    max={
-                                                        props.sliderMax ||
-                                                        productPage.productData
-                                                            [page.name || props.game].products[productCamelCase].slider.max
-                                                    }
-                                                    onChange={handleSliderChange}
-                                                />
-                                            </div>
-                                            <div className={'customizeDividerLine'}></div>
-                                            <div className={'totalPrice'}><p>
-                                                {
-                                                    price +
-                                                    Number(
-                                                        (
-                                                            sliderPrice *
-                                                            (props.sliderMultiplier || productPage.productData
-                                                                [page.name || props.game].products
-                                                                [productCamelCase].slider.multiplier)
-                                                        ).toFixed(1))
-                                                }&#8364;
-                                            </p></div>
-                                            <div className={'customizeDividerLine'}></div>
-                                            <div className={'customizeButtonsContainer'}>
-                                                <Button
-                                                    onClick={() => addToCartHandler(sliderPrice)}
-                                                    className={'customizeButtons'}
-                                                >
-                                                    Buy now
-                                                </Button>
-                                                <Button className={'customizeButtons'}>Contact manager</Button>
-                                                <AddCartModal show={showModal} setShowModal={setShowModal}/>
-                                            </div>
-                                        </div>
-                                    </Col> : null}
-                            </Row>
-                        </Container>
-                    }
+                                :
+                                null
+                            }
+                        </Row>
+                    </Container>
                 </Col>
             </Row>
         </Container>
