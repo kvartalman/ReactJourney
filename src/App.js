@@ -3,18 +3,9 @@ import React, {lazy, Suspense} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Route, Routes} from "react-router-dom";
 import Preloader from "./components/Preloader/Preloader";
-import AdminPanelHomePageEditor
-    from "./components/Admin/AdminPanelContent/AdminPanelEditor/AdminPanelHomePageEditor/AdminPanelHomePageEditor";
-import AdminPanelGamesEditor
-    from "./components/Admin/AdminPanelContent/AdminPanelEditor/AdminPanelGamesEditor/AdminPanelGamesEditor";
-import AdminPanelSubCategoriesEditor
-    from "./components/Admin/AdminPanelContent/AdminPanelEditor/AdminPanelSubCategoriesEditor/AdminPanelSubCategoriesEditor";
-import AdminPanelProductsEditor
-    from "./components/Admin/AdminPanelContent/AdminPanelEditor/AdminPanelProductsEditor/AdminPanelProductsEditor";
-import AdminPanelPricesEditor
-    from "./components/Admin/AdminPanelContent/AdminPanelEditor/AdminPanelPricesEditor/AdminPanelPricesEditor";
 
 const ProductPage = lazy(() => import("./components/ProductPage/ProductPage"));
+const SubCategory = lazy(() => import("./components/ProductPage/SubCategory/SubCategory"));
 const Cart = lazy(() => import("./components/Cart/Cart"));
 const Layout = lazy(() => import("./components/Layout"));
 const AdminPanel = lazy(() => import("./components/Admin/AdminPanel"));
@@ -32,8 +23,9 @@ function App() {
                     <Route exact path={'/'} element={<Layout
                     />}>
                         <Route index element={<Homepage/>}/>
-                        <Route path={'categories/:name'} element={<GameOffer/>} />
-                        <Route path={'/categories/:name/:product'} element={<ProductPage/>}/>
+                        <Route path={'categories/:name'} element={<GameOffer/>}/>
+                        <Route path={'categories/:name/:sub'} element={<SubCategory/>}/>
+                        <Route path={'/categories/:name/:sub/:product'} element={<ProductPage />}/>
                         <Route path={'cart'} element={<Cart/>}/>
                         <Route path={'profile'} element={<UserProfile/>}/>
                     </Route>

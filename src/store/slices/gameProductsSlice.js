@@ -1,8 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 
-const productPageSlice = createSlice({
-    name: 'productPage',
+const gameProductsSlice = createSlice({
+    name: 'gameProducts',
     initialState: {
         dota2: {
             subCategories: [
@@ -217,3 +217,5 @@ const productPageSlice = createSlice({
 
     }
 })
+
+export default gameProductsSlice.reducer

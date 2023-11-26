@@ -26,13 +26,7 @@ const offerPageSlice = createSlice({
                         {id: 1, link: "/categories/dota2/uncommon-skins", name: "Uncommon skins"},
                         {id: 2, link: "/categories/dota2/rare-skins", name: "Rare skins"},
                         {id: 3, link: "/categories/dota2/immortal-skins", name: "Immortal skins"},
-                        {id: 4, link: "/categories/dota2/arcana", name: "Arcana"},
-                        {id: 5, link: "/categories/dota2/mmr-boost", name: "MMR Boost"},
-                        {id: 6, link: "/categories/dota2/low-priority", name: "Low priority"},
-                        {id: 7, link: "/categories/dota2/coaching", name: "Coaching"},
-                        {id: 8, link: "/categories/dota2/party-with-a-pro", name: "Party with a pro"},
-                        {id: 9, link: "/categories/dota2/rampage-collection", name: "Rampage collection"},
-                        {id: 10, link: "/categories/dota2/account-boost", name: "Account boost"}
+                        {id: 4, link: "/categories/dota2/arcana", name: "Arcana"}
                     ],
                     breadCrumbs: {linkNames: [], activeLinkName: 'Dota 2'},
                     canvasCtgData:

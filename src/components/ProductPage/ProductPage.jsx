@@ -26,26 +26,18 @@ const ProductPage = (props) => {
     const {addItem} = useCart();
     const page = useParams();
     const gameOffer = useSelector(state => state.gameOfferPages.pagesData[props.game ? props.game : page.name]);
-    const productPage = useSelector(state => state.productPage)
+    const productPage = useSelector(state => state.productPage);
+    const subCtgSelector = useSelector(state => state.gameProducts[page.name].subCategories)
+
+    const [productData, setProductData] = useState(null);
 
     // This function turns 'low-priority' to 'Low priority' (for beautiful breadcrumbs view)
     const productTitleCase = require('change-case').sentenceCase(props.product || page.product);
     // This function turns low-priority' to 'lowPriority' (for correct adding as property inside state)
     const productCamelCase = require('change-case').camelCase(props.product || page.product);
-    const viewSettings = props.gameSelector ?
-        (props.gameSelector[props.game].products.hasOwnProperty(props.product) ?
-                props.gameSelector[props.game].products[props.product].viewSettings
-                :
-                false
-        )
-        :
-        (productPage.productData[page.name].products.hasOwnProperty(productCamelCase) ?
-                productPage.productData[page.name].products[productCamelCase].viewSettings
-                :
-                false
-        )
 
     const [showModal, setShowModal] = useState(false);
+
     const [price, setPrice] = useState(
         props.price != null ?
             props.price
@@ -91,6 +83,23 @@ const ProductPage = (props) => {
         setShowModal(true);
     }
 
+    useEffect(() => {
+
+        const subName = require('change-case').sentenceCase(page.sub)
+        const productName = require('change-case').sentenceCase(page.product)
+
+        for (let i = 0; i < subCtgSelector.length; i++) {
+            if (subCtgSelector[i].name === subName) {
+                for (let j = 0; j < subCtgSelector[i].products.length; j++) {
+                    if (subCtgSelector[i].products[j].header === productName) {
+                        setProductData(subCtgSelector[i].products[j])
+                        break;
+                    }
+                }
+            }
+        }
+    }, []);
+
     // Refresh total price when re-render
 
     useEffect(() => {
@@ -113,7 +122,7 @@ const ProductPage = (props) => {
                 ));
         setSliderPrice(0);
     }, [props.price, page, productCamelCase, productPage.productData, props.game, props.gameSelector])
-    
+
     return (
         <Container fluid id={'productPageMainContainer'}>
             <Row className={'productPageRow'}>
@@ -121,9 +130,10 @@ const ProductPage = (props) => {
                     <div className={'breadCrumb'}>
                         <BreadCrumb
                             linkNames={[
-                                productPage.breadCrumbsData[props.game || page.name]
+                                page.name,
+                                page.sub,
+                                page.product
                             ]}
-                            activeLinkName={productTitleCase}
                         />
                     </div>
                     <div className={'panelCol'}>

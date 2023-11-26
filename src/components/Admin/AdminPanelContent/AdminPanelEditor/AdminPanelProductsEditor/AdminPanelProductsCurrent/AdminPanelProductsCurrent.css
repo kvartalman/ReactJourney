@@ -29,6 +29,10 @@
     background-color: #c3dae8;
 }
 
+#adminPanelProductsCurrentTabSettingsContainer .dropdown-item:hover {
+    background-color: #37647a;
+}
+
 #adminPanelProductsCurrentTabSettingsContainer .dropdown-item:active {
-    color: #37647a;
+    color: #c3dae8;
 }

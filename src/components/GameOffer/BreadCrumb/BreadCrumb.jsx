@@ -19,7 +19,12 @@ function BreadCrumb(props) {
             </Breadcrumb.Item>
             {breadCrumbsArr}
             <Breadcrumb.Item active>
-                <span className={'breadCrumbActive'}>{props.activeLinkName}</span>
+                <span className={'breadCrumbActive'}>{
+                    props.linkNames.length === 3 ?
+                        props.linkNames[2]
+                        :
+                        props.linkNames[1]
+                }</span>
             </Breadcrumb.Item>
         </Breadcrumb>
     );

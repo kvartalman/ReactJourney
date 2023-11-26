@@ -9,6 +9,7 @@ import notFoundSlice from "./slices/notFoundSlice";
 import productPageSlice from "./slices/productPageSlice";
 import adminPanelNewContentSlice from "./slices/adminPanelSlices/adminPanelNewContentSlice";
 import adminPanelNewProductSlice from "./slices/adminPanelSlices/adminPanelNewProductSlice";
+import gameProductsSlice from "./slices/gameProductsSlice";
 
 let reducersBatch = combineReducers({
     homePage: homePageSlice,
@@ -20,7 +21,8 @@ let reducersBatch = combineReducers({
     footer: footerSlice,
     categories: categoriesSlice,
     notFound: notFoundSlice,
-    productPage: productPageSlice
+    productPage: productPageSlice,
+    gameProducts: gameProductsSlice
 });
 
 let store = createStore(reducersBatch);
