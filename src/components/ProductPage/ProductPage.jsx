@@ -14,7 +14,6 @@ import {v4 as uuidv4} from 'uuid';
 import Slider from "rc-slider";
 import 'rc-slider/assets/index.css';
 import ContentSlider from "./ContentSlider/ContentSlider";
-import SubCategory from "./SubCategory/SubCategory";
 import CheckboxesPreview from "../Admin/CurrentContentEditor/ProductsEditor/ProductsEditorPreview/CheckboxesPreview";
 
 const ProductPage = (props) => {
@@ -188,7 +187,7 @@ const ProductPage = (props) => {
                                                     setPrice={setPrice}
                                                 /> :
                                                 <CheckBoxes
-                                                    game={props.game || page.name}
+                                                    game={page.name}
                                                     product={productCamelCase}
                                                     setPrice={setPrice}
                                                     totalPrice={price}
