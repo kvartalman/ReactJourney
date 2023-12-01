@@ -7,25 +7,23 @@ import Container from "react-bootstrap/Container";
 
 const ContentSliderCheckboxes = (props) => {
 
-    const productPage = useSelector(
-        state => state.productPage.productData[props.game].products[props.product].checkboxes
-    )
+   const checkboxesData = props.productData.checkboxes
 
     // Here we get an array of checkboxes in 'false' state. It means they are not checked
 
-    const [checkboxesState, setCheckboxesState] = useState(new Array(productPage.length).fill(false));
+    const [checkboxesState, setCheckboxesState] = useState(new Array(checkboxesData.length).fill(false));
 
     // Function that change total price when checkbox checked/not checked
 
     const handleCheckboxChange = (index) => {
         const checkboxStateCopy = [...checkboxesState];
         checkboxStateCopy[index] = !checkboxStateCopy[index];
-        const priceChange = productPage[index].price * (checkboxStateCopy[index] ? 1 : -1);
+        const priceChange = checkboxesData[index].price * (checkboxStateCopy[index] ? 1 : -1);
         setCheckboxesState(checkboxStateCopy);
         props.setPrice((prevPrice) => priceChange + prevPrice);
     }
 
-    const checkBoxes = productPage.map((checkbox, index) => {
+    const checkBoxes = checkboxesData.map((checkbox, index) => {
         return (
             <label key={index} className={'labelSliderCheckboxesContainer'}>
                 <div className={'checkboxTooltipContainer'}>

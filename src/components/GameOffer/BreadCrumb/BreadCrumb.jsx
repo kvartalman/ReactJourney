@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import './BreadCrumb.css';
 
 function BreadCrumb(props) {
-debugger;
+
     return (
         <Breadcrumb>
             <Breadcrumb.Item href=''>

@@ -22,10 +22,16 @@ const AdminPanelProductsEditor = (props) => {
              />
              :
              sectionName === 'current' ?
-                 <AdminPanelProductsCurrent />
+                 <AdminPanelProductsCurrent
+                     backIndex={props.backIndex}
+                     setBackIndex={props.setBackIndex}
+                 />
                  :
                  sectionName === 'new' ?
-                     <AdminPanelProductsNew />
+                     <AdminPanelProductsNew
+                         backIndex={props.backIndex}
+                         setBackIndex={props.setBackIndex}
+                     />
                      :
                      null
             }

@@ -6,25 +6,21 @@ import {OverlayTrigger, Tooltip} from "react-bootstrap";
 
 const CheckBoxes = (props) => {
 
-    const productPage = useSelector(
-        state => (state.productPage.productData[props.game].products[props.product].checkboxes)
-    )
-
     // Here we get an array of checkboxes in 'false' state. It means they are not checked
 
-    const [checkboxesState, setCheckboxesState] = useState(new Array(productPage.length).fill(false));
+    const [checkboxesState, setCheckboxesState] = useState(new Array(props.checkboxesData.length).fill(false));
 
     // Function that change total price when checkbox checked/not checked
 
     const handleCheckboxChange = (index) => {
         const checkboxStateCopy = [...checkboxesState];
         checkboxStateCopy[index] = !checkboxStateCopy[index];
-        const priceChange = productPage[index].price * (checkboxStateCopy[index] ? 1 : -1);
+        const priceChange = props.checkboxesData[index].price * (checkboxStateCopy[index] ? 1 : -1);
         setCheckboxesState(checkboxStateCopy);
         props.setPrice((prevPrice) => priceChange + prevPrice);
     }
 
-    const checkBoxes = productPage.map((checkbox, index) => {
+    const checkBoxes = props.checkboxesData.map((checkbox, index) => {
         return (
             <label className={'productCheckboxLabel'} key={index}>
                 <Form.Check

@@ -11,13 +11,8 @@ import ContentSliderCheckboxesPreview
 
 const ContentSlider = (props) => {
 
-    const sliderRangesValues = useSelector(
-        state => state.productPage.productData[props.page].products[props.product].sliderRangesValues
-    )
-
-    const sliderSettings = useSelector(
-        state => state.productPage.productData[props.page].products[props.product].sliderSettings
-    )
+    const sliderRangesValues = props.productData.sliderRangesValues
+    const sliderSettings = props.productData.sliderSettings
 
     const [finalPrice, setFinalPrice] = useState(0);
     const [minValue, setMinValue] = useState(25);
@@ -59,18 +54,18 @@ const ContentSlider = (props) => {
                 </div>
                 <div id={'multiRangeSliderContainer'}>
                     <MultiRangeSlider
-                        min={props.contentSliderMinValue ? props.contentSliderMinValue : props.productData.sliderSettings.min}
-                        max={props.contentSliderMaxValue ? props.contentSliderMaxValue : props.productData.sliderSettings.max}
-                        step={props.contentSliderStep ? props.contentSliderStep : props.productData.sliderSettings.step}
+                        min={props.contentSliderMinValue ? props.contentSliderMinValue : sliderSettings.min}
+                        max={props.contentSliderMaxValue ? props.contentSliderMaxValue : sliderSettings.max}
+                        step={props.contentSliderStep ? props.contentSliderStep : sliderSettings.step}
                         minValue={
-                        props.contentSliderLeftThumb && props.contentSliderLeftThumb < props.productData.sliderSettings.minValue ?
+                        props.contentSliderLeftThumb && props.contentSliderLeftThumb < sliderSettings.minValue ?
                             props.contentSliderLeftThumb :
                             sliderSettings.minValue
                     }
                         maxValue={
-                        props.contentSliderRightThumb && props.contentSliderRightThumb > props.productData.sliderSettings.minValue ?
+                        props.contentSliderRightThumb && props.contentSliderRightThumb > sliderSettings.minValue ?
                             props.contentSliderRightThumb :
-                            props.productData.sliderSettings.maxValue
+                            sliderSettings.maxValue
                     }
                         ruler={false}
                         onInput={(e) => {
@@ -86,8 +81,7 @@ const ContentSlider = (props) => {
                         />
                         :
                     <ContentSliderCheckboxes
-                        game={props.page}
-                        product={props.product}
+                        productData={props.productData}
                         setPrice={props.setPrice}
                     />
                     }

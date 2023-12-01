@@ -11,8 +11,10 @@ const SubCategory = (props) => {
 
     const subCtgSelector = useSelector(state => state.gameProducts[params.name].subCategories)
 
+
     const cardsList =
         () => {
+
         for (let i = 0; i < subCtgSelector.length; i++) {
             const subCtgName = require('change-case').sentenceCase(params.sub)
             if (subCtgSelector[i].name === subCtgName) {
@@ -25,7 +27,7 @@ const SubCategory = (props) => {
                         >
                             {/*/categories/${params.name}/${params.sub}/${require('change-case').paramCase(subCtgSelector[i][product])}*/}
                             <NavLink
-                                to={`/categories/${params.name}/${params.sub}/${require('change-case').paramCase((subCtgSelector[i][product].header))}`}>
+                                to={`/categories/${params.name}/${params.sub}/${require('change-case').paramCase((product.header))}`}>
                                 <Card.Body className={'subCategoryCardBody'}>
                                     <Card.Title>{product.header}</Card.Title>
                                 </Card.Body>

@@ -5,6 +5,7 @@ const gameProductsSlice = createSlice({
     name: 'gameProducts',
     initialState: {
         dota2: {
+            fullName: 'Defence of the Ancients 2',
             subCategories: [
                 {
                     name: 'Common skins',
@@ -210,8 +211,12 @@ const gameProductsSlice = createSlice({
 
             ],
         },
-        lol: {},
-        hots: {}
+        lol: {
+            fullName: 'League of Legends'
+        },
+        hots: {
+            fullName: 'Heroes of the Storm'
+        }
     },
     reducers: {
 

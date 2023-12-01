@@ -7,7 +7,6 @@
 
 #layoutFooter {
     width: 100%;
-    margin-top: auto;
     background: rgb(101,138,154);
     background: linear-gradient(0deg, rgba(101,138,154,1) 87%, rgba(14,35,47,1) 100%);
 }

@@ -9,14 +9,18 @@
     margin: 1em;
 }
 
-#adminPanelProductsCurrentChooseGameButton {
+#adminPanelProductsCurrentChooseGameButton, #adminPanelProductsCurrentChooseSubButton {
+    border: none;
     background-color: #0e232f;
     font-weight: 900;
     font-family: Roboto, sans-serif;
 }
 
-#adminPanelProductsCurrentTabContainer {
-    background: #0e232f;
+#adminPanelProductsCurrentTabSettingsContainer {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1em;
+    margin: 1em;
 }
 
 #adminPanelProductsCurrentTabSettingsContainer .dropdown-item {
@@ -35,4 +39,30 @@
 
 #adminPanelProductsCurrentTabSettingsContainer .dropdown-item:active {
     color: #c3dae8;
+}
+
+#adminPanelProductsCurrentTabContainer {
+    background: #fff;
+    border-radius: 2%;
+    border: 2px solid black;
+}
+
+#adminPanelProductsCurrentTabContainer tr {
+    border: 2px solid black;
+    transition: 0.2s ease-out;
+}
+
+.productTableRow:hover {
+    background-color: rgba(195, 218, 232, 0.5);
+}
+
+#adminPanelProductsCurrentTabContainer td {
+    width: 100%;
+    border: 2px solid black;
+    padding: 1em;
+}
+
+#adminPanelProductsCurrentTabContainer th {
+    border: 2px solid black;
+    text-align: center;
 }
