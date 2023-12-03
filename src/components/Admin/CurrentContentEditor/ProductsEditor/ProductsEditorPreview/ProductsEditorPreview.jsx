@@ -1,6 +1,7 @@
 import React from 'react';
 import './ProductsEditorPreview.css'
 import ProductPage from "../../../../ProductPage/ProductPage";
+import ProductPagePreview from "./ProductPagePreview/ProductPagePreview";
 
 const ProductsEditorPreview = (props) => {
 
@@ -8,7 +9,7 @@ const ProductsEditorPreview = (props) => {
         <>
 
 
-                    <ProductPage
+                    <ProductPagePreview
                         gameSelector={props.gameSelector}
                         game={props.game}
                         product={props.product}

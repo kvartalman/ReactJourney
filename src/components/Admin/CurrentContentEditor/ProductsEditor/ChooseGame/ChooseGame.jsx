@@ -1,23 +1,25 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import './ChooseGame.css';
+import {forEach} from "react-bootstrap/ElementChildren";
 
 const ChooseGame = (props) => {
 
 
     const [activeGameButton, setActiveGameButton] = useState(0);
+    const [activeSubCtgButton, setActiveSubCtgButton] = useState(0);
     const [activeProductButton, setActiveProductButton] = useState(0);
     const [sort, setSort] = useState(false);
-    const [productsCopy, setProductsCopy] = useState([...Object.keys(props.gameSelector[props.game].products)]);
+    const [productsCopy, setProductsCopy] = useState([...props.subCtg.products]);
     const [showSortButtons, setShowSortButtons] = useState(false);
 
     const alphabetSort = () => {
         setSort(!sort)
         if (sort) {
-            setProductsCopy(productsCopy.sort())
+            setProductsCopy(productsCopy.sort((product1, product2) => product1.header.localeCompare(product2.header)))
         } else {
-            setProductsCopy([...Object.keys(props.gameSelector[props.game].products)]);
+            setProductsCopy([...props.subCtg.products]);
         }
     }
 
@@ -25,19 +27,25 @@ const ChooseGame = (props) => {
         setShowSortButtons(!showSortButtons);
     }
 
-    const handleProductSelect = (product, index) => {
-        setActiveProductButton(index);
-        props.setProduct(product);
-    }
-
     const handleGameSelect = (game, index) => {
         setActiveGameButton(index);
         setActiveProductButton(0);
-        props.setGame(game);
-        props.setProduct(Object.keys(props.gameSelector[game].products)[0])
+        props.setGame(props.gameSelector[game]);
+        props.setSubCtg(props.gameSelector[game].subCategories[0]);
+        props.setProduct(props.gameSelector[game].subCategories[0].products[0]);
         // We create new productsCopy with products of game we chose last time. Without this, we will get an error
         // because we change game, but we still use old copy of products
-        setProductsCopy([...Object.keys(props.gameSelector[game].products)])
+        setProductsCopy([...props.gameSelector[game].subCategories[0].products])
+    }
+
+    const handleSubCtgSelect = (subCtg, index) => {
+        props.setSubCtg(subCtg);
+        setActiveSubCtgButton(index);
+    }
+
+    const handleProductSelect = (product, index) => {
+        setActiveProductButton(index);
+        props.setProduct(product);
     }
 
     const gamesButtons = Object.keys(props.gameSelector).map((game, index) => (
@@ -50,8 +58,19 @@ const ChooseGame = (props) => {
         </Button>
     ))
 
-    // In this map function we get only products without key 'cards' inside. We have cards only in subcategories and
-    // game pages
+    const subCtgButtons = () => {
+
+            props.gameSelector[props.game].subCategories.map((subCtg, index) => (
+                <Button
+                    key={index}
+                    onClick={() => handleSubCtgSelect(subCtg, index)}
+                    className={activeSubCtgButton === index ? 'activeButton' : 'defaultButton'}
+                >
+                    {subCtg.name}
+                </Button>
+            ))
+
+    }
 
     const productsButtons = productsCopy.map((product, index) => (
             <Button
@@ -59,7 +78,7 @@ const ChooseGame = (props) => {
                 onClick={() => handleProductSelect(product, index)}
                 className={activeProductButton === index ? 'activeButton' : 'defaultButton'}
             >
-                {props.gameSelector[props.game].products[product].header}
+                {product.header}
             </Button>
     ))
 
@@ -67,6 +86,9 @@ const ChooseGame = (props) => {
         <Container fluid id={'chooseButtonsMainContainer'}>
             <div className={'gamesButtonsContainer'}>
                 {gamesButtons}
+            </div>
+            <div>
+                {subCtgButtons}
             </div>
             <div>
                 <Button className={'nextPageButton'} onClick={() => sortButtonsFunc()}>{showSortButtons ?

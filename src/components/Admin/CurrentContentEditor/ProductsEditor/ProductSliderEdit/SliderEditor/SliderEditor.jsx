@@ -71,10 +71,10 @@ const SliderEditor = (props) => {
                         <Slider
                             value={currentSliderPrice}
                             min={
-                                props.gameSelector[props.game].products[props.product].slider.min
+                                props.product.slider.min
                             }
                             max={
-                                props.gameSelector[props.game].products[props.product].slider.max
+                                props.product.slider.max
                             }
                             onChange={handleCurrentSliderChange}
                         />
@@ -82,8 +82,7 @@ const SliderEditor = (props) => {
                     <div>
                         {Number(props.price) +
                             Number((
-                                currentSliderPrice * props.gameSelector[props.game].products
-                                    [props.product].slider.multiplier).toFixed(1))
+                                currentSliderPrice * props.product.slider.multiplier).toFixed(1))
                         }
                     </div>
                     <div className={'sliderContainer'}>
@@ -93,11 +92,11 @@ const SliderEditor = (props) => {
                             value={newSliderPrice}
                             min={
                                 enterMinValue ? Number(enterMinValue)
-                                    : props.gameSelector[props.game].products[props.product].slider.min
+                                    : props.product.slider.min
                             }
                             max={
                                 enterMaxValue ? Number(enterMaxValue)
-                                    : props.gameSelector[props.game].products[props.product].slider.max
+                                    : props.product.slider.max
                             }
                             onChange={handleNewSliderChange}
                         />
@@ -105,8 +104,7 @@ const SliderEditor = (props) => {
                     <div>
                         {Number(props.price) +
                             Number((
-                                newSliderPrice * (enterMultiplier || props.gameSelector[props.game].products
-                                    [props.product].slider.multiplier)).toFixed(1))
+                                newSliderPrice * (enterMultiplier || props.product.slider.multiplier)).toFixed(1))
                         }
                     </div>
                 </Col>

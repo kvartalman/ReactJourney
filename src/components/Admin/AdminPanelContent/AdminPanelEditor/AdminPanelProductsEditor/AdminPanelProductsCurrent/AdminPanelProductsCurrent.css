@@ -43,8 +43,6 @@
 
 #adminPanelProductsCurrentTabContainer {
     background: #fff;
-    border-radius: 2%;
-    border: 2px solid black;
 }
 
 #adminPanelProductsCurrentTabContainer tr {
@@ -54,6 +52,7 @@
 
 .productTableRow:hover {
     background-color: rgba(195, 218, 232, 0.5);
+    cursor: pointer;
 }
 
 #adminPanelProductsCurrentTabContainer td {

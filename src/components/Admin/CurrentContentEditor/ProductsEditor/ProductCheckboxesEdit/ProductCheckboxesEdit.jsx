@@ -15,7 +15,6 @@ import {
 
 const ProductCheckboxesEdit = (props) => {
 
-    const gameSelector = props.gameSelector[props.game].products[props.product];
     const checkboxesSliceSelector = useSelector(state => state.adminPanel.checkboxesEditor);
     const dispatch = useDispatch();
 
@@ -76,12 +75,12 @@ const ProductCheckboxesEdit = (props) => {
         ))
     }
 
-    const checkboxesList = gameSelector.checkboxes.map(checkbox => (
+    const checkboxesList = props.product.checkboxes.map(checkbox => (
         <option>{checkbox.name}</option>
     ))
 
     const checkboxesCurrent =
-        gameSelector.checkboxes.map((checkbox, index) => {
+        props.product.checkboxes.map((checkbox, index) => {
             return (
                 <label key={index} className={'labelSliderCheckboxesContainer'}>
                     <div className={'checkboxTooltipContainer'}>
@@ -179,8 +178,8 @@ const ProductCheckboxesEdit = (props) => {
     }
 
     useEffect(() => {
-        dispatch(fillCheckboxesEditor(gameSelector.checkboxes))
-    }, [dispatch, gameSelector])
+        dispatch(fillCheckboxesEditor(props.product.checkboxes))
+    }, [dispatch, props.product])
 
     return (
         <Container fluid>

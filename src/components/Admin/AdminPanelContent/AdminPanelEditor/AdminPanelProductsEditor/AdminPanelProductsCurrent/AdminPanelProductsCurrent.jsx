@@ -8,23 +8,18 @@ const AdminPanelProductsCurrent = (props) => {
 
     const gamesSelector = useSelector(state => state.gameProducts);
     const [game, setGame] = useState(null);
-    const [gameIndex, setGameIndex] = useState(null);
     const [subCtg, setSubCtg] = useState(null);
-    const [subCtgIndex, setSubCtgIndex] = useState(null);
     const [product, setProduct] = useState(null);
 
     const handleGameChoice = (game, index) => {
         setGame(game);
-        setGameIndex(index);
     }
 
     const handleSubCtgChoice = (sub, index) => {
         setSubCtg(sub);
-        setSubCtgIndex(index);
     }
 
     const handleProductChoice = (product, index) => {
-        debugger;
         setProduct(product);
         props.setBackIndex(4);
     }
@@ -97,6 +92,7 @@ const AdminPanelProductsCurrent = (props) => {
                     </div>
 
                     <div id={'adminPanelProductsCurrentTabContainer'}>
+                        {subCtg ?
                         <table>
                             <tr>
                                 <th>Name</th>
@@ -105,6 +101,9 @@ const AdminPanelProductsCurrent = (props) => {
                             </tr>
                             {productsList()}
                         </table>
+                            :
+                            null
+                        }
                     </div>
                 </div>
                 :

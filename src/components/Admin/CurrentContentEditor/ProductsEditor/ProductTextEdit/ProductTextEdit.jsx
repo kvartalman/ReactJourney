@@ -36,9 +36,9 @@ const ProductTextEdit = (props) => {
             <div id={'textAndFormsEditContainer'}>
                 <div id={'currentTextAndTitleContainer'}>
                     <h2 className={'productEditTitleAndTextHeaders'}>Current header and text</h2>
-                    <h2>{props.gameSelector[props.game].products[props.product].header}</h2>
+                    <h2>{props.product.header}</h2>
                     <div className={'customizeDividerLine'}></div>
-                    <p>{props.gameSelector[props.game].products[props.product].text}</p>
+                    <p>{props.product.text}</p>
                 </div>
                 <Row id={'newTextFormsAndPreviewContainer'}>
                     <Col id={'newTextAndTitleFormsContainer'}>

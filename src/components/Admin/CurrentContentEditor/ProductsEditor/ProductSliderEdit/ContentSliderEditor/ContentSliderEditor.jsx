@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
-import {useDispatch, useSelector} from "react-redux";
+import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import '../../../../../ProductPage/ContentSlider/ContentSlider.css';
 import {
     addContentSliderRange,
@@ -17,9 +17,7 @@ import './ContentSliderEditor.css'
 
 const ContentSliderEditor = (props) => {
 
-
-    const gameSelector = useSelector(state => state.productPage.productData)
-    const sliderRangesData = useSelector(state => state.adminPanel.contentSliderEditorRanges)
+    const sliderRangesData = useSelector(state => state.adminPanel.contentSliderEditorRanges, shallowEqual);
     const dispatch = useDispatch();
 
     const [enterMinValue, setEnterMinValue] = useState('');
@@ -34,27 +32,27 @@ const ContentSliderEditor = (props) => {
 
     // We use 2 sliders, so we need to have 4 states (min and max per each slider)
     const [currentMinValue, setCurrentMinValue] = useState(
-        gameSelector[props.game].products[props.product].sliderSettings.minValue
+        props.product.sliderSettings.minValue
     );
     const [currentMaxValue, setCurrentMaxValue] = useState(
-        gameSelector[props.game].products[props.product].sliderSettings.maxValue
+        props.product.sliderSettings.maxValue
     );
     const [editorMinValue, setEditorMinValue] = useState(
-        gameSelector[props.game].products[props.product].sliderSettings.minValue
+        props.product.sliderSettings.minValue
     );
     const [editorMaxValue, setEditorMaxValue] = useState(
-        gameSelector[props.game].products[props.product].sliderSettings.maxValue
+        props.product.sliderSettings.maxValue
     );
 
     // We use arrow function here because we need to calculate currentFinalPrice on first render to provide better UI/UX
     const [currentFinalPrice, setCurrentFinalPrice] = useState(
-        gameSelector[props.game].products[props.product].sliderRangesValues.map(elem => {
+        props.product.sliderRangesValues.map(elem => {
             let calculatedPrice = 0;
             for (let level = elem.range[0]; level < elem.range[1]; level++) {
                 const matchingRange = elem.range.find(
-                    rangeEntry =>
-                        level >= gameSelector[props.game].products[props.product].sliderSettings.minValue &&
-                        level < gameSelector[props.game].products[props.product].sliderSettings.maxValue
+                    () =>
+                        level >= props.product.sliderSettings.minValue &&
+                        level < props.product.sliderSettings.maxValue
                 );
                 if (matchingRange) {
                     calculatedPrice += elem.value;
@@ -130,7 +128,7 @@ const ContentSliderEditor = (props) => {
         // We filter all elements (objects) of array sliderRangesValues that satisfy the condition and concatenate them
         // by using 'value' key as value per each correct element of 'range' array in each correct object
         for (let level = e.minValue; level < e.maxValue; level++) {
-            const matchingRange = (isCurrent ? gameSelector[props.game].products[props.product].sliderRangesValues : sliderRangesData).filter(
+            const matchingRange = (isCurrent ? props.product.sliderRangesValues : sliderRangesData).filter(
                 rangeEntry =>
                     level >= rangeEntry.range[0] && level < rangeEntry.range[1]
             );
@@ -148,16 +146,16 @@ const ContentSliderEditor = (props) => {
 
     // currentFinalPrice will re-render when user change name of product in list
     useEffect(() => {
-        dispatch(fillContentSliderEditorRanges(gameSelector[props.game].products[props.product].sliderRangesValues))
+        dispatch(fillContentSliderEditorRanges(props.product.sliderRangesValues))
 
         handleChange(
             {
-                minValue: gameSelector[props.game].products[props.product].sliderSettings.minValue,
-                maxValue: gameSelector[props.game].products[props.product].sliderSettings.maxValue
+                minValue: props.product.sliderSettings.minValue,
+                maxValue: props.product.sliderSettings.maxValue
             },
             true
         )
-    }, [dispatch, gameSelector, props.product, props.game])
+    }, [dispatch, props.product, props.game])
 
     return (
         <Container fluid>
@@ -250,11 +248,11 @@ const ContentSliderEditor = (props) => {
                             </div>
                         </div>
                         <MultiRangeSlider
-                            min={gameSelector[props.game].products[props.product].sliderSettings.min}
-                            max={gameSelector[props.game].products[props.product].sliderSettings.max}
-                            step={gameSelector[props.game].products[props.product].sliderSettings.step}
-                            minValue={gameSelector[props.game].products[props.product].sliderSettings.minValue}
-                            maxValue={gameSelector[props.game].products[props.product].sliderSettings.maxValue}
+                            min={props.product.sliderSettings.min}
+                            max={props.product.sliderSettings.max}
+                            step={props.product.sliderSettings.step}
+                            minValue={props.product.sliderSettings.minValue}
+                            maxValue={props.product.sliderSettings.maxValue}
                             ruler={false}
                             onInput={(e) => {
                                 handleChange(e, true)
@@ -275,13 +273,13 @@ const ContentSliderEditor = (props) => {
                         <MultiRangeSlider
                             min={enterMinValue ? enterMinValue
                                 :
-                                gameSelector[props.game].products[props.product].sliderSettings.min}
+                                props.product.sliderSettings.min}
                             max={enterMaxValue ? enterMaxValue
                                 :
-                                gameSelector[props.game].products[props.product].sliderSettings.max}
+                                props.product.sliderSettings.max}
                             step={enterStep ? enterStep
                                 :
-                                gameSelector[props.game].products[props.product].sliderSettings.step}
+                                props.product.sliderSettings.step}
                             minValue={
                                 enterLeftThumbValue && (
                                     enterRightThumbValue ?
@@ -290,13 +288,13 @@ const ContentSliderEditor = (props) => {
                                 )
                                     ?
                                     enterLeftThumbValue :
-                                    enterMinValue || gameSelector[props.game].products[props.product].sliderSettings.min
+                                    enterMinValue || props.product.sliderSettings.min
                             }
                             maxValue={
                                 enterRightThumbValue && (enterRightThumbValue > editorMinValue && enterRightThumbValue > enterLeftThumbValue)
                                     ?
                                     enterRightThumbValue :
-                                    enterMaxValue || gameSelector[props.game].products[props.product].sliderSettings.max
+                                    enterMaxValue || props.product.sliderSettings.max
                             }
                             ruler={false}
                             onInput={(e) => {

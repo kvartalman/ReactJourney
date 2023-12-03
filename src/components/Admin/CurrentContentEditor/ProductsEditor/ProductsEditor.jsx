@@ -9,14 +9,11 @@ import ProductSliderEdit from "./ProductSliderEdit/ProductSliderEdit";
 import PriceEdit from "./PriceEdit/PriceEdit";
 import ProductsEditorPreview from "./ProductsEditorPreview/ProductsEditorPreview";
 
-const ProductsEditor = () => {
+const ProductsEditor = (props) => {
 
-    const gameSelector = useSelector(state => state.productPage.productData)
-
-    const [key, setKey] = useState('game');
-    const [game, setGame] = useState(Object.keys(gameSelector)[0]);
-    const [product, setProduct] = useState(Object.keys(gameSelector[game].products)[0])
-    const [price, setPrice] = useState(gameSelector[game].products[product].price);
+    const [key, setKey] = useState('title');
+    const [product, setProduct] = useState(props.product);
+    const [price, setPrice] = useState(product.price);
     const [text, setText] = useState('');
     const [title, setTitle] = useState('');
     const [contentSliderMinValue, setContentSliderMinValue] = useState(0);
@@ -29,85 +26,69 @@ const ProductsEditor = () => {
     const [sliderMultiplier, setSliderMultiplier] = useState(0);
 
     return (
-        <Tabs
-            id="controlled-tab-example"
-            activeKey={key}
-            onSelect={(k) => setKey(k)}
-            className="mb-3"
-        >
-            <Tab eventKey="game" title="Choose game and product">
-                <ChooseGame
-                    setKey={setKey}
-                    game={game}
-                    gameSelector={gameSelector}
-                    setGame={setGame}
-                    setProduct={setProduct}
-                />
-            </Tab>
-            <Tab eventKey="title" title="Title and text">
-                <ProductTextEdit
-                    gameSelector={gameSelector}
-                    setKey={setKey}
-                    setText={setText}
-                    setTitle={setTitle}
-                    game={game}
-                    product={product}
-                />
-            </Tab>
-            <Tab eventKey="price" title="Price">
-                <PriceEdit
-                    price={price}
-                    setPrice={setPrice}
-                    gameSelector={gameSelector}
-                    game={game}
-                    product={product}
-                    setKey={setKey}
-                />
-            </Tab>
-            <Tab eventKey="checkboxes" title="Checkboxes">
-                <ProductCheckboxesEdit
-                    setKey={setKey}
-                    gameSelector={gameSelector}
-                    game={game}
-                    product={product}
-                />
-            </Tab>
-            <Tab eventKey="slider" title="Slider">
-                <ProductSliderEdit
-                    price={price}
-                    setKey={setKey}
-                    game={game}
-                    product={product}
-                    gameSelector={gameSelector}
-                    setContentSliderMinValue={setContentSliderMinValue}
-                    setContentSliderMaxValue={setContentSliderMaxValue}
-                    setContentSliderLeftThumb={setContentSliderLeftThumb}
-                    setContentSliderRightThumb={setContentSliderRightThumb}
-                    setContentSliderStep={setContentSliderStep}
-                    setSliderMin={setSliderMin}
-                    setSliderMax={setSliderMax}
-                    setSliderMultiplier={setSliderMultiplier}
-                />
-            </Tab>
-            <Tab eventKey='preview' title='Preview'>
-                <ProductsEditorPreview
-                    text={text}
-                    title={title}
-                    game={game}
-                    product={product}
-                    price={price}
-                    gameSelector={gameSelector}
-                    contentSliderMinValue={contentSliderMinValue}
-                    contentSliderMaxValue={contentSliderMaxValue}
-                    contentSliderLeftThumb={contentSliderLeftThumb}
-                    contentSliderRightThumb={contentSliderRightThumb}
-                    contentSliderStep={contentSliderStep}
-                    sliderMin={sliderMin}
-                    sliderMax={sliderMax}
-                    sliderMultiplier={sliderMultiplier}
-                />
-            </Tab>
-        </Tabs>
+        <div id={'productsEditorTabContainer'}>
+            <Tabs
+                id="controlled-tab-example"
+                activeKey={key}
+                onSelect={(k) => setKey(k)}
+                className="mb-3"
+            >
+
+                <Tab eventKey="title" title="Title and text">
+                    <ProductTextEdit
+                        setKey={setKey}
+                        setText={setText}
+                        setTitle={setTitle}
+                        product={product}
+                    />
+                </Tab>
+                <Tab eventKey="price" title="Price">
+                    <PriceEdit
+                        price={price}
+                        setPrice={setPrice}
+                        product={product}
+                        setKey={setKey}
+                    />
+                </Tab>
+                <Tab eventKey="checkboxes" title="Checkboxes">
+                    <ProductCheckboxesEdit
+                        setKey={setKey}
+                        product={product}
+                    />
+                </Tab>
+                <Tab eventKey="slider" title="Slider">
+                    <ProductSliderEdit
+                        price={price}
+                        setKey={setKey}
+                        product={product}
+                        setContentSliderMinValue={setContentSliderMinValue}
+                        setContentSliderMaxValue={setContentSliderMaxValue}
+                        setContentSliderLeftThumb={setContentSliderLeftThumb}
+                        setContentSliderRightThumb={setContentSliderRightThumb}
+                        setContentSliderStep={setContentSliderStep}
+                        setSliderMin={setSliderMin}
+                        setSliderMax={setSliderMax}
+                        setSliderMultiplier={setSliderMultiplier}
+                    />
+                </Tab>
+                <Tab eventKey='preview' title='Preview'>
+                    <ProductsEditorPreview
+                        text={text}
+                        title={title}
+                        product={product}
+                        price={price}
+                        contentSliderMinValue={contentSliderMinValue}
+                        contentSliderMaxValue={contentSliderMaxValue}
+                        contentSliderLeftThumb={contentSliderLeftThumb}
+                        contentSliderRightThumb={contentSliderRightThumb}
+                        contentSliderStep={contentSliderStep}
+                        sliderMin={sliderMin}
+                        sliderMax={sliderMax}
+                        sliderMultiplier={sliderMultiplier}
+                    />
+                </Tab>
+            </Tabs>
+        </div>
     );
 }
 

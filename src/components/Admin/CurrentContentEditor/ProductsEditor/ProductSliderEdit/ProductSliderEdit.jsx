@@ -9,15 +9,13 @@ const ProductSliderEdit = (props) => {
     return (
         <Container fluid>
         {
-            props.gameSelector[props.game].products[props.product].viewSettings ?
+            props.product.sliderType === 'classic' ?
                 <SliderEditor
                     price={props.price}
                     setSliderMin={props.setSliderMin}
                     setSliderMax={props.setSliderMax}
                     setSliderMultiplier={props.setSliderMultiplier}
-                    game={props.game}
                     product={props.product}
-                    gameSelector={props.gameSelector}
                 />
                 :
                 <ContentSliderEditor
@@ -27,8 +25,7 @@ const ProductSliderEdit = (props) => {
                     setContentSliderLeftThumb={props.setContentSliderLeftThumb}
                     setContentSliderRightThumb={props.setContentSliderRightThumb}
                     setContentSliderStep={props.setContentSliderStep}
-                    game={props.game}
-                    product={props.gameSelector[props.game].products[props.product].viewSettings ? null : props.product}
+                    product={props.product}
                 />
         }
             <div>

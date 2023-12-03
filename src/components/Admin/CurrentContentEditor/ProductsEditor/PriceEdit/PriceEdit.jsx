@@ -42,7 +42,7 @@ const PriceEdit = (props) => {
                 </div>
                 <div id={'priceEditPricesContainer'}>
                     <div id={'priceEditCurrentPriceContainer'}>
-                        {props.gameSelector[props.game].products[props.product].price}
+                        {props.product.price}
                     </div>
                     <div id={'priceEditNewPriceContainer'}>
                         {enterPrice ? enterPrice : 0}

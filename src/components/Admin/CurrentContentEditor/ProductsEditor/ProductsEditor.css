@@ -1,11 +1,24 @@
-#adminPanelSetEditCol > .container-fluid > .row > .nav-tabs {
-    background: linear-gradient(90deg, rgba(101,138,154,1) 0%, rgba(14,35,47,1) 1%, rgba(14,35,47,1) 99%, rgba(101,138,154,1) 100%);
-    border: none;
-    margin-bottom: 0 !important;
+#productsEditorTabContainer {
+    margin: 1em;
+    border: 2px solid #0e232f;
+    border-radius: 1%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
 }
 
-#adminPanelSetEditCol > .container-fluid > .row > .nav-tabs > li > button {
+#productsEditorTabContainer > .nav-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #0e232f;
+    border: none;
+    overflow: hidden;
+    margin-bottom: 0 !important;
+}
+
+
+#productsEditorTabContainer .nav-tabs > li > button {
     background-color: #0e232f;
     color:#c3dae8;
     font-weight: bold;
@@ -14,13 +27,17 @@
     margin-left: 1em;
 }
 
-#adminPanelSetEditCol > .container-fluid > .row > .nav-tabs > li > .active {
+#productsEditorTabContainer .nav-tabs > li > .active {
     background-color: #37647a;
     text-shadow: #0e232f 1px 0 10px;
 }
 
-#adminPanelSetEditCol > .container-fluid > .row > .tab-content {
+#productsEditorTabContainer .tab-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     padding: 0;
+    height: 1000px;
 }
 
 .nextPageButton {
