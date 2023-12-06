@@ -1,29 +1,18 @@
-import React, {useState} from "react";
-import {useSelector} from "react-redux";
+import React, {useEffect, useState} from "react";
 import Form from "react-bootstrap/Form";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
 
 const CheckboxesPreview = (props) => {
 
-    const checkboxesEditor = useSelector(
-        state => (state.adminPanel.checkboxesEditor)
-    )
-
-    // Here we get an array of checkboxes in 'false' state. It means they are not checked
-
-    const [checkboxesState, setCheckboxesState] = useState(new Array(checkboxesEditor.length).fill(false));
-
-    // Function that change total price when checkbox checked/not checked
-
     const handleCheckboxChange = (index) => {
-        const checkboxStateCopy = [...checkboxesState];
+        const checkboxStateCopy = [...props.checkboxesChecker];
         checkboxStateCopy[index] = !checkboxStateCopy[index];
-        const priceChange = checkboxesEditor[index].price * (checkboxStateCopy[index] ? 1 : -1);
-        setCheckboxesState(checkboxStateCopy);
+        const priceChange = props.checkboxesState[index].price * (checkboxStateCopy[index] ? 1 : -1);
+        props.setCheckboxesChecker(checkboxStateCopy);
         props.setPrice((prevPrice) => priceChange + prevPrice);
     }
 
-    const checkBoxes = checkboxesEditor.map((checkbox, index) => {
+    const checkBoxes = props.checkboxesState.map((checkbox, index) => {
         return (
             <>
                 <div className={'productCheckboxesContainer'}>
@@ -62,6 +51,11 @@ const CheckboxesPreview = (props) => {
             </>
         )
     })
+
+    useEffect(() => {
+        debugger;
+
+    }, [props.checkboxesState, props.checkboxesChecker]);
 
     return (
         <div className={'checkBoxes'}>

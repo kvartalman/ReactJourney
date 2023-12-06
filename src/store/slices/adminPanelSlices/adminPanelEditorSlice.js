@@ -162,7 +162,7 @@ const adminPanelEditorSlice = createSlice(
             deleteCheckboxContent: (state, action) => {
                 for (let i = 0; i < state.checkboxesEditor.length; i++) {
                     if (state.checkboxesEditor[i].name === action.payload.name) {
-                        state.checkboxesEditor.splice(i, 1);
+                        state.checkboxesEditor = state.checkboxesEditor.filter(elem => elem.name !== action.payload.name);
                     }
                 }
             },

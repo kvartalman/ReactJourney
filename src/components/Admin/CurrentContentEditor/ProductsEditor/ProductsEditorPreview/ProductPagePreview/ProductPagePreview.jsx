@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './ProductPagePreview.css';
 import {useSelector} from "react-redux";
 import OfferPanelButton from "../../../../../GameOffer/OfferPanel/OfferPanelButton";
@@ -11,16 +11,23 @@ import CheckBoxes from "../../../../../ProductPage/CheckBoxes/CheckBoxes";
 import Slider from "rc-slider";
 import Button from "react-bootstrap/Button";
 import AddCartModal from "../../../../../Cart/AddCartModal/AddCartModal";
+import useForceUpdate from "@restart/hooks/useForceUpdate";
+import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 const ProductPagePreview = (props) => {
 
     const gameOffer = useSelector(state => state.gameOfferPages.pagesData[props.game]);
     const sliderRangesData = useSelector(state => state.adminPanel.contentSliderEditorRanges);
+    const checkboxesEditor = useSelector(
+        state => (state.adminPanel.checkboxesEditor)
+    )
 
     const [productData, setProductData] = useState(props.product);
     const [price, setPrice] = useState(props.price);
 
     const [sliderPrice, setSliderPrice] = useState(0);
+    const [checkboxesState, setCheckboxesState] = useState(checkboxesEditor);
+    const [checkboxesChecker, setCheckboxesChecker] = useState(new Array(checkboxesEditor.length).fill(false));
 
     const panelButtonsArr = gameOffer.panelButton.map(button => (
         <OfferPanelButton preview={true} link={button.link} key={button.id} name={button.name}/>
@@ -30,6 +37,15 @@ const ProductPagePreview = (props) => {
     const handleSliderChange = (value) => {
         setSliderPrice(value);
     }
+
+    useEffect(() => {
+        setPrice(props.price)
+    }, [props.price]);
+
+    useEffect(() => {
+        setCheckboxesState(checkboxesEditor);
+        setCheckboxesChecker(new Array(checkboxesEditor.length).fill(false));
+    }, [checkboxesEditor]);
 
     return (
         <div id={'productPagePreviewMainContainer'}>
@@ -56,7 +72,7 @@ const ProductPagePreview = (props) => {
                     <div id={'productPagePreviewHeaderContainer'}>
                         <h1>
                             {
-                                props.product.header
+                                props.title || props.product.header
                             }
                         </h1>
                     </div>
@@ -80,7 +96,9 @@ const ProductPagePreview = (props) => {
                         null
                     }
                     <div id={'productPagePreviewTextContainer'}>
-                        <p>{productData.text}</p>
+                        <p>{
+                            props.text || props.product.text
+                        }</p>
                     </div>
                     {props.product.sliderType === 'classic' ?
                         <div id={'productPagePreviewClassicSlider'}>
@@ -88,6 +106,10 @@ const ProductPagePreview = (props) => {
                             <div id={'productOptionsContainer'}>
                                 <div className={'checkboxesContainer'}>
                                     <CheckboxesPreview
+                                        checkboxesState={checkboxesState}
+                                        setCheckboxesChecker={setCheckboxesChecker}
+                                        checkboxesChecker={checkboxesChecker}
+                                        key={props.price}
                                         game={props.game}
                                         setPrice={setPrice}
                                     />
