@@ -73,6 +73,8 @@ const ProductsEditor = (props) => {
                 </Tab>
                 <Tab eventKey='preview' title='Preview'>
                     <ProductsEditorPreview
+                        game={props.game}
+                        subCtg={props.subCtg.name}
                         text={text}
                         title={title}
                         product={product}

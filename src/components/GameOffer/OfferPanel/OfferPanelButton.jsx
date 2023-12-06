@@ -5,7 +5,7 @@ const OfferPanelButton = (props) => {
 
     return (
         <div>
-            <NavLink onClick={props.clickFunc} to={props.link}>
+            <NavLink onClick={props.clickFunc} to={props.preview ? '' : props.link}>
                 <span className={'offerButton'}>
                 {props.name}
                 </span>

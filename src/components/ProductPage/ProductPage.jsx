@@ -25,15 +25,9 @@ const ProductPage = (props) => {
     const {addItem} = useCart();
     const page = useParams();
     const gameOffer = useSelector(state => state.gameOfferPages.pagesData[props.game ? props.game : page.name]);
-    const productPage = useSelector(state => state.productPage);
     const subCtgSelector = useSelector(state => state.gameProducts[page.name].subCategories)
 
     const [productData, setProductData] = useState(null);
-
-    // This function turns 'low-priority' to 'Low priority' (for beautiful breadcrumbs view)
-    const productTitleCase = require('change-case').sentenceCase(page.product);
-    // This function turns low-priority' to 'lowPriority' (for correct adding as property inside state)
-    const productCamelCase = require('change-case').camelCase(page.product);
 
     const [showModal, setShowModal] = useState(false);
 
@@ -167,7 +161,6 @@ const ProductPage = (props) => {
                                                             {props.game ?
                                                                 <CheckboxesPreview
                                                                     game={props.game}
-                                                                    product={productCamelCase}
                                                                     setPrice={setPrice}
                                                                 /> :
                                                                 <CheckBoxes

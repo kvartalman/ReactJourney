@@ -43,14 +43,14 @@ const AdminPanelProductsCurrent = (props) => {
             return (
                 gamesSelector[game].subCategories.map((sub, index) => (
                     <Dropdown.Item
-                    onClick={() => handleSubCtgChoice(sub, index)}
+                        onClick={() => handleSubCtgChoice(sub, index)}
                     >
                         {sub.name}
                     </Dropdown.Item>
                 ))
             )
-            }
         }
+    }
 
     const productsList = () => {
         if (subCtg) {
@@ -59,7 +59,7 @@ const AdminPanelProductsCurrent = (props) => {
                     <tr onClick={() => handleProductChoice(product)} className={'productTableRow'}>
                         <td>{product.header}</td>
                         <td>{product.price}</td>
-                        <td><img src={product.img} alt={`${product.header} image`} width={50} /></td>
+                        <td><img src={product.img} alt={`${product.header} image`} width={50}/></td>
                     </tr>
                 ))
             )
@@ -68,52 +68,54 @@ const AdminPanelProductsCurrent = (props) => {
 
     return (
         <>
-        {
-            props.backIndex === 3 ?
-                <div id={'adminPanelProductsCurrentMainContainer'}>
-                    <div id={'adminPanelProductsCurrentTabSettingsContainer'}>
-                        <Dropdown>
-                            <Dropdown.Toggle variant={'success'} id={'adminPanelProductsCurrentChooseGameButton'}>
-                                Choose game
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                {gamesList()}
-                            </Dropdown.Menu>
-                        </Dropdown>
+            {
+                props.backIndex === 3 ?
+                    <div id={'adminPanelProductsCurrentMainContainer'}>
+                        <div id={'adminPanelProductsCurrentTabSettingsContainer'}>
+                            <Dropdown>
+                                <Dropdown.Toggle variant={'success'} id={'adminPanelProductsCurrentChooseGameButton'}>
+                                    Choose game
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    {gamesList()}
+                                </Dropdown.Menu>
+                            </Dropdown>
 
-                        <Dropdown>
-                            <Dropdown.Toggle variant={'success'} id={'adminPanelProductsCurrentChooseSubButton'}>
-                                Choose subcategory
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                {subCtgList()}
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </div>
+                            <Dropdown>
+                                <Dropdown.Toggle variant={'success'} id={'adminPanelProductsCurrentChooseSubButton'}>
+                                    Choose subcategory
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    {subCtgList()}
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </div>
 
-                    <div id={'adminPanelProductsCurrentTabContainer'}>
-                        {subCtg ?
-                        <table>
-                            <tr>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Image</th>
-                            </tr>
-                            {productsList()}
-                        </table>
-                            :
-                            null
-                        }
+                        <div id={'adminPanelProductsCurrentTabContainer'}>
+                            {subCtg ?
+                                <table>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Image</th>
+                                    </tr>
+                                    {productsList()}
+                                </table>
+                                :
+                                null
+                            }
+                        </div>
                     </div>
-                </div>
-                :
-                product ?
-                <ProductsEditor
-                product={product}
-                />
                     :
-                    null
-        }
+                    product ?
+                        <ProductsEditor
+                            game={game}
+                            subCtg={subCtg}
+                            product={product}
+                        />
+                        :
+                        null
+            }
         </>
     );
 }

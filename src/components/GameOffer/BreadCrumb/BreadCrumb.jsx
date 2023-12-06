@@ -13,12 +13,12 @@ function BreadCrumb(props) {
                 props.product ?
                     <>
                         <Breadcrumb.Item>
-                            <NavLink to={`/categories/${props.game}`} className={'breadCrumbLink'}>
+                            <NavLink to={props.preview ? '' : `/categories/${props.game}`} className={'breadCrumbLink'}>
                                 {require('change-case').sentenceCase(props.game)}
                             </NavLink>
                         </Breadcrumb.Item>
                         <Breadcrumb.Item>
-                            <NavLink to={`/categories/${props.game}/${props.sub}`} className={'breadCrumbLink'}>
+                            <NavLink to={props.preview ? '' : `/categories/${props.game}/${props.sub}`} className={'breadCrumbLink'}>
                                 {require('change-case').sentenceCase(props.sub)}
                             </NavLink>
                         </Breadcrumb.Item>
@@ -26,7 +26,7 @@ function BreadCrumb(props) {
                     :
                     props.sub ?
                         <Breadcrumb.Item>
-                            <NavLink to={`/categories/${props.game}`} className={'breadCrumbLink'}>
+                            <NavLink to={props.preview ? '' : `/categories/${props.game}`} className={'breadCrumbLink'}>
                                 {require('change-case').sentenceCase(props.game)}
                             </NavLink>
                         </Breadcrumb.Item>

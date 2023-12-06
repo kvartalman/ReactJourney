@@ -11,7 +11,7 @@ import ContentSliderCheckboxesPreview
 
 const ContentSlider = (props) => {
 
-    const sliderRangesValues = props.productData.sliderRangesValues
+    const sliderRangesValues = props.sliderRangesData ? props.sliderRangesData : props.productData.sliderRangesValues
     const sliderSettings = props.productData.sliderSettings
 
     const [finalPrice, setFinalPrice] = useState(0);
@@ -58,15 +58,15 @@ const ContentSlider = (props) => {
                         max={props.contentSliderMaxValue ? props.contentSliderMaxValue : sliderSettings.max}
                         step={props.contentSliderStep ? props.contentSliderStep : sliderSettings.step}
                         minValue={
-                        props.contentSliderLeftThumb && props.contentSliderLeftThumb < sliderSettings.minValue ?
-                            props.contentSliderLeftThumb :
-                            sliderSettings.minValue
-                    }
+                            props.contentSliderLeftThumb && props.contentSliderLeftThumb < sliderSettings.minValue ?
+                                props.contentSliderLeftThumb :
+                                sliderSettings.minValue
+                        }
                         maxValue={
-                        props.contentSliderRightThumb && props.contentSliderRightThumb > sliderSettings.minValue ?
-                            props.contentSliderRightThumb :
-                            sliderSettings.maxValue
-                    }
+                            props.contentSliderRightThumb && props.contentSliderRightThumb > sliderSettings.minValue ?
+                                props.contentSliderRightThumb :
+                                sliderSettings.maxValue
+                        }
                         ruler={false}
                         onInput={(e) => {
                             handleChange(e)
@@ -80,10 +80,10 @@ const ContentSlider = (props) => {
                             setPrice={props.setPrice}
                         />
                         :
-                    <ContentSliderCheckboxes
-                        productData={props.productData}
-                        setPrice={props.setPrice}
-                    />
+                        <ContentSliderCheckboxes
+                            productData={props.productData}
+                            setPrice={props.setPrice}
+                        />
                     }
                 </Row>
                 <div className={'customizeDividerLine'}></div>
@@ -92,18 +92,35 @@ const ContentSlider = (props) => {
                         Total: {props.totalPrice + Number(finalPrice.toFixed(2))}&#8364;
                     </Row>
                     <Row id={'contentSliderButtonsContainer'}>
-                            <button
-                                className={'contentSliderButton contentSliderButtonBuy'}
-                                onClick={() => props.addToCartHandler(finalPrice)}
-                            >
-                                Buy Now
-                            </button>
-                            <button
-                                className={'contentSliderButton contentSliderButtonHelp'}
-                            >
-                                I have question
-                            </button>
-                        </Row>
+                        {props.showModal ?
+                            <>
+                                <button
+                                    className={'contentSliderButton contentSliderButtonBuy'}
+                                    onClick={() => props.addToCartHandler(finalPrice)}
+                                >
+                                    Buy Now
+                                </button>
+                                <button
+                                    className={'contentSliderButton contentSliderButtonHelp'}
+                                >
+                                    I have question
+                                </button>
+                            </>
+                            :
+                            <>
+                                <button
+                                    className={'contentSliderButton contentSliderButtonBuy'}
+                                >
+                                    Buy Now
+                                </button>
+                                <button
+                                    className={'contentSliderButton contentSliderButtonHelp'}
+                                >
+                                    I have question
+                                </button>
+                            </>
+                        }
+                    </Row>
                     <AddCartModal show={props.showModal} setShowModal={props.setShowModal}/>
                 </Container>
             </Row>

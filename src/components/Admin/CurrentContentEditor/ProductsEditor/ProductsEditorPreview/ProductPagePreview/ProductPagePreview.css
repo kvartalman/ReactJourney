@@ -1,0 +1,38 @@
+#productPagePreviewMainContainer {
+    display: flex;
+}
+
+#productPagePreviewMainRow {
+    display: flex;
+}
+
+#productPagePreviewCrumbPanelCol {
+    display: flex;
+    flex-direction: column;
+    width: 33.33%;
+    margin: 1em;
+}
+
+#productPagePreviewComplexContentCol {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+}
+
+#productPagePreviewClassicContentCol {
+    display: flex;
+    flex-direction: row;
+}
+
+#productPagePreviewHeaderContainer h1 {
+    color: #0e232f;
+}
+
+#productPagePreviewTextContainer {
+    margin: 1em;
+}
+
+#productPagePreviewTextContainer p {
+    font: 900 20px "Roboto", sans-serif;
+    font-weight: bold;
+}
