@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
-import {shallowEqual, useDispatch, useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import '../../../../../ProductPage/ContentSlider/ContentSlider.css';
 import {
     addContentSliderRange,
@@ -17,7 +17,7 @@ import './ContentSliderEditor.css'
 
 const ContentSliderEditor = (props) => {
 
-    const sliderRangesData = useSelector(state => state.adminPanel.contentSliderEditorRanges, shallowEqual);
+    const sliderRangesData = useSelector(state => state.adminPanel.contentSliderEditorRanges);
     const dispatch = useDispatch();
 
     const [enterMinValue, setEnterMinValue] = useState('');
@@ -143,11 +143,34 @@ const ContentSliderEditor = (props) => {
             setEditorFinalPrice(calculatedPrice)
     }
 
+    const handleContentSliderEditorRangesFilling = () => {
+        dispatch(fillContentSliderEditorRanges(props.product.sliderRangesValues))
+    }
+
+    const sliderRangesList = () => {
+        if (sliderRangesData.length > 0) {
+            return (
+                sliderRangesData.map((range, index) => (
+                    <tr key={index}>
+                        <td>{range.range[0]}</td>
+                        <td>{range.range[1]}</td>
+                        <td>{range.value}</td>
+                        <td>
+                            <button onClick={() => deleteRangeHandler(index)}>Delete!</button>
+                        </td>
+                    </tr>
+                ))
+            )
+        }
+    }
+
+
+    useEffect(() => {
+        handleContentSliderEditorRangesFilling();
+    }, []);
 
     // currentFinalPrice will re-render when user change name of product in list
     useEffect(() => {
-        dispatch(fillContentSliderEditorRanges(props.product.sliderRangesValues))
-
         handleChange(
             {
                 minValue: props.product.sliderSettings.minValue,
@@ -160,7 +183,7 @@ const ContentSliderEditor = (props) => {
     return (
         <Container fluid>
             <Row id={'contentSliderSettingsRow'}>
-                <Col>
+                {/*<Col>*/}
                     <Form>
                         <h2>ProductPage ContentSlider Editor</h2>
                         <Form.Group as={Col}>
@@ -211,31 +234,23 @@ const ContentSliderEditor = (props) => {
                             <Button onClick={addRangeHandler} variant="primary">
                                 Add range
                             </Button>
-                            <Table striped bordered hover id={'contentSliderSettingsTable'}>
-                                <thead>
-                                <tr>
-                                    <th>Min Value</th>
-                                    <th>Max Value</th>
-                                    <th>Increase per Step</th>
-                                    <th>Delete Button</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {sliderRangesData.map((range, index) => (
-                                    <tr key={index}>
-                                        <td>{range.range[0]}</td>
-                                        <td>{range.range[1]}</td>
-                                        <td>{range.value}</td>
-                                        <td>
-                                            <button onClick={() => deleteRangeHandler(index)}>Delete!</button>
-                                        </td>
-                                    </tr>
-                                ))}
-                                </tbody>
-                            </Table>
+
                         </Form.Group>
                     </Form>
-                </Col>
+                <Table striped bordered hover id={'contentSliderSettingsTable'}>
+                    <thead>
+                    <tr>
+                        <th>Min Value</th>
+                        <th>Max Value</th>
+                        <th>Increase per Step</th>
+                        <th>Delete Button</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {sliderRangesList()}
+                    </tbody>
+                </Table>
+                {/*</Col>*/}
                 <Col>
                     <div>
                         <h2>Current Slider</h2>
