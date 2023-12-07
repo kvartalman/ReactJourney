@@ -4,8 +4,9 @@
     border-radius: 1%;
     background-color: #ffffff;
     display: flex;
+    height: 100%;
     flex-direction: column;
-    overflow: hidden;
+    overflow-y: scroll;
 }
 
 #productsEditorTabContainer > .nav-tabs {

@@ -1,0 +1,54 @@
+#contentSliderEditorMainContainer {
+    display: flex;
+    position: relative;
+}
+
+#contentSliderEditorSettingsMainContainer {
+    display: flex;
+    flex-direction: column;
+    width: 50%
+}
+
+#contentSliderEditorFormsContainer {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+}
+
+#contentSliderEditorTableContainer {
+    height: 50%;
+}
+
+#contentSliderEditorAdviceButton {
+    width: 50%;
+}
+
+#contentSliderEditorTableAdviceMainContainer {
+    margin-top: 4em;
+}
+
+#contentSliderEditorTableAdviceContainer {
+    opacity: 0;
+    transition: 0.5s;
+    height: 0;
+}
+
+#contentSliderEditorTableAdviceContainer.showAdvice {
+    opacity: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    transition: 0.5s;
+}
+
+#contentSliderEditorSlidersContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    gap: 4em;
+}
+

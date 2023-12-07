@@ -14,6 +14,7 @@ import {
 import Container from "react-bootstrap/Container";
 import MultiRangeSlider from "multi-range-slider-react";
 import './ContentSliderEditor.css'
+import {OverlayTrigger, Tooltip} from "react-bootstrap";
 
 const ContentSliderEditor = (props) => {
 
@@ -29,6 +30,11 @@ const ContentSliderEditor = (props) => {
     const [enterEndOfRange, setEnterEndOfRange] = useState('');
     const [enterValuePerStep, setEnterValuePerStep] = useState('');
     const [editorFinalPrice, setEditorFinalPrice] = useState(0);
+    const [adviceShow, setAdviceShow] = useState(false);
+
+    const handleAdviceShow = () => {
+        setAdviceShow(!adviceShow);
+    }
 
     // We use 2 sliders, so we need to have 4 states (min and max per each slider)
     const [currentMinValue, setCurrentMinValue] = useState(
@@ -181,9 +187,9 @@ const ContentSliderEditor = (props) => {
     }, [dispatch, props.product, props.game])
 
     return (
-        <Container fluid>
-            <Row id={'contentSliderSettingsRow'}>
-                {/*<Col>*/}
+        <div id={'contentSliderEditorMainContainer'}>
+            <div id={'contentSliderEditorSettingsMainContainer'}>
+                <div id={'contentSliderEditorFormsContainer'}>
                     <Form>
                         <h2>ProductPage ContentSlider Editor</h2>
                         <Form.Group as={Col}>
@@ -234,34 +240,72 @@ const ContentSliderEditor = (props) => {
                             <Button onClick={addRangeHandler} variant="primary">
                                 Add range
                             </Button>
-
                         </Form.Group>
                     </Form>
-                <Table striped bordered hover id={'contentSliderSettingsTable'}>
-                    <thead>
-                    <tr>
-                        <th>Min Value</th>
-                        <th>Max Value</th>
-                        <th>Increase per Step</th>
-                        <th>Delete Button</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {sliderRangesList()}
-                    </tbody>
-                </Table>
-                {/*</Col>*/}
-                <Col>
-                    <div>
-                        <h2>Current Slider</h2>
-                        <div className={'sliderValuesContainer'}>
-                            <div className={'sliderMinValueContainer'}>
-                                {currentMinValue}
-                            </div>
-                            <div className={'sliderMaxValueContainer'}>
-                                {currentMaxValue}
-                            </div>
+                </div>
+                <div id={'contentSliderEditorTableAdviceMainContainer'}>
+                    <button
+                        onClick={() => handleAdviceShow()}
+                        id={'contentSliderEditorAdviceButton'}
+                    >
+                        {adviceShow ? 'Спрятать' : 'Советы по заполнению таблицы'}
+                    </button>
+                    <div id={'contentSliderEditorTableAdviceContainer'}
+                         className={adviceShow ? 'showAdvice' : ''}
+                    >
+                        <h3>
+                            Как добавлять диапазоны значений?
+                        </h3>
+                        <p>
+                            Чтобы сделать нормально работающий слайдер со значениями нужно соблюдать несколько правил:
+                        </p>
+                        <p>1) Диапазоны значений не должны накладываться друг на друга (Например, не делать два
+                            диапазона
+                            со значениями 0-10 и 5-15.
+                        </p>
+                        <p>
+                            2) Знать, как идет расчет значений в диапазонах: возьмем пример из двух диапазонов, где
+                            0-10 будет прибавляться 2, а от 10-20 будет прибавляться 4. В шаге с 9 до 10 прибавится 2,
+                            а уже в шаге с 10 до 11 уже прибавится 4. Таким образом, если ты хочешь, чтобы, например с
+                            20
+                            шага и до 40 начиналось прибавляться 4.5 за шаг, то ставь стартовое значение 20, конечное
+                            40,
+                            а шаг 4.5 и всё будет работать корректно.
+                        </p>
+                        <p>
+                            3) Убедись, что всё работает, ОБЯЗАТЕЛЬНО подвигав слайдер и оценив итоговую сумму под
+                            слайдером!
+                        </p>
+                    </div>
+                </div>
+                <div id={'contentSliderEditorTableContainer'}>
+                    <Table striped bordered hover id={'contentSliderSettingsTable'}>
+                        <thead>
+                        <tr>
+                            <th>Min Value</th>
+                            <th>Max Value</th>
+                            <th>Increase per Step</th>
+                            <th>Delete Button</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {sliderRangesList()}
+                        </tbody>
+                    </Table>
+                </div>
+            </div>
+            <div id={'contentSliderEditorSlidersContainer'}>
+                <div id={'contentSliderEditorCurrentSliderContainer'}>
+                    <h2>Current Slider</h2>
+                    <div className={'sliderValuesContainer'}>
+                        <div className={'sliderMinValueContainer'}>
+                            {currentMinValue}
                         </div>
+                        <div className={'sliderMaxValueContainer'}>
+                            {currentMaxValue}
+                        </div>
+                    </div>
+                    <div>
                         <MultiRangeSlider
                             min={props.product.sliderSettings.min}
                             max={props.product.sliderSettings.max}
@@ -275,16 +319,18 @@ const ContentSliderEditor = (props) => {
                         />
                         {currentFinalPrice}
                     </div>
-                    <div>
-                        <h2>New Slider</h2>
-                        <div className={'sliderValuesContainer'}>
-                            <div className={'sliderMinValueContainer'}>
-                                {editorMinValue}
-                            </div>
-                            <div className={'sliderMaxValueContainer'}>
-                                {editorMaxValue}
-                            </div>
+                </div>
+                <div id={'contentSliderEditorNewSliderContainer'}>
+                    <h2>New Slider</h2>
+                    <div className={'sliderValuesContainer'}>
+                        <div className={'sliderMinValueContainer'}>
+                            {editorMinValue}
                         </div>
+                        <div className={'sliderMaxValueContainer'}>
+                            {editorMaxValue}
+                        </div>
+                    </div>
+                    <div>
                         <MultiRangeSlider
                             min={enterMinValue ? enterMinValue
                                 :
@@ -318,9 +364,9 @@ const ContentSliderEditor = (props) => {
                         />
                         {editorFinalPrice}
                     </div>
-                </Col>
-            </Row>
-        </Container>
+                </div>
+            </div>
+        </div>
     );
 }
 
