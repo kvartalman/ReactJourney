@@ -17,45 +17,61 @@
 
 #adminPanelProductsCurrentTabSettingsContainer {
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     gap: 1em;
     margin: 1em;
 }
 
-#adminPanelGames {
+#adminPanelProductsEditorGames {
     display: flex;
     flex-wrap: wrap;
-    width: 33%;
     gap: 0.1em;
 }
 
-#adminPanelGames div {
+#adminPanelProductsEditorGames div {
+    height: 150px;
+    width: 150px;
+}
+
+#adminPanelProductsEditorGames div:hover {
+    cursor: pointer;
+}
+
+#adminPanelProductsEditorSubcategories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1em;
+}
+
+.adminPanelProductsEditorSubCtgContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #0e232f;
-    height: 150px;
+    flex-wrap: wrap;
     width: 150px;
+    height: 150px;
     text-align: center;
-    font: 900 15px "Roboto", sans-serif;
+    font: 900 20px "Roboto", sans-serif;
+    border: 2px solid #0e232f;
+    border-radius: 2%;
+    background: linear-gradient(45deg, rgba(163,100,237,1) 0%, rgba(118,100,237,1) 50%, rgba(80,162,244,1) 100%);
+    word-wrap: break-word;
 }
 
-#adminPanelProductsCurrentTabSettingsContainer .dropdown-item {
-    font-weight: 900;
-    background-color: #c3dae8;
+.adminPanelProductsEditorSubCtgContainer p {
+    color: #320440;
     transition: 0.3s;
+    text-shadow: 0px 0px 9px rgba(15,61,245,0.6);
 }
 
-#adminPanelProductsCurrentTabSettingsContainer .dropdown-menu {
-    background-color: #c3dae8;
+.adminPanelProductsEditorSubCtgContainer:hover {
+    cursor: pointer;
+
 }
 
-#adminPanelProductsCurrentTabSettingsContainer .dropdown-item:hover {
-    background-color: #37647a;
-}
-
-#adminPanelProductsCurrentTabSettingsContainer .dropdown-item:active {
-    color: #c3dae8;
+.adminPanelProductsEditorSubCtgContainer:hover p {
+    font-size: 23px;
 }
 
 #adminPanelProductsCurrentTabContainer {

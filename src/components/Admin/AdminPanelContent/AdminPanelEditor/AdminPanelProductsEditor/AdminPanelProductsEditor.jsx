@@ -54,11 +54,12 @@ const AdminPanelProductsEditor = (props) => {
         if (game) {
             return (
                 gamesSelector[game].subCategories.map((sub, index) => (
-                    <Dropdown.Item
+                    <div
                         onClick={() => handleSubCtgChoice(sub, index)}
+                        className={'adminPanelProductsEditorSubCtgContainer'}
                     >
-                        {sub.name}
-                    </Dropdown.Item>
+                        <p>{sub.name}</p>
+                    </div>
                 ))
             )
         }
@@ -83,17 +84,13 @@ const AdminPanelProductsEditor = (props) => {
 
             <div id={'adminPanelProductsCurrentMainContainer'}>
                 <div id={'adminPanelProductsCurrentTabSettingsContainer'}>
-                    <div id={'adminPanelGames'}>
+                    <div id={'adminPanelProductsEditorGames'}>
                         {gamesList()}
                     </div>
-                    <Dropdown>
-                        <Dropdown.Toggle variant={'success'} id={'adminPanelProductsCurrentChooseSubButton'}>
-                            Choose subcategory
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            {subCtgList()}
-                        </Dropdown.Menu>
-                    </Dropdown>
+                    <div id={'adminPanelProductsEditorSubcategories'}>
+                        {subCtgList()}
+                    </div>
+
                 </div>
 
                 <div id={'adminPanelProductsCurrentTabContainer'}>
