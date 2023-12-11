@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import './AdminPanelProductsEditor.css';
 import {useSelector} from "react-redux";
-import Dropdown from "react-bootstrap/Dropdown";
 import ProductsEditor from "../../../CurrentContentEditor/ProductsEditor/ProductsEditor";
 import Modal from 'react-bootstrap/Modal';
+import NewProductSettings from "../../../NewContentSettings/NewProductSettings/NewProductSettings";
 
 const AdminPanelProductsEditor = (props) => {
 
@@ -12,6 +12,11 @@ const AdminPanelProductsEditor = (props) => {
     const [subCtg, setSubCtg] = useState(null);
     const [product, setProduct] = useState(null);
     const [show, setShow] = useState(false);
+    const [newShow, setNewShow] = useState(false);
+
+    const handleNewModal = () => {
+        setNewShow(!newShow);
+    }
 
     const handleClose = () => {
         setShow(false);
@@ -81,7 +86,13 @@ const AdminPanelProductsEditor = (props) => {
 
     return (
         <div id={'productsEditorMainContainer'}>
-
+            <div id={'productsEditorCreateNewButtonContainer'}>
+                <button
+                    onClick={() => handleNewModal()}
+                >
+                    Create new
+                </button>
+            </div>
             <div id={'adminPanelProductsCurrentMainContainer'}>
                 <div id={'adminPanelProductsCurrentTabSettingsContainer'}>
                     <div id={'adminPanelProductsEditorGames'}>
@@ -116,6 +127,10 @@ const AdminPanelProductsEditor = (props) => {
                         game={game}
                         subCtg={subCtg}
                         product={product}
+                    />
+                </Modal>
+                <Modal id={'adminPanelProductsEditorModal'} show={newShow} onHide={handleNewModal}>
+                    <NewProductSettings
                     />
                 </Modal>
             </div>

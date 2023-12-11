@@ -9,6 +9,10 @@ const AdminPanelNavBar = (props) => {
         props.setBackIndex(0);
     };
 
+    const handleContentChoice = () => {
+        props.setBackIndex(1);
+    }
+
     const handleTurningBack = () => {
         if (props.backIndex > 0) {
             if (props.backIndex === 1 && props.menuIndex === 1) {
@@ -27,14 +31,27 @@ const AdminPanelNavBar = (props) => {
     return (
         <div id={'adminPanelNavBarMainContainer'}>
             <div id={'adminPanelNavBarFirstContainer'}>
-                <div id={'adminPanelNavBarBackToShopContainer'}>
-                    <NavLink to={'/'} id={'adminPanelNavBarBackToShop'}>Back to shop</NavLink>
+                <div id={'adminPanelNavBarShopAndMainMenuContainer'}>
+                    <div id={'adminPanelNavBarBackToShopContainer'}>
+                        <NavLink to={'/'} id={'adminPanelNavBarBackToShop'}>Back to shop</NavLink>
+                    </div>
+                    <div id={'adminPanelNavBarMenuButtonContainer'}>
+                        <button onClick={() => {
+                            handleMenuChoice()
+                        }}>Main menu
+                        </button>
+                    </div>
                 </div>
-                <div id={'adminPanelNavBarMenuButtonContainer'}>
-                    <button onClick={() => {
-                        handleMenuChoice()
-                    }}>Main menu
-                    </button>
+                <div id={'adminPanelNavBarCategoriesContainer'}>
+                    <div className={'adminPanelNavBarCtg'}>
+                        <button>Editor</button>
+                    </div>
+                    <div className={'adminPanelNavBarCtg'}>
+                        <button>Messages</button>
+                    </div>
+                    <div>
+                        <button>'To Do' list</button>
+                    </div>
                 </div>
             </div>
             <div id={'adminPanelNavBarSecondContainer'}>
