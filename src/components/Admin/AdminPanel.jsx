@@ -3,6 +3,7 @@ import './AdminPanel.css';
 import AdminPanelMainMenu from "./AdminPanelMainMenu/AdminPanelMainMenu";
 import AdminPanelNavBar from "./AdminPanelNavBar/AdminPanelNavBar";
 import AdminPanelContent from "./AdminPanelContent/AdminPanelContent";
+import AdminPanelDashboard from "./AdminPanelContent/AdminPanelDashboard/AdminPanelDashboard";
 
 const AdminPanel = () => {
 
@@ -17,18 +18,14 @@ const AdminPanel = () => {
     return (
         <div id={'adminPanelMainContainer'}>
             <AdminPanelNavBar
+                setContentName={setContentName}
                 setMenuIndex={setMenuIndex}
                 setBackIndex={setBackIndex}
                 menuIndex={menuIndex}
                 backIndex={backIndex}
             />
             {menuIndex === 0 && backIndex === 0 ?
-                <AdminPanelMainMenu
-                    backIndex={backIndex}
-                    menuIndex={menuIndex}
-                    setMenuIndex={setMenuIndex}
-                    setContentName={setContentName}
-                    setBackIndex={setBackIndex}
+                <AdminPanelDashboard
                 />
                 :
                 <AdminPanelContent

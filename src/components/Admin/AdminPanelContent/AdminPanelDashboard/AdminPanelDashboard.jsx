@@ -4,8 +4,8 @@ import './AdminPanelDashboard.css';
 const AdminPanelDashboard = () => {
 
     return (
-       <div>
-           Dashboard
+       <div id={'adminPanelDashboardMainContainer'}>
+           Здесь будет Dashboard, рано или поздно...
        </div>
     );
 }

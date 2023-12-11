@@ -9,8 +9,9 @@ const AdminPanelNavBar = (props) => {
         props.setBackIndex(0);
     };
 
-    const handleContentChoice = () => {
+    const handleContentChoice = (name) => {
         props.setBackIndex(1);
+        props.setContentName(name);
     }
 
     const handleTurningBack = () => {
@@ -35,22 +36,34 @@ const AdminPanelNavBar = (props) => {
                     <div id={'adminPanelNavBarBackToShopContainer'}>
                         <NavLink to={'/'} id={'adminPanelNavBarBackToShop'}>Back to shop</NavLink>
                     </div>
-                    <div id={'adminPanelNavBarMenuButtonContainer'}>
+                </div>
+                <div id={'adminPanelNavBarCategoriesContainer'}>
+                    <div className={'adminPanelNavBarCtg'}>
                         <button onClick={() => {
                             handleMenuChoice()
                         }}>Main menu
                         </button>
                     </div>
-                </div>
-                <div id={'adminPanelNavBarCategoriesContainer'}>
                     <div className={'adminPanelNavBarCtg'}>
-                        <button>Editor</button>
+                        <button
+                            onClick={() => handleContentChoice('editor')}
+                        >
+                            Editor
+                        </button>
                     </div>
                     <div className={'adminPanelNavBarCtg'}>
-                        <button>Messages</button>
+                        <button
+                            onClick={() => handleContentChoice('messages')}
+                        >
+                            Messages
+                        </button>
                     </div>
                     <div>
-                        <button>'To Do' list</button>
+                        <button
+                            onClick={() => handleContentChoice('todo')}
+                        >
+                            'To Do' list
+                        </button>
                     </div>
                 </div>
             </div>
