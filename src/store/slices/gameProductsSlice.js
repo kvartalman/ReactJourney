@@ -6,6 +6,7 @@ const gameProductsSlice = createSlice({
     initialState: {
         dota2: {
             fullName: 'Defence of the Ancients 2',
+            bg: '/backgrounds/ctgBackgrounds/dota2.jpeg',
             subCategories: [
                 {
                     name: 'Common skins',
@@ -212,10 +213,12 @@ const gameProductsSlice = createSlice({
             ],
         },
         lol: {
-            fullName: 'League of Legends'
+            fullName: 'League of Legends',
+            bg: '/backgrounds/ctgBackgrounds/lol.jpg'
         },
         hots: {
-            fullName: 'Heroes of the Storm'
+            fullName: 'Heroes of the Storm',
+            bg: '/backgrounds/ctgBackgrounds/hots.jpeg'
         }
     },
     reducers: {
