@@ -32,6 +32,9 @@ const AdminPanelProductsEditor = (props) => {
         }
 
         if (actionType === 'enter') {
+
+            // We do this because we need to hide subCtgList, and after it show it again on different game element
+
             if (gameHover) {
                 setGameHover(false);
             }
@@ -48,6 +51,7 @@ const AdminPanelProductsEditor = (props) => {
         } else if (actionType === 'leave') {
             clearTimeout(popupTimer);
             setGameHover(false);
+            setPopupHover(false);
         }
     }
 

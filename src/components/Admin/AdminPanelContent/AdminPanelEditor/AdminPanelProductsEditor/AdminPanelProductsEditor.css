@@ -49,7 +49,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.1em;
-    margin-left: 25em;
+    margin-left: 1em;
 }
 
 #adminPanelProductsEditorGames div {
