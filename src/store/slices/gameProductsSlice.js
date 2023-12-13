@@ -214,7 +214,89 @@ const gameProductsSlice = createSlice({
         },
         lol: {
             fullName: 'League of Legends',
-            bg: '/backgrounds/ctgBackgrounds/lol.jpg'
+            bg: '/backgrounds/ctgBackgrounds/lol.jpg',
+            subCategories: [
+                {
+                    name: 'First',
+                    products: [
+                        {
+                            id: 0,
+                            header: 'Product one',
+                            text: 'I wrote this text just for test. ' +
+                                'This text means nothing and i will add this text to most of text-blocks on website. ' +
+                                'However, i should pay attention to the size of text. ' +
+                                'I think, size of text should not be too high or too little. ' +
+                                'Better to find something people call "golden mean". ' +
+                                'Anyway, we will see, how it goes.',
+                            checkboxes: [
+                                {price: 100, name: 'checkbox1', label: 'Option 1'},
+                                {price: 200, name: 'checkbox2', label: 'Option 2'},
+                                {price: 300, name: 'checkbox3', label: 'Option 3'},
+                                {price: 400, name: 'checkbox4', label: 'Option 4'},
+                                {price: 500, name: 'checkbox5', label: 'Option 5'}
+                            ],
+                            price: 100,
+                            slider: {
+                                min: 0,
+                                max: 1000,
+                                multiplier: 2
+                            },
+                            img: '/product-photos/doomslayer.jpg',
+                            sliderType: "classic",
+                        },
+                        {
+                            id: 1,
+                            header: 'Product two',
+                            text: 'I wrote this text just for test. ' +
+                                'This text means nothing and i will add this text to most of text-blocks on website. ' +
+                                'However, i should pay attention to the size of text. ' +
+                                'I think, size of text should not be too high or too little. ' +
+                                'Better to find something people call "golden mean". ' +
+                                'Anyway, we will see, how it goes.',
+                            checkboxes: [
+                                {price: 100, name: 'checkbox1', label: 'Option 1'},
+                                {price: 200, name: 'checkbox2', label: 'Option 2'},
+                                {price: 300, name: 'checkbox3', label: 'Option 3'},
+                                {price: 400, name: 'checkbox4', label: 'Option 4'},
+                                {price: 500, name: 'checkbox5', label: 'Option 5'}
+                            ],
+                            price: 100,
+                            slider: {
+                                min: 0,
+                                max: 1000,
+                                multiplier: 2
+                            },
+                            img: '/product-photos/doomslayer.jpg',
+                            sliderType: "classic",
+                        },
+                        {
+                            id: 2,
+                            header: 'Product three',
+                            text: 'I wrote this text just for test. ' +
+                                'This text means nothing and i will add this text to most of text-blocks on website. ' +
+                                'However, i should pay attention to the size of text. ' +
+                                'I think, size of text should not be too high or too little. ' +
+                                'Better to find something people call "golden mean". ' +
+                                'Anyway, we will see, how it goes.',
+                            checkboxes: [
+                                {price: 100, name: 'checkbox1', label: 'Option 1'},
+                                {price: 200, name: 'checkbox2', label: 'Option 2'},
+                                {price: 300, name: 'checkbox3', label: 'Option 3'},
+                                {price: 400, name: 'checkbox4', label: 'Option 4'},
+                                {price: 500, name: 'checkbox5', label: 'Option 5'}
+                            ],
+                            price: 100,
+                            slider: {
+                                min: 0,
+                                max: 1000,
+                                multiplier: 2
+                            },
+                            img: '/product-photos/doomslayer.jpg',
+                            sliderType: "classic",
+                        }
+                    ]
+                }
+            ]
         },
         hots: {
             fullName: 'Heroes of the Storm',

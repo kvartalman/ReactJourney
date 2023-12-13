@@ -16,7 +16,7 @@
 
 #productsEditorCreateNewButtonContainer button {
     border: none;
-    font: 900 20px "Roboto" ,sans-serif;
+    font: 900 20px "Roboto", sans-serif;
     color: #0e232f;
     background: none;
     padding: 0 1em;
@@ -77,14 +77,14 @@
     font: 900 20px "Roboto", sans-serif;
     border: 2px solid #0e232f;
     border-radius: 2%;
-    background: linear-gradient(45deg, rgba(163,100,237,1) 0%, rgba(118,100,237,1) 50%, rgba(80,162,244,1) 100%);
+    background: linear-gradient(45deg, rgba(163, 100, 237, 1) 0%, rgba(118, 100, 237, 1) 50%, rgba(80, 162, 244, 1) 100%);
     word-wrap: break-word;
 }
 
 .adminPanelProductsEditorSubCtgContainer p {
     color: #320440;
     transition: 0.3s;
-    text-shadow: 0px 0px 9px rgba(15,61,245,0.6);
+    text-shadow: 0px 0px 9px rgba(15, 61, 245, 0.6);
 }
 
 .adminPanelProductsEditorSubCtgContainer:hover {
@@ -119,4 +119,42 @@
 #adminPanelProductsCurrentTabContainer th {
     border: 2px solid black;
     text-align: center;
+}
+
+#adminPanelProductsEditorGameListMainContainer {
+    position: relative;
+}
+
+.subCtgListPopup {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1em;
+    z-index: 2;
+    width: 500px !important;
+    height: auto !important;
+    transition: 1s;
+    border: 2px solid #0e232f;
+    border-radius: 2%;
+    gap: 0.2em;
+    background-color: #c3dae8;
+}
+
+.subCtgListPopup div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 110px !important;
+    height: 110px !important;
+    text-align: center;
+    font: 900 15px "Roboto", sans-serif;
+    background: linear-gradient(45deg, rgba(163, 100, 237, 1) 0%, rgba(118, 100, 237, 1) 50%, rgba(80, 162, 244, 1) 100%);
+    word-wrap: break-word;
+    border-radius: 2%;
+}
+
+.subCtgListPopup > div > p {
+    text-align: center;
+    margin: auto;
 }

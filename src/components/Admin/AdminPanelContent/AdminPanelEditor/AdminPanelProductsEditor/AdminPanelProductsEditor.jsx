@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import ProductsEditor from "../../../CurrentContentEditor/ProductsEditor/ProductsEditor";
 import Modal from 'react-bootstrap/Modal';
 import NewProductSettings from "../../../NewContentSettings/NewProductSettings/NewProductSettings";
+import SubCtgListPopup from "./SubCtgListPopup/SubCtgListPopup";
 
 const AdminPanelProductsEditor = (props) => {
 
@@ -13,6 +14,47 @@ const AdminPanelProductsEditor = (props) => {
     const [product, setProduct] = useState(null);
     const [show, setShow] = useState(false);
     const [newShow, setNewShow] = useState(false);
+
+    const [gameHover, setGameHover] = useState(false);
+    const [popupHover, setPopupHover] = useState(false);
+    const [subCtgIndex, setSubCtgIndex] = useState(null);
+
+    const [popupTimer, setPopupTimer] = useState(null);
+
+    const handleGameHover = (actionType, e, index) => {
+        clearTimeout(popupTimer);
+        setSubCtgIndex(index)
+
+        if (actionType === 'enter') {
+            if (gameHover) {
+                setGameHover(false);
+            }
+            if (popupHover) {
+                setPopupHover(false);
+            }
+            const timerId = setTimeout(() => {
+                setGameHover(true);
+                setPopupHover(true);
+            }, 500);
+
+            setPopupTimer(timerId);
+
+        } else if (actionType === 'leave') {
+            clearTimeout(popupTimer);
+            setGameHover(false);
+        }
+    }
+
+    const handlePopupHover = (actionType) => {
+
+        if (actionType === 'enter') {
+
+            setPopupHover(true);
+        } else if (actionType === 'leave') {
+            setPopupHover(false);
+            setGameHover(false);
+        }
+    }
 
     const handleNewModal = () => {
         setNewShow(!newShow);
@@ -37,19 +79,48 @@ const AdminPanelProductsEditor = (props) => {
 
     const gamesList = () => {
         if (Object.keys(gamesSelector).length > 0) {
+
+
             return (
                 Object.keys(gamesSelector).map((game, index) => (
-                    <div
-                        key={index}
-                        onClick={() => handleGameChoice(game, index)}
-                        className={'adminPanelProductsEditorGameContainer'}
-                        style={{
-                            background: `url(${gamesSelector[game].bg})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                        }}
-                    >
+                    <div id={'adminPanelProductsEditorGameListMainContainer'}>
+                        <div
+                            key={index}
+                            onMouseEnter={(e) => handleGameHover('enter', e, index)}
+                            onMouseLeave={(e) => handleGameHover('leave', e, index)}
+                            onClick={(e) => handleGameChoice(game, e, index)}
+                            className={'adminPanelProductsEditorGameContainer'}
+                            id={`productsEditorGameContainer${index}`}
+                            style={{
+                                background: `url(${gamesSelector[game].bg})`,
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                            }}
+                        >
+                            {popupHover && subCtgIndex === index ?
+                                <div
+                                    className={'subCtgListPopup'}
+                                    style={{
+                                        opacity: popupHover ? '1' : '0',
+                                        top: document.getElementById(`productsEditorGameContainer${index}`).offsetTop
+                                        + (document.getElementById(`productsEditorGameContainer${index}`).offsetHeight / 2),
+                                        left: document.getElementById(`productsEditorGameContainer${index}`).offsetLeft
+                                        + (document.getElementById(`productsEditorGameContainer${index}`).offsetWidth / 2)
+                                    }}
+                                    onMouseEnter={() => handlePopupHover('enter')}
+                                    onMouseLeave={() => handlePopupHover('leave')}
+                                >
+                                    <SubCtgListPopup
+                                        subCategories={gamesSelector[game].subCategories}
+                                        onSelect={handleSubCtgChoice}
+                                    />
+                                </div>
+                                :
+                                null
+                            }
+                        </div>
                     </div>
+
                 ))
             )
         }
