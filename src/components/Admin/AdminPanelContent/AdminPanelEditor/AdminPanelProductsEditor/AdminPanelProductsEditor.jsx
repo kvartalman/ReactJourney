@@ -18,12 +18,18 @@ const AdminPanelProductsEditor = (props) => {
     const [gameHover, setGameHover] = useState(false);
     const [popupHover, setPopupHover] = useState(false);
     const [subCtgIndex, setSubCtgIndex] = useState(null);
-
     const [popupTimer, setPopupTimer] = useState(null);
+    const [coordsChecker, setCoordsChecker] = useState(false);
 
-    const handleGameHover = (actionType, e, index) => {
+    const handleGameHover = (actionType, coordinate, index) => {
         clearTimeout(popupTimer);
         setSubCtgIndex(index)
+
+        if (coordinate + 100 < window.innerWidth / 2) {
+            setCoordsChecker(true);
+        } else {
+            setCoordsChecker(false);
+        }
 
         if (actionType === 'enter') {
             if (gameHover) {
@@ -86,7 +92,7 @@ const AdminPanelProductsEditor = (props) => {
                     <div id={'adminPanelProductsEditorGameListMainContainer'}>
                         <div
                             key={index}
-                            onMouseEnter={(e) => handleGameHover('enter', e, index)}
+                            onMouseEnter={(event) => handleGameHover('enter', event.clientX, index)}
                             onMouseLeave={(e) => handleGameHover('leave', e, index)}
                             onClick={(e) => handleGameChoice(game, e, index)}
                             className={'adminPanelProductsEditorGameContainer'}
@@ -104,8 +110,12 @@ const AdminPanelProductsEditor = (props) => {
                                         opacity: popupHover ? '1' : '0',
                                         top: document.getElementById(`productsEditorGameContainer${index}`).offsetTop
                                         + (document.getElementById(`productsEditorGameContainer${index}`).offsetHeight / 2),
-                                        left: document.getElementById(`productsEditorGameContainer${index}`).offsetLeft
-                                        + (document.getElementById(`productsEditorGameContainer${index}`).offsetWidth / 2)
+                                        left: coordsChecker ?
+                                            document.getElementById(`productsEditorGameContainer${index}`).offsetLeft
+                                            + (document.getElementById(`productsEditorGameContainer${index}`).offsetWidth / 2)
+                                            :
+                                            document.getElementById(`productsEditorGameContainer${index}`).offsetLeft
+                                            + (document.getElementById(`productsEditorGameContainer${index}`).offsetWidth / 2) - 500
                                     }}
                                     onMouseEnter={() => handlePopupHover('enter')}
                                     onMouseLeave={() => handlePopupHover('leave')}
@@ -168,11 +178,8 @@ const AdminPanelProductsEditor = (props) => {
                 <div id={'adminPanelProductsCurrentTabSettingsContainer'}>
                     <div id={'adminPanelProductsEditorGames'}>
                         {gamesList()}
-                    </div>
-                    <div id={'adminPanelProductsEditorSubcategories'}>
-                        {subCtgList()}
-                    </div>
 
+                    </div>
                 </div>
 
                 <div id={'adminPanelProductsCurrentTabContainer'}>
