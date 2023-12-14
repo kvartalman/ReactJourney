@@ -3,8 +3,6 @@ import './NewProductSettings.css';
 import {Tab, Tabs} from "react-bootstrap";
 import '../../AdminPanel.css';
 import NewProductTitleAndText from "./NewProductTitleAndText/NewProductTitleAndText";
-import ContentSliderSettings
-    from "./NewProductSlider/NewProductContentSlider/ContentSliderSettings";
 import NewProductSlider from "./NewProductSlider/NewProductSlider";
 import NewProductPrice from "./NewProductPrice/NewProductPrice";
 

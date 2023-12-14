@@ -6,7 +6,9 @@ import Advantages from "./Advantages/Advantages";
 import Steps from "./Steps/Steps";
 import Categories from "./Categories/Categories";
 
+
 const HomePage = () => {
+
     return (
         <>
             <Carousel />

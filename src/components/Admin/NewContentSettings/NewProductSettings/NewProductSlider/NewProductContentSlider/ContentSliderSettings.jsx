@@ -245,6 +245,7 @@ const ContentSliderSettings = (props) => {
                         onInput={(e) => {
                             handleChange(e)
                         }}
+                        labels={[]}
                     />
                     {finalPrice}
                 </Col>

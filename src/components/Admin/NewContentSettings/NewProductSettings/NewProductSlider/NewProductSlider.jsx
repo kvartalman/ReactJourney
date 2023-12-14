@@ -22,14 +22,14 @@ const NewProductSlider = (props) => {
                         <Button
                             onClick={() => handleSliderTypeChoice(0)}
                             className={buttonIndex === 0 ? 'activeButton' : 'defaultButton'}
-                        >Mini slider</Button>
+                        >Classic slider</Button>
 
                     </div>
                     <div>
                         <Button
                             onClick={() => handleSliderTypeChoice(1)}
                             className={buttonIndex === 1 ? 'activeButton' : 'defaultButton'}
-                        >Big slider</Button>
+                        >Complex slider</Button>
                         <Button
                             onClick={() => handleSliderTypeChoice(2)}
                             className={buttonIndex === 2 ? 'activeButton' : 'defaultButton'}
