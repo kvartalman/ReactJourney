@@ -23,8 +23,6 @@ const adminPanelNewProductSlice = createSlice(
             },
             deleteContentSliderRange: (state, action) => {
                 const indexToRemove = action.payload.index;
-                // I tried to use filter instead of splice to prevent auto-F5 when i delete any elem of array except last,
-                // but it doesn't work
                 action.payload.type === 'settings' ?
                     state.contentSliderSettingsRanges = state.contentSliderSettingsRanges.filter(
                         (_, index) => index !== indexToRemove)
@@ -33,7 +31,23 @@ const adminPanelNewProductSlice = createSlice(
                         (_, index) => index !== indexToRemove)
             },
             handleNewCheckboxesArrayChanges: (state, action) => {
+                const actionHandler = {
+                    'add': (data) => {
+                        state.newCheckboxesArray.push(
+                            {
+                                price: data.price,
+                                label: data.label,
+                                tooltipText: data.tooltipText ? data.tooltipText : null
+                            }
+                        )
+                    },
+                    'delete': (data) => {
+                        debugger;
+                        state.newCheckboxesArray = state.newCheckboxesArray.filter(checkbox => checkbox.label !== data.label)
+                    }
+                }
 
+                actionHandler[action.payload.actionType](action.payload)
             }
         }
     }

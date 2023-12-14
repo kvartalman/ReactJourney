@@ -132,8 +132,7 @@ const adminPanelEditorSlice = createSlice(
             },
             deleteContentSliderRange: (state, action) => {
                 const indexToRemove = action.payload.index;
-                // I tried to use filter instead of splice to prevent auto-F5 when I delete any elem of array except last,
-                // but it doesn't work
+
                 const actionType = {
                     settings: (indexToDelete) => {
                         state.contentSliderSettingsRanges = state.contentSliderSettingsRanges.filter(

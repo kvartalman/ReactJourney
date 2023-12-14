@@ -86,3 +86,47 @@
     justify-content: center;
 }
 
+#newProductCheckboxesFinalPreviewContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+#newProductCheckboxesFinalPreviewCheckboxesListContainer {
+    display: flex;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+#newProductCheckboxesFinalPreviewSelectContainer {
+    display: flex;
+    gap: 2em;
+    width: 100%;
+}
+
+#newProductCheckboxesFinalPreviewContainer .form-check-input:checked {
+    border-color: #ffc107;
+    background: #ffc107 url('/public/checkmark.png') no-repeat center;
+    background-size: contain;
+    cursor:pointer;
+}
+
+#newProductCheckboxesFinalPreviewContainer .form-check-input {
+    border-radius: 0 !important;
+    border: 2px solid #ffc107;
+    width: 1.6em;
+    height: 1.6em;
+    cursor: pointer;
+}
+
+#newProductCheckboxesFinalPreviewContainer .form-check-input:focus {
+    border-color: #ffc107;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+#newProductCheckboxesFinalPreviewContainer .checkboxTooltipContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
