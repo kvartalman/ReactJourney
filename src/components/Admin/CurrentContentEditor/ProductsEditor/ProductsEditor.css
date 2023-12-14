@@ -1,6 +1,6 @@
 #productsEditorTabContainer {
     border: 2px solid #0e232f;
-    border-radius: 1%;
+    border-radius: 0.5%;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;

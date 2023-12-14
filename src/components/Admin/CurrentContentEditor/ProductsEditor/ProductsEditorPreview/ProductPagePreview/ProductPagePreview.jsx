@@ -69,36 +69,38 @@ const ProductPagePreview = (props) => {
                     'productPagePreviewClassicContentCol'
                 }
                 >
-                    <div id={'productPagePreviewHeaderContainer'}>
-                        <h1>
-                            {
-                                props.title || props.product.header
-                            }
-                        </h1>
-                    </div>
-                    <div className={'customizeDividerLine'}></div>
-                    {props.product.sliderType === 'complex' ?
-                        <ContentSlider
-                            sliderRangesData={sliderRangesData}
-                            preview={!!props.price}
-                            contentSliderMinValue={props.contentSliderMinValue}
-                            contentSliderMaxValue={props.contentSliderMaxValue}
-                            contentSliderLeftThumb={props.contentSliderLeftThumb}
-                            contentSliderRightThumb={props.contentSliderRightThumb}
-                            contentSliderStep={props.contentSliderStep}
+                    <div>
+                        <div id={'productPagePreviewHeaderContainer'}>
+                            <h1>
+                                {
+                                    props.title || props.product.header
+                                }
+                            </h1>
+                        </div>
+                        <div className={'customizeDividerLine'}></div>
+                        {props.product.sliderType === 'complex' ?
+                            <ContentSlider
+                                sliderRangesData={sliderRangesData}
+                                preview={!!props.price}
+                                contentSliderMinValue={props.contentSliderMinValue}
+                                contentSliderMaxValue={props.contentSliderMaxValue}
+                                contentSliderLeftThumb={props.contentSliderLeftThumb}
+                                contentSliderRightThumb={props.contentSliderRightThumb}
+                                contentSliderStep={props.contentSliderStep}
 
-                            productData={productData}
-                            setPrice={setPrice}
-                            totalPrice={price}
+                                productData={productData}
+                                setPrice={setPrice}
+                                totalPrice={price}
 
-                        />
-                        :
-                        null
-                    }
-                    <div id={'productPagePreviewTextContainer'}>
-                        <p>{
-                            props.text || props.product.text
-                        }</p>
+                            />
+                            :
+                            null
+                        }
+                        <div id={'productPagePreviewTextContainer'}>
+                            <p>{
+                                props.text || props.product.text
+                            }</p>
+                        </div>
                     </div>
                     {props.product.sliderType === 'classic' ?
                         <div id={'productPagePreviewClassicSlider'}>

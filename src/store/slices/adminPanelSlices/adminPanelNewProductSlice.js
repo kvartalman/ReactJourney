@@ -6,6 +6,7 @@ const adminPanelNewProductSlice = createSlice(
         initialState: {
             contentSliderSettingsRanges: [],
             contentSliderEditorRanges: [],
+            newCheckboxesArray: []
         },
         reducers: {
             addContentSliderRange: (state, action) => {
@@ -31,12 +32,16 @@ const adminPanelNewProductSlice = createSlice(
                     state.contentSliderEditorRanges = state.contentSliderEditorRanges.filter(
                         (_, index) => index !== indexToRemove)
             },
+            handleNewCheckboxesArrayChanges: (state, action) => {
+
+            }
         }
     }
 )
 
 export const {
     addContentSliderRange,
-    deleteContentSliderRange
+    deleteContentSliderRange,
+    handleNewCheckboxesArrayChanges
 } = adminPanelNewProductSlice.actions;
 export default adminPanelNewProductSlice.reducer;

@@ -53,7 +53,7 @@ const CheckboxesPreview = (props) => {
     })
 
     useEffect(() => {
-        debugger;
+
 
     }, [props.checkboxesState, props.checkboxesChecker]);
 

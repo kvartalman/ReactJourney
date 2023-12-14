@@ -204,14 +204,14 @@ const AdminPanelProductsEditor = (props) => {
                 </div>
             </div>
             <div>
-                <Modal id={'adminPanelProductsEditorModal'} show={show} onHide={handleClose}>
+                <Modal className={'adminPanelProductsEditorModal'} show={show} onHide={handleClose}>
                     <ProductsEditor
                         game={game}
                         subCtg={subCtg}
                         product={product}
                     />
                 </Modal>
-                <Modal id={'adminPanelProductsEditorModal'} show={newShow} onHide={handleNewModal}>
+                <Modal className={'adminPanelProductsEditorModal'} show={newShow} onHide={handleNewModal}>
                     <NewProductSettings
                     />
                 </Modal>

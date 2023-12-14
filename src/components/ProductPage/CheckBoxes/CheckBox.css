@@ -14,18 +14,21 @@
     border: 2px solid #ffc107;
     width: 1.6em;
     height: 1.6em;
+    cursor:pointer;
 }
 
 .productCheckboxLabel input:checked {
     border-color: #ffc107;
     background: #ffc107 url('/public/checkmark.png') no-repeat center;
     background-size: contain;
+    cursor:pointer;
 }
 
 
 .productCheckboxLabel input:focus {
     border-color: #ffc107;
     box-shadow: none;
+    cursor:pointer;
 }
 
 .productCheckboxText {

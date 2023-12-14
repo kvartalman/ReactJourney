@@ -1,0 +1,30 @@
+#newProductSettingsMainContainer {
+    border: 2px solid #0e232f;
+    border-radius: 0.5%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.newProductsSettingsTabs {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #0e232f;
+    border: none;
+    overflow: hidden;
+    margin-bottom: 0 !important;
+}
+
+.newProductsSettingsTabs > .nav-item > button {
+    background-color: #0e232f;
+    color:#c3dae8 !important;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+    margin-left: 1em;
+}
+
+.newProductsSettingsTabs > li > .active {
+    background-color: #37647a !important;
+    text-shadow: #0e232f 1px 0 10px;
+}

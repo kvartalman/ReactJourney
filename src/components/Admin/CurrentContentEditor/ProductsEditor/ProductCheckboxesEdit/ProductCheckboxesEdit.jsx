@@ -76,7 +76,7 @@ const ProductCheckboxesEdit = (props) => {
     }
 
     const checkboxesList = props.product.checkboxes.map(checkbox => (
-        <option>{checkbox.name}</option>
+        <option>{checkbox.label}</option>
     ))
 
     const checkboxesCurrent =
