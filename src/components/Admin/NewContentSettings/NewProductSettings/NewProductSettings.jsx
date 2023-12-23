@@ -6,12 +6,15 @@ import NewProductTitleAndText from "./NewProductTitleAndText/NewProductTitleAndT
 import NewProductSlider from "./NewProductSlider/NewProductSlider";
 import NewProductPrice from "./NewProductPrice/NewProductPrice";
 import NewProductCheckboxes from "./NewProductCheckboxes/NewProductCheckboxes";
+import NewProductGameSub from "./NewProductGameSub/NewProductGameSub";
 
 const NewProductSettings = () => {
 
+    const [game, setGame] = useState('');
+    const [sub, setSub] = useState('');
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
-    const [key, setKey] = useState('text');
+    const [key, setKey] = useState('game');
     const [price, setPrice] = useState(0);
 
     return (
@@ -22,6 +25,17 @@ const NewProductSettings = () => {
                 onSelect={(k) => setKey(k)}
                 className="mb-3 newProductsSettingsTabs"
             >
+                <Tab
+                    eventKey={'game'}
+                    title={'Game and subcategory'}
+                >
+                    <NewProductGameSub
+                        setGame={setGame}
+                        game={game}
+                        setSub={setSub}
+                        sub={sub}
+                    />
+                </Tab>
                 <Tab
                     eventKey={'text'}
                     title={'Title and text'}
@@ -57,7 +71,7 @@ const NewProductSettings = () => {
                     eventKey={'checkboxes'}
                     title={'Checkboxes'}
                 >
-                    <NewProductCheckboxes />
+                    <NewProductCheckboxes/>
                 </Tab>
                 <Tab
                     eventKey={'preview'}

@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import {useDispatch, useSelector} from "react-redux";
 import {
     changeCarouselEditorData,
-    fillCarouselEditorData
+    fillCarouselEditorData, fillCarouselEditorNewData
 } from "../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
 import {Carousel} from "react-bootstrap";
 import CarouselItems from "../../../Homepage/Carousel/CarouselItems";
@@ -15,7 +15,7 @@ const CarouselNew = () => {
     const dispatch = useDispatch();
 
     const carouselSelector = useSelector(state => state.homePage.carouselData);
-    const carouselEditorData = useSelector(state => state.adminPanel.carouselEditorData);
+    const carouselEditorData = useSelector(state => state.adminPanel.carouselEditorNewData);
     const carouselNewAddedDataSelector = useSelector(state => state.adminPanel.carouselNewAddedData);
 
     const [img, setImg] = useState(null);
@@ -31,24 +31,32 @@ const CarouselNew = () => {
     };
 
     const handleCarouselEditorDataFilling = () => {
-        dispatch(fillCarouselEditorData(carouselSelector));
+        dispatch(fillCarouselEditorNewData(carouselSelector));
     };
 
     const handleCarouselEditorDataChanges = (actionType) => {
-        dispatch(changeCarouselEditorData(
-            {
-                actionType: actionType,
-                src: imgPreview,
-                name: imgName,
-                index: pictureIndex
-            }
-        ))
+        if (actionType === 'add') {
+            dispatch(changeCarouselEditorData(
+                {
+                    actionType: actionType,
+                    src: imgPreview,
+                    name: imgName,
+                    index: pictureIndex
+                }
+            ))
+        } else if (actionType === 'deleteNew') {
+            dispatch(changeCarouselEditorData(
+                {
+                    actionType: 'deleteNew',
+                    picture
+                }
+            ))
+        }
     }
 
     const handleImageChoice = (image, index) => {
         setPictureIndex(index);
         setPicture(image);
-
     }
 
     const handleImgFileChange = (event) => {
@@ -156,8 +164,8 @@ const CarouselNew = () => {
                         {newPictures()}
                     </div>
                     <div id={'carouselNewPicturesListPreviewContainer'}>
-                        { picture ?
-                            <img src={picture.srcImg} alt={picture.altImg} width={100} />
+                        {picture ?
+                            <img src={picture.srcImg} alt={picture.altImg} width={100}/>
                             :
                             null
                         }
@@ -170,17 +178,17 @@ const CarouselNew = () => {
                         {carouselItemArr()}
                     </Carousel>
                 </div>
-                    <div id={'carouselNewButtonsContainer'}>
-                        <button
-                            onClick={() => handleCarouselEditorDataChanges('add')}
-                        >Add new image to carousel preview
-                        </button>
-                        <button
-                            onClick={() => handleCarouselEditorDataChanges('deleteNew')}
-                        >Delete new image from carousel preview
-                        </button>
-                        <button>Accept changes</button>
-                    </div>
+                <div id={'carouselNewButtonsContainer'}>
+                    <button
+                        onClick={() => handleCarouselEditorDataChanges('add')}
+                    >Add new image to carousel preview
+                    </button>
+                    <button
+                        onClick={() => handleCarouselEditorDataChanges('deleteNew')}
+                    >Delete new image from carousel preview
+                    </button>
+                    <button>Accept changes</button>
+                </div>
             </div>
         </div>
     );

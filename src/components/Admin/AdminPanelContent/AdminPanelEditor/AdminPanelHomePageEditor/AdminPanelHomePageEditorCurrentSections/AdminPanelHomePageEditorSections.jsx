@@ -1,7 +1,7 @@
 import React from "react";
-import './AdminPanelHomePageEditorCurrentSections.css';
+import './AdminPanelHomePageEditorSections.css';
 
-const AdminPanelHomePageEditorCurrentSections = (props) => {
+const AdminPanelHomePageEditorSections = (props) => {
 
     return (
         <>
@@ -40,4 +40,4 @@ const AdminPanelHomePageEditorCurrentSections = (props) => {
     );
 };
 
-export default AdminPanelHomePageEditorCurrentSections;
+export default AdminPanelHomePageEditorSections;

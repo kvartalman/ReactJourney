@@ -1,0 +1,38 @@
+#newProductGameSubMainContainer {
+    margin-top: 1em;
+    text-align: center;
+}
+
+#newProductGamesListContainer {
+    display: flex;
+    gap: 0.1em;
+    margin: 1em;
+}
+
+#newProductSubCtgListContainer {
+    display: flex;
+    gap: 0.1em;
+    margin: 1em;
+}
+
+.newProductGameChooseContainer {
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    border-radius: 2%;
+    color: #0e232f;
+}
+
+.newProductSubCategoryChooseContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font: 900 15px "Roboto", sans-serif;
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    border-radius: 2%;
+    color: #0e232f;
+    background: linear-gradient(45deg, rgba(163,100,237,1) 0%, rgba(118,100,237,1) 50%, rgba(80,162,244,1) 100%);
+}

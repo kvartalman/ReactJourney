@@ -1,11 +1,15 @@
 import React, {useState} from "react";
 import './AdminPanelHomePageEditor.css';
-import AdminPanelHomePageEditorSections from "./AdminPanelHomePageEditorSections/AdminPanelHomePageEditorSections";
-import AdminPanelHomePageEditorCurrent from "./AdminPanelHomePageEditorCurrent/AdminPanelHomePageEditorCurrent";
-import AdminPanelHomePageEditorNew from "./AdminPanelHomePageEditorNew/AdminPanelHomePageEditorNew";
+import CarouselEditor from "../../../CurrentContentEditor/CarouselEditor/CarouselEditor";
+import HomePageCardsEditor from "../../../CurrentContentEditor/HomePageCardsEditor/HomePageCardsEditor";
+import AdvantagesEditor from "../../../CurrentContentEditor/AdvantagesEditor/AdvantagesEditor";
+import StepsEditor from "../../../CurrentContentEditor/StepsEditor/StepsEditor";
+import AdminPanelHomePageEditorSections
+    from "./AdminPanelHomePageEditorCurrentSections/AdminPanelHomePageEditorSections";
+
 
 const AdminPanelHomePageEditor = (props) => {
-
+debugger;
     const [sectionName, setSectionName] = useState('');
     const handleSectionChoice = (section) => {
         setSectionName(section)
@@ -24,6 +28,18 @@ const AdminPanelHomePageEditor = (props) => {
     //                                 :
     //                                 null
 
+    const editorComponent = {
+        carousel: <CarouselEditor/>,
+        cards: <HomePageCardsEditor />,
+        advantages: <AdvantagesEditor />,
+        steps: <StepsEditor />
+    }
+
+    // <AdminPanelHomePageEditorNew
+    //                                 backIndex={props.backIndex}
+    //                                 setBackIndex={props.setBackIndex}
+    //                             />
+
     return (
         <div id={'adminPanelHomePageEditorMainContainer'}>
             {
@@ -32,19 +48,7 @@ const AdminPanelHomePageEditor = (props) => {
                         handleSectionChoice={handleSectionChoice}
                     />
                     :
-                    sectionName === 'current' ?
-                        <AdminPanelHomePageEditorCurrent
-                            setBackIndex={props.setBackIndex}
-                            backIndex={props.backIndex}
-                        />
-                        :
-                        sectionName === 'new' ?
-                            <AdminPanelHomePageEditorNew
-                                backIndex={props.backIndex}
-                                setBackIndex={props.setBackIndex}
-                            />
-                            :
-                            null
+                    editorComponent[sectionName]
             }
 
         </div>

@@ -1,25 +1,76 @@
+#carouselEditorMainContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    border: 4px solid #0e232f;
+    border-radius: 1%;
+    background-color: #ffffff;
+}
+
+#carouselEditorMainContainer > .nav-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #0e232f;
+    border: none;
+    overflow: hidden !important;
+    margin-bottom: 0 !important;
+}
+
+#carouselEditorMainContainer > .nav-tabs > li > button {
+    background-color: #0e232f;
+    color:#c3dae8;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+    margin-left: 1em;
+}
+
+#carouselEditorMainContainer > .nav-tabs > li > .active {
+    background-color: #37647a;
+    text-shadow: #0e232f 1px 0 10px;
+}
+
+#carouselEditorPicturesListContainer {
+    display: flex;
+    gap: 0.5em;
+}
+
 #carouselEditorChooseUploadContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 10em;
+    margin: 1em;
+    text-align: center;
 }
 
 #carouselEditorPicturesPreviewContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 10em;
+    margin: 1em;
+}
+
+#carouselEditorPicturesPreviewCurrentImageContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#carouselEditorPicturesPreviewNewImageContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
 
 #carouselEditorPicturesPreviewContainer h3 {
     text-align: center;
 }
 
-#carouselEditorAddReplaceButtonsContainer {
-    margin: 1em 0 1em 0;
-}
-
-#carouselEditorAddReplaceButtonsContainer p {
-    margin: 1em 0 1em 0;
-    font-weight: bold;
-
+#carouselEditorFinalPreviewContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 1em;
 }
 
 #carouselEditorFinalPreviewContainer > .carousel > .carousel-control-prev > .carousel-control-prev-icon {
@@ -32,4 +83,10 @@
 
 #carouselEditorFinalPreviewContainer > .carousel > .carousel-inner > .carousel-item > .d-block {
     filter: brightness(40%);
+}
+
+#carouselEditorAcceptChangesButtonContainer {
+    margin: auto;
+    width: 150px;
+    padding-bottom: 1em;
 }

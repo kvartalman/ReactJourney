@@ -20,6 +20,7 @@
     color: #0e232f;
     background: none;
     padding: 0 1em;
+    width: 200px;
 }
 
 #productsEditorCreateNewButtonContainer::before, #productsEditorCreateNewButtonContainer::after {

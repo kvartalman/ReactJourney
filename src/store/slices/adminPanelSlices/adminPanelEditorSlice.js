@@ -8,6 +8,7 @@ const adminPanelEditorSlice = createSlice(
                 '/', '/dota2', '/lol', '/hots', '/adminPanel'
             ],
             carouselEditorData: [],
+            carouselEditorNewData: [],
             carouselNewAddedData: [],
             advantagesEditorData: [],
             advantagesNewAddedData: [],
@@ -27,19 +28,22 @@ const adminPanelEditorSlice = createSlice(
             fillCarouselEditorData: (state, action) => {
                 state.carouselEditorData = action.payload;
             },
+            fillCarouselEditorNewData: (state, action) => {
+                state.carouselEditorNewData = action.payload;
+            },
             changeCarouselEditorData: (state, action) => {
 
                 const actionType = {
                     add: (data) => {
-                        state.carouselEditorData[state.carouselEditorData.length] = {
-                            id: state.carouselEditorData.length,
+                        state.carouselEditorNewData[state.carouselEditorNewData.length] = {
+                            id: state.carouselEditorNewData.length,
                             srcImg: data.src,
                             altImg: data.name,
                             text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ",
                             name: data.name
                         }
                         state.carouselNewAddedData[state.carouselNewAddedData.length] = {
-                            id: state.carouselEditorData.length,
+                            id: state.carouselEditorNewData.length,
                             srcImg: data.src,
                             altImg: data.name,
                             text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ",
@@ -61,14 +65,8 @@ const adminPanelEditorSlice = createSlice(
                         state.carouselEditorData = state.carouselEditorData.filter((image, index) => index !== data.index)
                     },
                     deleteNew: (data) => {
-
-                        for (let i = 0; i < state.carouselNewAddedData.length; i++) {
-                            if (data.name === state.carouselNewAddedData[i].name) {
-                                state.carouselEditorData = state.carouselEditorData.filter(image => image.name !== state.carouselNewAddedData[i].name)
-                            }
-                        }
-
-                        state.carouselNewAddedData = state.carouselNewAddedData.filter((image, index) => index !== data.index)
+                        state.carouselEditorNewData = state.carouselEditorNewData.filter(image => image.name !== data.picture.name)
+                        state.carouselNewAddedData = state.carouselNewAddedData.filter(image => image.name !== data.picture.name)
                     }
 
                 }
@@ -324,6 +322,7 @@ const adminPanelEditorSlice = createSlice(
 
 export const {
     fillCarouselEditorData,
+    fillCarouselEditorNewData,
     fillAdvantagesEditorData,
     handleAdvantagesEditorDataChanges,
     fillStepsEditorData,

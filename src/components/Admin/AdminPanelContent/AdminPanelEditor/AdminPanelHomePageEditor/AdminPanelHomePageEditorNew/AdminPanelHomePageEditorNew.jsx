@@ -1,9 +1,5 @@
 import React, {useState} from "react";
 import './AdminPanelHomePageEditorNew.css';
-import CarouselEditor from "../../../../CurrentContentEditor/CarouselEditor/CarouselEditor";
-import HomePageCardsEditor from "../../../../CurrentContentEditor/HomePageCardsEditor/HomePageCardsEditor";
-import AdvantagesEditor from "../../../../CurrentContentEditor/AdvantagesEditor/AdvantagesEditor";
-import StepsEditor from "../../../../CurrentContentEditor/StepsEditor/StepsEditor";
 import AdminPanelHomePageEditorNewSections
     from "./AdminPanelHomePageEditorNewSections/AdminPanelHomePageEditorNewSections";
 import HomePageCardsSettings from "../../../../NewContentSettings/HomePageCardsSettings/HomePageCardsSettings";

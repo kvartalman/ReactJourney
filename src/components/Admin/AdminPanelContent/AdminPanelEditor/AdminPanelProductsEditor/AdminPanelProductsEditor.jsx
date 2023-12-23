@@ -14,6 +14,7 @@ const AdminPanelProductsEditor = (props) => {
     const [product, setProduct] = useState(null);
     const [show, setShow] = useState(false);
     const [newShow, setNewShow] = useState(false);
+    const [massNewShow, setMassNewShow] = useState(false);
 
     const [gameHover, setGameHover] = useState(false);
     const [popupHover, setPopupHover] = useState(false);
@@ -68,6 +69,10 @@ const AdminPanelProductsEditor = (props) => {
 
     const handleNewModal = () => {
         setNewShow(!newShow);
+    }
+
+    const handleMassNewModal = () => {
+        setMassNewShow(!massNewShow);
     }
 
     const handleClose = () => {
@@ -178,6 +183,13 @@ const AdminPanelProductsEditor = (props) => {
                     Create new
                 </button>
             </div>
+            <div id={'productsEditorCreateNewButtonContainer'}>
+                <button
+                    onClick={() => handleMassNewModal()}
+                >
+                    Mass create
+                </button>
+            </div>
             <div id={'adminPanelProductsCurrentMainContainer'}>
                 <div id={'adminPanelProductsCurrentTabSettingsContainer'}>
                     <div id={'adminPanelProductsEditorGames'}>
@@ -214,6 +226,8 @@ const AdminPanelProductsEditor = (props) => {
                 <Modal className={'adminPanelProductsEditorModal'} show={newShow} onHide={handleNewModal}>
                     <NewProductSettings
                     />
+                </Modal>
+                <Modal className={'adminPanelProductsEditorModal'} show={massNewShow} onHide={handleMassNewModal}>
                 </Modal>
             </div>
         </div>
