@@ -31,7 +31,7 @@ const HomePageCardContentEdit = (props) => {
     }
 
     return (
-        <Container fluid>
+        <>
             <Form>
                 <Form.Group>
                     <Form.Label>Edit title</Form.Label>
@@ -53,7 +53,7 @@ const HomePageCardContentEdit = (props) => {
                 className={'nextPageButton'}
                 onClick={() => acceptChanges()}
             >Accept</Button>
-        </Container>
+        </>
     );
 };
 

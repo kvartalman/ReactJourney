@@ -1,18 +1,49 @@
-#homePageCardsEditorCardPreviewCol {
+#homePageCardsEditorMainContainer {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    margin: 1em;
+    border: 4px solid #0e232f;
+    border-radius: 1%;
+    background-color: #ffffff;
 }
 
-.homePageCardsEditorCardsFinalPreviewRow {
-    justify-content: center;
-    align-items: center;
+#homePageCardsEditorMainContainer > .nav-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #0e232f;
+    border: none;
+    overflow: hidden !important;
+    margin-bottom: 0 !important;
 }
 
-.homePageCardsEditorCardsFinalPreviewRow h2 {
-    text-align: center;
+#homePageCardsEditorMainContainer > .nav-tabs > li > button {
+    background-color: #0e232f;
+    color:#c3dae8;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+    margin-left: 1em;
 }
 
-h1, h2 {
-    text-align: center;
+#homePageCardsEditorMainContainer > .nav-tabs > li > .active {
+    background-color: #37647a;
+    text-shadow: #0e232f 1px 0 10px;
+}
+
+#homePageCardsEditorCurrentChooseContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin: 1em;
+}
+
+#homePageCardsEditorSettingsContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    gap: 1em;
+}
+
+#homePageCardsEditorSettingsContainer .nextPageButton {
+    width: 150px;
 }

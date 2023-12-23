@@ -8,8 +8,6 @@ import {
     deleteHomePageOfferCard,
     fillHomePageOfferCards
 } from "../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
-import Container from "react-bootstrap/Container";
-import {Col, Row} from "react-bootstrap";
 import {addCardsData} from "../../../../store/slices/homePageSlice";
 import HomePageCardsEditorCardPreview from "./HomePageCardsEditorCardPreview/HomePageCardsEditorCardPreview";
 import './HomePageCardsEditor.css';
@@ -18,6 +16,7 @@ import HomePageCardEditorCurrentCardPreview
     from "./HomePageCardEditorCurrentCardPreview/HomePageCardEditorCurrentCardPreview";
 import HomePageCardsEditorFinalPreview from "./HomePageCardsEditorFinalPreview/HomePageCardsEditorFinalPreview";
 import Button from "react-bootstrap/Button";
+import {Tab, Tabs} from "react-bootstrap";
 
 const HomePageCardsEditor = () => {
 
@@ -31,6 +30,7 @@ const HomePageCardsEditor = () => {
     const [button, setButton] = useState(null);
     const [activeCardIndex, setActiveCardIndex] = useState(0);
     const [activeButtonIndex, setActiveButtonIndex] = useState(0);
+    const [key, setKey] = useState('current');
 
 
     const deleteCardHandler = () => {
@@ -62,77 +62,99 @@ const HomePageCardsEditor = () => {
     },)
 
     return (
-        <Container fluid>
-            <Row>
-                <Col md={6}>
-                    <ChooseHomePageCard
-                        activeCardIndex={activeCardIndex}
-                        setActiveCardIndex={setActiveCardIndex}
-                        setCard={setCard}
-                        cardsSelector={cardsSelector}
-                        card={card}
-                        setButton={setButton}
-                        setActiveButtonIndex={setActiveButtonIndex}
-                    />
-                    {cardsSelector.length > 0 ?
-                        <Button
-                            className={'nextPageButton'}
-                            onClick={() => deleteCardHandler()}
-                        >Delete card
-                        </Button>
-                        :
-                        null
-                    }
-                    {deletedCardsSelector.length > 0 ?
-                        <Button
-                            className={'nextPageButton'}
-                            onClick={() => cancelDeletionHandler()}
-                        >
-                            Cancel
-                        </Button>
-                        :
-                        null
-                    }
-                    <h2>Edit card</h2>
-                    <HomePageCardContentEdit
-                        cardsSelector={cardsSelector}
-                        card={card}
-                        setCard={setCard}
-                        activeCardIndex={activeCardIndex}
-                        activeButtonIndex={activeButtonIndex}
-                        setButton={setButton}
-                    />
-                    <HomePageCardButtonsEditor
-                        cardsSelector={cardsSelector}
-                        card={card}
-                        button={button}
-                        setCard={setCard}
-                        setButton={setButton}
-                        activeCardIndex={activeCardIndex}
-                        activeButtonIndex={activeButtonIndex}
-                        setActiveButtonIndex={setActiveButtonIndex}
-                    />
-                </Col>
-                <Col md={6} id={'homePageCardsEditorCardPreviewCol'}>
-                    <div>
-                        <HomePageCardEditorCurrentCardPreview
-                            cardsSelector={cardsSelector}
-                            activeCardIndex={activeCardIndex}
-                            card={card}
-                        />
-                        <HomePageCardsEditorCardPreview
-                            card={card}
-                            activeCardIndex={activeCardIndex}
-                            cardsSelector={cardsSelector}
-                        />
+        <div id={'homePageCardsEditorMainContainer'}>
+            <Tabs
+                id="controlled-tab-example"
+                activeKey={key}
+                onSelect={(k) => setKey(k)}
+                className="mb-3"
+            >
+                <Tab
+                    eventKey={'current'}
+                    title={'Изменить текущее'}
+                >
+                    <div id={'homePageCardsEditorCurrentMainContainer'}>
+                        <div id={'homePageCardsEditorCurrentChooseContainer'}>
+                            <div>
+                                <ChooseHomePageCard
+                                    activeCardIndex={activeCardIndex}
+                                    setActiveCardIndex={setActiveCardIndex}
+                                    setCard={setCard}
+                                    cardsSelector={cardsSelector}
+                                    card={card}
+                                    setButton={setButton}
+                                    setActiveButtonIndex={setActiveButtonIndex}
+                                />
+                            </div>
+                            <div>
+                                {cardsSelector.length > 0 ?
+                                    <Button
+                                        className={'nextPageButton'}
+                                        onClick={() => deleteCardHandler()}
+                                    >Delete card
+                                    </Button>
+                                    :
+                                    null
+                                }
+                                {deletedCardsSelector.length > 0 ?
+                                    <Button
+                                        className={'nextPageButton'}
+                                        onClick={() => cancelDeletionHandler()}
+                                    >
+                                        Cancel
+                                    </Button>
+                                    :
+                                    null
+                                }
+                            </div>
+                        </div>
+                        <div id={'homePageCardsEditorSettingsContainer'}>
+                            <h2>Edit card</h2>
+                            <HomePageCardContentEdit
+                                cardsSelector={cardsSelector}
+                                card={card}
+                                setCard={setCard}
+                                activeCardIndex={activeCardIndex}
+                                activeButtonIndex={activeButtonIndex}
+                                setButton={setButton}
+                            />
+                            <HomePageCardButtonsEditor
+                                cardsSelector={cardsSelector}
+                                card={card}
+                                button={button}
+                                setCard={setCard}
+                                setButton={setButton}
+                                activeCardIndex={activeCardIndex}
+                                activeButtonIndex={activeButtonIndex}
+                                setActiveButtonIndex={setActiveButtonIndex}
+                            />
+                        </div>
+                        <div>
+                            <HomePageCardEditorCurrentCardPreview
+                                cardsSelector={cardsSelector}
+                                activeCardIndex={activeCardIndex}
+                                card={card}
+                            />
+                            <HomePageCardsEditorCardPreview
+                                card={card}
+                                activeCardIndex={activeCardIndex}
+                                cardsSelector={cardsSelector}
+                            />
+                        </div>
+                        <div>
+                            <h1>Final preview</h1>
+                            <HomePageCardsEditorFinalPreview/>
+                        </div>
                     </div>
-                </Col>
-            </Row>
-            <Row className={'homePageCardsEditorCardsFinalPreviewRow'}>
-                <h1>Final preview</h1>
-                <HomePageCardsEditorFinalPreview/>
-            </Row>
-        </Container>
+                </Tab>
+                <Tab
+                    eventKey={'new'}
+                    title={'Добавить новое'}
+                >
+
+                </Tab>
+            </Tabs>
+        </div>
     );
 };
 

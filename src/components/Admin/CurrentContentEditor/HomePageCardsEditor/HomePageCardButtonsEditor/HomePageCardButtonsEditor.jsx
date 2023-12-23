@@ -80,7 +80,7 @@ const HomePageCardButtonsEditor = (props) => {
     )
 
     return (
-        <Container fluid>
+        <>
             <div>
                 {buttonsList()}
             </div>
@@ -133,7 +133,7 @@ const HomePageCardButtonsEditor = (props) => {
             >
                 Accept
             </Button>
-        </Container>
+        </>
     );
 };
 

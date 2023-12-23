@@ -30,9 +30,9 @@ const ChooseHomePageCard = (props) => {
     }
 
     return (
-        <Container fluid>
-            <div>{cardsList()}</div>
-        </Container>
+        <>
+            {cardsList()}
+        </>
     );
 };
 
