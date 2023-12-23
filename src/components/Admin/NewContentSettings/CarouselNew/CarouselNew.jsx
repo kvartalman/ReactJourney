@@ -133,7 +133,7 @@ const CarouselNew = () => {
             <div id={'carouselNewSettingsContainer'}>
                 <div id={'carouselNewFormsAndUploadMainContainer'}>
                     <div id={'carouselNewFormsAndUploadContainer'}>
-                        <h3>Upload new image</h3>
+                        <h3>Загрузить новое</h3>
                         <div id={'carouselNewUploadContainer'}>
                             <div>
                                 <input type={'file'} accept={'image/*,video/*'} ref={imgRef}
@@ -150,45 +150,50 @@ const CarouselNew = () => {
                                 />
                             </Form>
                         </div>
-                    </div>
-                    <div id={'carouselNewPicturePreviewContainer'}>
-                        {imgPreview ?
-                            <img src={imgPreview} alt={'Image preview'} width={200}/>
-                            :
-                            null
-                        }
+                        <div id={'carouselNewPicturePreviewContainer'}>
+                            {imgPreview ?
+                                <img src={imgPreview} alt={'Image preview'} width={200}/>
+                                :
+                                null
+                            }
+                        </div>
+                        <div
+                            className={'carouselNewButtonsContainer'}
+                        >
+                            <button
+                                onClick={() => handleCarouselEditorDataChanges('add')}
+                            >
+                                Add
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div id={'carouselNewPicturesListMainContainer'}>
+                    <h3>
+                        Загрузил не то? Выбери лишнее и удали!
+                    </h3>
                     <div id={'carouselNewPicturesListContainer'}>
                         {newPictures()}
                     </div>
                     <div id={'carouselNewPicturesListPreviewContainer'}>
                         {picture ?
-                            <img src={picture.srcImg} alt={picture.altImg} width={100}/>
+                            <img src={picture.srcImg} alt={picture.altImg} width={200}/>
                             :
                             null
                         }
                     </div>
+                    <div className={'carouselNewButtonsContainer'}>
+                        <button
+                            onClick={() => handleCarouselEditorDataChanges('deleteNew')}
+                        >Delete
+                        </button>
+                    </div>
                 </div>
             </div>
             <div id={'carouselNewFinalPreviewContainer'}>
-                <div id={'carouselNewCarouselPreviewContainer'}>
-                    <Carousel fade className={'carousel'} indicators={false} interval={5000} pause={false}>
-                        {carouselItemArr()}
-                    </Carousel>
-                </div>
-                <div id={'carouselNewButtonsContainer'}>
-                    <button
-                        onClick={() => handleCarouselEditorDataChanges('add')}
-                    >Add new image to carousel preview
-                    </button>
-                    <button
-                        onClick={() => handleCarouselEditorDataChanges('deleteNew')}
-                    >Delete new image from carousel preview
-                    </button>
-                    <button>Accept changes</button>
-                </div>
+                <Carousel fade className={'carousel'} indicators={false} interval={5000} pause={false}>
+                    {carouselItemArr()}
+                </Carousel>
             </div>
         </div>
     );

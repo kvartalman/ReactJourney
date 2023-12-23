@@ -3,6 +3,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 1em;
 }
 
 #carouselNewSettingsContainer {
@@ -12,7 +13,18 @@
 
 #carouselNewFormsAndUploadMainContainer {
     display: flex;
+    justify-content: center;
+    text-align: center;
     gap: 1em;
+    padding: 1em;
+    border: 2px solid #0e232f;
+    background: #658a9a;
+    border-radius: 2%;
+    width: 400px;
+}
+
+#carouselNewFormsAndUploadMainContainer h3 {
+    font: 900 25px "Roboto", sans-serif;
 }
 
 #carouselNewFormsAndUploadContainer {
@@ -28,29 +40,54 @@
 #carouselNewUploadContainer input {
 }
 
+#carouselNewPicturePreviewContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+#carouselNewPicturesListContainer {
+    display: flex;
+    gap: 1em;
+}
+
+#carouselNewPicturesListContainer button {
+    background: #37647a;
+    font: 900 14px "Roboto", sans-serif;
+}
+
 #carouselNewPicturesListMainContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     gap: 1em;
+    padding: 1em;
+    border: 2px solid #0e232f;
+    background: #658a9a;
+    border-radius: 2%;
+    width: 400px;
+}
+
+#carouselNewPicturesListMainContainer h3 {
+    font: 900 25px "Roboto", sans-serif;
 }
 
 #carouselNewFinalPreviewContainer {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    margin-top: 1em;
 }
 
-#carouselNewFinalPreviewContainer > div > .carousel > .carousel-inner > .carousel-item > .d-block {
+#carouselNewFinalPreviewContainer > .carousel > .carousel-inner > .carousel-item > .d-block {
     filter: brightness(40%);
 }
 
-#carouselNewButtonsContainer {
-    margin: auto;
+.carouselNewButtonsContainer {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-
+    gap: 2em;
 }
 
 #carouselNewCarouselPreviewContainer {
@@ -58,17 +95,13 @@
     width: 50%;
 }
 
-#carouselNewButtonsContainer button {
-    height: 130px;
+.carouselNewButtonsContainer button {
     margin-top: 1em;
-    font: 900 25px "Roboto", sans-serif;
+    padding: 0 1em;
+    font: 900 20px "Roboto", sans-serif;
     border-radius: 10%;
-    border: rgba(0, 0, 0, 0.5);
-    background: linear-gradient(45deg, rgba(14,35,47,1) 0%, rgba(195,218,232,1) 100%);
+    background: #0e232f;
     color: #fff;
     transition: 0.3s;
-}
-
-#carouselNewButtonsContainer button:hover {
-    transform: scale(1.03);
+    cursor: pointer;
 }
