@@ -130,6 +130,12 @@ const CarouselNew = () => {
 
     return (
         <div id={'carouselNewMainContainer'}>
+            <div id={'carouselNewFinalPreviewContainer'}>
+                <h1>Final preview</h1>
+                <Carousel fade className={'carousel'} indicators={false} interval={5000} pause={false}>
+                    {carouselItemArr()}
+                </Carousel>
+            </div>
             <div id={'carouselNewSettingsContainer'}>
                 <div id={'carouselNewFormsAndUploadMainContainer'}>
                     <div id={'carouselNewFormsAndUploadContainer'}>
@@ -189,11 +195,6 @@ const CarouselNew = () => {
                         </button>
                     </div>
                 </div>
-            </div>
-            <div id={'carouselNewFinalPreviewContainer'}>
-                <Carousel fade className={'carousel'} indicators={false} interval={5000} pause={false}>
-                    {carouselItemArr()}
-                </Carousel>
             </div>
         </div>
     );

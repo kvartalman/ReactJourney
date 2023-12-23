@@ -30,6 +30,41 @@
     text-shadow: #0e232f 1px 0 10px;
 }
 
+#carouselEditorCurrentMainContainer {
+    display: flex;
+    margin: 1em;
+    gap: 1em;
+}
+
+#carouselEditorCurrentChooseContainer, #carouselEditorUploadNewMainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1em;
+    padding: 1em;
+    border: 2px solid #0e232f;
+    background: #658a9a;
+    border-radius: 2%;
+    height: 400px;
+    width: 400px;
+}
+
+#carouselEditorCurrentChooseContainer h3 {
+    font: 900 25px "Roboto", sans-serif;
+}
+
+#carouselEditorUploadNewMainContainer h3 {
+    font: 900 25px "Roboto", sans-serif;
+}
+
+#carouselEditorSettingsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
 #carouselEditorPicturesListContainer {
     display: flex;
     gap: 0.5em;
@@ -54,6 +89,13 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#carouselEditorPicturesPreviewCurrentImageContainer h3 {
+    font: 900 25px "Roboto", sans-serif;
 }
 
 #carouselEditorPicturesPreviewNewImageContainer {
@@ -70,7 +112,6 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin: 1em;
 }
 
 #carouselEditorFinalPreviewContainer > .carousel > .carousel-control-prev > .carousel-control-prev-icon {

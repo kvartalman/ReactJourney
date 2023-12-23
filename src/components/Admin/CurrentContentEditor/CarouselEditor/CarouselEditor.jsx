@@ -150,94 +150,100 @@ const CarouselEditor = () => {
                     eventKey={'current'}
                     title={'Edit current'}
                 >
-                    <div id={'carouselEditorChooseUploadContainer'}>
-                        <div>
-                            <h3>Choose current image</h3>
-                            <div id={'carouselEditorPicturesListContainer'}>
-                                {carouselPicturesList()}
-                            </div>
-                        </div>
-                        <div>
-                            <h3>Upload new image</h3>
-                            <div>
-                                <input type={'file'} accept={'image/*,video/*'} ref={imgRef} onChange={handleImgFileChange}/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id={'carouselEditorPicturesPreviewContainer'}>
-                        <div id={'carouselEditorPicturesPreviewCurrentImageContainer'}>
-                            <h3>Current image</h3>
-                            <div>
-                                {picture ?
-                                    <img src={picture.srcImg} alt={picture.altImg} width={400}/>
-                                    :
-                                    null
-                                }
-                            </div>
-                            <div>
+                    <div id={'carouselEditorCurrentMainContainer'}>
+                        <div id={'carouselEditorFinalPreviewContainer'}>
+                            <h3>Carousel final preview</h3>
+                            <Carousel fade className={'carousel'} indicators={false} interval={5000} pause={false}>
+                                {carouselItemArr()}
+                            </Carousel>
+                            <div id={'carouselEditorAcceptChangesButtonContainer'}>
                                 <Button
                                     className={'nextPageButton'}
-                                    onClick={() => handleCarouselEditorDataChanges('delete')}
                                 >
-                                    Delete image
+                                    Accept changes
                                 </Button>
                             </div>
                         </div>
-                        <div id={'carouselEditorPicturesPreviewNewImageContainer'}>
-                            <h3>New image</h3>
-                            <div>
-                                {imgPreview ?
-                                    <img src={imgPreview} alt={'Preview image'} width={400}/>
-                                    :
-                                    null
-                                }
-                            </div>
-                            <div>
-                                <Form>
-                                    <Form.Label>Image name</Form.Label>
-                                    <Form.Control
-                                        placeholder={'Enter image name'}
-                                        onChange={imgNameInput}
-                                        value={imgName}
-                                    />
-                                </Form>
-                            </div>
-                            {imgPreview ?
-                                <div id={'carouselEditorAddReplaceButtonsContainer'}>
+                        <div id={'carouselEditorSettingsContainer'}>
+                            <div id={'carouselEditorCurrentChooseContainer'}>
+                                <div>
+                                    <h3>Choose current image</h3>
+                                    <div id={'carouselEditorPicturesListContainer'}>
+                                        {carouselPicturesList()}
+                                    </div>
+                                </div>
+                                <div id={'carouselEditorPicturesPreviewCurrentImageContainer'}>
+                                    <h3>Current image</h3>
+                                    <div>
+                                        {picture ?
+                                            <img src={picture.srcImg} alt={picture.altImg} width={200}/>
+                                            :
+                                            null
+                                        }
+                                    </div>
                                     <div>
                                         <Button
                                             className={'nextPageButton'}
-                                            onClick={() => handleCarouselEditorDataChanges('replace')}
+                                            onClick={() => handleCarouselEditorDataChanges('delete')}
                                         >
-                                            Replace with current image
+                                            Delete image
                                         </Button>
                                     </div>
                                 </div>
-                                :
-                                null
-                            }
+                            </div>
+                            <div id={'carouselEditorUploadNewMainContainer'}>
+                                <div>
+                                    <h3>Upload new image</h3>
+                                    <div>
+                                        <input type={'file'} accept={'image/*,video/*'} ref={imgRef}
+                                               onChange={handleImgFileChange}/>
+                                    </div>
+                                </div>
+                                <div id={'carouselEditorPicturesPreviewContainer'}>
+                                    <div id={'carouselEditorPicturesPreviewNewImageContainer'}>
+                                        <h3>New image</h3>
+                                        <div>
+                                            {imgPreview ?
+                                                <img src={imgPreview} alt={'Preview image'} width={400}/>
+                                                :
+                                                null
+                                            }
+                                        </div>
+                                        <div>
+                                            <Form>
+                                                <Form.Label>Image name</Form.Label>
+                                                <Form.Control
+                                                    placeholder={'Enter image name'}
+                                                    onChange={imgNameInput}
+                                                    value={imgName}
+                                                />
+                                            </Form>
+                                        </div>
+                                        {imgPreview ?
+                                            <div id={'carouselEditorAddReplaceButtonsContainer'}>
+                                                <div>
+                                                    <Button
+                                                        className={'nextPageButton'}
+                                                        onClick={() => handleCarouselEditorDataChanges('replace')}
+                                                    >
+                                                        Replace with current image
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                            :
+                                            null
+                                        }
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div id={'carouselEditorFinalPreviewContainer'}>
-                        <h3>Carousel final preview</h3>
-                        <Carousel fade className={'carousel'} indicators={false} interval={5000} pause={false}>
-                            {carouselItemArr()}
-                        </Carousel>
-                    </div>
-                    <div id={'carouselEditorAcceptChangesButtonContainer'}>
-                        <Button
-                            className={'nextPageButton'}
-                        >
-                            Accept changes
-                        </Button>
                     </div>
                 </Tab>
                 <Tab
                     eventKey={'new'}
                     title={'Add new'}
                 >
-                    <CarouselNew />
+                    <CarouselNew/>
                 </Tab>
             </Tabs>
         </div>

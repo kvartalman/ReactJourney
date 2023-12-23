@@ -1,14 +1,15 @@
 #carouselNewMainContainer {
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
     justify-content: center;
     margin: 1em;
+    gap: 1em;
 }
 
 #carouselNewSettingsContainer {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
 }
 
 #carouselNewFormsAndUploadMainContainer {
@@ -20,6 +21,7 @@
     border: 2px solid #0e232f;
     background: #658a9a;
     border-radius: 2%;
+    height: 400px;
     width: 400px;
 }
 
@@ -67,6 +69,7 @@
     border: 2px solid #0e232f;
     background: #658a9a;
     border-radius: 2%;
+    height: 400px;
     width: 400px;
 }
 
@@ -76,8 +79,13 @@
 
 #carouselNewFinalPreviewContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 1em;
+    align-items: center;
+}
+#carouselNewFinalPreviewContainer h1 {
+    font: 900 40px "Roboto", sans-serif;
+    color: #0e232f;
 }
 
 #carouselNewFinalPreviewContainer > .carousel > .carousel-inner > .carousel-item > .d-block {
