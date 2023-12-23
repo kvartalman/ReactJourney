@@ -74,72 +74,84 @@ const HomePageCardsEditor = () => {
                     title={'Изменить текущее'}
                 >
                     <div id={'homePageCardsEditorCurrentMainContainer'}>
-                        <div id={'homePageCardsEditorCurrentChooseContainer'}>
+                        <div id={'homePageCardsEditorCurrentAllSettingsContainer'}>
                             <div>
-                                <ChooseHomePageCard
-                                    activeCardIndex={activeCardIndex}
-                                    setActiveCardIndex={setActiveCardIndex}
-                                    setCard={setCard}
-                                    cardsSelector={cardsSelector}
-                                    card={card}
-                                    setButton={setButton}
-                                    setActiveButtonIndex={setActiveButtonIndex}
-                                />
+                                <div id={'homePageCardsEditorCurrentChooseContainer'}>
+                                    <div id={'homePageCardEditorChooseButtonsContainer'}>
+                                        <ChooseHomePageCard
+                                            activeCardIndex={activeCardIndex}
+                                            setActiveCardIndex={setActiveCardIndex}
+                                            setCard={setCard}
+                                            cardsSelector={cardsSelector}
+                                            card={card}
+                                            setButton={setButton}
+                                            setActiveButtonIndex={setActiveButtonIndex}
+                                        />
+                                    </div>
+                                    <div id={'homePageCardEditorDeleteCancelCardsContainer'}>
+                                        {cardsSelector.length > 0 ?
+                                            <Button
+                                                className={'nextPageButton'}
+                                                onClick={() => deleteCardHandler()}
+                                            >Delete card
+                                            </Button>
+                                            :
+                                            null
+                                        }
+                                        {deletedCardsSelector.length > 0 ?
+                                            <Button
+                                                className={'nextPageButton'}
+                                                onClick={() => cancelDeletionHandler()}
+                                            >
+                                                Cancel
+                                            </Button>
+                                            :
+                                            null
+                                        }
+                                    </div>
+                                </div>
+                                <div id={'homePageCardsEditorSettingsContainer'}>
+                                    <h2>Edit card</h2>
+                                    <div>
+                                        <HomePageCardContentEdit
+                                            cardsSelector={cardsSelector}
+                                            card={card}
+                                            setCard={setCard}
+                                            activeCardIndex={activeCardIndex}
+                                            activeButtonIndex={activeButtonIndex}
+                                            setButton={setButton}
+                                        />
+                                    </div>
+                                    <div id={'homePageCardsEditorButtonsEditorContainer'}>
+                                        <HomePageCardButtonsEditor
+                                            cardsSelector={cardsSelector}
+                                            card={card}
+                                            button={button}
+                                            setCard={setCard}
+                                            setButton={setButton}
+                                            activeCardIndex={activeCardIndex}
+                                            activeButtonIndex={activeButtonIndex}
+                                            setActiveButtonIndex={setActiveButtonIndex}
+                                        />
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                {cardsSelector.length > 0 ?
-                                    <Button
-                                        className={'nextPageButton'}
-                                        onClick={() => deleteCardHandler()}
-                                    >Delete card
-                                    </Button>
-                                    :
-                                    null
-                                }
-                                {deletedCardsSelector.length > 0 ?
-                                    <Button
-                                        className={'nextPageButton'}
-                                        onClick={() => cancelDeletionHandler()}
-                                    >
-                                        Cancel
-                                    </Button>
-                                    :
-                                    null
-                                }
+                            <div id={'homePageCardsEditorPreviewContainer'}>
+                                <div>
+                                    <HomePageCardEditorCurrentCardPreview
+                                        cardsSelector={cardsSelector}
+                                        activeCardIndex={activeCardIndex}
+                                        card={card}
+                                    />
+                                </div>
+                                <div>
+                                    <HomePageCardsEditorCardPreview
+                                        card={card}
+                                        activeCardIndex={activeCardIndex}
+                                        cardsSelector={cardsSelector}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div id={'homePageCardsEditorSettingsContainer'}>
-                            <h2>Edit card</h2>
-                            <HomePageCardContentEdit
-                                cardsSelector={cardsSelector}
-                                card={card}
-                                setCard={setCard}
-                                activeCardIndex={activeCardIndex}
-                                activeButtonIndex={activeButtonIndex}
-                                setButton={setButton}
-                            />
-                            <HomePageCardButtonsEditor
-                                cardsSelector={cardsSelector}
-                                card={card}
-                                button={button}
-                                setCard={setCard}
-                                setButton={setButton}
-                                activeCardIndex={activeCardIndex}
-                                activeButtonIndex={activeButtonIndex}
-                                setActiveButtonIndex={setActiveButtonIndex}
-                            />
-                        </div>
-                        <div>
-                            <HomePageCardEditorCurrentCardPreview
-                                cardsSelector={cardsSelector}
-                                activeCardIndex={activeCardIndex}
-                                card={card}
-                            />
-                            <HomePageCardsEditorCardPreview
-                                card={card}
-                                activeCardIndex={activeCardIndex}
-                                cardsSelector={cardsSelector}
-                            />
                         </div>
                         <div>
                             <h1>Final preview</h1>

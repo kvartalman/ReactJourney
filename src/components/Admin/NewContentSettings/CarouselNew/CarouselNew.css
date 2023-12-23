@@ -53,11 +53,6 @@
     gap: 1em;
 }
 
-#carouselNewPicturesListContainer button {
-    background: #37647a;
-    font: 900 14px "Roboto", sans-serif;
-}
-
 #carouselNewPicturesListMainContainer {
     display: flex;
     flex-direction: column;
@@ -71,6 +66,32 @@
     border-radius: 2%;
     height: 450px;
     width: 400px;
+}
+
+.carouselNewPicturesButtonActive {
+    font: 900 15px "Roboto", sans-serif;
+    color: #658a9a;
+    background: #0e232f;
+    border: 2px solid #0e232f;
+}
+
+.carouselNewPicturesButton {
+    font: 900 15px "Roboto", sans-serif;
+    color: #0e232f;
+    background: #658a9a;
+    border: 2px solid #0e232f;
+}
+
+.carouselNewPicturesButton:hover, .carouselNewPicturesButtonActive:hover {
+    background: #0e232f;
+    border-color: #0e232f;
+    color: #658a9a;
+}
+
+.carouselNewPicturesButtonActive:active, .carouselNewPicturesButton:active {
+    background: #0e232f !important;
+    border-color: #0e232f !important;
+    color: #658a9a !important;
 }
 
 #carouselNewPicturesListMainContainer h3 {

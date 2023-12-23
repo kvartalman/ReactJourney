@@ -92,7 +92,7 @@ const CarouselNew = () => {
                 carouselNewAddedDataSelector.map((image, index) => (
                     <Button
                         onClick={() => handleImageChoice(image, index)}
-                        className={pictureIndex === index ? 'activeButton' : 'defaultButton'}
+                        className={pictureIndex === index ? 'carouselNewPicturesButtonActive' : 'carouselNewPicturesButton'}
                     >
                         {image.name}
                     </Button>

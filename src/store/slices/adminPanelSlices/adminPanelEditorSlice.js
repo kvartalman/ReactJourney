@@ -293,17 +293,20 @@ const adminPanelEditorSlice = createSlice(
 
                 const wantedCard = state.homePageOfferCards[action.payload.activeCardIndex]
 
-                for (let i = 0; i < wantedCard.button.length; i++) {
-                    if (wantedCard.button[i].name === action.payload.button.name) {
-                        const deletedButton = wantedCard.button[i];
-                        state.homePageOfferCards[action.payload.activeCardIndex].button.splice(i, 1);
-                        state.deletedHomePageOfferCardsButtons.push(
-                            {
-                                button: deletedButton,
-                                index: i,
-                                cardName: wantedCard.title
-                            }
-                        )
+                if (action.payload.button) {
+
+                    for (let i = 0; i < wantedCard.button.length; i++) {
+                        if (wantedCard.button[i].name === action.payload.button.name) {
+                            const deletedButton = wantedCard.button[i];
+                            state.homePageOfferCards[action.payload.activeCardIndex].button.splice(i, 1);
+                            state.deletedHomePageOfferCardsButtons.push(
+                                {
+                                    button: deletedButton,
+                                    index: i,
+                                    cardName: wantedCard.title
+                                }
+                            )
+                        }
                     }
                 }
             },

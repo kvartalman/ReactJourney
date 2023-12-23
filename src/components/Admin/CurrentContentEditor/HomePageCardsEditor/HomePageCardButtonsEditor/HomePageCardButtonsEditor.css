@@ -1,5 +1,26 @@
-#homePageCardsEditorCardButtonPreviewContainer {
-    display: inline-block;
+#homePageCardButtonsEditorButtonsListContainer {
+    display: flex;
+    gap: 0.5em;
+}
+
+#homePageCardButtonsEditorButtonsListContainer button {
+    width: 100px;
+    height: 80px;
+    font: 900 15px "Roboto", sans-serif;
+    text-align: center;
+    background-color: #658a9a;
+    border: 2px solid #0e232f;
+    color: #0e232f;
+}
+
+#homePageCardButtonsEditorButtonsListContainer button:hover {
+    background-color: #0e232f;
+    color: #658a9a;
+}
+
+.homePageCardButtonsEditorActiveButton {
+    background-color: #0e232f !important;
+    color: #658a9a !important;
 }
 
 #homePageCardsEditorCardButtonPreviewContainer > .buttonForm > .card-main-button {

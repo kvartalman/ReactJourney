@@ -38,14 +38,14 @@ const HomePageCardsEditorFinalPreview = () => {
     }
 
     return (
-        <Container fluid>
+        <>
             <img src={'/backgrounds/bestoffers.png'} alt={'BEST OFFERS'} className={'img-fluid imgTab'}/>
-            <Row xs={1} md={3} id={'cards-row'} className={'border border-4 g-3'}>
+            <div>
                 {
-                 getCardsArray()
+                    getCardsArray()
                 }
-            </Row>
-        </Container>
+            </div>
+        </>
     );
 };
 

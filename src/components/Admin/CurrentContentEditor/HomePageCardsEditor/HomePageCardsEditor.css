@@ -11,7 +11,6 @@
     display: flex;
     flex-wrap: nowrap;
     background-color: #0e232f;
-    border: none;
     overflow: hidden !important;
     margin-bottom: 0 !important;
 }
@@ -30,6 +29,16 @@
     text-shadow: #0e232f 1px 0 10px;
 }
 
+#homePageCardsEditorCurrentMainContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+}
+
+#homePageCardsEditorCurrentAllSettingsContainer {
+    display: flex;
+}
+
 #homePageCardsEditorCurrentChooseContainer {
     display: flex;
     flex-direction: column;
@@ -37,13 +46,62 @@
     margin: 1em;
 }
 
+#homePageCardEditorChooseButtonsContainer {
+    display: flex;
+    gap: 0.5em;
+}
+
+#homePageCardEditorChooseButtonsContainer button {
+    width: 100px;
+    height: 100px;
+    font: 900 17px "Roboto", sans-serif;
+    background: #658a9a;
+    border: 2px solid #0e232f;
+    color: #0e232f;
+}
+
+#homePageCardEditorChooseButtonsContainer button:hover {
+    background: #0e232f;
+    color: #658a9a;
+}
+
+#homePageCardEditorDeleteCancelCardsContainer {
+    display: flex;
+    gap: 0.5em;
+}
+
 #homePageCardsEditorSettingsContainer {
     display: flex;
     flex-direction: column;
+    color: #0e232f;
     margin: 1em;
     gap: 1em;
 }
 
+#homePageCardsEditorSettingsContainer h2 {
+    font: 900 35px "Roboto", sans-serif;
+    text-align: center;
+}
+
 #homePageCardsEditorSettingsContainer .nextPageButton {
+    margin: 1em 0;
     width: 150px;
+}
+
+#homePageCardsEditorButtonsEditorContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+#homePageCardsEditorPreviewContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1em;
+}
+
+#homePageCardsEditorPreviewContainer h2 {
+    font: 900 30px "Roboto", sans-serif;
 }

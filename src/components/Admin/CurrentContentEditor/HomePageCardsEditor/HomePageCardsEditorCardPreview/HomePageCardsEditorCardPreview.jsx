@@ -8,7 +8,7 @@ import './HomePageCardsEditorCardPreview.css';
 const HomePageCardsEditorCardPreview = ({card, activeCardIndex, cardsSelector}) => {
 
     return (
-        <Row xs={1} md={3} id={'cards-row'} className={'homePageCardEditorPreviewRow'}>
+        <>
             <h2>Card preview with changes</h2>
             {card && cardsSelector.length > 0 ?
                 <OfferCard
@@ -35,7 +35,7 @@ const HomePageCardsEditorCardPreview = ({card, activeCardIndex, cardsSelector}) 
                 :
                 null
             }
-        </Row>
+        </>
     );
 };
 

@@ -43,14 +43,14 @@ const HomePageCardEditorCurrentCardPreview = ({cardsSelector, card, activeCardIn
     }
 
     return (
-        <Row xs={1} md={3} id={'cards-row'} className={'homePageCardEditorCurrentCardPreviewRow'}>
+        <>
             <h2>Current view of card</h2>
             {currentCardsSelector.length > 0 ?
                 cardFinder()
                 :
                 null
             }
-        </Row>
+        </>
     );
 };
 

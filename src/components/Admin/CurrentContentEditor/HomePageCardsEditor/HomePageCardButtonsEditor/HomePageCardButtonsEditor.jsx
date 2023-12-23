@@ -47,7 +47,8 @@ const HomePageCardButtonsEditor = (props) => {
         dispatch(deleteHomePageOfferCardButton(
             {
                 card: props.card,
-                button: props.button
+                button: props.button,
+                activeCardIndex: props.activeCardIndex
             }
         ))
     }
@@ -60,7 +61,7 @@ const HomePageCardButtonsEditor = (props) => {
         if (props.card) {
             return (props.card.button.map((button, index) => (
                 <Button
-                    className={props.activeButtonIndex === index ? "activeButton" : "defaultButton"}
+                    className={props.activeButtonIndex === index ? "homePageCardButtonsEditorActiveButton" : null}
                     onClick={() => handleButtonSelect(button, index)}
                 >
                     {button.name}
@@ -81,7 +82,7 @@ const HomePageCardButtonsEditor = (props) => {
 
     return (
         <>
-            <div>
+            <div id={'homePageCardButtonsEditorButtonsListContainer'}>
                 {buttonsList()}
             </div>
             <div id={'homePageCardsEditorCardButtonPreviewContainer'}>
