@@ -32,6 +32,8 @@
 
 #carouselEditorCurrentMainContainer {
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 1em;
     gap: 1em;
 }
@@ -47,7 +49,7 @@
     border: 2px solid #0e232f;
     background: #658a9a;
     border-radius: 2%;
-    height: 400px;
+    height: 450px;
     width: 400px;
 }
 
@@ -70,6 +72,23 @@
     gap: 0.5em;
 }
 
+#carouselEditorPicturesListContainer button {
+    font: 900 15px "Roboto", sans-serif;
+    color: #0e232f;
+    background: #658a9a;
+    border: 2px solid #0e232f;
+}
+
+#carouselEditorPicturesListContainer button:hover {
+    background: #0e232f;
+    color: #658a9a;
+}
+
+#carouselEditorPicturesListContainer .activeImageButton {
+    background: #0e232f;
+    color: #658a9a;
+}
+
 #carouselEditorChooseUploadContainer {
     display: flex;
     justify-content: center;
@@ -82,7 +101,6 @@
     display: flex;
     justify-content: center;
     gap: 10em;
-    margin: 1em;
 }
 
 #carouselEditorPicturesPreviewCurrentImageContainer {
@@ -101,17 +119,38 @@
 #carouselEditorPicturesPreviewNewImageContainer {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+}
+
+#carouselEditorPicturesPreviewFormContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
 }
 
 #carouselEditorPicturesPreviewContainer h3 {
     text-align: center;
 }
 
+#carouselEditorUploadContainer {
+    display: flex;
+    flex-direction: column;
+}
+
 #carouselEditorFinalPreviewContainer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    padding: 1em;
+    border: 2px solid #0e232f;
+    background: #658a9a;
+    border-radius: 2%;
+}
+
+#carouselEditorFinalPreviewContainer h1 {
+    font: 900 40px 'Roboto', sans-serif;
+    color: #0e232f;
 }
 
 #carouselEditorFinalPreviewContainer > .carousel > .carousel-control-prev > .carousel-control-prev-icon {
@@ -127,7 +166,6 @@
 }
 
 #carouselEditorAcceptChangesButtonContainer {
-    margin: auto;
     width: 150px;
     padding-bottom: 1em;
 }

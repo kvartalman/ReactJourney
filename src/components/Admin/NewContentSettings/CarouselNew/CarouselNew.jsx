@@ -135,6 +135,11 @@ const CarouselNew = () => {
                 <Carousel fade className={'carousel'} indicators={false} interval={5000} pause={false}>
                     {carouselItemArr()}
                 </Carousel>
+                <Button
+                    className={'nextPageButton'}
+                >
+                    Accept changes
+                </Button>
             </div>
             <div id={'carouselNewSettingsContainer'}>
                 <div id={'carouselNewFormsAndUploadMainContainer'}>
