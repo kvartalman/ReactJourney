@@ -24,6 +24,7 @@
 }
 
 #homePageCardsEditorCardButtonPreviewContainer > .buttonForm > .card-main-button {
+    margin-top: 1em;
     background-color: rgba(255, 193, 7, 0.8);
 }
 

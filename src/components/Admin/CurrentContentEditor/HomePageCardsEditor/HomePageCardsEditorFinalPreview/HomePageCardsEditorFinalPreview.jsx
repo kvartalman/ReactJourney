@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import {Row} from "react-bootstrap";
 import CardsButton from "../../../../Homepage/Cards/Buttons/CardsButton";
 import {useSelector} from "react-redux";
+import './HomePageCardsEditorFinalPreview.css';
 
 const HomePageCardsEditorFinalPreview = () => {
 
@@ -40,7 +41,7 @@ const HomePageCardsEditorFinalPreview = () => {
     return (
         <>
             <img src={'/backgrounds/bestoffers.png'} alt={'BEST OFFERS'} className={'img-fluid imgTab'}/>
-            <div>
+            <div id={'homePageCardsEditorFinalPreviewCardsListContainer'}>
                 {
                     getCardsArray()
                 }

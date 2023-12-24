@@ -82,6 +82,7 @@ const HomePageCardButtonsEditor = (props) => {
 
     return (
         <>
+            <h2>Edit buttons</h2>
             <div id={'homePageCardButtonsEditorButtonsListContainer'}>
                 {buttonsList()}
             </div>
@@ -118,15 +119,13 @@ const HomePageCardButtonsEditor = (props) => {
                 :
                 null
             }
+            <h4>Edit button name</h4>
             <Form>
-                <Form.Group>
-                    <Form.Label><h4>Edit button name</h4></Form.Label>
                     <Form.Control
                         value={enterButtonName}
                         onChange={enterButtonNameInput}
                         placeholder={'Enter button name...'}
                     />
-                </Form.Group>
             </Form>
             <Button
                 className={'nextPageButton'}

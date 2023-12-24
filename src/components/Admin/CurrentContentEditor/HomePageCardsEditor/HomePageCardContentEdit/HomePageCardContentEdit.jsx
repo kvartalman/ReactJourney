@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import {useDispatch} from "react-redux";
 import {handleHomePageOfferCardsChanges} from "../../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
 import Button from "react-bootstrap/Button";
+import './HomePageCardContentEdit.css';
 
 const HomePageCardContentEdit = (props) => {
 
@@ -31,7 +31,7 @@ const HomePageCardContentEdit = (props) => {
     }
 
     return (
-        <>
+        <div id={'homePageCardContentEditMainContainer'}>
             <Form>
                 <Form.Group>
                     <Form.Label>Edit title</Form.Label>
@@ -53,7 +53,7 @@ const HomePageCardContentEdit = (props) => {
                 className={'nextPageButton'}
                 onClick={() => acceptChanges()}
             >Accept</Button>
-        </>
+        </div>
     );
 };
 
