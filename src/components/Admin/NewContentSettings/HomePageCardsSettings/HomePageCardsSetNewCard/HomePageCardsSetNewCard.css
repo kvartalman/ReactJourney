@@ -1,13 +1,38 @@
-#homePageCardsSetNewCardPreviewContainer {
+* {
+    font: 900 15px "Roboto", sans-serif;
+}
+
+#homePageCardsSetNewCardMainContainer {
     display: flex;
-    justify-content: space-between;
+    margin: 1em;
+    justify-content: center;
+    gap: 2em;
 }
 
-#homePageCardsSetNewCardCreatedPreview, #homePageCardsSetNewCardBackgroundPreview {
-    margin: 2em;
+#homePageCardsSetNewCardMainContainer > div {
+    border: 2px solid #0e232f;
+    padding: 1em;
+    background: #658a9a;
+    border-radius: 2%;
+    width: 33.33%;
 }
 
-#homePageCardsSetNewCardCreatedPreview .cardPosition {
+#homePageCardsSetNewCardFormsContainer {
+
+}
+
+#homePageCardsSetNewCardFormsContainer h2 {
+    font: 900 30px "Roboto", sans-serif;
+    text-align: center;
+}
+
+#addCardForm label {
+    font: 900 15px "Roboto", sans-serif;
+    margin-top: 1em;
+}
+
+#homePageCardsSetNewCardCreatedPreview > .cardPosition {
     background-size: cover !important;
     background-position: center !important;
 }
+

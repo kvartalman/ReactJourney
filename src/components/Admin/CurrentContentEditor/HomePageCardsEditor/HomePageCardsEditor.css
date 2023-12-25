@@ -3,8 +3,9 @@
     flex-direction: column;
     margin: 1em;
     border: 4px solid #0e232f;
-    border-radius: 1%;
+    border-radius: 10px;
     background-color: #ffffff;
+    max-width: 100%;
 }
 
 #homePageCardsEditorMainContainer > .nav-tabs {
@@ -13,6 +14,7 @@
     background-color: #0e232f;
     overflow: hidden !important;
     margin-bottom: 0 !important;
+    border-bottom: none;
 }
 
 #homePageCardsEditorMainContainer > .nav-tabs > li > button {
@@ -32,18 +34,29 @@
 #homePageCardsEditorCurrentMainContainer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 1em;
 }
 
 #homePageCardsEditorCurrentAllSettingsContainer {
     display: flex;
+    width: 100% !important;
+    gap: 1em;
+}
+
+#homePageCardsEditorCurrentChooseEditContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    width: 50%;
 }
 
 #homePageCardsEditorCurrentChooseContainer {
     display: flex;
     flex-direction: column;
     gap: 1em;
-    margin: 1em;
     border: 2px solid #0e232f;
     background-color: #658a9a;
     padding: 1em;
@@ -83,7 +96,6 @@
     display: flex;
     flex-direction: column;
     color: #0e232f;
-    margin: 1em;
     gap: 1em;
 }
 
@@ -136,6 +148,7 @@
     background-color: #658a9a;
     padding: 1em;
     border-radius: 2%;
+    width: 50%;
 }
 
 #homePageCardsEditorPreviewContainer h2 {
@@ -143,10 +156,13 @@
 }
 
 #homePageCardsEditorFinalPreviewContainer {
+    display: flex;
+    flex-direction: column;
     border: 2px solid #0e232f;
     background-color: #658a9a;
     padding: 1em;
     border-radius: 2%;
+    margin-top: 1em;
 }
 
 #homePageCardsEditorFinalPreviewContainer h2 {

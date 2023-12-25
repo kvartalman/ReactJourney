@@ -1,9 +1,9 @@
-import {Card, Col} from "react-bootstrap";
+import {Card} from "react-bootstrap";
 import React from "react";
 
 const OfferCard = (props) => {
     return (
-        <Col className={'cardCol'}>
+
             <Card key={props.id} style={{background: `linear-gradient( rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5) ), 
             url(${props.bg})`}} className={'cardPosition border'} id={props.id}>
                 <Card.Body className={'cardBody'}>
@@ -14,7 +14,7 @@ const OfferCard = (props) => {
                 </Card.Body>
                 {props.button}
             </Card>
-        </Col>
+
     )
 }
 

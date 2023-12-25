@@ -6,9 +6,8 @@ import './/HomePageCardsSetNewCard.css';
 import {useDispatch} from "react-redux";
 import Container from "react-bootstrap/Container";
 import {addNewHomePageOfferCard} from "../../../../../store/slices/adminPanelSlices/adminPanelNewContentSlice";
-import {Row} from "react-bootstrap";
-import CardsButton from "../../../../Homepage/Cards/Buttons/CardsButton";
 import OfferCard from "../../../../Homepage/Cards/OfferCard";
+import {OverlayTrigger, Tooltip} from "react-bootstrap";
 
 const HomePageCardsSetNewCard = () => {
 
@@ -60,56 +59,63 @@ const HomePageCardsSetNewCard = () => {
     }
 
     return (
-        <Container fluid>
-            <Form>
-                <h2>HomePage Cards Editor</h2>
-                <Form.Group as={Col} id={'addCardForm'}>
-                    <Form.Label>Card tag</Form.Label>
-                    <Form.Control
-                        onChange={tagInput}
-                        type=""
-                        placeholder={'Enter card tag...'}
-                        value={tag}
-                    >
+        <div id={'homePageCardsSetNewCardMainContainer'}>
 
-                    </Form.Control>
-                    <Form.Label>Card title</Form.Label>
-                    <Form.Control
-                        onChange={titleInput}
-                        type=""
-                        placeholder="Enter card title..."
-                        value={title}
-                    />
-                    <Form.Label>Card text</Form.Label>
-                    <Form.Control
-                        onChange={cardTextInput}
-                        value={cardText}
-                        placeholder="Enter Card text..."
-                    />
-                </Form.Group>
+                <div id={'homePageCardsSetNewCardFormsContainer'}>
+                    <h2>Придумай название, текст и тег</h2>
+                    <Form>
+                        <Form.Group as={Col} id={'addCardForm'}>
+                            <div style={{display: "flex"}}>
+                                <Form.Label>Card tag (например: dotaCard, csCard, lolCard т.п.)</Form.Label>
+                            </div>
+                            <Form.Control
+                                onChange={tagInput}
+                                type=""
+                                placeholder={'Enter card tag...'}
+                                value={tag}
+                            >
+                            </Form.Control>
+                            <Form.Label>Card title</Form.Label>
+                            <Form.Control
+                                onChange={titleInput}
+                                type=""
+                                placeholder="Enter card title..."
+                                value={title}
+                            />
+                            <Form.Label>Card text</Form.Label>
+                            <Form.Control
+                                onChange={cardTextInput}
+                                value={cardText}
+                                placeholder="Enter card text..."
+                            />
+                        </Form.Group>
+                    </Form>
+                </div>
 
-                <div>
-                    <input type={'file'} accept={'image/*,video/*'} ref={imgRef} onChange={handleImgFileChange}/>
+                <div id={'homePageCardsSetNewCardUploadCreateContainer'}>
+                    <h2>Загрузи задний фон</h2>
+                    <div>
+                        <input type={'file'} accept={'image/*,video/*'} ref={imgRef} onChange={handleImgFileChange}/>
+                    </div>
+                    <div id={'homePageCardsSetNewCardBackgroundPreview'}>
+                        {imgPreview ?
+                            <img src={imgPreview} alt={'Background image preview'} width={'300'}/>
+                            :
+                            null
+                        }
+                    </div>
+                    <div className={'addCardButtons'}>
+                        <Button
+                            onClick={addHomePageCard}
+                            variant="primary"
+                            className={'nextPageButton'}
+                        >
+                            Create Card
+                        </Button>
+                    </div>
                 </div>
-                <div className={'addCardButtons'}>
-                    <Button
-                        onClick={addHomePageCard}
-                        variant="primary"
-                        className={'nextPageButton'}
-                    >
-                        Create Card
-                    </Button>
-                </div>
-            </Form>
+
             <div id={'homePageCardsSetNewCardPreviewContainer'}>
-                <div id={'homePageCardsSetNewCardBackgroundPreview'}>
-                    <h3>Background preview</h3>
-                    {imgPreview ?
-                        <img src={imgPreview} alt={'Background image preview'} width={'300'}/>
-                        :
-                        null
-                    }
-                </div>
                 <div id={'homePageCardsSetNewCardCreatedPreview'}>
                     <h3>Created card preview</h3>
                     <OfferCard
@@ -122,7 +128,7 @@ const HomePageCardsSetNewCard = () => {
                     />
                 </div>
             </div>
-        </Container>
+        </div>
     );
 };
 

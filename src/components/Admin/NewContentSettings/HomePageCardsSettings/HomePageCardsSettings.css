@@ -1,0 +1,38 @@
+#homePageCardsSettingsMainContainer {
+    display: flex;
+}
+
+#homePageCardsSettingsMainContainer .nav-tabs {
+    flex-direction: column;
+    font: 900 20px "Roboto", sans-serif;
+    gap: 1em;
+    width: 10% !important;
+    border: none;
+    background-color: #c3dae8;
+    margin-bottom: 0 !important;
+    border-bottom-left-radius: 1%;
+}
+
+#homePageCardsSettingsMainContainer .tab-content {
+    width: 90%;
+    border-left: 2px solid #0e232f;
+}
+
+#homePageCardsSettingsMainContainer .nav-item {
+}
+
+#homePageCardsSettingsMainContainer .nav-item > button {
+    color: #0e232f;
+    border: none;
+    border-radius: 0;
+    width: 100%;
+}
+
+#homePageCardsSettingsMainContainer .nav-item > button:hover {
+
+}
+
+#homePageCardsSettingsMainContainer .nav-item > .active {
+    background-color: #0e232f;
+    color: #c3dae8;
+}

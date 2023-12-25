@@ -17,6 +17,7 @@ import HomePageCardEditorCurrentCardPreview
 import HomePageCardsEditorFinalPreview from "./HomePageCardsEditorFinalPreview/HomePageCardsEditorFinalPreview";
 import Button from "react-bootstrap/Button";
 import {Tab, Tabs} from "react-bootstrap";
+import HomePageCardsSettings from "../../NewContentSettings/HomePageCardsSettings/HomePageCardsSettings";
 
 const HomePageCardsEditor = () => {
 
@@ -75,7 +76,7 @@ const HomePageCardsEditor = () => {
                 >
                     <div id={'homePageCardsEditorCurrentMainContainer'}>
                         <div id={'homePageCardsEditorCurrentAllSettingsContainer'}>
-                            <div>
+                            <div id={'homePageCardsEditorCurrentChooseEditContainer'}>
                                 <div id={'homePageCardsEditorCurrentChooseContainer'}>
                                     <h2>Choose card</h2>
                                     <div id={'homePageCardEditorChooseButtonsContainer'}>
@@ -164,7 +165,7 @@ const HomePageCardsEditor = () => {
                     eventKey={'new'}
                     title={'Добавить новое'}
                 >
-
+                    <HomePageCardsSettings />
                 </Tab>
             </Tabs>
         </div>

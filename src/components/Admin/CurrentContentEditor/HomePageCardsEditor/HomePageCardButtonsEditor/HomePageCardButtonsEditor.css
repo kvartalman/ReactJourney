@@ -23,8 +23,11 @@
     color: #658a9a !important;
 }
 
-#homePageCardsEditorCardButtonPreviewContainer > .buttonForm > .card-main-button {
+#homePageCardsEditorCardButtonPreviewContainer {
     margin-top: 1em;
+}
+
+#homePageCardsEditorCardButtonPreviewContainer > .buttonForm > .card-main-button {
     background-color: rgba(255, 193, 7, 0.8);
 }
 

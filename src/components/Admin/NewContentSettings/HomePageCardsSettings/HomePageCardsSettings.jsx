@@ -7,6 +7,7 @@ import axios from "axios";
 import {addHomePageOfferCardsData} from "../../../../store/slices/adminPanelSlices/adminPanelNewContentSlice";
 import HomePageCardsSetNewCard from "./HomePageCardsSetNewCard/HomePageCardsSetNewCard";
 import {Tab, Tabs} from "react-bootstrap";
+import './HomePageCardsSettings.css';
 
 const HomePageCardsSettings = () => {
 
@@ -27,40 +28,42 @@ const HomePageCardsSettings = () => {
     }, [])
 
     return (
-        <Tabs
-            id="controlled-tab-example"
-            activeKey={key}
-            onSelect={(k) => setKey(k)}
-            className="mb-3"
-        >
-            <Tab
-                eventKey={'card'}
-                title={'New cards'}
+        <div id={'homePageCardsSettingsMainContainer'}>
+            <Tabs
+                id="controlled-tab-example"
+                activeKey={key}
+                onSelect={(k) => setKey(k)}
+                className="mb-3"
             >
-                <HomePageCardsSetNewCard
-                    setKey={setKey}
-                />
-            </Tab>
-            <Tab
-                eventKey={'button'}
-                title={'New buttons'}
-            >
-                <HomePageCardsButtonsSettings
-                    cardsData={cardsData}
-                    gamesSelector={gamesSelector}
-                    setKey={setKey}
-                />
-            </Tab>
-            <Tab
-                eventKey={'preview'}
-                title={'Preview'}
-            >
-                <HomePageCardsSettingsFinalPreview
-                    cardsData={cardsData}
-                    loading={loading}
-                />
-            </Tab>
-        </Tabs>
+                <Tab
+                    eventKey={'card'}
+                    title={'New cards'}
+                >
+                    <HomePageCardsSetNewCard
+                        setKey={setKey}
+                    />
+                </Tab>
+                <Tab
+                    eventKey={'button'}
+                    title={'New buttons'}
+                >
+                    <HomePageCardsButtonsSettings
+                        cardsData={cardsData}
+                        gamesSelector={gamesSelector}
+                        setKey={setKey}
+                    />
+                </Tab>
+                <Tab
+                    eventKey={'preview'}
+                    title={'Preview'}
+                >
+                    <HomePageCardsSettingsFinalPreview
+                        cardsData={cardsData}
+                        loading={loading}
+                    />
+                </Tab>
+            </Tabs>
+        </div>
     );
 }
 

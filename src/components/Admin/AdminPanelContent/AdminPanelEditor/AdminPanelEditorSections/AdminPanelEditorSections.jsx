@@ -3,7 +3,7 @@ import './AdminPanelEditorSections.css';
 
 const AdminPanelEditorSections = (props) => {
     return (
-        <div>
+        <div id={'adminPanelEditorSectionsMainContainer'}>
             <h1>What do you like to edit?</h1>
             <div id={'adminPanelEditorSectionsContainer'}>
                 <div
