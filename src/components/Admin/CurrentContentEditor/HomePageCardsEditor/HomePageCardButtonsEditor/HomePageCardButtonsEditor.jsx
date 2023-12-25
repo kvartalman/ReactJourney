@@ -82,7 +82,7 @@ const HomePageCardButtonsEditor = (props) => {
 
     return (
         <>
-            <h2>Edit buttons</h2>
+            <h2>Отредактируй кнопки</h2>
             <div id={'homePageCardButtonsEditorButtonsListContainer'}>
                 {buttonsList()}
             </div>
@@ -119,7 +119,7 @@ const HomePageCardButtonsEditor = (props) => {
                 :
                 null
             }
-            <h4>Edit button name</h4>
+            <h4>Измени имя кнопки</h4>
             <Form>
                     <Form.Control
                         value={enterButtonName}

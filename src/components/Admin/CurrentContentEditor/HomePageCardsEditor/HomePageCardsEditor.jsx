@@ -78,7 +78,7 @@ const HomePageCardsEditor = () => {
                         <div id={'homePageCardsEditorCurrentAllSettingsContainer'}>
                             <div id={'homePageCardsEditorCurrentChooseEditContainer'}>
                                 <div id={'homePageCardsEditorCurrentChooseContainer'}>
-                                    <h2>Choose card</h2>
+                                    <h2>Выбери карточку</h2>
                                     <div id={'homePageCardEditorChooseButtonsContainer'}>
                                         <ChooseHomePageCard
                                             activeCardIndex={activeCardIndex}
@@ -114,7 +114,7 @@ const HomePageCardsEditor = () => {
                                 </div>
                                 <div id={'homePageCardsEditorSettingsContainer'}>
                                     <div id={'homePageCardsEditorCardContentEditContainer'}>
-                                        <h2>Edit card</h2>
+                                        <h2>Отредактируй заголовок и текст</h2>
                                         <HomePageCardContentEdit
                                             cardsSelector={cardsSelector}
                                             card={card}
@@ -156,7 +156,7 @@ const HomePageCardsEditor = () => {
                             </div>
                         </div>
                         <div id={'homePageCardsEditorFinalPreviewContainer'}>
-                            <h2>Final preview</h2>
+                            <h2>Посмотри итоговое превью</h2>
                             <HomePageCardsEditorFinalPreview/>
                         </div>
                     </div>

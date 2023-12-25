@@ -45,7 +45,7 @@ const AdminPanelProductsEditor = (props) => {
             const timerId = setTimeout(() => {
                 setGameHover(true);
                 setPopupHover(true);
-            }, 500);
+            }, 0);
 
             setPopupTimer(timerId);
 

@@ -44,7 +44,7 @@ const HomePageCardEditorCurrentCardPreview = ({cardsSelector, card, activeCardIn
 
     return (
         <>
-            <h2>Current view of card</h2>
+            <h2>Текущий вид карточки</h2>
             {currentCardsSelector.length > 0 ?
                 cardFinder()
                 :

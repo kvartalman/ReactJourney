@@ -9,7 +9,7 @@ const HomePageCardsEditorCardPreview = ({card, activeCardIndex, cardsSelector}) 
 
     return (
         <>
-            <h2>Card preview with changes</h2>
+            <h2>Вид карточки после изменений</h2>
             {card && cardsSelector.length > 0 ?
                 <OfferCard
                     key={cardsSelector[activeCardIndex].id}

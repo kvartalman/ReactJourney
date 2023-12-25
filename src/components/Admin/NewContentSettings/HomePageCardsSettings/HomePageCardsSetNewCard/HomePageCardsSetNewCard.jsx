@@ -110,14 +110,14 @@ const HomePageCardsSetNewCard = () => {
                             variant="primary"
                             className={'nextPageButton'}
                         >
-                            Create Card
+                            Создать карточку
                         </Button>
                     </div>
                 </div>
 
             <div id={'homePageCardsSetNewCardPreviewContainer'}>
                 <div id={'homePageCardsSetNewCardCreatedPreview'}>
-                    <h3>Created card preview</h3>
+                    <h2>Превью</h2>
                     <OfferCard
                         key={''}
                         bg={imgPreview ? imgPreview : null}

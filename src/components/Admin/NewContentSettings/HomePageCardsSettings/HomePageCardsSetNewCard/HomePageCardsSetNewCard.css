@@ -31,6 +31,24 @@
     margin-top: 1em;
 }
 
+#homePageCardsSetNewCardUploadCreateContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+#homePageCardsSetNewCardUploadCreateContainer h2 {
+    text-align: center;
+    font: 900 30px "Roboto", sans-serif;
+}
+
+#homePageCardsSetNewCardCreatedPreview h2 {
+    text-align: center;
+    font: 900 30px "Roboto", sans-serif;
+}
+
 #homePageCardsSetNewCardCreatedPreview > .cardPosition {
     background-size: cover !important;
     background-position: center !important;

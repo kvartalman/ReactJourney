@@ -37,7 +37,7 @@ const HomePageCardsSettings = () => {
             >
                 <Tab
                     eventKey={'card'}
-                    title={'New cards'}
+                    title={'Создать новую карточку'}
                 >
                     <HomePageCardsSetNewCard
                         setKey={setKey}
@@ -45,7 +45,7 @@ const HomePageCardsSettings = () => {
                 </Tab>
                 <Tab
                     eventKey={'button'}
-                    title={'New buttons'}
+                    title={'Создать новые кнопки'}
                 >
                     <HomePageCardsButtonsSettings
                         cardsData={cardsData}
@@ -55,7 +55,7 @@ const HomePageCardsSettings = () => {
                 </Tab>
                 <Tab
                     eventKey={'preview'}
-                    title={'Preview'}
+                    title={'Превью'}
                 >
                     <HomePageCardsSettingsFinalPreview
                         cardsData={cardsData}
