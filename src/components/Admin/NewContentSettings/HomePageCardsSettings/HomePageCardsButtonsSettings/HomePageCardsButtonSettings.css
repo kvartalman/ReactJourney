@@ -1,5 +1,102 @@
 #homePageCardsButtonsSettingsMainContainer {
     display: flex;
-    flex-direction: column;
     margin: 1em;
+}
+
+#homePageCardsButtonsSettingsAllSettingsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+#homePageCardsButtonsSettingsAllSettingsContainer > div {
+    border: 2px solid #0e232f;
+    border-radius: 2%;
+    background-color: #658a9a;
+    padding: 1em;
+}
+
+.homePageCardsButtonsSettingsChooseMenuSubContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+}
+
+.homePageCardsButtonsSettingsChooseMenuSubContainer h2 {
+    text-align: center;
+    font: 900 30px "Roboto", sans-serif;
+}
+
+.homePageCardsButtonsSettingsChooseMenuSubContainer h3 {
+    text-align: center;
+    font: 900 20px "Roboto", sans-serif;
+}
+
+.homePageCardsButtonsSettingsCardsListContainer {
+    display: flex;
+    gap: 0.5em;
+    margin-top: 1em;
+}
+
+.homePageCardsButtonsSettingsCardsListContainer > button {
+    width: 100px;
+    height: 100px;
+    background-color: #658a9a;
+    border: 2px solid #0e232f;
+    color: #0e232f;
+    font: 900 15px "Roboto", sans-serif;
+}
+
+.homePageCardsButtonsSettingsCardsListContainer > button:hover {
+    background-color: #0e232f;
+    color: #658a9a;
+    border-color: #0e232f;
+}
+
+.homePageCardsButtonsSettingsCardsListContainer > button:active {
+    background-color: #0e232f !important;
+    color: #658a9a !important;
+    border-color: #0e232f !important;
+}
+
+.homePageCardsButtonsSettingsCardActive {
+    background-color: #0e232f !important;
+    color: #658a9a !important;
+}
+
+#homePageCardsButtonsSettingsMainButtonSettingsContainer label {
+    margin-top: 1em;
+}
+
+#homePageCardsButtonsSettingsMainButtonAcceptDeclineContainer {
+    display: flex;
+    gap: 0.5em;
+    margin-top: 1em;
+}
+
+#homePageCardsButtonsSettingsDefaultButtonContainer h2 {
+    text-align: center;
+    font: 900 30px "Roboto", sans-serif;
+}
+
+#homePageCardsButtonsSettingsDefaultButtonContainer .nextPageButton {
+    margin-top: 1em;
+}
+
+#homePageCardsButtonsSettingsDefaultButtonContainer label {
+    margin-top: 1em;
+}
+
+#homePageCardsButtonsSettingsSubCategoriesContainer {
+    display: flex;
+    gap: 0.5em;
+}
+
+#homePageCardsButtonsSettingsSubCategoriesContainer button {
+    background: #658a9a;
+    border: 2px solid #0e232f;
+    color: #0e232f;
+    width: 100px;
+    height: 100px;
+    font: 900 15px "Roboto", sans-serif;
 }

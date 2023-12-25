@@ -91,7 +91,7 @@ const HomePageCardsButtonsSettings = (props) => {
 
     const subCategoriesButtons = Object.keys(subCategoriesSelector).map((subCategory, index) => (
         <Button
-            className={activeSubCategoryIndex === index ? 'activeButton' : 'defaultButton'}
+            className={activeSubCategoryIndex === index ? 'homePageCardsButtonsSettingsCardActive' : null}
             onClick={() => handleSubCategorySelect(subCategory, index)}
         >
             {subCategoriesSelector[subCategory].header}
@@ -100,7 +100,7 @@ const HomePageCardsButtonsSettings = (props) => {
 
     const gamesButtons = Object.keys(props.gamesSelector).map((game, index) => (
         <Button
-            className={activeGameButton === index ? 'activeButton' : 'defaultButton'}
+            className={activeGameButton === index ? 'homePageCardsButtonsSettingsCardActive' : null}
             onClick={() => handleGameSelect(game, index)}
         >
             {props.gamesSelector[game].fullName}
@@ -109,7 +109,7 @@ const HomePageCardsButtonsSettings = (props) => {
 
     const cardsButtons = props.cardsData.map((card, index) => (
         <Button
-            className={activeCardChosenIndex === index ? 'activeButton' : 'defaultButton'}
+            className={activeCardChosenIndex === index ? 'homePageCardsButtonsSettingsCardActive' : null}
             onClick={() => handleCardChoice(card, index)}
         >
             {require('change-case').sentenceCase(card.tagId)}
@@ -130,90 +130,88 @@ const HomePageCardsButtonsSettings = (props) => {
 
     return (
         <div id={'homePageCardsButtonsSettingsMainContainer'}>
-            <div id={'homePageCardsButtonsSettingsChooseMenuContainer'}>
-                <div>
+            <div id={'homePageCardsButtonsSettingsAllSettingsContainer'}>
+                <div id={'homePageCardsButtonsSettingsChooseMenuContainer'}>
                     <div className={'homePageCardsButtonsSettingsChooseMenuSubContainer'}>
-                        <h3>Выбери карточку</h3>
-                        <div>
+                        <h2>Выбери карточку</h2>
+                        <div className={'homePageCardsButtonsSettingsCardsListContainer'}>
                             {cardsButtons}
                         </div>
                     </div>
+                </div>
+                <div id={'homePageCardsButtonsSettingsMainButtonSettingsContainer'}>
                     <div className={'homePageCardsButtonsSettingsChooseMenuSubContainer'}>
+                        <h2>Добавь главную кнопку</h2>
                         <h3>Выбери игру</h3>
                         <p>Главная кнопка карточки (выделенная отдельным цветом) получит ссылку на страницу выбранной
                             игры.</p>
                         <p>Ссылки для остальных кнопок указываются отдельно ниже.</p>
-                        <div>
+                        <p>Карточка может иметь только одну главную кнопку.</p>
+                        <div className={'homePageCardsButtonsSettingsCardsListContainer'}>
                             {gamesButtons}
                         </div>
                     </div>
-                </div>
-            </div>
-            <div>
-                <Form>
-                    <Form.Label>Button name</Form.Label>
-                    <Form.Control
-                        onChange={mainBtnNameInput}
-                        placeholder={'Enter button name...'}
-                        value={mainBtnName}
-                    />
-                    <Button
-                        className={'nextPageButton'}
-                        onClick={() => addHomePageCardButton('mainButton')}
-                    >
-                        Create main button
-                    </Button>
-                    <Form.Label>Added main buttons list</Form.Label>
-                    <Form.Select
-                        ref={selectedMainButton}
-                    >
-                        {addedMainButtonsList}
-                    </Form.Select>
-                </Form>
-
-                <Button
-                    variant="primary"
-                    onClick={() => cancelButtonAdding(selectedMainButton.current.value, 'mainButton')}
-                    className={'nextPageButton'}
-                >
-                    Cancel
-                </Button>
-            </div>
-            <div id={'homePageCardsButtonsSettingsDefaultButtonContainer'}>
-                <Form>
-                    <Form.Label>Choose subcategory link</Form.Label>
-                    <div>
-                        {subCategoriesButtons}
+                    <Form>
+                        <Form.Label>Введи название кнопки</Form.Label>
+                        <Form.Control
+                            onChange={mainBtnNameInput}
+                            placeholder={'Enter button name...'}
+                            value={mainBtnName}
+                        />
+                    </Form>
+                    <div id={'homePageCardsButtonsSettingsMainButtonAcceptDeclineContainer'}>
+                        <Button
+                            className={'nextPageButton'}
+                            onClick={() => addHomePageCardButton('mainButton')}
+                        >
+                            Добавить
+                        </Button>
+                        <Button
+                            variant="primary"
+                            onClick={() => cancelButtonAdding(selectedMainButton.current.value, 'mainButton')}
+                            className={'nextPageButton'}
+                        >
+                            Удалить
+                        </Button>
                     </div>
-                    <Form.Label>Button name</Form.Label>
-                    <Form.Control
-                        onChange={btnNameInput}
-                        placeholder={'Enter button name...'}
-                        value={btnName}
-                    />
-                </Form>
-                <Button
-                    variant="primary"
-                    onClick={() => addHomePageCardButton('button')}
-                    className={'nextPageButton'}
-                >
-                    Create regular button
-                </Button>
-                <Form>
-                    <Form.Label>Added regular buttons list </Form.Label>
-                    <Form.Select
-                        ref={selectedOrderButton}
+                </div>
+                <div id={'homePageCardsButtonsSettingsDefaultButtonContainer'}>
+                    <h2>Добавь обычные кнопки</h2>
+                    <Form>
+                        <Form.Label>Выбери подкатегорию, на которую будет ссылаться кнопка</Form.Label>
+                        <div id={'homePageCardsButtonsSettingsSubCategoriesContainer'}>
+                            {subCategoriesButtons}
+                        </div>
+                        <Form.Label>Введи название кнопки</Form.Label>
+                        <Form.Control
+                            onChange={btnNameInput}
+                            placeholder={'Enter button name...'}
+                            value={btnName}
+                        />
+                    </Form>
+                    <Button
+                        variant="primary"
+                        onClick={() => addHomePageCardButton('button')}
+                        className={'nextPageButton'}
                     >
-                        {addedRegularButtonsList}
-                    </Form.Select>
-                </Form>
-                <Button
-                    variant="primary"
-                    onClick={() => cancelButtonAdding(selectedOrderButton.current.value, 'button')}
-                    className={'nextPageButton'}
-                >
-                    Cancel
-                </Button>
+                        Создать
+                    </Button>
+                    <Form>
+                        <Form.Label>Список добавленных кнопок</Form.Label>
+                        <Form.Select
+                            ref={selectedOrderButton}
+                        >
+                            {addedRegularButtonsList}
+                        </Form.Select>
+                    </Form>
+                    <Button
+                        variant="primary"
+                        onClick={() => cancelButtonAdding(selectedOrderButton.current.value, 'button')}
+                        className={'nextPageButton'}
+                    >
+                        Удалить
+                    </Button>
+                </div>
             </div>
             <div id={'homePageCardsButtonsSettingsCardButtonsPreview'}>
                 <div>
