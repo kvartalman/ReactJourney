@@ -26,14 +26,14 @@ const HomePageCardsButtonsSettings = (props) => {
     const addedMainButtonsSelector = useSelector(state => state.adminPanelNewContent.homePageOfferCardsAddedMainButtons);
     const addedOrderButtonsSelector = useSelector(state => state.adminPanelNewContent.homePageOfferCardsAddedOrderButtons);
     const productPagesSelector = useSelector(state => state.productPage.productData);
-debugger;
+
     const [activeGameButton, setActiveGameButton] = useState(0);
     const [activeSubCategory, setActiveSubCategory] = useState(subCategoriesSelector[0]);
     const [activeSubCategoryIndex, setActiveSubCategoryIndex] = useState(0);
     const [activeCardChosen, setActiveCardChosen] = useState('');
     const [activeCardChosenIndex, setActiveCardChosenIndex] = useState(0);
 
-    const selectedMainButton = useRef(null);
+
     const selectedOrderButton = useRef(null);
 
     const handleCardChoice = (card, index) => {
@@ -64,18 +64,17 @@ debugger;
 
         for (let i = 0; i < subCategoriesLinksSelector.length; i++) {
 
-            const btnLink = require('change-case').camelCase(subCategoriesLinksSelector[i].link.split('/').pop())
-
-            if (btnLink === activeSubCategory) {
+            if (subCategoriesLinksSelector[i].name === activeSubCategory.name) {
 
                 dispatch(addHomePageOfferCardsButton({
-                    activeCard: activeCardChosen.tagId,
+                    activeCard: activeCardChosen,
                     game: activeGame,
-                    link: btnLink,
+                    link: subCategoriesLinksSelector[i].link,
                     type: type,
                     class: type === 'mainButton' ? 'card-main-button' : 'order-button',
                     name: type === 'mainButton' ? mainBtnName : btnName
                 }))
+                break;
             }
         }
         type === 'mainButton' ? setMainBtnName('') : setBtnName('');
@@ -83,7 +82,7 @@ debugger;
 
     const cancelButtonAdding = (buttonName, buttonType) => {
         dispatch(cancelHomePageOfferCardsButtonAdding({
-            activeCard: activeCardChosen.tagId,
+            activeCard: activeCardChosen,
             name: buttonName,
             type: buttonType
         }))
@@ -166,7 +165,7 @@ debugger;
                         </Button>
                         <Button
                             variant="primary"
-                            onClick={() => cancelButtonAdding(selectedMainButton.current.value, 'mainButton')}
+                            onClick={() => cancelButtonAdding(null,'mainButton')}
                             className={'nextPageButton'}
                         >
                             Удалить
