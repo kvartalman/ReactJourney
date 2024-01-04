@@ -9,7 +9,7 @@ import AdminPanelHomePageEditorSections
 
 
 const AdminPanelHomePageEditor = (props) => {
-debugger;
+
     const [sectionName, setSectionName] = useState('');
     const handleSectionChoice = (section) => {
         setSectionName(section)

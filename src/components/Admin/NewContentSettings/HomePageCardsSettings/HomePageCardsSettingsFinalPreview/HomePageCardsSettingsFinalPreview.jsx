@@ -53,12 +53,12 @@ const HomePageCardsSettingsFinalPreview = (props) => {
 
     return (
 
-        <Container fluid>
-            <h2>Final preview</h2>
+        <div>
+            <h2>Финальное превью</h2>
             <div>
-                <h3>Delete cards which you don't want to add</h3>
+                <h3>Удали карточки, которые передумал добавлять</h3>
                 <Form>
-                    <Form.Label>Added cards list</Form.Label>
+                    <Form.Label>Список новых карточек</Form.Label>
                     <Form.Select
                         ref={selectedCard}
                     >
@@ -89,7 +89,7 @@ const HomePageCardsSettingsFinalPreview = (props) => {
                     Accept
                 </Button>
             </div>
-        </Container>
+        </div>
     )
 }
 

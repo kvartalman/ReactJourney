@@ -4,41 +4,41 @@ import './AdminPanelEditorSections.css';
 const AdminPanelEditorSections = (props) => {
     return (
         <div id={'adminPanelEditorSectionsMainContainer'}>
-            <h1>What do you like to edit?</h1>
+            <h1>Что необходимо отредактировать?</h1>
             <div id={'adminPanelEditorSectionsContainer'}>
                 <div
                     className={'adminPanelEditorSectionContainer'}
                 >
                     <button onClick={() => props.handleEditorSection(0)}>
-                        Homepage
+                        Главная страница
                     </button>
                 </div>
                 <div
                     className={'adminPanelEditorSectionContainer'}
                 >
                     <button onClick={() => props.handleEditorSection(1)}>
-                        Games
+                        Игры
                     </button>
                 </div>
                 <div
                     className={'adminPanelEditorSectionContainer'}
                 >
                     <button onClick={() => props.handleEditorSection(2)}>
-                        Subcategories
+                        Подкатегории
                     </button>
                 </div>
                 <div
                     className={'adminPanelEditorSectionContainer'}
                 >
                     <button onClick={() => props.handleEditorSection(3)}>
-                        Products
+                        Продукты
                     </button>
                 </div>
                 <div
                     className={'adminPanelEditorSectionContainer'}
                 >
                     <button onClick={() => props.handleEditorSection(4)}>
-                        Prices
+                        Цены
                     </button>
                 </div>
             </div>

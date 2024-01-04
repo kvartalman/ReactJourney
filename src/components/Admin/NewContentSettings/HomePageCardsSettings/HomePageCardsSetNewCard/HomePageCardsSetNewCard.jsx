@@ -62,7 +62,7 @@ const HomePageCardsSetNewCard = () => {
         <div id={'homePageCardsSetNewCardMainContainer'}>
 
                 <div id={'homePageCardsSetNewCardFormsContainer'}>
-                    <h2>Придумай название, текст и тег</h2>
+                    <h2>Придумай заголовок, текст и тег</h2>
                     <Form>
                         <Form.Group as={Col} id={'addCardForm'}>
                             <div style={{display: "flex"}}>
@@ -71,22 +71,22 @@ const HomePageCardsSetNewCard = () => {
                             <Form.Control
                                 onChange={tagInput}
                                 type=""
-                                placeholder={'Enter card tag...'}
+                                placeholder={'Введите тег...'}
                                 value={tag}
                             >
                             </Form.Control>
-                            <Form.Label>Card title</Form.Label>
+                            <Form.Label>Заголовок карточки</Form.Label>
                             <Form.Control
                                 onChange={titleInput}
                                 type=""
-                                placeholder="Enter card title..."
+                                placeholder="Введите заголовок..."
                                 value={title}
                             />
-                            <Form.Label>Card text</Form.Label>
+                            <Form.Label>Текст карточки</Form.Label>
                             <Form.Control
                                 onChange={cardTextInput}
                                 value={cardText}
-                                placeholder="Enter card text..."
+                                placeholder="Введите текс..."
                             />
                         </Form.Group>
                     </Form>

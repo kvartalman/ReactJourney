@@ -21,14 +21,14 @@ const HomePageCardsButtonsSettings = (props) => {
     const [mainBtnName, setMainBtnName] = useState('');
     const [activeGame, setActiveGame] = useState(Object.keys(props.gamesSelector)[0]);
 
-    const subCategoriesSelector = useSelector(state => state.productPage.productData[activeGame].subCategories);
+    const subCategoriesSelector = useSelector(state => state.gameProducts[activeGame].subCategories);
     const subCategoriesLinksSelector = useSelector(state => state.gameOfferPages.pagesData[activeGame].panelButton);
     const addedMainButtonsSelector = useSelector(state => state.adminPanelNewContent.homePageOfferCardsAddedMainButtons);
     const addedOrderButtonsSelector = useSelector(state => state.adminPanelNewContent.homePageOfferCardsAddedOrderButtons);
     const productPagesSelector = useSelector(state => state.productPage.productData);
-
+debugger;
     const [activeGameButton, setActiveGameButton] = useState(0);
-    const [activeSubCategory, setActiveSubCategory] = useState(Object.keys(subCategoriesSelector)[0]);
+    const [activeSubCategory, setActiveSubCategory] = useState(subCategoriesSelector[0]);
     const [activeSubCategoryIndex, setActiveSubCategoryIndex] = useState(0);
     const [activeCardChosen, setActiveCardChosen] = useState('');
     const [activeCardChosenIndex, setActiveCardChosenIndex] = useState(0);
@@ -65,7 +65,7 @@ const HomePageCardsButtonsSettings = (props) => {
         for (let i = 0; i < subCategoriesLinksSelector.length; i++) {
 
             const btnLink = require('change-case').camelCase(subCategoriesLinksSelector[i].link.split('/').pop())
-            debugger;
+
             if (btnLink === activeSubCategory) {
 
                 dispatch(addHomePageOfferCardsButton({
@@ -89,12 +89,12 @@ const HomePageCardsButtonsSettings = (props) => {
         }))
     }
 
-    const subCategoriesButtons = Object.keys(subCategoriesSelector).map((subCategory, index) => (
+    const subCategoriesButtons = subCategoriesSelector.map((subCategory, index) => (
         <Button
             className={activeSubCategoryIndex === index ? 'homePageCardsButtonsSettingsCardActive' : null}
             onClick={() => handleSubCategorySelect(subCategory, index)}
         >
-            {subCategoriesSelector[subCategory].header}
+            {subCategory.name}
         </Button>
     ))
 
@@ -116,9 +116,7 @@ const HomePageCardsButtonsSettings = (props) => {
         </Button>
     ))
 
-    const addedMainButtonsList = addedMainButtonsSelector.map(button => (
-        <option>{button.name}</option>
-    ))
+
 
     const addedRegularButtonsList = addedOrderButtonsSelector.map(button => (
         <option>{button.name}</option>
