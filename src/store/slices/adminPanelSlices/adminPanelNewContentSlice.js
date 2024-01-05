@@ -5,7 +5,6 @@ const adminPanelNewContentSlice = createSlice({
     initialState: {
         homePageOfferCards: [],
         homePageAddedOfferCards: [],
-        homePageOfferCardsAddedMainButtons: [],
         homePageOfferCardsAddedOrderButtons: [],
     },
     reducers: {
@@ -60,12 +59,20 @@ const adminPanelNewContentSlice = createSlice({
                             class: action.payload.class,
                             name: action.payload.name
                         }
-                    )
+                    );
+                    state.homePageOfferCardsAddedOrderButtons.push(
+                        {
+                            id: state.homePageOfferCards[activeCardIndex].button.length,
+                            link: action.payload.link,
+                            type: action.payload.type,
+                            class: action.payload.class,
+                            name: action.payload.name
+                        }
+                    );
                 }
             }
 
             buttonActions[action.payload.type]();
-            console.log(state.homePageOfferCards)
         },
         cancelHomePageOfferCardsButtonAdding: (state, action) => {
 
@@ -80,12 +87,14 @@ const adminPanelNewContentSlice = createSlice({
 
             const buttonActions = {
                 mainButton: () => {
-                            state.homePageOfferCards[activeCardIndex].button = state.homePageOfferCards
-                                [activeCardIndex].button.filter(button => button.type !== 'mainButton');
+                    state.homePageOfferCards[activeCardIndex].button = state.homePageOfferCards
+                        [activeCardIndex].button.filter(button => button.type !== 'mainButton');
                 },
                 button: () => {
                     state.homePageOfferCards[activeCardIndex].button = state.homePageOfferCards
                         [activeCardIndex].button.filter(button => button.name !== action.payload.name);
+                    state.homePageOfferCardsAddedOrderButtons = state.homePageOfferCardsAddedOrderButtons
+                        .filter(button => button.name !== action.payload.name);
                 }
             }
 

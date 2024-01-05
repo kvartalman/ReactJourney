@@ -63,7 +63,7 @@ const HomePageCardsButtonsSettings = (props) => {
     const addHomePageCardButton = (type) => {
 
         for (let i = 0; i < subCategoriesLinksSelector.length; i++) {
-debugger;
+
             if (subCategoriesLinksSelector[i].name === activeSubCategory.name) {
 
                 dispatch(addHomePageOfferCardsButton({
