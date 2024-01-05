@@ -116,7 +116,6 @@ const HomePageCardsButtonsSettings = (props) => {
     ))
 
 
-
     const addedRegularButtonsList = addedOrderButtonsSelector.map(button => (
         <option>{button.name}</option>
     ))
@@ -165,7 +164,7 @@ const HomePageCardsButtonsSettings = (props) => {
                         </Button>
                         <Button
                             variant="primary"
-                            onClick={() => cancelButtonAdding(null,'mainButton')}
+                            onClick={() => cancelButtonAdding(null, 'mainButton')}
                             className={'nextPageButton'}
                         >
                             Удалить
@@ -212,31 +211,33 @@ const HomePageCardsButtonsSettings = (props) => {
             </div>
             <div id={'homePageCardsButtonsSettingsCardButtonsPreview'}>
                 <div>
-                    <h3>Card preview</h3>
-                    {activeCardChosen ?
-                        <OfferCard
-                            key={activeCardChosen.id}
-                            bg={activeCardChosen.bg}
-                            id={activeCardChosen.tagId}
-                            title={activeCardChosen.title}
-                            text={activeCardChosen.text}
-                            button={
-                                <Container fluid><Row className={'row-cols-auto'}>
-                                    {
-                                        activeCardChosen.button.map(button => (
-                                            <CardsButton
-                                                key={button.id}
-                                                link={button.link}
-                                                type={button.type}
-                                                class={button.class}
-                                                name={button.name}
-                                            />))
-                                    }
-                                </Row></Container>}
-                        />
-                        :
-                        null
-                    }
+                    <div>
+                        <h3>Card preview</h3>
+                        {activeCardChosen ?
+                            <OfferCard
+                                key={activeCardChosen.id}
+                                bg={activeCardChosen.bg}
+                                id={activeCardChosen.tagId}
+                                title={activeCardChosen.title}
+                                text={activeCardChosen.text}
+                                button={
+                                    <Container fluid><Row className={'row-cols-auto'}>
+                                        {
+                                            activeCardChosen.button.map(button => (
+                                                <CardsButton
+                                                    key={button.id}
+                                                    link={button.link}
+                                                    type={button.type}
+                                                    class={button.class}
+                                                    name={button.name}
+                                                />))
+                                        }
+                                    </Row></Container>}
+                            />
+                            :
+                            null
+                        }
+                    </div>
                 </div>
             </div>
         </div>
