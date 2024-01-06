@@ -105,7 +105,8 @@
 }
 
 #homePageCardsButtonsSettingsCardButtonsPreview {
-    position: relative;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #homePageCardsButtonsSettingsCardButtonsPreview > div {
@@ -116,8 +117,23 @@
     border-radius: 2%;
     background-color: #658a9a;
     padding: 1em;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #homePageCardsButtonsSettingsCardButtonsPreview h3 {
     font: 900 30px "Roboto", sans-serif;
+}
+
+
+#homepageCardsButtonsSettingsOfferCardButtonsPreviewContainer {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+#homePageCardsButtonsSettingsCardButtonsPreview .cardPosition {
+    min-height: 200px;
 }

@@ -221,7 +221,7 @@ const HomePageCardsButtonsSettings = (props) => {
                                 title={activeCardChosen.title}
                                 text={activeCardChosen.text}
                                 button={
-                                    <Container fluid><Row className={'row-cols-auto'}>
+                                    <div id={'homepageCardsButtonsSettingsOfferCardButtonsPreviewContainer'}>
                                         {
                                             activeCardChosen.button.map(button => (
                                                 <CardsButton
@@ -232,7 +232,7 @@ const HomePageCardsButtonsSettings = (props) => {
                                                     name={button.name}
                                                 />))
                                         }
-                                    </Row></Container>}
+                                    </div>}
                             />
                             :
                             null
