@@ -11,6 +11,11 @@
     display: flex;
 }
 
+#newProductGameSubMainContainer h3 {
+    font: 900 20px "Roboto", sans-serif;
+    color: #0e232f;
+}
+
 #newProductGameSubCardsContainer {
     display: flex;
     flex-direction: column;

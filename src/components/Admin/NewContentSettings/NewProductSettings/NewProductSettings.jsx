@@ -27,7 +27,7 @@ const NewProductSettings = () => {
             >
                 <Tab
                     eventKey={'game'}
-                    title={'Game and subcategory'}
+                    title={'Игра и подкатегория'}
                 >
                     <NewProductGameSub
                         setGame={setGame}
@@ -38,7 +38,7 @@ const NewProductSettings = () => {
                 </Tab>
                 <Tab
                     eventKey={'text'}
-                    title={'Title and text'}
+                    title={'Заголовок и текст'}
                 >
                     <NewProductTitleAndText
                         text={text}
@@ -50,7 +50,7 @@ const NewProductSettings = () => {
                 </Tab>
                 <Tab
                     eventKey={'price'}
-                    title={'Base price'}
+                    title={'Базовая цена'}
                 >
                     <NewProductPrice
                         setKey={setKey}
@@ -60,7 +60,7 @@ const NewProductSettings = () => {
                 </Tab>
                 <Tab
                     eventKey={'slider'}
-                    title={'Slider settings'}
+                    title={'Слайдер'}
                 >
                     <NewProductSlider
                         setKey={setKey}
@@ -69,13 +69,13 @@ const NewProductSettings = () => {
                 </Tab>
                 <Tab
                     eventKey={'checkboxes'}
-                    title={'Checkboxes'}
+                    title={'Чекбоксы'}
                 >
                     <NewProductCheckboxes/>
                 </Tab>
                 <Tab
                     eventKey={'preview'}
-                    title={'Preview'}
+                    title={'Превью'}
                 >
 
                 </Tab>

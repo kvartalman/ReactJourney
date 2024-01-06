@@ -181,40 +181,39 @@ const ContentSliderSettings = (props) => {
                                 >
                                     Add range
                                 </Button>
-                                <Table striped bordered hover id={'contentSliderSettingsTable'}>
-                                    <thead>
-                                    <tr>
-                                        <th>Min Value</th>
-                                        <th>Max Value</th>
-                                        <th>Increase per Step</th>
-                                        <th>Delete Button</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {sliderRangesData.map((range, index) => (
-                                        <tr key={index}>
-                                            <td>{range.range[0]}</td>
-                                            <td>{range.range[1]}</td>
-                                            <td>{range.value}</td>
-                                            <td>
-                                                <button onClick={() => deleteRangeHandler(index)}>Delete!</button>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                    </tbody>
-                                </Table>
                             </Form.Group>
-
-                            <div className={'addCardButtons'}>
-                                <Button
-                                    variant="primary"
-                                    className={'nextPageButton'}
-                                >
-                                    Create slider
-                                </Button>
-                            </div>
                         </Row>
                     </Form>
+                    <Table striped bordered hover id={'contentSliderSettingsTable'}>
+                        <thead>
+                        <tr>
+                            <th>Min Value</th>
+                            <th>Max Value</th>
+                            <th>Increase per Step</th>
+                            <th>Delete Button</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {sliderRangesData.map((range, index) => (
+                            <tr key={index}>
+                                <td>{range.range[0]}</td>
+                                <td>{range.range[1]}</td>
+                                <td>{range.value}</td>
+                                <td>
+                                    <button onClick={() => deleteRangeHandler(index)}>Delete!</button>
+                                </td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </Table>
+                    <div className={'addCardButtons'}>
+                        <Button
+                            variant="primary"
+                            className={'nextPageButton'}
+                        >
+                            Create slider
+                        </Button>
+                    </div>
                 </Col>
                 <Col>
                     <div className={'sliderValuesContainer'}>

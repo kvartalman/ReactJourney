@@ -90,6 +90,7 @@ const NewProductGameSub = (props) => {
                             <div
                                 className={'newProductSubCategoryChooseContainer'}
                             >
+                                Не назначено
                             </div>
                         }
                     </div>
