@@ -37,6 +37,7 @@
 
 .homePageCardsButtonsSettingsCardsListContainer {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5em;
     margin-top: 1em;
 }
@@ -92,6 +93,7 @@
 
 #homePageCardsButtonsSettingsSubCategoriesContainer {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5em;
 }
 
@@ -99,12 +101,13 @@
     background: #658a9a;
     border: 2px solid #0e232f;
     color: #0e232f;
-    width: 100px;
+    width: 120px;
     height: 100px;
     font: 900 15px "Roboto", sans-serif;
 }
 
 #homePageCardsButtonsSettingsCardButtonsPreview {
+    width: 40%;
     margin-left: auto;
     margin-right: auto;
 }

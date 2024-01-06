@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {cancelHomePageOfferCardAdding} from "../../../../../store/slices/adminPanelSlices/adminPanelNewContentSlice";
+import './HomePageCardsSettingsFinalPreview.css';
 
 const HomePageCardsSettingsFinalPreview = (props) => {
 
@@ -53,36 +54,38 @@ const HomePageCardsSettingsFinalPreview = (props) => {
 
     return (
 
-        <div>
-            <h2>Финальное превью</h2>
-            <div>
-                <h3>Удали карточки, которые передумал добавлять</h3>
-                <Form>
-                    <Form.Label>Список новых карточек</Form.Label>
-                    <Form.Select
-                        ref={selectedCard}
+        <div id={'homePageCardsSettingsFinalPreviewMainContainer'}>
+            <h1>Финальное превью</h1>
+            <div id={'homePageCardsSettingsFinalPreviewSettingsContainer'}>
+                <h2>Удали карточки, которые передумал добавлять</h2>
+                <div>
+                    <Form>
+                        <Form.Label>Список новых карточек</Form.Label>
+                        <Form.Select
+                            ref={selectedCard}
+                        >
+                            {getAddedCardsList}
+                        </Form.Select>
+                    </Form>
+                    <Button
+                        className={'nextPageButton'}
+                        onClick={() => handleAddedCardDeletion()}
                     >
-                        {getAddedCardsList}
-                    </Form.Select>
-                </Form>
-                <Button
-                    className={'nextPageButton'}
-                    onClick={() => handleAddedCardDeletion()}
-                >
-                    Delete card
-                </Button>
+                        Delete card
+                    </Button>
+                </div>
             </div>
-            <div>
+            <div id={'homePageCardsSettingsFinalPreviewCardsMainContainer'}>
                 <img src={'/backgrounds/bestoffers.png'} alt={'BEST OFFERS'} className={'img-fluid imgTab'}/>
-                <Row xs={1} md={3} id={'cards-row'} className={'border border-4 g-3'}>
+                <div id={'homePageCardsSettingsFinalPreviewCardsContainer'}>
                     {/*row-cols-* - set the cards width by setting amount of cards in row*/}
                     {props.loading ? <div id={'homePageCardsPreloader'}>
                         <img src={'/preloader.gif'} alt={'Loading...'}/>
                     </div> : getCardsArray()
                     }
-                </Row>
+                </div>
             </div>
-            <div>
+            <div id={'homePageCardsSettingsFinalPreviewAcceptButtonContainer'}>
                 <Button
                     className={'nextPageButton'}
                 >

@@ -1,0 +1,63 @@
+#homePageCardsSettingsFinalPreviewMainContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    border: 2px solid #0e232f;
+    border-radius: 2%;
+    background-color: #658a9a;
+    padding: 1em;
+}
+
+#homePageCardsSettingsFinalPreviewMainContainer > h1 {
+    font: 900 50px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#homePageCardsSettingsFinalPreviewSettingsContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 0;
+}
+
+#homePageCardsSettingsFinalPreviewSettingsContainer > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 50%;
+}
+
+#homePageCardsSettingsFinalPreviewSettingsContainer > h2 {
+    font: 900 25px "Roboto", sans-serif;
+}
+
+#homePageCardsSettingsFinalPreviewSettingsContainer > div > button {
+    width: 120px;
+}
+
+#homePageCardsSettingsFinalPreviewCardsMainContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+#homePageCardsSettingsFinalPreviewCardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+#homePageCardsSettingsFinalPreviewCardsContainer > div {
+    flex: 1 0 calc(33.333% - 16px);
+    box-sizing: border-box;
+    margin-bottom: 16px;
+}
+
+#homePageCardsSettingsFinalPreviewAcceptButtonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#homePageCardsSettingsFinalPreviewAcceptButtonContainer > button {
+    width: 150px;
+    height: 50px;
+}
