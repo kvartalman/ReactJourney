@@ -138,18 +138,39 @@
 }
 
 #homePageCardsEditorPreviewContainer {
+    margin-left: auto;
+    margin-right: auto;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*text-align: center;*/
+    /*border: 2px solid #0e232f;*/
+    /*background-color: #658a9a;*/
+    /*padding: 1em;*/
+    /*border-radius: 2%;*/
+    /*width: 50%;*/
+}
+
+#homePageCardsEditorPreviewContainer > div {
+    position: sticky;
+    top: 30%;
+    text-align: center;
+    border: 2px solid #0e232f;
+    border-radius: 2%;
+    background-color: #658a9a;
+    padding: 1em;
+    height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    gap: 1em;
-    border: 2px solid #0e232f;
-    background-color: #658a9a;
-    padding: 1em;
-    border-radius: 2%;
-    width: 50%;
 }
+
+#homePageCardsEditorPreviewContainer > div > div {
+    margin: 1em 0;
+}
+
 
 #homePageCardsEditorPreviewContainer h2 {
     font: 900 30px "Roboto", sans-serif;

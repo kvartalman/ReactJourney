@@ -140,18 +140,20 @@ const HomePageCardsEditor = () => {
                             </div>
                             <div id={'homePageCardsEditorPreviewContainer'}>
                                 <div>
-                                    <HomePageCardEditorCurrentCardPreview
-                                        cardsSelector={cardsSelector}
-                                        activeCardIndex={activeCardIndex}
-                                        card={card}
-                                    />
-                                </div>
-                                <div>
-                                    <HomePageCardsEditorCardPreview
-                                        card={card}
-                                        activeCardIndex={activeCardIndex}
-                                        cardsSelector={cardsSelector}
-                                    />
+                                    <div>
+                                        <HomePageCardEditorCurrentCardPreview
+                                            cardsSelector={cardsSelector}
+                                            activeCardIndex={activeCardIndex}
+                                            card={card}
+                                        />
+                                    </div>
+                                    <div>
+                                        <HomePageCardsEditorCardPreview
+                                            card={card}
+                                            activeCardIndex={activeCardIndex}
+                                            cardsSelector={cardsSelector}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -165,7 +167,7 @@ const HomePageCardsEditor = () => {
                     eventKey={'new'}
                     title={'Добавить новое'}
                 >
-                    <HomePageCardsSettings />
+                    <HomePageCardsSettings/>
                 </Tab>
             </Tabs>
         </div>
