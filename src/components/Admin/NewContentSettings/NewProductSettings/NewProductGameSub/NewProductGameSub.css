@@ -3,13 +3,48 @@
     text-align: center;
 }
 
+#newProductGameSubMainContainer h1 {
+    font: 900 40px "Roboto", sans-serif;
+}
+
+#newProductGameSubMainContainer > div {
+    display: flex;
+}
+
+#newProductGameSubCardsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
 #newProductGamesListContainer {
     display: flex;
-    gap: 0.1em;
+    flex-direction: column;
+    gap: 1em;
     margin: 1em;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+#newProductGamesListContainer > div {
+    display: flex;
+    gap: 0.1em;
 }
 
 #newProductSubCtgListContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin: 1em;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+#newProductSubCtgListContainer > div {
     display: flex;
     gap: 0.1em;
     margin: 1em;
@@ -21,6 +56,8 @@
     cursor: pointer;
     border-radius: 2%;
     color: #0e232f;
+    background-size: cover !important;
+    background-position: center !important;
 }
 
 .newProductSubCategoryChooseContainer {
@@ -35,4 +72,25 @@
     border-radius: 2%;
     color: #0e232f;
     background: linear-gradient(45deg, rgba(163,100,237,1) 0%, rgba(118,100,237,1) 50%, rgba(80,162,244,1) 100%);
+}
+
+#newProductGameSubChosenContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
+    margin: 1em;
+    width: 20%;
+}
+
+#newProductGameSubChosenContainer > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
