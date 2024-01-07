@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import './NewProductSlider.css';
-import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import ContentSliderSettings from "./NewProductContentSlider/ContentSliderSettings";
 import NewProductBasedSlider from "./NewProductBasedSlider/NewProductBasedSlider";
@@ -14,26 +13,28 @@ const NewProductSlider = (props) => {
     }
 
     return (
-        <Container fluid>
-            <div>
-                <h2>Choose slider type</h2>
+        <div id={'newProductSliderMainContainer'}>
                 <div id={'newProductSliderSettingsChooseContainer'}>
-                    <div>
-                        <Button
+                    <h2>Выбери тип слайдера</h2>
+                    <div id={'newProductSliderChooseSliderTypeContainer'}>
+                        <div
                             onClick={() => handleSliderTypeChoice(0)}
-                            className={buttonIndex === 0 ? 'activeButton' : 'defaultButton'}
-                        >Classic slider</Button>
-
-                    </div>
-                    <div>
-                        <Button
+                            className={'newProductSliderTypeCardContainer'}
+                        >
+                            Упрощённый
+                        </div>
+                        <div
                             onClick={() => handleSliderTypeChoice(1)}
-                            className={buttonIndex === 1 ? 'activeButton' : 'defaultButton'}
-                        >Complex slider</Button>
-                        <Button
+                            className={'newProductSliderTypeCardContainer'}
+                        >
+                            Сложный
+                        </div>
+                        <div
                             onClick={() => handleSliderTypeChoice(2)}
-                            className={buttonIndex === 2 ? 'activeButton' : 'defaultButton'}
-                        >No slider</Button>
+                            className={'newProductSliderTypeCardContainer'}
+                        >
+                            Без слайдера
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -53,14 +54,7 @@ const NewProductSlider = (props) => {
                                 null
                     }
                 </div>
-            </div>
-            <Button
-                className={'nextPageButton'}
-                onClick={() => props.setKey('checkboxes')}
-            >
-                Next
-            </Button>
-        </Container>
+        </div>
     );
 };
 

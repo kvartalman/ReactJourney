@@ -8,36 +8,29 @@ const NewProductPrice = (props) => {
 
 
     const priceInput = (e) => {
-            props.setPrice(e.target.value)
+        props.setPrice(e.target.value)
     }
 
     return (
-        <Container fluid>
-            <div id={'newProductPriceMainContainer'}>
-                <div id={'newProductPriceFormsContainer'}>
-                    <h1>Set new price</h1>
-                    <Form>
-                        <Form.Label>
+        <div id={'newProductPriceMainContainer'}>
+            <div id={'newProductPriceFormsContainer'}>
+                <h3>Задай базовую цену</h3>
+                <Form>
+                    <Form.Label>
 
-                        </Form.Label>
-                        <Form.Control
+                    </Form.Label>
+                    <Form.Control
                         value={props.price}
                         onChange={priceInput}
-                        placehold={'Enter price...'}
-                        />
-                    </Form>
-                </div>
-                <div id={'newProductPricePreviewContainer'}>
-                    <h1>{props.price}</h1>
-                </div>
+                        placehold={'Введите цену...'}
+                    />
+                </Form>
             </div>
-            <Button
-                className={'nextPageButton'}
-                onClick={() => props.setKey('slider')}
-            >
-                Next
-            </Button>
-        </Container>
+            <div id={'newProductPricePreviewContainer'}>
+                <h3>Базовая цена</h3>
+                <p>{props.price ? props.price : 'Не назначено!'}</p>
+            </div>
+        </div>
     );
 };
 

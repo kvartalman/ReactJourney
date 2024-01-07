@@ -1,15 +1,28 @@
 #newProductPriceMainContainer {
     display: flex;
-    justify-content: center;
+    gap: 1em;
+    margin: 1em;
 }
 
-#newProductPriceHeadersContainer {
+#newProductPriceMainContainer h3 {
+    font: 900 30px "Roboto", sans-serif;
+    color: #0e232f;
+}
+
+#newProductPriceMainContainer p {
+    font: 900 15px "Roboto", sans-serif;
+    color: #0e232f;
+}
+
+#newProductPriceFormsContainer, #newProductPricePreviewContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin: auto;
-
-}
-
-#newProductPriceMainContainer div {
-    margin: auto;
+    align-items: center;
+    text-align: center;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
+    width: 50%;
 }
