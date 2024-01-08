@@ -12,7 +12,7 @@ const NewProductSlider = (props) => {
     }
 
     const buttonsList = ['Упрощённый', 'Сложный', 'Без слайдера'].map((button, index) => (
-         (
+        (
             <div
                 onClick={() => handleSliderTypeChoice(index)}
                 className={index === buttonIndex ? 'newProductSliderTypeCardContainer newProductSliderTypeCardContainerActive'
@@ -25,31 +25,38 @@ const NewProductSlider = (props) => {
 
     return (
         <div id={'newProductSliderMainContainer'}>
-                <div id={'newProductSliderSettingsChooseContainer'}>
-                    <h2>Выбери тип слайдера</h2>
-                    <div id={'newProductSliderChooseSliderTypeContainer'}>
-                        {
-                            buttonsList
-                        }
-                    </div>
+            <div id={'newProductSliderSettingsChooseContainer'}>
+                <h2>Выбери тип слайдера</h2>
+                <div id={'newProductSliderChooseSliderTypeContainer'}>
+                    {
+                        buttonsList
+                    }
                 </div>
-                <div id={'newProductSliderSettingsContainer'}>
-                    {buttonIndex === 0 ?
+            </div>
+            <div id={'newProductSliderSettingsContainer'}>
+                {buttonIndex === 0 ?
+                    <>
+                        <h2>Настрой слайдер</h2>
                         <NewProductBasedSlider
                             price={props.price}
                         />
-                        :
-                        buttonIndex === 1 ?
+                    </>
+                    :
+                    buttonIndex === 1 ?
+                        <>
+                            <h2>Настрой слайдер</h2>
                             <ContentSliderSettings
                                 price={props.price}
                             />
+                        </>
+
+                        :
+                        buttonIndex === 2 ?
+                            <h2>Выбран тип "без слайдера"</h2>
                             :
-                            buttonIndex === 2 ?
-                                null
-                                :
-                                null
-                    }
-                </div>
+                            null
+                }
+            </div>
         </div>
     );
 };

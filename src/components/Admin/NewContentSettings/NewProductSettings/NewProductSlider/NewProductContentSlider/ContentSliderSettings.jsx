@@ -101,121 +101,128 @@ const ContentSliderSettings = (props) => {
 
 
     return (
-        <Container fluid>
-            <Row id={'contentSliderSettingsRow'}>
-                <Col>
-                    <Form>
-                        <Row className="mb-3">
-                            <h2>ProductPage ContentSlider Editor</h2>
-                            <Form.Group as={Col}>
-                                <Form.Label>Choose min and max values of slider</Form.Label>
+        <div id={'contentSliderSettingsMainContainer'}>
+            <div>
+                <div id={'contentSliderEditorSettingsContainer'}>
+                    <div id={'contentSliderEditorSettingsFormsContainer'}>
+                        <Form>
+                            <Form.Group>
+                                <Form.Label>Выбери минимальное и максимальное значения слайдера</Form.Label>
                                 <Form.Control
                                     value={enterMinValue}
                                     onChange={enterMinValueInput}
-                                    placeholder="Enter min value"
+                                    placeholder="Введите минимальное значение..."
                                 />
                                 <Form.Control
                                     value={enterMaxValue}
                                     onChange={enterMaxValueInput}
-                                    placeholder="Enter max value"
+                                    placeholder="Введите максимальное значение..."
                                 />
-                                <Form.Label>Choose start position of slider</Form.Label>
+                                <Form.Label>Выбери стартовые значения ползунков</Form.Label>
                                 <Form.Control
                                     value={enterLeftThumbValue}
                                     onChange={enterLeftThumbValueInput}
-                                    placeholder="Enter left thumb value"
+                                    placeholder="Введите значение левого ползунка..."
                                 />
                                 <Form.Control
                                     value={enterRightThumbValue}
                                     onChange={enterRightThumbValueInput}
-                                    placeholder="Enter right thumb value"
+                                    placeholder="Введите значение правого ползунка..."
                                 />
                                 <Form.Label>
                                     <div className={'contentSliderSettingsLabelTooltipContainer'}>
-                                        <p>Choose step (default is 1)</p>
-                                    <OverlayTrigger
-                                        key={'top'}
-                                        placement={'left'}
-                                        overlay={
-                                            <Tooltip
-                                                id={`tooltip-${'top'}`}
-                                            >
-                                                Если клиент нажмёт на полоску слайдера, а не воспользуется правым или
-                                                левым ползунком, произойдет смещение левого или правого ползунка (в
-                                                зависимости от того, в какой половине полоски слайдера был сделан клик) в
-                                                сторону, куда был сделан клик. Данная настройка отвечает за шаг, на который
-                                                сместится ползунок слайдера при таком клике. Если это не имеет значения,
-                                                лучше оставить значение 1.
-                                            </Tooltip>
-                                        }
-                                    >
-                                        <span className={'tooltipButton'}>?</span>
-                                    </OverlayTrigger>
+                                        <p>Выбери шаг смещения ползунка при нажатии на полосу слайдера (по умолчанию -
+                                            1)</p>
+                                        <OverlayTrigger
+                                            key={'top'}
+                                            placement={'left'}
+                                            overlay={
+                                                <Tooltip
+                                                    id={`tooltip-${'top'}`}
+                                                >
+                                                    Если клиент нажмёт на полоску слайдера, а не воспользуется правым
+                                                    или
+                                                    левым ползунком, произойдет смещение левого или правого ползунка (в
+                                                    зависимости от того, в какой половине полоски слайдера был сделан
+                                                    клик)
+                                                    в
+                                                    сторону, куда был сделан клик. Данная настройка отвечает за шаг, на
+                                                    который
+                                                    сместится ползунок слайдера при таком клике. Если это не имеет
+                                                    значения,
+                                                    лучше оставить значение 1.
+                                                </Tooltip>
+                                            }
+                                        >
+                                            <span className={'tooltipButton'}>?</span>
+                                        </OverlayTrigger>
                                     </div>
                                 </Form.Label>
                                 <Form.Control
                                     value={enterStep}
                                     onChange={enterStepInput}
-                                    placeholder="Enter step"
+                                    placeholder="Введите шаг..."
                                 />
-                                <Form.Label>Choose value per step and range</Form.Label>
+                                <Form.Label>Установи диапазоны значений и стоимость шага внутри диапазона</Form.Label>
                                 <Form.Control
                                     value={enterStartOfRange}
                                     onChange={enterStartOfRangeInput}
-                                    placeholder="Enter start of range"
+                                    placeholder="Введите начало диапазона..."
                                 />
                                 <Form.Control
                                     value={enterEndOfRange}
                                     onChange={enterEndOfRangeInput}
-                                    placeholder="Enter end of range"
+                                    placeholder="Введите конец диапазона..."
                                 />
                                 <Form.Control
                                     value={enterValuePerStep}
                                     onChange={enterValuePerStepInput}
-                                    placeholder="Enter value per step"
+                                    placeholder="Введите стоимость шага..."
                                 />
                                 <Button
                                     onClick={addRangeHandler}
                                     variant="primary"
                                     className={'nextPageButton'}
                                 >
-                                    Add range
+                                    Добавить диапазон
                                 </Button>
                             </Form.Group>
-                        </Row>
-                    </Form>
-                    <Table striped bordered hover id={'contentSliderSettingsTable'}>
-                        <thead>
-                        <tr>
-                            <th>Min Value</th>
-                            <th>Max Value</th>
-                            <th>Increase per Step</th>
-                            <th>Delete Button</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {sliderRangesData.map((range, index) => (
-                            <tr key={index}>
-                                <td>{range.range[0]}</td>
-                                <td>{range.range[1]}</td>
-                                <td>{range.value}</td>
-                                <td>
-                                    <button onClick={() => deleteRangeHandler(index)}>Delete!</button>
-                                </td>
+                        </Form>
+                    </div>
+                    <div>
+                        <Table striped bordered hover id={'contentSliderSettingsTable'}>
+                            <thead>
+                            <tr>
+                                <th>Min Value</th>
+                                <th>Max Value</th>
+                                <th>Increase per Step</th>
+                                <th>Delete Button</th>
                             </tr>
-                        ))}
-                        </tbody>
-                    </Table>
+                            </thead>
+                            <tbody>
+                            {sliderRangesData.map((range, index) => (
+                                <tr key={index}>
+                                    <td>{range.range[0]}</td>
+                                    <td>{range.range[1]}</td>
+                                    <td>{range.value}</td>
+                                    <td>
+                                        <button onClick={() => deleteRangeHandler(index)}>Delete!</button>
+                                    </td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </Table>
+                    </div>
                     <div className={'addCardButtons'}>
                         <Button
                             variant="primary"
                             className={'nextPageButton'}
                         >
-                            Create slider
+                            Создать слайдер
                         </Button>
                     </div>
-                </Col>
-                <Col>
+                </div>
+                <div id={'contentSliderSettingsSliderPreviewContainer'}>
                     <div className={'sliderValuesContainer'}>
                         <div className={'sliderMinValueContainer'}>
                             {minValue}
@@ -247,9 +254,9 @@ const ContentSliderSettings = (props) => {
                         labels={[]}
                     />
                     {finalPrice}
-                </Col>
-            </Row>
-        </Container>
+                </div>
+            </div>
+        </div>
     );
 }
 

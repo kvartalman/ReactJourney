@@ -57,5 +57,13 @@
 
 #newProductSliderSettingsContainer {
     display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
     width: 80%;
+
+}
+
+#newProductSliderSettingsContainer h2 {
+    font: 900 30px "Roboto", sans-serif;
 }

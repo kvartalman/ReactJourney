@@ -1,23 +1,61 @@
-#contentSliderSettingsRow {
-    flex-direction: row;
-}
-
-#contentSliderSettingsTable td {
-    text-align: center;
-    font-weight: bold;
-}
-
-.contentSliderSettingsLabelTooltipContainer {
+#contentSliderSettingsMainContainer {
     display: flex;
+    width: 100%;
 }
 
-.contentSliderSettingsLabelTooltipContainer .tooltipButton {
-    background: white;
-    border-color: #0e232f;
+#contentSliderSettingsMainContainer > div {
+    display: flex;
+    gap: 1em;
+    width: 100%;
 }
 
-.contentSliderSettingsLabelTooltipContainer span, p {
-    margin: 0.5em 0 0 0.5em;
-    font-weight: bold;
+#contentSliderEditorSettingsContainer {
+    width: 40%;
+    border: 2px solid #0e232f;
+    border-radius: 2%;
+    background-color: #658a9a;
+    padding: 1em;
+}
+
+#contentSliderEditorSettingsFormsContainer input {
+    margin: 0.5em 0;
+}
+
+#contentSliderEditorSettingsFormsContainer {
+    margin-bottom: 1em;
+}
+
+#contentSliderEditorSettingsFormsContainer button {
+    margin-top: 0.5em;
+}
+
+.contentSliderSettingsLabelTooltipContainer > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #658a9a;
+    border: 4px solid #0e232f;
+    color: #0e232f;
+    width: 30px;
+    height: 30px;
+    font: 900 20px "Roboto", sans-serif;
+}
+
+.contentSliderSettingsLabelTooltipContainer > span:hover {
+    background-color: #0e232f;
+    color: #658a9a;
+    border: 2px solid #0e232f;
+    text-align: center;
+}
+
+#contentSliderSettingsSliderPreviewContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    border: 2px solid #0e232f;
+    border-radius: 2%;
+    background-color: #658a9a;
+    padding: 1em;
 }
 
