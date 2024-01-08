@@ -71,35 +71,31 @@ const NewProductCheckboxes = () => {
         if (newCheckboxesArraySelector.length > 0) {
             return (
                 newCheckboxesArraySelector.map(checkbox => (
-                    <label className={'labelSliderCheckboxesContainer'}>
-                        <div className={'checkboxTooltipContainer'}>
-                            <div className={'tooltipContainer'}>
-                                {checkbox.tooltipText ?
-                                    <OverlayTrigger
-                                        key={'top'}
-                                        placement={'top'}
-                                        overlay={
-                                            <Tooltip id={`tooltip-${'top'}`}>
-                                                {checkbox.tooltipText}
-                                            </Tooltip>
-                                        }
-                                    >
-                                        <span className={'tooltipButton'}>?</span>
-                                    </OverlayTrigger>
-                                    :
-                                    null
-                                }
-                            </div>
+                    <div id={'newProductCheckboxesCheckboxContainer'}>
                             <Form.Check
                                 type="checkbox"
                             />
-                        </div>
-                        <div className={'contentSliderCheckboxesInfo'}>
-                            <p>{checkbox.label} - {checkbox.price}&#8364;
-                            </p>
+                        <p>{checkbox.label} - {checkbox.price}&#8364;
+                        </p>
+                        <div id={'newProductCheckboxesFinalCheckboxTooltipContainer'}>
+                            {checkbox.tooltipText ?
+                                <OverlayTrigger
+                                    key={'top'}
+                                    placement={'top'}
+                                    overlay={
+                                        <Tooltip id={`tooltip-${'top'}`}>
+                                            {checkbox.tooltipText}
+                                        </Tooltip>
+                                    }
+                                >
+                                    <span className={'tooltipButton'}>?</span>
+                                </OverlayTrigger>
+                                :
+                                null
+                            }
                         </div>
 
-                    </label>
+                    </div>
                 ))
             )
         }
@@ -163,9 +159,16 @@ const NewProductCheckboxes = () => {
                 <div id={'newProductCheckboxesPreviewMainContainer'}>
                     <div id={'newProductCheckboxesPreviewContainer'}>
                         <h2>Превью чекбокса</h2>
-                        <label className={'labelSliderCheckboxesContainer'}>
-                            <div className={'checkboxTooltipContainer'}>
-                                <div className={'tooltipContainer'}>
+                        <div className={'labelSliderCheckboxesContainer'}>
+                            <div id={'newProductCheckboxesCheckboxTooltipContainer'}>
+                                <div>
+                                    <Form.Check
+                                        type="checkbox"
+                                    />
+                                </div>
+                                <p>{checkboxLabel} - {checkboxPrice}&#8364;
+                                </p>
+                                <div id={'newProductCheckboxesTooltipContainer'}>
                                     {tooltip ?
                                         <OverlayTrigger
                                             key={'top'}
@@ -182,15 +185,10 @@ const NewProductCheckboxes = () => {
                                         null
                                     }
                                 </div>
-                                <Form.Check
-                                    type="checkbox"
-                                />
                             </div>
                             <div className={'contentSliderCheckboxesInfo'}>
-                                <p>{checkboxLabel} - {checkboxPrice}&#8364;
-                                </p>
                             </div>
-                        </label>
+                        </div>
                     </div>
                     <div id={'newProductCheckboxesFinalPreviewContainer'}>
                         <h2>Общее превью</h2>

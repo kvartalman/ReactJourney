@@ -72,3 +72,79 @@
     width: 150px;
     margin: auto;
 }
+
+#newProductCheckboxesCheckboxTooltipContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+
+#newProductCheckboxesCheckboxTooltipContainer input {
+    width: 30px;
+    height: 30px;
+    margin: auto;
+}
+
+#newProductCheckboxesCheckboxTooltipContainer input:active {
+
+}
+
+#newProductCheckboxesCheckboxTooltipContainer input:focus {
+    box-shadow: none;
+}
+
+#newProductCheckboxesTooltipContainer span {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 900 20px "Roboto", sans-serif;
+    background-color: #658a9a;
+    color: #0e232f;
+    border: 2px solid #0e232f;
+}
+
+#newProductCheckboxesTooltipContainer span:hover {
+    background-color: #0e232f;
+    color: #658a9a;
+}
+
+#newProductCheckboxesCheckboxTooltipContainer p {
+    margin: auto;
+}
+
+#newProductCheckboxesCheckboxContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+
+#newProductCheckboxesCheckboxContainer input {
+    width: 30px;
+    height: 30px;
+    margin: auto;
+}
+
+#newProductCheckboxesFinalCheckboxTooltipContainer span {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 900 20px "Roboto", sans-serif;
+    background-color: #658a9a;
+    color: #0e232f;
+    border: 2px solid #0e232f;
+}
+
+#newProductCheckboxesCheckboxContainer span:hover {
+    background-color: #0e232f;
+    color: #658a9a;
+}
+
+#newProductCheckboxesCheckboxContainer p {
+    margin: auto;
+}
