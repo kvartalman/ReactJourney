@@ -152,26 +152,26 @@ const CarouselEditor = () => {
                 >
                     <div id={'carouselEditorCurrentMainContainer'}>
                         <div id={'carouselEditorFinalPreviewContainer'}>
-                            <h1>Final preview</h1>
+                            <h1>Превью</h1>
                             <Carousel fade className={'carousel'} indicators={false} interval={5000} pause={false}>
                                 {carouselItemArr()}
                             </Carousel>
                                 <Button
                                     className={'nextPageButton'}
                                 >
-                                    Accept changes
+                                    Подтвердить
                                 </Button>
                         </div>
                         <div id={'carouselEditorSettingsContainer'}>
                             <div id={'carouselEditorCurrentChooseContainer'}>
                                 <div>
-                                    <h3>Choose current image</h3>
+                                    <h2>Выбери изображение из карусели</h2>
                                     <div id={'carouselEditorPicturesListContainer'}>
                                         {carouselPicturesList()}
                                     </div>
                                 </div>
                                 <div id={'carouselEditorPicturesPreviewCurrentImageContainer'}>
-                                    <h3>Current image</h3>
+                                    <h3>Выбранное изображение</h3>
                                     <div>
                                         {picture ?
                                             <img src={picture.srcImg} alt={picture.altImg} width={200}/>
@@ -184,14 +184,14 @@ const CarouselEditor = () => {
                                             className={'nextPageButton'}
                                             onClick={() => handleCarouselEditorDataChanges('delete')}
                                         >
-                                            Delete image
+                                            Удалить
                                         </Button>
                                     </div>
                                 </div>
                             </div>
                             <div id={'carouselEditorUploadNewMainContainer'}>
                                 <div id={'carouselEditorUploadContainer'}>
-                                    <h3>Upload new image</h3>
+                                    <h2>Загрузка нового изображения</h2>
                                     <div>
                                         <input type={'file'} accept={'image/*,video/*'} ref={imgRef}
                                                onChange={handleImgFileChange}/>
@@ -199,7 +199,7 @@ const CarouselEditor = () => {
                                 </div>
                                 <div id={'carouselEditorPicturesPreviewContainer'}>
                                     <div id={'carouselEditorPicturesPreviewNewImageContainer'}>
-                                        <h3>New image</h3>
+                                        <h3>Новое изображение</h3>
                                         <div>
                                             {imgPreview ?
                                                 <img src={imgPreview} alt={'Preview image'} width={200}/>
@@ -209,7 +209,7 @@ const CarouselEditor = () => {
                                         </div>
                                         <div id={'carouselEditorPicturesPreviewFormContainer'}>
                                             <Form>
-                                                <Form.Label>Image name</Form.Label>
+                                                <Form.Label>Введи имя изображения (eng only!)</Form.Label>
                                                 <Form.Control
                                                     placeholder={'Enter image name'}
                                                     onChange={imgNameInput}
@@ -221,7 +221,7 @@ const CarouselEditor = () => {
                                                     className={'nextPageButton'}
                                                     onClick={() => handleCarouselEditorDataChanges('replace')}
                                                 >
-                                                    Replace with current image
+                                                    Заменить выбранное изображение
                                                 </Button>
                                                 :
                                                 null

@@ -1,6 +1,7 @@
 #carouselEditorMainContainer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     margin: 1em;
     border: 4px solid #0e232f;
     border-radius: 1%;
@@ -32,107 +33,8 @@
 
 #carouselEditorCurrentMainContainer {
     display: flex;
-    justify-content: center;
     margin: 1em;
     gap: 1em;
-}
-
-#carouselEditorCurrentChooseContainer, #carouselEditorUploadNewMainContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 1em;
-    padding: 1em;
-    border: 2px solid #0e232f;
-    background: #658a9a;
-    border-radius: 2%;
-    height: 450px;
-    width: 400px;
-}
-
-#carouselEditorCurrentChooseContainer h3 {
-    font: 900 25px "Roboto", sans-serif;
-}
-
-#carouselEditorUploadNewMainContainer h3 {
-    font: 900 25px "Roboto", sans-serif;
-}
-
-#carouselEditorSettingsContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-}
-
-#carouselEditorPicturesListContainer {
-    display: flex;
-    gap: 0.5em;
-}
-
-#carouselEditorPicturesListContainer button {
-    font: 900 15px "Roboto", sans-serif;
-    color: #0e232f;
-    background: #658a9a;
-    border: 2px solid #0e232f;
-}
-
-#carouselEditorPicturesListContainer button:hover {
-    background: #0e232f;
-    color: #658a9a;
-}
-
-#carouselEditorPicturesListContainer .activeImageButton {
-    background: #0e232f;
-    color: #658a9a;
-}
-
-#carouselEditorChooseUploadContainer {
-    display: flex;
-    justify-content: center;
-    gap: 10em;
-    margin: 1em;
-    text-align: center;
-}
-
-#carouselEditorPicturesPreviewContainer {
-    display: flex;
-    justify-content: center;
-    gap: 10em;
-}
-
-#carouselEditorPicturesPreviewCurrentImageContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-#carouselEditorPicturesPreviewCurrentImageContainer h3 {
-    font: 900 25px "Roboto", sans-serif;
-}
-
-#carouselEditorPicturesPreviewNewImageContainer {
-    display: flex;
-    flex-direction: column;
-}
-
-#carouselEditorPicturesPreviewFormContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-}
-
-#carouselEditorPicturesPreviewContainer h3 {
-    text-align: center;
-}
-
-#carouselEditorUploadContainer {
-    display: flex;
-    flex-direction: column;
 }
 
 #carouselEditorFinalPreviewContainer {
@@ -140,31 +42,114 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    width: 70%;
     padding: 1em;
     border: 2px solid #0e232f;
     background: #658a9a;
     border-radius: 2%;
+    text-align: center;
 }
 
 #carouselEditorFinalPreviewContainer h1 {
-    font: 900 40px 'Roboto', sans-serif;
     color: #0e232f;
 }
 
-#carouselEditorFinalPreviewContainer > .carousel > .carousel-control-prev > .carousel-control-prev-icon {
-    display: none;
-}
-
-#carouselEditorFinalPreviewContainer > .carousel > .carousel-control-next > .carousel-control-next-icon {
-    display: none;
-}
-
-#carouselEditorFinalPreviewContainer > .carousel > .carousel-inner > .carousel-item > .d-block {
-    filter: brightness(40%);
-}
-
-#carouselEditorAcceptChangesButtonContainer {
+#carouselEditorFinalPreviewContainer button {
     width: 150px;
-    padding-bottom: 1em;
+}
+
+#carouselEditorSettingsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    gap: 1em;
+}
+
+#carouselEditorSettingsContainer h3 {
+    font: 900 20px "Roboto", sans-serif;
+}
+
+#carouselEditorSettingsContainer h2 {
+    font: 900 25px "Roboto", sans-serif;
+}
+
+#carouselEditorCurrentChooseContainer, #carouselEditorUploadNewMainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    border: 2px solid #0e232f;
+    background: #658a9a;
+    border-radius: 2%;
+    text-align: center;
+    width: 100%;
+}
+
+#carouselEditorPicturesListContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2em;
+}
+
+#carouselEditorPicturesListContainer button {
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    font: 900 15px "Roboto", sans-serif;
+    color: #0e232f;
+    width: 100px;
+    transition: 0.2s;
+}
+
+#carouselEditorPicturesListContainer button:hover {
+    background-color: #0e232f;
+    color: #658a9a;
+}
+
+#carouselEditorPicturesListContainer button:active {
+    background-color: #0e232f;
+    color: #658a9a;
+}
+
+.activeImageButton {
+    background-color: #0e232f !important;
+    color: #658a9a !important;
+}
+
+#carouselEditorPicturesPreviewCurrentImageContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-top: 1em;
+}
+
+#carouselEditorUploadContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#carouselEditorPicturesPreviewContainer, #carouselEditorPicturesPreviewNewImageContainer, #carouselEditorPicturesPreviewFormContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#carouselEditorPicturesPreviewContainer {
+    margin-top: 1em;
+}
+
+#carouselEditorPicturesPreviewFormContainer {
+    margin-top: 1em;
+    gap: 0.5em;
+}
+
+#carouselEditorPicturesPreviewFormContainer button {
+    width: 200px;
 }
