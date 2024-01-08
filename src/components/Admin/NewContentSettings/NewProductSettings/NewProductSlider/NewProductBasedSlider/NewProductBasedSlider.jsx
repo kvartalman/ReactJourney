@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import './NewProductBasedSlider.css';
-import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Slider from "rc-slider";
+import 'rc-slider/assets/index.css';
 
 const NewProductBasedSlider = (props) => {
 
@@ -24,7 +24,7 @@ const NewProductBasedSlider = (props) => {
     }
 
     const multInput = (e) => {
-            setMultiplier(e.target.value);
+        setMultiplier(e.target.value);
 
     }
 
@@ -33,28 +33,28 @@ const NewProductBasedSlider = (props) => {
     }
 
     return (
-        <Container fluid>
-            <div id={'basedSliderSettingsMainContainer'}>
-                <div id={'basedSliderSettingsFormsContainer'}>
+        <div id={'newProductBasedSliderMainContainer'}>
+            <div id={'basedSliderSettingsFormsContainer'}>
+                <div>
                     <Form>
                         <Form.Label>
-                            Min value
+                            Минимальное значение
                         </Form.Label>
                         <Form.Control
                             value={min}
                             onChange={minInput}
-                            placeholder={'Enter min value...'}
+                            placeholder={'Введите минимальное значение...'}
                         />
                         <Form.Label>
-                            Max value
+                            Максимальное значение
                         </Form.Label>
                         <Form.Control
                             value={max}
                             onChange={maxInput}
-                            placeholder={'Enter max value...'}
+                            placeholder={'Введите максимальное значение...'}
                         />
                         <Form.Label>
-                            Multiplier (value per step)
+                            Стоимость шага
                         </Form.Label>
                         <Form.Control
                             value={multiplier}
@@ -63,26 +63,26 @@ const NewProductBasedSlider = (props) => {
                         />
                     </Form>
                 </div>
-                <div id={'basedSliderSettingsPreviewContainer'}>
-                    <h2>Slider preview</h2>
-                    <div>
-                        <Slider
-                            value={basedSliderPrice}
-                            min={
-                                min
-                            }
-                            max={
-                                max
-                            }
-                            onChange={handleBasedSliderChange}
-                        />
-                    </div>
-                    <div id={'basedSliderSettingsPreviewPriceContainer'}>
-                        {Number(props.price) + Number((basedSliderPrice * Number(multiplier)).toFixed(1))}
-                    </div>
+            </div>
+            <div id={'basedSliderSettingsPreviewContainer'}>
+                <h2>Превью</h2>
+                <div>
+                    <Slider
+                        value={basedSliderPrice}
+                        min={
+                            min
+                        }
+                        max={
+                            max
+                        }
+                        onChange={handleBasedSliderChange}
+                    />
+                </div>
+                <div id={'basedSliderSettingsPreviewPriceContainer'}>
+                    {Number(props.price) + Number((basedSliderPrice * Number(multiplier)).toFixed(1))}
                 </div>
             </div>
-        </Container>
+        </div>
     );
 };
 

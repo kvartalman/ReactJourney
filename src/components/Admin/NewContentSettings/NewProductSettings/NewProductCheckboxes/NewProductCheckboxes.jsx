@@ -107,48 +107,62 @@ const NewProductCheckboxes = () => {
 
     return (
         <div id={'newProductCheckboxesMainContainer'}>
-            <div id={'newProductCheckboxesFormsPreviewContainer'}>
+            <h1>Настрой чекбоксы</h1>
+            <div>
                 <div id={'newProductCheckboxesFormsContainer'}>
-                    <Form>
-                        <Form.Label>
-                            Set price
-                        </Form.Label>
-                        <Form.Control
-                            value={checkboxPrice}
-                            onChange={checkboxPriceInput}
-                            placeholder={'Enter price here...'}
-                        />
-                        <Form.Label>
-                            Set label
-                        </Form.Label>
-                        <Form.Control
-                            value={checkboxLabel}
-                            onChange={checkboxLabelInput}
-                            placeholder={'Enter label here...'}
-                        />
-                        {tooltip ?
-                            <>
-                                <Form.Label>
-                                    Tooltip name
-                                </Form.Label>
-                                <Form.Control
-                                    value={checkboxTooltipText}
-                                    onChange={checkboxTooltipInput}
-                                    placeholder={'Enter tooltip text here...'}
-                                />
-                            </>
-                            :
-                            null
-                        }
-                    </Form>
-                    <Button
-                        id={'newProductCheckboxesTooltipButton'}
-                        className={'nextPageButton'}
-                        onClick={() => handleTooltipChoice()}
-                    >
-                        {tooltip ? 'Hide tooltip settings' : 'Show tooltip settings'}
-                    </Button>
+                    <div>
+                        <Form>
+                            <Form.Label>
+                                Установи стоимость для чекбокса
+                            </Form.Label>
+                            <Form.Control
+                                value={checkboxPrice}
+                                onChange={checkboxPriceInput}
+                                placeholder={'Введите стоимость для чекбокса...'}
+                            />
+                            <Form.Label>
+                                Задай имя чекбоксу
+                            </Form.Label>
+                            <Form.Control
+                                value={checkboxLabel}
+                                onChange={checkboxLabelInput}
+                                placeholder={'Введите имя чекбокса...'}
+                            />
+                            {tooltip ?
+                                <>
+                                    <Form.Label>
+                                        Текст подсказки
+                                    </Form.Label>
+                                    <Form.Control
+                                        value={checkboxTooltipText}
+                                        onChange={checkboxTooltipInput}
+                                        placeholder={'Введите текст подсказки...'}
+                                    />
+                                </>
+                                :
+                                null
+                            }
+                        </Form>
+                        <div id={'newProductCheckboxesFormsButtonsContainer'}>
+                            <Button
+                                id={'newProductCheckboxesTooltipButton'}
+                                className={'nextPageButton'}
+                                onClick={() => handleTooltipChoice()}
+                            >
+                                {tooltip ? 'Убрать подсказку' : 'Добавить подсказку'}
+                            </Button>
+                            <Button
+                                className={'nextPageButton'}
+                                onClick={() => handleCheckboxAdding()}
+                            >
+                                Добавить чекбокс
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+                <div id={'newProductCheckboxesPreviewMainContainer'}>
                     <div id={'newProductCheckboxesPreviewContainer'}>
+                        <h2>Превью чекбокса</h2>
                         <label className={'labelSliderCheckboxesContainer'}>
                             <div className={'checkboxTooltipContainer'}>
                                 <div className={'tooltipContainer'}>
@@ -176,20 +190,13 @@ const NewProductCheckboxes = () => {
                                 <p>{checkboxLabel} - {checkboxPrice}&#8364;
                                 </p>
                             </div>
-
                         </label>
                     </div>
-                    <Button
-                        className={'nextPageButton'}
-                        onClick={() => handleCheckboxAdding()}
-                    >
-                        Add checkbox
-                    </Button>
-                </div>
-                <div id={'newProductCheckboxesFinalPreviewContainer'}>
-                    <div id={'newProductCheckboxesFinalPreviewCheckboxesListContainer'}>
-                        {checkboxesFinalPreviewList()}
-                    </div>
+                    <div id={'newProductCheckboxesFinalPreviewContainer'}>
+                        <h2>Общее превью</h2>
+                        <div id={'newProductCheckboxesFinalPreviewCheckboxesListContainer'}>
+                            {checkboxesFinalPreviewList()}
+                        </div>
                         <div id={'newProductCheckboxesFinalPreviewSelectContainer'}>
                             <Form>
                                 <Form.Select
@@ -202,9 +209,10 @@ const NewProductCheckboxes = () => {
                                 className={'nextPageButton'}
                                 onClick={() => handleCheckboxDeleting()}
                             >
-                                Delete checkbox
+                                Удалить чекбокс
                             </Button>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,12 +1,7 @@
 #contentSliderSettingsMainContainer {
     display: flex;
     width: 100%;
-}
-
-#contentSliderSettingsMainContainer > div {
-    display: flex;
     gap: 1em;
-    width: 100%;
 }
 
 #contentSliderEditorSettingsContainer {

@@ -102,7 +102,6 @@ const ContentSliderSettings = (props) => {
 
     return (
         <div id={'contentSliderSettingsMainContainer'}>
-            <div>
                 <div id={'contentSliderEditorSettingsContainer'}>
                     <div id={'contentSliderEditorSettingsFormsContainer'}>
                         <Form>
@@ -255,7 +254,7 @@ const ContentSliderSettings = (props) => {
                     />
                     {finalPrice}
                 </div>
-            </div>
+
         </div>
     );
 }

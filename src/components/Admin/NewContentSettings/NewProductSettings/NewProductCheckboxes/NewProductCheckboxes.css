@@ -1,132 +1,74 @@
 #newProductCheckboxesMainContainer {
     display: flex;
     flex-direction: column;
-}
-
-#newProductCheckboxesFormsPreviewContainer {
-    display: flex;
-    gap: 4em;
-}
-
-#newProductCheckboxesFormsContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 33.3%;
-}
-
-#newProductCheckboxesFormsContainer form {
+    gap: 1em;
     margin: 1em;
     text-align: center;
 }
 
-#newProductCheckboxesFormsContainer input {
-    margin: 0 1em;
+#newProductCheckboxesMainContainer h1 {
+    font: 900 40px "Roboto", sans-serif;
+}
+
+#newProductCheckboxesMainContainer > div {
+    display: flex;
+    gap: 1em;
+}
+
+#newProductCheckboxesFormsContainer {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
+    text-align: center;
+}
+
+#newProductCheckboxesFormsContainer > div {
+    margin-top: 4em;
 }
 
 #newProductCheckboxesFormsContainer label {
-    font: 900 16px "Roboto", sans-serif;
-    margin: 1em 0 1em 1em;
+    margin-top: 0.5em;
 }
 
-#newProductCheckboxesTooltipButton {
-    margin-left: 1em;
-}
-
-#newProductCheckboxesPreviewContainer {
-    width: 100%;
+#newProductCheckboxesFormsButtonsContainer {
     display: flex;
-    justify-content: center;
+    gap: 0.5em;
     margin-top: 1em;
 }
 
-#newProductCheckboxesPreviewContainer div {
-    width: 100%;
-}
-
-#newProductCheckboxesPreviewContainer p {
-    word-wrap: break-word !important;
-}
-
-#newProductCheckboxesPreviewContainer .labelSliderCheckboxesContainer {
-    width: 50px;
-}
-
-#newProductCheckboxesPreviewContainer .form-check-input:checked {
-    border-color: #ffc107;
-    background: #ffc107 url('/public/checkmark.png') no-repeat center;
-    background-size: contain;
-    cursor:pointer;
-}
-
-#newProductCheckboxesPreviewContainer .form-check-input {
-    border-radius: 0 !important;
-    border: 2px solid #ffc107;
-    width: 1.6em;
-    height: 1.6em;
-    cursor: pointer;
-}
-
-#newProductCheckboxesPreviewContainer .form-check-input:focus {
-    border-color: #ffc107;
-    box-shadow: none;
-    cursor: pointer;
-}
-
-#newProductCheckboxesPreviewContainer .checkboxTooltipContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-#newProductCheckboxesPreviewContainer > label > .checkboxTooltipContainer > .tooltipContainer {
-    display: flex;
-    justify-content: center;
-}
-
-#newProductCheckboxesFinalPreviewContainer {
+#newProductCheckboxesPreviewMainContainer {
     display: flex;
     flex-direction: column;
+    gap: 1em;
+    width: 60%;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+#newProductCheckboxesPreviewMainContainer h2 {
+    font: 900 30px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
 }
 
 #newProductCheckboxesFinalPreviewCheckboxesListContainer {
     display: flex;
-    margin-top: 2em;
-    margin-bottom: 2em;
+    gap: 0.5em;
 }
 
 #newProductCheckboxesFinalPreviewSelectContainer {
     display: flex;
-    gap: 2em;
-    width: 100%;
+    flex-direction: column;
+    gap: 0.5em;
 }
 
-#newProductCheckboxesFinalPreviewContainer .form-check-input:checked {
-    border-color: #ffc107;
-    background: #ffc107 url('/public/checkmark.png') no-repeat center;
-    background-size: contain;
-    cursor:pointer;
-}
-
-#newProductCheckboxesFinalPreviewContainer .form-check-input {
-    border-radius: 0 !important;
-    border: 2px solid #ffc107;
-    width: 1.6em;
-    height: 1.6em;
-    cursor: pointer;
-}
-
-#newProductCheckboxesFinalPreviewContainer .form-check-input:focus {
-    border-color: #ffc107;
-    box-shadow: none;
-    cursor: pointer;
-}
-
-#newProductCheckboxesFinalPreviewContainer .checkboxTooltipContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+#newProductCheckboxesFinalPreviewSelectContainer button {
+    width: 150px;
+    margin: auto;
 }
