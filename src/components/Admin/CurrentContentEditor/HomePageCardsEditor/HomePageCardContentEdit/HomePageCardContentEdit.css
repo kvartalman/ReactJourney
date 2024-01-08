@@ -1,5 +1,12 @@
 #homePageCardContentEditMainContainer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 1em;
+    text-align: center;
 }
+
+#homePageCardContentEditMainContainer button {
+    margin: auto !important;
+}
+

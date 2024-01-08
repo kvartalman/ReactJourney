@@ -65,8 +65,10 @@ const adminPanelEditorSlice = createSlice(
                         state.carouselEditorData = state.carouselEditorData.filter((image, index) => index !== data.index)
                     },
                     deleteNew: (data) => {
-                        state.carouselEditorNewData = state.carouselEditorNewData.filter(image => image.name !== data.picture.name)
-                        state.carouselNewAddedData = state.carouselNewAddedData.filter(image => image.name !== data.picture.name)
+                        if (state.carouselNewAddedData.length > 0) {
+                            state.carouselEditorNewData = state.carouselEditorNewData.filter(image => image.name !== data.picture.name)
+                            state.carouselNewAddedData = state.carouselNewAddedData.filter(image => image.name !== data.picture.name)
+                        }
                     }
 
                 }

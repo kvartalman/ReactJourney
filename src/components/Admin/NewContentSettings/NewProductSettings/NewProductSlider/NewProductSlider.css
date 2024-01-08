@@ -1,14 +1,28 @@
 #newProductSliderMainContainer {
     display: flex;
+    margin: 1em;
+    gap: 1em;
 }
 
-#newProductSliderChooseSliderTypeContainer {
-    display: flex;
-    gap: 0.5em;
+#newProductSliderSettingsChooseContainer {
+    width: 20%;
     border: 2px solid #0e232f;
     border-radius: 2%;
     background-color: #658a9a;
     padding: 1em;
+}
+
+#newProductSliderSettingsChooseContainer h2 {
+    font: 900 25px "Roboto", sans-serif;
+    text-align: center;
+}
+
+#newProductSliderChooseSliderTypeContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
     text-align: center;
 }
 
@@ -18,11 +32,12 @@
     align-items: center;
     border: 2px solid #0e232f;
     border-radius: 5%;
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     background: #658a9a;
     cursor: pointer;
     transition: 0.2s;
+    font: 900 12px "Roboto", sans-serif;
 }
 
 .newProductSliderTypeCardContainer:hover {
@@ -31,5 +46,16 @@
 }
 
 .newProductSliderTypeCardContainer:active {
+    background: #0e232f;
+    color: #658a9a;
+}
 
+.newProductSliderTypeCardContainerActive {
+    background: #0e232f;
+    color: #658a9a;
+}
+
+#newProductSliderSettingsContainer {
+    display: flex;
+    width: 80%;
 }

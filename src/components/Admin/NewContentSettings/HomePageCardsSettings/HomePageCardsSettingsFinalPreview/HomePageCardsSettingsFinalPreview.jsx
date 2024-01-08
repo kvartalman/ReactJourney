@@ -71,7 +71,7 @@ const HomePageCardsSettingsFinalPreview = (props) => {
                         className={'nextPageButton'}
                         onClick={() => handleAddedCardDeletion()}
                     >
-                        Delete card
+                        Удалить
                     </Button>
                 </div>
             </div>
@@ -89,7 +89,7 @@ const HomePageCardsSettingsFinalPreview = (props) => {
                 <Button
                     className={'nextPageButton'}
                 >
-                    Accept
+                    Подтвердить изменения
                 </Button>
             </div>
         </div>

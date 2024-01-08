@@ -4,8 +4,14 @@
     justify-content: center;
     align-items: center;
     gap: 2em;
+    margin-bottom: 1em;
 }
 
 #homePageCardsEditorFinalPreviewCardsListContainer .cardPosition {
     width: 450px;
+}
+
+#homePageCardsEditorFinalPreviewAcceptButton {
+    width: 120px;
+    margin: auto;
 }

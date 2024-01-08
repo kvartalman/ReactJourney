@@ -5,6 +5,7 @@ import {Row} from "react-bootstrap";
 import CardsButton from "../../../../Homepage/Cards/Buttons/CardsButton";
 import {useSelector} from "react-redux";
 import './HomePageCardsEditorFinalPreview.css';
+import Button from "react-bootstrap/Button";
 
 const HomePageCardsEditorFinalPreview = () => {
 
@@ -46,6 +47,9 @@ const HomePageCardsEditorFinalPreview = () => {
                     getCardsArray()
                 }
             </div>
+            <Button className={'nextPageButton'} id={'homePageCardsEditorFinalPreviewAcceptButton'}>
+                Подтвердить
+            </Button>
         </>
     );
 };

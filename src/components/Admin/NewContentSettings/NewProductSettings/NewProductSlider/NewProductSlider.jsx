@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import './NewProductSlider.css';
-import Button from "react-bootstrap/Button";
 import ContentSliderSettings from "./NewProductContentSlider/ContentSliderSettings";
 import NewProductBasedSlider from "./NewProductBasedSlider/NewProductBasedSlider";
 
@@ -12,32 +11,29 @@ const NewProductSlider = (props) => {
         setButtonIndex(index);
     }
 
+    const buttonsList = ['Упрощённый', 'Сложный', 'Без слайдера'].map((button, index) => (
+         (
+            <div
+                onClick={() => handleSliderTypeChoice(index)}
+                className={index === buttonIndex ? 'newProductSliderTypeCardContainer newProductSliderTypeCardContainerActive'
+                    : 'newProductSliderTypeCardContainer'}
+            >
+                {button}
+            </div>
+        )
+    ))
+
     return (
         <div id={'newProductSliderMainContainer'}>
                 <div id={'newProductSliderSettingsChooseContainer'}>
                     <h2>Выбери тип слайдера</h2>
                     <div id={'newProductSliderChooseSliderTypeContainer'}>
-                        <div
-                            onClick={() => handleSliderTypeChoice(0)}
-                            className={'newProductSliderTypeCardContainer'}
-                        >
-                            Упрощённый
-                        </div>
-                        <div
-                            onClick={() => handleSliderTypeChoice(1)}
-                            className={'newProductSliderTypeCardContainer'}
-                        >
-                            Сложный
-                        </div>
-                        <div
-                            onClick={() => handleSliderTypeChoice(2)}
-                            className={'newProductSliderTypeCardContainer'}
-                        >
-                            Без слайдера
-                        </div>
+                        {
+                            buttonsList
+                        }
                     </div>
                 </div>
-                <div>
+                <div id={'newProductSliderSettingsContainer'}>
                     {buttonIndex === 0 ?
                         <NewProductBasedSlider
                             price={props.price}

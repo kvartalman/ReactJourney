@@ -34,25 +34,25 @@ const HomePageCardContentEdit = (props) => {
         <div id={'homePageCardContentEditMainContainer'}>
             <Form>
                 <Form.Group>
-                    <Form.Label>Edit title</Form.Label>
+                    <Form.Label>Заголовок</Form.Label>
                     <Form.Control
                         value={enterTitle}
                         onChange={enterTitleInput}
-                        placeholder={'Enter title...'}
+                        placeholder={'Введите заголовок...'}
                     />
 
-                    <Form.Label>Edit text</Form.Label>
+                    <Form.Label>Текст</Form.Label>
                     <Form.Control
                         value={enterText}
                         onChange={enterTextInput}
-                        placeholder={'Enter text...'}
+                        placeholder={'Введите текст...'}
                     />
                 </Form.Group>
             </Form>
             <Button
                 className={'nextPageButton'}
                 onClick={() => acceptChanges()}
-            >Accept</Button>
+            >Принять</Button>
         </div>
     );
 };

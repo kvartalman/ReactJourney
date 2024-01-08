@@ -34,3 +34,18 @@
 #homePageCardsEditorCardButtonPreviewContainer > .buttonForm > .order-button {
     background-color: rgba(33, 37, 41, 0.8);
 }
+
+#homePageCardsEditorCardButtonsEditorDeleteCancelContainer {
+    display: flex;
+    gap: 0.5em;
+}
+
+#homePageCardButtonsEditorButtonNameContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+#homePageCardButtonsEditorButtonNameContainer button {
+    margin: auto !important;
+}

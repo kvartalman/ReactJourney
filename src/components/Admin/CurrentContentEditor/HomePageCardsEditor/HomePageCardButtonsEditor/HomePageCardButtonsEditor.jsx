@@ -99,40 +99,46 @@ const HomePageCardButtonsEditor = (props) => {
                     null
                 }
             </div>
-            {props.cardsSelector.length > 0 ?
+            <div id={'homePageCardsEditorCardButtonsEditorDeleteCancelContainer'}>
+                {props.cardsSelector.length > 0 ?
+                    <Button
+                        className={'nextPageButton'}
+                        onClick={() => deleteButtonHandler()}
+                    >
+                        Удалить
+                    </Button>
+                    :
+                    null
+                }
+                {deletedButtonsSelector.length > 0 ?
+                    <Button
+                        className={'nextPageButton'}
+                        onClick={() => cancelButtonDeletionHandler()}
+                    >
+                        Отменить
+                    </Button>
+                    :
+                    null
+                }
+            </div>
+            <div id={'homePageCardButtonsEditorButtonNameContainer'}>
+                <h4>Измени имя кнопки</h4>
+                <div>
+                    <Form>
+                        <Form.Control
+                            value={enterButtonName}
+                            onChange={enterButtonNameInput}
+                            placeholder={'Введите имя кнопки...'}
+                        />
+                    </Form>
+                </div>
                 <Button
                     className={'nextPageButton'}
-                    onClick={() => deleteButtonHandler()}
+                    onClick={() => acceptButtonChanges()}
                 >
-                    Delete button
+                    Принять
                 </Button>
-                :
-                null
-            }
-            {deletedButtonsSelector.length > 0 ?
-                <Button
-                    className={'nextPageButton'}
-                    onClick={() => cancelButtonDeletionHandler()}
-                >
-                    Cancel
-                </Button>
-                :
-                null
-            }
-            <h4>Измени имя кнопки</h4>
-            <Form>
-                    <Form.Control
-                        value={enterButtonName}
-                        onChange={enterButtonNameInput}
-                        placeholder={'Enter button name...'}
-                    />
-            </Form>
-            <Button
-                className={'nextPageButton'}
-                onClick={() => acceptButtonChanges()}
-            >
-                Accept
-            </Button>
+            </div>
         </>
     );
 };
