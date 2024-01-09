@@ -1,10 +1,10 @@
 #productsEditorTabContainer {
-    border: 2px solid #0e232f;
-    border-radius: 0.5%;
-    background-color: #ffffff;
     display: flex;
     flex-direction: column;
-
+    justify-content: center;
+    border: 4px solid #0e232f;
+    border-radius: 0.5%;
+    background-color: #ffffff;
 }
 
 #productsEditorTabContainer > .nav-tabs {
@@ -12,7 +12,7 @@
     flex-wrap: nowrap;
     background-color: #0e232f;
     border: none;
-    overflow: hidden;
+    overflow: hidden !important;
     margin-bottom: 0 !important;
 }
 
@@ -29,14 +29,6 @@
 #productsEditorTabContainer .nav-tabs > li > .active {
     background-color: #37647a;
     text-shadow: #0e232f 1px 0 10px;
-}
-
-#productsEditorTabContainer .tab-content {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0;
-    height: auto;
 }
 
 .nextPageButton {

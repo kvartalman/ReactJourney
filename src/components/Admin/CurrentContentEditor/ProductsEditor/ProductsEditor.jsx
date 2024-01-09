@@ -3,7 +3,6 @@ import './ProductsEditor.css';
 import {Tab, Tabs} from "react-bootstrap";
 import ProductTextEdit from "./ProductTextEdit/ProductTextEdit";
 import ProductCheckboxesEdit from "./ProductCheckboxesEdit/ProductCheckboxesEdit";
-import {useSelector} from "react-redux";
 import ProductSliderEdit from "./ProductSliderEdit/ProductSliderEdit";
 import PriceEdit from "./PriceEdit/PriceEdit";
 import ProductsEditorPreview from "./ProductsEditorPreview/ProductsEditorPreview";

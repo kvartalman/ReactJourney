@@ -1,40 +1,48 @@
-#textAndFormsEditContainer {
+#productTextEditMainContainer {
     display: flex;
-    flex-direction: column;
+    margin: 1em;
+    gap: 1em;
 }
 
-#textAndFormsEditContainer h2 {
+#productTextEditMainContainer h2 {
+    font: 900 30px "Roboto", sans-serif;
+    color: #0e232f;
     text-align: center;
 }
 
-#newTextAndTitleContainer {
+#productTextEditMainContainer h3 {
+    font: 900 25px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#productTextEditSettingsContainer {
     display: flex;
     flex-direction: column;
-    width: 60%;
-    margin: 1em;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
 }
 
-#newTextFormsAndPreviewContainer {
-    margin-top: 2em;
+#productTextEditSettingsContainer {
+    width: 30%;
+}
+
+#productTextEditPreviewMainContainer {
     display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 70%;
+ }
+
+
+#productTextEditCurrentPreviewContainer, #productTextEditNewPreviewContainer {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
 }
 
-#newTextAndTitleFormsContainer {
-    margin: 1em 0 0 0;
-    width: 40%;
-}
-
-.productEditTitleAndTextHeaders {
-    font-size: 3em;
-    margin-bottom: 1em;
-    margin-top: 1em;
-}
-
-#productEditTextAndTitleNextButtonContainer {
-    margin-top: 1em;
-}
-
-#productTextEditError {
-    font-weight: bold;
-    color: red;
-}

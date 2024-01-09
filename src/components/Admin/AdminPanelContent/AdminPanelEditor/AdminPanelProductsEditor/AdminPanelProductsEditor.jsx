@@ -194,7 +194,6 @@ const AdminPanelProductsEditor = (props) => {
                 <div id={'adminPanelProductsCurrentTabSettingsContainer'}>
                     <div id={'adminPanelProductsEditorGames'}>
                         {gamesList()}
-
                     </div>
                 </div>
 

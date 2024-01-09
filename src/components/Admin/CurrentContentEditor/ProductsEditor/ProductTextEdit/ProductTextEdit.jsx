@@ -1,16 +1,12 @@
 import React, {useState} from "react";
 import './ProductTextEdit.css'
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import '../../../../ProductPage/ProductPage.css';
-import {Col, Row} from "react-bootstrap";
 
 const ProductTextEdit = (props) => {
 
     const [enterHeader, setEnterHeader] = useState('');
     const [enterText, setEnterText] = useState('');
-    const [showError, setShowError] = useState('');
 
     const enterTextInput = (e) => {
         setEnterText(e.target.value);
@@ -22,61 +18,50 @@ const ProductTextEdit = (props) => {
         props.setTitle(e.target.value)
     }
 
-    const checkIfFormsFilled = () => {
-        if (enterHeader && enterText) {
-            props.setKey('price')
-            setShowError('');
-        } else {
-            setShowError('Forms must be filled')
-        }
-    }
-
     return (
-        <Container fluid>
-            <div id={'textAndFormsEditContainer'}>
-                <div id={'currentTextAndTitleContainer'}>
-                    <h2 className={'productEditTitleAndTextHeaders'}>Current header and text</h2>
-                    <h2>{props.product.header}</h2>
-                    <div className={'customizeDividerLine'}></div>
-                    <p>{props.product.text}</p>
+        <div id={'productTextEditMainContainer'}>
+            <div id={'productTextEditSettingsContainer'}>
+                <h2 className={'productEditTitleAndTextHeaders'}>Измени заголовок и текст</h2>
+                <div id={'productTextEditFormsContainer'}>
+                    <Form>
+                        <Form.Group>
+                            <Form.Label>Header form</Form.Label>
+                            <Form.Control
+                                value={enterHeader}
+                                onChange={enterHeaderInput}
+                                placeholder="Enter new header"
+                            />
+                            <Form.Label>Text form</Form.Label>
+                            <Form.Control
+                                as="textarea"
+                                rows={8}
+                                value={enterText}
+                                onChange={enterTextInput}
+                                placeholder="Enter new text"
+                            />
+                        </Form.Group>
+                    </Form>
                 </div>
-                <Row id={'newTextFormsAndPreviewContainer'}>
-                    <Col id={'newTextAndTitleFormsContainer'}>
-                        <h2 className={'productEditTitleAndTextHeaders'}>Input forms</h2>
-                        <Form>
-                            <Form.Group>
-                                <Form.Label>Header form</Form.Label>
-                                <Form.Control
-                                    value={enterHeader}
-                                    onChange={enterHeaderInput}
-                                    placeholder="Enter new header"
-                                />
-                                <Form.Label>Text form</Form.Label>
-                                <Form.Control
-                                    as="textarea"
-                                    rows={8}
-                                    value={enterText}
-                                    onChange={enterTextInput}
-                                    placeholder="Enter new text"
-                                />
-                            </Form.Group>
-                        </Form>
-                    </Col>
-                    <Col md={6} id={'newTextAndTitleContainer'}>
-                        <h2 className={'productEditTitleAndTextHeaders'}>New header and text</h2>
-                        <div id={'newTextAndTitlePreviewContainer'}>
-                            <h2 style={{overflowWrap: 'break-word'}}>{enterHeader ? enterHeader : 'Enter header'}</h2>
-                            <div className={'customizeDividerLine'}></div>
-                            <p style={{overflowWrap: 'break-word'}}>{enterText ? enterText : 'Enter text...'}</p>
-                        </div>
-                    </Col>
-                </Row>
             </div>
-            <div id={'productEditTextAndTitleNextButtonContainer'}>
-                {showError ? <p id={'productTextEditError'}>{showError}</p> : null}
-                <Button className={'nextPageButton'} onClick={() => checkIfFormsFilled()}>Next</Button>
+            <div id={'productTextEditPreviewMainContainer'}>
+                <h2 className={'productEditTitleAndTextHeaders'}>Текущие заголовок и текст</h2>
+                <div id={'productTextEditCurrentPreviewContainer'}>
+                    <div>
+                        <h3>{props.product.header}</h3>
+                        <div className={'customizeDividerLine'}></div>
+                        <p>{props.product.text}</p>
+                    </div>
+                </div>
+                <h2 className={'productEditTitleAndTextHeaders'}>Новые заголовок и текст</h2>
+                <div id={'productTextEditNewPreviewContainer'}>
+                    <div>
+                        <h3 style={{overflowWrap: 'break-word'}}>{enterHeader ? enterHeader : 'Enter header'}</h3>
+                        <div className={'customizeDividerLine'}></div>
+                        <p style={{overflowWrap: 'break-word'}}>{enterText ? enterText : 'Enter text...'}</p>
+                    </div>
+                </div>
             </div>
-        </Container>
+        </div>
     );
 }
 
