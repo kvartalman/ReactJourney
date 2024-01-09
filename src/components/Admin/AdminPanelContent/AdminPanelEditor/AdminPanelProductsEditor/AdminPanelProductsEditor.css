@@ -8,26 +8,31 @@
     margin: 1em;
 }
 
-#productsEditorCreateNewButtonContainer {
+.productsEditorCreateNewButtonContainer {
     display: flex;
     justify-content: flex-end;
     margin-right: 1em;
 }
 
-#productsEditorCreateNewButtonContainer button {
+.productsEditorCreateNewButtonContainer button {
     border: none;
     font: 900 20px "Roboto", sans-serif;
     color: #0e232f;
     background: none;
     padding: 0 1em;
-    width: 200px;
+    width: 300px;
+    transition: 0.1s;
 }
 
-#productsEditorCreateNewButtonContainer::before, #productsEditorCreateNewButtonContainer::after {
+.productsEditorCreateNewButtonContainer button:hover {
+    text-shadow: 2px 2px 7px #0e232f;
+}
+
+.productsEditorCreateNewButtonContainer::before, .productsEditorCreateNewButtonContainer::after {
     content: "";
     background: #0e232f;
     top: 6px;
-    height: 24px;
+    height: 30px;
     width: 2px;
 }
 

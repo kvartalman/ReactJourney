@@ -5,34 +5,34 @@ const AdminPanelHomePageEditorSections = (props) => {
 
     return (
         <>
-            <h1>Editor of current content</h1>
+            <h1>Выбери блок для редактирования</h1>
             <div id={'adminPanelHomePageEditorCurrentSectionsContainer'}>
                 <div className={'adminPanelHomePageEditorCurrentSection'}>
                     <button
                         onClick={() => props.handleSectionChoice('carousel')}
                     >
-                        Carousel
+                        Карусель
                     </button>
                 </div>
                 <div className={'adminPanelHomePageEditorCurrentSection'}>
                     <button
                         onClick={() => props.handleSectionChoice('cards')}
                     >
-                        Best offers cards
+                        Карточки офферов
                     </button>
                 </div>
                 <div className={'adminPanelHomePageEditorCurrentSection'}>
                     <button
                         onClick={() => props.handleSectionChoice('advantages')}
                     >
-                        Advantages block
+                        Преимущества
                     </button>
                 </div>
                 <div className={'adminPanelHomePageEditorCurrentSection'}>
                     <button
                         onClick={() => props.handleSectionChoice('steps')}
                     >
-                        Steps block
+                        Шаги
                     </button>
                 </div>
             </div>

@@ -176,18 +176,18 @@ const AdminPanelProductsEditor = (props) => {
 
     return (
         <div id={'productsEditorMainContainer'}>
-            <div id={'productsEditorCreateNewButtonContainer'}>
+            <div className={'productsEditorCreateNewButtonContainer'}>
                 <button
                     onClick={() => handleNewModal()}
                 >
-                    Create new
+                    Новый продукт
                 </button>
             </div>
-            <div id={'productsEditorCreateNewButtonContainer'}>
+            <div className={'productsEditorCreateNewButtonContainer'}>
                 <button
                     onClick={() => handleMassNewModal()}
                 >
-                    Mass create
+                    Загрузка продуктов
                 </button>
             </div>
             <div id={'adminPanelProductsCurrentMainContainer'}>

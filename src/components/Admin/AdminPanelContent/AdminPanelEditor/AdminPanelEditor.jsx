@@ -3,7 +3,6 @@ import './AdminPanelEditor.css';
 import AdminPanelPricesEditor from "./AdminPanelPricesEditor/AdminPanelPricesEditor";
 import AdminPanelHomePageEditor from "./AdminPanelHomePageEditor/AdminPanelHomePageEditor";
 import AdminPanelGamesEditor from "./AdminPanelGamesEditor/AdminPanelGamesEditor";
-import AdminPanelSubCategoriesEditor from "./AdminPanelSubCategoriesEditor/AdminPanelSubCategoriesEditor";
 import AdminPanelProductsEditor from "./AdminPanelProductsEditor/AdminPanelProductsEditor";
 import AdminPanelEditorSections from "./AdminPanelEditorSections/AdminPanelEditorSections";
 
@@ -21,9 +20,6 @@ const AdminPanelEditor = (props) => {
             setBackIndex={props.setBackIndex}
             backIndex={props.backIndex}
         />, <AdminPanelGamesEditor
-            setBackIndex={props.setBackIndex}
-            backIndex={props.backIndex}
-        />, <AdminPanelSubCategoriesEditor
             setBackIndex={props.setBackIndex}
             backIndex={props.backIndex}
         />,

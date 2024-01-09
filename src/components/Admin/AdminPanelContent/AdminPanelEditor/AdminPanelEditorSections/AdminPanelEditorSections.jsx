@@ -24,20 +24,13 @@ const AdminPanelEditorSections = (props) => {
                     className={'adminPanelEditorSectionContainer'}
                 >
                     <button onClick={() => props.handleEditorSection(2)}>
-                        Подкатегории
-                    </button>
-                </div>
-                <div
-                    className={'adminPanelEditorSectionContainer'}
-                >
-                    <button onClick={() => props.handleEditorSection(3)}>
                         Продукты
                     </button>
                 </div>
                 <div
                     className={'adminPanelEditorSectionContainer'}
                 >
-                    <button onClick={() => props.handleEditorSection(4)}>
+                    <button onClick={() => props.handleEditorSection(3)}>
                         Цены
                     </button>
                 </div>
