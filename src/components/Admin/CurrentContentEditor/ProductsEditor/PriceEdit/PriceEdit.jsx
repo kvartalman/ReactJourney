@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import './PriceEdit.css'
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 
 const PriceEdit = (props) => {
@@ -26,34 +25,35 @@ const PriceEdit = (props) => {
     }
 
     return (
-        <Container fluid>
-            <div id={'priceEditPricesAndFormContainer'}>
+        <div id={'priceEditMainContainer'}>
+            <h1>Измени базовую цену товара</h1>
+            <div>
                 <div id={'priceEditFormContainer'}>
-                    <Form>
-                        <Form.Group>
-                            <Form.Label>Enter new price</Form.Label>
-                            <Form.Control
-                                value={enterPrice}
-                                onChange={enterPriceInput}
-                                placeholder="Enter min value"
-                            />
-                        </Form.Group>
-                    </Form>
-                </div>
-                <div id={'priceEditPricesContainer'}>
-                    <div id={'priceEditCurrentPriceContainer'}>
-                        {props.product.price}
+                    <div>
+                        <Form>
+                            <Form.Group>
+                                <Form.Label>Enter new price</Form.Label>
+                                <Form.Control
+                                    value={enterPrice}
+                                    onChange={enterPriceInput}
+                                    placeholder="Enter min value"
+                                />
+                            </Form.Group>
+                        </Form>
                     </div>
-                    <div id={'priceEditNewPriceContainer'}>
-                        {enterPrice ? enterPrice : 0}
+                </div>
+                <div id={'priceEditPreviewMainContainer'}>
+                    <div id={'priceEditCurrentPricePreviewContainer'}>
+                        <h3>Старая цена</h3>
+                        <p>{props.product.price}</p>
+                    </div>
+                    <div id={'priceEditNewPricePreviewContainer'}>
+                        <h3>Новая цена</h3>
+                        <p>{enterPrice ? enterPrice : 0}</p>
                     </div>
                 </div>
             </div>
-            <div id={'editPriceNextButtonContainer'}>
-                {showError ? <p id={'editPriceFormError'}>{showError}</p> : null}
-                <Button className={'nextPageButton'} onClick={() => checkIfNumber()}>Next</Button>
-            </div>
-        </Container>
+        </div>
     );
 }
 
