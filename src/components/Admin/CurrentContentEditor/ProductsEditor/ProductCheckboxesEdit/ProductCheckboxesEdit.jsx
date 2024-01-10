@@ -8,6 +8,7 @@ import '../../../../ProductPage/ContentSlider/ContentSlider.css';
 import '../../../../ProductPage/CheckBoxes/CheckBox.css';
 import {useDispatch, useSelector} from "react-redux";
 import {
+    cancelCheckboxContentDeletion,
     deleteCheckboxContent,
     editCheckboxesContent, editTooltip,
     fillCheckboxesEditor
@@ -15,8 +16,10 @@ import {
 
 const ProductCheckboxesEdit = (props) => {
 
-    const checkboxesSliceSelector = useSelector(state => state.adminPanel.checkboxesEditor);
     const dispatch = useDispatch();
+
+    const checkboxesSliceSelector = useSelector(state => state.adminPanel.checkboxesEditor);
+    const deletedCheckboxesSliceSelector = useSelector(state => state.adminPanel.checkboxesEditorDeletedCheckboxes);
 
     const [checkboxEdit, setCheckboxEdit] = useState('');
     const [checkboxLabel, setCheckboxLabel] = useState('');
@@ -83,6 +86,10 @@ const ProductCheckboxesEdit = (props) => {
                 name: checkboxEdit
             }
         ))
+    }
+
+    const cancelCheckboxDeletion = () => {
+        dispatch(cancelCheckboxContentDeletion())
     }
 
     const addTooltip = () => {
@@ -220,7 +227,12 @@ const ProductCheckboxesEdit = (props) => {
                             placeholder={'Enter value...'}
                         />
                     </Form.Group>
-                    <Button onClick={() => deleteCheckbox()}>Delete checkbox</Button>
+                    <Button onClick={() => deleteCheckbox()}>Удалить чекбокс</Button>
+                    {deletedCheckboxesSliceSelector.length > 0 ?
+                        <Button onClick={() => cancelCheckboxDeletion()}>Отменить</Button>
+                        :
+                        null
+                    }
                     <Form.Group>
                         <Form.Label>Input tooltip text</Form.Label>
                         <Form.Control

@@ -16,6 +16,7 @@ const adminPanelEditorSlice = createSlice(
             contentSliderSettingsRanges: [],
             contentSliderEditorRanges: [],
             checkboxesEditor: [],
+            checkboxesEditorDeletedCheckboxes: [],
             gamePageCardsEditor: [],
             deletedGamePageCards: [],
             subCategoriesCardsEditor: [],
@@ -170,9 +171,14 @@ const adminPanelEditorSlice = createSlice(
             deleteCheckboxContent: (state, action) => {
                 for (let i = 0; i < state.checkboxesEditor.length; i++) {
                     if (state.checkboxesEditor[i].name === action.payload.name) {
+                        state.checkboxesEditorDeletedCheckboxes.push([state.checkboxesEditor[i], i])
                         state.checkboxesEditor = state.checkboxesEditor.filter(elem => elem.name !== action.payload.name);
                     }
                 }
+            },
+            cancelCheckboxContentDeletion: (state, action) => {
+                const returnCheckbox = state.checkboxesEditorDeletedCheckboxes.pop();
+                state.checkboxesEditor.splice(returnCheckbox[1], 0, returnCheckbox[0]);
             },
             editTooltip: (state, action) => {
                 if (action.payload.actionType === 'add') {
@@ -221,41 +227,6 @@ const adminPanelEditorSlice = createSlice(
             cancelGamePageCardDeletion: (state, action) => {
                 const returnedCard = state.deletedGamePageCards.pop()
                 state.gamePageCardsEditor.splice(returnedCard.index, 0, returnedCard.card);
-            },
-            fillSubCategoriesEditor: (state, action) => {
-
-                // We clear state.deletedSubCategoriesCards because, when first render starts, we fill subCategoriesCardsEditor
-                // and it means we don't have any deleted cards.
-
-                state.subCategoriesCardsEditor = action.payload;
-                state.deletedSubCategoriesCards = [];
-            },
-            handleSubCategoriesChanges: (state, action) => {
-                for (let i = 0; i < state.subCategoriesCardsEditor.length; i++) {
-                    if (state.subCategoriesCardsEditor[i].title === action.payload.card) {
-                        state.subCategoriesCardsEditor[i].title = action.payload.title;
-                        state.subCategoriesCardsEditor[i].text = action.payload.text;
-                        state.subCategoriesCardsEditor[i].src = action.payload.src;
-                    }
-                }
-            },
-            deleteSubCategoriesCard: (state, action) => {
-                for (let i = 0; i < state.subCategoriesCardsEditor.length; i++) {
-                    if (state.subCategoriesCardsEditor[i].title === action.payload.name) {
-                        const deletedCard = state.subCategoriesCardsEditor[i];
-                        state.subCategoriesCardsEditor.splice(i, 1);
-                        state.deletedSubCategoriesCards.push({card: deletedCard, index: i});
-                    }
-                }
-            },
-            cancelSubCategoriesCardDeletion: (state, action) => {
-
-                // We take last element from array by using .pop() and put it inside 'subCategoriesCardsEditor' array.
-                // We also use index at which this element was located in 'subCategoriesCardsEditor' array.
-                // We do it, when we removed one or more cards from 'subCategoriesCardsEditor' array and want to cancel
-                // our decision. 'deletedSubCategoriesCards' array consists information about deleted cards.
-                const returnedCard = state.deletedSubCategoriesCards.pop()
-                state.subCategoriesCardsEditor.splice(returnedCard.index, 0, returnedCard.card);
             },
             fillHomePageOfferCards: (state, action) => {
                 state.homePageOfferCards = action.payload;
@@ -344,17 +315,14 @@ export const {
     handleGamePageCardsChanges,
     deleteGamePageCards,
     cancelGamePageCardDeletion,
-    fillSubCategoriesEditor,
-    handleSubCategoriesChanges,
-    deleteSubCategoriesCard,
-    cancelSubCategoriesCardDeletion,
     fillHomePageOfferCards,
     handleHomePageOfferCardsChanges,
     handleHomePageOfferCardsButtonChanges,
     deleteHomePageOfferCard,
     cancelHomePageOfferCardDeletion,
     deleteHomePageOfferCardButton,
-    cancelHomePageOfferCardButtonDeletion
+    cancelHomePageOfferCardButtonDeletion,
+    cancelCheckboxContentDeletion
 } = adminPanelEditorSlice.actions;
 
 export default adminPanelEditorSlice.reducer
