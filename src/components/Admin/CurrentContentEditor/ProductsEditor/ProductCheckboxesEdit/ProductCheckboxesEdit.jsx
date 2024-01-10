@@ -18,21 +18,22 @@ const ProductCheckboxesEdit = (props) => {
     const checkboxesSliceSelector = useSelector(state => state.adminPanel.checkboxesEditor);
     const dispatch = useDispatch();
 
-    const checkboxSelector = useRef(null);
     const [checkboxEdit, setCheckboxEdit] = useState('');
     const [checkboxLabel, setCheckboxLabel] = useState('');
     const [checkboxValue, setCheckboxValue] = useState('');
     const [tooltipText, setTooltipText] = useState('');
 
+
     // We use selectedCheckbox function inside jsx to find if checkbox with name === current value of checkboxSelector
     // has own property 'tooltip'. If checkbox object has this property - then we render 'delete' button. Else - 'add'.
 
     const selectedCheckbox = (selectedName) => {
-        if (selectedName && selectedName.current && selectedName.current.value) {
+        if (selectedName) {
+
             for (let i = 0; i < checkboxesSliceSelector.length; i++) {
-                if (checkboxesSliceSelector[i].name === selectedName.current.value && checkboxesSliceSelector[i].hasOwnProperty('tooltip')) {
+                if (checkboxesSliceSelector[i].name === selectedName && checkboxesSliceSelector[i].hasOwnProperty('tooltip')) {
                     return <Button onClick={() => deleteTooltip()}>Delete tooltip</Button>
-                } else if (checkboxesSliceSelector[i].name === selectedName.current.value && !checkboxesSliceSelector[i].hasOwnProperty('tooltip')) {
+                } else if (checkboxesSliceSelector[i].name === selectedName && !checkboxesSliceSelector[i].hasOwnProperty('tooltip')) {
                     return <Button onClick={() => addTooltip()}>Add tooltip</Button>
                 }
             }
@@ -44,7 +45,7 @@ const ProductCheckboxesEdit = (props) => {
         dispatch(editCheckboxesContent(
             {
                 label: e.target.value,
-                name: checkboxSelector.current.value
+                name: checkboxEdit
             }
         ))
     }
@@ -54,11 +55,12 @@ const ProductCheckboxesEdit = (props) => {
         dispatch(editCheckboxesContent(
             {
                 value: e.target.value,
-                name: checkboxSelector.current.value
+                name: checkboxEdit
             }
         ))
     }
     const handleCheckboxSelect = (e) => {
+        debugger;
         setCheckboxEdit(e.target.value);
         setCheckboxValue('');
         setCheckboxLabel('');
@@ -70,14 +72,47 @@ const ProductCheckboxesEdit = (props) => {
             {
                 tooltipText: e.target.value,
                 actionType: 'edit',
-                name: checkboxSelector.current.value
+                name: checkboxEdit
             }
         ))
     }
 
-    const checkboxesList = props.product.checkboxes.map(checkbox => (
-        <option>{checkbox.label}</option>
-    ))
+    const deleteCheckbox = () => {
+        dispatch(deleteCheckboxContent(
+            {
+                name: checkboxEdit
+            }
+        ))
+    }
+
+    const addTooltip = () => {
+        dispatch(editTooltip(
+            {
+                name: checkboxEdit,
+                actionType: 'add',
+                tooltipText: tooltipText
+            }
+        ))
+        setTooltipText('');
+    }
+
+    const deleteTooltip = () => {
+        dispatch(editTooltip(
+            {
+                name: checkboxEdit,
+                actionType: 'delete'
+            }
+        ))
+        setTooltipText('');
+    }
+
+    const checkboxesList = () => {
+        if (checkboxesSliceSelector.length > 0) {
+            return checkboxesSliceSelector.map(checkbox => (
+                <option>{checkbox.name}</option>
+            ))
+        }
+    }
 
     const checkboxesCurrent =
         props.product.checkboxes.map((checkbox, index) => {
@@ -106,7 +141,7 @@ const ProductCheckboxesEdit = (props) => {
                         </div>
                     </div>
                     <div className={'contentSliderCheckboxesInfo'}>
-                        <p>{checkbox.label} - {checkbox.price}&#8364;
+                        <p>{checkbox.name} - {checkbox.price}&#8364;
                         </p>
                     </div>
 
@@ -142,7 +177,7 @@ const ProductCheckboxesEdit = (props) => {
                     </div>
                     <div className={'contentSliderCheckboxesInfo'}>
                         <p>
-                            {checkbox.label} - {checkbox.price}&#8364;
+                            {checkbox.name} - {checkbox.price}&#8364;
                         </p>
                     </div>
 
@@ -150,54 +185,27 @@ const ProductCheckboxesEdit = (props) => {
             )
         })
 
-    const deleteCheckbox = () => {
-        dispatch(deleteCheckboxContent(
-            {
-                name: checkboxSelector.current.value
-            }
-        ))
-    }
-
-    const addTooltip = () => {
-        dispatch(editTooltip(
-            {
-                name: checkboxSelector.current.value,
-                actionType: 'add',
-                tooltipText: tooltipText
-            }
-        ))
-    }
-
-    const deleteTooltip = () => {
-        dispatch(editTooltip(
-            {
-                name: checkboxSelector.current.value,
-                actionType: 'delete'
-            }
-        ))
-    }
-
     useEffect(() => {
         dispatch(fillCheckboxesEditor(props.product.checkboxes))
-    }, [dispatch, props.product])
+        setCheckboxEdit(props.product.checkboxes[0].name)
+    }, [])
+
+    useEffect(() => {
+        if (checkboxesSliceSelector.length > 0) {
+            setCheckboxEdit(checkboxesSliceSelector[0].name)
+        }
+    }, [checkboxesSliceSelector])
 
     return (
-        <Container fluid>
-            <div id={'productEditCurrentCheckboxesContainer'}>
-                <h2>Current checkboxes</h2>
-                <div id={'contentSliderCheckboxesContainer'}>
-                    {checkboxesCurrent}
-                </div>
-            </div>
+        <div id={'productCheckboxesEditMainContainer'}>
             <div id={'productEditNewCheckboxesContainer'}>
                 <Form>
                     <Form.Group>
                         <Form.Label>Choose checkbox</Form.Label>
                         <Form.Select
-                            ref={checkboxSelector}
                             onChange={handleCheckboxSelect}
                         >
-                            {checkboxesList}
+                            {checkboxesList()}
                         </Form.Select>
                         <Form.Label>Enter checkbox label</Form.Label>
                         <Form.Control
@@ -212,11 +220,7 @@ const ProductCheckboxesEdit = (props) => {
                             placeholder={'Enter value...'}
                         />
                     </Form.Group>
-                </Form>
-                <Button onClick={() => deleteCheckbox()}>Delete checkbox</Button>
-            </div>
-            <div id={'tooltipEditContainer'}>
-                <Form>
+                    <Button onClick={() => deleteCheckbox()}>Delete checkbox</Button>
                     <Form.Group>
                         <Form.Label>Input tooltip text</Form.Label>
                         <Form.Control
@@ -225,18 +229,26 @@ const ProductCheckboxesEdit = (props) => {
                             placeholder={'Enter text...'}
                         />
                     </Form.Group>
+                    {
+                        selectedCheckbox(checkboxEdit)
+                    }
                 </Form>
-                {
-                    selectedCheckbox(checkboxSelector)
-                }
             </div>
-            <div id={'contentSliderCheckboxesContainer'}>
-                {checkboxesEdit}
+            <div id={'productCheckboxesEditPreviewMainContainer'}>
+                <div id={'productEditCurrentPreviewContainer'}>
+                    <h2>Current checkboxes</h2>
+                    <div id={'productCheckboxesEditCurrentCheckboxesContainer'}>
+                        {checkboxesCurrent}
+                    </div>
+                </div>
+                <div id={'productCheckboxesEditNewPreviewContainer'}>
+                    <h2>New checkboxes</h2>
+                    <div id={'productCheckboxesEditNewCheckboxesContainer'}>
+                        {checkboxesEdit}
+                    </div>
+                </div>
             </div>
-            <div>
-                <Button className={'nextPageButton'} onClick={() => props.setKey('slider')}>Next</Button>
-            </div>
-        </Container>
+        </div>
     );
 }
 

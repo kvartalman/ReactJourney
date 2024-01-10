@@ -2,17 +2,11 @@ import React, {useEffect, useState} from 'react';
 import './ProductPagePreview.css';
 import {useSelector} from "react-redux";
 import OfferPanelButton from "../../../../../GameOffer/OfferPanel/OfferPanelButton";
-import {v4 as uuidv4} from "uuid";
 import BreadCrumb from "../../../../../GameOffer/BreadCrumb/BreadCrumb";
 import ContentSlider from "../../../../../ProductPage/ContentSlider/ContentSlider";
-import {Col} from "react-bootstrap";
 import CheckboxesPreview from "../CheckboxesPreview";
-import CheckBoxes from "../../../../../ProductPage/CheckBoxes/CheckBoxes";
 import Slider from "rc-slider";
 import Button from "react-bootstrap/Button";
-import AddCartModal from "../../../../../Cart/AddCartModal/AddCartModal";
-import useForceUpdate from "@restart/hooks/useForceUpdate";
-import Breadcrumb from "react-bootstrap/Breadcrumb";
 
 const ProductPagePreview = (props) => {
 

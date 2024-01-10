@@ -7,7 +7,7 @@ import SliderEditor from "./SliderEditor/SliderEditor";
 const ProductSliderEdit = (props) => {
 
     return (
-        <Container fluid>
+        <div id={'productSliderEditMainContainer'}>
         {
             props.product.sliderType === 'classic' ?
                 <SliderEditor
@@ -31,7 +31,7 @@ const ProductSliderEdit = (props) => {
             <div>
                 <Button className={'nextPageButton'} onClick={() => props.setKey('preview')}>Next</Button>
             </div>
-        </Container>
+        </div>
     );
 }
 
