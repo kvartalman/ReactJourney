@@ -25,19 +25,19 @@ const ProductTextEdit = (props) => {
                 <div id={'productTextEditFormsContainer'}>
                     <Form>
                         <Form.Group>
-                            <Form.Label>Header form</Form.Label>
+                            <Form.Label>Новый заголовок</Form.Label>
                             <Form.Control
                                 value={enterHeader}
                                 onChange={enterHeaderInput}
-                                placeholder="Enter new header"
+                                placeholder="Введите заголовок..."
                             />
-                            <Form.Label>Text form</Form.Label>
+                            <Form.Label>Новый текст</Form.Label>
                             <Form.Control
                                 as="textarea"
                                 rows={8}
                                 value={enterText}
                                 onChange={enterTextInput}
-                                placeholder="Enter new text"
+                                placeholder="Введите текст..."
                             />
                         </Form.Group>
                     </Form>

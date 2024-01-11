@@ -163,7 +163,10 @@ const ContentSliderEditor = (props) => {
                         <td>{range.range[1]}</td>
                         <td>{range.value}</td>
                         <td>
-                            <button onClick={() => deleteRangeHandler(index)}>Delete!</button>
+                            <button
+                                className={'contentSliderEditorDeleteRangeButton'}
+                                onClick={() => deleteRangeHandler(index)}
+                            >Удалить</button>
                         </td>
                     </tr>
                 ))
@@ -191,104 +194,103 @@ const ContentSliderEditor = (props) => {
         <div id={'contentSliderEditorMainContainer'}>
             <div id={'contentSliderEditorSettingsMainContainer'}>
                 <div id={'contentSliderEditorFormsContainer'}>
+                    <h2>Настрой слайдер</h2>
                     <Form>
-                        <h2>ProductPage ContentSlider Editor</h2>
-                        <Form.Group as={Col}>
-                            <Form.Label>Choose min and max values of slider</Form.Label>
+                        <Form.Group>
+                            <Form.Label>Укажи мин. и макс. значения слайдера</Form.Label>
                             <Form.Control
                                 value={enterMinValue}
                                 onChange={enterMinValueInput}
-                                placeholder="Enter min value"
+                                placeholder="Введите минимальное значение..."
                             />
                             <Form.Control
                                 value={enterMaxValue}
                                 onChange={enterMaxValueInput}
-                                placeholder="Enter max value"
+                                placeholder="Введите максимальное значение..."
                             />
-                            <Form.Label>Choose start position of slider</Form.Label>
+                            <Form.Label>Укажи стартовые значения ползунков</Form.Label>
                             <Form.Control
                                 value={enterLeftThumbValue}
                                 onChange={enterLeftThumbValueInput}
-                                placeholder="Enter left thumb value"
+                                placeholder="Введите значение левого ползунка..."
                             />
                             <Form.Control
                                 value={enterRightThumbValue}
                                 onChange={enterRightThumbValueInput}
-                                placeholder="Enter right thumb value"
+                                placeholder="Введите значение правого ползунка..."
                             />
-                            <Form.Label>Choose step (default is 1)</Form.Label>
+                                <div id={'contentSliderEditorLabelTooltipContainer'}>
+                                    <Form.Label>Укажи шаг смещения ползунка при нажатии на полоску слайдера</Form.Label>
+                                    <OverlayTrigger
+                                        key={'top'}
+                                        placement={'right'}
+                                        overlay={
+                                            <Tooltip
+                                                id={`tooltip-${'top'}`}
+                                            >
+                                                Если клиент нажмёт на полоску слайдера, а не воспользуется правым
+                                                или
+                                                левым ползунком, произойдет смещение левого или правого ползунка (в
+                                                зависимости от того, в какой половине полоски слайдера был сделан
+                                                клик)
+                                                в
+                                                сторону, куда был сделан клик. Данная настройка отвечает за шаг, на
+                                                который
+                                                сместится ползунок слайдера при таком клике. Если это не имеет
+                                                значения,
+                                                лучше оставить значение 1.
+                                            </Tooltip>
+                                        }
+                                    >
+                                        <span className={'tooltipButton'}>?</span>
+                                    </OverlayTrigger>
+                                </div>
                             <Form.Control
                                 value={enterStep}
                                 onChange={enterStepInput}
-                                placeholder="Enter step"
+                                placeholder="Введите шаг..."
                             />
-                            <Form.Label>Choose value per step and range</Form.Label>
+                            <Form.Label>Настрой диапазоны значений и стоимость шага внутри них</Form.Label>
                             <Form.Control
                                 value={enterStartOfRange}
                                 onChange={enterStartOfRangeInput}
-                                placeholder="Enter start of range"
+                                placeholder="Введите начало диапазона..."
                             />
                             <Form.Control
                                 value={enterEndOfRange}
                                 onChange={enterEndOfRangeInput}
-                                placeholder="Enter end of range"
+                                placeholder="Введите конец диапазона..."
                             />
                             <Form.Control
                                 value={enterValuePerStep}
                                 onChange={enterValuePerStepInput}
-                                placeholder="Enter value per step"
+                                placeholder="Введите стоимость шага..."
                             />
-                            <Button onClick={addRangeHandler} variant="primary">
-                                Add range
-                            </Button>
                         </Form.Group>
                     </Form>
-                </div>
-                <div id={'contentSliderEditorTableAdviceMainContainer'}>
-                    <button
-                        onClick={() => handleAdviceShow()}
-                        id={'contentSliderEditorAdviceButton'}
+                    <Button
+                        className={'nextPageButton'}
+                        onClick={addRangeHandler} variant="primary"
                     >
-                        {adviceShow ? 'Спрятать' : 'Советы!'}
-                    </button>
-                    <Modal show={adviceShow} onHide={handleAdviceShow}>
-                        <div id={'contentSliderEditorTableAdviceContainer'}
-                             className={'showAdvice'}
+                        Добавить диапазон
+                    </Button>
+                    <div id={'contentSliderEditorTableAdviceMainContainer'}>
+                        <button
+                            onClick={() => handleAdviceShow()}
+                            id={'contentSliderEditorAdviceButton'}
                         >
-                            <h3>
-                                Как добавлять диапазоны значений?
-                            </h3>
-                            <p>
-                                Чтобы сделать нормально работающий слайдер со значениями нужно соблюдать несколько правил:
-                            </p>
-                            <p>1) Диапазоны значений не должны накладываться друг на друга (Например, не делать два
-                                диапазона
-                                со значениями 0-10 и 5-15.
-                            </p>
-                            <p>
-                                2) Знать, как идет расчет значений в диапазонах: возьмем пример из двух диапазонов, где
-                                0-10 будет прибавляться 2, а от 10-20 будет прибавляться 4. В шаге с 9 до 10 прибавится 2,
-                                а уже в шаге с 10 до 11 уже прибавится 4. Таким образом, если ты хочешь, чтобы, например с
-                                20
-                                шага и до 40 начиналось прибавляться 4.5 за шаг, то ставь стартовое значение 20, конечное
-                                40,
-                                а шаг 4.5 и всё будет работать корректно.
-                            </p>
-                            <p>
-                                3) Убедись, что всё работает, ОБЯЗАТЕЛЬНО подвигав слайдер и оценив итоговую сумму под
-                                слайдером!
-                            </p>
-                        </div>
-                    </Modal>
+                            {adviceShow ? 'Спрятать' : 'Советы!'}
+                        </button>
+                    </div>
                 </div>
                 <div id={'contentSliderEditorTableContainer'}>
                     <Table striped bordered hover id={'contentSliderSettingsTable'}>
                         <thead>
                         <tr>
-                            <th>Min Value</th>
-                            <th>Max Value</th>
-                            <th>Increase per Step</th>
-                            <th>Delete Button</th>
+                            <th>Мин. значение</th>
+                            <th>Макс. значение</th>
+                            <th>Стоимость шага</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -299,7 +301,7 @@ const ContentSliderEditor = (props) => {
             </div>
             <div id={'contentSliderEditorSlidersContainer'}>
                 <div id={'contentSliderEditorCurrentSliderContainer'}>
-                    <h2>Current Slider</h2>
+                    <h2>Текущий слайдер</h2>
                     <div className={'sliderValuesContainer'}>
                         <div className={'sliderMinValueContainer'}>
                             {currentMinValue}
@@ -324,7 +326,7 @@ const ContentSliderEditor = (props) => {
                     </div>
                 </div>
                 <div id={'contentSliderEditorNewSliderContainer'}>
-                    <h2>New Slider</h2>
+                    <h2>Новый слайдер</h2>
                     <div className={'sliderValuesContainer'}>
                         <div className={'sliderMinValueContainer'}>
                             {editorMinValue}
@@ -369,6 +371,39 @@ const ContentSliderEditor = (props) => {
                     </div>
                 </div>
             </div>
+            <Modal show={adviceShow} onHide={handleAdviceShow}>
+                <div id={'contentSliderEditorTableAdviceContainer'}
+                     className={'showAdvice'}
+                >
+                    <h3>
+                        Как добавлять диапазоны значений?
+                    </h3>
+                    <p>
+                        Чтобы сделать нормально работающий слайдер со значениями нужно соблюдать несколько
+                        правил:
+                    </p>
+                    <p>1) Диапазоны значений не должны накладываться друг на друга (Например, не делать два
+                        диапазона
+                        со значениями 0-10 и 5-15.
+                    </p>
+                    <p>
+                        2) Знать, как идет расчет значений в диапазонах: возьмем пример из двух диапазонов, где
+                        0-10 будет прибавляться 2, а от 10-20 будет прибавляться 4. В шаге с 9 до 10 прибавится
+                        2,
+                        а уже в шаге с 10 до 11 уже прибавится 4. Таким образом, если ты хочешь, чтобы, например
+                        с
+                        20
+                        шага и до 40 начиналось прибавляться 4.5 за шаг, то ставь стартовое значение 20,
+                        конечное
+                        40,
+                        а шаг 4.5 и всё будет работать корректно.
+                    </p>
+                    <p>
+                        3) Убедись, что всё работает, ОБЯЗАТЕЛЬНО подвигав слайдер и оценив итоговую сумму под
+                        слайдером!
+                    </p>
+                </div>
+            </Modal>
         </div>
     );
 }

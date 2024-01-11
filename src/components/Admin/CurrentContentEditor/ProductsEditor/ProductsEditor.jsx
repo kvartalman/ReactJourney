@@ -32,7 +32,7 @@ const ProductsEditor = (props) => {
                 className="mb-3"
             >
 
-                <Tab eventKey="title" title="Title and text">
+                <Tab eventKey="title" title="Заголовок и текст">
                     <ProductTextEdit
                         setKey={setKey}
                         setText={setText}
@@ -40,7 +40,7 @@ const ProductsEditor = (props) => {
                         product={product}
                     />
                 </Tab>
-                <Tab eventKey="price" title="Price">
+                <Tab eventKey="price" title="Цена">
                     <PriceEdit
                         price={price}
                         setPrice={setPrice}
@@ -48,13 +48,13 @@ const ProductsEditor = (props) => {
                         setKey={setKey}
                     />
                 </Tab>
-                <Tab eventKey="checkboxes" title="Checkboxes">
+                <Tab eventKey="checkboxes" title="Чекбоксы">
                     <ProductCheckboxesEdit
                         setKey={setKey}
                         product={product}
                     />
                 </Tab>
-                <Tab eventKey="slider" title="Slider">
+                <Tab eventKey="slider" title="Слайдер">
                     <ProductSliderEdit
                         price={price}
                         setKey={setKey}
@@ -69,7 +69,7 @@ const ProductsEditor = (props) => {
                         setSliderMultiplier={setSliderMultiplier}
                     />
                 </Tab>
-                <Tab eventKey='preview' title='Preview'>
+                <Tab eventKey='preview' title='Превью'>
                     <ProductsEditorPreview
                         game={props.game}
                         subCtg={props.subCtg.name}

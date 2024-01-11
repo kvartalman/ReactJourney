@@ -16,6 +16,10 @@
     text-align: center;
 }
 
+#productTextEditFormsContainer {
+    text-align: center;
+}
+
 #productTextEditSettingsContainer {
     display: flex;
     flex-direction: column;
