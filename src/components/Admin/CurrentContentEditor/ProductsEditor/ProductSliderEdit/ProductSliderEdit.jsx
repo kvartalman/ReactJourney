@@ -1,8 +1,7 @@
 import React from 'react';
 import ContentSliderEditor from "./ContentSliderEditor/ContentSliderEditor";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
 import SliderEditor from "./SliderEditor/SliderEditor";
+import './ProductSliderEdit.css'
 
 const ProductSliderEdit = (props) => {
 
@@ -28,9 +27,6 @@ const ProductSliderEdit = (props) => {
                     product={props.product}
                 />
         }
-            <div>
-                <Button className={'nextPageButton'} onClick={() => props.setKey('preview')}>Next</Button>
-            </div>
         </div>
     );
 }

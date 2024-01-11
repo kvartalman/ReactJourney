@@ -38,36 +38,36 @@ const SliderEditor = (props) => {
     }
 
     return (
-        <Container fluid>
-            <Row id={'sliderSettingsRow'}>
-                <Col>
-                    <Form>
-                        <h2>ProductPage ContentSlider Editor</h2>
-                        <Form.Group as={Col}>
-                            <Form.Label>Choose min and max values of slider</Form.Label>
-                            <Form.Control
-                                value={enterMinValue}
-                                onChange={enterMinValueInput}
-                                placeholder="Enter min value"
-                            />
-                            <Form.Control
-                                value={enterMaxValue}
-                                onChange={enterMaxValueInput}
-                                placeholder="Enter max value"
-                            />
-                            <Form.Label>Choose value per step</Form.Label>
-                            <Form.Control
-                                value={enterMultiplier}
-                                onChange={enterMultiplierInput}
-                                placeholder="Enter value per step"
-                            />
-                        </Form.Group>
-                    </Form>
-                </Col>
-                <Col>
-                    <div className={'sliderContainer'}>
-                        <h2>Current slider</h2>
-                        {/* Slider with current settings */}
+        <div id={'sliderEditorMainContainer'}>
+            <div id={'sliderEditorFormsContainer'}>
+                <h2>Настрой слайдер</h2>
+                <Form>
+                    <Form.Group>
+                        <Form.Label>Выбери макс. и мин. значения слайдера</Form.Label>
+                        <Form.Control
+                            value={enterMinValue}
+                            onChange={enterMinValueInput}
+                            placeholder="Введите минимальное значение..."
+                        />
+                        <Form.Control
+                            value={enterMaxValue}
+                            onChange={enterMaxValueInput}
+                            placeholder="Введите максимальное значение..."
+                        />
+                        <Form.Label>Укажи стоимость шага</Form.Label>
+                        <Form.Control
+                            value={enterMultiplier}
+                            onChange={enterMultiplierInput}
+                            placeholder="Введите стоимость шага..."
+                        />
+                    </Form.Group>
+                </Form>
+            </div>
+            <div id={'sliderEditorSliderPreviewMainContainer'}>
+                <div className={'sliderEditorCurrentSliderPreviewContainer'}>
+                    <h2>Текущий слайдер</h2>
+                    {/* Slider with current settings */}
+                    <div>
                         <Slider
                             value={currentSliderPrice}
                             min={
@@ -85,9 +85,11 @@ const SliderEditor = (props) => {
                                 currentSliderPrice * props.product.slider.multiplier).toFixed(1))
                         }
                     </div>
-                    <div className={'sliderContainer'}>
-                        <h2>New slider</h2>
-                        {/* Slider with settings which you're choosing at the moment */}
+                </div>
+                <div className={'sliderEditorNewSliderPreviewContainer'}>
+                    <h2>Новый слайдер</h2>
+                    {/* Slider with settings which you're choosing at the moment */}
+                    <div>
                         <Slider
                             value={newSliderPrice}
                             min={
@@ -107,9 +109,9 @@ const SliderEditor = (props) => {
                                 newSliderPrice * (enterMultiplier || props.product.slider.multiplier)).toFixed(1))
                         }
                     </div>
-                </Col>
-            </Row>
-        </Container>
+                </div>
+            </div>
+        </div>
     )
 }
 
