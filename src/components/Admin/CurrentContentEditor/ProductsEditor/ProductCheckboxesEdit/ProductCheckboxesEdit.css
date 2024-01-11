@@ -1,0 +1,112 @@
+#productCheckboxesEditMainContainer {
+    display: flex;
+    gap: 1em;
+    margin: 1em;
+    text-align: center;
+}
+
+#productCheckboxesEditMainContainer h2 {
+    font: 900 30px "Roboto", sans-serif;
+    color: #0e232f;
+}
+
+#productEditNewCheckboxesContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
+    width: 40%;
+}
+
+#productEditNewCheckboxesContainer div {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#productEditNewCheckboxesContainer input {
+    margin-bottom: 0.5em;
+}
+
+#productEditNewCheckboxesContainer label {
+    margin-top: 0.5em;
+}
+
+#productCheckboxesEditDeleteCancelButtonsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+#productEditNewCheckboxesContainer button {
+}
+
+#productCheckboxesEditPreviewMainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    width: 60%;
+}
+
+#productEditCurrentPreviewContainer, #productCheckboxesEditNewPreviewContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+#productCheckboxesEditCurrentCheckboxesContainer, #productCheckboxesEditNewCheckboxesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.productCheckboxesEditCheckboxTooltipContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.productCheckboxesEditCheckboxTooltipContainer input {
+    width: 30px;
+    height: 30px;
+    margin: auto;
+}
+
+.productCheckboxesEditCheckboxTooltipContainer input:active {
+
+}
+
+.productCheckboxesEditCheckboxTooltipContainer input:focus {
+    box-shadow: none;
+}
+
+.productCheckboxesEditCheckboxTooltipContainer p {
+    margin: auto;
+}
+
+.productCheckboxesEditTooltipContainer span {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 900 20px "Roboto", sans-serif;
+    background-color: #658a9a;
+    color: #0e232f;
+    border: 2px solid #0e232f;
+}
+
+.productCheckboxesEditTooltipContainer span:hover {
+    background-color: #0e232f;
+    border-color: #0e232f;
+    color: #658a9a;
+}

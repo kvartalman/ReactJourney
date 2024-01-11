@@ -108,6 +108,7 @@
 
 #newProductCheckboxesTooltipContainer span:hover {
     background-color: #0e232f;
+    border-color: #0e232f;
     color: #658a9a;
 }
 

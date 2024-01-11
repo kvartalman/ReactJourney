@@ -35,9 +35,19 @@ const ProductCheckboxesEdit = (props) => {
 
             for (let i = 0; i < checkboxesSliceSelector.length; i++) {
                 if (checkboxesSliceSelector[i].name === selectedName && checkboxesSliceSelector[i].hasOwnProperty('tooltip')) {
-                    return <Button onClick={() => deleteTooltip()}>Delete tooltip</Button>
+                    return <Button
+                        className={'nextPageButton'}
+                        onClick={() => deleteTooltip()}
+                    >
+                        Удалить подсказку
+                    </Button>
                 } else if (checkboxesSliceSelector[i].name === selectedName && !checkboxesSliceSelector[i].hasOwnProperty('tooltip')) {
-                    return <Button onClick={() => addTooltip()}>Add tooltip</Button>
+                    return <Button
+                        className={'nextPageButton'}
+                        onClick={() => addTooltip()}
+                    >
+                        Добавить подсказку
+                    </Button>
                 }
             }
         }
@@ -125,11 +135,13 @@ const ProductCheckboxesEdit = (props) => {
         props.product.checkboxes.map((checkbox, index) => {
             return (
                 <label key={index} className={'labelSliderCheckboxesContainer'}>
-                    <div className={'checkboxTooltipContainer'}>
+                    <div className={'productCheckboxesEditCheckboxTooltipContainer'}>
                         <Form.Check
                             type="checkbox"
                         />
-                        <div className={'tooltipContainer'}>
+                        <p>{checkbox.name} - {checkbox.price}&#8364;
+                        </p>
+                        <div className={'productCheckboxesEditTooltipContainer'}>
                             {checkbox.tooltip ?
                                 <OverlayTrigger
                                     key={'top'}
@@ -148,8 +160,6 @@ const ProductCheckboxesEdit = (props) => {
                         </div>
                     </div>
                     <div className={'contentSliderCheckboxesInfo'}>
-                        <p>{checkbox.name} - {checkbox.price}&#8364;
-                        </p>
                     </div>
 
                 </label>
@@ -160,11 +170,14 @@ const ProductCheckboxesEdit = (props) => {
         checkboxesSliceSelector.map((checkbox, index) => {
             return (
                 <label key={index} className={'labelSliderCheckboxesContainer'}>
-                    <div className={'checkboxTooltipContainer'}>
+                    <div className={'productCheckboxesEditCheckboxTooltipContainer'}>
                         <Form.Check
                             type="checkbox"
                         />
-                        <div className={'tooltipContainer'}>
+                        <p>
+                            {checkbox.name} - {checkbox.price}&#8364;
+                        </p>
+                        <div className={'productCheckboxesEditTooltipContainer'}>
                             {checkbox.tooltip ?
                                 <OverlayTrigger
                                     key={'top'}
@@ -182,12 +195,6 @@ const ProductCheckboxesEdit = (props) => {
                             }
                         </div>
                     </div>
-                    <div className={'contentSliderCheckboxesInfo'}>
-                        <p>
-                            {checkbox.name} - {checkbox.price}&#8364;
-                        </p>
-                    </div>
-
                 </label>
             )
         })
@@ -206,55 +213,70 @@ const ProductCheckboxesEdit = (props) => {
     return (
         <div id={'productCheckboxesEditMainContainer'}>
             <div id={'productEditNewCheckboxesContainer'}>
-                <Form>
-                    <Form.Group>
-                        <Form.Label>Choose checkbox</Form.Label>
-                        <Form.Select
-                            onChange={handleCheckboxSelect}
-                        >
-                            {checkboxesList()}
-                        </Form.Select>
-                        <Form.Label>Enter checkbox label</Form.Label>
-                        <Form.Control
-                            onChange={checkboxLabelInput}
-                            value={checkboxLabel}
-                            placeholder={'Enter label...'}
-                        />
-                        <Form.Label>Enter checkbox value</Form.Label>
-                        <Form.Control
-                            onChange={checkboxValueInput}
-                            value={checkboxValue}
-                            placeholder={'Enter value...'}
-                        />
-                    </Form.Group>
-                    <Button onClick={() => deleteCheckbox()}>Удалить чекбокс</Button>
-                    {deletedCheckboxesSliceSelector.length > 0 ?
-                        <Button onClick={() => cancelCheckboxDeletion()}>Отменить</Button>
-                        :
-                        null
-                    }
-                    <Form.Group>
-                        <Form.Label>Input tooltip text</Form.Label>
-                        <Form.Control
-                            onChange={tooltipTextInput}
-                            value={tooltipText}
-                            placeholder={'Enter text...'}
-                        />
-                    </Form.Group>
-                    {
-                        selectedCheckbox(checkboxEdit)
-                    }
-                </Form>
+                <div>
+                    <h2>Настрой чекбоксы</h2>
+                    <Form>
+                        <Form.Group>
+                            <Form.Label>Выбери чекбокс</Form.Label>
+                            <Form.Select
+                                onChange={handleCheckboxSelect}
+                            >
+                                {checkboxesList()}
+                            </Form.Select>
+                            <Form.Label>Введи название чекбокса</Form.Label>
+                            <Form.Control
+                                onChange={checkboxLabelInput}
+                                value={checkboxLabel}
+                                placeholder={'Введите название...'}
+                            />
+                            <Form.Label>Укажи стоимость чекбоса</Form.Label>
+                            <Form.Control
+                                onChange={checkboxValueInput}
+                                value={checkboxValue}
+                                placeholder={'Введите стоимость...'}
+                            />
+                        </Form.Group>
+                        <div id={'productCheckboxesEditDeleteCancelButtonsContainer'}>
+                            <Button
+                                className={'nextPageButton'}
+                                onClick={() => deleteCheckbox()}
+                            >
+                                Удалить чекбокс
+                            </Button>
+                            {deletedCheckboxesSliceSelector.length > 0 ?
+                                <Button
+                                    className={'nextPageButton'}
+                                    onClick={() => cancelCheckboxDeletion()}
+                                >
+                                    Отменить
+                                </Button>
+                                :
+                                null
+                            }
+                        </div>
+                        <Form.Group>
+                            <Form.Label>Добавь подсказку</Form.Label>
+                            <Form.Control
+                                onChange={tooltipTextInput}
+                                value={tooltipText}
+                                placeholder={'Введите текст...'}
+                            />
+                        </Form.Group>
+                        {
+                            selectedCheckbox(checkboxEdit)
+                        }
+                    </Form>
+                </div>
             </div>
             <div id={'productCheckboxesEditPreviewMainContainer'}>
                 <div id={'productEditCurrentPreviewContainer'}>
-                    <h2>Current checkboxes</h2>
+                    <h2>Текущий вид чекбоксов</h2>
                     <div id={'productCheckboxesEditCurrentCheckboxesContainer'}>
                         {checkboxesCurrent}
                     </div>
                 </div>
                 <div id={'productCheckboxesEditNewPreviewContainer'}>
-                    <h2>New checkboxes</h2>
+                    <h2>Новые чекбоксы</h2>
                     <div id={'productCheckboxesEditNewCheckboxesContainer'}>
                         {checkboxesEdit}
                     </div>

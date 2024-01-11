@@ -186,8 +186,6 @@ const NewProductCheckboxes = () => {
                                     }
                                 </div>
                             </div>
-                            <div className={'contentSliderCheckboxesInfo'}>
-                            </div>
                         </div>
                     </div>
                     <div id={'newProductCheckboxesFinalPreviewContainer'}>

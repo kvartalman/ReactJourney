@@ -32,11 +32,11 @@ const PriceEdit = (props) => {
                     <div>
                         <Form>
                             <Form.Group>
-                                <Form.Label>Enter new price</Form.Label>
+                                <Form.Label>Укажи новую цену</Form.Label>
                                 <Form.Control
                                     value={enterPrice}
                                     onChange={enterPriceInput}
-                                    placeholder="Enter min value"
+                                    placeholder="Введите цену..."
                                 />
                             </Form.Group>
                         </Form>
