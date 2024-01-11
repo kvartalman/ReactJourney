@@ -166,7 +166,8 @@ const ContentSliderEditor = (props) => {
                             <button
                                 className={'contentSliderEditorDeleteRangeButton'}
                                 onClick={() => deleteRangeHandler(index)}
-                            >Удалить</button>
+                            >Удалить
+                            </button>
                         </td>
                     </tr>
                 ))
@@ -219,32 +220,32 @@ const ContentSliderEditor = (props) => {
                                 onChange={enterRightThumbValueInput}
                                 placeholder="Введите значение правого ползунка..."
                             />
-                                <div id={'contentSliderEditorLabelTooltipContainer'}>
-                                    <Form.Label>Укажи шаг смещения ползунка при нажатии на полоску слайдера</Form.Label>
-                                    <OverlayTrigger
-                                        key={'top'}
-                                        placement={'right'}
-                                        overlay={
-                                            <Tooltip
-                                                id={`tooltip-${'top'}`}
-                                            >
-                                                Если клиент нажмёт на полоску слайдера, а не воспользуется правым
-                                                или
-                                                левым ползунком, произойдет смещение левого или правого ползунка (в
-                                                зависимости от того, в какой половине полоски слайдера был сделан
-                                                клик)
-                                                в
-                                                сторону, куда был сделан клик. Данная настройка отвечает за шаг, на
-                                                который
-                                                сместится ползунок слайдера при таком клике. Если это не имеет
-                                                значения,
-                                                лучше оставить значение 1.
-                                            </Tooltip>
-                                        }
-                                    >
-                                        <span className={'tooltipButton'}>?</span>
-                                    </OverlayTrigger>
-                                </div>
+                            <div id={'contentSliderEditorLabelTooltipContainer'}>
+                                <Form.Label>Укажи шаг смещения ползунка при нажатии на полоску слайдера</Form.Label>
+                                <OverlayTrigger
+                                    key={'top'}
+                                    placement={'right'}
+                                    overlay={
+                                        <Tooltip
+                                            id={`tooltip-${'top'}`}
+                                        >
+                                            Если клиент нажмёт на полоску слайдера, а не воспользуется правым
+                                            или
+                                            левым ползунком, произойдет смещение левого или правого ползунка (в
+                                            зависимости от того, в какой половине полоски слайдера был сделан
+                                            клик)
+                                            в
+                                            сторону, куда был сделан клик. Данная настройка отвечает за шаг, на
+                                            который
+                                            сместится ползунок слайдера при таком клике. Если это не имеет
+                                            значения,
+                                            лучше оставить значение 1.
+                                        </Tooltip>
+                                    }
+                                >
+                                    <span className={'tooltipButton'}>?</span>
+                                </OverlayTrigger>
+                            </div>
                             <Form.Control
                                 value={enterStep}
                                 onChange={enterStepInput}
@@ -300,74 +301,76 @@ const ContentSliderEditor = (props) => {
                 </div>
             </div>
             <div id={'contentSliderEditorSlidersContainer'}>
-                <div id={'contentSliderEditorCurrentSliderContainer'}>
-                    <h2>Текущий слайдер</h2>
-                    <div className={'sliderValuesContainer'}>
-                        <div className={'sliderMinValueContainer'}>
-                            {currentMinValue}
+                <div>
+                    <div id={'contentSliderEditorCurrentSliderContainer'}>
+                        <h2>Текущий слайдер</h2>
+                        <div className={'sliderValuesContainer'}>
+                            <div className={'sliderMinValueContainer'}>
+                                {currentMinValue}
+                            </div>
+                            <div className={'sliderMaxValueContainer'}>
+                                {currentMaxValue}
+                            </div>
                         </div>
-                        <div className={'sliderMaxValueContainer'}>
-                            {currentMaxValue}
-                        </div>
-                    </div>
-                    <div>
-                        <MultiRangeSlider
-                            min={props.product.sliderSettings.min}
-                            max={props.product.sliderSettings.max}
-                            step={props.product.sliderSettings.step}
-                            minValue={props.product.sliderSettings.minValue}
-                            maxValue={props.product.sliderSettings.maxValue}
-                            ruler={false}
-                            onInput={(e) => {
-                                handleChange(e, true)
-                            }}
-                        />
-                        {currentFinalPrice}
-                    </div>
-                </div>
-                <div id={'contentSliderEditorNewSliderContainer'}>
-                    <h2>Новый слайдер</h2>
-                    <div className={'sliderValuesContainer'}>
-                        <div className={'sliderMinValueContainer'}>
-                            {editorMinValue}
-                        </div>
-                        <div className={'sliderMaxValueContainer'}>
-                            {editorMaxValue}
+                        <div>
+                            <MultiRangeSlider
+                                min={props.product.sliderSettings.min}
+                                max={props.product.sliderSettings.max}
+                                step={props.product.sliderSettings.step}
+                                minValue={props.product.sliderSettings.minValue}
+                                maxValue={props.product.sliderSettings.maxValue}
+                                ruler={false}
+                                onInput={(e) => {
+                                    handleChange(e, true)
+                                }}
+                            />
+                            {currentFinalPrice}
                         </div>
                     </div>
-                    <div>
-                        <MultiRangeSlider
-                            min={enterMinValue ? enterMinValue
-                                :
-                                props.product.sliderSettings.min}
-                            max={enterMaxValue ? enterMaxValue
-                                :
-                                props.product.sliderSettings.max}
-                            step={enterStep ? enterStep
-                                :
-                                props.product.sliderSettings.step}
-                            minValue={
-                                enterLeftThumbValue && (
-                                    enterRightThumbValue ?
-                                        enterRightThumbValue > enterLeftThumbValue
-                                        : enterLeftThumbValue < editorMaxValue
-                                )
-                                    ?
-                                    enterLeftThumbValue :
-                                    enterMinValue || props.product.sliderSettings.min
-                            }
-                            maxValue={
-                                enterRightThumbValue && (enterRightThumbValue > editorMinValue && enterRightThumbValue > enterLeftThumbValue)
-                                    ?
-                                    enterRightThumbValue :
-                                    enterMaxValue || props.product.sliderSettings.max
-                            }
-                            ruler={false}
-                            onInput={(e) => {
-                                handleChange(e, false)
-                            }}
-                        />
-                        {editorFinalPrice}
+                    <div id={'contentSliderEditorNewSliderContainer'}>
+                        <h2>Новый слайдер</h2>
+                        <div className={'sliderValuesContainer'}>
+                            <div className={'sliderMinValueContainer'}>
+                                {editorMinValue}
+                            </div>
+                            <div className={'sliderMaxValueContainer'}>
+                                {editorMaxValue}
+                            </div>
+                        </div>
+                        <div>
+                            <MultiRangeSlider
+                                min={enterMinValue ? enterMinValue
+                                    :
+                                    props.product.sliderSettings.min}
+                                max={enterMaxValue ? enterMaxValue
+                                    :
+                                    props.product.sliderSettings.max}
+                                step={enterStep ? enterStep
+                                    :
+                                    props.product.sliderSettings.step}
+                                minValue={
+                                    enterLeftThumbValue && (
+                                        enterRightThumbValue ?
+                                            enterRightThumbValue > enterLeftThumbValue
+                                            : enterLeftThumbValue < editorMaxValue
+                                    )
+                                        ?
+                                        enterLeftThumbValue :
+                                        enterMinValue || props.product.sliderSettings.min
+                                }
+                                maxValue={
+                                    enterRightThumbValue && (enterRightThumbValue > editorMinValue && enterRightThumbValue > enterLeftThumbValue)
+                                        ?
+                                        enterRightThumbValue :
+                                        enterMaxValue || props.product.sliderSettings.max
+                                }
+                                ruler={false}
+                                onInput={(e) => {
+                                    handleChange(e, false)
+                                }}
+                            />
+                            {editorFinalPrice}
+                        </div>
                     </div>
                 </div>
             </div>

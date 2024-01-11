@@ -162,8 +162,15 @@
 #contentSliderEditorSlidersContainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width: 60%;
+}
+
+#contentSliderEditorSlidersContainer > div {
+    position: sticky;
+    top: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     gap: 1em;
 }
 
