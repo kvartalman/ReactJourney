@@ -88,7 +88,7 @@ const HomepageCardView = (props) => {
                     {
                         categoriesSelector.map((categoryElem, i) => {
 
-                            if (props.gamePagesSelector[props.game].fullName === categoryElem.name) {
+                            if (props.gamePagesSelector.fullName === categoryElem.name) {
                                 return (<Category
                                     bg={categoriesSelector[i].bg}
                                     name={categoriesSelector[i].name}

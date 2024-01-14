@@ -24,19 +24,26 @@ const GamePageCardsEdit = (props) => {
     const [currentCardTitle, setCurrentCardTitle] = useState(null);
     const [currentCardPrice, setCurrentCardPrice] = useState(null);
     const [firstRender, setFirstRender] = useState(true);
+    const [enterCardsTitle, setEnterCardsTitle] = useState('');
 
     const cardSelect = useRef(null);
     // We use useCallback here because this function makes the dependencies in useEffect Hook.
     // To make this component work more effectively, handleCardSelect has useCallback wrap.
 
     const handleCardSelect = useCallback(() => {
-        for (let i = 0; i < props.gamePagesSelector[props.game].offerCardsData.length; i++) {
-            if (props.gamePagesSelector[props.game].offerCardsData[i].title === cardSelect.current.value) {
-                setCurrentCardTitle(props.gamePagesSelector[props.game].offerCardsData[i].title)
-                setCurrentCardPrice(props.gamePagesSelector[props.game].offerCardsData[i].text)
+        for (let i = 0; i < props.gamePagesSelector.offerCardsData.length; i++) {
+            if (props.gamePagesSelector.offerCardsData[i].title === cardSelect.current.value) {
+                setCurrentCardTitle(props.gamePagesSelector.offerCardsData[i].title)
+                setCurrentCardPrice(props.gamePagesSelector.offerCardsData[i].text)
             }
         }
     })
+
+    const enterCardsTitleInput = (e) => {
+        setEnterCardsTitle(e.target.value);
+        props.setCardsTitle(e.target.value);
+    };
+
 
     const enterCardNameInput = (e) => {
         setEnterCardName(e.target.value);
@@ -76,7 +83,7 @@ const GamePageCardsEdit = (props) => {
     useEffect(() => {
         handleCardSelect();
         if (firstRender) {
-            dispatch(fillGamePageCardsEditor(props.gamePagesSelector[props.game].offerCardsData));
+            dispatch(fillGamePageCardsEditor(props.gamePagesSelector.offerCardsData));
             setFirstRender(false);
         }
     }, [dispatch, firstRender, handleCardSelect, props.game, props.gamePagesSelector])
@@ -158,6 +165,19 @@ const GamePageCardsEdit = (props) => {
             >
                 Next
             </Button>
+            <div>
+                <h3>Измени заголовок для блока с карточками</h3>
+                <Form.Label>Cards title form</Form.Label>
+                <Form.Control
+                    value={enterCardsTitle}
+                    onChange={enterCardsTitleInput}
+                    placeholder='Введите заголовок для карточек...'
+                />
+            </div>
+            <div>
+                <h2>{props.gamePagesSelector.cardsTitle}</h2>
+                <h3 style={{overflowWrap: 'break-word'}}>{enterCardsTitle ? enterCardsTitle : 'Новый заголовок блока карточек'}</h3>
+            </div>
         </Container>
     );
 }

@@ -1,40 +1,31 @@
 import React, {useState} from "react";
 import {Tab, Tabs} from "react-bootstrap";
-import ChooseGameName from "./ChooseGameName/ChooseGameName";
 import HomepageCardView from "./HomepageCardView/HomepageCardView";
 import {useSelector} from "react-redux";
 import GamePageTextAndTitleEdit from "./GamePageTextAndTitleEdit/GamePageTextAndTitleEdit";
 import GamePageCardsEdit from "./GamePageCardsEdit/GamePageCardsEdit";
 import GamePagePreview from "./GamePagePreview/GamePagePreview";
+import './GamePagesEditor.css';
 
-const GamePagesEditor = () => {
+const GamePagesEditor = (props) => {
 
-    const gamePagesSelector = useSelector(state => state.gameOfferPages.pagesData)
+    const gamePagesSelector = useSelector(state => state.gameOfferPages.pagesData[props.game])
 
-    const [game, setGame] = useState(Object.keys(gamePagesSelector)[0]);
-    const [key, setKey] = useState('game');
+    const [key, setKey] = useState('text');
     const [mainTitle, setMainTitle] = useState('');
     const [cardsTitle, setCardsTitle] = useState('');
     const [text, setText] = useState('');
 
     return (
+        <div id={'gamePagesEditorMainContainer'}>
             <Tabs
                 id="controlled-tab-example"
                 activeKey={key}
                 onSelect={(k) => setKey(k)}
                 className="mb-3"
             >
-                <Tab eventKey={'game'} title={'Choose game'}>
-                    <ChooseGameName
-                        game={game}
-                        setGame={setGame}
-                        setKey={setKey}
-                        gamePagesSelector={gamePagesSelector}
-                    />
-                </Tab>
-                <Tab eventKey={'text'} title={'Text and titles'}>
+                <Tab eventKey={'text'} title={'Заголовок и текст'}>
                     <GamePageTextAndTitleEdit
-                        game={game}
                         setKey={setKey}
                         gamePagesSelector={gamePagesSelector}
                         setMainTitle={setMainTitle}
@@ -42,24 +33,21 @@ const GamePagesEditor = () => {
                         setText={setText}
                     />
                 </Tab>
-                <Tab eventKey={'cards'} title={'Cards'}>
+                <Tab eventKey={'cards'} title={'Карточки горячих предложений'}>
                     <GamePageCardsEdit
-                        key={game}
-                        game={game}
+                        key={props.game}
                         setKey={setKey}
                         gamePagesSelector={gamePagesSelector}
                     />
                 </Tab>
-                <Tab eventKey={'category'} title={'Category card view'}>
+                <Tab eventKey={'category'} title={'Карточка блока "Категории"'}>
                     <HomepageCardView
-                        game={game}
                         setKey={setKey}
                         gamePagesSelector={gamePagesSelector}
                     />
                 </Tab>
-                <Tab eventKey={'preview'} title={'Preview'}>
+                <Tab eventKey={'preview'} title={'Превью'}>
                     <GamePagePreview
-                        game={game}
                         mainTitle={mainTitle}
                         cardsTitle={cardsTitle}
                         text={text}
@@ -67,6 +55,7 @@ const GamePagesEditor = () => {
                     />
                 </Tab>
             </Tabs>
+        </div>
     );
 }
 

@@ -1,30 +1,31 @@
-#newProductSettingsMainContainer {
+#gamePagesEditorMainContainer {
     display: flex;
     flex-direction: column;
-    border: 2px solid #0e232f;
+    border: 4px solid #0e232f;
     border-radius: 0.5%;
     background-color: #ffffff;
 }
 
-.newProductsSettingsTabs {
+#gamePagesEditorMainContainer > .nav-tabs {
     display: flex;
     flex-wrap: nowrap;
     background-color: #0e232f;
     border: none;
-    overflow: hidden;
+    overflow: hidden !important;
     margin-bottom: 0 !important;
 }
 
-.newProductsSettingsTabs > .nav-item > button {
+
+#gamePagesEditorMainContainer .nav-tabs > li > button {
     background-color: #0e232f;
-    color:#c3dae8 !important;
+    color:#c3dae8;
     font-weight: bold;
     border: none;
     border-radius: 0;
     margin-left: 1em;
 }
 
-.newProductsSettingsTabs > li > .active {
-    background-color: #37647a !important;
+#gamePagesEditorMainContainer .nav-tabs > li > .active {
+    background-color: #37647a;
     text-shadow: #0e232f 1px 0 10px;
 }

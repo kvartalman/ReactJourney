@@ -18,7 +18,7 @@ const GamePagePreview = (props) => {
         <GameOfferCard title={card.title} key={card.id} text={card.text}/>
     ))
 
-    let panelButtonsArr = props.gamePagesSelector[props.game].panelButton.map(button => (
+    let panelButtonsArr = props.gamePagesSelector.panelButton.map(button => (
         <OfferPanelButton link={button.link} key={button.id} name={button.name}/>
     ))
 
@@ -28,10 +28,10 @@ const GamePagePreview = (props) => {
             <Row className={'gameOfferRow'}>
                 <div className={'canvasButtonsBlock'}>
                     <Canvas
-                        buttonName={props.gamePagesSelector[props.game].canvasCtgData.buttonName}
-                        placement={props.gamePagesSelector[props.game].canvasCtgData.placement}
-                        title={props.gamePagesSelector[props.game].canvasCtgData.title}
-                        canvasButtons={props.gamePagesSelector[props.game].panelButton}
+                        buttonName={props.gamePagesSelector.canvasCtgData.buttonName}
+                        placement={props.gamePagesSelector.canvasCtgData.placement}
+                        title={props.gamePagesSelector.canvasCtgData.title}
+                        canvasButtons={props.gamePagesSelector.panelButton}
                     />
                     <Canvas
                         buttonName={canvasMenuData.buttonName}
@@ -42,10 +42,10 @@ const GamePagePreview = (props) => {
                 </div>
                 <Col md={3} className={'gameOfferPanelCol'}>
                     <div className={'breadCrumb'}>
-                        <BreadCrumb
-                            linkNames={props.gamePagesSelector[props.game].breadCrumbs.linkNames}
-                            activeLinkName={props.gamePagesSelector[props.game].breadCrumbs.activeLinkName}
-                        />
+                        {/*<BreadCrumb*/}
+                        {/*    linkNames={props.gamePagesSelector[props.game].breadCrumbs.linkNames}*/}
+                        {/*    activeLinkName={props.gamePagesSelector[props.game].breadCrumbs.activeLinkName}*/}
+                        {/*/>*/}
                     </div>
                     <div className={'panelCol'}>
                         {panelButtonsArr}
@@ -60,7 +60,7 @@ const GamePagePreview = (props) => {
                                         props.mainTitle ?
                                             props.mainTitle
                                             :
-                                            props.gamePagesSelector[props.game].mainTitle
+                                            props.gamePagesSelector.mainTitle
                                     }
                                 </h1>
                             </Row>
@@ -70,7 +70,7 @@ const GamePagePreview = (props) => {
                                         props.text ?
                                             props.text
                                             :
-                                            props.gamePagesSelector[props.game].text
+                                            props.gamePagesSelector.text
                                     }
                                 </p>
                             </Row>
@@ -81,7 +81,7 @@ const GamePagePreview = (props) => {
                                             props.cardsTitle ?
                                                 props.cardsTitle
                                                 :
-                                                props.gamePagesSelector[props.game].cardsTitle
+                                                props.gamePagesSelector.cardsTitle
                                         }
                                     </h1>
                                 </div>

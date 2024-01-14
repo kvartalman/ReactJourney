@@ -1,5 +1,68 @@
-#gamePageNewTitleAndTextMainContainer {
+#gamePageEditorTextMainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin: 1em;
+}
+
+#gamePageEditorTextSettingsContainer {
     display: flex;
     flex-direction: column;
+    gap: 1em;
+    width: 40%;
+}
+
+#gamePageEditorTextSettingsContainer > div {
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+#gamePageEditorTextSettingsContainer h2 {
+    font: 900 30px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#gamePageEditorTextSettingsContainer h3 {
+    font: 900 20px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#gamePageEditorTextSettingsContainer label {
+    display: flex;
+    justify-content: center;
+}
+
+#gamePageEditorTextPreviewMainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 60%;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+#gamePageEditorTextPreviewMainContainer > div {
+    border: 2px solid #0e232f;
+    background-color: #ffffff;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+#gamePageEditorTextPreviewMainContainer h2 {
+    font: 900 40px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#gamePageEditorTextPreviewMainContainer h3 {
+    font: 900 30px "Roboto", sans-serif;
+    color: #0e232f;
     text-align: center;
 }

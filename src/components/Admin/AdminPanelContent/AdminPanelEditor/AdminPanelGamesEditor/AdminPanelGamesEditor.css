@@ -1,0 +1,22 @@
+#adminPanelGamesEditorMainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin: 1em;
+}
+
+#adminPanelGamesEditorGamesListContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.1em;
+    margin-left: 2em;
+}
+
+#adminPanelGamesEditorGamesListContainer > div {
+    width: 150px;
+    height: 150px;
+}
+
+.adminPanelGamesEditorModal {
+    --bs-modal-width: 85%;
+}
