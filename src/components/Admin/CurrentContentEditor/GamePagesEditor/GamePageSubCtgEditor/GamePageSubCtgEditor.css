@@ -81,7 +81,7 @@
     text-align: center;
 }
 
-#gamePageSubCtgEditorAddCancelContainer {
+#gamePageSubCtgEditorAddCancelContainer, #gamePageSubCtgEditorDeleteCancelContainer {
     display: flex;
     justify-content: center;
     gap: 0.5em;

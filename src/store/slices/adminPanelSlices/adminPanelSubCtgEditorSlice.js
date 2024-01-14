@@ -4,7 +4,8 @@ const adminPanelSubCtgEditorSlice = createSlice({
     name: 'adminPanelSubCtgEditor',
     initialState: {
         subCtgEditorData: [],
-        subCtgEditorAddedSubCtgData: []
+        subCtgEditorAddedSubCtgData: [],
+        subCtgEditorDeletedSubCtgData: []
     },
     reducers: {
         fillSubCtgEditorData: (state, action) => {
@@ -49,7 +50,25 @@ const adminPanelSubCtgEditorSlice = createSlice({
                     }
                 },
                 delete: (actionData) => {
+
+                    let removedSubCtg;
+
+                    for (let i = 0; i < state.subCtgEditorData.length; i++) {
+                        if (state.subCtgEditorData[i].old === actionData.name) {
+                            removedSubCtg = {
+                                name: actionData.name,
+                                index: i
+                            }
+                            break;
+                        }
+                    }
                     state.subCtgEditorData = state.subCtgEditorData.filter(subCtg => subCtg.old !== actionData.name);
+                    state.subCtgEditorDeletedSubCtgData.push(removedSubCtg);
+                },
+                cancel: (actionData) => {
+                    const removedSubCtg = state.subCtgEditorDeletedSubCtgData.pop();
+
+                    state.subCtgEditorData.splice(removedSubCtg.index, 0, {old: removedSubCtg.name, new: ''});
                 },
                 deleteAdded: (actionData) => {
                     if (state.subCtgEditorAddedSubCtgData.length > 0) {

@@ -15,6 +15,7 @@ const GamePageSubCtgEditor = (props) => {
     const currentSubCtgSelector = useSelector(state => state.gameProducts[props.game].subCategories);
     const newSubCtgSelector = useSelector(state => state.adminPanelSubCtgEditor.subCtgEditorData);
     const addedSubCtgSelector = useSelector(state => state.adminPanelSubCtgEditor.subCtgEditorAddedSubCtgData);
+    const deletedSubCtgSelector = useSelector(state => state.adminPanelSubCtgEditor.subCtgEditorDeletedSubCtgData)
 
     const [subCtg, setSubCtg] = useState('');
     const [subCtgIndex, setSubCtgIndex] = useState(null);
@@ -53,6 +54,14 @@ const GamePageSubCtgEditor = (props) => {
             {
                 name: subCtg,
                 type: 'delete'
+            }
+        ))
+    }
+
+    const cancelSubCtgDeletion = () => {
+        dispatch(editSubCtgEditorData(
+            {
+                type: 'cancel'
             }
         ))
     }
@@ -115,12 +124,29 @@ const GamePageSubCtgEditor = (props) => {
                         <div className={'subCtgEditorSubCtgContainer'}>
                             {subCtg ? subCtg : 'Не назначено'}
                         </div>
-                        <button
-                            onClick={() => handleSubCtgDeleting()}
-                            className={'nextPageButton'}
-                        >
-                            Удалить
-                        </button>
+                        <div id={'gamePageSubCtgEditorDeleteCancelContainer'}>
+                            {subCtg ?
+                                <button
+                                    onClick={() => handleSubCtgDeleting()}
+                                    className={'nextPageButton'}
+                                >
+                                    Удалить
+                                </button>
+                                :
+                                null
+                            }
+                            {
+                                deletedSubCtgSelector.length > 0 ?
+                                    <button
+                                        onClick={() => cancelSubCtgDeletion()}
+                                        className={'nextPageButton'}
+                                    >
+                                        Отменить
+                                    </button>
+                                    :
+                                    null
+                            }
+                        </div>
                     </div>
                     <h3>Измени название подкатегории</h3>
                     <Form>
@@ -150,12 +176,12 @@ const GamePageSubCtgEditor = (props) => {
                             Добавить
                         </button>
                         {addedSubCtgSelector.length > 0 ?
-                        <button
-                            onClick={() => handleAddedSubCtgDeleting()}
-                            className={'nextPageButton'}
-                        >
-                            Отменить
-                        </button>
+                            <button
+                                onClick={() => handleAddedSubCtgDeleting()}
+                                className={'nextPageButton'}
+                            >
+                                Отменить
+                            </button>
                             :
                             null
                         }
