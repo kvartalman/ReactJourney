@@ -3,7 +3,8 @@ import {createSlice} from "@reduxjs/toolkit";
 const adminPanelSubCtgEditorSlice = createSlice({
     name: 'adminPanelSubCtgEditor',
     initialState: {
-        subCtgEditorData: []
+        subCtgEditorData: [],
+        subCtgEditorAddedSubCtgData: []
     },
     reducers: {
         fillSubCtgEditorData: (state, action) => {
@@ -22,25 +23,43 @@ const adminPanelSubCtgEditorSlice = createSlice({
         editSubCtgEditorData: (state, action) => {
 
             const actionType = {
-                add: () => {
-
+                add: (actionData) => {
+                    state.subCtgEditorData.push(
+                        {
+                            old: action.payload.name,
+                            new: ''
+                        }
+                    );
+                    state.subCtgEditorAddedSubCtgData.push(
+                        {
+                            old: action.payload.name,
+                            new: ''
+                        }
+                    );
                 },
-                edit: () => {
+                edit: (actionData) => {
                     for (let i = 0; i < state.subCtgEditorData.length; i++) {
-                        if (state.subCtgEditorData[i].old === action.payload.name) {
+                        if (state.subCtgEditorData[i].old === actionData.name) {
                             state.subCtgEditorData.splice(i, 1, {
-                                old: action.payload.name,
-                                new: action.payload.text
+                                old: actionData.name,
+                                new: actionData.text
                             })
+                            break;
                         }
                     }
                 },
-                delete: () => {
-
+                delete: (actionData) => {
+                    state.subCtgEditorData = state.subCtgEditorData.filter(subCtg => subCtg.old !== actionData.name);
+                },
+                deleteAdded: (actionData) => {
+                    if (state.subCtgEditorAddedSubCtgData.length > 0) {
+                        state.subCtgEditorData.pop();
+                        state.subCtgEditorAddedSubCtgData.pop();
+                    }
                 }
             }
 
-            actionType[action.payload.type]();
+            actionType[action.payload.type](action.payload);
 
         }
     }
