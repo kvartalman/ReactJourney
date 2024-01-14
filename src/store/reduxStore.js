@@ -10,6 +10,8 @@ import productPageSlice from "./slices/productPageSlice";
 import adminPanelNewContentSlice from "./slices/adminPanelSlices/adminPanelNewContentSlice";
 import adminPanelNewProductSlice from "./slices/adminPanelSlices/adminPanelNewProductSlice";
 import gameProductsSlice from "./slices/gameProductsSlice";
+import adminPanelNewGameSlice from "./slices/adminPanelSlices/adminPanelNewGameSlice";
+import adminPanelSubCtgEditorSlice from "./slices/adminPanelSlices/adminPanelSubCtgEditorSlice";
 
 let reducersBatch = combineReducers({
     homePage: homePageSlice,
@@ -17,6 +19,8 @@ let reducersBatch = combineReducers({
     adminPanel: adminPanelSlice,
     adminPanelNewContent: adminPanelNewContentSlice,
     adminPanelNewProduct: adminPanelNewProductSlice,
+    adminPanelNewGame: adminPanelNewGameSlice,
+    adminPanelSubCtgEditor: adminPanelSubCtgEditorSlice,
     navbar: navbarSlice,
     footer: footerSlice,
     categories: categoriesSlice,

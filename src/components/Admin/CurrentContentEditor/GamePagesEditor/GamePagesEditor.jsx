@@ -6,6 +6,7 @@ import GamePageTextAndTitleEdit from "./GamePageTextAndTitleEdit/GamePageTextAnd
 import GamePageCardsEdit from "./GamePageCardsEdit/GamePageCardsEdit";
 import GamePagePreview from "./GamePagePreview/GamePagePreview";
 import './GamePagesEditor.css';
+import GamePageSubCtgEditor from "./GamePageSubCtgEditor/GamePageSubCtgEditor";
 
 const GamePagesEditor = (props) => {
 
@@ -31,6 +32,11 @@ const GamePagesEditor = (props) => {
                         setMainTitle={setMainTitle}
                         setCardsTitle={setCardsTitle}
                         setText={setText}
+                    />
+                </Tab>
+                <Tab eventKey={'subCtg'} title={'Подкатегории'}>
+                    <GamePageSubCtgEditor
+                        game={props.game}
                     />
                 </Tab>
                 <Tab eventKey={'cards'} title={'Карточки горячих предложений'}>

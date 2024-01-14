@@ -1,0 +1,115 @@
+#subCtgEditorMainContainer {
+    display: flex;
+    margin: 1em;
+    gap: 1em;
+}
+
+#subCtgEditorMainContainer h3 {
+    font: 900 25px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#subCtgEditorSettingsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 40%;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+#subCtgEditorSettingsContainer h2 {
+    font: 900 30px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#subCtgEditorSettingsContainer p {
+    font: 900 15px "Roboto", sans-serif;
+    color: #0e232f;
+}
+
+#subCtgEditorChosenSubCtgContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1em;
+}
+
+#subCtgEditorPreviewMainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 60%;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+#subCtgEditorPreviewMainContainer h2 {
+    font: 900 30px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#subCtgEditorCurrentPreviewContainer, #subCtgEditorNewPreviewContainer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.1em;
+    border: 2px solid #0e232f;
+    background-color: #ffffff;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+#subCtgEditorCurrentPreviewContainer > div {
+    cursor: pointer;
+}
+
+.subCtgEditorSubCtgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 120px;
+    height: 120px;
+    border: 2px solid #0e232f;
+    border-radius: 5%;
+    background-color: #658a9a;
+    color: #0e232f;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.subCtgEditorSubCtgContainer p {
+    margin: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
+}
+
+.subCtgEditorSubCtgActiveContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 120px;
+    height: 120px;
+    border: 2px solid #0e232f;
+    border-radius: 5%;
+    background-color: #0e232f;
+    color: #658a9a;
+}
+
+.subCtgEditorSubCtgActiveContainer p {
+    margin: auto;
+    word-wrap: break-word;
+    width: 100%;
+}
