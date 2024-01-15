@@ -59,16 +59,20 @@ const adminPanelSubCtgEditorSlice = createSlice({
                                 name: actionData.name,
                                 index: i
                             }
+                            state.subCtgEditorData = state.subCtgEditorData.filter(subCtg => subCtg.old !== actionData.name);
+                            state.subCtgEditorDeletedSubCtgData.push(removedSubCtg);
                             break;
                         }
                     }
-                    state.subCtgEditorData = state.subCtgEditorData.filter(subCtg => subCtg.old !== actionData.name);
-                    state.subCtgEditorDeletedSubCtgData.push(removedSubCtg);
+
                 },
                 cancel: (actionData) => {
-                    const removedSubCtg = state.subCtgEditorDeletedSubCtgData.pop();
+                    let removedSubCtg;
 
-                    state.subCtgEditorData.splice(removedSubCtg.index, 0, {old: removedSubCtg.name, new: ''});
+                    if (state.subCtgEditorDeletedSubCtgData.length > 0) {
+                        removedSubCtg = state.subCtgEditorDeletedSubCtgData.pop();
+                        state.subCtgEditorData.splice(removedSubCtg.index, 0, {old: removedSubCtg.name, new: ''});
+                    }
                 },
                 deleteAdded: (actionData) => {
                     if (state.subCtgEditorAddedSubCtgData.length > 0) {

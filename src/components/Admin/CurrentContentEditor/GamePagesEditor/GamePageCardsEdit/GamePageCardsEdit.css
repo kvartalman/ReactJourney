@@ -1,9 +1,60 @@
-#gamePageCardsEditorDeleteCancelButtons {
+#gamePageCardsEditMainContainer {
     display: flex;
-    flex-direction: column;
-    width: 15%;
+    justify-content: center;
+    gap: 1em;
+    margin: 1em;
 }
 
-#gamePageCardsEditorDeleteCancelButtons button {
-    margin: 0.2em;
+#gamePageCardsEditMainContainer h2 {
+    font: 900 35px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#gamePageCardsEditMainContainer h3 {
+    font: 900 25px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#gamePageCardsEditSettingsMainContainer, #gamePageCardsEditPreviewMainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+}
+
+
+
+#gamePageCardsEditSettingsMainContainer {
+    width: 40%;
+}
+
+#gamePageCardsEditPreviewMainContainer {
+    width: 60%;
+}
+
+#gamePageCardsEditHeaderSettingsContainer, #gamePageCardsEditCardsSettingsContainer,
+#gamePageCardsEditHeaderPreviewContainer, #gamePageCardsEditCardsPreviewContainer {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+#gamePageCardsEditHeaderSettingsContainer {
+    height: 35%;
+}
+
+#gamePageCardsEditCardsSettingsContainer {
+    height: 65%;
+}
+
+#gamePageCardsEditCurrentHeaderPreviewContainer, #gamePageCardsEditNewHeaderPreviewContainer {
+    border: 2px solid #0e232f;
+    background-color: #ffffff;
+    padding: 1em;
+    border-radius: 2%;
 }

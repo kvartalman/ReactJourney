@@ -5,7 +5,7 @@ import {
     editSubCtgEditorData,
     editSubCtgEditorDataNames,
     fillSubCtgEditorData
-} from "../../../../../store/slices/adminPanelSlices/adminPanelSubCtgEditorSlice";
+} from "../../../../../store/slices/adminPanelSlices/adminPanelGamesEditor/adminPanelSubCtgEditorSlice";
 import Form from "react-bootstrap/Form";
 
 const GamePageSubCtgEditor = (props) => {

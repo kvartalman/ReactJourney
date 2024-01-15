@@ -11,7 +11,9 @@ import adminPanelNewContentSlice from "./slices/adminPanelSlices/adminPanelNewCo
 import adminPanelNewProductSlice from "./slices/adminPanelSlices/adminPanelNewProductSlice";
 import gameProductsSlice from "./slices/gameProductsSlice";
 import adminPanelNewGameSlice from "./slices/adminPanelSlices/adminPanelNewGameSlice";
-import adminPanelSubCtgEditorSlice from "./slices/adminPanelSlices/adminPanelSubCtgEditorSlice";
+import adminPanelSubCtgEditorSlice from "./slices/adminPanelSlices/adminPanelGamesEditor/adminPanelSubCtgEditorSlice";
+import adminPanelGamePageCardsEditorSlice
+    from "./slices/adminPanelSlices/adminPanelGamesEditor/adminPanelGamePageCardsEditorSlice";
 
 let reducersBatch = combineReducers({
     homePage: homePageSlice,
@@ -21,6 +23,7 @@ let reducersBatch = combineReducers({
     adminPanelNewProduct: adminPanelNewProductSlice,
     adminPanelNewGame: adminPanelNewGameSlice,
     adminPanelSubCtgEditor: adminPanelSubCtgEditorSlice,
+    gamePageCardsEditor: adminPanelGamePageCardsEditorSlice,
     navbar: navbarSlice,
     footer: footerSlice,
     categories: categoriesSlice,

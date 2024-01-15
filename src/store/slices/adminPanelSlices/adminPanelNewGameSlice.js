@@ -10,4 +10,4 @@ const adminPanelNewGameSlice = createSlice({
     }
 })
 
-export default adminPanelNewGameSlice;
+export default adminPanelNewGameSlice.reducer;
