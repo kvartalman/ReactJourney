@@ -20,8 +20,8 @@ const adminPanelGamePageCardsEditorSlice = createSlice(
                         },
                         new: {
                             id: card.id,
-                            title: '',
-                            price: ''
+                            title: card.title,
+                            price: card.price
                         }
                     }
                 ));
@@ -29,34 +29,18 @@ const adminPanelGamePageCardsEditorSlice = createSlice(
             editGamePageCards: (state, action) => {
                 const actionType = {
                     add: (actionData) => {
-                        state.gamePageCardsEditorData.push(
-                            {
-                                old: {
-                                    id: state.gamePageCardsEditorData.length,
-                                    title: actionData.title,
-                                    price: actionData.price
-                                },
-                                new: {
-                                    id: state.gamePageCardsEditorData.length,
-                                    title: '',
-                                    price: ''
-                                }
+
+                        const newCard = {
+                            old: '',
+                            new: {
+                                id: state.gamePageCardsEditorData.length,
+                                title: actionData.title,
+                                price: actionData.price
                             }
-                        )
-                        state.addedGamePageCards.push(
-                            {
-                                old: {
-                                    id: state.gamePageCardsEditorData.length,
-                                    title: actionData.title,
-                                    price: actionData.price
-                                },
-                                new: {
-                                    id: state.gamePageCardsEditorData.length,
-                                    title: '',
-                                    price: ''
-                                }
-                            }
-                        )
+                        }
+
+                        state.gamePageCardsEditorData.push(newCard)
+                        state.addedGamePageCards.push(newCard)
                     },
                     edit: (actionData) => {
                         for (let i = 0; i < state.gamePageCardsEditorData.length; i++) {
@@ -77,36 +61,30 @@ const adminPanelGamePageCardsEditorSlice = createSlice(
                             }
                         }
                     },
-                    cancel: (actionData) => {
-                        let removedSubCtg;
-
-                        if (state.deletedGamePageCards.length > 0) {
-                            removedSubCtg = state.deletedGamePageCards.pop();
-                            state.gamePageCardsEditorData.splice(removedSubCtg.index, 0,
-                                {
-                                    old: removedSubCtg.old,
-                                    new: {
-                                        id: removedSubCtg.old.id,
-                                        title: '',
-                                        price: ''
-                                    }
-                                }
-                            );
-                        }
-                    },
                     delete: (actionData) => {
-                        let removedSubCtg;
+                        let removedCard;
 
                         for (let i = 0; i < state.gamePageCardsEditorData.length; i++) {
-                            if (state.gamePageCardsEditorData[i].old.id === actionData.id) {
-                                removedSubCtg = {
+                            if (state.gamePageCardsEditorData[i].new.id === actionData.id) {
+
+                                removedCard = {
                                     old: {
                                         ...state.gamePageCardsEditorData[i].old
                                     },
+                                    new: {
+                                        ...state.gamePageCardsEditorData[i].new
+                                    },
                                     index: i
                                 }
-                                state.gamePageCardsEditorData = state.gamePageCardsEditorData.filter(subCtg => subCtg.old !== actionData.name);
-                                state.deletedGamePageCards.push(removedSubCtg);
+
+                                for (let i = 0; i < state.gamePageCardsEditorData.length; i++) {
+                                    if (state.gamePageCardsEditorData[i].old.id === actionData.id) {
+                                        state.gamePageCardsEditorData[i].new = ''
+                                    }
+                                }
+
+                                state.deletedGamePageCards.push(removedCard);
+
                                 break;
                             }
                         }
@@ -115,6 +93,19 @@ const adminPanelGamePageCardsEditorSlice = createSlice(
                         if (state.addedGamePageCards.length > 0) {
                             state.gamePageCardsEditorData.pop();
                             state.addedGamePageCards.pop();
+                        }
+                    },
+                    cancel: (actionData) => {
+                        let removedCard;
+
+                        if (state.deletedGamePageCards.length > 0) {
+                            removedCard = state.deletedGamePageCards.pop();
+
+                            for (let i = 0; i < state.gamePageCardsEditorData.length; i++) {
+                                if (i === removedCard.index) {
+                                    state.gamePageCardsEditorData[i].new = removedCard.new
+                                }
+                            }
                         }
                     }
                 };

@@ -15,10 +15,14 @@ const GamePageCardsEdit = (props) => {
     const dispatch = useDispatch();
 
     const cardsSelector = useSelector(state => state.gamePageCardsEditor.gamePageCardsEditorData);
+    const deletedCardsSelector = useSelector(state => state.gamePageCardsEditor.deletedGamePageCards);
+    const addedCardsSelector = useSelector(state => state.gamePageCardsEditor.addedGamePageCards);
 
     const [enterCardName, setEnterCardName] = useState('');
     const [enterCardPrice, setEnterCardPrice] = useState('');
     const [enterCardsTitle, setEnterCardsTitle] = useState('');
+    const [newCardName, setNewCardName] = useState('');
+    const [newCardPrice, setNewCardPrice] = useState('');
     const [activeCard, setActiveCard] = useState('');
     const [activeCardIndex, setActiveCardIndex] = useState(null);
 
@@ -53,6 +57,14 @@ const GamePageCardsEdit = (props) => {
         }
     };
 
+    const newCardNameInput = (e) => {
+        setNewCardName(e.target.value);
+    }
+
+    const newCardPriceInput = (e) => {
+        setNewCardPrice(e.target.value);
+    }
+
     const handleCardChoice = (card, index) => {
         setActiveCardIndex(index);
         setActiveCard(card);
@@ -60,10 +72,51 @@ const GamePageCardsEdit = (props) => {
         setEnterCardPrice('');
     }
 
+    const handleCardDeletion = () => {
+        if (activeCard) {
+            dispatch(editGamePageCards(
+                {
+                    id: activeCard.old.id,
+                    title: activeCard.old.title,
+                    type: 'delete'
+                }
+            ))
+        }
+    }
+
+    const handleCardDeletionCancelling = () => {
+        if (activeCard) {
+            dispatch(editGamePageCards(
+                {
+                    type: 'cancel'
+                }
+            ))
+        }
+    }
+
+    const handleCardAdding = () => {
+        dispatch(editGamePageCards(
+            {
+                title: newCardName,
+                price: newCardPrice,
+                type: 'add'
+            }
+        ))
+    }
+
+    const handleAddedCardDeleting = () => {
+        dispatch(editGamePageCards(
+            {
+                type: 'deleteAdded'
+            }
+        ))
+    }
+
     const currentCardsList = () => {
         if (cardsSelector.length > 0) {
             return (
                 cardsSelector.map((card, index) => (
+                    card.old &&
                     <div className={'offerCardContainer'}>
                         <NavLink href={'/'} className={'offerLink'}>
                             <Card
@@ -88,9 +141,9 @@ const GamePageCardsEdit = (props) => {
         if (cardsSelector.length > 0) {
             return (
                 cardsSelector.map(card => (
-                    <GameOfferCard
-                        title={card.new.title ? card.new.title : card.old.title}
-                        price={card.new.price ? card.new.price : card.old.price}
+                    card.new && <GameOfferCard
+                        title={card.new.title}
+                        price={card.new.price}
                     />
                 ))
             )
@@ -121,6 +174,28 @@ const GamePageCardsEdit = (props) => {
                             title={activeCard ? activeCard.old.title : 'Не назначено'}
                             price={activeCard ? activeCard.old.price : ''}
                         />
+                        <div id={'gamePageCardsEditDeleteCancelButtonsContainer'}>
+                            {activeCard ?
+                                <button
+                                    onClick={() => handleCardDeletion()}
+                                    className={'nextPageButton'}
+                                >
+                                    Удалить
+                                </button>
+                                :
+                                null
+                            }
+                            {deletedCardsSelector.length > 0 ?
+                                <button
+                                    onClick={() => handleCardDeletionCancelling()}
+                                    className={'nextPageButton'}
+                                >
+                                    Отменить
+                                </button>
+                                :
+                                null
+                            }
+                        </div>
                     </div>
                     <h3>Измени имя и стоимость карточки</h3>
                     <Form>
@@ -139,7 +214,42 @@ const GamePageCardsEdit = (props) => {
                             />
                         </Form.Group>
                     </Form>
-                    <div id={'gamePageCardsEditorDeleteCancelButtons'}>
+                </div>
+                <div id={'gamePageCardsEditorAddNewCardContainer'}>
+                    <h2>Добавь новые карточки</h2>
+                    <Form>
+                        <Form.Group>
+                            <Form.Label>Имя карточки</Form.Label>
+                            <Form.Control
+                                value={newCardName}
+                                onChange={newCardNameInput}
+                                placeholder="Введите имя карточки..."
+                            />
+                            <Form.Label>Стоимость карточки</Form.Label>
+                            <Form.Control
+                                value={newCardPrice}
+                                onChange={newCardPriceInput}
+                                placeholder="Введите стоимость карточки..."
+                            />
+                        </Form.Group>
+                    </Form>
+                    <div id={'gamePageCardsEditAddDeleteNewCardContainer'}>
+                        <button
+                            onClick={() => handleCardAdding()}
+                            className={'nextPageButton'}
+                        >
+                            Добавить
+                        </button>
+                        {addedCardsSelector.length > 0 ?
+                            <button
+                                onClick={() => handleAddedCardDeleting()}
+                                className={'nextPageButton'}
+                            >
+
+                            </button>
+                            :
+                            null
+                        }
                     </div>
                 </div>
             </div>

@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import './AdminPanelGamesEditor.css';
-import NewProductSettings from "../../../NewContentSettings/NewProductSettings/NewProductSettings";
 import Modal from "react-bootstrap/Modal";
 import {useSelector} from "react-redux";
 import GamePagesEditor from "../../../CurrentContentEditor/GamePagesEditor/GamePagesEditor";
+import NewGame from "../../../NewContentSettings/NewGame/NewGame";
 
 const AdminPanelGamesEditor = () => {
 
@@ -60,7 +60,7 @@ const AdminPanelGamesEditor = () => {
                 {gamesList()}
             </div>
             <Modal className={'adminPanelGamesEditorGameModal'} show={newShow} onHide={handleNewGameModal}>
-                Modal for new game
+                <NewGame />
             </Modal>
             <Modal className={'adminPanelGamesEditorModal'} show={editorShow} onHide={handleGameEditorModal}>
                 <GamePagesEditor

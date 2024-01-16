@@ -12,6 +12,33 @@
     margin-left: 2em;
 }
 
+#adminPanelGamesEditorNewGameLinkContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#adminPanelGamesEditorNewGameLinkContainer button {
+    border: none;
+    font: 900 20px "Roboto", sans-serif;
+    color: #0e232f;
+    background: none;
+    padding: 0 1em;
+    width: 200px;
+    transition: 0.1s;
+}
+
+#adminPanelGamesEditorNewGameLinkContainer button:hover {
+    text-shadow: 2px 2px 7px #0e232f;
+}
+
+#adminPanelGamesEditorNewGameLinkContainer::before, #adminPanelGamesEditorNewGameLinkContainer::after {
+    content: "";
+    background: #0e232f;
+    top: 6px;
+    height: 30px;
+    width: 2px;
+}
+
 #adminPanelGamesEditorGamesListContainer > div {
     width: 150px;
     height: 150px;
