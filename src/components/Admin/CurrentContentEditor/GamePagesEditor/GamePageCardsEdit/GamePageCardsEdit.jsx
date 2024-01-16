@@ -158,13 +158,17 @@ const GamePageCardsEdit = (props) => {
                     <div id={'gamePageCardsEditCurrentCardsPreviewContainer'}>
                         <h2>Текущие карточки</h2>
                         <div>
-                            {currentCardsList()}
+                            <div>
+                                {currentCardsList()}
+                            </div>
                         </div>
                     </div>
                     <div id={'gamePageCardsEditNewCardsPreviewContainer'}>
                         <h2>Новые карточки</h2>
                         <div>
-                            {newCardsList()}
+                            <div>
+                                {newCardsList()}
+                            </div>
                         </div>
                     </div>
                 </div>

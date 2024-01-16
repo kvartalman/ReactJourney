@@ -1,9 +1,68 @@
-#ctgPreviewContainer {
+#homePageCardViewMainContainer {
+    display: flex;
+    gap: 1em;
+    margin: 1em;
+}
+
+#homePageCardViewMainContainer h2 {
+    font: 900 30px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#homePageCardViewMainContainer h3 {
+    font: 900 25px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#homePageCardViewSettingsMainContainer, #homePageCardViewPreviewMainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+#homePageCardViewSettingsMainContainer {
+    width: 40%;
+}
+
+#homePageCardViewSettingsMainContainer > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 240px;
+    border: 2px solid #0e232f;
+    background-color: #ffffff;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+#homePageCardViewPreviewMainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    text-align: center;
+    width: 60%;
+}
+
+#homePageCardViewPreviewMainContainer > div {
+    border: 2px solid #0e232f;
+    background-color: #ffffff;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+.ctgPreviewContainer {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, 400px);
     gap: 0;
-    padding: 0 10em;
-    margin: 1em 0;
+    padding: 1em;
 }
 

@@ -57,70 +57,62 @@ const HomepageCardView = (props) => {
         }
     }
 
-    const handleUpload = () => {
-        if (img) {
-            console.log('Your file', img)
-        }
-    }
     return (
-        <Container fluid>
-            <Row>
-                <Col>
-                    <input type={'file'} accept={'image/*,video/*'} ref={imgRef} onChange={handleImgFileChange}/>
+        <div id={'homePageCardViewMainContainer'}>
+            <div id={'homePageCardViewSettingsMainContainer'}>
+                <h2>Измени вид карточки блока "Категории"</h2>
+                <h3>Загрузи картинку</h3>
+                <input type={'file'} accept={'image/*,video/*'} ref={imgRef} onChange={handleImgFileChange}/>
+                <div>
                     {imgPreview ? (
-                        <div>
-                            <img src={imgPreview} alt={'Превью'} width='100'/>
-                        </div>
+                            <img src={imgPreview} alt={'Превью'} width='320'/>
                     ) : null}
-                    <input type={'file'} accept={'image/*,video/*'} onChange={handleVideoFileChange}/>
+                </div>
+                <h3>Загрузи видео</h3>
+                <input type={'file'} accept={'image/*,video/*'} onChange={handleVideoFileChange}/>
+                <div>
                     {videoPreview ? (
-                        <div>
                             <video ref={videoRef} width={'320'} height={'240'} controls={false} autoPlay loop muted>
                                 <source src={videoPreview} type={'video/mp4'}/>
                             </video>
-                        </div>
                     ) : null}
-                    <Button onClick={handleUpload}>Load</Button>
-                </Col>
-                <Col>
-                    <Container fluid id={'ctgPreviewContainer'}>
-                    <h2>Current category card</h2>
-                    {
-                        categoriesSelector.map((categoryElem, i) => {
+                </div>
+            </div>
+            <div id={'homePageCardViewPreviewMainContainer'}>
+                <div>
+                    <h2>Текущая карточка</h2>
+                    <div className={'ctgPreviewContainer'}>
+                        {
+                            categoriesSelector.map((categoryElem, i) => {
 
-                            if (props.gamePagesSelector.fullName === categoryElem.name) {
-                                return (<Category
-                                    bg={categoriesSelector[i].bg}
-                                    name={categoriesSelector[i].name}
-                                    to={categoriesSelector[i].to}
-                                    video={categoriesSelector[i].video}
-                                    key={i}
-                                />
-                            );
-                            }
-                            return null;
-                        })
-                    }
-                </Container>
-                    <Container fluid id={'ctgPreviewContainer'}>
-                        <h2>New category card</h2>
+                                if (props.gamePagesSelector.fullName === categoryElem.name) {
+                                    return (<Category
+                                            bg={categoriesSelector[i].bg}
+                                            name={categoriesSelector[i].name}
+                                            to={categoriesSelector[i].to}
+                                            video={categoriesSelector[i].video}
+                                            key={i}
+                                        />
+                                    );
+                                }
+                                return null;
+                            })
+                        }
+                    </div>
+                </div>
+                <div>
+                    <h2>Новая карточка</h2>
+                    <div className={'ctgPreviewContainer'}>
                         {imgPreview && videoPreview ?
                             <Category key={videoPreview} bg={imgPreview} name={''} to={''} video={videoPreview}/>
                             :
                             null
                         }
-                    </Container>
-                </Col>
-            </Row>
-            <Button
-                onClick={() => props.setKey('preview')}
-                className={'nextPageButton'}
-            >
-                Next
-            </Button>
-        </Container>
-    )
-        ;
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default HomepageCardView;

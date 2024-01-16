@@ -88,11 +88,31 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.5em;
+    border: 2px solid #0e232f;
+    background-color: #ffffff;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+#gamePageCardsEditCurrentCardsPreviewContainer > div > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-left: 2.4em;
+}
+
+#gamePageCardsEditNewCardsPreviewContainer > div > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-left: 2em;
 }
 
 #gamePageCardsEditCurrentCardsPreviewContainer .offerCard, #gamePageCardsEditNewCardsPreviewContainer .offerCard {
     width: 150px !important;
     height: 150px !important;
+    background-color: #658a9a;
+    border: 2px solid #0e232f;
 }
 
 #gamePageCardsEditNewCardsPreviewContainer .offerCard {
