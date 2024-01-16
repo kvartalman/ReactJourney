@@ -1,84 +1,101 @@
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Form from "react-bootstrap/Form";
 import GameOfferCard from "../../../../GameOffer/OfferContent/GameOfferCard";
 import {useDispatch, useSelector} from "react-redux";
-import {
-    cancelGamePageCardDeletion,
-    deleteGamePageCards,
-    fillGamePageCardsEditor,
-    handleGamePageCardsChanges
-} from "../../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
-import Button from "react-bootstrap/Button";
 import './GamePageCardsEdit.css';
 import {
+    editGamePageCards,
     fillGamePageCardsEditorData
 } from "../../../../../store/slices/adminPanelSlices/adminPanelGamesEditor/adminPanelGamePageCardsEditorSlice";
+import {NavLink} from "react-router-dom";
+import Card from "react-bootstrap/Card";
 
 const GamePageCardsEdit = (props) => {
 
     const dispatch = useDispatch();
 
-    const adminPanelGamePagesSelector = useSelector(state => state.adminPanel.gamePageCardsEditor)
-    const deletedGamePageCardsSelector = useSelector(state => state.adminPanel.deletedGamePageCards)
     const cardsSelector = useSelector(state => state.gamePageCardsEditor.gamePageCardsEditorData);
 
     const [enterCardName, setEnterCardName] = useState('');
     const [enterCardPrice, setEnterCardPrice] = useState('');
-    const [currentCardTitle, setCurrentCardTitle] = useState(null);
-    const [currentCardPrice, setCurrentCardPrice] = useState(null);
-    const [firstRender, setFirstRender] = useState(true);
     const [enterCardsTitle, setEnterCardsTitle] = useState('');
-
-    const cardSelect = useRef(null);
-    // We use useCallback here because this function makes the dependencies in useEffect Hook.
-    // To make this component work more effectively, handleCardSelect has useCallback wrap.
-
-    const handleCardSelect = useCallback(() => {
-        for (let i = 0; i < props.gamePagesSelector.offerCardsData.length; i++) {
-            if (props.gamePagesSelector.offerCardsData[i].title === cardSelect.current.value) {
-                setCurrentCardTitle(props.gamePagesSelector.offerCardsData[i].title)
-                setCurrentCardPrice(props.gamePagesSelector.offerCardsData[i].text)
-            }
-        }
-    })
+    const [activeCard, setActiveCard] = useState('');
+    const [activeCardIndex, setActiveCardIndex] = useState(null);
 
     const enterCardsTitleInput = (e) => {
         setEnterCardsTitle(e.target.value);
         props.setCardsTitle(e.target.value);
     };
 
-
     const enterCardNameInput = (e) => {
         setEnterCardName(e.target.value);
+        if (activeCard) {
+            dispatch(editGamePageCards(
+                {
+                    id: activeCard.old.id,
+                    title: e.target.value,
+                    type: 'edit'
+                }
+            ))
+        }
     };
 
     const enterCardPriceInput = (e) => {
         setEnterCardPrice(e.target.value);
+        if (activeCard) {
+            dispatch(editGamePageCards(
+                {
+                    id: activeCard.old.id,
+                    price: e.target.value,
+                    type: 'edit'
+                }
+            ))
+        }
     };
 
-    const handleCardDeletion = () => {
-        dispatch(deleteGamePageCards({
-            name: cardSelect.current.value
-        }))
-    };
-
-    const cancelCardDeletion = () => {
-        dispatch(cancelGamePageCardDeletion())
-    };
-
-    const handleAcceptChanges = () => {
-        dispatch(handleGamePageCardsChanges(
-            {
-                name: cardSelect.current.value,
-                title: enterCardName,
-                text: enterCardPrice
-            }
-        ))
+    const handleCardChoice = (card, index) => {
+        setActiveCardIndex(index);
+        setActiveCard(card);
+        setEnterCardName('');
+        setEnterCardPrice('');
     }
 
-    const cardsList = cardsSelector.map((card, index) => (
-        <option key={card.id}>{card.title}</option>
-    ))
+    const currentCardsList = () => {
+        if (cardsSelector.length > 0) {
+            return (
+                cardsSelector.map((card, index) => (
+                    <div className={'offerCardContainer'}>
+                        <NavLink href={'/'} className={'offerLink'}>
+                            <Card
+                                onClick={() => handleCardChoice(card, index)}
+                                className={activeCardIndex === index ? 'offerCard offerCardActive' : 'offerCard'}
+                            >
+                                <Card.Body>
+                                    <Card.Title>{card.old.title}</Card.Title>
+                                    <Card.Text>
+                                        {card.old.price}
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </NavLink>
+                    </div>
+                ))
+            )
+        }
+    }
+
+    const newCardsList = () => {
+        if (cardsSelector.length > 0) {
+            return (
+                cardsSelector.map(card => (
+                    <GameOfferCard
+                        title={card.new.title ? card.new.title : card.old.title}
+                        price={card.new.price ? card.new.price : card.old.price}
+                    />
+                ))
+            )
+        }
+    }
 
     useEffect(() => {
         dispatch(fillGamePageCardsEditorData(props.gamePagesSelector.offerCardsData));
@@ -101,16 +118,9 @@ const GamePageCardsEdit = (props) => {
                     <Form>
                         <Form.Group>
                             <Form.Label>Choose card</Form.Label>
-                            <Form.Select
-                                ref={cardSelect}
-                                onChange={handleCardSelect}
-                            >
-                                {cardsList}
-                            </Form.Select>
+
                             <Form.Label>Card name form</Form.Label>
                             <Form.Control
-                                as="textarea"
-                                rows={8}
                                 value={enterCardName}
                                 onChange={enterCardNameInput}
                                 placeholder="Enter new card name..."
@@ -124,26 +134,6 @@ const GamePageCardsEdit = (props) => {
                         </Form.Group>
                     </Form>
                     <div id={'gamePageCardsEditorDeleteCancelButtons'}>
-                        {adminPanelGamePagesSelector.length > 0 ?
-                            <Button
-                                className={'nextPageButton'}
-                                onClick={() => handleCardDeletion()}
-                            >
-                                Delete card
-                            </Button>
-                            :
-                            null
-                        }
-                        {deletedGamePageCardsSelector.length > 0 ?
-                            <Button
-                                className={'nextPageButton'}
-                                onClick={() => cancelCardDeletion()}
-                            >
-                                Cancel
-                            </Button>
-                            :
-                            null
-                        }
                     </div>
                 </div>
             </div>
@@ -160,24 +150,16 @@ const GamePageCardsEdit = (props) => {
                 </div>
                 <div id={'gamePageCardsEditCardsPreviewContainer'}>
                     <div id={'gamePageCardsEditCurrentCardsPreviewContainer'}>
-                        <h2>Current card view</h2>
-                        <GameOfferCard
-                            title={currentCardTitle}
-                            text={currentCardPrice}
-                        />
+                        <h2>Текущие карточки</h2>
+                        <div>
+                            {currentCardsList()}
+                        </div>
                     </div>
                     <div id={'gamePageCardsEditNewCardsPreviewContainer'}>
-                        <h2>New card preview</h2>
-                        <GameOfferCard
-                            title={enterCardName}
-                            text={enterCardPrice}
-                        />
-                        <Button
-                            onClick={() => handleAcceptChanges()}
-                            className={'nextPageButton'}
-                        >
-                            Accept changes
-                        </Button>
+                        <h2>Новые карточки</h2>
+                        <div>
+                            {newCardsList()}
+                        </div>
                     </div>
                 </div>
             </div>

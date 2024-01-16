@@ -14,12 +14,12 @@ const offerPageSlice = createSlice({
                         'call "golden mean". Anyway, we will see, how it goes.',
                     cardsTitle: 'Offers of the week',
                     offerCardsData: [
-                        {id: 0, title: '3000 MMR Boost', text: '35$'},
-                        {id: 1, title: 'Low priority', text: '5$'},
-                        {id: 2, title: 'Bladeform legacy', text: '25$'},
-                        {id: 3, title: '+100 MMR', text: '10$'},
-                        {id: 4, title: '+150 MMR', text: '10$'},
-                        {id: 5, title: '+200 MMR', text: '10$'}
+                        {id: 0, title: '3000 MMR Boost', price: '35$'},
+                        {id: 1, title: 'Low priority', price: '5$'},
+                        {id: 2, title: 'Bladeform legacy', price: '25$'},
+                        {id: 3, title: '+100 MMR', price: '10$'},
+                        {id: 4, title: '+150 MMR', price: '10$'},
+                        {id: 5, title: '+200 MMR', price: '10$'}
                     ],
                     panelButton: [
                         {id: 0, link: "/categories/dota2/common-skins", name: "Common skins"},
@@ -44,10 +44,10 @@ const offerPageSlice = createSlice({
                         'call "golden mean". Anyway, we will see, how it goes.',
                     cardsTitle: 'Offers of the week',
                     offerCardsData: [
-                        {id: 0, title: '3000 MMR Boost', text: '35$'},
-                        {id: 1, title: 'Low priority', text: '5$'},
-                        {id: 2, title: 'Bladeform legacy', text: '25$'},
-                        {id: 3, title: '+300 MMR', text: '10$'}
+                        {id: 0, title: '3000 MMR Boost', price: '35$'},
+                        {id: 1, title: 'Low priority', price: '5$'},
+                        {id: 2, title: 'Bladeform legacy', price: '25$'},
+                        {id: 3, title: '+300 MMR', price: '10$'}
                     ],
                     panelButton: [
                         {id: 0, link: "/categories/lol/leveling", name: "Leveling"},
@@ -75,10 +75,10 @@ const offerPageSlice = createSlice({
                         'call "golden mean". Anyway, we will see, how it goes.',
                     cardsTitle: 'Offers of the week',
                     offerCardsData: [
-                        {id: 0, title: '3000 MMR Boost', text: '35$'},
-                        {id: 1, title: 'Low priority', text: '5$'},
-                        {id: 2, title: 'Bladeform legacy', text: '25$'},
-                        {id: 3, title: '+400 MMR', text: '10$'}
+                        {id: 0, title: '3000 MMR Boost', price: '35$'},
+                        {id: 1, title: 'Low priority', price: '5$'},
+                        {id: 2, title: 'Bladeform legacy', price: '25$'},
+                        {id: 3, title: '+400 MMR', price: '10$'}
                     ],
                     panelButton: [
                         {id: 0, link: "/categories/hots/low-priority", name: "Low priority"},

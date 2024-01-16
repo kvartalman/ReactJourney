@@ -17,7 +17,7 @@ const GameOffer = (props) => {
     const canvasMenuData = useSelector(state => state.gameOfferPages.canvasMenuData)
 
     let offerCardsArr = gameOffer.offerCardsData.map(card => (
-        <GameOfferCard title={card.title} key={card.id} text={card.text}/>
+        <GameOfferCard title={card.title} key={card.id} text={card.price}/>
     ))
 
     let panelButtonsArr = gameOffer.panelButton.map(button => (

@@ -43,6 +43,7 @@ const GamePagesEditor = (props) => {
                     <GamePageCardsEdit
                         key={props.game}
                         setKey={setKey}
+                        setCardsTitle={setCardsTitle}
                         gamePagesSelector={gamePagesSelector}
                     />
                 </Tab>

@@ -58,3 +58,49 @@
     padding: 1em;
     border-radius: 2%;
 }
+
+#gamePageCardsEditCurrentCardsPreviewContainer, #gamePageCardsEditNewCardsPreviewContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1em;
+}
+
+#gamePageCardsEditCurrentCardsPreviewContainer > div, #gamePageCardsEditNewCardsPreviewContainer > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+#gamePageCardsEditCurrentCardsPreviewContainer .offerCard, #gamePageCardsEditNewCardsPreviewContainer .offerCard {
+    width: 150px !important;
+    height: 150px !important;
+}
+
+#gamePageCardsEditNewCardsPreviewContainer .offerCard {
+    cursor: text;
+}
+
+#gamePageCardsEditNewCardsPreviewContainer .card-title, #gamePageCardsEditCurrentCardsPreviewContainer .card-title {
+    font: 900 20px "Roboto", sans-serif;
+    color: #0e232f;
+}
+
+#gamePageCardsEditNewCardsPreviewContainer p, #gamePageCardsEditCurrentCardsPreviewContainer p {
+    font: 900 15px "Roboto", sans-serif;
+    color: #0e232f;
+}
+
+#gamePageCardsEditCurrentCardsPreviewContainer .offerCardActive {
+    background-color: #0e232f;
+    border: 2px solid #c3dae8;
+}
+
+.offerCardActive .card-title {
+    color: #c3dae8 !important;
+}
+
+.offerCardActive p {
+    color: #c3dae8 !important;
+}

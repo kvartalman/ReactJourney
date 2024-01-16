@@ -10,7 +10,7 @@ const GameOfferCard = (props) => {
                     <Card.Body>
                         <Card.Title>{props.title}</Card.Title>
                         <Card.Text>
-                            {props.text}
+                            {props.price}
                         </Card.Text>
                     </Card.Body>
                 </Card>
