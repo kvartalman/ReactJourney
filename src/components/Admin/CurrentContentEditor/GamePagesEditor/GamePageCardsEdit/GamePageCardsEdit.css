@@ -52,6 +52,23 @@
     height: 65%;
 }
 
+#gamePageCardsEditorChosenCardContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1em;
+    border: 2px solid #c3dae8;
+    border-radius: 5%;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+#gamePageCardsEditorChosenCardContainer .offerCard {
+    cursor: text;
+}
+
 #gamePageCardsEditCurrentHeaderPreviewContainer, #gamePageCardsEditNewHeaderPreviewContainer {
     border: 2px solid #0e232f;
     background-color: #ffffff;

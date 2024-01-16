@@ -105,8 +105,8 @@ const GamePageCardsEdit = (props) => {
         <div id={'gamePageCardsEditMainContainer'}>
             <div id={'gamePageCardsEditSettingsMainContainer'}>
                 <div id={'gamePageCardsEditHeaderSettingsContainer'}>
-                    <h3>Измени заголовок для блока с карточками</h3>
-                    <Form.Label>Cards title form</Form.Label>
+                    <h2>Измени заголовок блока карточек</h2>
+                    <Form.Label>Заголовок</Form.Label>
                     <Form.Control
                         value={enterCardsTitle}
                         onChange={enterCardsTitleInput}
@@ -114,22 +114,28 @@ const GamePageCardsEdit = (props) => {
                     />
                 </div>
                 <div id={'gamePageCardsEditCardsSettingsContainer'}>
-                    <h3>Настрой карточки</h3>
+                    <h2>Настрой карточки</h2>
+                    <div id={'gamePageCardsEditorChosenCardContainer'}>
+                        <h3>Выбранная карточка</h3>
+                        <GameOfferCard
+                            title={activeCard ? activeCard.old.title : 'Не назначено'}
+                            price={activeCard ? activeCard.old.price : ''}
+                        />
+                    </div>
+                    <h3>Измени имя и стоимость карточки</h3>
                     <Form>
                         <Form.Group>
-                            <Form.Label>Choose card</Form.Label>
-
-                            <Form.Label>Card name form</Form.Label>
+                            <Form.Label>Имя карточки</Form.Label>
                             <Form.Control
                                 value={enterCardName}
                                 onChange={enterCardNameInput}
-                                placeholder="Enter new card name..."
+                                placeholder="Введите имя карточки..."
                             />
-                            <Form.Label>Card price</Form.Label>
+                            <Form.Label>Стоимость карточки</Form.Label>
                             <Form.Control
                                 value={enterCardPrice}
                                 onChange={enterCardPriceInput}
-                                placeholder='Enter new card price...'
+                                placeholder='Введите стоимость карточки...'
                             />
                         </Form.Group>
                     </Form>
