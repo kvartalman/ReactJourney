@@ -245,7 +245,7 @@ const GamePageCardsEdit = (props) => {
                                 onClick={() => handleAddedCardDeleting()}
                                 className={'nextPageButton'}
                             >
-
+                                Удалить
                             </button>
                             :
                             null
