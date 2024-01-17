@@ -1,0 +1,36 @@
+#newGameMainContainer {
+    display: flex;
+    flex-direction: column;
+    border: 4px solid #0e232f;
+    border-radius: 0.5%;
+    background-color: #ffffff;
+    --bs-modal-width: 85%;
+}
+
+.adminPanelGamesEditorGameModal {
+    --bs-modal-width: 85%;
+}
+
+#newGameMainContainer > .nav-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #0e232f;
+    border: none;
+    overflow: hidden !important;
+    margin-bottom: 0 !important;
+}
+
+
+#newGameMainContainer .nav-tabs > li > button {
+    background-color: #0e232f;
+    color:#c3dae8;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+    margin-left: 1em;
+}
+
+#newGameMainContainer .nav-tabs > li > .active {
+    background-color: #37647a;
+    text-shadow: #0e232f 1px 0 10px;
+}

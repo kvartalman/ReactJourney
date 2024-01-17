@@ -1,0 +1,44 @@
+#newGameTextAndTitleMainContainer {
+    display: flex;
+    gap: 1em;
+    margin: 1em;
+}
+
+#newGameTextAndTitleMainContainer h2 {
+    font: 900 35px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#newGameTextAndTitleMainContainer h3 {
+    font: 900 25px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#newGameTextAndTitleSettingsContainer, #newGameTextAndTitlePreviewMainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5em;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+#newGameTextAndTitleSettingsContainer {
+    width: 40%;
+}
+
+#newGameTextAndTitlePreviewMainContainer {
+    width: 60%;
+}
+
+#newGameTextAndTitlePreviewMainContainer > div {
+    border: 2px solid #0e232f;
+    background-color: #ffffff;
+    padding: 1em;
+    border-radius: 2%;
+    word-wrap: break-word;
+}

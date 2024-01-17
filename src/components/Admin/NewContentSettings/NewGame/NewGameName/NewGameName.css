@@ -1,0 +1,36 @@
+#newGameNameMainContainer {
+    display: flex;
+    gap: 1em;
+    margin: 1em;
+}
+
+#newGameNameMainContainer h2 {
+    font: 900 35px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#newGameNameMainContainer h3 {
+    font: 900 25px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#newGameNameSettingsContainer,#newGameNamePreviewContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5em;
+    border: 2px solid #0e232f;
+    background-color: #658a9a;
+    padding: 1em;
+    border-radius: 2%;
+}
+
+#newGameNameSettingsContainer {
+    width: 40%;
+}
+
+#newGameNamePreviewContainer {
+    width: 60%;
+}

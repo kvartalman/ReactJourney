@@ -1,10 +1,15 @@
 import React, {useState} from "react";
 import './NewGame.css';
 import {Tab, Tabs} from "react-bootstrap";
+import NewGameName from "./NewGameName/NewGameName";
+import NewGameTextAndTitle from "./NewGameTextAndTitle/NewGameTextAndTitle";
 
 const NewGame = () => {
 
-    const [key, setKey] = useState('text');
+    const [key, setKey] = useState('name');
+    const [name, setName] = useState('');
+    const [title, setTitle] = useState('');
+    const [text, setText] = useState('');
 
     return (
         <div id={'newGameMainContainer'}>
@@ -15,10 +20,21 @@ const NewGame = () => {
                 className="mb-3"
             >
                 <Tab
-                    eventKey={'text'}
+                    eventKey={'name'}
                     title={'Название игры'}
                 >
-
+                   <NewGameName
+                       setName={setName}
+                   />
+                </Tab>
+                <Tab
+                    eventKey={'text'}
+                    title={'Заголовок и текст'}
+                >
+                    <NewGameTextAndTitle
+                        setTitle={setTitle}
+                        setText={setText}
+                    />
                 </Tab>
                 <Tab
                     eventKey={'sub'}
@@ -27,8 +43,14 @@ const NewGame = () => {
 
                 </Tab>
                 <Tab
-                    eventkey={'ctg'}
-                    title={'Карточка блока "Категории'}
+                    eventKey={'ctg'}
+                    title={'Карточка блока "Категории"'}
+                >
+
+                </Tab>
+                <Tab
+                    eventKey={'preview'}
+                    title={'Превью'}
                 >
 
                 </Tab>
