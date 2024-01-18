@@ -4,6 +4,7 @@ import {Tab, Tabs} from "react-bootstrap";
 import NewGameName from "./NewGameName/NewGameName";
 import NewGameTextAndTitle from "./NewGameTextAndTitle/NewGameTextAndTitle";
 import NewGameSubCategories from "./NewGameSubCategories/NewGameSubCategories";
+import NewGameCtgCard from "./NewGameCtgCard/NewGameCtgCard";
 
 const NewGame = () => {
 
@@ -47,7 +48,7 @@ const NewGame = () => {
                     eventKey={'ctg'}
                     title={'Карточка блока "Категории"'}
                 >
-
+                    <NewGameCtgCard />
                 </Tab>
                 <Tab
                     eventKey={'preview'}

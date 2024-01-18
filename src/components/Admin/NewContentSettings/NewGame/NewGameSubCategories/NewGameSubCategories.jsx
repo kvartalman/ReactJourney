@@ -71,7 +71,12 @@ const NewGameSubCategories = (props) => {
             <div id={'newGameSubCategoriesPreviewContainer'}>
                 <h2>Превью</h2>
                 <div>
-                    {newSubCtgList()}
+                    {newSubCategoriesSelector.length > 0 ?
+                        newSubCtgList()
+                        :
+                        <h2>Здесь будет список подкатегорий</h2>
+                    }
+
                 </div>
             </div>
         </div>
