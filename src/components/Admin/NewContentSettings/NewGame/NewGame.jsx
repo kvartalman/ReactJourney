@@ -3,6 +3,7 @@ import './NewGame.css';
 import {Tab, Tabs} from "react-bootstrap";
 import NewGameName from "./NewGameName/NewGameName";
 import NewGameTextAndTitle from "./NewGameTextAndTitle/NewGameTextAndTitle";
+import NewGameSubCategories from "./NewGameSubCategories/NewGameSubCategories";
 
 const NewGame = () => {
 
@@ -40,7 +41,7 @@ const NewGame = () => {
                     eventKey={'sub'}
                     title={'Подкатегории'}
                 >
-
+                    <NewGameSubCategories />
                 </Tab>
                 <Tab
                     eventKey={'ctg'}

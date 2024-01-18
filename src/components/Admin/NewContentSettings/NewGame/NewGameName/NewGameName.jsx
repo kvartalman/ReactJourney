@@ -26,7 +26,9 @@ const NewGameName = (props) => {
             </div>
             <div id={'newGameNamePreviewContainer'}>
                 <h2>Игра будет называться:</h2>
-                <h3>{newName ? newName : 'Не назначено'}</h3>
+                <div>
+                    <h3>{newName ? newName : 'Не назначено'}</h3>
+                </div>
             </div>
         </div>
     )

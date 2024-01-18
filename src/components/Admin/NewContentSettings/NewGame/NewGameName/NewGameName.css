@@ -34,3 +34,10 @@
 #newGameNamePreviewContainer {
     width: 60%;
 }
+
+#newGameNamePreviewContainer > div {
+    border: 2px solid #0e232f;
+    background-color: #ffffff;
+    padding: 1em;
+    border-radius: 2%;
+}
