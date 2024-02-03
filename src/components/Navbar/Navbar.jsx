@@ -11,6 +11,7 @@ import LoginModal from "../Authorization/LoginModal";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 import {app} from "../Authorization/firebase";
 import CartGoodsModal from "../Cart/CartGoodsModal/CartGoodsModal";
+import axios from "axios";
 
 const Navigation = (props) => {
 
@@ -65,6 +66,21 @@ const Navigation = (props) => {
         return () => {
             unsubscribe();
         };
+    }, []);
+
+    useEffect(() => {
+        const checkUser = async () => {
+            const response = await axios.get('http://localhost:8000/api/v1/user_view')
+            if (response.status === 200 || response.status === 201) {
+                setUser(true)
+                console.log(response.status)
+            }
+            else {
+                setUser(false)
+                console.log(response.status)
+            }
+        }
+        checkUser()
     }, []);
 
     return (
@@ -145,7 +161,7 @@ const Navigation = (props) => {
                 </Container>
             </Navbar>
             <CartGoodsModal show={goodsModal} onHide={() => setGoodsModal(false)}/>
-            <LoginModal modal={modal} closeModal={closeModal}/>
+            <LoginModal setUser={setUser} modal={modal} closeModal={closeModal}/>
         </>
 
     );

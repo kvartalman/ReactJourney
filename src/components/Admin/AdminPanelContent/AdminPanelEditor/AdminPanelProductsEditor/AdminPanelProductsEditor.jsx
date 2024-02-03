@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './AdminPanelProductsEditor.css';
 import {useSelector} from "react-redux";
 import ProductsEditor from "../../../CurrentContentEditor/ProductsEditor/ProductsEditor";
 import Modal from 'react-bootstrap/Modal';
 import NewProductSettings from "../../../NewContentSettings/NewProductSettings/NewProductSettings";
 import SubCtgListPopup from "./SubCtgListPopup/SubCtgListPopup";
+import axios from "axios";
 
 const AdminPanelProductsEditor = (props) => {
 
@@ -173,7 +174,7 @@ const AdminPanelProductsEditor = (props) => {
             )
         }
     }
-
+    
     return (
         <div id={'productsEditorMainContainer'}>
             <div className={'productsEditorCreateNewButtonContainer'}>

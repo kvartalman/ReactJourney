@@ -1,37 +1,43 @@
 import React, {useEffect, useState} from 'react';
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import {signOut} from 'firebase/auth';
-import {auth} from "../Authorization/firebase";
 import './UserProfile.css'
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 const UserProfile = () => {
 
     const [user, setUser] = useState('');
-
-    // Logout function (using firebase here)
     const handleLogout = async () => {
         try {
-            await signOut(auth);
+            const response = await axios.post('http://localhost:8000/api/v1/logout', {
+                refresh_token: localStorage.getItem('refresh_token')
+            })
+            if (response.status === 200 || response.status === 201) {
+                localStorage.removeItem('access_token')
+                localStorage.removeItem('refresh_token')
+            }
+
         } catch (error) {
             console.log(error.message)
         }
     }
 
     useEffect(() => {
-        return auth.onAuthStateChanged((user) => {
-            setUser(user);
-        });
-    }, []);
+        const checkUser = async () => {
+            const response = await axios.get('http://localhost:8000/api/v1/user_view')
 
+            if (response.status === 200 || response.status === 201) {
+                setUser(true)
+            }
+        }
+        checkUser()
+    }, []);
 
     return (
         <>
             {user ?
                 <Container fluid>
-                    {user.email ? <p>Hello there, {auth.currentUser.email}!</p> : null}
-                    {user.uid}
                     <NavLink to={'/'}>
                         <Button onClick={handleLogout}>Logout</Button>
                     </NavLink>
