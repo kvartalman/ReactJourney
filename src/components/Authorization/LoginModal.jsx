@@ -9,14 +9,14 @@ import axios from "axios";
 
 const LoginModal = (props) => {
 
-    const [emailText, setEmailText] = useState('');
+    const [usernameText, setUsernameText] = useState('');
     const [pswText, setPswText] = useState('');
     const [newError, setNewError] = useState(null);
     const [showPsw, setShowPsw] = useState(false);
     const [remember, setRemember] = useState(false);
 
-    const emailInput = (e) => {
-        setEmailText(e.target.value)
+    const usernameInput = (e) => {
+        setUsernameText(e.target.value)
     };
     const pswInput = (e) => {
         setPswText(e.target.value)
@@ -24,15 +24,15 @@ const LoginModal = (props) => {
 
     const clearForms = () => {
         setPswText('');
-        setEmailText('');
+        setUsernameText('');
     }
 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-           const response = await axios.post('http://localhost:8000/api/v1/login/',
+           const response = await axios.post('http://localhost:8000/auth/token/login',
                {
-                   email: emailText,
+                   username: usernameText,
                    password: pswText,
                    remember: remember
 
@@ -43,9 +43,8 @@ const LoginModal = (props) => {
                 setNewError(null);
                 props.setUser(true)
                 clearForms();
+                localStorage.setItem('auth_token', response.data['auth_token'])
                 console.log('Login successful. Tokens:', response.data);
-                localStorage.setItem('access_token', response.data.access_token);
-                localStorage.setItem('refresh_token', response.data.refresh_token);
             }
 
         } catch (error) {
@@ -68,10 +67,10 @@ const LoginModal = (props) => {
                         <Form>
                             <Form.Group>
                                 <Form.Control
-                                    onChange={emailInput}
-                                    value={emailText}
+                                    onChange={usernameInput}
+                                    value={usernameText}
                                     className={'loginModalForm'}
-                                    placeholder="Your e-mail..."
+                                    placeholder="Your username..."
                                 />
                                 <Form.Control
                                     onChange={pswInput}

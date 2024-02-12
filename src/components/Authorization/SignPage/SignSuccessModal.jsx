@@ -1,8 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import axios from "axios";
+import './SignSuccessModal.css';
 
 const SignSuccessModal = (props) => {
+
+    const [showSentInfo, setShowSentInfo] = useState(false);
+
+    const handleEmailResend = async () => {
+        await axios.post('http://localhost:8000/auth/users/resend_activation/', {
+            email: props.email
+        })
+            .then(response => {
+                console.log(response);
+                setShowSentInfo(true);
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
     return (
         <Modal
             {...props}
@@ -23,7 +41,15 @@ const SignSuccessModal = (props) => {
                 </p>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Okay!</Button>
+                    {showSentInfo ?
+                        <p>We sent you letter again!</p>
+                        :
+                        null
+                    }
+                    <div>
+                        <Button onClick={() => handleEmailResend()}>I didn't get an email</Button>
+                        <Button onClick={props.onHide}>Okay!</Button>
+                    </div>
             </Modal.Footer>
         </Modal>
     )

@@ -13,6 +13,7 @@ const SignPage = () => {
     const [newError, setNewError] = useState(null);
     const [showModal, setShowModal] = useState(false);
     const [showPsw, setShowPsw] = useState(false);
+    const [email, setEmail] = useState('');
     const userInput = (e) => {
         setUserText(e.target.value)
     }
@@ -32,26 +33,24 @@ const SignPage = () => {
     // Using Firebase SDK to create new user
     const handleSign = async (e) => {
         e.preventDefault();
-        try {
-            const response = await axios.post('http://localhost:8000/api/v1/register/',
+            const response = await axios.post('http://localhost:8000/auth/users/',
                 {
                     username: userText,
                     email: emailText,
-                    password: pswText
-                });
+                    password: pswText,
+                    group: 'Boosters'
+                })
+                .then(response => {
+                    setShowModal(true);
+                    setNewError(null);
+                    setEmail(emailText);
+                    clearForms();
+                })
+                .catch(error => {
+                    console.log(error)
+                })
 
-            if (response.status === 201 || response.status === 200) {
-                setShowModal(true);
-                setNewError(null);
-                clearForms();
-            }
-        } catch (error) {
-            if (error.response) {
-                setNewError(error.response.data.detail);
-            } else {
-                setNewError('Error during registration')
-            }
-        }
+
     }
 
     return (
@@ -94,7 +93,10 @@ const SignPage = () => {
             <div className={'addCardButtons'}>
                 <Button id={'signInButton'} onClick={handleSign}>JOIN!</Button>
             </div>
-            <SignSuccessModal show={showModal} onHide={() => setShowModal(false)}/>
+            <SignSuccessModal
+                email={email}
+                show={showModal} onHide={() => setShowModal(false)}
+            />
         </div>
     )
 }

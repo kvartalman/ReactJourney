@@ -1,0 +1,13 @@
+.modal-footer {
+    justify-content: space-between;
+}
+
+.modal-footer > p {
+    font: 900 14px "Roboto", sans-serif;
+    color: #0e232f;
+}
+
+.modal-footer > div {
+    display: flex;
+    gap: 0.2em;
+}

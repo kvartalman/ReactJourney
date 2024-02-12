@@ -8,8 +8,6 @@ import {NavLink} from "react-router-dom";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import {useSelector} from "react-redux";
 import LoginModal from "../Authorization/LoginModal";
-import {getAuth, onAuthStateChanged} from "firebase/auth";
-import {app} from "../Authorization/firebase";
 import CartGoodsModal from "../Cart/CartGoodsModal/CartGoodsModal";
 import axios from "axios";
 
@@ -21,6 +19,8 @@ const Navigation = (props) => {
     const [user, setUser] = useState(null);
     const [goodsModal, setGoodsModal] = useState(false);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth >= 767);
+    const [token, setToken] = useState('');
+
     const showModal = () => setModal(true);
     const closeModal = () => setModal(false);
 
@@ -52,33 +52,23 @@ const Navigation = (props) => {
         return () => window.removeEventListener("resize", handleResize);
     });
 
-    useEffect(() => {
-        const auth = getAuth(app);
-
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setUser(user);
-            } else {
-                setUser(null);
-            }
-        });
-
-        return () => {
-            unsubscribe();
-        };
-    }, []);
 
     useEffect(() => {
         const checkUser = async () => {
-            const response = await axios.get('http://localhost:8000/api/v1/user_view')
-            if (response.status === 200 || response.status === 201) {
-                setUser(true)
-                console.log(response.status)
-            }
-            else {
-                setUser(false)
-                console.log(response.status)
-            }
+
+            const response = await axios.get('http://localhost:8000/api/v1/user_view', {
+                headers: {
+                    Authorization: `Token ${localStorage.getItem('auth_token')}`
+                }
+            })
+                .then(response => {
+                    setUser(true)
+                    console.log('You are authorized')
+                })
+                .catch(error => {
+                    console.log(error)
+                    setUser(false)
+                })
         }
         checkUser()
     }, []);
@@ -161,7 +151,11 @@ const Navigation = (props) => {
                 </Container>
             </Navbar>
             <CartGoodsModal show={goodsModal} onHide={() => setGoodsModal(false)}/>
-            <LoginModal setUser={setUser} modal={modal} closeModal={closeModal}/>
+            <LoginModal
+                setToken={setToken}
+                setUser={setUser}
+                modal={modal}
+                closeModal={closeModal}/>
         </>
 
     );
