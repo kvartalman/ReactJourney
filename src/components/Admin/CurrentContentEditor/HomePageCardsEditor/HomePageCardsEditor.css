@@ -119,13 +119,22 @@
     border-radius: 2%;
 }
 
-#homePageCardsEditorButtonsEditorContainer {
+#homePageCardsEditorButtonsEditorContainer, #homePageCardsEditorImageEditorContainer {
     display: flex;
     flex-direction: column;
     border: 2px solid #0e232f;
     background-color: #658a9a;
     padding: 1em;
     border-radius: 2%;
+}
+
+#homePageCardsEditorImageEditorContainer h4 {
+    font: 900 30px "Roboto", sans-serif;
+    text-align: center;
+}
+
+#homePageCardsEditorImageEditorContainer h2 {
+    margin-bottom: 1em;
 }
 
 #homePageCardsEditorButtonsEditorContainer h4 {

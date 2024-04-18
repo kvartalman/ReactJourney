@@ -62,19 +62,33 @@ const HomePageCardsButtonsSettings = (props) => {
 
     const addHomePageCardButton = (type) => {
 
-        for (let i = 0; i < subCategoriesLinksSelector.length; i++) {
-
-            if (subCategoriesLinksSelector[i].name === activeSubCategory.name) {
-
-                dispatch(addHomePageOfferCardsButton({
+        if (type === 'mainButton') {
+            dispatch(addHomePageOfferCardsButton({
                     activeCard: activeCardChosen,
                     game: activeGame,
-                    link: subCategoriesLinksSelector[i].link,
+                    link: `/categories/${activeGame}`,
                     type: type,
-                    class: type === 'mainButton' ? 'card-main-button' : 'order-button',
-                    name: type === 'mainButton' ? mainBtnName : btnName
-                }))
-                break;
+                    class: 'card-main-button',
+                    name: mainBtnName
+            })
+            )
+        }
+
+        else if (type === 'button') {
+            for (let i = 0; i < subCategoriesLinksSelector.length; i++) {
+
+                if (subCategoriesLinksSelector[i].name === activeSubCategory.name) {
+
+                    dispatch(addHomePageOfferCardsButton({
+                        activeCard: activeCardChosen,
+                        game: activeGame,
+                        link: subCategoriesLinksSelector[i].link,
+                        type: type,
+                        class: 'order-button',
+                        name: btnName
+                    }))
+                    break;
+                }
             }
         }
         type === 'mainButton' ? setMainBtnName('') : setBtnName('');
@@ -90,6 +104,7 @@ const HomePageCardsButtonsSettings = (props) => {
 
     const subCategoriesButtons = subCategoriesSelector.map((subCategory, index) => (
         <Button
+            key={index}
             className={activeSubCategoryIndex === index ? 'homePageCardsButtonsSettingsCardActive' : null}
             onClick={() => handleSubCategorySelect(subCategory, index)}
         >
@@ -99,6 +114,7 @@ const HomePageCardsButtonsSettings = (props) => {
 
     const gamesButtons = Object.keys(props.gamesSelector).map((game, index) => (
         <Button
+            key={index}
             className={activeGameButton === index ? 'homePageCardsButtonsSettingsCardActive' : null}
             onClick={() => handleGameSelect(game, index)}
         >
@@ -108,6 +124,7 @@ const HomePageCardsButtonsSettings = (props) => {
 
     const cardsButtons = props.cardsData.map((card, index) => (
         <Button
+            key={index}
             className={activeCardChosenIndex === index ? 'homePageCardsButtonsSettingsCardActive' : null}
             onClick={() => handleCardChoice(card, index)}
         >
@@ -142,7 +159,9 @@ const HomePageCardsButtonsSettings = (props) => {
                         <p>Главная кнопка карточки (выделенная отдельным цветом) получит ссылку на страницу выбранной
                             игры.</p>
                         <p>Ссылки для остальных кнопок указываются отдельно ниже.</p>
-                        <p>Карточка может иметь только одну главную кнопку.</p>
+                        <p>Карточка может иметь только одну главную кнопку. Если создаётся новая главная кнопка,
+                            а карточка уже имеет такую, новая кнопка заменит текущую.
+                        </p>
                         <div className={'homePageCardsButtonsSettingsCardsListContainer'}>
                             {gamesButtons}
                         </div>

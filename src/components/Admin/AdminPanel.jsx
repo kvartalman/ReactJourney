@@ -10,11 +10,7 @@ const AdminPanel = () => {
     const [contentName, setContentName] = useState(0);
     const [menuIndex, setMenuIndex] = useState(0);
     const [backIndex, setBackIndex] = useState(0);
-
-    useEffect(() => {
-        console.log(backIndex, menuIndex, 'main')
-    }, [backIndex, menuIndex]);
-
+    
     return (
         <div id={'adminPanelMainContainer'}>
             <AdminPanelNavBar

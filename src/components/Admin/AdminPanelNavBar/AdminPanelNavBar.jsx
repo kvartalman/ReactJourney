@@ -25,10 +25,6 @@ const AdminPanelNavBar = (props) => {
         }
     }
 
-    useEffect(() => {
-        console.log(props.backIndex, props.menuIndex, 'nav')
-    }, [props.backIndex]);
-
     return (
         <div id={'adminPanelNavBarMainContainer'}>
             <div id={'adminPanelNavBarFirstContainer'}>

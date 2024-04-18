@@ -9,23 +9,14 @@ import HomePageCardsSetNewCard from "./HomePageCardsSetNewCard/HomePageCardsSetN
 import {Tab, Tabs} from "react-bootstrap";
 import './HomePageCardsSettings.css';
 
-const HomePageCardsSettings = () => {
+const HomePageCardsSettings = (props) => {
 
-    const dispatch = useDispatch();
 
-    const cardsData = useSelector(state => state.adminPanelNewContent.homePageOfferCards)
-    const gamesSelector = useSelector(state => state.gameOfferPages.pagesData)
 
-    const [loading, setLoading] = useState(true);
+    const cardsData = useSelector(state => state.adminPanelNewContent.homePageOfferCards);
+    const gamesSelector = useSelector(state => state.gameOfferPages.pagesData);
+    const [imagesData, setImagesData] = useState([]);
     const [key, setKey] = useState('card');
-
-    useEffect(() => {
-        axios.get('https://mocki.io/v1/bbcef0d5-c8a0-44a0-bedf-6e3ca13ff643').then(response => {
-            dispatch(addHomePageOfferCardsData(response.data));
-            setLoading(false);
-
-        });
-    }, [])
 
     return (
         <div id={'homePageCardsSettingsMainContainer'}>
@@ -40,7 +31,9 @@ const HomePageCardsSettings = () => {
                     title={'Создать новую карточку'}
                 >
                     <HomePageCardsSetNewCard
+                        imagesData={imagesData}
                         setKey={setKey}
+                        setImagesData={setImagesData}
                     />
                 </Tab>
                 <Tab
@@ -51,6 +44,8 @@ const HomePageCardsSettings = () => {
                         cardsData={cardsData}
                         gamesSelector={gamesSelector}
                         setKey={setKey}
+                        imagesData={imagesData}
+                        setImagesData={setImagesData}
                     />
                 </Tab>
                 <Tab
@@ -59,7 +54,9 @@ const HomePageCardsSettings = () => {
                 >
                     <HomePageCardsSettingsFinalPreview
                         cardsData={cardsData}
-                        loading={loading}
+                        imagesData={imagesData}
+                        setImagesData={setImagesData}
+                        loading={props.loading}
                     />
                 </Tab>
             </Tabs>

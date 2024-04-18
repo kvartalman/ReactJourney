@@ -17,16 +17,20 @@ const AdminPanelEditor = (props) => {
 
     const editorSectionsList = [
         <AdminPanelHomePageEditor
+            key="HomePageEditor"
             setBackIndex={props.setBackIndex}
             backIndex={props.backIndex}
         />, <AdminPanelGamesEditor
+            key="GamesEditor"
             setBackIndex={props.setBackIndex}
             backIndex={props.backIndex}
         />,
         <AdminPanelProductsEditor
+            key="ProductsEditor"
             setBackIndex={props.setBackIndex}
             backIndex={props.backIndex}
         />, <AdminPanelPricesEditor
+            key="PricesEditor"
             setBackIndex={props.setBackIndex}
             backIndex={props.backIndex}
         />

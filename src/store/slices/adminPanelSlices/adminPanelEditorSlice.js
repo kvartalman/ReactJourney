@@ -1,4 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
+import uuid64 from "uuid64";
 
 const adminPanelEditorSlice = createSlice(
     {
@@ -229,7 +230,33 @@ const adminPanelEditorSlice = createSlice(
                 state.gamePageCardsEditor.splice(returnedCard.index, 0, returnedCard.card);
             },
             fillHomePageOfferCards: (state, action) => {
-                state.homePageOfferCards = action.payload;
+
+                const cards_arr = []
+
+                for (let i = 0; i < action.payload.length; i++) {
+
+                    const byteCharacters = atob(action.payload[i]['image_data']);
+                    const byteNumbers = new Array(byteCharacters.length);
+                    for (let i = 0; i < byteCharacters.length; i++) {
+                        byteNumbers[i] = byteCharacters.charCodeAt(i);
+                    }
+                    const byteArray = new Uint8Array(byteNumbers);
+                    const imageBlob = URL.createObjectURL(new Blob([byteArray], { type: 'image/jpeg' }));
+
+                    const new_card = {
+                        title: action.payload[i]['offer_card']['text'],
+                        text: action.payload[i]['offer_card']['title'],
+                        bg: imageBlob,
+                        button: JSON.parse(action.payload[i]['offer_card']['button']),
+                        tagId: action.payload[i]['offer_card']['tagId'],
+                        id: action.payload[i]['offer_card']['id'],
+                        imgName: action.payload[i]['offer_card']['image_name']
+                    }
+                    cards_arr.push(new_card)
+                }
+
+                state.homePageOfferCards = cards_arr
+
                 state.deletedHomePageOfferCards = [];
             },
             handleHomePageOfferCardsChanges: (state, action) => {
@@ -250,6 +277,17 @@ const adminPanelEditorSlice = createSlice(
                         }
                     }
                 }
+            },
+            handleHomePageOfferCardsImageChanges: (state, action) => {
+
+                for (let i = 0; i < state.homePageOfferCards.length; i++) {
+                    if (state.homePageOfferCards[i].title === action.payload.title) {
+                        state.homePageOfferCards[i].bg = action.payload.bg
+                        state.homePageOfferCards[i].imgName = action.payload.imgName
+                        break;
+                    }
+                }
+
             },
             deleteHomePageOfferCard: (state, action) => {
 
@@ -318,6 +356,7 @@ export const {
     fillHomePageOfferCards,
     handleHomePageOfferCardsChanges,
     handleHomePageOfferCardsButtonChanges,
+    handleHomePageOfferCardsImageChanges,
     deleteHomePageOfferCard,
     cancelHomePageOfferCardDeletion,
     deleteHomePageOfferCardButton,

@@ -19,12 +19,17 @@ const UserProfile = () => {
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [newPasswordRepeat, setNewPasswordRepeat] = useState('');
-    const [passwordCheck, setPasswordCheck] = useState(true);
+    const [passwordEmailChange, setPasswordEmailChange] = useState('');
     const [passwordErrorText, setPasswordErrorText] = useState('');
     const [emailErrorText, setEmailErrorText] = useState('');
+    const [emailSentModal, setEmailSentModal] = useState(false);
 
     const deleteAccountPasswordInput = (e) => {
         setDeleteAccountPassword(e.target.value);
+    }
+
+    const passwordEmailChangeInput = (e) => {
+        setPasswordEmailChange(e.target.value)
     }
 
     const newEmailInput = (e) => {
@@ -83,33 +88,47 @@ const UserProfile = () => {
 
     const changeEmail = async () => {
 
-        if (newEmail && validator.isEmail(newEmail)) {
-            await axios.post('http://localhost:8000/api/v1/user_update_email', {
-                headers: {
-                    Authorization: `Token ${localStorage.getItem('auth_token')}`
+        if (newEmail && validator.isEmail(newEmail) && passwordEmailChange) {
+            console.log(localStorage.getItem('auth_token'))
+            await axios.patch('http://localhost:8000/api/v1/user_update_email',
+                {
+                    new_email: newEmail,
+                    password: passwordEmailChange
+                },
+                {
+                    headers: {
+                        Authorization: `Token ${localStorage.getItem('auth_token')}`
+                    }
                 }
-            })
+            )
                 .then(response => {
                     console.log(response)
+                    setEmailSentModal(true)
                 })
                 .catch(error => {
                     console.log(error)
                 })
-        } else {
+        } else if (!newEmail || !validator.isEmail(newEmail)) {
             setEmailErrorText('Email field must be filled in correctly')
+        }
+        else if (!passwordEmailChange) {
+            setEmailErrorText('Password field must be filled')
         }
     }
 
     const changePassword = async () => {
 
         if (newPassword && newPasswordRepeat && newPassword === newPasswordRepeat && newPassword.length >= 8) {
-            await axios.post('http://localhost:8000/api/v1/user_update_password', {
-                current_password: currentPassword,
-                new_password: newPassword,
-                headers: {
-                    Authorization: `Token ${localStorage.getItem('auth_token')}`
-                }
-            })
+            await axios.patch('http://localhost:8000/api/v1/user_update_password',
+                {
+                    current_password: currentPassword,
+                    new_password: newPassword,
+                },
+                {
+                    headers: {
+                        Authorization: `Token ${localStorage.getItem('auth_token')}`
+                    }
+                })
                 .then(response => {
                     console.log(response)
                 })
@@ -120,8 +139,7 @@ const UserProfile = () => {
             setPasswordErrorText('You must enter new password!')
         } else if (newPassword !== newPasswordRepeat) {
             setPasswordErrorText('Password mismatch')
-        }
-        else if (newPassword.length < 8) {
+        } else if (newPassword.length < 8) {
             setPasswordErrorText('Password length must be at least 8 characters')
         }
     }
@@ -169,6 +187,12 @@ const UserProfile = () => {
                                 value={newEmail}
                                 onChange={newEmailInput}
                                 placeholder={'Enter new email here...'}
+                            />
+                            <Form.Label>Confirm with password</Form.Label>
+                            <Form.Control
+                                value={passwordEmailChange}
+                                onChange={passwordEmailChangeInput}
+                                placeholder={'Enter password here...'}
                             />
                         </Form>
                         <div>
@@ -236,6 +260,9 @@ const UserProfile = () => {
                             onClick={() => setShowDeleteAccountModal(false)}
                         >Close
                         </button>
+                    </Modal>
+                    <Modal centered show={emailSentModal} onHide={() => setEmailSentModal(false)}>
+                        <p>Sent successfully! Check your email please!</p>
                     </Modal>
                 </div>
                 :

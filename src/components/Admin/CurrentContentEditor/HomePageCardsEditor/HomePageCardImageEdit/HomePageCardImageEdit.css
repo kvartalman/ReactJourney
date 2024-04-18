@@ -1,0 +1,17 @@
+#homePageCardImageEditMainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    text-align: center;
+}
+
+#homePageCardImageEditImageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#homePageCardImageEditMainContainer button {
+    margin: auto !important;
+}

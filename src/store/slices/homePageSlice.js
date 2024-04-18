@@ -85,28 +85,6 @@ const homePageSlice = createSlice({
         ]
     },
     reducers: {
-        addCard: (state, action) => {
-            state.cardsData[action.payload.tagId] = {
-                id: Object.keys(state.cardsData).length,
-                tagId: action.payload.tagId,
-                title: action.payload.title,
-                text: action.payload.text,
-                button: [],
-                bg: './offerbackgrounds/HomepageOfferCards/dota2.jpg'
-            }
-        },
-        addButton: (state, action) => {
-            state.cardsData[action.payload.cardKey].button = [
-                ...state.cardsData[action.payload.cardKey].button,
-                {
-                    id: state.cardsData[action.payload.cardKey].button.length,
-                    link: action.payload.link,
-                    type: action.payload.btnType,
-                    class: action.payload.btnType === 'mainButton' ? 'card-main-button' : 'order-button',
-                    name: action.payload.btnName
-                }
-            ]
-        },
         addCardsData: (state, action) => {
             state.cardsData = action.payload;
         }
@@ -114,7 +92,7 @@ const homePageSlice = createSlice({
 })
 
 export const {
-    addCard, addButton, addCardsData
+    addCardsData
 } = homePageSlice.actions;
 
 export default homePageSlice.reducer

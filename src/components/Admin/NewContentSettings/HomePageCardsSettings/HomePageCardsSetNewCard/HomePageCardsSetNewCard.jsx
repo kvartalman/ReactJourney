@@ -1,15 +1,13 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import './/HomePageCardsSetNewCard.css';
 import {useDispatch} from "react-redux";
-import Container from "react-bootstrap/Container";
 import {addNewHomePageOfferCard} from "../../../../../store/slices/adminPanelSlices/adminPanelNewContentSlice";
 import OfferCard from "../../../../Homepage/Cards/OfferCard";
-import {OverlayTrigger, Tooltip} from "react-bootstrap";
 
-const HomePageCardsSetNewCard = () => {
+const HomePageCardsSetNewCard = (props) => {
 
     const dispatch = useDispatch();
 
@@ -18,12 +16,14 @@ const HomePageCardsSetNewCard = () => {
     const [tag, setTag] = useState('');
     const [img, setImg] = useState('');
     const [imgPreview, setImgPreview] = useState(null);
+    const [imgName, setImgName] = useState('');
 
     const imgRef = useRef(null);
 
     const handleImgFileChange = (event) => {
         const imgFile = event.target.files[0];
         setImg(imgFile);
+        setImgName(imgFile.name)
 
         if (imgFile) {
             const imgBlobURL = URL.createObjectURL(imgFile);
@@ -46,17 +46,26 @@ const HomePageCardsSetNewCard = () => {
     };
 
     const addHomePageCard = () => {
+
+        props.setImagesData(prevImages => [...prevImages, img])
+
         dispatch(addNewHomePageOfferCard({
             tagId: tag,
             title,
             text: cardText,
-            bg: imgPreview
+            bg: imgPreview,
+            imgName: imgName
         }));
         setTag('');
         setTitle('');
         setCardText('');
         setImgPreview(null);
+
     }
+
+    useEffect(() => {
+        console.log(props.imagesData)
+    }, [props.imagesData]);
 
     return (
         <div id={'homePageCardsSetNewCardMainContainer'}>
@@ -86,7 +95,7 @@ const HomePageCardsSetNewCard = () => {
                             <Form.Control
                                 onChange={cardTextInput}
                                 value={cardText}
-                                placeholder="Введите текс..."
+                                placeholder="Введите текст..."
                             />
                         </Form.Group>
                     </Form>
@@ -94,6 +103,10 @@ const HomePageCardsSetNewCard = () => {
 
                 <div id={'homePageCardsSetNewCardUploadCreateContainer'}>
                     <h2>Загрузи задний фон</h2>
+                    <h3>Самое лучшее, если ты будешь использовать названия фотографий аналогичные названиям
+                        тегов: csCard.jpg, dotaCard.png и т.д... Это будет самый лучший вариант в плане уникальности и
+                        удобства работы кода
+                    </h3>
                     <div>
                         <input type={'file'} accept={'image/*,video/*'} ref={imgRef} onChange={handleImgFileChange}/>
                     </div>

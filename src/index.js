@@ -11,17 +11,18 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
     <BrowserRouter>
-        <React.StrictMode>
+        {/*<React.StrictMode>*/}
             <CartProvider>
                 <Provider store={store}>
                     <App
                     />
                 </Provider>
             </CartProvider>
-        </React.StrictMode>
+        {/*</React.StrictMode>*/}
     </BrowserRouter>
 );
 
+// React strict mode приводит к двойному рендеру
 
 
 

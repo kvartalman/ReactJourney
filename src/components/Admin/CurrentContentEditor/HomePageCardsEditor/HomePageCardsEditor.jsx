@@ -8,7 +8,6 @@ import {
     deleteHomePageOfferCard,
     fillHomePageOfferCards
 } from "../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
-import {addCardsData} from "../../../../store/slices/homePageSlice";
 import HomePageCardsEditorCardPreview from "./HomePageCardsEditorCardPreview/HomePageCardsEditorCardPreview";
 import './HomePageCardsEditor.css';
 import HomePageCardButtonsEditor from "./HomePageCardButtonsEditor/HomePageCardButtonsEditor";
@@ -18,6 +17,8 @@ import HomePageCardsEditorFinalPreview from "./HomePageCardsEditorFinalPreview/H
 import Button from "react-bootstrap/Button";
 import {Tab, Tabs} from "react-bootstrap";
 import HomePageCardsSettings from "../../NewContentSettings/HomePageCardsSettings/HomePageCardsSettings";
+import {addHomePageOfferCardsData} from "../../../../store/slices/adminPanelSlices/adminPanelNewContentSlice";
+import HomePageCardImageEdit from "./HomePageCardImageEdit/HomePageCardImageEdit";
 
 const HomePageCardsEditor = () => {
 
@@ -27,12 +28,14 @@ const HomePageCardsEditor = () => {
     const deletedCardsSelector = useSelector(state => state.adminPanel.deletedHomePageOfferCards);
 
 
+    const [counter, setCounter] = useState(0);
     const [card, setCard] = useState(null);
     const [button, setButton] = useState(null);
     const [activeCardIndex, setActiveCardIndex] = useState(0);
     const [activeButtonIndex, setActiveButtonIndex] = useState(0);
     const [key, setKey] = useState('current');
-
+    const [cardsImages, setCardsImages] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const deleteCardHandler = () => {
         dispatch(deleteHomePageOfferCard(
@@ -48,19 +51,11 @@ const HomePageCardsEditor = () => {
     }
 
     useEffect(() => {
-        axios.get('https://mocki.io/v1/bbcef0d5-c8a0-44a0-bedf-6e3ca13ff643').then(response => {
-            dispatch(fillHomePageOfferCards(response.data));
-            dispatch(addCardsData(response.data));
-            if (response.data) {
-                setCard(response.data[0]);
-                setButton(response.data[0].button[0]);
-            }
-        });
-    }, [])
-
-    useEffect(() => {
-
-    },)
+        if (cardsSelector.length > 0) {
+            setCard(cardsSelector[0]);
+            setButton(cardsSelector[0].button[0]);
+        }
+    }, []);
 
     return (
         <div id={'homePageCardsEditorMainContainer'}>
@@ -136,6 +131,13 @@ const HomePageCardsEditor = () => {
                                             setActiveButtonIndex={setActiveButtonIndex}
                                         />
                                     </div>
+                                    <div id={'homePageCardsEditorImageEditorContainer'}>
+                                        <HomePageCardImageEdit
+                                            card={card}
+                                            setCardsImages={setCardsImages}
+                                        />
+
+                                    </div>
                                 </div>
                             </div>
                             <div id={'homePageCardsEditorPreviewContainer'}>
@@ -159,7 +161,9 @@ const HomePageCardsEditor = () => {
                         </div>
                         <div id={'homePageCardsEditorFinalPreviewContainer'}>
                             <h2>Посмотри итоговое превью</h2>
-                            <HomePageCardsEditorFinalPreview/>
+                            <HomePageCardsEditorFinalPreview
+                                cardsImages={cardsImages}
+                            />
                         </div>
                     </div>
                 </Tab>
@@ -167,7 +171,9 @@ const HomePageCardsEditor = () => {
                     eventKey={'new'}
                     title={'Добавить новое'}
                 >
-                    <HomePageCardsSettings/>
+                    <HomePageCardsSettings
+                        loading={loading}
+                    />
                 </Tab>
             </Tabs>
         </div>

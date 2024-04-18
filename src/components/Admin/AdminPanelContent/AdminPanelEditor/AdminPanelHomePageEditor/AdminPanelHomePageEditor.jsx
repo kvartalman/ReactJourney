@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './AdminPanelHomePageEditor.css';
 import CarouselEditor from "../../../CurrentContentEditor/CarouselEditor/CarouselEditor";
 import HomePageCardsEditor from "../../../CurrentContentEditor/HomePageCardsEditor/HomePageCardsEditor";
@@ -6,9 +6,15 @@ import AdvantagesEditor from "../../../CurrentContentEditor/AdvantagesEditor/Adv
 import StepsEditor from "../../../CurrentContentEditor/StepsEditor/StepsEditor";
 import AdminPanelHomePageEditorSections
     from "./AdminPanelHomePageEditorCurrentSections/AdminPanelHomePageEditorSections";
+import axios from "axios";
+import {fillHomePageOfferCards} from "../../../../../store/slices/adminPanelSlices/adminPanelEditorSlice";
+import {addHomePageOfferCardsData} from "../../../../../store/slices/adminPanelSlices/adminPanelNewContentSlice";
+import {useDispatch} from "react-redux";
 
 
 const AdminPanelHomePageEditor = (props) => {
+
+    const dispatch = useDispatch();
 
     const [sectionName, setSectionName] = useState('');
     const handleSectionChoice = (section) => {
@@ -16,17 +22,22 @@ const AdminPanelHomePageEditor = (props) => {
         props.setBackIndex(3);
     }
 
-    // [
-    //                         <AdminPanelDashboard/>, 1, 2, <NewProductSettings/>, <HomePageCardsSettings/>,
-    //                         <OfferPageCardsSettings/>,
-    //                         <GamePagesEditor/>, <SubCategoriesEditor/>, <ProductsEditor/>, <HomePageCardsEditor/>,
-    //                         <CarouselEditor/>, <AdvantagesEditor/>, <StepsEditor/>
-    //                     ].map(
-    //                         (elem, index) => (
-    //                             contentCol === index ?
-    //                                 elem
-    //                                 :
-    //                                 null
+    useEffect(() => {
+
+        const authToken = localStorage.getItem('auth_token');
+
+        axios.get('http://localhost:8000/shop-content/api/v1/get_offerPage_cards',
+            {
+                headers: {
+                    'Authorization': `Token ${authToken}`,
+                }
+            }).then(response => {
+                console.log(response.data)
+            dispatch(fillHomePageOfferCards(response.data['cards_data']));
+            dispatch(addHomePageOfferCardsData(response.data['cards_data']));
+        });
+
+    }, [])
 
     const editorComponent = {
         carousel: <CarouselEditor/>,

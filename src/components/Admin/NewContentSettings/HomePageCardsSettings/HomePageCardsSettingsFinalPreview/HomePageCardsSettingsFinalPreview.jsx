@@ -8,10 +8,14 @@ import Button from "react-bootstrap/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {cancelHomePageOfferCardAdding} from "../../../../../store/slices/adminPanelSlices/adminPanelNewContentSlice";
 import './HomePageCardsSettingsFinalPreview.css';
+import axios from "axios";
 
 const HomePageCardsSettingsFinalPreview = (props) => {
 
+
+
     const addedCardsSelector = useSelector(state => state.adminPanelNewContent.homePageAddedOfferCards);
+    const cardsSelector = useSelector(state => state.adminPanelNewContent.homePageOfferCards)
 
     const dispatch = useDispatch();
 
@@ -20,9 +24,66 @@ const HomePageCardsSettingsFinalPreview = (props) => {
         dispatch(cancelHomePageOfferCardAdding(selectedCard.current.value))
     }
 
+    const handleChangesConfirmation = () => {
+
+        const deepCopyOfCardsSelector = JSON.parse(JSON.stringify(cardsSelector));
+
+        const authToken = localStorage.getItem('auth_token');
+        const formData = new FormData();
+
+        const requests = []
+
+        for (let i = 0; i < deepCopyOfCardsSelector.length; i++) {
+
+            let image = null;
+
+            for (let j = 0; j < props.imagesData.length; j++) {
+                if (props.imagesData[j].name === deepCopyOfCardsSelector[i].imgName) {
+                    image = props.imagesData[j]
+                    break;
+                }
+            }
+
+            if (image === null) {
+                image = deepCopyOfCardsSelector[i].bg
+            }
+            const request = () => {
+
+                formData.append(`title-${i}`, deepCopyOfCardsSelector[i].title)
+                formData.append(`text-${i}`, deepCopyOfCardsSelector[i].text)
+                formData.append(`button-${i}`, JSON.stringify(deepCopyOfCardsSelector[i].button))
+                formData.append(`tagId-${i}`, deepCopyOfCardsSelector[i].tagId)
+                formData.append(`imgName-${i}`, deepCopyOfCardsSelector[i].imgName)
+                formData.append(`img-${i}`, image)
+            }
+
+            requests.push(request)
+        }
+
+        Promise.all(requests.map(req => req()))
+            .then(results => {
+
+                    axios.post('http://localhost:8000/shop-content/api/v1/update_offerPage_cards', formData, {
+                            headers: {
+                                'Authorization': `Token ${authToken}`,
+                            }
+                        }
+                    )
+                        .then(response => {
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                }
+            )
+            .catch(error => console.log(error))
+    }
+
     const getCardsArray = () => {
-        if (props.cardsData) {
-            return props.cardsData.map(card =>
+
+        if (cardsSelector.length > 0) {
+
+            return cardsSelector.map(card =>
                 (
                     <OfferCard
                         key={card.id}
@@ -33,7 +94,7 @@ const HomePageCardsSettingsFinalPreview = (props) => {
                         button={
                             <Container fluid><Row className={'row-cols-auto'}>
                                 {
-                                    card.button.map(button => (
+                                    (card.button).map(button => (
                                         <CardsButton
                                             key={button.id}
                                             link={button.link}
@@ -79,15 +140,13 @@ const HomePageCardsSettingsFinalPreview = (props) => {
                 <img src={'/backgrounds/bestoffers.png'} alt={'BEST OFFERS'} className={'img-fluid imgTab'}/>
                 <div id={'homePageCardsSettingsFinalPreviewCardsContainer'}>
                     {/*row-cols-* - set the cards width by setting amount of cards in row*/}
-                    {props.loading ? <div id={'homePageCardsPreloader'}>
-                        <img src={'/preloader.gif'} alt={'Loading...'}/>
-                    </div> : getCardsArray()
-                    }
+                    {getCardsArray()}
                 </div>
             </div>
             <div id={'homePageCardsSettingsFinalPreviewAcceptButtonContainer'}>
                 <Button
                     className={'nextPageButton'}
+                    onClick={() => handleChangesConfirmation()}
                 >
                     Подтвердить изменения
                 </Button>

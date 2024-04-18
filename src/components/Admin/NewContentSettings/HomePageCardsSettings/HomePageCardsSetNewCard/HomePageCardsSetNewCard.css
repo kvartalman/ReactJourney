@@ -49,6 +49,11 @@
     font: 900 30px "Roboto", sans-serif;
 }
 
+#homePageCardsSetNewCardUploadCreateContainer h3 {
+    text-align: center;
+    font: 900 15px "Roboto", sans-serif;
+}
+
 #homePageCardsSetNewCardCreatedPreview > .cardPosition {
     background-size: cover !important;
     background-position: center !important;

@@ -18,6 +18,7 @@ const ChooseHomePageCard = (props) => {
             return (
                 props.cardsSelector.map((card, index) => (
                     <Button
+                        key={index}
                         className={props.activeCardIndex === index ? 'homePageCardsEditorActiveButton' : null}
                         onClick={() => handleCardSelect(card, index)}
                     >
