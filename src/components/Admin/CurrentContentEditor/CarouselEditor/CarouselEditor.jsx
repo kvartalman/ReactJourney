@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
 import './CarouselEditor.css';
 import {
     changeCarouselEditorData,
@@ -58,10 +57,6 @@ const CarouselEditor = () => {
         setPictureIndex(index);
     };
 
-    const handleCarouselEditorDataFilling = () => {
-        dispatch(fillCarouselEditorData(carouselSelector));
-    };
-
     const handleCarouselEditorDataChanges = (actionType) => {
         if (actionType === 'delete') {
             dispatch(changeCarouselEditorData(
@@ -103,22 +98,13 @@ const CarouselEditor = () => {
             return (
                 carouselEditorData.map(item => (
                     <Carousel.Item>
-                        <CarouselItems key={item.id} srcImg={item.srcImg} altImg={item.altImg}
-                                       text={<Carousel.Caption
-                                           className={'carousel-text'}>{item.text}</Carousel.Caption>}/>
+                        <CarouselItems key={item.id} srcImg={item.srcImg} altImg={item.altImg}/>
                     </Carousel.Item>
                 ))
             )
         }
     }
-
-    useEffect(
-        () => {
-            handleCarouselEditorDataFilling();
-        },
-        []
-    )
-
+    
     useEffect(() => {
 
         // Выполняем условие только когда массив заполнен. Нужно, чтобы, при удалении элемента, корректно отображалось
@@ -148,7 +134,7 @@ const CarouselEditor = () => {
             >
                 <Tab
                     eventKey={'current'}
-                    title={'Edit current'}
+                    title={'Изменить текущее'}
                 >
                     <div id={'carouselEditorCurrentMainContainer'}>
                         <div id={'carouselEditorFinalPreviewContainer'}>
@@ -235,7 +221,7 @@ const CarouselEditor = () => {
                 </Tab>
                 <Tab
                     eventKey={'new'}
-                    title={'Add new'}
+                    title={'Добавить новое'}
                 >
                     <CarouselNew/>
                 </Tab>

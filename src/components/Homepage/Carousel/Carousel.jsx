@@ -10,8 +10,7 @@ const CarouselComponent = () => {
 
     const carouselItemArr = carouselData.map(item => (
         <Carousel.Item>
-            <CarouselItems key={item.id} srcImg={item.srcImg} altImg={item.altImg}
-                           text={<Carousel.Caption className={'carousel-text'}>{item.text}</Carousel.Caption>}/>
+            <CarouselItems key={item.id} srcImg={item.srcImg} altImg={item.altImg}/>
         </Carousel.Item>
     ))
 

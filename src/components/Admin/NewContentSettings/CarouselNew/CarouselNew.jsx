@@ -9,6 +9,7 @@ import {
 import {Carousel} from "react-bootstrap";
 import CarouselItems from "../../../Homepage/Carousel/CarouselItems";
 import Button from "react-bootstrap/Button";
+import axios from "axios";
 
 const CarouselNew = () => {
 
@@ -23,15 +24,12 @@ const CarouselNew = () => {
     const [imgName, setImgName] = useState('');
     const [picture, setPicture] = useState(0);
     const [pictureIndex, setPictureIndex] = useState(0);
+    const [imagesData, setImagesData] = useState([]);
 
     const imgRef = useRef(null);
 
     const imgNameInput = (e) => {
         setImgName(e.target.value);
-    };
-
-    const handleCarouselEditorDataFilling = () => {
-        dispatch(fillCarouselEditorNewData(carouselSelector));
     };
 
     const handleCarouselEditorDataChanges = (actionType) => {
@@ -44,6 +42,7 @@ const CarouselNew = () => {
                     index: pictureIndex
                 }
             ))
+            setImagesData(prev => [...prev, [img, imgName]])
         } else if (actionType === 'deleteNew') {
             dispatch(changeCarouselEditorData(
                 {
@@ -77,9 +76,7 @@ const CarouselNew = () => {
             return (
                 carouselEditorData.map(item => (
                     <Carousel.Item>
-                        <CarouselItems key={item.id} srcImg={item.srcImg} altImg={item.altImg}
-                                       text={<Carousel.Caption
-                                           className={'carousel-text'}>{item.text}</Carousel.Caption>}/>
+                        <CarouselItems key={item.id} srcImg={item.srcImg} altImg={item.altImg}/>
                     </Carousel.Item>
                 ))
             )
@@ -101,12 +98,55 @@ const CarouselNew = () => {
         }
     }
 
-    useEffect(
-        () => {
-            handleCarouselEditorDataFilling();
-        },
-        []
-    )
+    const handleCarouselChangesConfirmation = () => {
+        const deepCopyOfCarouselSelector = JSON.parse(JSON.stringify(carouselNewAddedDataSelector));
+
+        const authToken = localStorage.getItem('auth_token');
+        const formData = new FormData();
+
+        const requests = []
+
+        for (let i = 0; i < deepCopyOfCarouselSelector.length; i++) {
+
+            let image = null;
+            let imageName = '';
+
+            for (let j = 0; j < imagesData.length; j++) {
+                if (imagesData[j][1] === deepCopyOfCarouselSelector[i].name) {
+                    image = imagesData[j][0]
+                    imageName = imagesData[j][0].name
+                }
+            }
+
+            const request = () => {
+
+                formData.append(`title-${i}`, deepCopyOfCarouselSelector[i].name)
+                formData.append(`img-${i}`, image)
+                formData.append(`imgName-${i}`, imageName)
+            }
+
+            requests.push(request)
+
+        }
+
+        Promise.all(requests.map(req => req()))
+            .then(results => {
+
+                    axios.post('http://localhost:8000/shop-content/api/v1/add_new_carousel', formData, {
+                            headers: {
+                                'Authorization': `Token ${authToken}`,
+                            }
+                        }
+                    )
+                        .then(response => {
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                }
+            )
+            .catch(error => console.log(error))
+    }
 
     useEffect(() => {
 
@@ -131,14 +171,15 @@ const CarouselNew = () => {
     return (
         <div id={'carouselNewMainContainer'}>
             <div id={'carouselNewFinalPreviewContainer'}>
-                <h1>Final preview</h1>
+                <h1>Финальное превью</h1>
                 <Carousel fade className={'carousel'} indicators={false} interval={5000} pause={false}>
                     {carouselItemArr()}
                 </Carousel>
                 <Button
+                    onClick={() => handleCarouselChangesConfirmation()}
                     className={'nextPageButton'}
                 >
-                    Accept changes
+                    Подтвердить изменения
                 </Button>
             </div>
             <div id={'carouselNewSettingsContainer'}>

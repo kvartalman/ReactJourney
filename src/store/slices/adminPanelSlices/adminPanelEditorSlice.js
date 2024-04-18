@@ -28,7 +28,37 @@ const adminPanelEditorSlice = createSlice(
         },
         reducers: {
             fillCarouselEditorData: (state, action) => {
-                state.carouselEditorData = action.payload;
+
+                const carouselArr = []
+
+
+
+                for (let i = 0; i < action.payload.length; i++) {
+                    // С бэкенда приходят base64 изображения, поэтому приходится делать такие манипуляции
+
+                    const byteCharacters = atob(action.payload[i]['image_data']);
+                    const byteNumbers = new Array(byteCharacters.length);
+                    for (let i = 0; i < byteCharacters.length; i++) {
+                        byteNumbers[i] = byteCharacters.charCodeAt(i);
+                    }
+                    const byteArray = new Uint8Array(byteNumbers);
+                    const imageBlob = URL.createObjectURL(new Blob([byteArray], { type: 'image/jpeg' }));
+
+                    const newCarousel = {
+                        id: i,
+                        srcImg: imageBlob,
+                        altImg: action.payload[i]['title'],
+                        name: action.payload[i]['title']
+
+                    }
+
+                    carouselArr.push(newCarousel)
+
+
+                }
+                state.carouselEditorData = carouselArr
+                state.carouselEditorNewData = carouselArr
+
             },
             fillCarouselEditorNewData: (state, action) => {
                 state.carouselEditorNewData = action.payload;
@@ -41,14 +71,12 @@ const adminPanelEditorSlice = createSlice(
                             id: state.carouselEditorNewData.length,
                             srcImg: data.src,
                             altImg: data.name,
-                            text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ",
                             name: data.name
                         }
                         state.carouselNewAddedData[state.carouselNewAddedData.length] = {
                             id: state.carouselEditorNewData.length,
                             srcImg: data.src,
                             altImg: data.name,
-                            text: "ОТФОТОШОПЛЕННАЯ В СТИЛЕ САЙТА ПИКЧА С ОФФЕРОМ",
                             name: data.name
                         }
                     },

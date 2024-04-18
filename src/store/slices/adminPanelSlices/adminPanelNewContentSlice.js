@@ -10,11 +10,11 @@ const adminPanelNewContentSlice = createSlice({
     reducers: {
         addHomePageOfferCardsData: (state, action) => {
 
-            const cards_arr = []
+            const cardsArr = []
 
             for (let i = 0; i < action.payload.length; i++) {
 
-                // С бэкенда приходит base64 изображения, поэтому приходится делать такие манипуляции
+                // С бэкенда приходят base64 изображения, поэтому приходится делать такие манипуляции
 
                 const byteCharacters = atob(action.payload[i]['image_data']);
                 const byteNumbers = new Array(byteCharacters.length);
@@ -34,9 +34,9 @@ const adminPanelNewContentSlice = createSlice({
                     imgName: action.payload[i]['offer_card']['image_name'],
                 }
 
-                cards_arr.push(new_card)
+                cardsArr.push(new_card)
 
-                state.homePageOfferCards = cards_arr
+                state.homePageOfferCards = cardsArr
         }
         },
         addNewHomePageOfferCard: (state, action) => {
