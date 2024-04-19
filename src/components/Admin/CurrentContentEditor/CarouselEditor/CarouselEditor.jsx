@@ -10,6 +10,7 @@ import {Carousel, Tab, Tabs} from "react-bootstrap";
 import CarouselItems from "../../../Homepage/Carousel/CarouselItems";
 import Form from "react-bootstrap/Form";
 import CarouselNew from "../../NewContentSettings/CarouselNew/CarouselNew";
+import axios from "axios";
 
 const CarouselEditor = () => {
 
@@ -23,7 +24,6 @@ const CarouselEditor = () => {
 
     const dispatch = useDispatch();
 
-    const carouselSelector = useSelector(state => state.homePage.carouselData);
     const carouselEditorData = useSelector(state => state.adminPanel.carouselEditorData);
 
     const [picture, setPicture] = useState(null);
@@ -32,6 +32,7 @@ const CarouselEditor = () => {
     const [imgPreview, setImgPreview] = useState(null);
     const [imgName, setImgName] = useState('');
     const [key, setKey] = useState('current');
+    const [imagesData, setImagesData] = useState([]);
 
     const imgRef = useRef(null);
 
@@ -75,6 +76,8 @@ const CarouselEditor = () => {
                     index: pictureIndex
                 }
             ))
+
+            setImagesData(prev => [...prev, [img, picture.name, imgName]])
         }
     };
 
@@ -104,7 +107,62 @@ const CarouselEditor = () => {
             )
         }
     }
-    
+
+    const handleCarouselChangesConfirmation = () => {
+
+        const deepCopyOfCarouselSelector = JSON.parse(JSON.stringify(carouselEditorData));
+
+        const authToken = localStorage.getItem('auth_token');
+        const formData = new FormData();
+
+        const requests = []
+
+        for (let i = 0; i < deepCopyOfCarouselSelector.length; i++) {
+
+            let image = null;
+            let newImgName = '';
+            let oldImgName = '';
+
+            for (let j = 0; j < imagesData.length; j++) {
+                if (imagesData[j][2] === deepCopyOfCarouselSelector[i].name) {
+                    image = imagesData[j][0]
+                    oldImgName = imagesData[j][1]
+                    newImgName = imagesData[j][2]
+                }
+            }
+
+            const request = () => {
+
+                formData.append(`img-${i}`, image)
+                formData.append(`imgName-${i}`, image ? image.name : deepCopyOfCarouselSelector[i].name)
+                formData.append(`newImgTitle-${i}`, newImgName)
+                formData.append(`oldImgTitle-${i}`, oldImgName)
+            }
+
+            requests.push(request)
+
+        }
+
+        Promise.all(requests.map(req => req()))
+            .then(results => {
+
+                    axios.put('http://localhost:8000/shop-content/api/v1/update_carousel', formData, {
+                            headers: {
+                                'Authorization': `Token ${authToken}`,
+                            }
+                        }
+                    )
+                        .then(response => {
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                }
+            )
+            .catch(error => console.log(error))
+
+    }
+
     useEffect(() => {
 
         // Выполняем условие только когда массив заполнен. Нужно, чтобы, при удалении элемента, корректно отображалось
@@ -143,6 +201,7 @@ const CarouselEditor = () => {
                                 {carouselItemArr()}
                             </Carousel>
                                 <Button
+                                    onClick={() => handleCarouselChangesConfirmation()}
                                     className={'nextPageButton'}
                                 >
                                     Подтвердить

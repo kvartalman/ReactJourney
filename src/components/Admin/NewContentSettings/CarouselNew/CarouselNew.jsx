@@ -99,6 +99,7 @@ const CarouselNew = () => {
     }
 
     const handleCarouselChangesConfirmation = () => {
+
         const deepCopyOfCarouselSelector = JSON.parse(JSON.stringify(carouselNewAddedDataSelector));
 
         const authToken = localStorage.getItem('auth_token');
