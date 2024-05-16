@@ -37,28 +37,42 @@ const AdminPanelNavBar = (props) => {
                     <div className={'adminPanelNavBarCtg'}>
                         <button onClick={() => {
                             handleMenuChoice()
-                        }}>Main menu
+                        }}>Главное меню
                         </button>
                     </div>
                     <div className={'adminPanelNavBarCtg'}>
                         <button
                             onClick={() => handleContentChoice('editor')}
                         >
-                            Editor
+                            Редактор
                         </button>
                     </div>
                     <div className={'adminPanelNavBarCtg'}>
                         <button
                             onClick={() => handleContentChoice('messages')}
                         >
-                            Messages
+                            Сообщения
+                        </button>
+                    </div>
+                    <div className={'adminPanelNavBarCtg'}>
+                        <button
+                            onClick={() => handleContentChoice('todo')}
+                        >
+                            Список задач
+                        </button>
+                    </div>
+                    <div className={'adminPanelNavBarCtg'}>
+                        <button
+                            onClick={() => handleContentChoice('staff')}
+                        >
+                            Персонал
                         </button>
                     </div>
                     <div>
                         <button
-                            onClick={() => handleContentChoice('todo')}
+                            onClick={() => handleContentChoice('users')}
                         >
-                            'To Do' list
+                            Пользователи
                         </button>
                     </div>
                 </div>

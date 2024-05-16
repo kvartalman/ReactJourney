@@ -30,7 +30,6 @@ const SignPage = () => {
         setPswText('');
     }
 
-    // Using Firebase SDK to create new user
     const handleSign = async (e) => {
         e.preventDefault();
             const response = await axios.post('http://localhost:8000/auth/users/',
@@ -38,7 +37,7 @@ const SignPage = () => {
                     username: userText,
                     email: emailText,
                     password: pswText,
-                    group: 'Boosters'
+                    group: 'Clients'
                 })
                 .then(response => {
                     setShowModal(true);

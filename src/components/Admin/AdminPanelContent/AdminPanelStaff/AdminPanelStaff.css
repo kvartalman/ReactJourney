@@ -1,0 +1,37 @@
+#adminPanelStaffMainContainer {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #0e232f;
+    border-radius: 0.5%;
+    background-color: #ffffff;
+    margin: 1em;
+}
+
+#adminPanelStaffMainContainer h1 {
+    font: 900 40px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+#adminPanelStaffTypesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#adminPanelStaffTypesContainer h2 {
+    font: 900 30px "Roboto", sans-serif;
+    color: #0e232f;
+    text-align: center;
+}
+
+.adminPanelStaffListContainer {
+    display: flex;
+    width: 100%;
+    padding: 1em;
+    flex-direction: column;
+    border: 2px solid #0e232f;
+    border-radius: 2%;
+    background-color: #c3dae8;
+    margin: 1em;
+}

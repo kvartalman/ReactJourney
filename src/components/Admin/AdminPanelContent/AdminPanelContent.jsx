@@ -4,6 +4,8 @@ import AdminPanelEditor from "./AdminPanelEditor/AdminPanelEditor";
 import AdminPanelDashboard from "./AdminPanelDashboard/AdminPanelDashboard";
 import AdminPanelMessages from "./AdminPanelMessages/AdminPanelMessages";
 import AdminPanelToDoList from "./AdminPanelToDoList/AdminPanelToDoList";
+import AdminPanelStaff from "./AdminPanelStaff/AdminPanelStaff";
+import AdminPanelUsers from "./AdminPanelUsers/AdminPanelUsers";
 
 const AdminPanelContent = (props) => {
 
@@ -21,6 +23,14 @@ const AdminPanelContent = (props) => {
             backIndex={props.backIndex}
         />,
         todo: <AdminPanelToDoList
+            setBackIndex={props.setBackIndex}
+            backIndex={props.backIndex}
+        />,
+        staff: <AdminPanelStaff
+            setBackIndex={props.setBackIndex}
+            backIndex={props.backIndex}
+        />,
+        users: <AdminPanelUsers
             setBackIndex={props.setBackIndex}
             backIndex={props.backIndex}
         />
