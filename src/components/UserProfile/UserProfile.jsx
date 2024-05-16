@@ -24,6 +24,9 @@ const UserProfile = () => {
     const [emailErrorText, setEmailErrorText] = useState('');
     const [emailSentModal, setEmailSentModal] = useState(false);
 
+    const [wrongPassword, setWrongPassword] = useState('');
+    const [emailChangeWrongPassword, setEmailChangeWrongPassword] = useState('');
+
     const deleteAccountPasswordInput = (e) => {
         setDeleteAccountPassword(e.target.value);
     }
@@ -48,6 +51,11 @@ const UserProfile = () => {
         setNewPasswordRepeat(e.target.value)
     }
 
+    const handleModalsOfChangesClose = (stateFunc) => {
+        stateFunc(false);
+        setWrongPassword('');
+    }
+
     const handleLogout = async () => {
         const response = await axios.post('http://localhost:8000/auth/token/logout',
             null,
@@ -65,11 +73,12 @@ const UserProfile = () => {
             })
             .catch(error => {
                 console.log(error);
+                setWrongPassword(error.response.data.error);
             })
     }
 
     const deleteAccount = async () => {
-        await axios.delete(`http://localhost:8000/api/v1/user_delete?password=${deleteAccountPassword}`, {
+        await axios.delete(`http://localhost:8000/users/api/v1/user_delete?password=${deleteAccountPassword}`, {
             headers: {
                 Authorization: `Token ${localStorage.getItem('auth_token')}`
             }
@@ -83,6 +92,7 @@ const UserProfile = () => {
             })
             .catch(error => {
                 console.log(error);
+
             })
     }
 
@@ -90,7 +100,7 @@ const UserProfile = () => {
 
         if (newEmail && validator.isEmail(newEmail) && passwordEmailChange) {
             console.log(localStorage.getItem('auth_token'))
-            await axios.patch('http://localhost:8000/api/v1/user_update_email',
+            await axios.patch('http://localhost:8000/users/api/v1/user_update_email',
                 {
                     new_email: newEmail,
                     password: passwordEmailChange
@@ -107,6 +117,7 @@ const UserProfile = () => {
                 })
                 .catch(error => {
                     console.log(error)
+                    setWrongPassword(error.response.data.error);
                 })
         } else if (!newEmail || !validator.isEmail(newEmail)) {
             setEmailErrorText('Email field must be filled in correctly')
@@ -119,7 +130,7 @@ const UserProfile = () => {
     const changePassword = async () => {
 
         if (newPassword && newPasswordRepeat && newPassword === newPasswordRepeat && newPassword.length >= 8) {
-            await axios.patch('http://localhost:8000/api/v1/user_update_password',
+            await axios.patch('http://localhost:8000/users/api/v1/user_update_password',
                 {
                     current_password: currentPassword,
                     new_password: newPassword,
@@ -131,9 +142,11 @@ const UserProfile = () => {
                 })
                 .then(response => {
                     console.log(response)
+                    setWrongPassword('');
                 })
                 .catch(error => {
                     console.log(error)
+                    setWrongPassword(error.response.data.error);
                 })
         } else if (!newPassword) {
             setPasswordErrorText('You must enter new password!')
@@ -146,19 +159,23 @@ const UserProfile = () => {
 
     useEffect(() => {
         const checkUser = async () => {
-            const response = await axios.get('http://localhost:8000/api/v1/user_view', {
-                headers: {
-                    Authorization: `Token ${localStorage.getItem('auth_token')}`
-                }
-            })
-                .then(response => {
-                    setUser(true);
-                    console.log(response.data);
-                })
-                .catch(error => {
-                    setUser(false);
-                })
 
+            const authToken = localStorage.getItem('auth_token')
+
+            if (authToken) {
+                const response = await axios.get('http://localhost:8000/users/api/v1/user_view', {
+                    headers: {
+                        Authorization: `Token ${authToken}`
+                    }
+                })
+                    .then(response => {
+                        setUser(true);
+                        console.log(response.data);
+                    })
+                    .catch(error => {
+                        setUser(false);
+                    })
+            }
         }
         checkUser()
     }, []);
@@ -179,7 +196,7 @@ const UserProfile = () => {
                         <p onClick={() => setChangeEmailModal(true)}>Change email</p>
                         <p onClick={() => setChangePasswordModal(true)}>Change password</p>
                     </div>
-                    <Modal centered show={changeEmailModal} onHide={() => setChangeEmailModal(false)}>
+                    <Modal centered show={changeEmailModal} onHide={() => handleModalsOfChangesClose(setChangeEmailModal)}>
                         <h3>Change email</h3>
                         <Form>
                             <Form.Label>Enter new email</Form.Label>
@@ -201,13 +218,19 @@ const UserProfile = () => {
                                 :
                                 null
                             }
+                            {
+                                wrongPassword ?
+                                    <p>{wrongPassword}</p>
+                                    :
+                                    null
+                            }
                             <button
                                 onClick={() => changeEmail()}
                             >Confirm
                             </button>
                         </div>
                     </Modal>
-                    <Modal centered show={changePasswordModal} onHide={() => setChangePasswordModal(false)}>
+                    <Modal centered show={changePasswordModal} onHide={() => handleModalsOfChangesClose(setChangePasswordModal)}>
                         <h3>Change password</h3>
                         <Form>
                             <Form.Label>Enter current password</Form.Label>
@@ -235,13 +258,18 @@ const UserProfile = () => {
                                 :
                                 null
                             }
+                            {wrongPassword ?
+                                <p>{wrongPassword}</p>
+                                :
+                                null
+                            }
                             <button
                                 onClick={() => changePassword()}
                             >Confirm
                             </button>
                         </div>
                     </Modal>
-                    <Modal centered show={showDeleteAccountModal} onHide={() => setShowDeleteAccountModal(false)}>
+                    <Modal centered show={showDeleteAccountModal} onHide={() => handleModalsOfChangesClose(setShowDeleteAccountModal)}>
                         <h3>Are you sure?</h3>
                         <p>You will lose all your statistic</p>
                         <Form>
@@ -252,6 +280,11 @@ const UserProfile = () => {
                                 placeholder={'Enter password here...'}
                             />
                         </Form>
+                        {wrongPassword ?
+                            <p>{wrongPassword}</p>
+                            :
+                            null
+                        }
                         <button
                             onClick={() => deleteAccount()}
                         >Confirm
@@ -262,11 +295,12 @@ const UserProfile = () => {
                         </button>
                     </Modal>
                     <Modal centered show={emailSentModal} onHide={() => setEmailSentModal(false)}>
-                        <p>Sent successfully! Check your email please!</p>
+                        <p>Email changed successfully!</p>
                     </Modal>
+                    <Modal centered ></Modal>
                 </div>
                 :
-                <p>lol</p>}
+                <p>Log in to visit this page</p>}
         </div>
     )
 }

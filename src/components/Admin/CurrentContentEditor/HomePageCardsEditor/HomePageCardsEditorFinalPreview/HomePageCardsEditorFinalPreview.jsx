@@ -60,6 +60,7 @@ const HomePageCardsEditorFinalPreview = (props) => {
                         }
                     )
                         .then(response => {
+                            console.log(response)
                         })
                         .catch(error => {
                             console.log(error);

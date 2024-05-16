@@ -41,15 +41,15 @@ const SignSuccessModal = (props) => {
                 </p>
             </Modal.Body>
             <Modal.Footer>
-                    {showSentInfo ?
-                        <p>We sent you letter again!</p>
-                        :
-                        null
-                    }
-                    <div>
-                        <Button onClick={() => handleEmailResend()}>I didn't get an email</Button>
-                        <Button onClick={props.onHide}>Okay!</Button>
-                    </div>
+                {showSentInfo ?
+                    <p>We sent you letter again! If you still can't get letter - write to our manager please</p>
+                    :
+                    null
+                }
+                <div>
+                    <Button onClick={() => handleEmailResend()}>I didn't get an email</Button>
+                    <Button onClick={props.onHide}>Okay!</Button>
+                </div>
             </Modal.Footer>
         </Modal>
     )

@@ -54,21 +54,27 @@ const Navigation = (props) => {
 
 
     useEffect(() => {
+
+
         const checkUser = async () => {
 
-            const response = await axios.get('http://localhost:8000/api/v1/user_view', {
-                headers: {
-                    Authorization: `Token ${localStorage.getItem('auth_token')}`
-                }
-            })
-                .then(response => {
-                    setUser(true)
-                    console.log('You are authorized')
+            const authToken = localStorage.getItem('auth_token');
+
+            if (authToken) {
+                const response = await axios.get('http://localhost:8000/users/api/v1/user_view', {
+                    headers: {
+                        Authorization: `Token ${authToken}`
+                    }
                 })
-                .catch(error => {
-                    console.log(error)
-                    setUser(false)
-                })
+                    .then(response => {
+                        setUser(true)
+                        console.log('You are authorized')
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        setUser(false)
+                    })
+            }
         }
         checkUser()
     }, []);
