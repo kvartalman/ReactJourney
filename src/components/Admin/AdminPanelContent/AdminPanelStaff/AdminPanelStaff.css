@@ -1,5 +1,6 @@
 #adminPanelStaffMainContainer {
     display: flex;
+    height: 100vh;
     flex-direction: column;
     border: 2px solid #0e232f;
     border-radius: 0.5%;
@@ -27,6 +28,9 @@
 
 .adminPanelStaffListContainer {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
     width: 100%;
     padding: 1em;
     flex-direction: column;
@@ -34,4 +38,37 @@
     border-radius: 2%;
     background-color: #c3dae8;
     margin: 1em;
+}
+
+.adminPanelStaffListContainer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.adminPanelStaffListContainer li {
+    padding: 10px 15px;
+    margin: 5px 0;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.adminPanelStaffListContainer li:hover {
+    background-color: #e0e0e0;
+}
+
+.adminPanelStaffListContainer button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.adminPanelStaffListContainer button:hover {
+    background-color: #0056b3;
 }
