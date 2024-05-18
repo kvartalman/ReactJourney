@@ -95,19 +95,19 @@ const AdminPanelStaff = () => {
         }
 
         return paginate(boostersList, boostersPage).map(booster => (
-        <li key={booster.id}>
-            <div>
-                {booster.username}
-                <img
-                    onClick={() => {
-                        handleStaffDeletionModal(booster.username, 'Boosters')
-                    }}
-                    src={'/admin-panel/garbage.png'}
-                    width={20}
-                    alt={'Корзина'}
-                />
-            </div>
-        </li>
+            <li key={booster.id}>
+                <div>
+                    {booster.username}
+                    <img
+                        onClick={() => {
+                            handleStaffDeletionModal(booster.username, 'Boosters')
+                        }}
+                        src={'/admin-panel/garbage.png'}
+                        width={20}
+                        alt={'Корзина'}
+                    />
+                </div>
+            </li>
         ));
     }
 
@@ -142,7 +142,7 @@ const AdminPanelStaff = () => {
                     <img
                         onClick={() => {
                             handleStaffDeletionModal(moderator.username, 'Moderators')
-                    }}
+                        }}
                         src={'/admin-panel/garbage.png'}
                         width={20}
                         alt={'Корзина'}
@@ -185,6 +185,8 @@ const AdminPanelStaff = () => {
             })
             .then(response => {
                 setSuccessfullyCreated(true);
+                setRegisterModal(false);
+                fetchStaffList();
             })
             .catch(error => {
                 console.log(error)
@@ -225,9 +227,15 @@ const AdminPanelStaff = () => {
                     Authorization: `Token ${authToken}`
                 }
             }).then(response => {
-                    setBoostersList(response.data.boosters);
-                    setModeratorsList(response.data.moderators)
-                    console.log(response.data.boosters, response.data.moderators)
+
+                    const {boosters, moderators} = response.data;
+
+                    moderators.sort((a, b) => a.username.localeCompare(b.username));
+
+                    boosters.sort((a, b) => a.username.localeCompare(b.username));
+
+                    setBoostersList(boosters);
+                    setModeratorsList(moderators)
                 }
             )
         } catch (error) {
