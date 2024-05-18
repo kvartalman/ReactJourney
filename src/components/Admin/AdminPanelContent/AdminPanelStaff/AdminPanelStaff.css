@@ -58,6 +58,11 @@
     background-color: #e0e0e0;
 }
 
+.adminPanelStaffListContainer li > div {
+    display: flex;
+    justify-content: space-between;
+}
+
 .adminPanelStaffListContainer button {
     margin-top: 10px;
     padding: 10px 20px;

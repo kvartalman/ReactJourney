@@ -13,6 +13,7 @@ const AdminPanelStaff = () => {
     const [boostersPage, setBoostersPage] = useState(1);
     const [moderatorsPage, setModeratorsPage] = useState(1);
     const [registerModal, setRegisterModal] = useState(false);
+    const [staffDeletionModal, setStaffDeletionModal] = useState(false);
     const [staffGroup, setStaffGroup] = useState('');
     const [password, setPassword] = useState('');
     const [passwordRepeat, setPasswordRepeat] = useState('');
@@ -71,11 +72,42 @@ const AdminPanelStaff = () => {
     const showBoosters = () => {
 
         if (boosterName) {
-            return boostersList.filter(user => user.toLowerCase().includes(boosterName.toLowerCase())).sort()
+
+            const searchList = boostersList.filter(
+                user =>
+                    user.username.toLowerCase().includes(boosterName.toLowerCase())).sort()
+
+            return paginate(searchList, boostersPage).map(booster => (
+                <li key={booster.id}>
+                    <div>
+                        {booster.username}
+                        <img
+                            onClick={() => {
+                                handleStaffDeletionModal(booster.username, 'Boosters')
+                            }}
+                            src={'/admin-panel/garbage.png'}
+                            width={20}
+                            alt={'Корзина'}
+                        />
+                    </div>
+                </li>
+            ))
         }
 
         return paginate(boostersList, boostersPage).map(booster => (
-            <li key={booster.id}>{booster.username}</li>
+        <li key={booster.id}>
+            <div>
+                {booster.username}
+                <img
+                    onClick={() => {
+                        handleStaffDeletionModal(booster.username, 'Boosters')
+                    }}
+                    src={'/admin-panel/garbage.png'}
+                    width={20}
+                    alt={'Корзина'}
+                />
+            </div>
+        </li>
         ));
     }
 
@@ -87,12 +119,36 @@ const AdminPanelStaff = () => {
                     user.username.toLowerCase().includes(moderName.toLowerCase())).sort()
 
             return paginate(searchList, moderatorsPage).map(moderator => (
-                <li onClick={() => setStaffToDelete(moderator.username)} key={moderator.id}>{moderator.username}</li>
+                <li key={moderator.id}>
+                    <div>
+                        {moderator.username}
+                        <img
+                            onClick={() => {
+                                handleStaffDeletionModal(moderator.username, 'Moderators')
+                            }}
+                            src={'/admin-panel/garbage.png'}
+                            width={20}
+                            alt={'Корзина'}
+                        />
+                    </div>
+                </li>
             ))
         }
 
         return paginate(moderatorsList, moderatorsPage).map(moderator => (
-            <li key={moderator.id}>{moderator.username}</li>
+            <li key={moderator.id}>
+                <div>
+                    {moderator.username}
+                    <img
+                        onClick={() => {
+                            handleStaffDeletionModal(moderator.username, 'Moderators')
+                    }}
+                        src={'/admin-panel/garbage.png'}
+                        width={20}
+                        alt={'Корзина'}
+                    />
+                </div>
+            </li>
         ));
     }
 
@@ -110,6 +166,12 @@ const AdminPanelStaff = () => {
 
     const handleModeratorsNext = () => {
         setModeratorsPage(prev => Math.min(prev + 1, Math.ceil(moderatorsList.length / itemsPerPage)));
+    }
+
+    const handleStaffDeletionModal = (name, group) => {
+        setStaffToDelete(name);
+        setGroup(group)
+        setStaffDeletionModal(true);
     }
 
     const handleStaffCreation = async (group) => {
@@ -139,38 +201,41 @@ const AdminPanelStaff = () => {
 
         const response = await axios.delete('http://localhost:8000/users/api/v1/delete_staff', {
             headers: {
-                Authorization: `Token ${localStorage.getItem('auth_token')}`
+                Authorization: `Token ${authToken}`
             },
             data: data
         })
             .then(response => {
                 setSuccessfullyDeleted(true);
+                setStaffDeletionModal(false);
+                fetchStaffList();
             })
             .catch(error => {
                 console.log(error)
             })
     }
 
-    useEffect(() => {
-        const fetchStaffList = async () => {
+    const fetchStaffList = async () => {
 
-            const authToken = localStorage.getItem('auth_token')
+        const authToken = localStorage.getItem('auth_token')
 
-            try {
-                const response = await axios.get('http://localhost:8000/users/api/v1/get_staff_list', {
-                    headers: {
-                        Authorization: `Token ${authToken}`
-                    }
-                }).then(response => {
-                        setBoostersList(response.data.boosters);
-                        setModeratorsList(response.data.moderators)
-                        console.log(response.data.boosters, response.data.moderators)
-                    }
-                )
-            } catch (error) {
-                console.error(error)
-            }
+        try {
+            const response = await axios.get('http://localhost:8000/users/api/v1/get_staff_list', {
+                headers: {
+                    Authorization: `Token ${authToken}`
+                }
+            }).then(response => {
+                    setBoostersList(response.data.boosters);
+                    setModeratorsList(response.data.moderators)
+                    console.log(response.data.boosters, response.data.moderators)
+                }
+            )
+        } catch (error) {
+            console.error(error)
         }
+    }
+
+    useEffect(() => {
         fetchStaffList();
     }, []);
 
@@ -197,13 +262,6 @@ const AdminPanelStaff = () => {
                                     placeholder="Введи имя модератора..."
                                 />
                             </Form>
-                        </div>
-                        <div>
-                            {staffToDelete ?
-                            <img src={'/admin-panel/garbage.png'} width={50} alt={'Корзина'}/>
-                                :
-                                null
-                            }
                         </div>
                         <div>
                             <ul>
@@ -304,6 +362,11 @@ const AdminPanelStaff = () => {
                 >
                     Создать
                 </button>
+            </Modal>
+            <Modal centered show={staffDeletionModal} onHide={() => setStaffDeletionModal(false)}>
+                <p>Вы уверены, что хотите удалить {group === 'Boosters' ? 'бустера' : 'модератора'} {staffToDelete}?</p>
+                <button onClick={() => handleStaffDeletion()}>Подтвердить</button>
+                <button onClick={() => setStaffDeletionModal(false)}>Отменить</button>
             </Modal>
             <Modal centered show={successfullyCreated} onHide={() => setSuccessfullyCreated(false)}>
                 Сотрудник успешно зарегистрирован
