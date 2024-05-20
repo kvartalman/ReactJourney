@@ -61,18 +61,11 @@ const AdminPanelNavBar = (props) => {
                             Список задач
                         </button>
                     </div>
-                    <div className={'adminPanelNavBarCtg'}>
+                    <div>
                         <button
                             onClick={() => handleContentChoice('staff')}
                         >
-                            Персонал
-                        </button>
-                    </div>
-                    <div>
-                        <button
-                            onClick={() => handleContentChoice('users')}
-                        >
-                            Пользователи
+                            Персонал и пользователи
                         </button>
                     </div>
                 </div>

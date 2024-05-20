@@ -315,10 +315,39 @@ const AdminPanelStaff = () => {
                                 10
                             </button>
                         </div>
+                    </div>
+                </div>
+                <div>
+                    <h2>Пользователи</h2>
+                    <div className={'adminPanelStaffListContainer'}>
                         <div>
-
+                            <button
+                                onClick={() => staffRegistrationModal('booster')}
+                            >Зарегистрировать бустера
+                            </button>
                         </div>
-
+                        <div>
+                            <Form>
+                                <Form.Control
+                                    value={boosterName}
+                                    onChange={boosterNameInput}
+                                    className={'signFormInput'}
+                                    type="text"
+                                    placeholder="Введи имя бустера..."
+                                />
+                            </Form>
+                        </div>
+                        <div>
+                            <ul>
+                                {showBoosters()}
+                            </ul>
+                            <button onClick={handleBoostersPrev} disabled={boostersPage === 1}>Предыдущие 10
+                            </button>
+                            <button onClick={handleBoostersNext}
+                                    disabled={boostersPage === Math.ceil(boostersList.length / itemsPerPage)}>Следующие
+                                10
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
