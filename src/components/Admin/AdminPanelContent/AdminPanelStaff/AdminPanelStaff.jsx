@@ -8,9 +8,17 @@ const AdminPanelStaff = () => {
 
     const [moderName, setModerName] = useState('');
     const [boosterName, setBoosterName] = useState('');
+    const [userName, setUserName] = useState('');
+    const [usersList, setUsersList] = useState([]);
+    const [userStatsName, setUserStatsName] = useState('');
+    const [userStats, setUserStats] = useState([]);
+    const [userDetailOrderStats, setUserDetailOrderStats] = useState([]);
+    const [userStatsModal, setUserStatsModal] = useState(false);
+    const [userStatsDetailModal, setUserStatsDetailModal] = useState(false);
     const [boostersList, setBoostersList] = useState([]);
     const [moderatorsList, setModeratorsList] = useState([]);
     const [boostersPage, setBoostersPage] = useState(1);
+    const [usersPage, setUsersPage] = useState(1);
     const [moderatorsPage, setModeratorsPage] = useState(1);
     const [registerModal, setRegisterModal] = useState(false);
     const [staffDeletionModal, setStaffDeletionModal] = useState(false);
@@ -51,6 +59,10 @@ const AdminPanelStaff = () => {
         setBoosterName(e.target.value);
     }
 
+    const userNameInput = (e) => {
+        setUserName(e.target.value);
+    }
+
     const staffRegistrationModal = (group) => {
         setStaffGroup(group);
         setRegisterModal(true);
@@ -62,6 +74,74 @@ const AdminPanelStaff = () => {
         setPassword('');
         setNickname('');
         setPasswordRepeat('');
+    }
+
+    const handleStatsModalOpen = async (user) => {
+        setUserStatsName(user);
+        setUserStatsModal(true)
+
+        const authToken = localStorage.getItem('auth_token')
+
+        const response = await axios.get('http://localhost:8000/users/api/v1/get_user_stats', {
+            headers: {
+                Authorization: `Token ${authToken}`
+            },
+            params: {
+                username: user
+            }
+        })
+            .then(response => {
+                setUserStats(response.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+    }
+
+    const handleStatsDetailModalOpen = (stats) => {
+        setUserStatsDetailModal(true);
+
+        if (stats) {
+            setUserDetailOrderStats(stats)
+        }
+    }
+
+    const userDetailStatsList = () => {
+        if (userDetailOrderStats) {
+            console.log(userDetailOrderStats)
+            return (
+                userDetailOrderStats.map(stats => (
+                    <tr key={stats.id}>
+                        <td>{stats.product}</td>
+                        <td>{stats.quantity}</td>
+                        <td>{stats.price}</td>
+                    </tr>
+                ))
+            )
+        }
+    }
+
+    const userStatsList = () => {
+        if (userStats) {
+            return (
+                userStats.map(stats => (
+                    <tr key={stats.id}>
+                        <td>{stats.id}</td>
+                        <td>{stats.date_ordered}</td>
+                        <td>{stats.total_price}</td>
+                        <td>
+                            <img
+                                onClick={() => handleStatsDetailModalOpen(stats.order_items)}
+                                src={'/admin-panel/stats.png'}
+                                width={35}
+                                alt={'Статистика'}
+                            />
+                        </td>
+                    </tr>
+                ))
+            )
+        }
     }
 
     const paginate = (list, page) => {
@@ -106,6 +186,56 @@ const AdminPanelStaff = () => {
                         width={20}
                         alt={'Корзина'}
                     />
+                </div>
+            </li>
+        ));
+    }
+
+    const showUsers = () => {
+
+        if (userName) {
+
+            const searchList = usersList.filter(
+                user =>
+                    user.username.toLowerCase().includes(userName.toLowerCase())).sort()
+
+            return paginate(searchList, usersPage).map(user => (
+                <li key={user.id}>
+                    <div>
+                        {user.username}
+                        <img
+                            onClick={() => {
+                                handleStaffDeletionModal(user.username, 'Clients')
+                            }}
+                            src={'/admin-panel/garbage.png'}
+                            width={20}
+                            alt={'Корзина'}
+                        />
+                    </div>
+                </li>
+            ))
+        }
+
+        return paginate(usersList, usersPage).map(user => (
+            <li key={user.id}>
+                <div>
+                    {user.username}
+                    <div>
+                        <img
+                            onClick={() => handleStatsModalOpen(user.username)}
+                            src={'/admin-panel/stats.png'}
+                            width={35}
+                            alt={'Статистика'}
+                        />
+                        <img
+                            onClick={() => {
+                                handleStaffDeletionModal(user.username, 'Clients')
+                            }}
+                            src={'/admin-panel/garbage.png'}
+                            width={20}
+                            alt={'Корзина'}
+                        />
+                    </div>
                 </div>
             </li>
         ));
@@ -228,14 +358,17 @@ const AdminPanelStaff = () => {
                 }
             }).then(response => {
 
-                    const {boosters, moderators} = response.data;
+                    const {boosters, moderators, users} = response.data;
 
                     moderators.sort((a, b) => a.username.localeCompare(b.username));
 
                     boosters.sort((a, b) => a.username.localeCompare(b.username));
 
+                    users.sort((a, b) => a.username.localeCompare(b.username));
+
                     setBoostersList(boosters);
-                    setModeratorsList(moderators)
+                    setModeratorsList(moderators);
+                    setUsersList(users);
                 }
             )
         } catch (error) {
@@ -321,30 +454,24 @@ const AdminPanelStaff = () => {
                     <h2>Пользователи</h2>
                     <div className={'adminPanelStaffListContainer'}>
                         <div>
-                            <button
-                                onClick={() => staffRegistrationModal('booster')}
-                            >Зарегистрировать бустера
-                            </button>
-                        </div>
-                        <div>
                             <Form>
                                 <Form.Control
-                                    value={boosterName}
-                                    onChange={boosterNameInput}
+                                    value={userName}
+                                    onChange={userNameInput}
                                     className={'signFormInput'}
                                     type="text"
-                                    placeholder="Введи имя бустера..."
+                                    placeholder="Введи имя пользователя..."
                                 />
                             </Form>
                         </div>
                         <div>
                             <ul>
-                                {showBoosters()}
+                                {showUsers()}
                             </ul>
-                            <button onClick={handleBoostersPrev} disabled={boostersPage === 1}>Предыдущие 10
+                            <button onClick={handleBoostersPrev} disabled={usersPage === 1}>Предыдущие 10
                             </button>
                             <button onClick={handleBoostersNext}
-                                    disabled={boostersPage === Math.ceil(boostersList.length / itemsPerPage)}>Следующие
+                                    disabled={usersPage === Math.ceil(usersList.length / itemsPerPage)}>Следующие
                                 10
                             </button>
                         </div>
@@ -410,6 +537,39 @@ const AdminPanelStaff = () => {
             </Modal>
             <Modal centered show={successfullyDeleted} onHide={() => setSuccessfullyDeleted(false)}>
                 Сотрудник успешно удалён
+            </Modal>
+            <Modal centered show={userStatsModal} onHide={() => setUserStatsModal(false)}>
+                <div id={'adminPanelStaffUserStatsMainContainer'}>
+                    <div id={'adminPanelStaffUserStatsListContainer'}>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>ID заказа</th>
+                                <th>Дата заказа</th>
+                                <th>Общая сумма заказа</th>
+                                <th>Подробнее</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {userStatsList()}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </Modal>
+            <Modal centered show={userStatsDetailModal} onHide={() => setUserStatsDetailModal(false)}>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Название продукта</th>
+                        <th>Количество</th>
+                        <th>Общая сумма</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {userDetailStatsList()}
+                    </tbody>
+                </table>
             </Modal>
         </div>
     )

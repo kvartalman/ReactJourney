@@ -16,10 +16,11 @@ const Navigation = (props) => {
     const navbarLinks = useSelector(state => state.navbar.navbarLinks)
     const [show, setShow] = useState(false);
     const [modal, setModal] = useState(false);
-    const [user, setUser] = useState(null);
     const [goodsModal, setGoodsModal] = useState(false);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth >= 767);
     const [token, setToken] = useState('');
+
+    const authToken = localStorage.getItem('auth_token')
 
     const showModal = () => setModal(true);
     const closeModal = () => setModal(false);
@@ -51,33 +52,6 @@ const Navigation = (props) => {
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     });
-
-
-    useEffect(() => {
-
-
-        const checkUser = async () => {
-
-            const authToken = localStorage.getItem('auth_token');
-
-            if (authToken) {
-                const response = await axios.get('http://localhost:8000/users/api/v1/user_view', {
-                    headers: {
-                        Authorization: `Token ${authToken}`
-                    }
-                })
-                    .then(response => {
-                        setUser(true)
-                        console.log('You are authorized')
-                    })
-                    .catch(error => {
-                        console.log(error)
-                        setUser(false)
-                    })
-            }
-        }
-        checkUser()
-    }, []);
 
     return (
         <>
@@ -126,7 +100,7 @@ const Navigation = (props) => {
                             </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
-                    {user ?
+                    {authToken ?
                         <>
                             {windowWidth ?
                                 <>
@@ -159,7 +133,6 @@ const Navigation = (props) => {
             <CartGoodsModal show={goodsModal} onHide={() => setGoodsModal(false)}/>
             <LoginModal
                 setToken={setToken}
-                setUser={setUser}
                 modal={modal}
                 closeModal={closeModal}/>
         </>

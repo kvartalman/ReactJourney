@@ -41,7 +41,6 @@ const LoginModal = (props) => {
             if (response.status === 201 || response.status === 200) {
                 props.closeModal()
                 setNewError(null);
-                props.setUser(true)
                 clearForms();
                 localStorage.setItem('auth_token', response.data['auth_token'])
                 console.log('Login successful. Tokens:', response.data);
